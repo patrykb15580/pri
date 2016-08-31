@@ -2,11 +2,11 @@
 /**
 * 
 */
-class CreatePromotorsTable
+class CreateClients2Table
 {
 	
 	public function up(){
-		$query = 'CREATE TABLE `promotors` ( 
+		$query = 'CREATE TABLE `clients2` ( 
 		`id` int(11) NOT NULL AUTO_INCREMENT, 
 		`email` varchar(191) NOT NULL, 
 		`password_digest` varchar(191) NOT NULL, 
@@ -19,6 +19,6 @@ class CreatePromotorsTable
 	}
 
 	public function down(){
-		$query = 'DROP TABLE `promotors`';
+		$query = 'DROP TABLE `clients2`';
 	}
 }

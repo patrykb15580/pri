@@ -11,7 +11,7 @@ class Assert{
 	public static function expect($subject)
 	{
 		self::$subject = $subject;
-		if (self::$_instance ===null) {
+		if (self::$_instance === null) {
 			self::$_instance = new self;
 		}
 		return self::$_instance;
@@ -19,7 +19,7 @@ class Assert{
 	public static function to_equal($val)
 	{
 		if (self::$subject !== $val) {
-			throw new Exception("Subjects are not equal. Expect: \n\n".
+			throw new Exception("\n\nSubjects are not equal. Expect: \n\n".
 			print_r($val, true)."\n\n got \n\n".print_r(self::$subject, true)."\n\n");	
 		}
 	}
