@@ -35,9 +35,55 @@ class MigrationTools
 			return true;
 		}  
 	}
+
 	public static function increment_schema_version_if_success($version)
 	{
 		$query = 'INSERT INTO `schema_migrations`(`version`) VALUES ('.$version.')';
 		$insert = mysqli_query(MyDB::db(), $query);
 	}
+
+	public static function select_last_migration()
+	{
+		return 'SELECT `version` FROM `schema_migrations` ORDER BY `version` DESC LIMIT 1';
+	}
+
+	public static function delete_last_migration_version($last_migration_version)
+	{
+		$query = 'DELETE FROM `schema_migrations` WHERE `version` = '.$last_migration_version;
+		$delete = mysqli_query(MyDB::db(), $query);
+	}
+
+	public static function clear_test_db()
+	{	
+		$show_tables_query = 'SHOW TABLES FROM pri_test';
+		$show_tables = mysqli_query(MyDB::db(), $show_tables_query);
+		
+		while ($row = mysqli_fetch_array($show_tables)) {
+
+			if ($row[0] == 'schema_migrations') {
+				$truncate_query = 'TRUNCATE TABLE `schema_migrations`';
+				$truncate = mysqli_query(MyDB::db(), $truncate_query);
+			}
+			else {
+				$drop_table_query = 'DROP TABLE '.$row[0];
+				$drop_table = mysqli_query(MyDB::db(), $drop_table_query);
+			}
+		}
+		
+	}
+	public static function compare_db()
+	{
+		foreach(glob('db/migrate/*', GLOB_BRACE) as $file){
+    	
+	 	   	$file_name = pathinfo($file);
+	 	   	$explode_file_name = explode('_', $file_name['filename']);
+	 	   	$version = MigrationTools::get_version_from_filename($explode_file_name);
+	    	$is_migrated = MigrationTools::is_migrated_migration($version);
+	    	if ($is_migrated == false) {
+	    		print_r(CLIUntils::colorize("Compare ".$file_name['filename'].": error \n", 'FAILURE'));
+	    	}
+		}
+	}
 }
+
+

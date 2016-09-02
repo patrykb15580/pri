@@ -1,5 +1,4 @@
 <?php
-include('core/assert.php');
 /**
 * 
 */
