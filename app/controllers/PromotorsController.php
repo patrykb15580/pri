@@ -6,18 +6,11 @@ class PromotorsController
 {
 	public function show($params)
 	{
-		$promotor = Promotor::find($params['promotors_id']);
-
-		$active_actions = [];
-		$inactive_actions = [];
-		foreach ($promotor->promotion_actions() as $action) {
-			if($action->status == 'active'){
-				array_push($active_actions, $action);
-			}else array_push($inactive_actions, $action);
-		}
+		$promotor = Promotor::find($params['id']);
 
 		$path = './app/views/'.StringUntils::camelCaseToUnderscore(str_replace('Controller', '', __CLASS__)).'/'.__FUNCTION__.'.php';
 		#die(print_r($path));
 		include './app/views/layouts/app.php';
+		
 	}
 }

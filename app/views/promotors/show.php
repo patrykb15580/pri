@@ -1,25 +1,11 @@
 <?php
-	$router = Config::get('router');
-	$path_new = $router->generate('new_promotion_actions', ['promotors_id' => $params['promotors_id']]);
-	
-	#echo "<pre>";
-	#die(print_r($active_actions));
-?>	
-<div id="promotors_show_title_box">Akcje promocyjne promotora <?= $promotor->name ?>
-<a href="<?= $path_new ?>"><button id="add_new">Nowa akcja promocyjna</button></a></div>
-<h3>Aktywne</h3>
-<?php 
-	$promotion_actions = $active_actions;
-	#die(print_r($active));
-	#die(print_r($path_update));
-	include 'app/views/promotors/_promotion_actions.php';
+	$router = new AltoRouter;
+	$path = $router->generate('create_promotion_actions');
+	die(print_r($path));
 ?>
-<h3>Nieaktywne</h3>
-<?php 
-	$promotion_actions = $inactive_actions;
-	#die(print_r($active));
-	#die(print_r($path_update));
-	include 'app/views/promotors/_promotion_actions.php';
-?>
-
-	
+	<h2>Akcje promocyjne promotora <?= $promotor->name ?></h2>
+	<hr>
+	<?php foreach ($promotor->promotion_actions() as $promotion_action) { ?>
+		<?= $promotion_action->name ?><hr>
+	<?php } ?>
+	<a href="<?= $path ?>"><button>Nowa akcja promocyjna</button></a>

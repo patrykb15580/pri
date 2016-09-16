@@ -19,8 +19,8 @@ class Assert{
 	public static function to_equal($val)
 	{
 		if (self::$subject !== $val) {
-			throw new Exception("\nSubjects are not equal. Expect: \n".
-			print_r($val, true)."\n got \n\n".print_r(self::$subject, true)."\n");	
+			throw new Exception("\n\nSubjects are not equal. Expect: \n\n".
+			print_r($val, true)."\n\n got \n\n".print_r(self::$subject, true)."\n\n");	
 		}
 	}
 }
