@@ -133,7 +133,7 @@ div#reward_description{
 	width: 100%;
 	margin: 0px;
 }
-img{
+img#reward_image{
 	width: 160px;
 	height: 160px;
 	margin: 5px;

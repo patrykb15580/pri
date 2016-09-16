@@ -13,7 +13,7 @@
 		$promotor4 = new Promotor(['email'=>'test4@test.com', 'password_degest'=>'password4', 'name'=>'promotor4']);
 		$promotor4->save();
 
-
+		print_r(CLIUntils::colorize("Promotors: OK\n", 'SUCCESS'));
 
 		$promotion_action1 = new PromotionAction(['name'=>'action1', 'promotors_id'=>'1', 'status'=>'inactive', 'indefinitely'=>1]);
 		$promotion_action1->save();
@@ -45,7 +45,7 @@
 		$promotion_action10 = new PromotionAction(['name'=>'action10', 'promotors_id'=>'1', 'status'=>'inactive', 'indefinitely'=>0, 'from_at'=>'2016-07-23', 'to_at'=>'2016-11-23']);
 		$promotion_action10->save();
 
-
+		print_r(CLIUntils::colorize("Promotion actions: OK\n", 'SUCCESS'));
 
 		$reward1 = new Reward(['name'=>'reward1', 'promotors_id'=>'1', 'status'=>'active', 'description'=>'Reward1 description', 'prize'=>'100']);
 		$reward1->save();
@@ -77,9 +77,12 @@
 		$reward10 = new Reward(['name'=>'reward10', 'promotors_id'=>'2', 'status'=>'inactive', 'description'=>'Reward10 description', 'prize'=>'795']);
 		$reward10->save();
 
+		print_r(CLIUntils::colorize("Rewards: OK\n", 'SUCCESS'));
 
 		$package1 = new PromotionCodesPackage(['name'=>'package1', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>1000, 'status'=>'active']);
 		$package1->save();
 
-		print_r(CLIUntils::colorize("OK\n", 'SUCCESS'));
+		print_r(CLIUntils::colorize("Promotion codes packages: OK\n", 'SUCCESS'));
+
+		print_r(CLIUntils::colorize("All OK\n", 'SUCCESS'));
 

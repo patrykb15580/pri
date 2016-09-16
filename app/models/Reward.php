@@ -41,4 +41,8 @@ class Reward extends Model
 	{
 		return 'Rewards';
 	}
+	public function images()
+	{
+		return Image::where('reward_id=?', ['reward_id'=>$this->id]);
+	}
 }

@@ -6,7 +6,7 @@
 	}else $path = $router->generate('create_rewards', ['promotors_id' => $params['promotors_id']]);
 	#die(print_r($path));
 ?>
-<form method="POST" action="<?= $path ?>">
+<form method="POST" action="<?= $path ?>" enctype="multipart/form-data">
 	Nazwa:<br />
 	<input type="text" name='reward[name]' value="<?= $reward->name ?>"><br /><br />
 	Status:<br />
@@ -19,6 +19,6 @@
 	<br /><input id="prize" type="text" name="reward[prize]" value="<?= $reward->prize ?>"> pkt
 	<br /><br />Opis:
 	<br /><textarea rows ="10" name="reward[description]"><?= $reward->description ?></textarea>
-	<br /><input type="file" name="pic" accept="image/*" multiple="multiple">
+	<br /><input type="file" name="image[]" accept="image/*" multiple="multiple">
 	<br /><br /><input type="submit" value="Zapisz zmiany">
 </form>

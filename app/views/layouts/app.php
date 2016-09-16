@@ -8,7 +8,7 @@
 </head>
 <body>
 <div id="top">
-<?= $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>
+<?php $promotor = Promotor::find($params['promotors_id']); echo $promotor->name; ?>
 </div>
 <hr>
 <div id="container">

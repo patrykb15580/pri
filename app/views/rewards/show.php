@@ -14,7 +14,7 @@
 Cena: <?= $reward->prize ?> pkt
 <br />Status: <?= PromotionAction::STATUSES[$reward->status] ?>
 <br /><br /><div id="reward_description"><?= nl2br($reward->description) ?></div>
-<br /><input type="file" name="pic" accept="image/*">
-<br><br><img src="">
-<img src="">
-<img src="">
+
+<?php foreach ($images as $image) { ?>
+	<img id="reward_image" src="<?= "system/".StringUntils::camelCaseToUnderscore(get_class($image))."s/".$image->file_name ?>">
+<?php } ?>
