@@ -1,27 +1,27 @@
 <?php
-$extensions = array('.php','.class.php','.interface.php');
-$ext = implode(',',$extensions);
-spl_autoload_register(null, false);
-spl_autoload_extensions($ext);
- 
-function classLoader($classname){
-    $extensions = array('.php','.class.php','.interface.php');
-    if (class_exists($classname, false)){ return; }
-    $class = explode('_', strtolower(strval($classname)));
-    $deeps = count($class);
-    $file = $DOCUMENT_ROOT;
-    for ($i=0;$i<$deeps;$i++){
-        $file .= '/'.$class[$i];
-    }
-    foreach ($extensions as $ext){
-        $fileClass = $file.$ext;
-        if (file_exists($fileClass) && is_readable($fileClass) && !class_exists($classname, false)){
-            require_once($fileClass);
-            return true;
+/**
+* 
+*/
+class Autoloader
+{
+    public $directory_name;
+
+    public function __construct($directory_name)
+    {   
+        $this->directory_name = $directory_name;
+    } 
+    public function autoload($class_name)
+    {
+        $file_name = $class_name.'.php';
+        $file = $this->directory_name.'/'.$file_name;
+        if (file_exists($file) == false) {
+            return false;
         }
+        else include $file;
     }
-    return false;
 }
-spl_autoload_register('classLoader');
-/* kod funckji interfaceLoader */
-spl_autoload_register('interfaceLoader');
+
+foreach (Config::get('autoloader_paths') as $path) {
+    $loader = new Autoloader($path);
+    spl_autoload_register([$loader, 'autoload']);
+}

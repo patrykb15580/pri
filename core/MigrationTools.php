@@ -73,16 +73,18 @@ class MigrationTools
 	}
 	public static function compare_db()
 	{
+		$compare_errors = [];
 		foreach(glob('db/migrate/*', GLOB_BRACE) as $file){
-    	
+    		
 	 	   	$file_name = pathinfo($file);
 	 	   	$explode_file_name = explode('_', $file_name['filename']);
 	 	   	$version = MigrationTools::get_version_from_filename($explode_file_name);
 	    	$is_migrated = MigrationTools::is_migrated_migration($version);
-	    	if ($is_migrated == false) {
-	    		print_r(CLIUntils::colorize("Compare ".$file_name['filename'].": error \n", 'FAILURE'));
+	    	if ($is_migrated == false) {;
+	    		array_push($compare_errors, "Compare ".$file_name['filename'].": error \n");
 	    	}
 		}
+		return $compare_errors;
 	}
 }
 

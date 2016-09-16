@@ -1,17 +1,9 @@
 #!D:\xampp\php\php.exe -q
 <?php
 
-include 'core/FilesUntils.php';
-include 'core/Tests.php';
-include 'core/CLIUntils.php';
-include('core/assert.php');
+include 'core/Config.php';
 include 'config/application.php';
-include 'core/MyDB.php';
-include 'core/MigrationTools.php';
-include 'core/BasicORM.php';
-include 'core/Validator.php';
-include 'core/Model.php';
-include 'app/models/Promotors.php';
+include 'core/AutoLoader.php';
 
 
 if (isset($argv[1]) and (strpos($argv[1], 'db') !== false)) {
@@ -26,9 +18,21 @@ if (isset($argv[1]) and (strpos($argv[1], 'db') !== false)) {
 		
 		migrate();
 
-		print_r("\nCompare databases:\n\n");
+		$compare = MigrationTools::compare_db();
+		if (MigrationTools::compare_db() !== []) {
+			print_r("\nCompare databases errors:\n");
+			foreach ($compare as $compare_error) {
+				print_r(CLIUntils::colorize($compare_error."\n", 'FAILURE'));
+			};
+		}
+		else print_r(CLIUntils::colorize("\nCompare Databases: OK", 'SUCCESS'));
+	}
+	else if ($action == 'seed') {
+		$db_setup = 'db_'.Config::get('env');
+		
+		MyDB::connect(Config::get($db_setup));
 
-		MigrationTools::compare_db();
+		include 'db/Seed.php';
 	}
 	else if ($action != '') {
 		$db_setup = 'db_'.Config::get('env');
@@ -40,7 +44,17 @@ if (isset($argv[1]) and (strpos($argv[1], 'db') !== false)) {
 	else print_r(CLIUntils::colorize("\nError: function not found\n", 'FAILURE'));
 	
 
-}else test();
+}
+else{
+
+	Config::set('env', 'test');
+
+	$db_setup = 'db_'.Config::get('env');
+
+	MyDB::connect(Config::get($db_setup));
+
+	test();
+} 
 
 
 function migrate(){
@@ -106,7 +120,7 @@ function rollback(){
 function test(){
 	$files_arr = FilesUntils::list_files('spec');
 	$test_files_paths = FilesUntils::filter_test_files($files_arr, 'Test.php');
-
+	$failure_arr = [];
 	foreach ($test_files_paths as $test_file_path) {
 		include $test_file_path;
 		$file_path = pathinfo($test_file_path);
@@ -117,15 +131,26 @@ function test(){
 		foreach ($methods as $method) {
 			$method_name = $method -> getName();
 			if (substr($method_name, 0, 5) == 'test_') {
+				MyDB::clear_database_except_schema();
 				 try{
         			$class -> $method_name();
         			echo CLIUntils::colorize('.', 'SUCCESS');
        			 }
        			 catch(Exception $e){
-       			 	echo CLIUntils::colorize($e -> getMessage()."\n".$method_name, 'FAILURE');
-       			 	die();
+       			 	echo CLIUntils::colorize("F", 'FAILURE');
+       			 	array_push($failure_arr, $e -> getMessage()." ".$method_name);
        			 }
         	}
 		}
 	}
+	if ($failure_arr == []) {
+		print_r(CLIUntils::colorize("\nAll tests success\n", 'SUCCESS'));
+	}
+	else {
+		print_r("\nTest errors:\n");
+		foreach ($failure_arr as $error) {
+			print_r(CLIUntils::colorize($error."\n\n", 'FAILURE'));
+		}
+	}
+	MyDB::clear_database_except_schema();
 }

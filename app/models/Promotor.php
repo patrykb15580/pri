@@ -38,4 +38,12 @@ class Promotor extends Model
 	{
 		return PromotionAction::where('promotors_id=?', ['promotors_id'=>$this->id]);
 	}
+	public function rewards()
+	{
+		return Reward::where('promotors_id=?', ['promotors_id'=>$this->id]);
+	}
+	public function promotion_codes()
+	{
+		return PromotionCode::where('promotors_id=?', ['promotors_id'=>$this->id]);
+	}
 }
