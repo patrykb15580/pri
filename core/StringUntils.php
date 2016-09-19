@@ -85,4 +85,20 @@ class StringUntils
         // return our finished random string
         return $random_string;
     }
+    public static function replace_polish_chars($string)
+    {
+        $polish_chars = array( 'Ę', 'Ó', 'Ą', 'Ś', 'Ł', 'Ż', 'Ź', 'Ć', 'Ń', 'ę', 'ó', 'ą', 
+                'ś', 'ł', 'ż', 'ź', 'ć', 'ń' );
+        $replace_polish_chars = array( 'E', 'O', 'A', 'S', 'L', 'Z', 'Z', 'C', 'N', 'e', 'o', 'a', 
+                's', 'l', 'z', 'z', 'c', 'n' );
+
+        $string = str_replace($polish_chars, $replace_polish_chars, $string);
+
+        return $string;
+    }
+    public static function replace_special_chars($string)
+    {
+        $string = preg_replace("/[^A-Za-z0-9 ]/", '', $string);
+        return $string;
+    }
 }

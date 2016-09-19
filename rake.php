@@ -45,7 +45,9 @@ if (isset($argv[1]) and (strpos($argv[1], 'db') !== false)) {
 	
 
 }
-else{
+else if (isset($argv[1]) !== false) {
+	$test_class = explode(':', $argv[1])[0]."Test";
+	$test_method = 'test_'.explode(':', $argv[1])[1];
 
 	Config::set('env', 'test');
 
@@ -53,7 +55,7 @@ else{
 
 	MyDB::connect(Config::get($db_setup));
 
-	test();
+	single_test($test_class, $test_method);
 } 
 
 
@@ -117,6 +119,37 @@ function rollback(){
 	}	
 }
 
+function single_test($test_class, $test_method)
+{
+	$files_arr = FilesUntils::list_files('spec');
+	$test_files_paths = FilesUntils::filter_test_files($files_arr, 'Test.php');
+
+	foreach ($test_files_paths as $test_file_path) {
+		$file_path = pathinfo($test_file_path);
+		$class_name = $file_path['filename'];
+		if ($class_name == $test_class) {
+			include $test_file_path;
+			$class = new $class_name;
+			$class_info = new ReflectionClass($class);
+			$methods = $class_info -> getMethods();
+			foreach ($methods as $method) {
+				$method_name = $method -> getName();
+				if ($method_name == $test_method) {
+					MyDB::clear_database_except_schema();
+					try{
+	        			$class -> $method_name();
+	        			echo CLIUntils::colorize('Test Success', 'SUCCESS');
+	       			}
+	       			catch(Exception $e){
+	       				echo CLIUntils::colorize("Test Failure", 'FAILURE');
+	       				print_r($e -> getMessage()." ".$method_name);
+	       			}
+	        	}
+			}
+		}
+	}
+	MyDB::clear_database_except_schema();
+}
 function test(){
 	$files_arr = FilesUntils::list_files('spec');
 	$test_files_paths = FilesUntils::filter_test_files($files_arr, 'Test.php');

@@ -35,8 +35,8 @@ class Image extends Model
 	public function upload_images($files, $params)
 	{
 		for ($i=0; $i < sizeof($files['image']['name']); $i++) { 
-			$file_name = $files['image']['name'][$i];
-
+			$file_name = StringUntils::camelCaseToUnderscore(StringUntils::replace_polish_chars($files['image']['name'][$i]));
+			
 			$image = new Image(['file_name'=>$file_name, 'size'=>$files['image']['size'][$i], 'reward_id'=>$params['id']]);
 			#die(print_r($image));
 			$copy_path = 'system/'.StringUntils::camelCaseToUnderscore(get_class($image)).'s/';
