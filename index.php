@@ -3,6 +3,7 @@ include 'core/Config.php';
 include 'config/application.php';
 include 'core/AutoLoader.php';
 include 'config/routing.php';
+require __DIR__ . '/vendor/autoload.php';
 
 $db_setup = 'db_'.Config::get('env');
 		

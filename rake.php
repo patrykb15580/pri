@@ -57,6 +57,17 @@ else if (isset($argv[1]) !== false) {
 
 	single_test($test_class, $test_method);
 } 
+else {
+
+
+	Config::set('env', 'test');
+
+	$db_setup = 'db_'.Config::get('env');
+
+	MyDB::connect(Config::get($db_setup));
+
+	test();
+} 
 
 
 function migrate(){
@@ -150,6 +161,7 @@ function single_test($test_class, $test_method)
 	}
 	MyDB::clear_database_except_schema();
 }
+
 function test(){
 	$files_arr = FilesUntils::list_files('spec');
 	$test_files_paths = FilesUntils::filter_test_files($files_arr, 'Test.php');
@@ -165,14 +177,14 @@ function test(){
 			$method_name = $method -> getName();
 			if (substr($method_name, 0, 5) == 'test_') {
 				MyDB::clear_database_except_schema();
-				 try{
+				try{
         			$class -> $method_name();
         			echo CLIUntils::colorize('.', 'SUCCESS');
-       			 }
-       			 catch(Exception $e){
+       			}
+       			catch(Exception $e){
        			 	echo CLIUntils::colorize("F", 'FAILURE');
        			 	array_push($failure_arr, $e -> getMessage()." ".$method_name);
-       			 }
+       			}
         	}
 		}
 	}

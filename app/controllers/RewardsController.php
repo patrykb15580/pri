@@ -28,7 +28,7 @@ class RewardsController
 
 		$path = './app/views/'.StringUntils::camelCaseToUnderscore(str_replace('Controller', '', __CLASS__)).'/'.__FUNCTION__.'.php';
 		#die(print_r($path));
-		$images = Image::where('reward_id=?', ['reward_id'=>$params['id']]);
+		$images = RewardImage::where('reward_id=?', ['reward_id'=>$params['id']]);
 		#echo "<pre>";
 		#die(print_r($images));
 		include './app/views/layouts/app.php';
@@ -69,7 +69,7 @@ class RewardsController
 		$reward = Reward::findBy('id', $params['id']);
 		if ($reward->update($params['reward'])) {
 
-			$upload = new Image;
+			$upload = new RewardImage;
 			$upload->upload_images($_FILES, $params);
 
 			header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$params['promotors_id']."/rewards/".$params['id']); 

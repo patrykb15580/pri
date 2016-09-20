@@ -14,7 +14,18 @@
 Cena: <?= $reward->prize ?> pkt
 <br />Status: <?= PromotionAction::STATUSES[$reward->status] ?>
 <br /><br /><div id="reward_description"><?= nl2br($reward->description) ?></div>
-
-<?php foreach ($images as $image) { ?>
-	<img id="reward_image" src="<?= "system/".StringUntils::camelCaseToUnderscore(get_class($image))."s/".$image->file_name ?>">
+<br />
+<div id="reward_images_container">
+<?php foreach ($images as $image) { 
+	$img_path = "/system/".StringUntils::camelCaseToUnderscore(get_class($image))."s/".$image->id.'/small/'.$image->file_name;
+	$delete_path = $router->generate('delete_reward_images', ['promotors_id' => $params['promotors_id'], 'reward_id' => $params['id'], 'id' => $image->id]);?>
+	<div id="reward_image_box">
+		<img id="reward_image" src="<?= $img_path ?>">
+		<br />
+		<form method="POST" action="<?= $delete_path ?>">
+			<input type="hidden" name="method" value="DELETE">
+			<input id="delete_image" type="submit" value="Usuń zdjęcie">
+		</form>
+	</div>
 <?php } ?>
+</div>

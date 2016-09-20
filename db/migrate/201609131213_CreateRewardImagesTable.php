@@ -2,11 +2,11 @@
 /**
 * 
 */
-class CreateImagesTable
+class CreateRewardImagesTable
 {
 	
 	public function up(){
-		$query = 'CREATE TABLE `images` ( 
+		$query = 'CREATE TABLE `reward_images` ( 
 		`id` int(11) NOT NULL AUTO_INCREMENT, 
 		`file_name` varchar(191) NOT NULL,
 		`size` int(11) NOT NULL,
@@ -20,7 +20,7 @@ class CreateImagesTable
 	}
 
 	public function down(){
-		$query = 'DROP TABLE `images`';
+		$query = 'DROP TABLE `reward_images`';
 
 		return $query;
 	}

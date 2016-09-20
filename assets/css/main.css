@@ -133,10 +133,31 @@ div#reward_description{
 	width: 100%;
 	margin: 0px;
 }
+div#reward_images_container{
+	display: block;
+	margin: 0px 20px;
+}
+div#reward_image_box{
+	display: inline-block;
+	margin: 4px;
+	border: 0px; 
+	border-radius: 0px 0px 30px 30px;
+	border-style: solid;
+}
 img#reward_image{
-	width: 160px;
-	height: 160px;
 	margin: 5px;
+}
+input[type=submit]#delete_image{
+	font-size: 10px;
+	padding: 2px;
+	margin: 0px auto 8px auto;
+	text-align: center;
+}
+input[type=submit]#delete_image:hover{
+	font-size: 11px;
+	padding: 2px;
+	margin: 0px auto 7px auto;
+	text-align: center;
 }
 
 
@@ -170,6 +191,7 @@ input[type="text"]{
 	width: 40%;
 	height: 24px;
 	font-size: 16px;
+	text-align: center;
 	padding: 4px 4px 4px 4px;
 	border: 1px;
 	border-radius: 10px 10px 10px 10px;
@@ -179,6 +201,7 @@ input#prize[type="text"]{
 	width: 10%;
 	height: 24px;
 	font-size: 16px;
+	text-align: center;
 	padding: 4px 4px 4px 4px;
 	border: 1px;
 	border-radius: 10px 10px 10px 10px;
