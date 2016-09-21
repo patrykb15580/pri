@@ -10,12 +10,12 @@ class PromotorsModelTest extends Tests
 		$promotors = new Promotor(['email'=>'test@test.com', 'password_degest'=>'password', 'name'=>'new promotor']);
 		Assert::expect($promotors -> isValid()) -> to_equal(true);
 	}
-	public function test_should_be_require_email_address()
+	public function test_email_address_should_be_require()
 	{
 		$promotors = new Promotor(['password_degest'=>'password', 'name'=>'new promotor']);
 		Assert::expect($promotors -> isValid()) -> to_equal(false);
 	}
-	public function test_should_have_less_than_191_chars_email_address()
+	public function test_email_address_should_have_less_than_191_chars()
 	{
 		$random_string = StringUntils::get_random_string(190);
 		$promotors = new Promotor(['email'=>$random_string, 'password_degest'=>'password', 'name'=>'new promotor']);
@@ -25,17 +25,17 @@ class PromotorsModelTest extends Tests
 		$promotors = new Promotor(['email'=>$random_string, 'password_degest'=>'password', 'name'=>'new promotor']);
 		Assert::expect($promotors -> isValid()) -> to_equal(false);
 	}
-	public function test_should_be_require_password()
+	public function test_password_should_be_require()
 	{
 		$promotors = new Promotor(['email'=>'test@test.com', 'name'=>'new promotor']);
 		Assert::expect($promotors -> isValid()) -> to_equal(false);
 	}
-	public function test_should_be_require_name()
+	public function test_name_should_be_require()
 	{
 		$promotors = new Promotor(['email'=>'test@test.com', 'password_degest'=>'password']);
 		Assert::expect($promotors -> isValid()) -> to_equal(false);
 	}
-	public function test_should_have_less_than_191_chars_name()
+	public function test_name_should_have_less_than_191_chars()
 	{
 		$random_string = StringUntils::get_random_string(190);
 		$promotors = new Promotor(['email'=>'test@test.com', 'password_degest'=>'password', 'name'=>$random_string]);

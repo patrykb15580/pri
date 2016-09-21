@@ -4,7 +4,7 @@
 */
 class PromotionCodesPackage extends Model
 {
-	public $id, $name, $created_at, $updated_at, $action_id, $reusable, $quantity, $generated, $status;
+	public $id, $name, $created_at, $updated_at, $action_id, $reusable, $quantity, $generated, $codes_value, $status;
 
 	const STATUSES = 	['active' => 'Aktywne',
 						'inactive' => 'Nieaktywne'];
@@ -22,7 +22,7 @@ class PromotionCodesPackage extends Model
 									   'default' => null],
 			'name'					=>['type' => 'string',
 									   'default' => null,
-									   'validations' => ['required']],
+									   'validations' => ['required', 'max_length:190']],
 			'created_at'			=>['type' => 'datetime',
 									   'default' => null],
 			'updated_at'			=>['type' => 'datetime',
@@ -33,9 +33,13 @@ class PromotionCodesPackage extends Model
 			'reusable'				=>['type' => 'boolean',
 									   'default' => 0],
 			'quantity'				=>['type' => 'integer',
-									   'default' => null],
+									   'default' => null,
+									   'validations' => ['required', 'max_length:11']],
 			'generated'				=>['type' => 'integer',
 									   'default' => 0],
+			'codes_value'			=>['type' => 'integer',
+									   'default' => null,
+									   'validations' => ['required', 'max_length:11']],
 			'status'				=>['type' => 'string',
 									   'default' => 'active']
 		];
@@ -43,6 +47,10 @@ class PromotionCodesPackage extends Model
 	public static function pluralizeClassName()
 	{
 		return 'PromotionCodesPackages';
+	}
+	public function promotion_action()
+	{
+		return PromotionAction::find($this->action_id);
 	}
 	public function promotion_codes()
 	{

@@ -36,7 +36,8 @@ class PromotionCodesPackagesController
 	{
 		$params['promotion_codes_package']['action_id'] = $params['action_id'];
 		$package = new PromotionCodesPackage($params['promotion_codes_package']);
-
+		echo "<pre>";
+		die(print_r($package));
 
 		if ($package->save() == false) {
 			$package = new PromotionCodesPackage($params['promotion_codes_package']);
@@ -59,16 +60,10 @@ class PromotionCodesPackagesController
 
 	public function update($params)
 	{
-		if ($params['promotion_action']['indefinitely'] == '1') {
-			
-			unset($params['promotion_action']['from_at']);
-			unset($params['promotion_action']['to_at']);
-		}
-
 		$package = PromotionCodesPackage::findBy('id', $params['id']);
-		$package->update($params['promotion_action']);
+		$package->update($params['promotion_codes_package']);
 		
-		header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$params['promotors_id']."/promotion-actions/".$params['id']); 
+		header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$params['promotors_id']."/promotion-actions/".$params['action_id']."/package/".$params['id']); 
 	}
 
 	public function generate()

@@ -15,6 +15,7 @@ class CreatePromotionCodesPackagesTable
 		`reusable` boolean,
 		`quantity` int(11) NOT NULL,
 		`generated` int(11) NOT NULL,
+		`codes_value` int(11) NOT NULL,
 		`status` varchar(191) NOT NULL,
 		 
 		PRIMARY KEY (`id`) )';

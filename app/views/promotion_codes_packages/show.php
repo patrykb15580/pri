@@ -1,7 +1,7 @@
 <?php
 	$router = Config::get('router');
 	$path_new = $router->generate('new_promotion_codes_packages', ['promotors_id' => $params['promotors_id'], 'id' => $params['id']]);
-	$path_update = $router->generate('edit_promotion_codes_packages', ['promotors_id' => $params['promotors_id'], 'action_id' => $params['id']]);
+	$path_update = $router->generate('edit_promotion_codes_packages', ['promotors_id' => $params['promotors_id'], 'action_id' => $params['id'], 'id' => $params['id']]);
 	#echo "<pre>";
 	#die(print_r($params));
 ?>	
@@ -11,7 +11,8 @@
 	<a href="">Usuń</a>
 </div>
 <br /><br />
-Liczba kodów: <?= $package->generated ?>
+Liczba kodów: <?= $package->generated ?><br />
+Wartość kodów: <?= $package->codes_value ?> pkt
 <br /><br />
 <?php
 	#echo "<pre>";

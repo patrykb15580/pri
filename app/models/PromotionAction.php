@@ -42,6 +42,10 @@ class PromotionAction extends Model
 	{
 		return 'PromotionActions';
 	}
+	public function promotor()
+	{
+		return Promotor::find($this->promotors_id);
+	}
 	public function promotion_codes_packages()
 	{
 		return PromotionCodesPackage::where('action_id=?', ['action_id'=>$this->id]);

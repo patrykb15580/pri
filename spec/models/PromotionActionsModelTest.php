@@ -2,7 +2,7 @@
 /**
 * 
 */
-class PromotionActionsTest extends Tests
+class PromotionActionsModelTest extends Tests
 {
 	
 	public function test_promotion_actions_is_valid()

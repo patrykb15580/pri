@@ -161,6 +161,55 @@ input[type=submit]#delete_image:hover{
 }
 
 
+table#use_code{
+	text-align: center;
+	margin: 0px auto;
+}
+form#use_code{
+	width: 50%;
+	margin: 6% auto;
+	text-align: center;
+}
+input[type=submit]#use_code{
+	text-align: center;
+	margin: 20px auto;
+}
+
+
+div#error_message{
+	width: 20%;
+	padding: 30px;
+	font-size: 24px;
+	font-weight: bold;
+	text-align: center;
+	margin: 6% auto 0px auto;
+	color: red;
+	border: 1px;
+	border-radius: 20px;
+	border-style: solid;
+}
+form#insert_code{
+	display: block;
+	text-align: center;
+	margin: 0px auto;
+}
+input[type=text]#insert_code{
+	text-align: center;
+	display: inline-block;
+	width: 20%;
+}
+input[type=submit]#insert_code{
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px;
+}
+input[type=submit]#insert_code:hover{
+	display: inline-block;
+	font-size: 18px;
+	margin: 2px 2px 2px 0px;
+}
+
+
 /* Looks */
 button{
 	display: block;
@@ -184,6 +233,7 @@ button:hover{
 }
 ul, li{
 	list-style: none;
+
 
 /* Forms */
 }
