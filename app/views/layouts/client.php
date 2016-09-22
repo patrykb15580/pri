@@ -13,12 +13,10 @@
 <hr>
 <div id="container">
 	<div id="side_bar">
-		<a href="/promotors/<?= $params['promotors_id'] ?>">Akcje promocyjne</a><br />
-		<a href="/promotors/<?= $params['promotors_id'] ?>/rewards">Katalog nagród</a><br />
-		<a href="">Klienci</a><br />
+		<a href="/clients/<?= $params['client_id'] ?>">Akcje promocyjne</a><br />
 		<a href="">Zamówienia</a><br />
-		<a href="">Ustawienia konta</a><br />
-		<a href="">Informacje dla klientów</a><br />
+		<a href="">Historia</a><br />
+		<a href="">Regulamin</a><br />
 	</div>
 	<div id="content">
 	<?php include($path); ?>

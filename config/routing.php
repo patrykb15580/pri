@@ -35,13 +35,25 @@ $router->map( 'POST', '/promotors/[i:promotors_id]/promotion-actions/[i:action_i
 $router->map( 'GET', '/promotors/[i:promotors_id]/promotion-actions/[i:action_id]/package/[i:id]/edit', 'PromotionCodesPackagesController#edit', 'edit_promotion_codes_packages' );
 $router->map( 'POST', '/promotors/[i:promotors_id]/promotion-actions/[i:action_id]/package/[i:id]/update', 'PromotionCodesPackagesController#update', 'update_promotion_codes_packages' );
 
+
 $router->map( 'GET', '/package/generate', 'PromotionCodesPackagesController#generate', 'generate_promotion_codes_packages' );
+
 
 $router->map( 'DELETE', '/promotors/[i:promotors_id]/rewards/[i:reward_id]/image/[i:id]', 'RewardImagesController#delete', 'delete_reward_images' );
 
+
 $router->map( 'GET', '/', 'StaticPagesController#start_page', 'start_page' );
-$router->map( 'POST', '/insert_code', 'StaticPagesController#insert_code', 'insert_code' );
+$router->map( 'POST', '/insert-code', 'StaticPagesController#insert_code', 'insert_code' );
 $router->map( 'GET', '/[a:code]', 'StaticPagesController#use_code', 'use_code' );
+$router->map( 'POST', '/[a:code]/add-points', 'StaticPagesController#add_points', 'add_points' );
+$router->map( 'GET', '/[a:code]/confirm', 'StaticPagesController#confirmation', 'confirmation' );
+
+
+$router->map( 'GET', '/clients/[i:client_id]', 'ClientsController#show', 'show_client' );
+$router->map( 'GET', '/clients/[i:client_id]/promotor-rewards/[i:promotors_id]', 'ClientsController#index_rewards', 'client_index_rewards' );
+$router->map( 'GET', '/clients/[i:client_id]/promotor-rewards/[i:promotors_id]/reward/[i:reward_id]', 'ClientsController#show_rewards', 'client_show_rewards' );
+
+
 
 
 // match current request url

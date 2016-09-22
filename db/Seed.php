@@ -15,10 +15,10 @@
 
 		print_r(CLIUntils::colorize("Promotors: OK\n", 'SUCCESS'));
 
-		$promotion_action1 = new PromotionAction(['name'=>'action1', 'promotors_id'=>'1', 'status'=>'inactive', 'indefinitely'=>1]);
+		$promotion_action1 = new PromotionAction(['name'=>'action1', 'promotors_id'=>'1', 'status'=>'active', 'indefinitely'=>1]);
 		$promotion_action1->save();
 
-		$promotion_action2 = new PromotionAction(['name'=>'action2', 'promotors_id'=>'1', 'status'=>'active', 'indefinitely'=>0, 'from_at'=>'2016-04-01', 'to_at'=>'2016-10-01']);
+		$promotion_action2 = new PromotionAction(['name'=>'action2', 'promotors_id'=>'1', 'status'=>'inactive', 'indefinitely'=>0, 'from_at'=>'2016-04-01', 'to_at'=>'2016-10-01']);
 		$promotion_action2->save();
 
 		$promotion_action3 = new PromotionAction(['name'=>'action3', 'promotors_id'=>'3', 'status'=>'inactive', 'indefinitely'=>0, 'from_at'=>'2016-09-01', 'to_at'=>'2016-11-01']);

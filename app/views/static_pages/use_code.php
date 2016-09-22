@@ -1,19 +1,7 @@
-<?php	
+<?php
+	if ($code->client_id == null) {
+		include 'app/views/static_pages/_use_code_form.php';
+	} else{ ?>
+		<div id="error_message">Kod został już wykorzystany</div>
+	<?php } ?>
 	
-?>
-<form id="use_code">
-	<b><?= $promotor->name ?></b>
-	<h1><?= $promotion_action->name ?></h1>
-	<table id="use_code" width="40%">
-		<tr><td id="first_row">Kod</td><td id="first_row">Wartość kodu</td></tr>
-		<tr><td><?= $params['code'] ?></td><td><?= $package->codes_value ?></td></tr>
-	</table>
-	<br />
-	Login (e-mail)
-	<br /><input type="text" name="client[email]">
-	<br /><br />Imię
-	<br /><input type="text" name="client[name]">
-	<br /><br />Telefon
-	<br /><input type="text" name="client[phone_number]">
-	<br /><input id="use_code" type="submit" value="Dodaj punkty">
-</form>	

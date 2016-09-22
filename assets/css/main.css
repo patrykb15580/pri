@@ -49,6 +49,7 @@ div#bottom{
 	margin: 0px;
 }
 
+
 /* Fonts */
 a{
 	color: #5f5f5f;
@@ -63,6 +64,10 @@ a:visited{
 	color: #5f5f5f;
 	text-decoration: none;
 }
+div#text{
+	text-align: center;
+}
+
 
 /* Show views */
 div#promotors_show_title_box{
@@ -79,6 +84,9 @@ table{
 tr{ 
 	border-bottom: solid thin; 
 	border-color: #AAAAAA;
+}
+tr#last_row{ 
+	border-bottom: none; 
 }
 td#first_row{
 	font-size: 12px;
@@ -159,6 +167,36 @@ input[type=submit]#delete_image:hover{
 	margin: 0px auto 7px auto;
 	text-align: center;
 }
+div#reward_box{
+	display: inline-block;
+	float: left;
+	width: 200px;
+	margin: 10px;
+	padding: 20px;
+	border: 1px;
+	border-style: solid;
+}
+img#client_show_rewards{
+	margin: 10px 0px;
+	border: 1px;
+	border-style: solid;
+}
+div#img_placeholder{
+	width: 200px;
+	height: 200px;
+	margin: 10px 0px;
+	background-color: grey;
+	border: 1px;
+	border-style: solid;
+}
+button#center{
+	text-align: center;
+	margin: 10px auto;
+}
+button#center:hover{
+	text-align: center;
+	margin: 9px auto;
+}
 
 
 table#use_code{
@@ -176,6 +214,18 @@ input[type=submit]#use_code{
 }
 
 
+div#confirm_message{
+	width: 20%;
+	padding: 30px;
+	font-size: 24px;
+	font-weight: bold;
+	text-align: center;
+	margin: 6% auto 2% auto;
+	color: green;
+	border: 1px;
+	border-radius: 20px;
+	border-style: solid;
+}
 div#error_message{
 	width: 20%;
 	padding: 30px;

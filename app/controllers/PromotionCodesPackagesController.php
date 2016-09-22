@@ -36,8 +36,6 @@ class PromotionCodesPackagesController
 	{
 		$params['promotion_codes_package']['action_id'] = $params['action_id'];
 		$package = new PromotionCodesPackage($params['promotion_codes_package']);
-		echo "<pre>";
-		die(print_r($package));
 
 		if ($package->save() == false) {
 			$package = new PromotionCodesPackage($params['promotion_codes_package']);

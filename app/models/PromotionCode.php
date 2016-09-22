@@ -28,8 +28,8 @@ class PromotionCode extends Model
 			'package_id'			=>['type' => 'integer',
 									   'default' => null,
 									   'validations' => ['required']],
-			'used'					=>['type' => 'boolean',
-									   'default' => false],
+			'used'					=>['type' => 'datetime',
+									   'default' => null],
 			'client_id'				=>['type' => 'integer',
 									   'default' => null]
 		];
@@ -46,13 +46,22 @@ class PromotionCode extends Model
 	{
 		return Client::find($this->client_id);
 	}
+	public function code_value()
+	{
+		$package = PromotionCodesPackage::find($this->package_id);
+		return $package->codes_value;
+	}
+	public function isUsed()
+	{
+		return $this->client_id !== null ? true : false;
+	}
 	public function isActive()
 	{
 		$package = $this->package();
 		$promotion_action = $package->promotion_action();
 		#print_r($promotion_action->status."\n");
 		#die(print_r($package->status));
-		if ($package->status == 'active' && $promotion_action->status == 'active') {
+		if ($package->status == 'active' && $promotion_action->status == 'active' && !$this->isUsed()) {
 			return true;
 		} else {
 			return false;

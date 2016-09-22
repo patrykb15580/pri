@@ -25,6 +25,14 @@ class ClientsModelTest extends Tests
 		$clients = new Client(['email'=>$random_string, 'name'=>'new client', 'phone_number'=>'123456789']);
 		Assert::expect($clients -> isValid()) -> to_equal(false);
 	}
+	public function test_client_email_is_unique()
+	{
+		$clients = new Client(['email'=>'test@test.com', 'name'=>'new client1', 'phone_number'=>'123456789']);
+		$clients->save();
+		$clients = new Client(['email'=>'test@test.com', 'name'=>'new client2', 'phone_number'=>'987654321']);
+		$clients->save();
+		Assert::expect($clients -> isValid()) -> to_equal(false);
+	}
 	public function test_phone_number_should_be_require()
 	{
 		$clients = new Client(['email'=>'test@test.com', 'name'=>'new client']);
