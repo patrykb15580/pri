@@ -10,14 +10,21 @@
 	Nazwa:<br />
 	<input type="text" name='promotion_codes_package[name]' value="<?= $package->name ?>"><br /><br />
 	Liczba kodów:<br />
-	<input type="text" name='promotion_codes_package[quantity]' value="<?= $package->quantity ?>"><br /><br />
-	Wartość kodów:<br />
+
 	<?php if ($params['action'] !== 'edit') { ?>
-		
-		<input type="text" name="promotion_codes_package[codes_value]"><br /><br />
+		<input type="text" name='promotion_codes_package[quantity]' value="<?= $package->quantity ?>"><br /><br />
 	<?php } else { ?>
-		<input type="text" name="promotion_codes_package[codes_value]" value="<?php echo $package->codes_value ?>" disabled><br /><br />
+		<input type="text" name='promotion_codes_package[quantity]' value="<?= $package->quantity ?>" disabled> <br /><br />
 	<?php } ?>
+
+	
+	Wartość kodu:<br />
+	<?php if ($params['action'] !== 'edit') { ?>
+		<input type="text" name="promotion_codes_package[codes_value]"> pkt<br /><br />
+	<?php } else { ?>
+		<input type="text" name="promotion_codes_package[codes_value]" value="<?php echo $package->codes_value ?>" disabled> pkt<br /><br />
+	<?php } ?>
+
 	Status:<br />
 	<select name="promotion_codes_package[status]">
 		<?php foreach (PromotionCodesPackage::STATUSES as $lang_en => $lang_translated) { ?>

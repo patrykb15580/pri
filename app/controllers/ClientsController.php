@@ -30,7 +30,7 @@ class ClientsController
 			$promotor = $promotion_action->promotor();
 			$promotors[$promotion_action->promotors_id] = $promotor;
 		}
-		
+
 		$path = './app/views/'.StringUntils::camelCaseToUnderscore(str_replace('Controller', '', __CLASS__)).'/'.__FUNCTION__.'.php';
 		#die(print_r($path));
 		include './app/views/layouts/client.php';

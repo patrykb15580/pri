@@ -79,7 +79,7 @@
 
 		print_r(CLIUntils::colorize("Rewards: OK\n", 'SUCCESS'));
 
-		$package1 = new PromotionCodesPackage(['name'=>'package1', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>100, 'codes_value'=>50, 'status'=>'active']);
+		$package1 = new PromotionCodesPackage(['name'=>'package1', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>20, 'codes_value'=>50, 'status'=>'active']);
 		$package1->save();
 
 		print_r(CLIUntils::colorize("Promotion codes packages: OK\n", 'SUCCESS'));

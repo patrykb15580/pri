@@ -177,7 +177,7 @@ div#reward_box{
 	border-style: solid;
 }
 img#client_show_rewards{
-	margin: 10px 0px;
+	margin: 10px auto;
 	border: 1px;
 	border-style: solid;
 }

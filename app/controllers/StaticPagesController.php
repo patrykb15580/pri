@@ -39,11 +39,27 @@ class StaticPagesController
 	public function add_points($params)
 	{
 		$client = $this->getOrCreateClient($params);
+		$code = PromotionCode::findBy('code', $params['code']);
+		$package = $code->package();
+		$promotion_action = $package->promotion_action();
+		$promotor = $promotion_action->promotor();
 		#echo "<pre>";
-		#die(print_r($client));
-		
+		#die(print_r($package));
+
 		$code = PromotionCode::findBy('code', $params['code']);
 		$code->update(['used'=>date(Config::get('mysqltime')), 'client_id'=>$client->id]);
+
+		$points_balance = PointsBalance::where('client_id=? AND promotor_id=?', ['client_id'=>$client->id, 'promotor_id'=>$promotor->id]);
+
+		if ($points_balance) {
+			$points_balance = $points_balance[0];
+			$balance = $points_balance->balance + $package->codes_value;
+			$points_balance->update(['balance'=>$balance]);
+		} else {
+			$points_balance = new PointsBalance(['client_id'=>$client->id, 'promotor_id'=>$promotor->id, 'balance'=>$package->codes_value]);
+			$points_balance->save();
+		} 
+
 		$router = Config::get('router');
 		$path = $router->generate('confirmation', ['code'=>$params['code']]);
 		header('Location: '.$path);

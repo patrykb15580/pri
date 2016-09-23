@@ -1,4 +1,3 @@
-
 <?php foreach ($rewards as $reward) {	
 	$images = RewardImage::where('reward_id=?', ['reward_id'=>$reward->id]);	
 	$path_show = $router->generate('client_show_rewards', ['client_id' => $params['client_id'], 'promotors_id' => $params['promotors_id'], 'reward_id' => $reward->id]);?>
