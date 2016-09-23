@@ -11,6 +11,7 @@ $router = new AltoRouter();
 
 $router->map( 'GET', '/promotors/[i:promotors_id]', 'PromotorsController#show', 'show_promotors' );
 #$router->map( 'GET', '/promotors/new/', 'PromotorsController#new', 'new_promotors' );
+$router->map( 'GET', '/promotors/[i:promotors_id]/clients', 'PromotorsController#index_clients', 'index_clients' );
 
 
 $router->map( 'GET', '/promotors/[i:promotors_id]/promotion-actions/[i:id]', 'PromotionActionsController#show', 'show_promotion_actions' );
@@ -18,6 +19,7 @@ $router->map( 'GET', '/promotors/[i:promotors_id]/promotion-actions/new', 'Promo
 $router->map( 'POST', '/promotors/[i:promotors_id]/promotion-actions', 'PromotionActionsController#create', 'create_promotion_actions' );
 $router->map( 'GET', '/promotors/[i:promotors_id]/promotion-actions/[i:id]/edit', 'PromotionActionsController#edit', 'edit_promotion_actions' );
 $router->map( 'POST', '/promotors/[i:promotors_id]/promotion-actions/[i:id]/update', 'PromotionActionsController#update', 'update_promotion_actions' );
+
 
 
 $router->map( 'GET', '/promotors/[i:promotors_id]/rewards', 'RewardsController#index', 'index_rewards' );

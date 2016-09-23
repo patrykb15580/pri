@@ -46,4 +46,16 @@ class Promotor extends Model
 	{
 		return PromotionCode::where('promotors_id=?', ['promotors_id'=>$this->id]);
 	}
+	public function clients()
+	{
+		$balances = PointsBalance::where('promotor_id=?', ['promotor_id'=>$this->id], ['order'=>'created_at DESC']);
+		
+		$clients = [];
+		foreach ($balances as $balance) {
+			$client = Client::find($balance->client_id);
+			$clients[$client->id] = $client;
+		}
+
+		return $clients;
+	}
 }

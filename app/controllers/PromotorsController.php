@@ -20,4 +20,17 @@ class PromotorsController
 		#die(print_r($path));
 		include './app/views/layouts/app.php';
 	}
+
+	public function index_clients($params)
+	{
+		$promotor = Promotor::find($params['promotors_id']);
+		
+		$clients = $promotor->clients();
+		#echo "<pre>";
+		#die(print_r($clients));
+
+		$path = './app/views/'.StringUntils::camelCaseToUnderscore(str_replace('Controller', '', __CLASS__)).'/'.__FUNCTION__.'.php';
+		#die(print_r($path));
+		include './app/views/layouts/app.php';
+	}
 }
