@@ -54,10 +54,17 @@ class StaticPagesController
 		if ($points_balance) {
 			$points_balance = $points_balance[0];
 			$balance = $points_balance->balance + $package->codes_value;
-			$points_balance->update(['balance'=>$balance]);
+			if ($points_balance->update(['balance'=>$balance])) {
+				$description = 'Wykorzystanie kodu '.$params['code'].' w akcji '.$promotion_action->name;
+				$this->addHistoryRecord($client->id, $balance, $package->codes_value, $description);
+			}
+
 		} else {
 			$points_balance = new PointsBalance(['client_id'=>$client->id, 'promotor_id'=>$promotor->id, 'balance'=>$package->codes_value]);
-			$points_balance->save();
+			if ($points_balance->save()) {
+				$description = 'Wykorzystanie kodu '.$params['code'].' w akcji '.$promotion_action->name;
+				$this->addHistoryRecord($client->id, $package->codes_value, $package->codes_value, $description);
+			}
 		} 
 
 		$router = Config::get('router');
@@ -80,6 +87,15 @@ class StaticPagesController
 			return $client;
 		} else {
 			return $client;
+		}
+	}
+	public function addHistoryRecord($client_id, $balance_after, $code_value, $description)
+	{
+		$balance_before = $balance_after - $code_value;
+		#die(print_r($balance_before));
+		$history = new History(['client_id'=>$client_id, 'points'=>$code_value, 'balance_before'=>$balance_before, 'balance_after'=>$balance_after, 'description'=>$description]);
+		if (!$history->save()) {
+			echo "Error";
 		}
 	}
 }

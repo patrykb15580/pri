@@ -52,6 +52,7 @@ $router->map( 'GET', '/[a:code]/confirm', 'StaticPagesController#confirmation', 
 $router->map( 'GET', '/clients/[i:client_id]', 'ClientsController#show', 'show_client' );
 $router->map( 'GET', '/clients/[i:client_id]/promotor-rewards/[i:promotors_id]', 'ClientsController#index_rewards', 'client_index_rewards' );
 $router->map( 'GET', '/clients/[i:client_id]/promotor-rewards/[i:promotors_id]/reward/[i:reward_id]', 'ClientsController#show_rewards', 'client_show_rewards' );
+$router->map( 'GET', '/clients/[i:client_id]/history', 'ClientsController#show_history', 'show_history' );
 
 
 

@@ -67,6 +67,15 @@ class ClientsController
 		
 	}
 
+	public function show_history($params)
+	{
+		$histories = History::where('client_id=?', ['client_id'=>$params['client_id']], ['order'=>'created_at DESC']);
+		
+		$path = './app/views/'.StringUntils::camelCaseToUnderscore(str_replace('Controller', '', __CLASS__)).'/'.__FUNCTION__.'.php';
+		#die(print_r($path));
+		include './app/views/layouts/client.php';
+	}
+
 	public function packageValue($client, $package)
 	{
 		$codes_number = count(PromotionCode::where('package_id=? AND client_id=?', ['package_id'=>$package->id, 'client_id'=>$client->id]));
