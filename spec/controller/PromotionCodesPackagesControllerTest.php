@@ -12,7 +12,7 @@ class PromotionCodesPackagesControllerTest extends Tests
 		$curl = new TesterTestRequest((new PromotionCodesPackagesController)->generate(), 'http://'.Config::get('host').'/package/generate', null, []);
 		$codes = PromotionCode::where('package_id=?', ['package_id'=>$package1->id]);
 
-		Assert::expect(count($codes)) -> to_equal(10);
+	Assert::expect(count($codes)) -> to_equal(10);
 	}
 
 	public function test_generate_5_more_promotion_codes()

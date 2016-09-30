@@ -60,6 +60,7 @@ class StringUntils
         $normalized = preg_replace('/[^a-z0-9_]/', '', $normalized);
         return $normalized;
     }
+
     public static function get_random_string($length)
     {
         // start with an empty random string
@@ -85,6 +86,7 @@ class StringUntils
         // return our finished random string
         return $random_string;
     }
+
     public static function get_random_number($length)
     {
         // start with an empty random string
@@ -110,6 +112,7 @@ class StringUntils
         // return our finished random string
         return $random_string;
     }
+
     public static function replace_polish_chars($string)
     {
         $polish_chars = array( 'Ę', 'Ó', 'Ą', 'Ś', 'Ł', 'Ż', 'Ź', 'Ć', 'Ń', 'ę', 'ó', 'ą', 
@@ -121,9 +124,21 @@ class StringUntils
 
         return $string;
     }
+
     public static function replace_special_chars($string)
     {
         $string = preg_replace("/[^A-Za-z0-9 ]/", '', $string);
+        return $string;
+    }
+
+    public static function truncate($string, $lenght)
+    {
+        $string = $string." ";
+        $string = substr($string, 0, $lenght);
+        if (strlen($string) == $lenght) {
+            $string = $string."...";
+        }
+        $string = nl2br($string);
         return $string;
     }
 }

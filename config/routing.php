@@ -10,8 +10,11 @@ $router = new AltoRouter();
 
 
 $router->map( 'GET', '/promotors/[i:promotors_id]', 'PromotorsController#show', 'show_promotors' );
-#$router->map( 'GET', '/promotors/new/', 'PromotorsController#new', 'new_promotors' );
+$router->map( 'GET', '/promotors/[i:promotors_id]/account', 'PromotorsController#edit', 'edit_promotor' );
+$router->map( 'POST', '/promotors/[i:promotors_id]/account/update', 'PromotorsController#update', 'update_promotor' );
 $router->map( 'GET', '/promotors/[i:promotors_id]/clients', 'PromotorsController#index_clients', 'index_clients' );
+$router->map( 'GET', '/promotors/[i:promotors_id]/orders', 'PromotorsController#index_orders', 'index_promotors_orders' );
+$router->map( 'GET', '/promotors/[i:promotors_id]/orders/[i:order_id]', 'PromotorsController#show_orders', 'show_promotors_orders' );
 
 
 $router->map( 'GET', '/promotors/[i:promotors_id]/promotion-actions/[i:id]', 'PromotionActionsController#show', 'show_promotion_actions' );
@@ -21,7 +24,7 @@ $router->map( 'GET', '/promotors/[i:promotors_id]/promotion-actions/[i:id]/edit'
 $router->map( 'POST', '/promotors/[i:promotors_id]/promotion-actions/[i:id]/update', 'PromotionActionsController#update', 'update_promotion_actions' );
 
 
-
+$router->map( 'GET', '/promotors/new', 'PromotorsController#new', 'new_promotor' );
 $router->map( 'GET', '/promotors/[i:promotors_id]/rewards', 'RewardsController#index', 'index_rewards' );
 $router->map( 'GET', '/promotors/[i:promotors_id]/rewards/[i:id]', 'RewardsController#show', 'show_rewards' );
 $router->map( 'GET', '/promotors/[i:promotors_id]/rewards/new', 'RewardsController#new', 'new_rewards' );
@@ -54,9 +57,13 @@ $router->map( 'GET', '/[a:code]/confirm', 'StaticPagesController#confirmation', 
 $router->map( 'GET', '/clients/[i:client_id]', 'ClientsController#show', 'show_client' );
 $router->map( 'GET', '/clients/[i:client_id]/promotor-rewards/[i:promotors_id]', 'ClientsController#index_rewards', 'client_index_rewards' );
 $router->map( 'GET', '/clients/[i:client_id]/promotor-rewards/[i:promotors_id]/reward/[i:reward_id]', 'ClientsController#show_rewards', 'client_show_rewards' );
-$router->map( 'GET', '/clients/[i:client_id]/history', 'ClientsController#show_history', 'show_history' );
+$router->map( 'GET', '/clients/[i:client_id]/history', 'ClientsController#index_history', 'index_history' );
+$router->map( 'GET', '/clients/[i:client_id]/reward/[i:reward_id]', 'ClientsController#new_order', 'new_order' );
+$router->map( 'POST', '/clients/[i:client_id]/reward/[i:reward_id]/get', 'ClientsController#get_reward', 'get_reward' );
+$router->map( 'GET', '/clients/[i:client_id]/orders', 'ClientsController#index_orders', 'index_client_orders' );
 
 
+$router->map( 'GET', '/admin', 'AdminController#show', 'show_admin' );
 
 
 // match current request url

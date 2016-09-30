@@ -22,6 +22,7 @@ class RewardsController
 		include './app/views/layouts/app.php';
 		
 	}
+
 	public function show($params)
 	{
 		$reward = Reward::findBy('id', $params['id']);
@@ -34,6 +35,7 @@ class RewardsController
 		include './app/views/layouts/app.php';
 		
 	}
+
 	public function new($params)
 	{
 		$reward = new Reward;
@@ -41,6 +43,7 @@ class RewardsController
 
 		include 'app/views/layouts/app.php';
 	}
+
 	public function create($params)
 	{
 		$params['reward']['promotors_id'] = $params['promotors_id'];
@@ -56,6 +59,7 @@ class RewardsController
 			include 'app/views/layouts/app.php';
 		}
 	}
+
 	public function edit($params)
 	{
 		$reward = new Reward;
@@ -63,6 +67,7 @@ class RewardsController
 		$path = 'app/views/'.StringUntils::camelCaseToUnderscore(str_replace('Controller', '', __CLASS__)).'/'.__FUNCTION__.'.php';
 		include 'app/views/layouts/app.php';
 	}
+
 	public function update($params)
 	{
 		
@@ -80,6 +85,7 @@ class RewardsController
 			include 'app/views/layouts/app.php';
 		}		
 	}
+	
 	public function delete($params)
 	{
 		$params['reward']['id'] = $params['id'];

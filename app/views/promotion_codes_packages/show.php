@@ -11,6 +11,7 @@
 	<a href="">Usuń</a>
 </div>
 <br /><br />
+Status: <?= PromotionCodesPackage::STATUSES[$package->status] ?><br />
 Liczba kodów: <?= $package->generated ?><br />
 Wartość kodów: <?= $package->codes_value ?> pkt
 <br /><br />

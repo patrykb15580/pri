@@ -6,7 +6,7 @@
 	#die(print_r($active_actions));
 ?>	
 <h1>Klienci</h1>
-<div id="promotors_show_title_box"></div>
+<div id="show_title_box"></div>
 <?php 
 	#echo "<pre>";
 	#die(print_r($rewards));

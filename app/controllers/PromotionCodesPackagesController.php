@@ -66,28 +66,24 @@ class PromotionCodesPackagesController
 
 	public function generate()
 	{	
-		$packages = PromotionCodesPackage::where('generated<quantity', []);
-		
+		$packages = PromotionCodesPackage::where('`generated` < `quantity`', []);
+
 		foreach ($packages as $package) {
 			$i = 0;
 			$number_codes_to_generate = $package->quantity - $package->generated;
-			#echo "<pre>";
-			#die(print_r($package->generated));
+
 			while ($i < $number_codes_to_generate) { 
-				#echo "<pre>";
-				#die(print_r($package));
+
 				$code_generator = new PromotionCodesGenerator;
 				$code = $code_generator->promotion_code_generator(6);
 				$promotion_code = new PromotionCode(['code'=>$code, 'package_id'=>$package->id]);
-				
-				if ($promotion_code->save() == true) {
+
+				if ($promotion_code->save()) {
 					$i++;
 					$package->generated++;
 					$package->update(['generated'=>$package->generated]);
 				}
 			}
-			#echo "<pre>";
-			#die(print_r($i));
 		}		
 	}
 }

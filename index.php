@@ -17,6 +17,9 @@ if ($match) {
 	if ($_POST) {
 		$params = array_merge($params, $_POST);
 	}
+	if ($_GET) {
+		$params = array_merge($params, $_GET);
+	}
 	$controller->$controller_action($params);
 	#echo "<pre>";
 	#die(print_r($match));

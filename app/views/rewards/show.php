@@ -11,8 +11,8 @@
 	<a href="<?= $path_delete ?>">Usuń</a>
 </div>
 <hr>
-Cena: <?= $reward->prize ?> pkt
-<br />Status: <?= PromotionAction::STATUSES[$reward->status] ?>
+Status: <?= PromotionAction::STATUSES[$reward->status] ?>
+<br />Cena: <?= $reward->prize ?> pkt
 <br /><br /><div id="reward_description"><?= nl2br($reward->description) ?></div>
 <br />
 <div id="reward_images_container">

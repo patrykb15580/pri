@@ -4,7 +4,7 @@
 */
 class Promotor extends Model
 {
-	public $id, $email, $password_degest, $created_at, $updated_at, $name;	
+	public $id, $email, $password_degest, $created_at, $updated_at, $name, $status;	
 
 	function __construct($attributes = [])
 	{
@@ -28,6 +28,8 @@ class Promotor extends Model
 			'name'					=>['type' => 'string',
 									   'default' => null,
 									   'validations' => ['required', 'max_length:190']],
+			'status'				=>['type' => 'string',
+									   'default' => 'active'],
 		];
 	}
 	public static function pluralizeClassName()
@@ -57,5 +59,24 @@ class Promotor extends Model
 		}
 
 		return $clients;
+	}
+	public function orders()
+	{
+		return Order::where('promotor_id=?', ['promotor_id'=>$this->id]);
+	}
+	public static function update_promotor($params)
+	{
+		$new_password = $params['promotor']['password_degest'];
+		$promotor = Promotor::find($params['promotors_id']);
+		if (!empty($new_password)) {
+			if (!$promotor->update($params['promotor'])) {
+				header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$params['promotors_id']."/account?update=error");
+			} else header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$params['promotors_id']);
+		} else {
+			unset($params['promotor']['password_degest']);
+			if (!$promotor->update($params['promotor'])) {
+				header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$params['promotors_id']."/account?update=error");
+			} else header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$params['promotors_id']);
+		}
 	}
 }

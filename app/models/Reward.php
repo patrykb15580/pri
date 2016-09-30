@@ -45,4 +45,8 @@ class Reward extends Model
 	{
 		return Image::where('reward_id=?', ['reward_id'=>$this->id]);
 	}
+	public function promotor()
+	{
+		return Promotor::find($this->promotors_id);
+	}
 }

@@ -34,9 +34,11 @@ class PromotionActionsController
 	{
 		$params['promotion_action']['promotors_id'] = $params['promotors_id'];
 		$promotion_action = new PromotionAction($params['promotion_action']);
+		$promotion_action->from_at = NULL;
+		$promotion_action->to_at = NULL;
+		
 		#echo "<pre>";
-		#die(print_r($params));
-		$promotion_action->save();
+		#die(print_r($promotion_action));
 
 		if ($promotion_action->save() == false) {
 			$promotion_action = new PromotionAction($params['promotion_action']);

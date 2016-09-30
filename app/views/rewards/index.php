@@ -5,7 +5,7 @@
 	#echo "<pre>";
 	#die(print_r($active_actions));
 ?>	
-<div id="promotors_show_title_box">Nagrody promotora <?= $promotor->name ?>
+<div id="show_title_box">Nagrody promotora <?= $promotor->name ?>
 <a href="<?= $path_new ?>"><button id="add_new">Nowa nagroda</button></a></div>
 <h3>Aktywne</h3>
 <?php 

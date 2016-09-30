@@ -45,4 +45,20 @@ class History extends Model
 	{
 		return Client::find($this->id);
 	}
+	public static function addHistoryRecord($client_id, $balance_after, $action_value, $description, $action)
+	{
+		if ($action == 'buy') {
+			$balance_before = $balance_after+$action_value;
+			$points = '-'.$action_value;
+		}
+		else if ($action == 'add') {
+			$balance_before = $balance_after-$action_value;
+			$points = '+'.$action_value;
+		}
+		$history = new History(['client_id'=>$client_id, 'points'=>$points, 'balance_before'=>$balance_before, 'balance_after'=>$balance_after, 'description'=>$description]);
+
+		if (!$history->save()) {
+			echo "Error";
+		}
+	}
 }

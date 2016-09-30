@@ -46,7 +46,8 @@ class RewardImage extends Model
 
 			if ($files['image']['tmp_name'][$i] !== '') {
 				if ($image->save()) {
-					$copy_path = 'system/'.StringUntils::camelCaseToUnderscore(get_class($image)).'s/'.$image->id.'/';
+					$copy_path = $_SERVER['DOCUMENT_ROOT'].'/system/'.StringUntils::camelCaseToUnderscore(get_class($image)).'s/'.$image->id.'/';
+
 					if (!file_exists($copy_path.'original/')) {
 		   				mkdir($copy_path.'original/', 0777, true);
 		   			}
@@ -56,6 +57,7 @@ class RewardImage extends Model
 		   			}
 
 		   			$this->create_small_image($copy_path.'original/'.$file_name, $copy_path.'small/'.$file_name);
+		   			$this->create_tiny_image($copy_path.'original/'.$file_name, $copy_path.'tiny/'.$file_name);
 				}
 				else{
 					$reward = new Reward($params['reward']);
@@ -68,5 +70,9 @@ class RewardImage extends Model
 	public function create_small_image($input_file, $output_file)
 	{
 		Image::open($input_file)->resize(200, 200)->save($output_file, 'jpg', 90);
+	}
+	public function create_tiny_image($input_file, $output_file)
+	{
+		Image::open($input_file)->resize(100, 100)->save($output_file, 'jpg', 90);
 	}
 }

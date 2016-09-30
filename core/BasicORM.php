@@ -300,7 +300,6 @@ abstract class BasicORM
 
             # bind params
             $sql_stmt = 'self::$query->bind_param(\'' . implode('',$type) . '\', ' . implode(', ',$data) . ');'; // put bind_param line together
-
             eval($sql_stmt); // execute bind_param
         }
     }

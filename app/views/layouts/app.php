@@ -1,3 +1,17 @@
+<?php	
+	$user = StringUntils::camelCaseToUnderscore(str_replace('Controller', '', $params['controller']));
+	if ($user == 'clients') {
+		$user_type = 'client';
+		$side_bar = '_clients_side_bar.php';
+		$client = Client::find($params['client_id']);
+		$user = $client->name;
+	} else {
+		$user_type = 'promotor';
+		$side_bar = '_promotors_side_bar.php';
+		$promotor = Promotor::find($params['promotors_id']);
+		$user = $promotor->name;
+	}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,18 +22,12 @@
 </head>
 <body>
 <div id="top">
-<br />
+<h3><?= $user ?></h3>
 </div>
 <hr>
 <div id="container">
-	<div id="side_bar">
-		<a href="/promotors/<?= $params['promotors_id'] ?>">Akcje promocyjne</a><br />
-		<a href="/promotors/<?= $params['promotors_id'] ?>/rewards">Katalog nagród</a><br />
-		<a href="/promotors/<?= $params['promotors_id'] ?>/clients">Klienci</a><br />
-		<a href="">Zamówienia</a><br />
-		<a href="">Ustawienia konta</a><br />
-		<a href="">Informacje dla klientów</a><br />
-	</div>
+	<?php 
+	include './app/views/layouts/'.$side_bar;?>
 	<div id="content">
 	<?php include($path); ?>
 	</div>

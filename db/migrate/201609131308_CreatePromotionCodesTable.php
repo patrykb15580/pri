@@ -12,7 +12,7 @@ class CreatePromotionCodesTable
 		`created_at` datetime NOT NULL, 
 		`updated_at` datetime NOT NULL,
 		`package_id` int(11) NOT NULL,
-		`used` datetime NOT NULL,
+		`used` datetime NULL,
 		 
 		PRIMARY KEY (`id`) )';
 

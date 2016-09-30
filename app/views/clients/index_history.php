@@ -1,7 +1,7 @@
 <?php
 	$router = Config::get('router');
 ?>	
-<div id="promotors_show_title_box"><h2>Zamówienia</h2></div>
+<div id="show_title_box"><h2>Zamówienia</h2></div>
 
 <?php 
 	#echo "<pre>";

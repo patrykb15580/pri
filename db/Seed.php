@@ -1,16 +1,16 @@
 <?php
 		MyDB::clear_database_except_schema();
 
-		$promotor1 = new Promotor(['email'=>'test1@test.com', 'password_degest'=>'password1', 'name'=>'promotor1']);
+		$promotor1 = new Promotor(['email'=>'test1@test.com', 'password_degest'=>Password::encryptPassword('password1'), 'name'=>'promotor1']);
 		$promotor1->save();
 
-		$promotor2 = new Promotor(['email'=>'test2@test.com', 'password_degest'=>'password2', 'name'=>'promotor2']);
+		$promotor2 = new Promotor(['email'=>'test2@test.com', 'password_degest'=>Password::encryptPassword('password2'), 'name'=>'promotor2']);
 		$promotor2->save();
 
-		$promotor3 = new Promotor(['email'=>'test3@test.com', 'password_degest'=>'password3', 'name'=>'promotor3']);
+		$promotor3 = new Promotor(['email'=>'test3@test.com', 'password_degest'=>Password::encryptPassword('password3'), 'name'=>'promotor3']);
 		$promotor3->save();
 
-		$promotor4 = new Promotor(['email'=>'test4@test.com', 'password_degest'=>'password4', 'name'=>'promotor4']);
+		$promotor4 = new Promotor(['email'=>'test4@test.com', 'password_degest'=>Password::encryptPassword('password4'), 'name'=>'promotor4']);
 		$promotor4->save();
 
 		print_r(CLIUntils::colorize("Promotors: OK\n", 'SUCCESS'));
@@ -79,7 +79,7 @@
 
 		print_r(CLIUntils::colorize("Rewards: OK\n", 'SUCCESS'));
 
-		$package1 = new PromotionCodesPackage(['name'=>'package1', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>20, 'codes_value'=>50, 'status'=>'active']);
+		$package1 = new PromotionCodesPackage(['name'=>'package1', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>20, 'codes_value'=>143, 'status'=>'active']);
 		$package1->save();
 
 		print_r(CLIUntils::colorize("Promotion codes packages: OK\n", 'SUCCESS'));
