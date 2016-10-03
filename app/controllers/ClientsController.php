@@ -31,9 +31,7 @@ class ClientsController
 			$promotors[$promotion_action->promotors_id] = $promotor;
 		}
 
-		$path = './app/views/'.StringUntils::camelCaseToUnderscore(str_replace('Controller', '', __CLASS__)).'/'.__FUNCTION__.'.php';
-		#die(print_r($path));
-		include './app/views/layouts/app.php';
+		$view = (new View($params, ['packages'=>$packages,'packages_values'=>$packages_values, 'promotion_actions'=>$promotion_actions, 'promotion_actions_values'=>$promotion_actions_values, 'promotors'=>$promotors]))->render();
 	}
 
 	public function index_rewards($params)
@@ -49,29 +47,23 @@ class ClientsController
 			}else array_push($inactive_rewards, $reward);
 		}
 
-		$path = './app/views/'.StringUntils::camelCaseToUnderscore(str_replace('Controller', '', __CLASS__)).'/'.__FUNCTION__.'.php';
-		#die(print_r($path));
-		include './app/views/layouts/app.php';
+		$view = (new View($params, ['promotor'=>$promotor, 'active_rewards'=>$active_rewards, 'inactive_rewards'=>$inactive_rewards]))->render();
 	}
 
 	public function show_rewards($params)
 	{	
 		$reward = Reward::find($params['reward_id']);
-
-		$path = './app/views/'.StringUntils::camelCaseToUnderscore(str_replace('Controller', '', __CLASS__)).'/'.__FUNCTION__.'.php';
-		#die(print_r($path));
+		
 		$images = RewardImage::where('reward_id=?', ['reward_id'=>$params['reward_id']]);
 		
-		include './app/views/layouts/app.php';	
+		$view = (new View($params, ['reward'=>$reward, 'images'=>$images]))->render();	
 	}
 
 	public function index_history($params)
 	{
 		$histories = History::where('client_id=?', ['client_id'=>$params['client_id']], ['order'=>'created_at DESC']);
 		
-		$path = './app/views/'.StringUntils::camelCaseToUnderscore(str_replace('Controller', '', __CLASS__)).'/'.__FUNCTION__.'.php';
-		#die(print_r($path));
-		include './app/views/layouts/app.php';
+		$view = (new View($params, ['histories'=>$histories]))->render();
 	}
 
 	public function new_order($params)
@@ -83,12 +75,9 @@ class ClientsController
 		$points_balance = PointsBalance::where('client_id=? AND promotor_id=?', ['client_id'=>$params['client_id'], 'promotor_id'=>$reward->promotors_id]);
 		$points_balance = $points_balance[0];
 
-		$path = './app/views/'.StringUntils::camelCaseToUnderscore(str_replace('Controller', '', __CLASS__)).'/'.__FUNCTION__.'.php';
-
 		$image = RewardImage::findBy('reward_id', $params['reward_id']);
-		#echo "<pre>";
-		#die(print_r($image));
-		include './app/views/layouts/app.php';
+		
+		$view = (new View($params, ['reward'=>$reward, 'promotor'=>$promotor, 'points_balance'=>$points_balance, 'image'=>$image]))->render();
 		
 	}
 
@@ -136,9 +125,7 @@ class ClientsController
 				array_push($canceled_orders, $order);
 			}
 		}
-		$path = './app/views/'.StringUntils::camelCaseToUnderscore(str_replace('Controller', '', __CLASS__)).'/'.__FUNCTION__.'.php';
-
-		include './app/views/layouts/app.php';
+		$view = (new View($params, ['orders'=>$orders, 'active_orders'=>$active_orders, 'completed_orders'=>$completed_orders, 'canceled_orders'=>$canceled_orders]))->render();
 	}
 
 	public function packageValue($client, $package)

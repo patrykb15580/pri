@@ -20,15 +20,13 @@ class PromotionActionsController
 		#echo "<pre>";
 		#die(print_r($active_packages));
 
-		$path = 'app/views/'.StringUntils::camelCaseToUnderscore(str_replace('Controller', '', __CLASS__)).'/'.__FUNCTION__.'.php';
-		include 'app/views/layouts/app.php';
+		$view = (new View($params, ['promotion_action'=>$promotion_action, 'active_packages'=>$active_packages, 'inactive_packages'=>$inactive_packages]))->render();
 		
 	}
 	public function new($params)
 	{
 		$promotion_action = new PromotionAction;
-		$path = 'app/views/'.StringUntils::camelCaseToUnderscore(str_replace('Controller', '', __CLASS__)).'/'.__FUNCTION__.'.php';
-		include 'app/views/layouts/app.php';
+		$view = (new View($params, ['promotion_action'=>$promotion_action]))->render();
 	}
 	public function create($params)
 	{
@@ -42,16 +40,14 @@ class PromotionActionsController
 
 		if ($promotion_action->save() == false) {
 			$promotion_action = new PromotionAction($params['promotion_action']);
-			$path = 'app/views/'.StringUntils::camelCaseToUnderscore(str_replace('Controller', '', __CLASS__)).'/'.'new.php';
-			include 'app/views/layouts/app.php';
+			$view = (new View($params, ['promotion_action'=>$promotion_action]))->render();
 		}else header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$params['promotors_id']);
 	}
 	public function edit($params)
 	{
 		$promotion_action = new PromotionAction;
 		$promotion_action = PromotionAction::find($params['id']);
-		$path = 'app/views/'.StringUntils::camelCaseToUnderscore(str_replace('Controller', '', __CLASS__)).'/'.__FUNCTION__.'.php';
-		include 'app/views/layouts/app.php';
+		$view = (new View($params, ['promotion_action'=>$promotion_action]))->render();
 	}
 	public function update($params)
 	{

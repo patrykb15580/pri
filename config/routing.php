@@ -9,6 +9,15 @@ $router = new AltoRouter();
 #$router->map( 'GET', '/', 'ok', 'main_page' );
 
 
+$router->map( 'GET', '/admin', 'AdminController#show', 'show_admin' );
+$router->map( 'GET', '/admin/new-promotor', 'AdminController#new_promotor', 'new_promotors' );
+$router->map( 'POST', '/admin/create-promotor', 'AdminController#create_promotor', 'create_promotors' );
+$router->map( 'GET', '/admin/edit-promotor/[i:promotors_id]', 'AdminController#edit_promotor', 'edit_promotor_by_admin' );
+$router->map( 'POST', '/admin/update-promotor/[i:promotors_id]', 'AdminController#update_promotor', 'update_promotor_by_admin' );
+$router->map( 'GET', '/admin/orders', 'AdminController#index_orders', 'index_admin_orders' );
+$router->map( 'GET', '/admin/orders/[i:order_id]', 'AdminController#show_orders', 'show_admin_orders' );
+
+
 $router->map( 'GET', '/promotors/[i:promotors_id]', 'PromotorsController#show', 'show_promotors' );
 $router->map( 'GET', '/promotors/[i:promotors_id]/account', 'PromotorsController#edit', 'edit_promotor' );
 $router->map( 'POST', '/promotors/[i:promotors_id]/account/update', 'PromotorsController#update', 'update_promotor' );
@@ -61,9 +70,6 @@ $router->map( 'GET', '/clients/[i:client_id]/history', 'ClientsController#index_
 $router->map( 'GET', '/clients/[i:client_id]/reward/[i:reward_id]', 'ClientsController#new_order', 'new_order' );
 $router->map( 'POST', '/clients/[i:client_id]/reward/[i:reward_id]/get', 'ClientsController#get_reward', 'get_reward' );
 $router->map( 'GET', '/clients/[i:client_id]/orders', 'ClientsController#index_orders', 'index_client_orders' );
-
-
-$router->map( 'GET', '/admin', 'AdminController#show', 'show_admin' );
 
 
 // match current request url

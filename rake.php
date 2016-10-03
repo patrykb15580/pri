@@ -166,6 +166,8 @@ function test(){
 	$files_arr = FilesUntils::list_files('spec');
 	$test_files_paths = FilesUntils::filter_test_files($files_arr, 'Test.php');
 	$failure_arr = [];
+	$succesed = 0;
+	$tests_number = 0;
 	foreach ($test_files_paths as $test_file_path) {
 		include $test_file_path;
 		$file_path = pathinfo($test_file_path);
@@ -177,9 +179,11 @@ function test(){
 			$method_name = $method -> getName();
 			if (substr($method_name, 0, 5) == 'test_') {
 				MyDB::clear_database_except_schema();
+				$tests_number++;
 				try{
         			$class -> $method_name();
         			echo CLIUntils::colorize('.', 'SUCCESS');
+        			$succesed++;
        			}
        			catch(Exception $e){
        			 	echo CLIUntils::colorize("F", 'FAILURE');
@@ -189,13 +193,14 @@ function test(){
 		}
 	}
 	if ($failure_arr == []) {
-		print_r(CLIUntils::colorize("\nAll tests success\n", 'SUCCESS'));
+		print_r(CLIUntils::colorize("\nAll ".$tests_number." tests success\n", 'SUCCESS'));
 	}
 	else {
 		print_r("\nTest errors:\n");
 		foreach ($failure_arr as $error) {
 			print_r(CLIUntils::colorize($error."\n\n", 'FAILURE'));
 		}
+		print_r(CLIUntils::colorize('Tests succesed: '.$succesed.'/'.$tests_number, 'FAILURE'));
 	}
 	MyDB::clear_database_except_schema();
 }

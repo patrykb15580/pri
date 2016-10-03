@@ -18,18 +18,14 @@ class PromotionCodesPackagesController
 			array_push($promotion_codes, $code);	
 		}
 
-		$path = './app/views/'.StringUntils::camelCaseToUnderscore(str_replace('Controller', '', __CLASS__)).'/'.__FUNCTION__.'.php';
-		#die(print_r($path));
-		include './app/views/layouts/app.php';
+		$view = (new View($params, ['package'=>$package, 'action_name'=>$action_name, 'promotion_codes'=>$promotion_codes]))->render();
 		
 	}
 
 	public function new($params)
 	{
 		$package = new PromotionCodesPackage;
-		$path = 'app/views/'.StringUntils::camelCaseToUnderscore(str_replace('Controller', '', __CLASS__)).'/'.__FUNCTION__.'.php';
-
-		include 'app/views/layouts/app.php';
+		$view = (new View($params, ['package'=>$package]))->render();
 	}
 
 	public function create($params)
@@ -39,8 +35,7 @@ class PromotionCodesPackagesController
 
 		if ($package->save() == false) {
 			$package = new PromotionCodesPackage($params['promotion_codes_package']);
-			$path = 'app/views/'.StringUntils::camelCaseToUnderscore(str_replace('Controller', '', __CLASS__)).'/'.'new.php';
-			include 'app/views/layouts/app.php';
+			$view = (new View($params, ['package'=>$package]))->render();
 		}
 		else{
 			
@@ -52,8 +47,7 @@ class PromotionCodesPackagesController
 	{
 		$package = new PromotionCodesPackage;
 		$package = PromotionCodesPackage::find($params['action_id']);
-		$path = 'app/views/'.StringUntils::camelCaseToUnderscore(str_replace('Controller', '', __CLASS__)).'/'.__FUNCTION__.'.php';
-		include 'app/views/layouts/app.php';
+		$view = (new View($params, ['package'=>$package]))->render();
 	}
 
 	public function update($params)

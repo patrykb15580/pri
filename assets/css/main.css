@@ -370,3 +370,58 @@ textarea{
   padding: 10px;
   resize: none;
 }
+
+/* Admin menu */
+div#admin_menu_box{
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+div#admin_menu_active{
+  display: inline-block;
+  float: left;
+  width: 24.9%;
+  margin: 10px 0px 10px 0px;
+  padding: 10px 0px 10px 0px;
+  text-align: center;
+  border: 1px;
+  border-bottom: 0px;
+  border-style: solid;
+}
+div#admin_menu_active:hover{
+  display: inline-block;
+  float: left;
+  background-color: rgba(64, 64, 64, 0.3);
+  width: 24.9%;
+  margin: 10px 0px 10px 0px;
+  padding: 10px 0px 10px 0px;
+  text-align: center;
+  font-weight: normal;
+  border: 1px;
+  border-bottom: 0px;
+  border-style: solid;
+}
+div#admin_menu_inactive{
+  display: inline-block;
+  float: left;
+  width: 24.9%;
+  margin: 10px 0px 10px 0px;
+  padding: 10px 0px 10px 0px;
+  text-align: center;
+  border: 0px;
+  border-bottom: 1px;
+  border-style: solid;
+}
+div#admin_menu_inactive:hover{
+  display: inline-block;
+  float: left;
+  background-color: rgba(64, 64, 64, 0.3);
+  width: 24.9%;
+  margin: 10px 0px 10px 0px;
+  padding: 10px 0px 10px 0px;
+  text-align: center;
+  font-weight: normal;
+  border: 0px;
+  border-bottom: 1px;
+  border-style: solid;
+}

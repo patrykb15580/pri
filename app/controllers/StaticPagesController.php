@@ -6,8 +6,7 @@ class StaticPagesController
 {
 	public function start_page($params)
 	{
-		$path = 'app/views/'.StringUntils::camelCaseToUnderscore(str_replace('Controller', '', __CLASS__)).'/'.__FUNCTION__.'.php';
-		include 'app/views/layouts/start.php';
+		$view = (new View($params, [], 'start'))->render();
 	}
 
 	public function insert_code($params)
@@ -32,8 +31,7 @@ class StaticPagesController
 		$package = $code->package();
 		$promotion_action = $package->promotion_action();
 		$promotor = $promotion_action->promotor();
-		$path = 'app/views/'.StringUntils::camelCaseToUnderscore(str_replace('Controller', '', __CLASS__)).'/'.__FUNCTION__.'.php';
-		include 'app/views/layouts/start.php';
+		$view = (new View($params, ['code'=>$code, 'package'=>$package, 'promotion_action'=>$promotion_action, 'promotor'=>$promotor], 'start'))->render();
 	}
 
 	public function add_points($params)
@@ -74,8 +72,7 @@ class StaticPagesController
 
 	public function confirmation($params)
 	{
-		$path = 'app/views/'.StringUntils::camelCaseToUnderscore(str_replace('Controller', '', __CLASS__)).'/'.__FUNCTION__.'.php';
-		include 'app/views/layouts/start.php';
+		$view = (new View($params, [], 'start'))->render();
 	}
 	
 	private function getOrCreateClient($params)

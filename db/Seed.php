@@ -33,7 +33,7 @@
 		$promotion_action6 = new PromotionAction(['name'=>'action6', 'promotors_id'=>'4', 'status'=>'inactive', 'indefinitely'=>0, 'from_at'=>'2016-08-31', 'to_at'=>'2016-09-30']);
 		$promotion_action6->save();
 
-		$promotion_action7 = new PromotionAction(['name'=>'action7', 'promotors_id'=>'2', 'status'=>'active', 'indefinitely'=>1]);
+		$promotion_action7 = new PromotionAction(['name'=>'action7', 'promotors_id'=>'1', 'status'=>'active', 'indefinitely'=>1]);
 		$promotion_action7->save();
 
 		$promotion_action8 = new PromotionAction(['name'=>'action8', 'promotors_id'=>'4', 'status'=>'inactive', 'indefinitely'=>1]);
@@ -79,8 +79,11 @@
 
 		print_r(CLIUntils::colorize("Rewards: OK\n", 'SUCCESS'));
 
-		$package1 = new PromotionCodesPackage(['name'=>'package1', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>20, 'codes_value'=>143, 'status'=>'active']);
+		$package1 = new PromotionCodesPackage(['name'=>'package1', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>10, 'codes_value'=>143, 'status'=>'active']);
 		$package1->save();
+
+		$package2 = new PromotionCodesPackage(['name'=>'package2', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>10, 'codes_value'=>1324, 'status'=>'active']);
+		$package2->save();
 
 		print_r(CLIUntils::colorize("Promotion codes packages: OK\n", 'SUCCESS'));
 

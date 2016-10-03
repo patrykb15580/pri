@@ -70,13 +70,13 @@ class Promotor extends Model
 		$promotor = Promotor::find($params['promotors_id']);
 		if (!empty($new_password)) {
 			if (!$promotor->update($params['promotor'])) {
-				header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$params['promotors_id']."/account?update=error");
-			} else header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$params['promotors_id']);
+				return false;
+			} else return true;
 		} else {
 			unset($params['promotor']['password_degest']);
 			if (!$promotor->update($params['promotor'])) {
-				header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$params['promotors_id']."/account?update=error");
-			} else header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$params['promotors_id']);
+				return false;
+			} else return true;
 		}
 	}
 }

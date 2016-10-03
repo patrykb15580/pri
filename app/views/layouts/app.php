@@ -5,6 +5,10 @@
 		$side_bar = '_clients_side_bar.php';
 		$client = Client::find($params['client_id']);
 		$user = $client->name;
+	} elseif ($user == 'admin') {
+		$user_type = 'admin';
+		$side_bar = '_admin_side_bar.php';
+		$user = 'Administrator';
 	} else {
 		$user_type = 'promotor';
 		$side_bar = '_promotors_side_bar.php';

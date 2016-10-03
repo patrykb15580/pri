@@ -17,9 +17,7 @@ class RewardsController
 			}else array_push($inactive_rewards, $reward);
 		}
 
-		$path = './app/views/'.StringUntils::camelCaseToUnderscore(str_replace('Controller', '', __CLASS__)).'/'.__FUNCTION__.'.php';
-		#die(print_r($path));
-		include './app/views/layouts/app.php';
+		$view = (new View($params, ['promotor'=>$promotor, 'active_rewards'=>$active_rewards, 'inactive_rewards'=>$inactive_rewards]))->render();
 		
 	}
 
@@ -27,21 +25,16 @@ class RewardsController
 	{
 		$reward = Reward::findBy('id', $params['id']);
 
-		$path = './app/views/'.StringUntils::camelCaseToUnderscore(str_replace('Controller', '', __CLASS__)).'/'.__FUNCTION__.'.php';
-		#die(print_r($path));
 		$images = RewardImage::where('reward_id=?', ['reward_id'=>$params['id']]);
-		#echo "<pre>";
-		#die(print_r($images));
-		include './app/views/layouts/app.php';
+		
+		$view = (new View($params, ['reward'=>$reward, 'images'=>$images]))->render();
 		
 	}
 
 	public function new($params)
 	{
 		$reward = new Reward;
-		$path = 'app/views/'.StringUntils::camelCaseToUnderscore(str_replace('Controller', '', __CLASS__)).'/'.__FUNCTION__.'.php';
-
-		include 'app/views/layouts/app.php';
+		$view = (new View($params, ['reward'=>$reward]))->render();
 	}
 
 	public function create($params)
@@ -64,8 +57,7 @@ class RewardsController
 	{
 		$reward = new Reward;
 		$reward = Reward::find($params['id']);
-		$path = 'app/views/'.StringUntils::camelCaseToUnderscore(str_replace('Controller', '', __CLASS__)).'/'.__FUNCTION__.'.php';
-		include 'app/views/layouts/app.php';
+		$view = (new View($params, ['reward'=>$reward]))->render();
 	}
 
 	public function update($params)

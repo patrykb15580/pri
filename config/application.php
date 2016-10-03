@@ -13,7 +13,10 @@ Config::set('autoloader_paths', ['path1' => 'core/',
 								 'path4' => 'app/controllers/',
 								 'path5' => 'lib/',
 								 'path6' => 'db/',
-								 'path7' => 'app/classes/'
+								 'path7' => 'app/classes/',
+								 'path8' => 'app/helpers/'
 								]);
 
 Config::set('mysqltime', 'Y-m-d H:i:s');
+
+Config::set('salt', 'nfeifpwqjfewq');

@@ -7,13 +7,15 @@ class Password
 	
 	public static function encryptPassword($password)
 	{
-		return sha1('nfeifpwqjfewq'.$password);
+		return sha1(Config::get('salt').$password);
 	}
 	
-	public static function equal_passwords($old_password, $new_password)
+	public static function equalPasswords($password1, $password2)
 	{
-		if ($old_password == $new_password) {
+		if ($password1 == $password2) {
 			return true;
-		} else return false;
+		} 
+
+		return false;
 	}
 }
