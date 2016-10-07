@@ -16,7 +16,7 @@ class Assert{
 		}
 		return self::$_instance;
 	}
-	public static function to_equal($val)
+	public static function toEqual($val)
 	{
 		if (self::$subject !== $val) {
 			throw new Exception("\nSubjects are not equal. Expect: \n".

@@ -2,66 +2,112 @@
 /**
 * 
 */
-class AdminController
+class AdminController extends Controller
 {
-	public function show($params)
+	public function show()
 	{
 		$promotors = Promotor::all([]);
 		
-		$view = (new View($params, ['promotors'=>$promotors]))->render();
+		(new View($this->params, ['promotors'=>$promotors]))->render();
 	}
 
-	public function new_promotor($params)
+	public function showPromotor()
+	{
+		$promotor = Promotor::find($this->params['promotor_id']);
+
+		(new View($this->params, ['promotor'=>$promotor]))->render();
+	}
+
+	public function showPromotorAction()
+	{
+		$promotion_action = PromotionAction::find($this->params['action_id']);
+
+		(new View($this->params, ['promotion_action'=>$promotion_action]))->render();
+	}
+
+	public function showPromotorPackage()
+	{
+		$promotor = Promotor::find($this->params['promotor_id']);
+		$package = PromotionCodesPackage::find($this->params['package_id']);
+
+		(new View($this->params, ['promotor'=>$promotor, 'package'=>$package]))->render();
+	}
+
+	public function showPromotorReward()
+	{
+		$promotor = Promotor::find($this->params['promotor_id']);
+		$reward = Reward::find($this->params['reward_id']);
+
+		(new View($this->params, ['promotor'=>$promotor, 'reward'=>$reward]))->render();
+	}
+
+	public function showPromotorOrder()
+	{
+		$promotor = Promotor::find($this->params['promotor_id']);
+		$order = Order::find($this->params['order_id']);
+
+		(new View($this->params, ['promotor'=>$promotor, 'order'=>$order]))->render();
+	}
+
+	public function newPromotor()
 	{
 		$promotor = new Promotor;
 
-		$view = (new View($params, ['promotor'=>$promotor]))->render();
+		(new View($this->params, ['promotor'=>$promotor]))->render();
 	}
 
-	public function create_promotor($params)
+	public function createPromotor()
 	{	
-		$password = $params['promotor']['password_degest'];
-		$confirm_password = $params['confirm_password'];
+		$password = $this->params['promotor']['password_degest'];
+		$confirm_password = $this->params['confirm_password'];
 		$equal = Password::equalPasswords($password, $confirm_password);
-		$promotor = new Promotor($params['promotor']);
+		$promotor = new Promotor($this->params['promotor']);
 		
 		if ($equal == true) {
 			if ($promotor->save()) {
 			$promotor->update(['password_degest'=>Password::encryptPassword($password)]);
 			header("Location: http://".$_SERVER['HTTP_HOST']."/admin?promotor=confirm");
 			} else {
-				$promotor = new Promotor($params['promotor']);
-				$view = (new View($params, ['promotor'=>$promotor]))->render();
+				$promotor = new Promotor($this->params['promotor']);
+				(new View($this->params, ['promotor'=>$promotor]))->render();
 			}
 		} else {
-			$promotor = new Promotor($params['promotor']);
-			$view = (new View($params, ['promotor'=>$promotor]))->render();
+			$promotor = new Promotor($this->params['promotor']);
+			(new View($this->params, ['promotor'=>$promotor]))->render();
 		}
 	}
 
-	public function edit_promotor($params)
+	public function editPromotor()
 	{
 		$promotor = new Promotor;
-		$promotor = Promotor::find($params['promotors_id']);
-		$view = (new View($params, ['promotor'=>$promotor]))->render();
+		$promotor = Promotor::find($this->params['promotors_id']);
+		(new View($this->params, ['promotor'=>$promotor]))->render();
 	}
 
-	public function update_promotor($params)
+	public function updatePromotor()
 	{
-		$promotor = Promotor::find($params['promotors_id']);
+		$promotor = Promotor::find($this->params['promotors_id']);
 		
-		$old_password = Password::encryptPassword($params['old_password']);
-		$new_password = Password::encryptPassword($params['promotor']['password_degest']);
-		$params['promotor']['password_degest'] = Password::encryptPassword($params['promotor']['password_degest']);
+		$old_password = Password::encryptPassword($this->params['old_password']);
+		$new_password = Password::encryptPassword($this->params['promotor']['password_degest']);
+		$this->params['promotor']['password_degest'] = Password::encryptPassword($this->params['promotor']['password_degest']);
 
 		if (Password::equalPasswords($old_password, $new_password) == true) {
-			if (Promotor::update_promotor($params)) {
+			if (Promotor::updatePromotor($this->params)) {
 				header("Location: http://".$_SERVER['HTTP_HOST']."/admin");
-			} else header("Location: http://".$_SERVER['HTTP_HOST']."/admin/edit-promotor//".$params['promotors_id']);
-		} else header("Location: http://".$_SERVER['HTTP_HOST']."/admin/edit-promotor/".$params['promotors_id']);
+			} else header("Location: http://".$_SERVER['HTTP_HOST']."/admin/edit-promotor//".$this->params['promotors_id']);
+		} else header("Location: http://".$_SERVER['HTTP_HOST']."/admin/edit-promotor/".$this->params['promotors_id']);
 	}
-	public function index_orders($params)
+
+	public function indexOrders()
 	{
-		
+		$promotors = Promotor::all([]);
+		(new View($this->params, ['promotors'=>$promotors]))->render();
+	}
+
+	public function showOrder()
+	{
+		$order = AdminOrder::find($this->params['order_id']);
+		(new View($this->params, ['order'=>$order]))->render();
 	}
 }

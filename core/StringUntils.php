@@ -61,7 +61,7 @@ class StringUntils
         return $normalized;
     }
 
-    public static function get_random_string($length)
+    public static function getRandomString($length)
     {
         // start with an empty random string
         $random_string = "";
@@ -87,10 +87,10 @@ class StringUntils
         return $random_string;
     }
 
-    public static function get_random_number($length)
+    public static function getRandomNumber($length)
     {
         // start with an empty random string
-        $random_string = "";
+        $random_number = "";
         $valid_chars = '1234567890'; 
         // count the number of chars in the valid chars string so we know how many choices we have
         $num_valid_chars = strlen($valid_chars);
@@ -106,26 +106,26 @@ class StringUntils
             $random_char = $valid_chars[$random_pick-1];
 
             // add the randomly-chosen char onto the end of our string so far
-            $random_string .= $random_char;
+            $random_number .= $random_char;
         }
 
         // return our finished random string
-        return $random_string;
+        return $random_number;
     }
 
-    public static function replace_polish_chars($string)
+    public static function replacePolishChars($string)
     {
         $polish_chars = array( 'Ę', 'Ó', 'Ą', 'Ś', 'Ł', 'Ż', 'Ź', 'Ć', 'Ń', 'ę', 'ó', 'ą', 
                 'ś', 'ł', 'ż', 'ź', 'ć', 'ń' );
-        $replace_polish_chars = array( 'E', 'O', 'A', 'S', 'L', 'Z', 'Z', 'C', 'N', 'e', 'o', 'a', 
+        $replacePolishChars = array( 'E', 'O', 'A', 'S', 'L', 'Z', 'Z', 'C', 'N', 'e', 'o', 'a', 
                 's', 'l', 'z', 'z', 'c', 'n' );
 
-        $string = str_replace($polish_chars, $replace_polish_chars, $string);
+        $string = str_replace($polish_chars, $replacePolishChars, $string);
 
         return $string;
     }
 
-    public static function replace_special_chars($string)
+    public static function replaceSpecialChars($string)
     {
         $string = preg_replace("/[^A-Za-z0-9 ]/", '', $string);
         return $string;

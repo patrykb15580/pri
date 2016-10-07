@@ -10,6 +10,8 @@ class AdminOrder extends Model
 						'sent' => 'Wysłane',
 						'completed'=>'Zrealizowane',
 						'canceled'=>'Anulowane'];
+	const TYPES = 	['0' => 'Jednorazowe',
+					 '1' => 'Wielorazowe'];
 
 	function __construct($attributes = [])
 	{
@@ -44,16 +46,24 @@ class AdminOrder extends Model
 			
 		];
 	}
+
 	public static function pluralizeClassName()
 	{
-		return 'Orders';
+		return 'AdminOrders';
 	}
+
 	public function promotor()
 	{
 		return Promotor::find($this->promotor_id);
 	}
+
 	public function reward()
 	{
 		return Reward::find($this->reward_id);
+	}
+
+	public function package()
+	{
+		return PromotionCodesPackage::find($this->package_id);
 	}
 }

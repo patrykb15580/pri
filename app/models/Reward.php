@@ -37,14 +37,22 @@ class Reward extends Model
 									   'default' => null],					   
 		];
 	}
+
 	public static function pluralizeClassName()
 	{
 		return 'Rewards';
 	}
+
 	public function images()
 	{
-		return Image::where('reward_id=?', ['reward_id'=>$this->id]);
+		return RewardImage::where('reward_id=?', ['reward_id'=>$this->id]);
 	}
+
+	public function singleImage()
+	{
+		return RewardImage::findBy('reward_id', $this->id);
+	}
+
 	public function promotor()
 	{
 		return Promotor::find($this->promotors_id);

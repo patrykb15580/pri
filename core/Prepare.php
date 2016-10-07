@@ -4,7 +4,7 @@
 */
 class Prepare
 {
-	public static function prepare_db($db_name)
+	public static function prepareDb($db_name)
 	{	
 		$show_tables_query = 'SHOW TABLES FROM '.$db_name;
 		$show_tables = mysqli_query(MyDB::db(), $show_tables_query);

@@ -2,62 +2,60 @@
 /**
 * 
 */
-class PromotionCodesPackagesController
+class PromotionCodesPackagesController extends Controller
 {
-	public function show($params)
+	public function show()
 	{
 		
-		$package = PromotionCodesPackage::find($params['id']);
+		$package = PromotionCodesPackage::find($this->params['id']);
 
-		$action_name = PromotionAction::find($params['action_id']);
-		$action_name = $action_name->name;
-		
-		$promotion_codes = [];
-
-		foreach ($package->promotion_codes() as $code) {
-			array_push($promotion_codes, $code);	
-		}
-
-		$view = (new View($params, ['package'=>$package, 'action_name'=>$action_name, 'promotion_codes'=>$promotion_codes]))->render();
+		(new View($this->params, ['package'=>$package]))->render();
 		
 	}
 
-	public function new($params)
+	public function new()
 	{
 		$package = new PromotionCodesPackage;
-		$view = (new View($params, ['package'=>$package]))->render();
+		(new View($this->params, ['package'=>$package]))->render();
 	}
 
-	public function create($params)
+	public function create()
 	{
-		$params['promotion_codes_package']['action_id'] = $params['action_id'];
-		$package = new PromotionCodesPackage($params['promotion_codes_package']);
+		$this->params['promotion_codes_package']['action_id'] = $this->params['action_id'];
+		$package = new PromotionCodesPackage($this->params['promotion_codes_package']);
 
-		if ($package->save() == false) {
-			$package = new PromotionCodesPackage($params['promotion_codes_package']);
-			$view = (new View($params, ['package'=>$package]))->render();
+		if ($package->save()) {
+
+			$admin_order = new AdminOrder(['promotor_id'=>$this->params['promotors_id'],
+										   'package_id'=>$package->id,
+										   'quantity'=>$package->quantity,
+										   'reusable'=>$package->reusable,
+										   'order_date'=>$package->created_at]);
+
+			$admin_order->save();
+			header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id']."/promotion-actions/".$this->params['action_id']);
 		}
 		else{
-			
-			header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$params['promotors_id']."/promotion-actions/".$params['action_id']);
+			(new View($this->params, ['package'=>$package]))->render();
 		} 		
 	}
 
-	public function edit($params)
+	public function edit()
 	{
 		$package = new PromotionCodesPackage;
-		$package = PromotionCodesPackage::find($params['action_id']);
-		$view = (new View($params, ['package'=>$package]))->render();
+		$package = PromotionCodesPackage::find($this->params['action_id']);
+		(new View($this->params, ['package'=>$package]))->render();
 	}
 
-	public function update($params)
+	public function update()
 	{
-		$package = PromotionCodesPackage::findBy('id', $params['id']);
-		$package->update($params['promotion_codes_package']);
+		$package = PromotionCodesPackage::findBy('id', $this->params['id']);
+		$package->update($this->params['promotion_codes_package']);
 		
-		header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$params['promotors_id']."/promotion-actions/".$params['action_id']."/package/".$params['id']); 
+		header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id']."/promotion-actions/".$this->params['action_id']."/package/".$this->params['id']); 
 	}
 
+	/* Funkcja uruchomiona po z url */
 	public function generate()
 	{	
 		$packages = PromotionCodesPackage::where('`generated` < `quantity`', []);
@@ -69,13 +67,13 @@ class PromotionCodesPackagesController
 			while ($i < $number_codes_to_generate) { 
 
 				$code_generator = new PromotionCodesGenerator;
-				$code = $code_generator->promotion_code_generator(6);
+				$code = $code_generator->promotionCodeGenerator(6);
 				$promotion_code = new PromotionCode(['code'=>$code, 'package_id'=>$package->id]);
 
 				if ($promotion_code->save()) {
 					$i++;
 					$package->generated++;
-					$package->update(['generated'=>$package->generated]);
+					$package->save();
 				}
 			}
 		}		

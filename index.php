@@ -10,7 +10,6 @@ $db_setup = 'db_'.Config::get('env');
 MyDB::connect(Config::get($db_setup));
 if ($match) {
 	list($controller_name, $controller_action) = explode('#', $match['target']);
-	$controller = new $controller_name;
 	$params = $match['params'];
 	$params["controller"] = $controller_name;
 	$params["action"] = $controller_action;
@@ -20,6 +19,8 @@ if ($match) {
 	if ($_GET) {
 		$params = array_merge($params, $_GET);
 	}
+	$controller = new $controller_name($params);
+	
 	$controller->$controller_action($params);
 	#echo "<pre>";
 	#die(print_r($match));

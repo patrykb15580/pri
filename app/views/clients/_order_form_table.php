@@ -5,7 +5,7 @@
 	</tr>
 	<tr>
 		<td width="20%">
-			<?php if (!empty($image)) { ?><img src="/system/reward_images/<?= $image->id ?>/tiny/<?= $image->file_name ?>"><?php } ?>
+			<?php if (!empty($reward->singleImage())) { ?><img src="/system/reward_images/<?= $reward->singleImage()->id ?>/tiny/<?= $reward->singleImage()->file_name ?>"><?php } ?>
 		</td>
 		<td width="80%">
 			<b><?= $reward->name ?></b><br />

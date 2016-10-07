@@ -5,62 +5,62 @@
 class ClientsModelTest extends Tests
 {
 	
-	public function test_clients_is_valid()
+	public function testClientsIsValid()
 	{
 		$clients = new Client(['email'=>'test@test.com', 'name'=>'new client', 'phone_number'=>'123456789']);
-		Assert::expect($clients -> isValid()) -> to_equal(true);
+		Assert::expect($clients -> isValid()) -> toEqual(true);
 	}
-	public function test_email_address_should_be_require()
+	public function testEmailAddressShouldBeRequire()
 	{
 		$clients = new Client(['name'=>'new client', 'phone_number'=>'123456789']);
-		Assert::expect($clients -> isValid()) -> to_equal(false);
+		Assert::expect($clients -> isValid()) -> toEqual(false);
 	}
-	public function test_email_address_should_have_less_than_191_chars()
+	public function testEmailAddressShouldHaveLessThan191Chars()
 	{
-		$random_string = StringUntils::get_random_string(190);
+		$random_string = StringUntils::getRandomString(190);
 		$clients = new Client(['email'=>$random_string, 'name'=>'new client', 'phone_number'=>'123456789']);
-		Assert::expect($clients -> isValid()) -> to_equal(true);
+		Assert::expect($clients -> isValid()) -> toEqual(true);
 
-		$random_string = StringUntils::get_random_string(191);
+		$random_string = StringUntils::getRandomString(191);
 		$clients = new Client(['email'=>$random_string, 'name'=>'new client', 'phone_number'=>'123456789']);
-		Assert::expect($clients -> isValid()) -> to_equal(false);
+		Assert::expect($clients -> isValid()) -> toEqual(false);
 	}
-	public function test_client_email_is_unique()
+	public function testClientEmailIsUnique()
 	{
 		$clients = new Client(['email'=>'test@test.com', 'name'=>'new client1', 'phone_number'=>'123456789']);
 		$clients->save();
 		$clients = new Client(['email'=>'test@test.com', 'name'=>'new client2', 'phone_number'=>'987654321']);
 		$clients->save();
-		Assert::expect($clients -> isValid()) -> to_equal(false);
+		Assert::expect($clients -> isValid()) -> toEqual(false);
 	}
-	public function test_phone_number_should_be_require()
+	public function testPhoneNumberShouldBeRequire()
 	{
 		$clients = new Client(['email'=>'test@test.com', 'name'=>'new client']);
-		Assert::expect($clients -> isValid()) -> to_equal(false);
+		Assert::expect($clients -> isValid()) -> toEqual(false);
 	}
-	public function test_phone_numberclients_should_have_less_than_191_chars()
+	public function testPhoneNumberShouldHaveLessThan191Chars()
 	{
-		$random_string = StringUntils::get_random_string(190);
+		$random_string = StringUntils::getRandomString(190);
 		$clients = new Client(['email'=>'test@test.com', 'name'=>'new client', 'phone_number'=>$random_string]);
-		Assert::expect($clients -> isValid()) -> to_equal(true);
+		Assert::expect($clients -> isValid()) -> toEqual(true);
 
-		$random_string = StringUntils::get_random_string(191);
+		$random_string = StringUntils::getRandomString(191);
 		$clients = new Client(['email'=>'test@test.com', 'name'=>'new client', 'phone_number'=>$random_string]);
-		Assert::expect($clients -> isValid()) -> to_equal(false);
+		Assert::expect($clients -> isValid()) -> toEqual(false);
 	}
-	public function test_name_should_be_require()
+	public function testNameShouldBeRequire()
 	{
 		$clients = new Client(['email'=>'test@test.com', 'phone_number'=>'123456789']);
-		Assert::expect($clients -> isValid()) -> to_equal(false);
+		Assert::expect($clients -> isValid()) -> toEqual(false);
 	}
-	public function test_name_should_have_less_than_191_chars()
+	public function testNameShouldHaveLessThan191Chars()
 	{
-		$random_string = StringUntils::get_random_string(190);
+		$random_string = StringUntils::getRandomString(190);
 		$clients = new Client(['email'=>'test@test.com', 'name'=>$random_string, 'phone_number'=>'123456789']);
-		Assert::expect($clients -> isValid()) -> to_equal(true);
+		Assert::expect($clients -> isValid()) -> toEqual(true);
 
-		$random_string = StringUntils::get_random_string(191);
+		$random_string = StringUntils::getRandomString(191);
 		$clients = new Client(['email'=>'test@test.com', 'name'=>$random_string, 'phone_number'=>'123456789']);
-		Assert::expect($clients -> isValid()) -> to_equal(false);
+		Assert::expect($clients -> isValid()) -> toEqual(false);
 	}
 }

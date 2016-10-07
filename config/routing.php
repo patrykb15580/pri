@@ -10,20 +10,25 @@ $router = new AltoRouter();
 
 
 $router->map( 'GET', '/admin', 'AdminController#show', 'show_admin' );
-$router->map( 'GET', '/admin/new-promotor', 'AdminController#new_promotor', 'new_promotors' );
-$router->map( 'POST', '/admin/create-promotor', 'AdminController#create_promotor', 'create_promotors' );
-$router->map( 'GET', '/admin/edit-promotor/[i:promotors_id]', 'AdminController#edit_promotor', 'edit_promotor_by_admin' );
-$router->map( 'POST', '/admin/update-promotor/[i:promotors_id]', 'AdminController#update_promotor', 'update_promotor_by_admin' );
-$router->map( 'GET', '/admin/orders', 'AdminController#index_orders', 'index_admin_orders' );
-$router->map( 'GET', '/admin/orders/[i:order_id]', 'AdminController#show_orders', 'show_admin_orders' );
+$router->map( 'GET', '/admin/new-promotor', 'AdminController#newPromotor', 'new_promotors' );
+$router->map( 'GET', '/admin/promotor/[i:promotor_id]', 'AdminController#showPromotor', 'show_promotor' );
+$router->map( 'GET', '/admin/promotor/[i:promotor_id]/action/[i:action_id]', 'AdminController#showPromotorAction', 'show_promotor_action' );
+$router->map( 'GET', '/admin/promotor/[i:promotor_id]/action/[i:action_id]/package/[i:package_id]', 'AdminController#showPromotorPackage', 'show_promotor_package' );
+$router->map( 'GET', '/admin/promotor/[i:promotor_id]/reward/[i:reward_id]', 'AdminController#showPromotorReward', 'show_promotor_reward' );
+$router->map( 'GET', '/admin/promotor/[i:promotor_id]/order/[i:order_id]', 'AdminController#showPromotorOrder', 'show_promotor_order' );
+$router->map( 'POST', '/admin/create-promotor', 'AdminController#createPromotor', 'create_promotors' );
+$router->map( 'GET', '/admin/edit-promotor/[i:promotors_id]', 'AdminController#editPromotor', 'edit_promotor_by_admin' );
+$router->map( 'POST', '/admin/update-promotor/[i:promotors_id]', 'AdminController#updatePromotor', 'update_promotor_by_admin' );
+$router->map( 'GET', '/admin/orders', 'AdminController#indexOrders', 'index_admin_orders' );
+$router->map( 'GET', '/admin/orders/[i:order_id]', 'AdminController#showOrder', 'show_admin_order' );
 
 
 $router->map( 'GET', '/promotors/[i:promotors_id]', 'PromotorsController#show', 'show_promotors' );
 $router->map( 'GET', '/promotors/[i:promotors_id]/account', 'PromotorsController#edit', 'edit_promotor' );
 $router->map( 'POST', '/promotors/[i:promotors_id]/account/update', 'PromotorsController#update', 'update_promotor' );
-$router->map( 'GET', '/promotors/[i:promotors_id]/clients', 'PromotorsController#index_clients', 'index_clients' );
-$router->map( 'GET', '/promotors/[i:promotors_id]/orders', 'PromotorsController#index_orders', 'index_promotors_orders' );
-$router->map( 'GET', '/promotors/[i:promotors_id]/orders/[i:order_id]', 'PromotorsController#show_orders', 'show_promotors_orders' );
+$router->map( 'GET', '/promotors/[i:promotors_id]/clients', 'PromotorsController#indexClients', 'index_clients' );
+$router->map( 'GET', '/promotors/[i:promotors_id]/orders', 'PromotorsController#indexOrders', 'index_promotors_orders' );
+$router->map( 'GET', '/promotors/[i:promotors_id]/orders/[i:order_id]', 'PromotorsController#showOrders', 'show_promotors_orders' );
 
 
 $router->map( 'GET', '/promotors/[i:promotors_id]/promotion-actions/[i:id]', 'PromotionActionsController#show', 'show_promotion_actions' );
@@ -56,20 +61,25 @@ $router->map( 'GET', '/package/generate', 'PromotionCodesPackagesController#gene
 $router->map( 'DELETE', '/promotors/[i:promotors_id]/rewards/[i:reward_id]/image/[i:id]', 'RewardImagesController#delete', 'delete_reward_images' );
 
 
-$router->map( 'GET', '/', 'StaticPagesController#start_page', 'start_page' );
-$router->map( 'POST', '/insert-code', 'StaticPagesController#insert_code', 'insert_code' );
-$router->map( 'GET', '/[a:code]', 'StaticPagesController#use_code', 'use_code' );
-$router->map( 'POST', '/[a:code]/add-points', 'StaticPagesController#add_points', 'add_points' );
+$router->map( 'GET', '/login', 'SessionController#new', 'login' );
+$router->map( 'POST', '/sign-in', 'SessionController#create', 'sign_in' );
+$router->map( 'GET', '/sign-out', 'SessionController#delete', 'sign_out' );
+
+
+$router->map( 'GET', '/', 'StaticPagesController#startPage', 'start_page' );
+$router->map( 'POST', '/insert-code', 'StaticPagesController#insertCode', 'insert_code' );
+$router->map( 'GET', '/[a:code]', 'StaticPagesController#useCode', 'use_code' );
+$router->map( 'POST', '/[a:code]/add-points', 'StaticPagesController#addPoints', 'add_points' );
 $router->map( 'GET', '/[a:code]/confirm', 'StaticPagesController#confirmation', 'confirmation' );
 
 
 $router->map( 'GET', '/clients/[i:client_id]', 'ClientsController#show', 'show_client' );
-$router->map( 'GET', '/clients/[i:client_id]/promotor-rewards/[i:promotors_id]', 'ClientsController#index_rewards', 'client_index_rewards' );
-$router->map( 'GET', '/clients/[i:client_id]/promotor-rewards/[i:promotors_id]/reward/[i:reward_id]', 'ClientsController#show_rewards', 'client_show_rewards' );
-$router->map( 'GET', '/clients/[i:client_id]/history', 'ClientsController#index_history', 'index_history' );
-$router->map( 'GET', '/clients/[i:client_id]/reward/[i:reward_id]', 'ClientsController#new_order', 'new_order' );
-$router->map( 'POST', '/clients/[i:client_id]/reward/[i:reward_id]/get', 'ClientsController#get_reward', 'get_reward' );
-$router->map( 'GET', '/clients/[i:client_id]/orders', 'ClientsController#index_orders', 'index_client_orders' );
+$router->map( 'GET', '/clients/[i:client_id]/promotor-rewards/[i:promotors_id]', 'ClientsController#indexRewards', 'client_index_rewards' );
+$router->map( 'GET', '/clients/[i:client_id]/promotor-rewards/[i:promotors_id]/reward/[i:reward_id]', 'ClientsController#showRewards', 'client_show_rewards' );
+$router->map( 'GET', '/clients/[i:client_id]/history', 'ClientsController#indexHistory', 'index_history' );
+$router->map( 'GET', '/clients/[i:client_id]/reward/[i:reward_id]', 'ClientsController#newOrder', 'new_order' );
+$router->map( 'POST', '/clients/[i:client_id]/reward/[i:reward_id]/get', 'ClientsController#getReward', 'get_reward' );
+$router->map( 'GET', '/clients/[i:client_id]/orders', 'ClientsController#indexOrders', 'index_client_orders' );
 
 
 // match current request url

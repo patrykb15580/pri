@@ -44,16 +44,38 @@ class PromotionCodesPackage extends Model
 									   'default' => 'active']
 		];
 	}
+
 	public static function pluralizeClassName()
 	{
 		return 'PromotionCodesPackages';
 	}
-	public function promotion_action()
+
+	public function promotionAction()
 	{
 		return PromotionAction::find($this->action_id);
 	}
-	public function promotion_codes()
+
+	public function promotionCodes()
 	{
 		return PromotionCode::where('package_id=?', ['package_id'=>$this->id]);
+	}
+
+	public function packageValue()
+	{
+		return $this->quantity * $this->codes_value;
+	}
+
+	public function usedCodes()
+	{
+		$codes = PromotionCode::where('package_id=?', ['package_id'=>$this->id]);
+
+		$used_codes = [];
+		foreach ($codes as $code) {
+			if($code->used !== null){
+				array_push($used_codes, $code);
+			} 
+		}
+		
+		return $used_codes;
 	}
 }

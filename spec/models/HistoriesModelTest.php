@@ -5,83 +5,83 @@
 class HistoriesModelTest extends Tests
 {
 	
-	public function test_history_is_valid()
+	public function testHistoryIsValid()
 	{
 		$history = new History(['client_id'=>1, 'points'=>'+ 100', 'balance_before'=>0, 'balance_after'=>10, 'description'=>'desc']);
-		Assert::expect($history -> isValid()) -> to_equal(true);
+		Assert::expect($history -> isValid()) -> toEqual(true);
 	}
 
-	public function test_client_id_should_be_require()
+	public function testClientIdShouldBeRequire()
 	{
 		$history = new History(['points'=>'+ 100', 'balance_before'=>0, 'balance_after'=>10, 'description'=>'desc']);
-		Assert::expect($history -> isValid()) -> to_equal(false);
+		Assert::expect($history -> isValid()) -> toEqual(false);
 	}
 
-	public function test_client_id_have_less_than_12_chars()
+	public function testClientIdHaveLessThan12Chars()
 	{
-		$random_number = StringUntils::get_random_number(11);
+		$random_number = StringUntils::getRandomNumber(11);
 		$history = new History(['client_id'=>$random_number, 'points'=>'+ 100', 'balance_before'=>0, 'balance_after'=>10, 'description'=>'desc']);
-		Assert::expect($history -> isValid()) -> to_equal(true);
+		Assert::expect($history -> isValid()) -> toEqual(true);
 
-		$random_number = StringUntils::get_random_number(12);
+		$random_number = StringUntils::getRandomNumber(12);
 		$history = new History(['client_id'=>$random_number, 'points'=>'+ 100', 'balance_before'=>0, 'balance_after'=>10, 'description'=>'desc']);
-		Assert::expect($history -> isValid()) -> to_equal(false);
+		Assert::expect($history -> isValid()) -> toEqual(false);
 	}
 
-	public function test_points_should_be_require()
+	public function testPointsShouldBeRequire()
 	{
 		$history = new History(['client_id'=>1, 'balance_before'=>0, 'balance_after'=>10, 'description'=>'desc']);
-		Assert::expect($history -> isValid()) -> to_equal(false);
+		Assert::expect($history -> isValid()) -> toEqual(false);
 	}
 
-	public function test_points_have_less_than_191_chars()
+	public function testPointsHaveLessThan191Chars()
 	{
-		$random_string = StringUntils::get_random_string(190);
+		$random_string = StringUntils::getRandomString(190);
 		$history = new History(['client_id'=>1, 'points'=>$random_string, 'balance_before'=>0, 'balance_after'=>10, 'description'=>'desc']);
-		Assert::expect($history -> isValid()) -> to_equal(true);
+		Assert::expect($history -> isValid()) -> toEqual(true);
 
-		$random_string = StringUntils::get_random_string(191);
+		$random_string = StringUntils::getRandomString(191);
 		$history = new History(['client_id'=>1, 'points'=>$random_string, 'balance_before'=>0, 'balance_after'=>10, 'description'=>'desc']);
-		Assert::expect($history -> isValid()) -> to_equal(false);
+		Assert::expect($history -> isValid()) -> toEqual(false);
 	}
 
-	public function test_balance_before_should_be_require()
+	public function testBalanceBeforeShouldBeRequire()
 	{
 		$history = new History(['client_id'=>1, 'points'=>'+ 100', 'balance_after'=>10, 'description'=>'desc']);
-		Assert::expect($history -> isValid()) -> to_equal(false);
+		Assert::expect($history -> isValid()) -> toEqual(false);
 	}
 
-	public function test_balance_before_have_less_than_12_chars()
+	public function testBalanceBeforeHaveLessThan12Chars()
 	{
-		$random_number = StringUntils::get_random_number(11);
+		$random_number = StringUntils::getRandomNumber(11);
 		$history = new History(['client_id'=>1, 'points'=>'+ 100', 'balance_before'=>$random_number, 'balance_after'=>10, 'description'=>'desc']);
-		Assert::expect($history -> isValid()) -> to_equal(true);
+		Assert::expect($history -> isValid()) -> toEqual(true);
 
-		$random_number = StringUntils::get_random_number(12);
+		$random_number = StringUntils::getRandomNumber(12);
 		$history = new History(['client_id'=>1, 'points'=>'+ 100', 'balance_before'=>$random_number, 'balance_after'=>10, 'description'=>'desc']);
-		Assert::expect($history -> isValid()) -> to_equal(false);
+		Assert::expect($history -> isValid()) -> toEqual(false);
 	}
 
-	public function test_balance_after_should_be_require()
+	public function testBalanceAfterShouldBeRequire()
 	{
 		$history = new History(['client_id'=>1, 'points'=>'+ 100', 'balance_before'=>0, 'description'=>'desc']);
-		Assert::expect($history -> isValid()) -> to_equal(false);
+		Assert::expect($history -> isValid()) -> toEqual(false);
 	}
 
-	public function test_balance_after_have_less_than_12_chars()
+	public function testBalanceAfterHaveLessThan12Chars()
 	{
-		$random_number = StringUntils::get_random_number(11);
+		$random_number = StringUntils::getRandomNumber(11);
 		$history = new History(['client_id'=>1, 'points'=>'+ 100', 'balance_before'=>0, 'balance_after'=>$random_number, 'description'=>'desc']);
-		Assert::expect($history -> isValid()) -> to_equal(true);
+		Assert::expect($history -> isValid()) -> toEqual(true);
 
-		$random_number = StringUntils::get_random_number(12);
+		$random_number = StringUntils::getRandomNumber(12);
 		$history = new History(['client_id'=>1, 'points'=>'+ 100', 'balance_before'=>0, 'balance_after'=>$random_number, 'description'=>'desc']);
-		Assert::expect($history -> isValid()) -> to_equal(false);
+		Assert::expect($history -> isValid()) -> toEqual(false);
 	}
 
-	public function test_description_should_be_require()
+	public function testDescriptionShouldBeRequire()
 	{
 		$history = new History(['client_id'=>1, 'points'=>'+ 100', 'balance_before'=>0, 'balance_after'=>10]);
-		Assert::expect($history -> isValid()) -> to_equal(false);
+		Assert::expect($history -> isValid()) -> toEqual(false);
 	}
 }

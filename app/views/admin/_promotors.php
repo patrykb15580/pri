@@ -12,17 +12,16 @@
 	</tr>
 	<?php
 		foreach ($promotors as $promotor) { 
-			$clients_number = count($promotor->clients());
-			$promotion_actions_number = count($promotor->promotion_actions()); ?>
+			$path_edit = $router->generate('show_promotor', ['promotor_id'=>$promotor->id]);?>
 			<tr>
 				<td width="70%">
-					<?= $promotor->name ?>
+					<a href="<?= $path_edit ?>"><?= $promotor->name ?></a>
 				</td>
 				<td width="20%">
-					<?= $promotion_actions_number ?>
+					<?= count($promotor->promotionActions()) ?>
 				</td>
 				<td width="10%">
-					<?= $clients_number ?>
+					<?= count($promotor->clients()) ?>
 				</td>
 			</tr>
 		<?php } ?>

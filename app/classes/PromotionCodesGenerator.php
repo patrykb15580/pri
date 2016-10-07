@@ -4,7 +4,7 @@
 */
 class PromotionCodesGenerator
 {
-	public function promotion_code_generator($length) {
+	public function promotionCodeGenerator($length) {
 	    $characters = 'abcdefghjklmnpqrstuvwxyz';
 	    $charactersLength = strlen($characters);
 	    $code = '';

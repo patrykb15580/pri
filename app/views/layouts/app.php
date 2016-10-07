@@ -1,4 +1,5 @@
 <?php	
+	$router = Config::get('router');
 	$user = StringUntils::camelCaseToUnderscore(str_replace('Controller', '', $params['controller']));
 	if ($user == 'clients') {
 		$user_type = 'client';
@@ -27,6 +28,7 @@
 <body>
 <div id="top">
 <h3><?= $user ?></h3>
+<a href="<?= $router->generate('sign_out', []) ?>">Wyloguj</a>
 </div>
 <hr>
 <div id="container">

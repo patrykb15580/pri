@@ -2,11 +2,11 @@
 /**
 * 
 */
-class RewardsController
+class RewardsController extends Controller
 {
-	public function index($params)
+	public function index()
 	{
-		$promotor = Promotor::find($params['promotors_id']);
+		$promotor = Promotor::find($this->params['promotors_id']);
 
 		$active_rewards = [];
 		$inactive_rewards = [];
@@ -17,75 +17,75 @@ class RewardsController
 			}else array_push($inactive_rewards, $reward);
 		}
 
-		$view = (new View($params, ['promotor'=>$promotor, 'active_rewards'=>$active_rewards, 'inactive_rewards'=>$inactive_rewards]))->render();
+		(new View($this->params, ['promotor'=>$promotor, 'active_rewards'=>$active_rewards, 'inactive_rewards'=>$inactive_rewards]))->render();
 		
 	}
 
-	public function show($params)
+	public function show()
 	{
-		$reward = Reward::findBy('id', $params['id']);
+		$reward = Reward::findBy('id', $this->params['id']);
 
-		$images = RewardImage::where('reward_id=?', ['reward_id'=>$params['id']]);
+		$images = RewardImage::where('reward_id=?', ['reward_id'=>$this->params['id']]);
 		
-		$view = (new View($params, ['reward'=>$reward, 'images'=>$images]))->render();
+		(new View($this->params, ['reward'=>$reward, 'images'=>$images]))->render();
 		
 	}
 
-	public function new($params)
+	public function new()
 	{
 		$reward = new Reward;
-		$view = (new View($params, ['reward'=>$reward]))->render();
+		(new View($this->params, ['reward'=>$reward]))->render();
 	}
 
-	public function create($params)
+	public function create()
 	{
-		$params['reward']['promotors_id'] = $params['promotors_id'];
-		$reward = new Reward($params['reward']);
+		$this->params['reward']['promotors_id'] = $this->params['promotors_id'];
+		$reward = new Reward($this->params['reward']);
 		#echo "<pre>";
-		#die(print_r($params['reward']));
+		#die(print_r($this->params['reward']));
 		if ($reward->save()) {
-			header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$params['promotors_id']."/rewards");
+			header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id']."/rewards");
 		}
 		else {
-			$reward = new Reward($params['reward']);
+			$reward = new Reward($this->params['reward']);
 			$path = 'app/views/'.StringUntils::camelCaseToUnderscore(str_replace('Controller', '', __CLASS__)).'/'.'new.php';
 			include 'app/views/layouts/app.php';
 		}
 	}
 
-	public function edit($params)
+	public function edit()
 	{
 		$reward = new Reward;
-		$reward = Reward::find($params['id']);
-		$view = (new View($params, ['reward'=>$reward]))->render();
+		$reward = Reward::find($this->params['id']);
+		(new View($this->params, ['reward'=>$reward]))->render();
 	}
 
-	public function update($params)
+	public function update()
 	{
 		
-		$reward = Reward::findBy('id', $params['id']);
-		if ($reward->update($params['reward'])) {
+		$reward = Reward::findBy('id', $this->params['id']);
+		if ($reward->update($this->params['reward'])) {
 
 			$upload = new RewardImage;
-			$upload->upload_images($_FILES, $params);
+			$upload->uploadImages($_FILES, $this->params);
 
-			header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$params['promotors_id']."/rewards/".$params['id']); 
+			header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id']."/rewards/".$this->params['id']); 
 		}
 		else {
-			$reward = new Reward($params['reward']);
+			$reward = new Reward($this->params['reward']);
 			$path = 'app/views/'.StringUntils::camelCaseToUnderscore(str_replace('Controller', '', __CLASS__)).'/'.'edit.php';
 			include 'app/views/layouts/app.php';
 		}		
 	}
 	
-	public function delete($params)
+	public function delete()
 	{
-		$params['reward']['id'] = $params['id'];
-		$reward = new Reward($params['reward']);
+		$this->params['reward']['id'] = $this->params['id'];
+		$reward = new Reward($this->params['reward']);
 		#echo "<pre>";
-		#die(print_r($params));
+		#die(print_r($this->params));
 		$reward->destroy();
 
-		header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$params['promotors_id']."/rewards");
+		header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id']."/rewards");
 	}
 }

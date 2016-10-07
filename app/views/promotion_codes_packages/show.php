@@ -5,15 +5,15 @@
 	#echo "<pre>";
 	#die(print_r($params));
 ?>	
-<h1 id="show_top_title">Akcje promocyjne > <?= $action_name ?> > <?= $package->name ?></h1>
+<h1 id="show_top_title">Akcje promocyjne > <?= $package->promotionAction()->name ?> > <?= $package->name ?></h1>
 <div id="show_top_options">
 	<a href="<?= $path_update ?>">Edytuj</a>
-	<a href="">Usuń</a>
 </div>
 <br /><br />
 Status: <?= PromotionCodesPackage::STATUSES[$package->status] ?><br />
 Liczba kodów: <?= $package->generated ?><br />
-Wartość kodów: <?= $package->codes_value ?> pkt
+Wartość kodów: <?= $package->codes_value ?> pkt<br />
+Wykorzystane kody: <?= count($package->usedCodes()) ?>
 <br /><br />
 <?php
 	#echo "<pre>";

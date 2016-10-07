@@ -1,5 +1,5 @@
 <?php
-		MyDB::clear_database_except_schema();
+		MyDB::clearDatabaseExceptSchema();
 
 		$promotor1 = new Promotor(['email'=>'test1@test.com', 'password_degest'=>Password::encryptPassword('password1'), 'name'=>'promotor1']);
 		$promotor1->save();
@@ -78,14 +78,7 @@
 		$reward10->save();
 
 		print_r(CLIUntils::colorize("Rewards: OK\n", 'SUCCESS'));
-
-		$package1 = new PromotionCodesPackage(['name'=>'package1', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>10, 'codes_value'=>143, 'status'=>'active']);
-		$package1->save();
-
-		$package2 = new PromotionCodesPackage(['name'=>'package2', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>10, 'codes_value'=>1324, 'status'=>'active']);
-		$package2->save();
-
-		print_r(CLIUntils::colorize("Promotion codes packages: OK\n", 'SUCCESS'));
+		
 
 		print_r(CLIUntils::colorize("All OK\n", 'SUCCESS'));
 

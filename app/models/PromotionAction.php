@@ -38,16 +38,63 @@ class PromotionAction extends Model
 										'default' => null]
 		];
 	}
+
 	public static function pluralizeClassName()
 	{
 		return 'PromotionActions';
 	}
+
 	public function promotor()
 	{
 		return Promotor::find($this->promotors_id);
 	}
-	public function promotion_codes_packages()
+
+	public function promotionCodesPackages()
 	{
 		return PromotionCodesPackage::where('action_id=?', ['action_id'=>$this->id]);
+	}
+
+	public function activePackages()
+	{
+		$active_packages = [];
+		foreach ($this->promotionCodesPackages() as $package) {
+			if($package->status == 'active'){
+				array_push($active_packages, $package);
+			}
+		}
+		return $active_packages;
+	}
+
+	public function inactivePackages()
+	{
+		$inactive_packages = [];
+		foreach ($this->promotionCodesPackages() as $package) {
+			if($package->status == 'inactive'){
+				array_push($inactive_packages, $package);
+			}
+		}
+		return $inactive_packages;
+	}
+
+	public function codesNumber()
+	{
+		$packages = $this->promotionCodesPackages();
+		$codes_number = 0;
+		foreach ($packages as $package) {
+			$codes_number = $codes_number + $package->quantity;
+		}
+
+		return $codes_number;
+	}
+
+	public function usedCodes()
+	{
+		$packages = $this->promotionCodesPackages();
+		$used_codes = 0;
+		foreach ($packages as $package) {
+			$used_codes = $used_codes + count($package->usedCodes());
+		}
+		
+		return $used_codes;
 	}
 }

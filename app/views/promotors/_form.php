@@ -25,6 +25,6 @@
 		<?php }
 	} ?><br /><br />
 	Nowe hasło:<br />
-	<input type="password" name="promotor[password_degest]"><br /><br />
+	<input type="password" name="promotor[password]"><br /><br />
 	<input type="submit" value="Zapisz zmiany">
 </form>

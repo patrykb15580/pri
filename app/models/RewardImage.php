@@ -34,13 +34,13 @@ class RewardImage extends Model
 	{
 		return 'RewardImages';
 	}
-	public function upload_images($files, $params)
+	public function uploadImages($files, $params)
 	{
 		for ($i=0; $i < sizeof($files['image']['name']); $i++) { 
 			$file = pathinfo($files['image']['name'][$i]);
 			$file_name = StringUntils::camelCaseToUnderscore($file['filename']);
-			$file_name = StringUntils::replace_polish_chars($file_name);
-			$file_name = StringUntils::replace_special_chars($file_name).'.'.$file['extension'];
+			$file_name = StringUntils::replacePolishChars($file_name);
+			$file_name = StringUntils::replaceSpecialChars($file_name).'.'.$file['extension'];
 
 			$image = new RewardImage(['file_name'=>$file_name, 'size'=>$files['image']['size'][$i], 'reward_id'=>$params['id']]);
 
@@ -56,8 +56,8 @@ class RewardImage extends Model
 		   				mkdir($copy_path.'small/', 0777, true);
 		   			}
 
-		   			$this->create_small_image($copy_path.'original/'.$file_name, $copy_path.'small/'.$file_name);
-		   			$this->create_tiny_image($copy_path.'original/'.$file_name, $copy_path.'tiny/'.$file_name);
+		   			$this->createSmallImage($copy_path.'original/'.$file_name, $copy_path.'small/'.$file_name);
+		   			$this->createTinyImage($copy_path.'original/'.$file_name, $copy_path.'tiny/'.$file_name);
 				}
 				else{
 					$reward = new Reward($params['reward']);
@@ -67,11 +67,11 @@ class RewardImage extends Model
 			}	
 		}
 	}
-	public function create_small_image($input_file, $output_file)
+	public function createSmallImage($input_file, $output_file)
 	{
 		Image::open($input_file)->resize(200, 200)->save($output_file, 'jpg', 90);
 	}
-	public function create_tiny_image($input_file, $output_file)
+	public function createTinyImage($input_file, $output_file)
 	{
 		Image::open($input_file)->resize(100, 100)->save($output_file, 'jpg', 90);
 	}

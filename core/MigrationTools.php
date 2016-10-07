@@ -5,7 +5,7 @@
 class MigrationTools
 {
 	
-	public static function create_schema_table_migration()
+	public static function createSchemaTableMigration()
 	{	
 		$query = 'SELECT * FROM schema_migrations';
 		$check = mysqli_query(MyDB::db(), $query);
@@ -15,15 +15,15 @@ class MigrationTools
 			$add_table = mysqli_query(MyDB::db(), $query);
 		}
 	}
-	public static function get_version_from_filename($explode_file_name)
+	public static function getVersionFromFilename($explode_file_name)
 	{
 		return $explode_file_name[0];
 	}
-	public static function get_classname_from_filename($explode_file_name)
+	public static function getClassnameFromFilename($explode_file_name)
 	{	
 		return $explode_file_name[1];
 	}
-	public static function is_migrated_migration($version)
+	public static function isMigratedMigration($version)
 	{
 		$query = 'SELECT version FROM schema_migrations WHERE version = "'.$version.'"';
 		$check = mysqli_query(MyDB::db(), $query);
@@ -36,24 +36,24 @@ class MigrationTools
 		}  
 	}
 
-	public static function increment_schema_version_if_success($version)
+	public static function incrementSchemaVersionIfSuccess($version)
 	{
 		$query = 'INSERT INTO `schema_migrations`(`version`) VALUES ('.$version.')';
 		$insert = mysqli_query(MyDB::db(), $query);
 	}
 
-	public static function select_last_migration()
+	public static function selectLastMigration()
 	{
 		return 'SELECT `version` FROM `schema_migrations` ORDER BY `version` DESC LIMIT 1';
 	}
 
-	public static function delete_last_migration_version($last_migration_version)
+	public static function deleteLastMigrationVersion($last_migration_version)
 	{
 		$query = 'DELETE FROM `schema_migrations` WHERE `version` = '.$last_migration_version;
 		$delete = mysqli_query(MyDB::db(), $query);
 	}
 
-	public static function clear_test_db()
+	public static function clearTestDb()
 	{	
 		$show_tables_query = 'SHOW TABLES FROM pri_test';
 		$show_tables = mysqli_query(MyDB::db(), $show_tables_query);
@@ -71,15 +71,15 @@ class MigrationTools
 		}
 		
 	}
-	public static function compare_db()
+	public static function compareDb()
 	{
 		$compare_errors = [];
 		foreach(glob('db/migrate/*', GLOB_BRACE) as $file){
     		
 	 	   	$file_name = pathinfo($file);
 	 	   	$explode_file_name = explode('_', $file_name['filename']);
-	 	   	$version = MigrationTools::get_version_from_filename($explode_file_name);
-	    	$is_migrated = MigrationTools::is_migrated_migration($version);
+	 	   	$version = MigrationTools::getVersionFromFilename($explode_file_name);
+	    	$is_migrated = MigrationTools::isMigratedMigration($version);
 	    	if ($is_migrated == false) {;
 	    		array_push($compare_errors, "Compare ".$file_name['filename'].": error \n");
 	    	}

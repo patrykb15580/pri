@@ -11,7 +11,7 @@
 		<td width="40%"><a href="<?= $path_show ?>"><?= $package->name ?></a></td>
 		<td width="30%"><?php if ($package->reusable == 1) {echo "wielorazowe";}else echo "jednorazowe";?></td>
 		<td width="15%"><?= $package->quantity ?></td>
-		<td width="15%"></td>
+		<td width="15%"><?= count($package->usedCodes()) ?></td>
 	</tr>
 <?php } ?>	
 </table>

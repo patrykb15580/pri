@@ -5,13 +5,13 @@
 class FilesUntilsTest extends Tests
 {
 	
-	public function test_files_list()
+	public function testFilesList()
 	{
-		$files = FilesUntils::list_files('spec/fixtures/discfiles');
-		Assert::expect(count($files)) -> to_equal(11);
+		$files = FilesUntils::listFiles('spec/fixtures/discfiles');
+		Assert::expect(count($files)) -> toEqual(11);
 	}
 
-	public function test_files_xxx()
+	public function testListXxxFiles()
 	{	
 		$files_arr = array('test/path/file_1_xxx.php',
 						'test/path/file_2_xxx.php',
@@ -20,8 +20,8 @@ class FilesUntilsTest extends Tests
 						'test/path/file_2.php',
 						'test/path/file_3.php');
 
-		$files = FilesUntils::filter_test_files($files_arr, 'xxx.php');
-		Assert::expect(count($files)) -> to_equal(3);
+		$files = FilesUntils::filterTestFiles($files_arr, 'xxx.php');
+		Assert::expect(count($files)) -> toEqual(3);
 	}
 }
 

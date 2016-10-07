@@ -2,64 +2,58 @@
 /**
 * 
 */
-class PromotionActionsController
+class PromotionActionsController extends Controller
 {
-	public function show($params)
+	public function show()
 	{
-		$promotion_action = PromotionAction::findBy('id', $params['id']);
-
-		$active_packages = [];
-		$inactive_packages = [];
-
-		foreach ($promotion_action->promotion_codes_packages() as $package) {
-			if($package->status == 'active'){
-				array_push($active_packages, $package);
-			}else array_push($inactive_packages, $package);
-		}
+		$promotion_action = PromotionAction::findBy('id', $this->params['id']);
 
 		#echo "<pre>";
 		#die(print_r($active_packages));
 
-		$view = (new View($params, ['promotion_action'=>$promotion_action, 'active_packages'=>$active_packages, 'inactive_packages'=>$inactive_packages]))->render();
+		(new View($this->params, ['promotion_action'=>$promotion_action]))->render();
 		
 	}
-	public function new($params)
+	public function new()
 	{
 		$promotion_action = new PromotionAction;
-		$view = (new View($params, ['promotion_action'=>$promotion_action]))->render();
+		(new View($this->params, ['promotion_action'=>$promotion_action]))->render();
 	}
-	public function create($params)
+	public function create()
 	{
-		$params['promotion_action']['promotors_id'] = $params['promotors_id'];
-		$promotion_action = new PromotionAction($params['promotion_action']);
+		$this->params['promotion_action']['promotors_id'] = $this->params['promotors_id'];
+		$promotion_action = new PromotionAction($this->params['promotion_action']);
 		$promotion_action->from_at = NULL;
 		$promotion_action->to_at = NULL;
 		
 		#echo "<pre>";
 		#die(print_r($promotion_action));
 
-		if ($promotion_action->save() == false) {
-			$promotion_action = new PromotionAction($params['promotion_action']);
-			$view = (new View($params, ['promotion_action'=>$promotion_action]))->render();
-		}else header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$params['promotors_id']);
+		if ($promotion_action->save()) {
+			header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id']);
+		} else {
+			(new View($this->params, ['promotion_action'=>$promotion_action]))->render();
+		}
 	}
-	public function edit($params)
+	public function edit()
 	{
-		$promotion_action = new PromotionAction;
-		$promotion_action = PromotionAction::find($params['id']);
-		$view = (new View($params, ['promotion_action'=>$promotion_action]))->render();
+		$promotion_action = PromotionAction::find($this->params['id']);
+		(new View($this->params, ['promotion_action'=>$promotion_action]))->render();
 	}
-	public function update($params)
+	public function update()
 	{
-		if ($params['promotion_action']['indefinitely'] == '1') {
+		if ($this->params['promotion_action']['indefinitely'] == '1') {
 			
-			unset($params['promotion_action']['from_at']);
-			unset($params['promotion_action']['to_at']);
+			unset($this->params['promotion_action']['from_at']);
+			unset($this->params['promotion_action']['to_at']);
 		}
 
-		$promotion_action = PromotionAction::findBy('id', $params['id']);
-		$promotion_action->update($params['promotion_action']);
-		
-		header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$params['promotors_id']."/promotion-actions/".$params['id']); 
+		$promotion_action = PromotionAction::findBy('id', $this->params['id']);
+		if ($promotion_action->update($this->params['promotion_action'])) {
+			header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id']."/promotion-actions/".$this->params['id']); 
+		} else {
+			$this->params['action'] = 'edit';
+			(new View($this->params, ['promotion_action'=>$promotion_action]))->render();
+		}		
 	}
 }

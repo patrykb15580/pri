@@ -46,7 +46,7 @@ class PromotionCode extends Model
 	{
 		return Client::find($this->client_id);
 	}
-	public function code_value()
+	public function codeValue()
 	{
 		$package = PromotionCodesPackage::find($this->package_id);
 		return $package->codes_value;
@@ -58,7 +58,7 @@ class PromotionCode extends Model
 	public function isActive()
 	{
 		$package = $this->package();
-		$promotion_action = $package->promotion_action();
+		$promotion_action = $package->promotionAction();
 		#print_r($promotion_action->status."\n");
 		#die(print_r($package->status));
 		if ($package->status == 'active' && $promotion_action->status == 'active' && !$this->isUsed()) {

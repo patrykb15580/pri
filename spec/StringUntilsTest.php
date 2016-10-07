@@ -5,15 +5,15 @@
 class StringUntilsTest extends Tests
 {
 	
-	public function test_replace_polish_chars()
+	public function testReplacePolishChars()
 	{
-		$string = StringUntils::replace_polish_chars('ĘÓĄŚŁŻŹĆŃęóąśłżźćń');
-		Assert::expect($string) -> to_equal('EOASLZZCNeoaslzzcn');
+		$string = StringUntils::replacePolishChars('ĘÓĄŚŁŻŹĆŃęóąśłżźćń');
+		Assert::expect($string) -> toEqual('EOASLZZCNeoaslzzcn');
 	}
-	public function test_replace_special_chars()
+	public function testreplaceSpecialChars()
 	{
-		$string = StringUntils::replace_special_chars('!@#$%^&*():;/\?[]{}<>=+~|OK');
-		Assert::expect($string) -> to_equal('OK');
+		$string = StringUntils::replaceSpecialChars('!@#$%^&*():;/\?[]{}<>=+~|OK');
+		Assert::expect($string) -> toEqual('OK');
 	}
 }
 

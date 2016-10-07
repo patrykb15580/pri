@@ -25,7 +25,7 @@ class MyDB {
    return self::$db;
  }
 
- public static function tables_list() {
+ public static function tablesList() {
    $query = MyDB::db()->prepare("SHOW TABLES");
    $query->execute();
    $result = $query->get_result();
@@ -41,7 +41,7 @@ class MyDB {
    return $tables;
  }
 
- public static function clear_table($table_name) {
+ public static function clearTable($table_name) {
    $query = MyDB::db()->prepare("TRUNCATE TABLE $table_name");
    if($query->execute()) {
      return true;
@@ -49,14 +49,14 @@ class MyDB {
    return false;
  }
 
- public static function clear_database_except_schema() {
-   $tables = MyDB::tables_list();
+ public static function clearDatabaseExceptSchema() {
+   $tables = MyDB::tablesList();
 
    # remove schema_migrations from table list
    $tables = array_diff($tables, array('schema_migrations'));
 
    foreach ($tables as $table_name) {
-     if (!MyDB::clear_table($table_name)) {
+     if (!MyDB::clearTable($table_name)) {
        throw new Exception('Can\'t clear table: '.$table_name);
      }
    }

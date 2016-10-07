@@ -5,7 +5,7 @@
 class CodeChecker
 {
 	
-	public function check_code_exist($params)
+	public function checkCodeExist($params)
 	{
 		$code_arr = PromotionCode::where('code=?', ['code'=>$params['code']]);
 		if (!empty($code_arr)) {

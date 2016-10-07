@@ -43,7 +43,7 @@ class History extends Model
 	}
 	public function client()
 	{
-		return Client::find($this->id);
+		return Client::find($this->client_id);
 	}
 	public static function addHistoryRecord($client_id, $balance_after, $action_value, $description, $action)
 	{
