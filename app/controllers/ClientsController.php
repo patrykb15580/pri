@@ -6,6 +6,7 @@ class ClientsController extends Controller
 {
 	public function show()
 	{
+		$this->auth(__FUNCTION__, $this->client());
 		$client = Client::find($this->params['client_id']);
 		$codes = $client->promotionCodes();
 		
@@ -20,6 +21,7 @@ class ClientsController extends Controller
 
 	public function indexRewards()
 	{
+		$this->auth(__FUNCTION__, $this->client());
 		$promotor = Promotor::find($this->params['promotors_id']);
 
 		(new View($this->params, ['promotor'=>$promotor]))->render();
@@ -27,6 +29,7 @@ class ClientsController extends Controller
 
 	public function showRewards()
 	{	
+		$this->auth(__FUNCTION__, $this->client());
 		$reward = Reward::find($this->params['reward_id']);
 		
 		$images = RewardImage::where('reward_id=?', ['reward_id'=>$this->params['reward_id']]);
@@ -36,6 +39,7 @@ class ClientsController extends Controller
 
 	public function indexHistory()
 	{
+		$this->auth(__FUNCTION__, $this->client());
 		$histories = History::where('client_id=?', ['client_id'=>$this->params['client_id']], ['order'=>'created_at DESC']);
 		
 		(new View($this->params, ['histories'=>$histories]))->render();
@@ -43,6 +47,7 @@ class ClientsController extends Controller
 
 	public function newOrder()
 	{	
+		$this->auth(__FUNCTION__, $this->client());
 		$client = Client::find($this->params['client_id']);
 		$reward = Reward::find($this->params['reward_id']);
 		$promotor = $reward->promotor();
@@ -55,6 +60,7 @@ class ClientsController extends Controller
 
 	public function getReward()
 	{
+		$this->auth(__FUNCTION__, $this->client());
 		$reward = Reward::find($this->params['reward_id']);
 
 		$this->params['order']['promotor_id'] = $reward->promotors_id;
@@ -86,6 +92,7 @@ class ClientsController extends Controller
 
 	public function indexOrders()
 	{
+		$this->auth(__FUNCTION__, $this->client());
 		$client = Client::find($this->params['client_id']);
 		#echo "<pre>";
 		#die(print_r($client));
@@ -94,5 +101,10 @@ class ClientsController extends Controller
 		$canceled_orders = $client->canceledOrders();
 		
 		(new View($this->params, ['active_orders'=>$active_orders, 'completed_orders'=>$completed_orders, 'canceled_orders'=>$canceled_orders]))->render();
+	}
+
+	public function client()
+	{
+		return Client::find($this->params['client_id']);
 	}
 }

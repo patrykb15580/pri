@@ -20,7 +20,7 @@ class StaticPagesController extends Controller
 		}
 		else{
 			$router = Config::get('router');
-			$path = $router->generate('startPage', []);
+			$path = $router->generate('start_page', []);
 			header('Location: '.$path.'?error=code');
 		}
 	}
@@ -80,6 +80,7 @@ class StaticPagesController extends Controller
 		$client = Client::findBy('email', $this->params['client']['email']);
 
 		if (!$client) {
+			$this->params['client']['hash'] = HashGenerator::generate();
 			$client = new Client($this->params['client']);
 			$client->save();
 			return $client;

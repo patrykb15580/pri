@@ -7,6 +7,7 @@ class RewardImagesController extends Controller
 
 	public function delete()
 	{
+		$this->auth(__FUNCTION__, $this->reward());
 		$path = 'system/reward_images/'.$this->params['id'];
 		$files = FilesUntils::listFiles($path);
 		
@@ -27,5 +28,10 @@ class RewardImagesController extends Controller
 		}
 		
 		header('Location: '.$_SERVER['HTTP_REFERER']);
+	}
+
+	public function reward()
+	{
+		return Reward::find($this->params['reward_id']);
 	}
 }

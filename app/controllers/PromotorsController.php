@@ -6,6 +6,8 @@ class PromotorsController extends Controller
 {
 	public function show()
 	{
+
+		$this->auth(__FUNCTION__, $this->promotor());
 		$promotor = Promotor::find($this->params['promotors_id']);
 
 		$active_actions = $promotor->activeActions();
@@ -16,12 +18,14 @@ class PromotorsController extends Controller
 
 	public function edit()
 	{
+		$this->auth(__FUNCTION__, $this->promotor());
 		$promotor = Promotor::find($this->params['promotors_id']);
 		(new View($this->params, ['promotor'=>$promotor]))->render();
 	}
 
 	public function update()
 	{
+		$this->auth(__FUNCTION__, $this->promotor());
 		$promotor = Promotor::find($this->params['promotors_id']);
 		
 		$old_password = Password::encryptPassword($this->params['old_password']);
@@ -37,6 +41,7 @@ class PromotorsController extends Controller
 
 	public function indexClients()
 	{
+		$this->auth(__FUNCTION__, $this->promotor());
 		$promotor = Promotor::find($this->params['promotors_id']);
 		
 		$clients = $promotor->clients();
@@ -45,8 +50,10 @@ class PromotorsController extends Controller
 
 		(new View($this->params, ['promotor'=>$promotor, 'clients'=>$clients]))->render();
 	}
+
 	public function indexOrders()
 	{
+		$this->auth(__FUNCTION__, $this->promotor());
 		$orders = Order::where('promotor_id=?', ['promotor_id'=>$this->params['promotors_id']]);
 		#echo "<pre>";
 		#die(print_r($orders));
@@ -67,6 +74,7 @@ class PromotorsController extends Controller
 
 	public function showOrders()
 	{
+		$this->auth(__FUNCTION__, $this->promotor());
 		$order = Order::find($this->params['order_id']);
 		$client = $order->client();
 		$reward = $order->reward();
@@ -75,5 +83,10 @@ class PromotorsController extends Controller
 
 		$image = RewardImage::findBy('reward_id', $reward->id);
 		(new View($this->params, ['order'=>$order, 'client'=>$client, 'reward'=>$reward, 'image'=>$image]))->render();
+	}
+
+	public function promotor()
+	{
+		return Promotor::find($this->params['promotors_id']);
 	}
 }

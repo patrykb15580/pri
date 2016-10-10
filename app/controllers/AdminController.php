@@ -6,6 +6,7 @@ class AdminController extends Controller
 {
 	public function show()
 	{
+		$this->auth(__FUNCTION__, new Admin);
 		$promotors = Promotor::all([]);
 		
 		(new View($this->params, ['promotors'=>$promotors]))->render();
@@ -13,6 +14,7 @@ class AdminController extends Controller
 
 	public function showPromotor()
 	{
+		$this->auth(__FUNCTION__, new Admin);
 		$promotor = Promotor::find($this->params['promotor_id']);
 
 		(new View($this->params, ['promotor'=>$promotor]))->render();
@@ -20,6 +22,7 @@ class AdminController extends Controller
 
 	public function showPromotorAction()
 	{
+		$this->auth(__FUNCTION__, new Admin);
 		$promotion_action = PromotionAction::find($this->params['action_id']);
 
 		(new View($this->params, ['promotion_action'=>$promotion_action]))->render();
@@ -27,6 +30,7 @@ class AdminController extends Controller
 
 	public function showPromotorPackage()
 	{
+		$this->auth(__FUNCTION__, new Admin);
 		$promotor = Promotor::find($this->params['promotor_id']);
 		$package = PromotionCodesPackage::find($this->params['package_id']);
 
@@ -35,6 +39,7 @@ class AdminController extends Controller
 
 	public function showPromotorReward()
 	{
+		$this->auth(__FUNCTION__, new Admin);
 		$promotor = Promotor::find($this->params['promotor_id']);
 		$reward = Reward::find($this->params['reward_id']);
 
@@ -43,6 +48,7 @@ class AdminController extends Controller
 
 	public function showPromotorOrder()
 	{
+		$this->auth(__FUNCTION__, new Admin);
 		$promotor = Promotor::find($this->params['promotor_id']);
 		$order = Order::find($this->params['order_id']);
 
@@ -51,6 +57,7 @@ class AdminController extends Controller
 
 	public function newPromotor()
 	{
+		$this->auth(__FUNCTION__, new Admin);
 		$promotor = new Promotor;
 
 		(new View($this->params, ['promotor'=>$promotor]))->render();
@@ -58,6 +65,7 @@ class AdminController extends Controller
 
 	public function createPromotor()
 	{	
+		$this->auth(__FUNCTION__, new Admin);
 		$password = $this->params['promotor']['password_degest'];
 		$confirm_password = $this->params['confirm_password'];
 		$equal = Password::equalPasswords($password, $confirm_password);
@@ -79,6 +87,7 @@ class AdminController extends Controller
 
 	public function editPromotor()
 	{
+		$this->auth(__FUNCTION__, new Admin);
 		$promotor = new Promotor;
 		$promotor = Promotor::find($this->params['promotors_id']);
 		(new View($this->params, ['promotor'=>$promotor]))->render();
@@ -86,6 +95,7 @@ class AdminController extends Controller
 
 	public function updatePromotor()
 	{
+		$this->auth(__FUNCTION__, new Admin);
 		$promotor = Promotor::find($this->params['promotors_id']);
 		
 		$old_password = Password::encryptPassword($this->params['old_password']);
@@ -101,12 +111,14 @@ class AdminController extends Controller
 
 	public function indexOrders()
 	{
+		$this->auth(__FUNCTION__, new Admin);
 		$promotors = Promotor::all([]);
 		(new View($this->params, ['promotors'=>$promotors]))->render();
 	}
 
 	public function showOrder()
 	{
+		$this->auth(__FUNCTION__, new Admin);
 		$order = AdminOrder::find($this->params['order_id']);
 		(new View($this->params, ['order'=>$order]))->render();
 	}

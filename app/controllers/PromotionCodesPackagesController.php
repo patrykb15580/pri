@@ -4,9 +4,11 @@
 */
 class PromotionCodesPackagesController extends Controller
 {
+	public $non_authorized = ['generate'];
+
 	public function show()
 	{
-		
+		$this->auth(__FUNCTION__, $this->package());	
 		$package = PromotionCodesPackage::find($this->params['id']);
 
 		(new View($this->params, ['package'=>$package]))->render();
@@ -15,12 +17,14 @@ class PromotionCodesPackagesController extends Controller
 
 	public function new()
 	{
+		$this->auth(__FUNCTION__, $this->promotionAction());	
 		$package = new PromotionCodesPackage;
 		(new View($this->params, ['package'=>$package]))->render();
 	}
 
 	public function create()
 	{
+		$this->auth(__FUNCTION__, $this->promotionAction());	
 		$this->params['promotion_codes_package']['action_id'] = $this->params['action_id'];
 		$package = new PromotionCodesPackage($this->params['promotion_codes_package']);
 
@@ -42,6 +46,7 @@ class PromotionCodesPackagesController extends Controller
 
 	public function edit()
 	{
+		$this->auth(__FUNCTION__, $this->package());	
 		$package = new PromotionCodesPackage;
 		$package = PromotionCodesPackage::find($this->params['action_id']);
 		(new View($this->params, ['package'=>$package]))->render();
@@ -49,6 +54,7 @@ class PromotionCodesPackagesController extends Controller
 
 	public function update()
 	{
+		$this->auth(__FUNCTION__, $this->package());	
 		$package = PromotionCodesPackage::findBy('id', $this->params['id']);
 		$package->update($this->params['promotion_codes_package']);
 		
@@ -77,5 +83,10 @@ class PromotionCodesPackagesController extends Controller
 				}
 			}
 		}		
+	}
+
+	public function package()
+	{
+		return PromotionCodesPackage::find($this->params['id']);
 	}
 }

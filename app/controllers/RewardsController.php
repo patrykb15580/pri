@@ -6,6 +6,7 @@ class RewardsController extends Controller
 {
 	public function index()
 	{
+		$this->auth(__FUNCTION__, Promotor::find($this->params['promotors_id']));
 		$promotor = Promotor::find($this->params['promotors_id']);
 
 		$active_rewards = [];
@@ -23,6 +24,7 @@ class RewardsController extends Controller
 
 	public function show()
 	{
+		$this->auth(__FUNCTION__, $this->reward());
 		$reward = Reward::findBy('id', $this->params['id']);
 
 		$images = RewardImage::where('reward_id=?', ['reward_id'=>$this->params['id']]);
@@ -33,12 +35,14 @@ class RewardsController extends Controller
 
 	public function new()
 	{
+		$this->auth(__FUNCTION__, Promotor::find($this->params['promotors_id']));
 		$reward = new Reward;
 		(new View($this->params, ['reward'=>$reward]))->render();
 	}
 
 	public function create()
 	{
+		$this->auth(__FUNCTION__, Promotor::find($this->params['promotors_id']));
 		$this->params['reward']['promotors_id'] = $this->params['promotors_id'];
 		$reward = new Reward($this->params['reward']);
 		#echo "<pre>";
@@ -55,6 +59,7 @@ class RewardsController extends Controller
 
 	public function edit()
 	{
+		$this->auth(__FUNCTION__, $this->reward());
 		$reward = new Reward;
 		$reward = Reward::find($this->params['id']);
 		(new View($this->params, ['reward'=>$reward]))->render();
@@ -62,7 +67,7 @@ class RewardsController extends Controller
 
 	public function update()
 	{
-		
+		$this->auth(__FUNCTION__, $this->reward());
 		$reward = Reward::findBy('id', $this->params['id']);
 		if ($reward->update($this->params['reward'])) {
 
@@ -80,6 +85,7 @@ class RewardsController extends Controller
 	
 	public function delete()
 	{
+		$this->auth(__FUNCTION__, $this->reward());
 		$this->params['reward']['id'] = $this->params['id'];
 		$reward = new Reward($this->params['reward']);
 		#echo "<pre>";
@@ -87,5 +93,10 @@ class RewardsController extends Controller
 		$reward->destroy();
 
 		header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id']."/rewards");
+	}
+
+	public function reward()
+	{
+		return Reward::find($this->params['id']);
 	}
 }

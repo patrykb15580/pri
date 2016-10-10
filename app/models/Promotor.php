@@ -4,6 +4,8 @@
 */
 class Promotor extends Model
 {
+	use UserRole;
+
 	public $id, $email, $password_degest, $created_at, $updated_at, $name, $status;	
 
 	function __construct($attributes = [])

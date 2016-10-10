@@ -4,7 +4,9 @@
 */
 class Client extends Model
 {
-	public $id, $email, $name, $phone_number, $created_at, $updated_at;	
+	use UserRole;
+	
+	public $id, $email, $name, $phone_number, $created_at, $updated_at, $hash;	
 
 	function __construct($attributes = [])
 	{
@@ -28,6 +30,9 @@ class Client extends Model
 									   'default' => null],
 			'updated_at'			=>['type' => 'datetime',
 									   'default' => null],
+			'hash'					=>['type' => 'string',
+									   'default' => null,
+									   'validations' => ['required', 'unique', 'max_length:190']]
 			
 		];
 	}

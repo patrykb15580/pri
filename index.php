@@ -5,6 +5,8 @@ include 'core/AutoLoader.php';
 include 'config/routing.php';
 require __DIR__ . '/vendor/autoload.php';
 
+session_start();
+
 $db_setup = 'db_'.Config::get('env');
 		
 MyDB::connect(Config::get($db_setup));

@@ -14,6 +14,7 @@
 			Błędny login lub hasło
 		</div>
 	<?php } 
+	
 	if (isset($params['logout'])) { ?>
 		<div id="confirm_message">
 			Zostałeś pomyślnie wylogowany
