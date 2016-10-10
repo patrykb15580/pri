@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 include 'core/Config.php';
 include 'config/application.php';
 include 'core/AutoLoader.php';

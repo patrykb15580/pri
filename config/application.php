@@ -1,5 +1,4 @@
 <?php
-include 'secret.php';
 
 date_default_timezone_set('Europe/Warsaw');
 
@@ -22,3 +21,5 @@ Config::set('autoloader_paths', ['path1' => 'core/',
 Config::set('mysqltime', 'Y-m-d H:i:s');
 
 Config::set('salt', 'nfeifpwqjfewq');
+
+include 'secret.php';

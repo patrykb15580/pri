@@ -16,6 +16,8 @@
 /config/environment.php
 /config/secret.php
 /composer.lock
+/.htaccess
+/system
 
 /vendor/
 
