@@ -37,7 +37,7 @@ class Controller
 	public function currentUser()
 	{
 		$user_type = get_class($_SESSION['user']);
-		if ($user_type !== 'admin') {
+		if ($user_type !== 'Admin') {
 			return $user_type::find($_SESSION['user']->id);
 		} else return new Admin;
 	}
