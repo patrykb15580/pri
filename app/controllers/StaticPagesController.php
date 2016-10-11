@@ -6,7 +6,8 @@ class StaticPagesController extends Controller
 {
 	public function startPage()
 	{
-		(new View($this->params, [], 'start'))->render();
+		$view = (new View($this->params, [], 'start'))->render();
+		return $view;
 	}
 
 	public function insertCode()
@@ -31,7 +32,9 @@ class StaticPagesController extends Controller
 		$package = $code->package();
 		$promotion_action = $package->promotionAction();
 		$promotor = $promotion_action->promotor();
-		(new View($this->params, ['code'=>$code, 'package'=>$package, 'promotion_action'=>$promotion_action, 'promotor'=>$promotor], 'start'))->render();
+
+		$view = (new View($this->params, ['code'=>$code, 'package'=>$package, 'promotion_action'=>$promotion_action, 'promotor'=>$promotor], 'start'))->render();
+		return $view;
 	}
 
 	public function addPoints()
@@ -72,7 +75,14 @@ class StaticPagesController extends Controller
 
 	public function confirmation()
 	{
-		(new View($this->params, [], 'start'))->render();
+		$view = (new View($this->params, [], 'start'))->render();
+		return $view;
+	}
+
+	public function authorizeError()
+	{
+		$view = (new View($this->params, [], 'authorize_error'))->render();
+		return $view;
 	}
 	
 	private function getOrCreateClient()

@@ -24,6 +24,17 @@ class View
 
 		$path = './app/views/'.StringUntils::camelCaseToUnderscore(str_replace('Controller', '', $params['controller'])).'/'.$params['action'].'.php';
 
-		include './app/views/layouts/'.$layout.'.php';
+		#include './app/views/layouts/'.$layout.'.php';
+
+		ob_start();
+		require_once('./app/views/layouts/'.$layout.'.php');
+		$view = ob_get_contents();
+		ob_end_clean();
+		#$view = str_replace('<', '&lt', $view);
+		#$view = str_replace('>', '&gt', $view);
+		#echo "<pre>";
+		#echo $view;
+
+		return $view;
 	}
 }

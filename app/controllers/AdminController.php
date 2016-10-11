@@ -9,7 +9,8 @@ class AdminController extends Controller
 		$this->auth(__FUNCTION__, new Admin);
 		$promotors = Promotor::all([]);
 		
-		(new View($this->params, ['promotors'=>$promotors]))->render();
+		$view = (new View($this->params, ['promotors'=>$promotors]))->render();
+		return $view;
 	}
 
 	public function showPromotor()
@@ -17,7 +18,8 @@ class AdminController extends Controller
 		$this->auth(__FUNCTION__, new Admin);
 		$promotor = Promotor::find($this->params['promotor_id']);
 
-		(new View($this->params, ['promotor'=>$promotor]))->render();
+		$view = (new View($this->params, ['promotor'=>$promotor]))->render();
+		return $view;
 	}
 
 	public function showPromotorAction()
@@ -25,7 +27,8 @@ class AdminController extends Controller
 		$this->auth(__FUNCTION__, new Admin);
 		$promotion_action = PromotionAction::find($this->params['action_id']);
 
-		(new View($this->params, ['promotion_action'=>$promotion_action]))->render();
+		$view = (new View($this->params, ['promotion_action'=>$promotion_action]))->render();
+		return $view;
 	}
 
 	public function showPromotorPackage()
@@ -34,7 +37,8 @@ class AdminController extends Controller
 		$promotor = Promotor::find($this->params['promotor_id']);
 		$package = PromotionCodesPackage::find($this->params['package_id']);
 
-		(new View($this->params, ['promotor'=>$promotor, 'package'=>$package]))->render();
+		$view = (new View($this->params, ['promotor'=>$promotor, 'package'=>$package]))->render();
+		return $view;
 	}
 
 	public function showPromotorReward()
@@ -43,7 +47,8 @@ class AdminController extends Controller
 		$promotor = Promotor::find($this->params['promotor_id']);
 		$reward = Reward::find($this->params['reward_id']);
 
-		(new View($this->params, ['promotor'=>$promotor, 'reward'=>$reward]))->render();
+		$view = (new View($this->params, ['promotor'=>$promotor, 'reward'=>$reward]))->render();
+		return $view;
 	}
 
 	public function showPromotorOrder()
@@ -52,7 +57,8 @@ class AdminController extends Controller
 		$promotor = Promotor::find($this->params['promotor_id']);
 		$order = Order::find($this->params['order_id']);
 
-		(new View($this->params, ['promotor'=>$promotor, 'order'=>$order]))->render();
+		$view = (new View($this->params, ['promotor'=>$promotor, 'order'=>$order]))->render();
+		return $view;
 	}
 
 	public function newPromotor()
@@ -60,7 +66,8 @@ class AdminController extends Controller
 		$this->auth(__FUNCTION__, new Admin);
 		$promotor = new Promotor;
 
-		(new View($this->params, ['promotor'=>$promotor]))->render();
+		$view = (new View($this->params, ['promotor'=>$promotor]))->render();
+		return $view;
 	}
 
 	public function createPromotor()
@@ -77,11 +84,15 @@ class AdminController extends Controller
 			header("Location: http://".$_SERVER['HTTP_HOST']."/admin?promotor=confirm");
 			} else {
 				$promotor = new Promotor($this->params['promotor']);
-				(new View($this->params, ['promotor'=>$promotor]))->render();
+				
+				$view = (new View($this->params, ['promotor'=>$promotor]))->render();
+				return $view;
 			}
 		} else {
 			$promotor = new Promotor($this->params['promotor']);
-			(new View($this->params, ['promotor'=>$promotor]))->render();
+			
+			$view = (new View($this->params, ['promotor'=>$promotor]))->render();
+			return $view;
 		}
 	}
 
@@ -90,7 +101,9 @@ class AdminController extends Controller
 		$this->auth(__FUNCTION__, new Admin);
 		$promotor = new Promotor;
 		$promotor = Promotor::find($this->params['promotors_id']);
-		(new View($this->params, ['promotor'=>$promotor]))->render();
+		
+		$view = (new View($this->params, ['promotor'=>$promotor]))->render();
+		return $view;
 	}
 
 	public function updatePromotor()
@@ -113,13 +126,15 @@ class AdminController extends Controller
 	{
 		$this->auth(__FUNCTION__, new Admin);
 		$promotors = Promotor::all([]);
-		(new View($this->params, ['promotors'=>$promotors]))->render();
+		$view = (new View($this->params, ['promotors'=>$promotors]))->render();
+		return $view;
 	}
 
 	public function showOrder()
 	{
 		$this->auth(__FUNCTION__, new Admin);
 		$order = AdminOrder::find($this->params['order_id']);
-		(new View($this->params, ['order'=>$order]))->render();
+		$view = (new View($this->params, ['order'=>$order]))->render();
+		return $view;
 	}
 }

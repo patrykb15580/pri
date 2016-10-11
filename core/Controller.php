@@ -6,7 +6,7 @@ class Controller
 {
 	public $params;
 
-	function __construct($params)
+	function __construct($params = [])
 	{
 		$this->params = $params;
 
@@ -30,7 +30,8 @@ class Controller
 		if ($polices->$method() == true) {
 			return true;
 		} else {
-			die("Nope");
+			$router = Config::get('router');
+			header('Location: '.$router->generate('access_denied', []));
 		}
 	}
 

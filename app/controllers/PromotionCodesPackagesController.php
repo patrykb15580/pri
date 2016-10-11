@@ -11,7 +11,8 @@ class PromotionCodesPackagesController extends Controller
 		$this->auth(__FUNCTION__, $this->package());	
 		$package = PromotionCodesPackage::find($this->params['id']);
 
-		(new View($this->params, ['package'=>$package]))->render();
+		$view = (new View($this->params, ['package'=>$package]))->render();
+		return $view;
 		
 	}
 
@@ -19,7 +20,9 @@ class PromotionCodesPackagesController extends Controller
 	{
 		$this->auth(__FUNCTION__, $this->promotionAction());	
 		$package = new PromotionCodesPackage;
-		(new View($this->params, ['package'=>$package]))->render();
+		
+		$view = (new View($this->params, ['package'=>$package]))->render();
+		return $view;
 	}
 
 	public function create()
@@ -40,7 +43,8 @@ class PromotionCodesPackagesController extends Controller
 			header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id']."/promotion-actions/".$this->params['action_id']);
 		}
 		else{
-			(new View($this->params, ['package'=>$package]))->render();
+			$view = (new View($this->params, ['package'=>$package]))->render();
+			return $view;
 		} 		
 	}
 
@@ -49,7 +53,9 @@ class PromotionCodesPackagesController extends Controller
 		$this->auth(__FUNCTION__, $this->package());	
 		$package = new PromotionCodesPackage;
 		$package = PromotionCodesPackage::find($this->params['action_id']);
-		(new View($this->params, ['package'=>$package]))->render();
+		
+		$view = (new View($this->params, ['package'=>$package]))->render();
+		return $view;
 	}
 
 	public function update()

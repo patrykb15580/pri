@@ -187,7 +187,7 @@ function test(){
        			}
        			catch(Exception $e){
        			 	echo CLIUntils::colorize("F", 'FAILURE');
-       			 	array_push($failure_arr, $e -> getMessage()." ".$method_name);
+       			 	array_push($failure_arr, $e -> getMessage()." ".$method->class." -> ".$method_name);
        			}
         	}
 		}
@@ -201,7 +201,7 @@ function test(){
 			print_r(CLIUntils::colorize($error."\n\n", 'FAILURE'));
 		}
 		$failures = $tests_number-$succesed;
-		print_r(CLIUntils::colorize('Tests succesed: '.$succesed.'/'.$tests_number."\nTests failure: ".$failures, 'FAILURE'));
+		print_r(CLIUntils::colorize('Tests succesed: '.$succesed.'/'.$tests_number."\nTests failures: ".$failures, 'FAILURE'));
 	}
 	MyDB::clearDatabaseExceptSchema();
 }

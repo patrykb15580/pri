@@ -8,7 +8,8 @@ class SessionController extends Controller
 	
 	public function new()
 	{	
-		(new View($this->params, [], 'login'))->render();
+		$view = (new View($this->params, [], 'login'))->render();
+		return $view;
 	}
 
 	public function create()

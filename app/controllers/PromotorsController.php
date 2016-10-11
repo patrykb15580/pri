@@ -13,14 +13,17 @@ class PromotorsController extends Controller
 		$active_actions = $promotor->activeActions();
 		$inactive_actions = $promotor->inactiveActions();
 
-		(new View($this->params, ['promotor'=>$promotor, 'active_actions'=>$active_actions, 'inactive_actions'=>$inactive_actions]))->render();
+		$view = (new View($this->params, ['promotor'=>$promotor, 'active_actions'=>$active_actions, 'inactive_actions'=>$inactive_actions]))->render();
+		return $view;
 	}
 
 	public function edit()
 	{
 		$this->auth(__FUNCTION__, $this->promotor());
 		$promotor = Promotor::find($this->params['promotors_id']);
-		(new View($this->params, ['promotor'=>$promotor]))->render();
+		
+		$view = (new View($this->params, ['promotor'=>$promotor]))->render();
+		return $view;
 	}
 
 	public function update()
@@ -48,7 +51,8 @@ class PromotorsController extends Controller
 		#echo "<pre>";
 		#die(print_r($clients));
 
-		(new View($this->params, ['promotor'=>$promotor, 'clients'=>$clients]))->render();
+		$view = (new View($this->params, ['promotor'=>$promotor, 'clients'=>$clients]))->render();
+		return $view;
 	}
 
 	public function indexOrders()
@@ -69,7 +73,9 @@ class PromotorsController extends Controller
 				array_push($canceled_orders, $order);
 			}
 		}
-		(new View($this->params, ['orders'=>$orders, 'active_orders'=>$active_orders, 'completed_orders'=>$completed_orders, 'canceled_orders'=>$canceled_orders]))->render();
+		
+		$view = (new View($this->params, ['orders'=>$orders, 'active_orders'=>$active_orders, 'completed_orders'=>$completed_orders, 'canceled_orders'=>$canceled_orders]))->render();
+		return $view;
 	}
 
 	public function showOrders()
@@ -82,7 +88,9 @@ class PromotorsController extends Controller
 		#die(print_r($client));
 
 		$image = RewardImage::findBy('reward_id', $reward->id);
-		(new View($this->params, ['order'=>$order, 'client'=>$client, 'reward'=>$reward, 'image'=>$image]))->render();
+		
+		$view = (new View($this->params, ['order'=>$order, 'client'=>$client, 'reward'=>$reward, 'image'=>$image]))->render();
+		return $view;
 	}
 
 	public function promotor()

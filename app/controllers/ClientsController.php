@@ -16,7 +16,8 @@ class ClientsController extends Controller
 		$promotion_actions_values = $client->promotionActionsValues();
 		$promotors = $client->promotors();
 
-		(new View($this->params, ['packages'=>$packages,'packages_values'=>$packages_values, 'promotion_actions'=>$promotion_actions, 'promotion_actions_values'=>$promotion_actions_values, 'promotors'=>$promotors]))->render();
+		$view = (new View($this->params, ['packages'=>$packages,'packages_values'=>$packages_values, 'promotion_actions'=>$promotion_actions, 'promotion_actions_values'=>$promotion_actions_values, 'promotors'=>$promotors]))->render();
+		return $view;
 	}
 
 	public function indexRewards()
@@ -24,7 +25,8 @@ class ClientsController extends Controller
 		$this->auth(__FUNCTION__, $this->client());
 		$promotor = Promotor::find($this->params['promotors_id']);
 
-		(new View($this->params, ['promotor'=>$promotor]))->render();
+		$view = (new View($this->params, ['promotor'=>$promotor]))->render();
+		return $view;
 	}
 
 	public function showRewards()
@@ -34,7 +36,8 @@ class ClientsController extends Controller
 		
 		$images = RewardImage::where('reward_id=?', ['reward_id'=>$this->params['reward_id']]);
 		
-		(new View($this->params, ['reward'=>$reward, 'images'=>$images]))->render();	
+		$view = (new View($this->params, ['reward'=>$reward, 'images'=>$images]))->render();
+		return $view;	
 	}
 
 	public function indexHistory()
@@ -42,7 +45,8 @@ class ClientsController extends Controller
 		$this->auth(__FUNCTION__, $this->client());
 		$histories = History::where('client_id=?', ['client_id'=>$this->params['client_id']], ['order'=>'created_at DESC']);
 		
-		(new View($this->params, ['histories'=>$histories]))->render();
+		$view = (new View($this->params, ['histories'=>$histories]))->render();
+		return $view;
 	}
 
 	public function newOrder()
@@ -54,7 +58,8 @@ class ClientsController extends Controller
 		
 		$points_balance = $client->balance($promotor);
 
-		(new View($this->params, ['reward'=>$reward, 'promotor'=>$promotor, 'points_balance'=>$points_balance]))->render();
+		$view = (new View($this->params, ['reward'=>$reward, 'promotor'=>$promotor, 'points_balance'=>$points_balance]))->render();
+		return $view;
 		
 	}
 
@@ -100,7 +105,8 @@ class ClientsController extends Controller
 		$completed_orders = $client->completedOrders();
 		$canceled_orders = $client->canceledOrders();
 		
-		(new View($this->params, ['active_orders'=>$active_orders, 'completed_orders'=>$completed_orders, 'canceled_orders'=>$canceled_orders]))->render();
+		$view = (new View($this->params, ['active_orders'=>$active_orders, 'completed_orders'=>$completed_orders, 'canceled_orders'=>$canceled_orders]))->render();
+		return $view;
 	}
 
 	public function client()

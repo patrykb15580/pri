@@ -71,6 +71,7 @@ $router->map( 'POST', '/insert-code', 'StaticPagesController#insertCode', 'inser
 $router->map( 'GET', '/[a:code]', 'StaticPagesController#useCode', 'use_code' );
 $router->map( 'POST', '/[a:code]/add-points', 'StaticPagesController#addPoints', 'add_points' );
 $router->map( 'GET', '/[a:code]/confirm', 'StaticPagesController#confirmation', 'confirmation' );
+$router->map( 'GET', '/access-denied', 'StaticPagesController#authorizeError', 'access_denied' );
 
 
 $router->map( 'GET', '/clients/[i:client_id]', 'ClientsController#show', 'show_client' );

@@ -12,14 +12,17 @@ class PromotionActionsController extends Controller
 		#echo "<pre>";
 		#die(print_r($active_packages));
 
-		(new View($this->params, ['promotion_action'=>$promotion_action]))->render();
+		$view = (new View($this->params, ['promotion_action'=>$promotion_action]))->render();
+		return $view;
 		
 	}
 	public function new()
 	{
 		$this->auth(__FUNCTION__, Promotor::find($this->params['promotors_id']));
 		$promotion_action = new PromotionAction;
-		(new View($this->params, ['promotion_action'=>$promotion_action]))->render();
+		
+		$view = (new View($this->params, ['promotion_action'=>$promotion_action]))->render();
+		return $view;
 	}
 	public function create()
 	{
@@ -35,14 +38,17 @@ class PromotionActionsController extends Controller
 		if ($promotion_action->save()) {
 			header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id']);
 		} else {
-			(new View($this->params, ['promotion_action'=>$promotion_action]))->render();
+			$view = (new View($this->params, ['promotion_action'=>$promotion_action]))->render();
+			return $view;
 		}
 	}
 	public function edit()
 	{
 		$this->auth(__FUNCTION__, $this->promotionAction());
 		$promotion_action = PromotionAction::find($this->params['id']);
-		(new View($this->params, ['promotion_action'=>$promotion_action]))->render();
+		
+		$view = (new View($this->params, ['promotion_action'=>$promotion_action]))->render();
+		return $view;
 	}
 	public function update()
 	{
@@ -58,7 +64,9 @@ class PromotionActionsController extends Controller
 			header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id']."/promotion-actions/".$this->params['id']); 
 		} else {
 			$this->params['action'] = 'edit';
-			(new View($this->params, ['promotion_action'=>$promotion_action]))->render();
+			
+			$view = (new View($this->params, ['promotion_action'=>$promotion_action]))->render();
+			return $view;
 		}		
 	}
 
