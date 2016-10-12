@@ -15,8 +15,7 @@ Config::set('autoloader_paths', ['path1' => 'core/',
 								 'path7' => 'app/classes/',
 								 'path8' => 'app/helpers/',
 								 'path9' => 'app/polices/',
-								 'path10' => 'app/models/concerns/',
-								 'path11' => 'lib/dom/'
+								 'path10' => 'app/models/concerns/'
 								]);
 
 Config::set('mysqltime', 'Y-m-d H:i:s');

@@ -1,5 +1,13 @@
 {
+	"repositories": [
+    {
+        "type": "vcs",
+        "url": "https://github.com/Youpie/simple-html-dom"
+    }
+	],
     "require": {
-        "gregwar/image": "2.*"
+        "gregwar/image": "2.*",
+  		"simple-html-dom/simple-html-dom": "*",
+  		"sunra/php-simple-html-dom-parser": "1.5.1"
     }
 }
