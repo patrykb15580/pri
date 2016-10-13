@@ -8,8 +8,8 @@ class PromotionCodesPackagesController extends Controller
 
 	public function show()
 	{
-		$this->auth(__FUNCTION__, $this->package());	
-		$package = PromotionCodesPackage::find($this->params['id']);
+		$package = $this->package();
+		$this->auth(__FUNCTION__, $package);	
 
 		$view = (new View($this->params, ['package'=>$package]))->render();
 		return $view;
@@ -18,8 +18,8 @@ class PromotionCodesPackagesController extends Controller
 
 	public function new()
 	{
-		$this->auth(__FUNCTION__, $this->promotionAction());	
 		$package = new PromotionCodesPackage;
+		$this->auth(__FUNCTION__, Promotor::find($this->params['promotors_id']));	
 		
 		$view = (new View($this->params, ['package'=>$package]))->render();
 		return $view;
@@ -27,7 +27,7 @@ class PromotionCodesPackagesController extends Controller
 
 	public function create()
 	{
-		$this->auth(__FUNCTION__, $this->promotionAction());	
+		$this->auth(__FUNCTION__, Promotor::find($this->params['promotors_id']));	
 		$this->params['promotion_codes_package']['action_id'] = $this->params['action_id'];
 		$package = new PromotionCodesPackage($this->params['promotion_codes_package']);
 
@@ -50,9 +50,8 @@ class PromotionCodesPackagesController extends Controller
 
 	public function edit()
 	{
-		$this->auth(__FUNCTION__, $this->package());	
-		$package = new PromotionCodesPackage;
-		$package = PromotionCodesPackage::find($this->params['action_id']);
+		$package = $this->package();
+		$this->auth(__FUNCTION__, $package);
 		
 		$view = (new View($this->params, ['package'=>$package]))->render();
 		return $view;
@@ -60,14 +59,15 @@ class PromotionCodesPackagesController extends Controller
 
 	public function update()
 	{
-		$this->auth(__FUNCTION__, $this->package());	
-		$package = PromotionCodesPackage::findBy('id', $this->params['id']);
+		$package = $this->package();
+		$this->auth(__FUNCTION__, $package);
+
 		$package->update($this->params['promotion_codes_package']);
 		
 		header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id']."/promotion-actions/".$this->params['action_id']."/package/".$this->params['id']); 
 	}
 
-	/* Funkcja uruchomiona po z url */
+	/* Funkcja uruchamiana z url */
 	public function generate()
 	{	
 		$packages = PromotionCodesPackage::where('`generated` < `quantity`', []);

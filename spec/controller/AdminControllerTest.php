@@ -3,9 +3,9 @@ use Sunra\PhpSimple\HtmlDomParser;
 /**
 * 
 */
-class PromotorsControllerTest extends Tests
+class AdminControllerTest extends Tests
 {
-	function seed(){
+	/*function seed(){
 		MyDB::clearDatabaseExceptSchema();
 
 		$promotor = new Promotor(['email'=>'test1@test.com', 'password_degest'=>Password::encryptPassword('password1'), 'name'=>'promotor1']);
@@ -159,5 +159,5 @@ class PromotorsControllerTest extends Tests
 		Assert::expect(count($elements)) -> toEqual(5);
 
 		unset($_SESSION['user']);
-	}
+	}*/
 }

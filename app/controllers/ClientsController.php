@@ -6,17 +6,12 @@ class ClientsController extends Controller
 {
 	public function show()
 	{
-		$this->auth(__FUNCTION__, $this->client());
-		$client = Client::find($this->params['client_id']);
-		$codes = $client->promotionCodes();
-		
-		$packages = $client->packages();
-		$packages_values = $client->packagesValues();
-		$promotion_actions = $client->promotionActions();
-		$promotion_actions_values = $client->promotionActionsValues();
-		$promotors = $client->promotors();
+		$client = $this->client();
+		$this->auth(__FUNCTION__, $client);
 
-		$view = (new View($this->params, ['packages'=>$packages,'packages_values'=>$packages_values, 'promotion_actions'=>$promotion_actions, 'promotion_actions_values'=>$promotion_actions_values, 'promotors'=>$promotors]))->render();
+		$codes = $client->promotionCodes();
+
+		$view = (new View($this->params, ['client'=>$client]))->render();
 		return $view;
 	}
 
@@ -99,8 +94,7 @@ class ClientsController extends Controller
 	{
 		$this->auth(__FUNCTION__, $this->client());
 		$client = Client::find($this->params['client_id']);
-		#echo "<pre>";
-		#die(print_r($client));
+
 		$active_orders = $client->activeOrders();
 		$completed_orders = $client->completedOrders();
 		$canceled_orders = $client->canceledOrders();

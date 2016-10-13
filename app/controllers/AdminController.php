@@ -111,7 +111,12 @@ class AdminController extends Controller
 		$this->auth(__FUNCTION__, new Admin);
 		$promotor = Promotor::find($this->params['promotors_id']);
 		
-		$old_password = Password::encryptPassword($this->params['old_password']);
+		if (empty($this->params['promotor']['password']) && empty($this->params['old_password'])) {
+			$old_password = $promotor->password_degest;
+		} else {
+			$old_password = Password::encryptPassword($this->params['old_password']);
+		}
+
 		$new_password = Password::encryptPassword($this->params['promotor']['password_degest']);
 		$this->params['promotor']['password_degest'] = Password::encryptPassword($this->params['promotor']['password_degest']);
 

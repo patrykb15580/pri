@@ -75,12 +75,16 @@ class Promotor extends Model
 
 	public static function updatePromotor($params)
 	{
-		$new_password = $params['promotor']['password_degest'];
+		$new_password = $params['promotor']['password'];
 		$promotor = Promotor::find($params['promotors_id']);
 		if (empty($new_password)) {
 			unset($params['promotor']['password_degest']);
-		} 
+		} else {
+			$params['promotor']['password'] = Password::encryptPassword($new_password);
+		}
 
+		unset($params['promotor']['password']);
+		
 		if (!$promotor->update($params['promotor'])) {
 			return false;
 		} else return true;

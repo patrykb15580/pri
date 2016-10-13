@@ -78,4 +78,10 @@ class PromotionCodesPackage extends Model
 		
 		return $used_codes;
 	}
+
+	public function promotor()
+	{
+		$action = PromotionAction::find($this->action_id);
+		return Promotor::find($action->promotors_id);
+	}
 }

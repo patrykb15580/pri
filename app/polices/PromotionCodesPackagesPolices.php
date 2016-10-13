@@ -25,9 +25,7 @@ class PromotionCodesPackagesPolices extends Polices
 
 	public function new()
 	{
-		$promotor = $this->obj->promotor();
-
-		if ($this->user->isPromotor() && $this->user->id == $promotor->id) {
+		if ($this->user->isPromotor() && $this->user->id == $this->obj->id) {
 			return true;
 		}
 
@@ -42,8 +40,6 @@ class PromotionCodesPackagesPolices extends Polices
 
 	public function create()
 	{
-		$promotor = $pthis->obj->promotor();
-
 		if ($this->user->isPromotor() && $this->user->id == $promotor->id) {
 			return true;
 		}

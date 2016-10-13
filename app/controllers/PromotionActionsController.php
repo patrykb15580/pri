@@ -6,11 +6,8 @@ class PromotionActionsController extends Controller
 {
 	public function show()
 	{
-		$this->auth(__FUNCTION__, $this->promotionAction());
-		$promotion_action = PromotionAction::findBy('id', $this->params['id']);
-
-		#echo "<pre>";
-		#die(print_r($active_packages));
+		$promotion_action = $this->promotionAction();
+		$this->auth(__FUNCTION__, $promotion_action);
 
 		$view = (new View($this->params, ['promotion_action'=>$promotion_action]))->render();
 		return $view;
@@ -44,22 +41,23 @@ class PromotionActionsController extends Controller
 	}
 	public function edit()
 	{
-		$this->auth(__FUNCTION__, $this->promotionAction());
-		$promotion_action = PromotionAction::find($this->params['id']);
+		$promotion_action = $this->promotionAction();
+		$this->auth(__FUNCTION__, $promotion_action);
 		
 		$view = (new View($this->params, ['promotion_action'=>$promotion_action]))->render();
 		return $view;
 	}
 	public function update()
 	{
-		$this->auth(__FUNCTION__, $this->promotionAction());
+		$promotion_action = $this->promotionAction();
+		$this->auth(__FUNCTION__, $promotion_action);
+		
 		if ($this->params['promotion_action']['indefinitely'] == '1') {
 			
 			unset($this->params['promotion_action']['from_at']);
 			unset($this->params['promotion_action']['to_at']);
 		}
 
-		$promotion_action = PromotionAction::findBy('id', $this->params['id']);
 		if ($promotion_action->update($this->params['promotion_action'])) {
 			header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id']."/promotion-actions/".$this->params['id']); 
 		} else {

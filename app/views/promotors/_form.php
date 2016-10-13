@@ -16,7 +16,8 @@
 	Nazwa:<br />
 	<input type="text" name="promotor[name]" value="<?= $promotor->name ?>"><br /><br />
 	E-mail:<br />
-	<input type="text" name="promotor[email]" value="<?= $promotor->email ?>"><br /><br />
+	<input type="text" name="promotor[email]" value="<?= $promotor->email ?>"><br /><br /><br />
+	<b>Zmiana hasła</b><br />
 	Stare hasło:<br />
 	<input type="password" name="old_password">
 	<?php if (isset($params['password'])) {

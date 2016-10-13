@@ -6,8 +6,8 @@ class PromotorsController extends Controller
 {
 	public function show()
 	{
-		$this->auth(__FUNCTION__, $this->promotor());
-		$promotor = Promotor::find($this->params['promotors_id']);
+		$promotor = $this->promotor();
+		$this->auth(__FUNCTION__, $promotor);
 
 		$active_actions = $promotor->activeActions();
 		$inactive_actions = $promotor->inactiveActions();
@@ -18,8 +18,8 @@ class PromotorsController extends Controller
 
 	public function edit()
 	{
-		$this->auth(__FUNCTION__, $this->promotor());
-		$promotor = Promotor::find($this->params['promotors_id']);
+		$promotor = $this->promotor();
+		$this->auth(__FUNCTION__, $promotor);
 		
 		$view = (new View($this->params, ['promotor'=>$promotor]))->render();
 		return $view;
@@ -27,14 +27,19 @@ class PromotorsController extends Controller
 
 	public function update()
 	{
-		$this->auth(__FUNCTION__, $this->promotor());
-		$promotor = Promotor::find($this->params['promotors_id']);
+		$promotor = $this->promotor();
+		$this->auth(__FUNCTION__, $promotor);
+
+		if (empty($this->params['promotor']['password']) && empty($this->params['old_password'])) {
+			$old_password = $promotor->password_degest;
+		} else {
+			$old_password = Password::encryptPassword($this->params['old_password']);
+		}
 		
-		$old_password = Password::encryptPassword($this->params['old_password']);
 		$new_password = Password::encryptPassword($this->params['promotor']['password']);
 		$this->params['promotor']['password_degest'] = $new_password;
 
-		if (Password::equalPasswords($old_password, $new_password) == true) {
+		if (Password::equalPasswords($old_password, $promotor->password_degest) == true) {
 			if (Promotor::updatePromotor($this->params)) {
 				header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id']);
 			} else header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id']."/account?update=error");
@@ -43,8 +48,8 @@ class PromotorsController extends Controller
 
 	public function indexClients()
 	{
-		$this->auth(__FUNCTION__, $this->promotor());
-		$promotor = Promotor::find($this->params['promotors_id']);
+		$promotor = $this->promotor();
+		$this->auth(__FUNCTION__, $promotor);
 		
 		$clients = $promotor->clients();
 		#echo "<pre>";
@@ -73,7 +78,7 @@ class PromotorsController extends Controller
 			}
 		}
 		
-		$view = (new View($this->params, ['orders'=>$orders, 'active_orders'=>$active_orders, 'completed_orders'=>$completed_orders, 'canceled_orders'=>$canceled_orders]))->render();
+		$view = (new View($this->params, ['active_orders'=>$active_orders, 'completed_orders'=>$completed_orders, 'canceled_orders'=>$canceled_orders]))->render();
 		return $view;
 	}
 

@@ -6,8 +6,8 @@ class RewardsController extends Controller
 {
 	public function index()
 	{
-		$this->auth(__FUNCTION__, Promotor::find($this->params['promotors_id']));
 		$promotor = Promotor::find($this->params['promotors_id']);
+		$this->auth(__FUNCTION__, $promotor);
 
 		$active_rewards = [];
 		$inactive_rewards = [];
@@ -25,8 +25,8 @@ class RewardsController extends Controller
 
 	public function show()
 	{
-		$this->auth(__FUNCTION__, $this->reward());
-		$reward = Reward::findBy('id', $this->params['id']);
+		$reward = $this->reward();
+		$this->auth(__FUNCTION__, $reward);
 
 		$images = RewardImage::where('reward_id=?', ['reward_id'=>$this->params['id']]);
 		
@@ -62,9 +62,8 @@ class RewardsController extends Controller
 
 	public function edit()
 	{
-		$this->auth(__FUNCTION__, $this->reward());
-		$reward = new Reward;
-		$reward = Reward::find($this->params['id']);
+		$reward = $this->reward();
+		$this->auth(__FUNCTION__, $reward);
 		
 		$view = (new View($this->params, ['reward'=>$reward]))->render();
 		return $view;
@@ -72,8 +71,9 @@ class RewardsController extends Controller
 
 	public function update()
 	{
-		$this->auth(__FUNCTION__, $this->reward());
-		$reward = Reward::findBy('id', $this->params['id']);
+		$reward = $this->reward();
+		$this->auth(__FUNCTION__, $reward);
+		
 		if ($reward->update($this->params['reward'])) {
 
 			$upload = new RewardImage;
