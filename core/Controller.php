@@ -19,7 +19,7 @@ class Controller
 			}
 		}
 		#echo "<pre>";
-		#die(print_r($_SESSION));
+		#die(print_r($params));
 	}
 
 	public function auth($method, $obj = [])

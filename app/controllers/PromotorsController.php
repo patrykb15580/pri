@@ -6,7 +6,6 @@ class PromotorsController extends Controller
 {
 	public function show()
 	{
-
 		$this->auth(__FUNCTION__, $this->promotor());
 		$promotor = Promotor::find($this->params['promotors_id']);
 

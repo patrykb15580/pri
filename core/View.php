@@ -33,7 +33,7 @@ class View
 		#$view = str_replace('<', '&lt', $view);
 		#$view = str_replace('>', '&gt', $view);
 		#echo "<pre>";
-		#echo $view;
+		#print_r($view);
 
 		return $view;
 	}

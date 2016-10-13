@@ -12,7 +12,7 @@ class CreateOrdersTable
 		`client_id` int(11) NOT NULL,
 		`reward_id` int(11) NOT NULL,
 		`order_date` datetime NOT NULL,
-		`comment` text NOT NULL, 
+		`comment` text NULL, 
 		`status` varchar(191) NOT NULL,
 		`created_at` datetime NOT NULL, 
 		`updated_at` datetime NOT NULL, 

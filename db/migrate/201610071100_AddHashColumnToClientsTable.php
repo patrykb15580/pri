@@ -13,7 +13,7 @@ class AddHashColumnToClientsTable
 	}
 
 	public function down(){
-		$query = 'ALTER TABLE `promotion_actions`
+		$query = 'ALTER TABLE `clients`
 		DROP COLUMN `hash`';
 
 		return $query;

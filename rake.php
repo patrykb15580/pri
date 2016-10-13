@@ -1,5 +1,6 @@
 #!D:\xampp\php\php.exe -q
 <?php
+session_start();
 
 include 'core/Config.php';
 include 'config/application.php';
@@ -72,7 +73,8 @@ else {
 } 
 
 
-function migrate(){
+function migrate()
+{
 
 	MigrationTools::createSchemaTableMigration();
 
@@ -101,8 +103,8 @@ function migrate(){
 
 }
 
-function rollback(){
-	
+function rollback()
+{	
 	$last_migration_version = mysqli_query(MyDB::db(), MigrationTools::selectLastMigration());
 	$result_last_migration_version = mysqli_fetch_row($last_migration_version);
 	if ($result_last_migration_version == false) {
@@ -164,7 +166,8 @@ function single_test($test_class, $test_method)
 	MyDB::clearDatabaseExceptSchema();
 }
 
-function test(){
+function test()
+{
 	$files_arr = FilesUntils::listFiles('spec');
 	$test_files_paths = FilesUntils::filterTestFiles($files_arr, 'Test.php');
 	$failure_arr = [];
@@ -207,3 +210,4 @@ function test(){
 	}
 	MyDB::clearDatabaseExceptSchema();
 }
+session_destroy();
