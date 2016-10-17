@@ -59,9 +59,9 @@ class PromotorsControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
-		$elements = $html->find('tr');	
+		$elements = $html->find('tr.promotion_action');	
 
-		Assert::expect(count($elements)) -> toEqual(4);
+		Assert::expect(count($elements)) -> toEqual(2);
 
 		unset($_SESSION['user']);
 	}
@@ -132,9 +132,9 @@ class PromotorsControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
-		$elements = $html->find('tr');	
+		$elements = $html->find('tr.client');	
 
-		Assert::expect(count($elements)) -> toEqual(2);
+		Assert::expect(count($elements)) -> toEqual(1);
 
 		unset($_SESSION['user']);
 	}
@@ -154,9 +154,9 @@ class PromotorsControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
-		$elements = $html->find('tr');	
+		$elements = $html->find('tr.order');	
 
-		Assert::expect(count($elements)) -> toEqual(5);
+		Assert::expect(count($elements)) -> toEqual(2);
 
 		unset($_SESSION['user']);
 	}

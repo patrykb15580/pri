@@ -31,6 +31,7 @@
 <a href="<?= $router->generate('sign_out', []) ?>">Wyloguj</a>
 </div>
 <hr>
+<?php Alerts::showAlert(); ?>
 <div id="container">
 	<?php 
 	include './app/views/layouts/'.$side_bar;?>

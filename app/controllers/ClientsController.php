@@ -9,8 +9,6 @@ class ClientsController extends Controller
 		$client = $this->client();
 		$this->auth(__FUNCTION__, $client);
 
-		$codes = $client->promotionCodes();
-
 		$view = (new View($this->params, ['client'=>$client]))->render();
 		return $view;
 	}
@@ -46,14 +44,15 @@ class ClientsController extends Controller
 
 	public function newOrder()
 	{	
-		$this->auth(__FUNCTION__, $this->client());
-		$client = Client::find($this->params['client_id']);
+		$client = $this->client();
+		$this->auth(__FUNCTION__, $client);
+		
 		$reward = Reward::find($this->params['reward_id']);
 		$promotor = $reward->promotor();
 		
 		$points_balance = $client->balance($promotor);
 
-		$view = (new View($this->params, ['reward'=>$reward, 'promotor'=>$promotor, 'points_balance'=>$points_balance]))->render();
+		$view = (new View($this->params, ['reward'=>$reward, 'client'=>$client, 'points_balance'=>$points_balance]))->render();
 		return $view;
 		
 	}
@@ -83,23 +82,21 @@ class ClientsController extends Controller
 				$description = 'Zakup nagrody '.$reward->name;
 				History::addHistoryRecord($order->client_id, $balance, $reward->prize, $description, 'buy');
 
-				header('Location: '.$path.'?order=confirm');
+				$this->alert('info', 'Dziękujemy za złożenie zamówienia');
+				header('Location: '.$path);
 			}
 		} else {
-			header('Location: '.$path.'?order=error');
+			$this->alert('error', 'Nie udało się utworzyć zamówienia');
+			header('Location: '.$path);
 		}
 	}
 
 	public function indexOrders()
 	{
-		$this->auth(__FUNCTION__, $this->client());
-		$client = Client::find($this->params['client_id']);
-
-		$active_orders = $client->activeOrders();
-		$completed_orders = $client->completedOrders();
-		$canceled_orders = $client->canceledOrders();
+		$client = $this->client();
+		$this->auth(__FUNCTION__, $client);
 		
-		$view = (new View($this->params, ['active_orders'=>$active_orders, 'completed_orders'=>$completed_orders, 'canceled_orders'=>$canceled_orders]))->render();
+		$view = (new View($this->params, ['client'=>$client]))->render();
 		return $view;
 	}
 

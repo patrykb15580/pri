@@ -1,4 +1,4 @@
-<div id="confirm_message">Dziękujemy, twój kod został dodany</div>
+<div class="info_message">Dziękujemy, twój kod został dodany</div>
 
 <div id="text">
 <b>Aktualny stan punktów możesz sprawdzić po zalogowaniu się do panelu.</b>

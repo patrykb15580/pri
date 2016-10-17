@@ -15,6 +15,7 @@ class AdminController extends Controller
 
 	public function showPromotor()
 	{
+
 		$this->auth(__FUNCTION__, new Admin);
 		$promotor = Promotor::find($this->params['promotor_id']);
 
@@ -80,15 +81,18 @@ class AdminController extends Controller
 		
 		if ($equal == true) {
 			if ($promotor->save()) {
-			$promotor->update(['password_degest'=>Password::encryptPassword($password)]);
-			header("Location: http://".$_SERVER['HTTP_HOST']."/admin?promotor=confirm");
+				$promotor->update(['password_degest'=>Password::encryptPassword($password)]);
+				$this->alert('info', 'Dodano nowego promotora');
+				header("Location: http://".$_SERVER['HTTP_HOST']."/admin");
 			} else {
+				$this->alert('error', 'Nie udało się dodać promotora');
 				$promotor = new Promotor($this->params['promotor']);
 				
 				$view = (new View($this->params, ['promotor'=>$promotor]))->render();
 				return $view;
 			}
 		} else {
+			$this->alert('error', 'Podane hasła różnią się');
 			$promotor = new Promotor($this->params['promotor']);
 			
 			$view = (new View($this->params, ['promotor'=>$promotor]))->render();
@@ -99,7 +103,6 @@ class AdminController extends Controller
 	public function editPromotor()
 	{
 		$this->auth(__FUNCTION__, new Admin);
-		$promotor = new Promotor;
 		$promotor = Promotor::find($this->params['promotors_id']);
 		
 		$view = (new View($this->params, ['promotor'=>$promotor]))->render();
@@ -108,29 +111,40 @@ class AdminController extends Controller
 
 	public function updatePromotor()
 	{
-		$this->auth(__FUNCTION__, new Admin);
 		$promotor = Promotor::find($this->params['promotors_id']);
+		$this->auth(__FUNCTION__, $promotor);
 		
 		if (empty($this->params['promotor']['password']) && empty($this->params['old_password'])) {
 			$old_password = $promotor->password_degest;
 		} else {
 			$old_password = Password::encryptPassword($this->params['old_password']);
 		}
+		
+		$new_password = Password::encryptPassword($this->params['promotor']['password']);
+		$this->params['promotor']['password_degest'] = $new_password;
 
-		$new_password = Password::encryptPassword($this->params['promotor']['password_degest']);
-		$this->params['promotor']['password_degest'] = Password::encryptPassword($this->params['promotor']['password_degest']);
-
-		if (Password::equalPasswords($old_password, $new_password) == true) {
+		if (Password::equalPasswords($old_password, $promotor->password_degest)) {
 			if (Promotor::updatePromotor($this->params)) {
-				header("Location: http://".$_SERVER['HTTP_HOST']."/admin");
-			} else header("Location: http://".$_SERVER['HTTP_HOST']."/admin/edit-promotor//".$this->params['promotors_id']);
-		} else header("Location: http://".$_SERVER['HTTP_HOST']."/admin/edit-promotor/".$this->params['promotors_id']);
+				$this->alert('info', 'Profil został zaktualizowany');
+
+				header("Location: http://".$_SERVER['HTTP_HOST']."/admin/promotor/".$this->params['promotors_id']);
+			} else {
+				$this->alert('error', 'Nie udało się zaktualizować profilu<br />Spróbuj jeszcze raz');
+
+				header("Location: http://".$_SERVER['HTTP_HOST']."/admin/edit-promotor/".$this->params['promotors_id']);
+			}
+		} else {
+			$this->alert('error', 'Nieprawidłowe bieżące hasło');
+
+			header("Location: http://".$_SERVER['HTTP_HOST']."/admin/edit-promotor/".$this->params['promotors_id']);
+		}
 	}
 
 	public function indexOrders()
 	{
 		$this->auth(__FUNCTION__, new Admin);
 		$promotors = Promotor::all([]);
+
 		$view = (new View($this->params, ['promotors'=>$promotors]))->render();
 		return $view;
 	}
@@ -139,6 +153,7 @@ class AdminController extends Controller
 	{
 		$this->auth(__FUNCTION__, new Admin);
 		$order = AdminOrder::find($this->params['order_id']);
+		
 		$view = (new View($this->params, ['order'=>$order]))->render();
 		return $view;
 	}

@@ -119,37 +119,22 @@ class Client extends Model
 
 	public function activeOrders()
 	{
-		$orders = Order::where('client_id=?', ['client_id'=>$this->id]);
-		$active_orders = [];
-		foreach ($orders as $order) {
-			if($order->status == 'active'){
-				array_push($active_orders, $order);
-			} 
-		}
-		return $active_orders;
+		$orders = Order::where('client_id=? AND status=?', ['client_id'=>$this->id, 'status'=>'active']);
+		
+		return $orders;
 	}
 
 	public function completedOrders()
 	{
-		$orders = Order::where('client_id=?', ['client_id'=>$this->id]);
-		$completed_orders = [];
-		foreach ($orders as $order) {
-			if($order->status == 'completed'){
-				array_push($completed_orders, $order);
-			} 
-		}
-		return $completed_orders;
+		$orders = Order::where('client_id=? AND status=?', ['client_id'=>$this->id, 'status'=>'completed']);
+		
+		return $orders;
 	}
 
 	public function canceledOrders()
 	{
-		$orders = Order::where('client_id=?', ['client_id'=>$this->id]);
-		$canceled_orders = [];
-		foreach ($orders as $order) {
-			if($order->status == 'canceled'){
-				array_push($canceled_orders, $order);
-			} 
-		}
-		return $canceled_orders;
+		$orders = Order::where('client_id=? AND status=?', ['client_id'=>$this->id, 'status'=>'canceled']);
+		
+		return $orders;
 	}
 }

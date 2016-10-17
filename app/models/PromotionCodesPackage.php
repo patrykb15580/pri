@@ -67,16 +67,9 @@ class PromotionCodesPackage extends Model
 
 	public function usedCodes()
 	{
-		$codes = PromotionCode::where('package_id=?', ['package_id'=>$this->id]);
+		$codes = PromotionCode::where('package_id=? AND used IS NOT NULL', ['package_id'=>$this->id]);
 
-		$used_codes = [];
-		foreach ($codes as $code) {
-			if($code->used !== null){
-				array_push($used_codes, $code);
-			} 
-		}
-		
-		return $used_codes;
+		return $codes;
 	}
 
 	public function promotor()

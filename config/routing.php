@@ -3,11 +3,7 @@ if (isset($_POST['method'])) {
 	$_SERVER['REQUEST_METHOD'] = $_POST['method'];
 }
 
-#die(print_r($_POST));
-
 $router = new AltoRouter();
-#$router->map( 'GET', '/', 'ok', 'main_page' );
-
 
 $router->map( 'GET', '/admin', 'AdminController#show', 'show_admin' );
 $router->map( 'GET', '/admin/new-promotor', 'AdminController#newPromotor', 'new_promotors' );

@@ -5,7 +5,7 @@
 	
 	if (isset($params['update'])) {
 		if ($params['update'] == 'error') { ?>
-			<div id="error_message">
+			<div class="error_message">
 				Nie udało się zaktualizować prifilu.<br /> Spróbuj jeszcze raz
 			</div><br /><br />
 		<?php }

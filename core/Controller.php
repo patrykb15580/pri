@@ -18,8 +18,6 @@ class Controller
 				Auth::isLogged();
 			}
 		}
-		#echo "<pre>";
-		#die(print_r($params));
 	}
 
 	public function auth($method, $obj = [])
@@ -41,5 +39,10 @@ class Controller
 		if ($user_type !== 'Admin') {
 			return $user_type::find($_SESSION['user']->id);
 		} else return new Admin;
+	}
+
+	public function alert($type, $message)
+	{
+		new Alerts($type, $message);
 	}
 }

@@ -19,10 +19,11 @@ class StaticPagesController extends Controller
 			$path = $router->generate('use_code', ['code'=>$this->params['code']]);
 			header('Location: '.$path);
 		}
-		else{
+		else {
 			$router = Config::get('router');
 			$path = $router->generate('start_page', []);
-			header('Location: '.$path.'?error=code');
+			$this->alert('error', 'Błędny lub nieaktywny kod');
+			header('Location: '.$path);
 		}
 	}
 
@@ -44,8 +45,6 @@ class StaticPagesController extends Controller
 		$package = $code->package();
 		$promotion_action = $package->promotionAction();
 		$promotor = $promotion_action->promotor();
-		#echo "<pre>";
-		#die(print_r($package));
 
 		$code = PromotionCode::findBy('code', $this->params['code']);
 		$code->update(['used'=>date(Config::get('mysqltime')), 'client_id'=>$client->id]);
@@ -75,6 +74,7 @@ class StaticPagesController extends Controller
 
 	public function confirmation()
 	{
+		
 		$view = (new View($this->params, [], 'start'))->render();
 		return $view;
 	}

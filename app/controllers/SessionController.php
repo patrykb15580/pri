@@ -27,8 +27,9 @@ class SessionController extends Controller
 	{
 		$this->auth(__FUNCTION__);
 		$router = Config::get('router');
-		header('Location: '.$router->generate('login', []).'?logout');
-		session_destroy();
+		$this->alert('info', 'Zostałeś pomyślnie wylogowany');
+		header('Location: '.$router->generate('login', []));
+		unset($_SESSION['user']);
 	}
 
 }

@@ -9,17 +9,7 @@
 <body>
 <?php 
 	$router = Config::get('router');
-	if (isset($params['error']) && $params['error'] == 'login') { ?>
-		<div id="error_message">
-			Błędny login lub hasło
-		</div>
-	<?php } 
-	
-	if (isset($params['logout'])) { ?>
-		<div id="confirm_message">
-			Zostałeś pomyślnie wylogowany
-		</div>
-	<?php } 
+	Alerts::showAlert();
 ?>
 <form id="login" method="POST" action="<?= $router->generate('sign_in', []) ?>">
 	Login:

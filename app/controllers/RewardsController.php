@@ -9,16 +9,7 @@ class RewardsController extends Controller
 		$promotor = Promotor::find($this->params['promotors_id']);
 		$this->auth(__FUNCTION__, $promotor);
 
-		$active_rewards = [];
-		$inactive_rewards = [];
-
-		foreach ($promotor->rewards() as $reward) {
-			if($reward->status == 'active'){
-				array_push($active_rewards, $reward);
-			}else array_push($inactive_rewards, $reward);
-		}
-
-		$view = (new View($this->params, ['promotor'=>$promotor, 'active_rewards'=>$active_rewards, 'inactive_rewards'=>$inactive_rewards]))->render();
+		$view = (new View($this->params, ['promotor'=>$promotor]))->render();
 		return $view;
 		
 	}
@@ -39,6 +30,7 @@ class RewardsController extends Controller
 	{
 		$this->auth(__FUNCTION__, Promotor::find($this->params['promotors_id']));
 		$reward = new Reward;
+
 		$view = (new View($this->params, ['reward'=>$reward]))->render();
 		return $view;
 	}
@@ -48,8 +40,7 @@ class RewardsController extends Controller
 		$this->auth(__FUNCTION__, Promotor::find($this->params['promotors_id']));
 		$this->params['reward']['promotors_id'] = $this->params['promotors_id'];
 		$reward = new Reward($this->params['reward']);
-		#echo "<pre>";
-		#die(print_r($this->params['reward']));
+
 		if ($reward->save()) {
 			header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id']."/rewards");
 		}
@@ -94,8 +85,7 @@ class RewardsController extends Controller
 		$this->auth(__FUNCTION__, $this->reward());
 		$this->params['reward']['id'] = $this->params['id'];
 		$reward = new Reward($this->params['reward']);
-		#echo "<pre>";
-		#die(print_r($this->params));
+
 		$reward->destroy();
 
 		header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id']."/rewards");

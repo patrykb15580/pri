@@ -73,6 +73,15 @@ class Promotor extends Model
 		return Order::where('promotor_id=?', ['promotor_id'=>$this->id]);
 	}
 
+	public static function changePassword($password1, $password2)
+	{
+		if (empty($password1) && empty($password2)) {
+			return false;
+		}	else {
+			return true;
+		}
+	}
+
 	public static function updatePromotor($params)
 	{
 		$new_password = $params['promotor']['password'];
@@ -92,56 +101,55 @@ class Promotor extends Model
 
 	public function activeActions()
 	{
-		$promotor = Promotor::find($this->id);
-		$active_actions = [];
-		foreach ($promotor->promotionActions() as $action) {
-			if($action->status == 'active'){
-				array_push($active_actions, $action);
-			}
-		}
+		$actions = PromotionAction::where('promotors_id=? AND status=?', ['promotors_id'=>$this->id, 'status'=>'active']);
 
-		return $active_actions;
+		return $actions;
 	}
 
 	public function inactiveActions()
 	{
-		$promotor = Promotor::find($this->id);
-		$inactive_actions = [];
-		foreach ($promotor->promotionActions() as $action) {
-			if($action->status == 'inactive'){
-				array_push($inactive_actions, $action);
-			}
-		}
+		$actions = PromotionAction::where('promotors_id=? AND status=?', ['promotors_id'=>$this->id, 'status'=>'inactive']);
 
-		return $inactive_actions;
+		return $actions;
 	}
 
 	public function activeRewards()
 	{
-		$active_rewards = [];
-		foreach ($this->rewards() as $reward) {
-			if($reward->status == 'active'){
-				array_push($active_rewards, $reward);
-			}
-		}
+		$rewards = Reward::where('promotors_id=? AND status=?', ['promotors_id'=>$this->id, 'status'=>'active']);
 
-		return $active_rewards;
+		return $rewards;
 	}
 
 	public function inactiveRewards()
 	{
-		$inactive_rewards = [];
-		foreach ($this->rewards() as $reward) {
-			if($reward->status == 'inactive'){
-				array_push($inactive_rewards, $reward);
-			}
-		}
+		$rewards = Reward::where('promotors_id=? AND status=?', ['promotors_id'=>$this->id, 'status'=>'inactive']);
 
-		return $inactive_rewards;
+		return $rewards;
 	}
 
 	public function promotorOrders()
 	{
 		return AdminOrder::where('promotor_id=?', ['promotor_id'=>$this->id], ['order'=>'id DESC']);
+	}
+
+	public function activeOrders()
+	{
+		$orders = Order::where('promotor_id=? AND status=?', ['promotor_id'=>$this->id, 'status'=>'active']);
+		
+		return $orders;
+	}
+
+	public function completedOrders()
+	{
+		$orders = Order::where('promotor_id=? AND status=?', ['promotor_id'=>$this->id, 'status'=>'completed']);
+		
+		return $orders;
+	}
+
+	public function canceledOrders()
+	{
+		$orders = Order::where('promotor_id=? AND status=?', ['promotor_id'=>$this->id, 'status'=>'canceled']);
+		
+		return $orders;
 	}
 }

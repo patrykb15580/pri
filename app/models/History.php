@@ -58,7 +58,7 @@ class History extends Model
 		$history = new History(['client_id'=>$client_id, 'points'=>$points, 'balance_before'=>$balance_before, 'balance_after'=>$balance_after, 'description'=>$description]);
 
 		if (!$history->save()) {
-			echo "Error";
+			die(print_r('Error'));
 		}
 	}
 }

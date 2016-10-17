@@ -56,24 +56,16 @@ class PromotionAction extends Model
 
 	public function activePackages()
 	{
-		$active_packages = [];
-		foreach ($this->promotionCodesPackages() as $package) {
-			if($package->status == 'active'){
-				array_push($active_packages, $package);
-			}
-		}
-		return $active_packages;
+		$packages = PromotionCodesPackage::where('action_id=? AND status=?', ['action_id'=>$this->id, 'status'=>'active']);;
+		
+		return $packages;
 	}
 
 	public function inactivePackages()
 	{
-		$inactive_packages = [];
-		foreach ($this->promotionCodesPackages() as $package) {
-			if($package->status == 'inactive'){
-				array_push($inactive_packages, $package);
-			}
-		}
-		return $inactive_packages;
+		$packages = PromotionCodesPackage::where('action_id=? AND status=?', ['action_id'=>$this->id, 'status'=>'inactive']);;
+		
+		return $packages;
 	}
 
 	public function codesNumber()

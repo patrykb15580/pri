@@ -9,10 +9,7 @@ class PromotorsController extends Controller
 		$promotor = $this->promotor();
 		$this->auth(__FUNCTION__, $promotor);
 
-		$active_actions = $promotor->activeActions();
-		$inactive_actions = $promotor->inactiveActions();
-
-		$view = (new View($this->params, ['promotor'=>$promotor, 'active_actions'=>$active_actions, 'inactive_actions'=>$inactive_actions]))->render();
+		$view = (new View($this->params, ['promotor'=>$promotor]))->render();
 		return $view;
 	}
 
@@ -39,46 +36,38 @@ class PromotorsController extends Controller
 		$new_password = Password::encryptPassword($this->params['promotor']['password']);
 		$this->params['promotor']['password_degest'] = $new_password;
 
-		if (Password::equalPasswords($old_password, $promotor->password_degest) == true) {
+		if (Password::equalPasswords($old_password, $promotor->password_degest)) {
 			if (Promotor::updatePromotor($this->params)) {
+				$this->alert('info', 'Profil został zaktualizowany');
+
 				header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id']);
-			} else header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id']."/account?update=error");
-		} else header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id'].'/account?password=error');
+			} else {
+				$this->alert('error', 'Nie udało się zaktualizować profilu<br />Spróbuj jeszcze raz');
+
+				header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id']."/account");
+			}
+		} else {
+			$this->alert('error', 'Podane hasła różnią się');
+
+			header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id'].'/account');
+		}
 	}
 
 	public function indexClients()
 	{
 		$promotor = $this->promotor();
 		$this->auth(__FUNCTION__, $promotor);
-		
-		$clients = $promotor->clients();
-		#echo "<pre>";
-		#die(print_r($clients));
-
-		$view = (new View($this->params, ['promotor'=>$promotor, 'clients'=>$clients]))->render();
+	
+		$view = (new View($this->params, ['promotor'=>$promotor]))->render();
 		return $view;
 	}
 
 	public function indexOrders()
 	{
-		$this->auth(__FUNCTION__, $this->promotor());
-		$orders = Order::where('promotor_id=?', ['promotor_id'=>$this->params['promotors_id']]);
-		#echo "<pre>";
-		#die(print_r($orders));
-		$active_orders = [];
-		$completed_orders = [];
-		$canceled_orders = [];
-		foreach ($orders as $order) {
-			if($order->status == 'active'){
-				array_push($active_orders, $order);
-			} else if ($order->status == 'completed') {
-				array_push($completed_orders, $order);
-			} else if ($order->status == 'canceled') {
-				array_push($canceled_orders, $order);
-			}
-		}
+		$promotor = $this->promotor();
+		$this->auth(__FUNCTION__, $promotor);
 		
-		$view = (new View($this->params, ['active_orders'=>$active_orders, 'completed_orders'=>$completed_orders, 'canceled_orders'=>$canceled_orders]))->render();
+		$view = (new View($this->params, ['promotor'=>$promotor]))->render();
 		return $view;
 	}
 
@@ -86,14 +75,10 @@ class PromotorsController extends Controller
 	{
 		$this->auth(__FUNCTION__, $this->promotor());
 		$order = Order::find($this->params['order_id']);
-		$client = $order->client();
+		$image = $order->client();
 		$reward = $order->reward();
-		#echo "<pre>";
-		#die(print_r($client));
 
-		$image = RewardImage::findBy('reward_id', $reward->id);
-		
-		$view = (new View($this->params, ['order'=>$order, 'client'=>$client, 'reward'=>$reward, 'image'=>$image]))->render();
+		$view = (new View($this->params, ['order'=>$order, 'image'=>$image, 'reward'=>$reward]))->render();
 		return $view;
 	}
 

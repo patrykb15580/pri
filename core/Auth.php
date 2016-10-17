@@ -8,7 +8,7 @@
  	public static function isLogged()
  	{
  
- 		if (empty($_SESSION['user'])) {
+ 		if (!isset($_SESSION['user'])) {
  
  			$router = Config::get('router');
  			
@@ -27,7 +27,8 @@
 			Auth::login($promotor[0]);
 			header('Location: '.$router->generate('show_promotors', ['promotors_id'=>$_SESSION['user']->id]));
 		} else {
-			header('Location: '.$router->generate('login', []).'?error=login');
+			new Alerts('error', 'Błędny login lub hasło');
+			header('Location: '.$router->generate('login', []));
 		}
 	} 
 
@@ -40,7 +41,8 @@
 			Auth::login(new Admin);
 			header('Location: '.$router->generate('show_admin', []));
 		} else {
-			header('Location: '.$router->generate('login', []).'?error=login');
+			new Alerts('error', 'Błędny login lub hasło');
+			header('Location: '.$router->generate('login', []));
 		}
 	}
 

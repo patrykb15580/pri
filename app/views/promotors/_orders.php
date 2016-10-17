@@ -9,10 +9,10 @@
 		<td id="first_row" width="15%">Wartość punktowa</td>
 		<td id="first_row" width="15%"></td>
 	</tr>
-<?php foreach ($active_orders as $order) { 
+<?php foreach ($promotor->activeOrders() as $order) { 
 	$reward = $order->reward();
 	$order_path = $router->generate('show_promotors_orders', ['promotors_id' => $params['promotors_id'], 'order_id' => $order->id]); ?>
-	<tr>
+	<tr class="order">
 		<td width="45%"><?= $reward->name ?></td>
 		<td width="25%"><?= $order->created_at ?></td>
 		<td width="15%"><?= $reward->prize ?></td>
@@ -29,10 +29,10 @@
 		<td id="first_row" width="15%">Wartość punktowa</td>
 		<td id="first_row" width="15%"></td>
 	</tr>
-<?php foreach ($completed_orders as $order) { 
+<?php foreach ($promotor->completedOrders() as $order) { 
 	$reward = $order->reward(); 
 	$order_path = $router->generate('show_promotors_orders', ['promotors_id' => $params['promotors_id'], 'order_id' => $order->id]); ?>
-	<tr>
+	<tr class="order">
 		<td width="45%"><?= $reward->name ?></td>
 		<td width="25%"><?= $order->updated_at ?></td>
 		<td width="15%"><?= $reward->prize ?></td>
@@ -49,10 +49,10 @@
 		<td id="first_row" width="15%">Wartość punktowa</td>
 		<td id="first_row" width="15%"></td>
 	</tr>
-<?php foreach ($canceled_orders as $order) { 
+<?php foreach ($promotor->canceledOrders() as $order) { 
 	$reward = $order->reward();
 	$order_path = $router->generate('show_promotors_orders', ['promotors_id' => $params['promotors_id'], 'order_id' => $order->id]); ?>
-	<tr>
+	<tr class="order">
 		<td width="45%"><?= $reward->name ?></td>
 		<td width="25%"><?= $order->updated_at ?></td>
 		<td width="15%"><?= $reward->prize ?></td>

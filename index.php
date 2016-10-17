@@ -24,9 +24,6 @@ if ($match) {
 	$controller = new $controller_name($params);
 	
 	echo $controller->$controller_action($params);
-	#echo "<pre>";
-	#die(print_r($match));
-	#die(print_r($params));
 }
 
 // call closure or throw 404 status

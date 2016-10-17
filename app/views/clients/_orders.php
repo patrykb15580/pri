@@ -5,7 +5,7 @@
 		<td id="first_row" width="25%">Kiedy</td>
 		<td id="first_row" width="15%">Wartość punktowa</td>
 	</tr>
-<?php foreach ($active_orders as $order) { 
+<?php foreach ($client->activeOrders() as $order) { 
 	$reward = $order->reward(); ?>
 	<tr>
 		<td width="60%"><?= $reward->name ?></td>
@@ -22,7 +22,7 @@
 		<td id="first_row" width="25%">Kiedy</td>
 		<td id="first_row" width="15%">Wartość punktowa</td>
 	</tr>
-<?php foreach ($completed_orders as $order) { 
+<?php foreach ($client->completedOrders() as $order) { 
 	$reward = $order->reward(); ?>
 	<tr>
 		<td width="60%"><?= $reward->name ?></td>
@@ -39,7 +39,7 @@
 		<td id="first_row" width="25%">Kiedy</td>
 		<td id="first_row" width="15%">Wartość punktowa</td>
 	</tr>
-<?php foreach ($canceled_orders as $order) { 
+<?php foreach ($client->canceledOrders() as $order) { 
 	$reward = $order->reward(); ?>
 	<tr>
 		<td width="60%"><?= $reward->name ?></td>

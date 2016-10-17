@@ -9,7 +9,7 @@
 <a href="<?= $path_new ?>"><button id="add_new">Nowa nagroda</button></a></div>
 <h3>Aktywne</h3>
 <?php 
-	$rewards = $active_rewards;
+	$rewards = $promotor->activeRewards();
 	#echo "<pre>";
 	#die(print_r($rewards));
 	include 'app/views/rewards/_rewards.php';
@@ -17,7 +17,7 @@
 <br />
 <h3>Nieaktywne</h3>
 <?php 
-	$rewards = $inactive_rewards;
+	$rewards = $promotor->inactiveRewards();
 	#echo "<pre>";
 	#die(print_r($rewards));
 	include 'app/views/rewards/_rewards.php';

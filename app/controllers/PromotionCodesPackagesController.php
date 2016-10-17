@@ -9,7 +9,7 @@ class PromotionCodesPackagesController extends Controller
 	public function show()
 	{
 		$package = $this->package();
-		$this->auth(__FUNCTION__, $package);	
+		$this->auth(__FUNCTION__, $package);
 
 		$view = (new View($this->params, ['package'=>$package]))->render();
 		return $view;
@@ -67,7 +67,7 @@ class PromotionCodesPackagesController extends Controller
 		header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id']."/promotion-actions/".$this->params['action_id']."/package/".$this->params['id']); 
 	}
 
-	/* Funkcja uruchamiana z url */
+	/* Funkcja generująca kody uruchamiana z url */
 	public function generate()
 	{	
 		$packages = PromotionCodesPackage::where('`generated` < `quantity`', []);

@@ -5,13 +5,13 @@ use Sunra\PhpSimple\HtmlDomParser;
 */
 class AdminControllerTest extends Tests
 {
-	/*function seed(){
+	function seed(){
 		MyDB::clearDatabaseExceptSchema();
 
 		$promotor = new Promotor(['email'=>'test1@test.com', 'password_degest'=>Password::encryptPassword('password1'), 'name'=>'promotor1']);
 		$promotor->save();
 
-		$_SESSION['user'] = $promotor;
+		$_SESSION['user'] = new Admin;
 
 		$promotor = new Promotor(['email'=>'test2@test.com', 'password_degest'=>Password::encryptPassword('password2'), 'name'=>'promotor2']);
 		$promotor->save();
@@ -48,8 +48,7 @@ class AdminControllerTest extends Tests
 	{
 		$this->seed();
 
-		$params['promotors_id'] = 1;
-		$params['controller'] = 'PromotorsController';
+		$params['controller'] = 'AdminController';
 		$params['action'] = 'show';
 
 		$action = $params['action'];
@@ -61,18 +60,18 @@ class AdminControllerTest extends Tests
 
 		$elements = $html->find('tr');	
 
-		Assert::expect(count($elements)) -> toEqual(4);
+		Assert::expect(count($elements)) -> toEqual(3);
 
 		unset($_SESSION['user']);
 	}
 
-	public function testEditAction()
+	public function testShowPromotorAction()
 	{
 		$this->seed();
 
-		$params['promotors_id'] = 1;
-		$params['controller'] = 'PromotorsController';
-		$params['action'] = 'edit';
+		$params['promotor_id'] = 1;
+		$params['controller'] = 'AdminController';
+		$params['action'] = 'showPromotor';
 
 		$action = $params['action'];
 
@@ -81,14 +80,18 @@ class AdminControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
-		$elements = $html->find('input');	
+		$elements = $html->find('div#admin_menu_active');	
 
-		Assert::expect(count($elements)) -> toEqual(5);
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('div#admin_menu_inactive');	
+
+		Assert::expect(count($elements)) -> toEqual(3);
 
 		unset($_SESSION['user']);
 	}
 
-	public function testUpdateAction()
+	/*public function testUpdateAction()
 	{
 		$this->seed();
 
