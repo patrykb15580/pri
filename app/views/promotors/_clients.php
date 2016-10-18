@@ -10,7 +10,7 @@
 	$balance = $balance[0];
 	#echo "<pre>";
 	#die(print_r($balance));?>
-	<tr class="client">
+	<tr class="result">
 		<td width="25%"><?= $client->name ?></td>
 		<td width="30%"><?= $client->email ?></td>
 		<td width="30%"><?= $balance->updated_at ?></td>

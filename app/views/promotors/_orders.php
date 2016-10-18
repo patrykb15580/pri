@@ -12,7 +12,7 @@
 <?php foreach ($promotor->activeOrders() as $order) { 
 	$reward = $order->reward();
 	$order_path = $router->generate('show_promotors_orders', ['promotors_id' => $params['promotors_id'], 'order_id' => $order->id]); ?>
-	<tr class="order">
+	<tr class="result">
 		<td width="45%"><?= $reward->name ?></td>
 		<td width="25%"><?= $order->created_at ?></td>
 		<td width="15%"><?= $reward->prize ?></td>
@@ -32,7 +32,7 @@
 <?php foreach ($promotor->completedOrders() as $order) { 
 	$reward = $order->reward(); 
 	$order_path = $router->generate('show_promotors_orders', ['promotors_id' => $params['promotors_id'], 'order_id' => $order->id]); ?>
-	<tr class="order">
+	<tr class="result">
 		<td width="45%"><?= $reward->name ?></td>
 		<td width="25%"><?= $order->updated_at ?></td>
 		<td width="15%"><?= $reward->prize ?></td>
@@ -52,7 +52,7 @@
 <?php foreach ($promotor->canceledOrders() as $order) { 
 	$reward = $order->reward();
 	$order_path = $router->generate('show_promotors_orders', ['promotors_id' => $params['promotors_id'], 'order_id' => $order->id]); ?>
-	<tr class="order">
+	<tr class="result">
 		<td width="45%"><?= $reward->name ?></td>
 		<td width="25%"><?= $order->updated_at ?></td>
 		<td width="15%"><?= $reward->prize ?></td>

@@ -1,7 +1,5 @@
 <?php
 	$router = Config::get('router');
-	#echo "<pre>";
-	#die(print_r($images));
 ?>	
 <h1 id="show_top_title">Zamówienie nr <?= $order->id ?></h1>
 <div id="show_top_options">

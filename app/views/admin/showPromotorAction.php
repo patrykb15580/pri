@@ -1,7 +1,5 @@
 <?php
 	$router = Config::get('router');
-	#echo "<pre>";
-	#die(print_r($promotion_action));
 ?>	
 <h2 id="show_top_title">
 	<a href="<?= $router->generate('show_promotor', ['promotor_id' => $params['promotor_id']]) ?>" id="link_underline">

@@ -7,7 +7,7 @@
 <?php foreach ($promotor->orders() as $order) { 
 	$reward = $order->reward(); 
 	$path_show = $router->generate('show_promotor_order', ['promotor_id' => $promotor->id, 'order_id' => $order->id]);?>
-	<tr>
+	<tr class="result">
 		<td width="45%"><a href="<?= $path_show ?>"><?= $reward->name ?></a></td>
 		<td width="40%"><?= $order->created_at ?></td>
 		<td width="15%"><?= $reward->prize ?></td>

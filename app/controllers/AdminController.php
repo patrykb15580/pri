@@ -53,7 +53,7 @@ class AdminController extends Controller
 	}
 
 	public function showPromotorOrder()
-	{
+	{	
 		$this->auth(__FUNCTION__, new Admin);
 		$promotor = Promotor::find($this->params['promotor_id']);
 		$order = Order::find($this->params['order_id']);

@@ -59,7 +59,7 @@ class PromotorsControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
-		$elements = $html->find('tr.promotion_action');	
+		$elements = $html->find('tr.result');	
 
 		Assert::expect(count($elements)) -> toEqual(2);
 
@@ -132,7 +132,7 @@ class PromotorsControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
-		$elements = $html->find('tr.client');	
+		$elements = $html->find('tr.result');	
 
 		Assert::expect(count($elements)) -> toEqual(1);
 
@@ -154,10 +154,38 @@ class PromotorsControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
-		$elements = $html->find('tr.order');	
+		$elements = $html->find('tr.result');	
 
 		Assert::expect(count($elements)) -> toEqual(2);
 
 		unset($_SESSION['user']);
+	}
+
+	public function testShowOrdersAction()
+	{
+		$this->seed();
+
+		error_reporting(E_ALL & ~E_NOTICE);
+
+		$params['promotors_id'] = 1;
+    	$params['order_id'] = 1;
+    	$params['controller'] = 'PromotorsController';
+    	$params['action'] = 'showOrders';
+
+		$action = $params['action'];
+
+		$controller = new $params['controller']($params);
+		$view = $controller->$action();
+
+		$html = HtmlDomParser::str_get_html($view);
+
+		$elements = $html->find('tr.result');	
+		Assert::expect(count($elements)) -> toEqual(2);
+
+		$elements = $html->find('td.result');	
+		Assert::expect(count($elements)) -> toEqual(4);
+
+		unset($_SESSION['user']);
+		error_reporting(E_ALL);
 	}
 }

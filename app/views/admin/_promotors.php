@@ -13,7 +13,7 @@
 	<?php
 		foreach ($promotors as $promotor) { 
 			$path_edit = $router->generate('show_promotor', ['promotor_id'=>$promotor->id]);?>
-			<tr>
+			<tr class="result">
 				<td width="70%">
 					<a href="<?= $path_edit ?>"><?= $promotor->name ?></a>
 				</td>

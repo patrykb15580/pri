@@ -18,7 +18,7 @@
 			$clients_number = count($promotor->clients());
 			$promotion_actions_number = count($promotor->promotion_actions());
 			$path_edit = $router->generate('edit_promotor_by_admin', ['promotors_id'=>$promotor->id]); ?>
-			<tr>
+			<tr class="result">
 				<td width="60%">
 					<?= $promotor->name ?>
 				</td>

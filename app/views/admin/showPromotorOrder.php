@@ -13,7 +13,7 @@
 Status: <b><?= Order::STATUSES[$order->status] ?></b><br />
 Klient: <b><?= $order->client()->name ?></b><br />
 <table width="100%">
-	<tr>
+	<tr class="result">
 		<td width="20%">
 			Nagroda:
 		</td>
@@ -21,7 +21,7 @@ Klient: <b><?= $order->client()->name ?></b><br />
 			
 		</td>
 	</tr>
-	<tr>
+	<tr class="result">
 		<td width="20%">
 			<?php if (!empty($order->reward()->singleImage())) { ?><img src="/system/reward_images/<?= $order->reward()->singleImage()->id ?>/tiny/<?= $order->reward()->singleImage()->file_name ?>"><?php } ?>
 		</td>

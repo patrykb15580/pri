@@ -25,6 +25,12 @@ class AdminControllerTest extends Tests
 		$promotion_action = new PromotionAction(['name'=>'action3', 'promotors_id'=>2, 'status'=>'active', 'indefinitely'=>1]);
 		$promotion_action->save();
 
+		$package = new PromotionCodesPackage(['name'=>'package1', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>4, 'codes_value'=>143, 'status'=>'active']);
+		$package->save();
+
+		$package = new PromotionCodesPackage(['name'=>'package2', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>4, 'codes_value'=>1324, 'status'=>'active']);
+		$package->save();
+
 		$client = new Client(['email'=>'test1@test.com', 'name'=>'client1', 'phone_number'=>'123456789', 'hash'=>HashGenerator::generate()]);
 		$client->save();
 
@@ -58,9 +64,9 @@ class AdminControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
-		$elements = $html->find('tr');	
+		$elements = $html->find('tr.result');	
 
-		Assert::expect(count($elements)) -> toEqual(3);
+		Assert::expect(count($elements)) -> toEqual(2);
 
 		unset($_SESSION['user']);
 	}
@@ -87,6 +93,124 @@ class AdminControllerTest extends Tests
 		$elements = $html->find('div#admin_menu_inactive');	
 
 		Assert::expect(count($elements)) -> toEqual(3);
+
+		unset($_SESSION['user']);
+	}
+
+	public function testShowPromotorActionAction()
+	{
+		$this->seed();
+
+		$params['promotor_id'] = 1;
+		$params['action_id'] = 1;
+		$params['controller'] = 'AdminController';
+		$params['action'] = 'showPromotor';
+
+		$action = $params['action'];
+
+		$controller = new $params['controller']($params);
+		$view = $controller->$action();
+
+		$html = HtmlDomParser::str_get_html($view);
+
+		$elements = $html->find('tr.result');	
+
+		Assert::expect(count($elements)) -> toEqual(2);
+
+		unset($_SESSION['user']);
+	}
+
+	public function testShowPromotorPackageAction()
+	{
+		$this->seed();
+
+		$params['promotor_id'] = 1;
+    	$params['action_id'] = 1;
+    	$params['package_id'] = 1;
+    	$params['controller'] = 'AdminController';
+    	$params['action'] = 'showPromotorPackage';
+
+    	$curl = new TesterTestRequest((new PromotionCodesPackagesController($params))->generate(), 'http://'.Config::get('host').'/package/generate', null, []);
+
+		$action = $params['action'];
+
+		$controller = new $params['controller']($params);
+		$view = $controller->$action();
+
+		$html = HtmlDomParser::str_get_html($view);
+
+		$elements = $html->find('tr.result');	
+
+		Assert::expect(count($elements)) -> toEqual(4);
+
+		unset($_SESSION['user']);
+	}
+
+	public function testShowPromotorRewardAction()
+	{
+		$this->seed();
+
+		$params['promotor_id'] = 1;
+    	$params['reward_id'] = 1;
+    	$params['controller'] = 'AdminController';
+    	$params['action'] = 'showPromotorReward';
+
+		$action = $params['action'];
+
+		$controller = new $params['controller']($params);
+		$view = $controller->$action();
+
+		$html = HtmlDomParser::str_get_html($view);
+
+		$elements = $html->find('div#reward_description');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('div#reward_images_container');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		unset($_SESSION['user']);
+	}
+
+	public function testShowPromotorOrderAction()
+	{
+		$this->seed();
+
+		$params['promotor_id'] = 1;
+    	$params['order_id'] = 1;
+    	$params['controller'] = 'AdminController';
+    	$params['action'] = 'showPromotorOrder';
+
+		$action = $params['action'];
+
+		$controller = new $params['controller']($params);
+		$view = $controller->$action();
+
+		$html = HtmlDomParser::str_get_html($view);
+
+		$elements = $html->find('tr.result');	
+
+		Assert::expect(count($elements)) -> toEqual(2);
+
+		unset($_SESSION['user']);
+	}
+
+	public function testNewPromotorAction()
+	{
+		$this->seed();
+
+    	$params['controller'] = 'AdminController';
+    	$params['action'] = 'newPromotor';
+
+		$action = $params['action'];
+
+		$controller = new $params['controller']($params);
+		$view = $controller->$action();
+
+		$html = HtmlDomParser::str_get_html($view);
+
+		$elements = $html->find('input');	
+
+		Assert::expect(count($elements)) -> toEqual(5);
 
 		unset($_SESSION['user']);
 	}

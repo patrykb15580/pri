@@ -23,7 +23,7 @@ foreach ($promotors as $promotor) {
 			<?php
 			foreach ($promotor->promotorOrders() as $order) { 
 			$path_show = $router->generate('show_admin_order', ['order_id' => $order->id]);?>
-				<tr>
+				<tr class="result">
 					<td width="20%">
 						<a href="<?= $path_show ?>">
 							<?= $order->package()->name ?>
