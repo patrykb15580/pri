@@ -3,13 +3,15 @@ use Sunra\PhpSimple\HtmlDomParser;
 /**
 * 
 */
-class ClientsControllerTest extends Tests
+class RewardsControllerTest extends Tests
 {
 	function seed(){
 		MyDB::clearDatabaseExceptSchema();
 
 		$promotor = new Promotor(['email'=>'test1@test.com', 'password_degest'=>Password::encryptPassword('password1'), 'name'=>'promotor1']);
 		$promotor->save();
+
+		$_SESSION['user'] = $promotor;
 
 		$promotor = new Promotor(['email'=>'test2@test.com', 'password_degest'=>Password::encryptPassword('password2'), 'name'=>'promotor2']);
 		$promotor->save();
@@ -31,8 +33,6 @@ class ClientsControllerTest extends Tests
 
 		$client = new Client(['email'=>'test1@test.com', 'name'=>'client1', 'phone_number'=>'123456789', 'hash'=>HashGenerator::generate()]);
 		$client->save();
-
-		$_SESSION['user'] = $client;
 
 		$client = new Client(['email'=>'test2@test.com', 'name'=>'client2', 'phone_number'=>'123456789', 'hash'=>HashGenerator::generate()]);
 		$client->save();
@@ -65,25 +65,15 @@ class ClientsControllerTest extends Tests
 		History::addHistoryRecord(1, 100, 243, $description, 'add');
 	}
 
-	public function testShowAction()
+	public function testIndexAction()
 	{
 		$this->seed();
 
-		$params['client_id'] = 1;
-		$params['controller'] = 'ClientsController';
-		$params['action'] = 'show';
+		$params['promotors_id'] = 1;
+		$params['controller'] = 'RewardsController';
+		$params['action'] = 'index';
 
 		$action = $params['action'];
-
-		$curl = new TesterTestRequest((new PromotionCodesPackagesController($params))->generate(), 'http://'.Config::get('host').'/package/generate', null, []);
-
-		$code = PromotionCode::all([]);
-
-		$code1 = $code[0];
-		$code1->update(['used'=>date(Config::get('mysqltime')), 'client_id'=>1]);
-
-		$code2 = $code[1];
-		$code2->update(['used'=>date(Config::get('mysqltime')), 'client_id'=>1]);
 
 		$controller = new $params['controller']($params);
 		$view = $controller->$action();
@@ -97,38 +87,14 @@ class ClientsControllerTest extends Tests
 		unset($_SESSION['user']);
 	}
 
-	public function testIndexRewardsAction()
+	public function testShowAction()
 	{
 		$this->seed();
 
-		$params['client_id'] = 1;
 		$params['promotors_id'] = 1;
-		$params['controller'] = 'ClientsController';
-		$params['action'] = 'indexRewards';
-
-		$action = $params['action'];
-
-		$controller = new $params['controller']($params);
-		$view = $controller->$action();
-
-		$html = HtmlDomParser::str_get_html($view);
-
-		$elements = $html->find('div#reward_box');	
-
-		Assert::expect(count($elements)) -> toEqual(1);
-
-		unset($_SESSION['user']);
-	}
-
-	public function testShowRewardsAction()
-	{
-		$this->seed();
-
-		$params['promotor_id'] = 1;
-		$params['client_id'] = 1;
-		$params['reward_id'] = 1;
-		$params['controller'] = 'ClientsController';
-		$params['action'] = 'showRewards';
+		$params['id'] = 1;
+		$params['controller'] = 'RewardsController';
+		$params['action'] = 'show';
 
 		$action = $params['action'];
 
@@ -146,35 +112,13 @@ class ClientsControllerTest extends Tests
 		unset($_SESSION['user']);
 	}
 
-	public function testIndexHistoryAction()
+	public function testNewAction()
 	{
 		$this->seed();
 
-		$params['client_id'] = 1;
-    	$params['controller'] = 'ClientsController';
-    	$params['action'] = 'indexHistory';
-
-    	$action = $params['action'];
-
-		$controller = new $params['controller']($params);
-		$view = $controller->$action();
-
-		$html = HtmlDomParser::str_get_html($view);
-
-		$elements = $html->find('tr.result');	
-		Assert::expect(count($elements)) -> toEqual(1);
-
-		unset($_SESSION['user']);
-	}
-
-	public function testNewOrderAction()
-	{
-		$this->seed();
-
-		$params['client_id'] = 1;
-    	$params['reward_id'] = 1;
-    	$params['controller'] = 'ClientsController';
-    	$params['action'] = 'newOrder';
+		$params['promotors_id'] = 1;
+		$params['controller'] = 'RewardsController';
+		$params['action'] = 'new';
 
 		$action = $params['action'];
 
@@ -183,52 +127,59 @@ class ClientsControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
-		$elements = $html->find('tr.result');	
-		Assert::expect(count($elements)) -> toEqual(2);
+		$elements = $html->find('input');	
+		Assert::expect(count($elements)) -> toEqual(4);
+
+		$elements = $html->find('select');	
+		Assert::expect(count($elements)) -> toEqual(1);
 
 		$elements = $html->find('textarea');	
 		Assert::expect(count($elements)) -> toEqual(1);
 
-		$elements = $html->find('input');	
+		$elements = $html->find('div#reward_images_container');	
 		Assert::expect(count($elements)) -> toEqual(1);
 
 		unset($_SESSION['user']);
 	}
 
-	public function testGetRewardAction()
+	public function testCreateAction()
 	{
 		$this->seed();
 
 		error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
 
-		$params['client_id'] = 1;
-		$params['reward_id'] = 1;
-		$params['controller'] = 'ClientsController';
-		$params['action'] = 'getReward';
-		$params['order'] = ['comment'=>''];
+		$params['promotors_id'] = 1;
+		$params['controller'] = 'RewardsController';
+		$params['action'] = 'create';
+		$params['reward'] = ['name' => 'test',
+            				 'status' => 'active',
+            				 'prize' => 12,
+            				 'description' => 'desc'];
 
 		$action = $params['action'];
 
 		$controller = new $params['controller']($params);
 		$view = $controller->$action();
+		
+		$reward = Reward::where('promotors_id=? AND name=?', ['promotors_id'=>$params['promotors_id'], 'name'=>$params['reward']['name']]);
+		$reward = $reward[0];
 
-		$order = Order::where('client_id=? AND promotor_id=? AND reward_id=?', ['client_id'=>1, 'promotor_id'=>1, 'reward_id'=>1]);
-		$order = $order[0];
-
-		Assert::expect($order->client_id) -> toEqual($params['client_id']);
-		Assert::expect($order->promotor_id) -> toEqual(1);
-		Assert::expect($order->reward_id) -> toEqual($params['reward_id']);
+		Assert::expect($reward->name) -> toEqual($params['reward']['name']);
+		Assert::expect($reward->promotors_id) -> toEqual($params['promotors_id']);
+		Assert::expect($reward->status) -> toEqual($params['reward']['status']);
 
 		unset($_SESSION['user']);
+		error_reporting(E_ALL);
 	}
 
-	public function testindexOrdersAction()
+	public function testEditAction()
 	{
 		$this->seed();
 
-		$params['client_id'] = 1;
-    	$params['controller'] = 'ClientsController';
-    	$params['action'] = 'indexOrders';
+		$params['promotors_id'] = 1;
+		$params['id'] = 1;
+		$params['controller'] = 'RewardsController';
+		$params['action'] = 'new';
 
 		$action = $params['action'];
 
@@ -237,10 +188,72 @@ class ClientsControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
-		$elements = $html->find('tr.result');	
+		$elements = $html->find('input');	
+		Assert::expect(count($elements)) -> toEqual(4);
 
-		Assert::expect(count($elements)) -> toEqual(2);
+		$elements = $html->find('select');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('textarea');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('div#reward_images_container');	
+		Assert::expect(count($elements)) -> toEqual(1);
 
 		unset($_SESSION['user']);
+	}
+
+	public function testUpdateAction()
+	{
+		$this->seed();
+
+		error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
+
+		$params['promotors_id'] = 1;
+		$params['id'] = 1;
+		$params['controller'] = 'RewardsController';
+		$params['action'] = 'update';
+		$params['reward'] = ['name' => 'test2',
+            				 'status' => 'inactive',
+            				 'prize' => 16,
+            				 'description' => 'desc2'];
+
+		$action = $params['action'];
+
+		$controller = new $params['controller']($params);
+		$view = $controller->$action();
+		
+		$reward = Reward::find($params['id']);
+
+		Assert::expect($reward->name) -> toEqual($params['reward']['name']);
+		Assert::expect($reward->promotors_id) -> toEqual($params['promotors_id']);
+		Assert::expect($reward->status) -> toEqual($params['reward']['status']);
+
+		unset($_SESSION['user']);
+		error_reporting(E_ALL);
+	}
+
+	public function testDeleteAction()
+	{
+		$this->seed();
+
+		error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
+
+		$params['promotors_id'] = 1;
+		$params['id'] = 1;
+		$params['controller'] = 'RewardsController';
+		$params['action'] = 'delete';
+
+		$action = $params['action'];
+
+		$controller = new $params['controller']($params);
+		$view = $controller->$action();
+		
+		$reward = Reward::where('id=?', ['id'=>$params['id']]);
+
+		Assert::expect(empty($reward)) -> toEqual(true);
+
+		unset($_SESSION['user']);
+		error_reporting(E_ALL);
 	}
 }

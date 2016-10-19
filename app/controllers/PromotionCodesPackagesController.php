@@ -68,7 +68,7 @@ class PromotionCodesPackagesController extends Controller
 	}
 
 	/* Funkcja generująca kody uruchamiana z url */
-	public function generate()
+	public function generate($lenght = 6)
 	{	
 		$packages = PromotionCodesPackage::where('`generated` < `quantity`', []);
 
@@ -78,7 +78,7 @@ class PromotionCodesPackagesController extends Controller
 
 			while ($i < $number_codes_to_generate) { 
 				$code_generator = new PromotionCodesGenerator;
-				$code = $code_generator->promotionCodeGenerator(6);
+				$code = $code_generator->promotionCodeGenerator($lenght);
 				$promotion_code = new PromotionCode(['code'=>$code, 'package_id'=>$package->id]);
 
 				if ($promotion_code->save()) {

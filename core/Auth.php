@@ -57,7 +57,8 @@
 			Auth::login($client);
 			header('Location: '.$router->generate('show_client', ['client_id'=>$_SESSION['user']->id]));
 		} else {
-			header('Location: '.$router->generate('login', []).'?error=hash');
+			new Alerts('error', 'Błędny identyfikator klienta');
+			header('Location: '.$router->generate('login', []));
 		}
 	} 
 
