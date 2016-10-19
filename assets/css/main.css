@@ -367,7 +367,7 @@ input[type="text"]{
   width: 40%;
   height: 24px;
   font-size: 14px;
-  text-align: center;
+  text-align: left;
   padding: 4px 4px 4px 4px;
   border: 1px;
   border-radius: 10px 10px 10px 10px;
@@ -387,7 +387,7 @@ input#prize[type="text"]{
   width: 10%;
   height: 24px;
   font-size: 14px;
-  text-align: center;
+  text-align: right;
   padding: 4px 4px 4px 4px;
   border: 1px;
   border-radius: 10px 10px 10px 10px;

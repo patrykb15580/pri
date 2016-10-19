@@ -8,3 +8,11 @@
 	<br /><br /><input id="insert_code" type="text" name="code">
 	<input id="insert_code" type="submit" value="Zatwierdź">
 </form>
+<br /><a href="<?= $router->generate('login', []); ?>"><button id="center">Logowanie promotora</button></a>
+
+<?php
+	$codes = PromotionCode::where('package_id=?', ['package_id'=>1]);
+	foreach ($codes as $code) {
+		echo $code->code."<br />";
+	}
+?>

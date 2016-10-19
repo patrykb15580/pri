@@ -17,6 +17,10 @@
 	<br /><br />Hasło:
 	<br /><input id="login" type="password" name="password">
 	<br /><br /><input id="login" type="submit" value="Zaloguj">
+	admin->zaq1@WSX
+	promotor1 -> test1@test.com -> password1
+	promotor2 -> test2@test.com -> password2
+	promotor3 -> test3@test.com -> password3
 </form>
 </body>
 </html>
