@@ -11,7 +11,7 @@ foreach ($client->promotors() as $promotor) {
 	</tr>
 <?php foreach ($client->promotionActions() as $promotion_action) { 
 	if ($promotion_action->promotors_id == $promotor->id) { ?>
-		<tr>
+		<tr class="result">
 			<td width="80%"><?= $promotion_action->name ?></td>
 			<td width="20%"><?= $client->promotionActionsValues()[$promotion_action->id] ?> pkt</td>
 		</tr>

@@ -28,8 +28,14 @@ class AdminControllerTest extends Tests
 		$package = new PromotionCodesPackage(['name'=>'package1', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>4, 'codes_value'=>143, 'status'=>'active']);
 		$package->save();
 
+		$admin_order = new AdminOrder(['promotor_id'=>1, 'package_id'=>1, 'quantity'=>4, 'reusable'=>0, 'order_date'=>$package->created_at]);
+		$admin_order->save();
+
 		$package = new PromotionCodesPackage(['name'=>'package2', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>4, 'codes_value'=>1324, 'status'=>'active']);
 		$package->save();
+
+		$admin_order = new AdminOrder(['promotor_id'=>1, 'package_id'=>2, 'quantity'=>4, 'reusable'=>0, 'order_date'=>$package->created_at]);
+		$admin_order->save();
 
 		$client = new Client(['email'=>'test1@test.com', 'name'=>'client1', 'phone_number'=>'123456789', 'hash'=>HashGenerator::generate()]);
 		$client->save();
@@ -37,7 +43,7 @@ class AdminControllerTest extends Tests
 		$points_balance = new PointsBalance(['client_id'=>1, 'promotor_id'=>1, 'balance'=>100]);
 		$points_balance->save();
 
-		$reward = new Reward(['name' => 'Reward1', 'status' => 'active', 'prize' => 10, 'description' => 'Desc', 'promotors_id' => $promotor->id]);
+		$reward = new Reward(['name' => 'Reward1', 'status' => 'active', 'prize' => 10, 'description' => 'Desc', 'promotors_id' => 1]);
 		$reward->save();
 
 		$order = new Order(['promotor_id'=>1, 'client_id'=>1, 'reward_id'=>1, 'order_date'=>date(Config::get('mysqltime'))]);
@@ -215,19 +221,71 @@ class AdminControllerTest extends Tests
 		unset($_SESSION['user']);
 	}
 
-	/*public function testUpdateAction()
+	public function testCreatePromotorAction()
+	{
+		$this->seed();
+
+		error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
+
+		$params['controller'] = 'AdminController';
+    	$params['action'] = 'createPromotor';
+    	$params['promotor'] = ['name' => 'Promotor',
+				    	        'email' => 'test@prom.com',
+				    	        'password_degest' => 'pass'];
+
+    	$params['confirm_password'] = 'pass';
+
+		$action = $params['action'];
+
+		$controller = new $params['controller']($params);
+		$view = $controller->$action();
+		
+		$promotor = Promotor::findBy('email', $params['promotor']['email']);
+		
+		Assert::expect($promotor->name) -> toEqual($params['promotor']['name']);
+		Assert::expect($promotor->email) -> toEqual($params['promotor']['email']);
+		Assert::expect($promotor->password_degest) -> toEqual(Password::encryptPassword($params['promotor']['password_degest']));
+
+		unset($_SESSION['user']);
+		error_reporting(E_ALL);
+	}
+
+	public function testEditPromotorAction()
+	{
+		$this->seed();
+
+		$params['promotors_id'] = 1;
+    	$params['controller'] = 'AdminController';
+    	$params['action'] = 'editPromotor';
+
+		$action = $params['action'];
+
+		$controller = new $params['controller']($params);
+		$view = $controller->$action();
+
+		$html = HtmlDomParser::str_get_html($view);
+
+		$elements = $html->find('input');	
+
+		Assert::expect(count($elements)) -> toEqual(5);
+
+		unset($_SESSION['user']);
+	}
+
+	public function testUpdatePromotorAction()
 	{
 		$this->seed();
 
 		error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
 
 		$params['promotors_id'] = 1;
-		$params['controller'] = 'PromotorsController';
-		$params['action'] = 'update';
-		$params['promotor'] = ['name'=>'promotor',
-							   'email'=>'test@test.com',
-							   'password'=>'pass1'];
-		$params['old_password'] = 'password1';
+		$params['controller'] = 'AdminController';
+    	$params['action'] = 'updatePromotor';
+    	$params['promotor'] = ['name' => 'NewPromotor',
+				    	        'email' => 'test@prom.com',
+				    	        'password' => 'pass'];
+
+    	$params['old_password'] = 'password1';
 
 		$action = $params['action'];
 
@@ -235,7 +293,7 @@ class AdminControllerTest extends Tests
 		$view = $controller->$action();
 		
 		$promotor = Promotor::find($params['promotors_id']);
-		
+
 		Assert::expect($promotor->name) -> toEqual($params['promotor']['name']);
 		Assert::expect($promotor->email) -> toEqual($params['promotor']['email']);
 		Assert::expect($promotor->password_degest) -> toEqual(Password::encryptPassword($params['promotor']['password']));
@@ -244,13 +302,12 @@ class AdminControllerTest extends Tests
 		error_reporting(E_ALL);
 	}
 
-	public function testIndexClientsAction()
+	public function testIndexOrdersAction()
 	{
 		$this->seed();
 
-		$params['promotors_id'] = 1;
-		$params['controller'] = 'PromotorsController';
-		$params['action'] = 'indexClients';
+		$params['controller'] = 'AdminController';
+		$params['action'] = 'indexOrders';
 
 		$action = $params['action'];
 
@@ -259,20 +316,20 @@ class AdminControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
-		$elements = $html->find('tr');	
+		$elements = $html->find('tr.result');	
 
 		Assert::expect(count($elements)) -> toEqual(2);
 
 		unset($_SESSION['user']);
 	}
 
-	public function testIndexOrdersAction()
+	public function testShowOrderAction()
 	{
 		$this->seed();
 
-		$params['promotors_id'] = 1;
-	    $params['controller'] = 'PromotorsController';
-	    $params['action'] = 'indexOrders';
+		$params['order_id'] = 1;
+	    $params['controller'] = 'AdminController';
+	    $params['action'] = 'showOrder';
 
 		$action = $params['action'];
 
@@ -281,10 +338,10 @@ class AdminControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
-		$elements = $html->find('tr');	
+		$elements = $html->find('tr.result');	
 
-		Assert::expect(count($elements)) -> toEqual(5);
+		Assert::expect(count($elements)) -> toEqual(7);
 
 		unset($_SESSION['user']);
-	}*/
+	}
 }

@@ -77,7 +77,6 @@ class PromotionCodesPackagesController extends Controller
 			$number_codes_to_generate = $package->quantity - $package->generated;
 
 			while ($i < $number_codes_to_generate) { 
-
 				$code_generator = new PromotionCodesGenerator;
 				$code = $code_generator->promotionCodeGenerator(6);
 				$promotion_code = new PromotionCode(['code'=>$code, 'package_id'=>$package->id]);

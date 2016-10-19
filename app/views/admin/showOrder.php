@@ -6,11 +6,26 @@
 
 </div>
 <hr>
-Promotor: <?= $order->promotor()->name ?>
-<br />Paczka kodów: <?= $order->package()->name ?>
-<br />Id paczki kodów: <?= $order->package()->id ?>
-<br />Status: <?= AdminOrder::STATUSES[$order->status] ?>
-<br />Nakład: <?= $order->quantity ?> szt
-<br />Typ: <?= AdminOrder::TYPES[$order->reusable] ?>
-<br />Data zamówienia: <?= $order->order_date ?>
-
+<table width="50%">
+	<tr class="result">
+		<td width="40%"><h1><?= $order->promotor()->name ?></h1></td><td width="60%"></td>
+	</tr>
+	<tr class="result">
+		<td width="40%">Paczka kodów:</td><td width="60%"><?= $order->package()->name ?></td>
+	</tr>
+	<tr class="result">
+		<td width="40%">Id paczki kodów:</td><td width="60%"><?= $order->package()->id ?></td>
+	</tr>
+	<tr class="result">
+		<td width="40%">Status:</td><td width="60%"><?= AdminOrder::STATUSES[$order->status] ?></td>
+	</tr>
+	<tr class="result">
+		<td width="40%">Nakład:</td><td width="60%"><?= $order->quantity ?> szt</td>
+	</tr>
+	<tr class="result">
+		<td width="40%">Typ:</td><td width="60%"><?= AdminOrder::TYPES[$order->reusable] ?></td>
+	</tr>
+	<tr class="result">
+		<td width="40%">Data zamówienia:</td><td width="60%"><?= $order->order_date ?></td>
+	</tr>
+</table>

@@ -9,10 +9,10 @@ class PromotionCodesPackagesControllerTest extends Tests
 	{
 		$_SESSION['user'] = new Admin;
 		$params['action'] = 'generate';
-		$package1 = new PromotionCodesPackage(['name'=>'name', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>10, 'codes_value'=>50, 'status'=>'active']);
-		$package1->save();
+		$package = new PromotionCodesPackage(['name'=>'name', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>10, 'codes_value'=>50, 'status'=>'active']);
+		$package->save();
 		$curl = new TesterTestRequest((new PromotionCodesPackagesController($params))->generate(), 'http://'.Config::get('host').'/package/generate', null, []);
-		$codes = PromotionCode::where('package_id=?', ['package_id'=>$package1->id]);
+		$codes = PromotionCode::where('package_id=?', ['package_id'=>$package->id]);
 
 		Assert::expect(count($codes)) -> toEqual(10);
 	}
@@ -21,11 +21,24 @@ class PromotionCodesPackagesControllerTest extends Tests
 	{
 		$_SESSION['user'] = new Admin;
 		$params['action'] = 'generate';
-		$package2 = new PromotionCodesPackage(['name'=>'name', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>10, 'generated'=>5, 'codes_value'=>50, 'status'=>'active']);
-		$package2->save();
+		$package = new PromotionCodesPackage(['name'=>'name', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>10, 'generated'=>5, 'codes_value'=>50, 'status'=>'active']);
+		$package->save();
 		$curl = new TesterTestRequest((new PromotionCodesPackagesController($params))->generate(), 'http://'.Config::get('host').'/package/generate', null, []);
-		$codes = PromotionCode::where('package_id=?', ['package_id'=>$package2->id]);
+		$codes = PromotionCode::where('package_id=?', ['package_id'=>$package->id]);
 
 		Assert::expect(count($codes)) -> toEqual(5);
+	}
+
+	public function testPromotionCodeHave6Chars()
+	{
+		$_SESSION['user'] = new Admin;
+		$params['action'] = 'generate';
+		$package = new PromotionCodesPackage(['name'=>'name', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>10, 'generated'=>5, 'codes_value'=>50, 'status'=>'active']);
+		$package->save();
+		$curl = new TesterTestRequest((new PromotionCodesPackagesController($params))->generate(), 'http://'.Config::get('host').'/package/generate', null, []);
+		$codes = PromotionCode::where('package_id=?', ['package_id'=>$package->id]);
+
+		$code = $codes[0];
+		Assert::expect(strlen($code->code)) -> toEqual(6);
 	}
 }

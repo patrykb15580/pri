@@ -16,7 +16,7 @@
 	Nazwa:<br />
 	<input type="text" name="promotor[name]" value="<?= $promotor->name ?>"><br /><br />
 	E-mail:<br />
-	<input type="text" name="promotor[email]" value="<?= $promotor->email ?>"><br /><br />
+	<input type="text" name="promotor[email]" value="<?= $promotor->email ?>"><br /><br /><br />
 	Hasło:<br />
 	<input type="password" name="promotor[password_degest]">
 	<?php if (isset($params['password'])) {

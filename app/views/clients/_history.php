@@ -7,7 +7,7 @@
 		<td id="first_row" width="10%">Saldo po</td>
 	</tr>
 <?php foreach ($histories as $history) { ?> 
-	<tr>
+	<tr class="result">
 		<td width="46%"><?= $history->description ?></td>
 		<td width="24%"><?= $history->created_at ?></td>
 		<td width="10%"><?= $history->points ?></td>

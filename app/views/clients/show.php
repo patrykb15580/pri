@@ -6,7 +6,7 @@
 <?php 
 	#echo "<pre>";
 	#die(print_r($promotors));
-	include 'app/views/clients/_promotion_codes.php';
+	include 'app/views/clients/_promotion_actions.php';
 ?>
 
 
