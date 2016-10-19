@@ -66,4 +66,11 @@ class PromotionCode extends Model
 			return false;
 		}
 	}
+	public function promotor()
+	{
+		$package = $this->package();
+		$promotor = $package->promotor();
+
+		return $promotor;
+	}
 }
