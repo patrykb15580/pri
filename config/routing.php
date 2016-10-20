@@ -9,6 +9,7 @@ $router->map( 'GET', '/admin', 'AdminController#show', 'show_admin' );
 $router->map( 'GET', '/admin/new-promotor', 'AdminController#newPromotor', 'new_promotors' );
 $router->map( 'GET', '/admin/promotor/[i:promotor_id]', 'AdminController#showPromotor', 'show_promotor' );
 $router->map( 'GET', '/admin/promotor/[i:promotor_id]/action/[i:action_id]', 'AdminController#showPromotorAction', 'show_promotor_action' );
+$router->map( 'GET', '/admin/promotor/[i:promotor_id]/stats', 'AdminController#showPromotorStats', 'show_promotor_stats' );
 $router->map( 'GET', '/admin/promotor/[i:promotor_id]/action/[i:action_id]/package/[i:package_id]', 'AdminController#showPromotorPackage', 'show_promotor_package' );
 $router->map( 'GET', '/admin/promotor/[i:promotor_id]/reward/[i:reward_id]', 'AdminController#showPromotorReward', 'show_promotor_reward' );
 $router->map( 'GET', '/admin/promotor/[i:promotor_id]/order/[i:order_id]', 'AdminController#showPromotorOrder', 'show_promotor_order' );
@@ -20,6 +21,7 @@ $router->map( 'GET', '/admin/orders/[i:order_id]', 'AdminController#showOrder', 
 
 
 $router->map( 'GET', '/promotors/[i:promotors_id]', 'PromotorsController#show', 'show_promotors' );
+$router->map( 'GET', '/promotors/[i:promotors_id]/stats', 'PromotorsController#stats', 'stats_promotors' );
 $router->map( 'GET', '/promotors/[i:promotors_id]/account', 'PromotorsController#edit', 'edit_promotor' );
 $router->map( 'POST', '/promotors/[i:promotors_id]/account/update', 'PromotorsController#update', 'update_promotor' );
 $router->map( 'GET', '/promotors/[i:promotors_id]/clients', 'PromotorsController#indexClients', 'index_clients' );

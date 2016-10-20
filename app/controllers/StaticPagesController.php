@@ -45,31 +45,39 @@ class StaticPagesController extends Controller
 		$package = $code->package();
 		$promotion_action = $package->promotionAction();
 		$promotor = $promotion_action->promotor();
-
-		$code = PromotionCode::findBy('code', $this->params['code']);
-		$code->update(['used'=>date(Config::get('mysqltime')), 'client_id'=>$client->id]);
-
-		$points_balance = PointsBalance::where('client_id=? AND promotor_id=?', ['client_id'=>$client->id, 'promotor_id'=>$promotor->id]);
-
-		if (!empty($points_balance)) {
-			$points_balance = $points_balance[0];
-			$balance = $points_balance->balance + $package->codes_value;
-			if ($points_balance->update(['balance'=>$balance])) {
-				$description = 'Wykorzystanie kodu '.$this->params['code'].' w akcji '.$promotion_action->name;
-				History::addHistoryRecord($client->id, $balance, $package->codes_value, $description, 'add');
-			}
-
-		} else {
-			$points_balance = new PointsBalance(['client_id'=>$client->id, 'promotor_id'=>$promotor->id, 'balance'=>$package->codes_value]);
-			if ($points_balance->save()) {
-				$description = 'Wykorzystanie kodu '.$this->params['code'].' w akcji '.$promotion_action->name;
-				History::addHistoryRecord($client->id, $package->codes_value, $package->codes_value, $description, 'add');
-			}
-		} 
-
+		
 		$router = Config::get('router');
-		$path = $router->generate('confirmation', ['code'=>$this->params['code']]);
-		header('Location: '.$path);
+
+		if ($this->emptyFormCheck($this->params)) {
+			$this->alert('error', 'Wypełnij wszystkie pola');
+			$path = $router->generate('use_code', ['code'=>$this->params['code']]);
+			header('Location: '.$path);
+		} else {
+			$code = PromotionCode::findBy('code', $this->params['code']);
+			$code->update(['used'=>date(Config::get('mysqltime')), 'client_id'=>$client->id]);
+
+			$points_balance = PointsBalance::where('client_id=? AND promotor_id=?', ['client_id'=>$client->id, 'promotor_id'=>$promotor->id]);
+			if (!empty($points_balance)) {
+				$points_balance = $points_balance[0];
+				$balance = $points_balance->balance + $package->codes_value;
+				if ($points_balance->update(['balance'=>$balance])) {
+					$description = 'Wykorzystanie kodu '.$this->params['code'].' w akcji '.$promotion_action->name;
+					History::addHistoryRecord($client->id, $balance, $package->codes_value, $description, 'add');
+				}
+
+			} else {
+				$points_balance = new PointsBalance(['client_id'=>$client->id, 'promotor_id'=>$promotor->id, 'balance'=>$package->codes_value]);
+				if ($points_balance->save()) {
+					$description = 'Wykorzystanie kodu '.$this->params['code'].' w akcji '.$promotion_action->name;
+					History::addHistoryRecord($client->id, $package->codes_value, $package->codes_value, $description, 'add');
+				}
+			} 
+
+			$path = $router->generate('confirmation', ['code'=>$this->params['code']]);
+			header('Location: '.$path);
+		}
+
+		
 	}
 
 	public function confirmation()
@@ -96,6 +104,19 @@ class StaticPagesController extends Controller
 			return $client;
 		} else {
 			return $client;
+		}
+	}
+
+	private function emptyFormCheck($params)
+	{
+		if (empty($params['client']['email'])) {
+			return true;
+		} else if (empty($params['client']['name'])) {
+			return true;
+		} else if (empty($params['client']['phone_number'])) {
+			return true;
+		} else {
+			return false;
 		}
 	}
 }

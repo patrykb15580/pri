@@ -20,6 +20,21 @@ class PromotorsPolices extends Polices
 		}
 	}
 
+	public function stats()
+	{
+		if ($this->user->isPromotor() && $this->user->id == $this->obj->id) {
+			return true;
+		}
+
+		if ($this->user->isClient()) {
+			return false;
+		}
+
+		if ($this->user->isAdmin()) {
+			return true;
+		}
+	}
+
 	public function edit()
 	{
 		if ($this->user->isPromotor() && $this->user->id == $this->obj->id) {

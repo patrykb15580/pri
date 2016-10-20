@@ -160,6 +160,9 @@ p.red{
 b#title{
   font-size: 20px;
 }
+p.linethrough{
+  text-decoration: line-through;
+}
 
 /* Views table */
 table{ 
@@ -444,7 +447,7 @@ div#admin_menu_box{
 div#admin_menu_active{
   display: inline-block;
   float: left;
-  width: 24.9%;
+  width: 19.9%;
   margin: 10px 0px 40px 0px;
   padding: 10px 0px 10px 0px;
   text-align: center;
@@ -456,7 +459,7 @@ div#admin_menu_active:hover{
   display: inline-block;
   float: left;
   background-color: rgba(64, 64, 64, 0.3);
-  width: 24.9%;
+  width: 19.9%;
   margin: 10px 0px 40px 0px;
   padding: 10px 0px 10px 0px;
   text-align: center;
@@ -468,7 +471,7 @@ div#admin_menu_active:hover{
 div#admin_menu_inactive{
   display: inline-block;
   float: left;
-  width: 24.9%;
+  width: 19.9%;
   margin: 10px 0px 10px 0px;
   padding: 10px 0px 10px 0px;
   text-align: center;
@@ -480,7 +483,7 @@ div#admin_menu_inactive:hover{
   display: inline-block;
   float: left;
   background-color: rgba(64, 64, 64, 0.3);
-  width: 24.9%;
+  width: 19.9%;
   margin: 10px 0px 10px 0px;
   padding: 10px 0px 10px 0px;
   text-align: center;
@@ -490,3 +493,11 @@ div#admin_menu_inactive:hover{
   border-style: solid;
 }
 
+/*Statystyki*/
+div#stats_box{
+  display: block;
+  background-color: rgba(200, 200, 200, 0.4);
+  width: 98%;
+  padding: 2%;
+  margin: 2px 0px;
+}

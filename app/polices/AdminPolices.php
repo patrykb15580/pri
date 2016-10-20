@@ -50,6 +50,21 @@ class AdminPolices extends Polices
 		}
 	}
 
+	public function showPromotorStats()
+	{
+		if ($this->user->isPromotor()) {
+			return false;
+		}
+
+		if ($this->user->isClient()) {
+			return false;
+		}
+
+		if ($this->user->isAdmin()) {
+			return true;
+		}
+	}
+
 	public function showPromotorPackage()
 	{
 		if ($this->user->isPromotor()) {

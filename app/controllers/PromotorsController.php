@@ -13,6 +13,15 @@ class PromotorsController extends Controller
 		return $view;
 	}
 
+	public function stats()
+	{
+		$promotor = $this->promotor();
+		$this->auth(__FUNCTION__, $promotor);
+
+		$view = (new View($this->params, ['promotor'=>$promotor]))->render();
+		return $view;
+	}
+
 	public function edit()
 	{
 		$promotor = $this->promotor();

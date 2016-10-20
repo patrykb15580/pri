@@ -52,7 +52,39 @@ class Promotor extends Model
 
 	public function promotionCodes()
 	{
-		return PromotionCode::where('promotors_id=?', ['promotors_id'=>$this->id]);
+		$actions = $this->promotionActions();
+		$codes = [];
+		foreach ($actions as $action) {
+			$action_codes = $action->codes();
+			foreach ($action_codes as $code) {
+				array_push($codes, $code);
+			}
+		}
+		return $codes;
+	}
+
+	public function usedCodes()
+	{
+		$actions = $this->promotionActions();
+		$codes = [];
+		foreach ($actions as $action) {
+			$used_codes = $action->usedCodes();
+			foreach ($used_codes as $code) {
+				array_push($codes, $code);
+			}
+		}
+		return $codes;
+	}
+
+	public function recentlyUsedCodes()
+	{
+		$codes = $this->usedCodes();
+
+		usort($codes, function ($a, $b) {
+		   return strtotime($b->used) - strtotime($a->used);
+		});
+
+		return $codes;
 	}
 
 	public function clients()
@@ -64,6 +96,15 @@ class Promotor extends Model
 			$client = Client::find($balance->client_id);
 			$clients[$client->id] = $client;
 		}
+
+		return $clients;
+	}
+
+	public function newestClients()
+	{
+		$clients = $this->clients();
+
+		$clients = array_slice($clients, 0, 5);
 
 		return $clients;
 	}

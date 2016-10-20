@@ -4,6 +4,11 @@
 			Akcje promocyjne
 		</div>
 	</a>
+	<a href="/admin/promotor/<?= $params['promotor_id'] ?>?show=stats">
+		<div id="<?= H::adminCurrentMenu($params, 'stats') ?>">
+			Statystyki
+		</div>
+	</a>
 	<a href="/admin/promotor/<?= $params['promotor_id'] ?>?show=rewards">
 		<div id="<?= H::adminCurrentMenu($params, 'rewards') ?>">
 			Katalog nagród

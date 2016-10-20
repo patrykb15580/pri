@@ -32,6 +32,15 @@ class AdminController extends Controller
 		return $view;
 	}
 
+	public function showPromotorStats()
+	{
+		$this->auth(__FUNCTION__, new Admin);
+		$promotor = Promotor::find($this->params['promotor_id']);
+
+		$view = (new View($this->params, ['promotor'=>$promotor]))->render();
+		return $view;
+	}
+
 	public function showPromotorPackage()
 	{
 		$this->auth(__FUNCTION__, new Admin);

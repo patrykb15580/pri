@@ -17,10 +17,21 @@
 	<br /><br />Hasło:
 	<br /><input id="login" type="password" name="password">
 	<br /><br /><input id="login" type="submit" value="Zaloguj">
-	admin->zaq1@WSX
-	promotor1 -> test1@test.com -> password1
-	promotor2 -> test2@test.com -> password2
-	promotor3 -> test3@test.com -> password3
+	<br />admin -> zaq1@WSX
+	<br /><br />
+	<hr>
+	Promotors:<br /><br />
+	<br />test1@test.com -> password1
+	<br />test2@test.com -> password2
+	<br />test3@test.com -> password3
+	<br /><br />
+	<hr>
+	Clients:<br /><br />
+	<?php
+		foreach (Client::all() as $client) {
+			echo $client->name.' -> hash='.$client->hash.'<br />';
+		}
+	?>
 </form>
 </body>
 </html>

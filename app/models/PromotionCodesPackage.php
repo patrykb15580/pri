@@ -66,10 +66,9 @@ class PromotionCodesPackage extends Model
 	}
 
 	public function usedCodes()
-	{
-		$codes = PromotionCode::where('package_id=? AND used IS NOT NULL', ['package_id'=>$this->id]);
-
-		return $codes;
+	{	
+		$date = date(Config::get('mysqltime'), strtotime("-1 week"));
+		return PromotionCode::where('package_id=? AND `used` > "'.$date.'"', ['package_id'=>$this->id], ['order'=>'used DESC']);
 	}
 
 	public function promotor()

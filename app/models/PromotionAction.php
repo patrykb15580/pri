@@ -79,12 +79,25 @@ class PromotionAction extends Model
 		return $codes_number;
 	}
 
-	public function usedCodes()
+	public function usedCodesNumber()
 	{
 		$packages = $this->promotionCodesPackages();
 		$used_codes = 0;
 		foreach ($packages as $package) {
 			$used_codes = $used_codes + count($package->usedCodes());
+		}
+		
+		return $used_codes;
+	}
+
+	public function usedCodes()
+	{
+		$packages = $this->promotionCodesPackages();
+		$used_codes = [];
+		foreach ($packages as $package) {
+			foreach ($package->usedCodes() as $code) {
+				array_push($used_codes, $code);
+			}
 		}
 		
 		return $used_codes;
