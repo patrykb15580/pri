@@ -102,4 +102,17 @@ class PromotionAction extends Model
 		
 		return $used_codes;
 	}
+
+	public function usedCodesInMonth($month)
+	{
+		$packages = $this->promotionCodesPackages();
+		$used_codes = [];
+		foreach ($packages as $package) {
+			foreach ($package->usedCodesInMonth($month) as $code) {
+				array_push($used_codes, $code);
+			}
+		}
+		
+		return $used_codes;
+	}
 }

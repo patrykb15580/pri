@@ -87,6 +87,19 @@ class Promotor extends Model
 		return $codes;
 	}
 
+	public function codesUsedInMonth($month)
+	{
+		$actions = $this->promotionActions();
+		$codes = [];
+		foreach ($actions as $action) {
+			$used_codes = $action->usedCodesInMonth($month);
+			foreach ($used_codes as $code) {
+				array_push($codes, $code);
+			}
+		}
+		return $codes;
+	}
+
 	public function clients()
 	{
 		$balances = PointsBalance::where('promotor_id=?', ['promotor_id'=>$this->id], ['order'=>'created_at DESC']);

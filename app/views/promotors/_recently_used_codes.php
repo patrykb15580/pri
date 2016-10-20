@@ -42,7 +42,4 @@ Ilość użytych kodów: <?= count($promotor->recentlyUsedCodes()) ?>
 	?>
 </table>
 </div>
-<?php 
-/*
-*/
-?>
+<br /><br /><br />

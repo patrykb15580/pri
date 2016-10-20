@@ -6,4 +6,6 @@
 <?php 
 	include '_newest_clients.php';
 	include '_recently_used_codes.php';
+	include '_clients_chart.php';
 ?>
+    
