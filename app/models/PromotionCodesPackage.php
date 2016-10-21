@@ -71,10 +71,26 @@ class PromotionCodesPackage extends Model
 		return PromotionCode::where('package_id=? AND `used` > "'.$date.'"', ['package_id'=>$this->id], ['order'=>'used DESC']);
 	}
 
-	public function usedCodesInMonth($month)
+	public function usedCodesInMonth($date)
 	{	
-		$date = date(Config::get('mysqltime'), strtotime("-1 week"));
-		return PromotionCode::where('package_id=? AND MONTH(`used`)=?', ['package_id'=>$this->id, 'used'=>$month], ['order'=>'used DESC']);
+		$month = date("m", strtotime($date));
+		$codes = PromotionCode::where('package_id=? AND MONTH(`used`)=?', ['package_id'=>$this->id, 'used'=>$month], ['order'=>'used DESC']);
+
+		$codes_arr = [];
+		foreach ($codes as $code) {
+			$used = $code->used;
+			$year = date("Y", strtotime($used));
+			if ($year == date("Y")) {
+				array_push($codes_arr, $code);
+			}
+		}
+
+		return $codes_arr;
+	}
+
+	public function usedCodesInDay($date)
+	{	
+		return PromotionCode::where('package_id=? AND `used` >= "'.$date.' 00:00:00" AND `used` <= "'.$date.' 23:59:59"', ['package_id'=>$this->id], ['order'=>'used DESC']);
 	}
 
 	public function promotor()

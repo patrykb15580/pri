@@ -100,7 +100,33 @@ class Promotor extends Model
 		return $codes;
 	}
 
+	public function codesUsedInDay($date)
+	{
+		$actions = $this->promotionActions();
+		$codes = [];
+		foreach ($actions as $action) {
+			$used_codes = $action->usedCodesInDay($date);
+			foreach ($used_codes as $code) {
+				array_push($codes, $code);
+			}
+		}
+		return $codes;
+	}
+
 	public function clients()
+	{
+		$balances = PointsBalance::where('promotor_id=?', ['promotor_id'=>$this->id], ['order'=>'created_at DESC']);
+		
+		$clients = [];
+		foreach ($balances as $balance) {
+			$client = Client::find($balance->client_id);
+			$clients[$client->id] = $client;
+		}
+
+		return $clients;
+	}
+
+	public function newClientsInDay($day)
 	{
 		$balances = PointsBalance::where('promotor_id=?', ['promotor_id'=>$this->id], ['order'=>'created_at DESC']);
 		

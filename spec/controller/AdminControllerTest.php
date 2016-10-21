@@ -98,7 +98,7 @@ class AdminControllerTest extends Tests
 
 		$elements = $html->find('div#admin_menu_inactive');	
 
-		Assert::expect(count($elements)) -> toEqual(3);
+		Assert::expect(count($elements)) -> toEqual(4);
 
 		unset($_SESSION['user']);
 	}

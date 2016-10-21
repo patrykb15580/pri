@@ -115,4 +115,17 @@ class PromotionAction extends Model
 		
 		return $used_codes;
 	}
+
+	public function usedCodesInDay($date)
+	{
+		$packages = $this->promotionCodesPackages();
+		$used_codes = [];
+		foreach ($packages as $package) {
+			foreach ($package->usedCodesInDay($date) as $code) {
+				array_push($used_codes, $code);
+			}
+		}
+		
+		return $used_codes;
+	}
 }
