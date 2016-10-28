@@ -1,21 +1,26 @@
-$( '#codes_second_tab' ).click(function(){
+$( document ).ready(function(){
   var val;
   var codes_in_year_rows;
   var promotor_id = $("#codes_in_year_chart").data("promotorid");
 
-  $.ajax({
-    url: "http://pri.dev/promotor/codes-used-in-year",
-    type: 'POST',
-    data: { "promotors_id": promotor_id },
-    success: function(data){
-      console.log(data);
-      codes_in_year_rows = JSON.parse(data);
-      drawCodesInYearChart();
-    },
-    error: function(data) {
-      alert("nope");
-    }
-  });
+  $( '#codes_second_tab' ).click(drawCodesInYearChartData);
+
+  function drawCodesInYearChartData() {
+    $.ajax({
+      url: "http://pri.dev/promotor/codes-used-in-year",
+      type: 'POST',
+      data: { "promotors_id": promotor_id },
+      success: function(data){
+        console.log(data);
+        codes_in_year_rows = JSON.parse(data);
+        drawCodesInYearChart();
+      },
+      error: function(data) {
+        alert("nope");
+      }
+    });
+  }
+  
 
   google.charts.load('current', {'packages':['corechart']});
   google.charts.setOnLoadCallback(drawCodesInYearChart);
