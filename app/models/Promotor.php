@@ -87,12 +87,25 @@ class Promotor extends Model
 		return $codes;
 	}
 
-	public function codesUsedInMonth($month)
+	public function codesUsedInMonth($date)
 	{
 		$actions = $this->promotionActions();
 		$codes = [];
 		foreach ($actions as $action) {
-			$used_codes = $action->usedCodesInMonth($month);
+			$used_codes = $action->usedCodesInMonth($date);
+			foreach ($used_codes as $code) {
+				array_push($codes, $code);
+			}
+		}
+		return $codes;
+	}
+
+	public function codesUsedFromTo($from, $to)
+	{
+		$actions = $this->promotionActions();
+		$codes = [];
+		foreach ($actions as $action) {
+			$used_codes = $action->usedCodesInMonth($from, $to);
 			foreach ($used_codes as $code) {
 				array_push($codes, $code);
 			}
@@ -126,9 +139,10 @@ class Promotor extends Model
 		return $clients;
 	}
 
-	public function newClientsInDay($day)
+	public function newClientsInMonth($date)
 	{
-		$balances = PointsBalance::where('promotor_id=?', ['promotor_id'=>$this->id], ['order'=>'created_at DESC']);
+		$month = date("m", strtotime($date));
+		$balances = PointsBalance::where('promotor_id=? AND MONTH(`created_at`)=?', ['promotor_id'=>$this->id, 'created_at'=>$month], ['order'=>'created_at DESC']);
 		
 		$clients = [];
 		foreach ($balances as $balance) {
@@ -137,6 +151,13 @@ class Promotor extends Model
 		}
 
 		return $clients;
+	}
+
+	public function newClientsInDay($date)
+	{	
+		$clients = PointsBalance::where('promotor_id=? AND `created_at` >= "'.$date.' 00:00:00" AND `created_at` <= "'.$date.' 23:59:59"', ['promotor_id'=>$this->id], ['order'=>'created_at DESC']);
+		
+		return PointsBalance::where('promotor_id=? AND `created_at` >= "'.$date.' 00:00:00" AND `created_at` <= "'.$date.' 23:59:59"', ['promotor_id'=>$this->id], ['order'=>'created_at DESC']);
 	}
 
 	public function newestClients()

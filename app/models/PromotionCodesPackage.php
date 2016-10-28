@@ -68,7 +68,7 @@ class PromotionCodesPackage extends Model
 	public function usedCodes()
 	{	
 		$date = date(Config::get('mysqltime'), strtotime("-1 week"));
-		return PromotionCode::where('package_id=? AND `used` > "'.$date.'"', ['package_id'=>$this->id], ['order'=>'used DESC']);
+		return PromotionCode::where('package_id=? AND `used` >= "'.$date.'"', ['package_id'=>$this->id], ['order'=>'used DESC']);
 	}
 
 	public function usedCodesInMonth($date)
@@ -86,6 +86,21 @@ class PromotionCodesPackage extends Model
 		}
 
 		return $codes_arr;
+	}
+
+	public function usedCodesFromTo($from, $to)
+	{	
+		if (empty($from)) {
+			$codes = PromotionCode::where('package_id=? AND `used` <= "'.$to.' 23:59:59"', ['package_id'=>$this->id], ['order'=>'used DESC']);
+		} else if (empty($to)) {
+			$codes = PromotionCode::where('package_id=? AND `used` >= "'.$from.' 00:00:00"', ['package_id'=>$this->id], ['order'=>'used DESC']);
+		} else if (empty($from) && empty($to)) {
+			$codes = PromotionCode::where('package_id=? AND `used` IS NOT NULL', ['package_id'=>$this->id], ['order'=>'used DESC']);
+		} else {
+			$codes = PromotionCode::where('package_id=? AND `used` >= "'.$from.' 00:00:00" AND `used` <= "'.$to.' 23:59:59"', ['package_id'=>$this->id], ['order'=>'used DESC']);
+		}
+
+		return $codes;
 	}
 
 	public function usedCodesInDay($date)

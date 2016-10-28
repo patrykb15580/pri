@@ -1,6 +1,6 @@
 <h3>Najnowsi klienci</h3>
 <div id="stats_box">
-Łączna liczba klientów: <?= count($promotor->clients()) ?>
+Łączna liczba klientów: <?= count($promotor->clients()) ?><br /><br />
 <table width="98%">
 	<tr>
 		<td id="first_row">
@@ -19,7 +19,7 @@
 	<?php
 		foreach ($promotor->newestClients() as $client) {
 			$balance = $client->balance($promotor); ?>
-			<tr>
+			<tr class="result">
 				<td>
 					<?= $client->name ?>
 				</td>

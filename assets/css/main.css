@@ -424,12 +424,12 @@ input[type="submit"]:hover{
   font-size: 14px;
 }
 select{
-  width: 24%;
+  width: auto;
   height: 30px;
   border: 1px;
   border-radius: 5px 0px 0px 5px;
   border-style: solid;
-  text-align: center;
+  text-align: left;
   font-size: 18px;
   font-family: calibri;
 }

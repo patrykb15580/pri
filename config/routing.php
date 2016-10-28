@@ -28,6 +28,11 @@ $router->map( 'GET', '/promotors/[i:promotors_id]/clients', 'PromotorsController
 $router->map( 'GET', '/promotors/[i:promotors_id]/orders', 'PromotorsController#indexOrders', 'index_promotors_orders' );
 $router->map( 'GET', '/promotors/[i:promotors_id]/orders/[i:order_id]', 'PromotorsController#showOrders', 'show_promotors_orders' );
 
+/* Promotor charts */
+$router->map( 'POST', '/promotor/new-clients-in-month', 'PromotorsController#newClientsInMonth', 'newClientsInMonth' );
+$router->map( 'POST', '/promotor/codes-used-in-month', 'PromotorsController#codesUsedInMonth', 'codesUsedInMonth' );
+$router->map( 'POST', '/promotor/codes-used-in-year', 'PromotorsController#codesUsedInYear', 'codesUsedInYear' );
+
 
 $router->map( 'GET', '/promotors/[i:promotors_id]/promotion-actions/[i:id]', 'PromotionActionsController#show', 'show_promotion_actions' );
 $router->map( 'GET', '/promotors/[i:promotors_id]/promotion-actions/new', 'PromotionActionsController#new', 'new_promotion_actions' );

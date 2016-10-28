@@ -29,13 +29,13 @@ class StaticPagesController extends Controller
 
 	public function useCode()
 	{
-		$code = PromotionCode::findBy('code', $this->params['code']);
-		$package = $code->package();
-		$promotion_action = $package->promotionAction();
-		$promotor = $promotion_action->promotor();
+		#$code = PromotionCode::findBy('code', $this->params['code']);
+		#$package = $code->package();
+		#$promotion_action = $package->promotionAction();
+		#$promotor = $promotion_action->promotor();
 
-		$view = (new View($this->params, ['code'=>$code, 'package'=>$package, 'promotion_action'=>$promotion_action, 'promotor'=>$promotor], 'start'))->render();
-		return $view;
+		#$view = (new View($this->params, ['code'=>$code, 'package'=>$package, 'promotion_action'=>$promotion_action, 'promotor'=>$promotor], 'start'))->render();
+		#return $view;
 	}
 
 	public function addPoints()
@@ -81,8 +81,7 @@ class StaticPagesController extends Controller
 	}
 
 	public function confirmation()
-	{
-		
+	{	
 		$view = (new View($this->params, [], 'start'))->render();
 		return $view;
 	}

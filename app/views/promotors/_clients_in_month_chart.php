@@ -2,9 +2,8 @@
   #SELECT `used` FROM promotion_codes WHERE MONTH(`used`) = 10 
   #SELECT * FROM promotion_codes WHERE `used` > "2016-09-11 00:00:00" AND `used` < "2016-10-24 00:00:00"
 ?>
-
-<h3>Wykorzystane kody w miesiącu 
-<select class="codes_month" name="codes_month">
+<h3>Nowi klienci w miesiącu 
+<select class="clients_month" name="clients_month">
   <?php
     for ($i=1; $i <= date("m"); $i++) { ?>
       <option value="<?= $i ?>" <?php if ($i==date("m")) { echo "selected=selected"; } ?>>
@@ -14,29 +13,28 @@
   ?>
 </select>
 <?= date("Y") ?> roku</h3>
-<div id="codes_in_month_chart" data-promotorid="<?= $promotor->id ?>"></div>
+<div id="clients_in_month_chart" data-promotorid="<?= $promotor->id ?>"></div>
 <br /><br /><br />
 
 <script type="text/javascript">
 
-    $( document ).ready(function(){ 
-
+  $( window ).ready(function(){ 
     var val;
-    var codes_in_month_rows;
-    var promotor_id = $("#codes_in_month_chart").data("promotorid");
+    var clients_in_month_rows;
+    var promotor_id = $("#clients_in_month_chart").data("promotorid");
 
-    $( ".codes_month" ).change(drawClientsInMonthChartData);
+    $( ".clients_month" ).change(drawClientsInMonthChartData);
 
     function drawClientsInMonthChartData() {
-      val = $('.codes_month').val();
+      val = $('.clients_month').val();
       $.ajax({
-        url: "http://pri.dev/promotor/codes-used-in-month",
+        url: "http://pri.dev/promotor/new-clients-in-month",
         type: 'POST',
-        data: { "codes_month": val, "promotors_id": promotor_id },
+        data: { "clients_month": val, "promotors_id": promotor_id },
         success: function(data){
           console.log(data);
-          codes_in_month_rows = JSON.parse(data);
-          drawCodesInMonthChart();
+          clients_in_month_rows = JSON.parse(data);
+          drawClientsInMonthChart();
         },
         error: function(data) {
           alert("nope");
@@ -45,19 +43,19 @@
     }
    
     google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(drawCodesInMonthChart);
+    google.charts.setOnLoadCallback(drawClientsInMonthChart);
     
-    function drawCodesInMonthChart() {
+    function drawClientsInMonthChart() {
 
       var dataTable = new google.visualization.DataTable();
 
       dataTable.addColumn('string', 'Days');
-      dataTable.addColumn('number', 'Codes');
+      dataTable.addColumn('number', 'Clients');
 
       // A column for custom tooltip content
       dataTable.addColumn({type: 'string', role: 'tooltip'});
 
-      dataTable.addRows(codes_in_month_rows);
+      dataTable.addRows(clients_in_month_rows);
 
       var options = { legend: 'none',
                       hAxis: { 
@@ -70,13 +68,11 @@
                         }
                       },
                       chartArea: {  width: "90%", height: "70%" } };
-      var chart = new google.visualization.LineChart(document.getElementById('codes_in_month_chart'));
+      var chart = new google.visualization.LineChart(document.getElementById('clients_in_month_chart'));
 
       chart.draw(dataTable, options);
     }
 
     drawClientsInMonthChartData();
   });
-  
 </script>
-

@@ -91,6 +91,64 @@ class PromotorsController extends Controller
 		return $view;
 	}
 
+	public function newClientsInMonth()
+	{
+		$promotor = $this->promotor();
+
+		$arr = [];
+
+        if (!isset($this->params['clients_month'])) { $this->params['clients_month'] = date("m"); }
+
+        $days = cal_days_in_month(CAL_GREGORIAN, $this->params['clients_month'] , date("Y") );
+
+        for ($i=1; $i <= $days; $i++) { 
+           $date = date("Y-").$this->params['clients_month'].'-'.$i;
+           #$date = date("Y-m-").$i; };
+           $row = [(string)$i, count($promotor->newClientsInDay($date)), "Liczba klientów: ".count($promotor->newClientsInDay($date))];
+           array_push($arr, $row);
+		}
+
+		return json_encode($arr);
+
+	}
+
+	public function codesUsedInMonth()
+	{
+		$promotor = $this->promotor();
+
+		$arr = [];
+
+        if (!isset($this->params['codes_month'])) { $this->params['codes_month'] = date("m"); }
+
+        $days = cal_days_in_month(CAL_GREGORIAN, $this->params['codes_month'] , date("Y") );
+
+        for ($i=1; $i <= $days; $i++) { 
+           $date = date("Y-").$this->params['codes_month'].'-'.$i;
+           #$date = date("Y-m-").$i; };
+           $row = [(string)$i, count($promotor->codesUsedInDay($date)), "Liczba kodów: ".count($promotor->codesUsedInDay($date))];
+           array_push($arr, $row);
+		}
+
+		return json_encode($arr);
+
+	}
+
+	public function codesUsedInYear()
+	{
+		$promotor = $this->promotor();
+
+		$arr = [];
+
+	    for ($i=1; $i <= date("m"); $i++) { 
+	    	$date = date("Y-").$i.date("-d");
+	        $row = [(string)PolishMonthName::NAMES[$i], count($promotor->codesUsedInMonth($date)) ,'Liczba kodów: '.count($promotor->codesUsedInMonth($date))];
+	        array_push($arr, $row);
+	    }
+
+		return json_encode($arr);
+
+	}
+
 	public function promotor()
 	{
 		return Promotor::find($this->params['promotors_id']);

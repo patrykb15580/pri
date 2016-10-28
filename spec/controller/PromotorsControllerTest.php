@@ -25,6 +25,9 @@ class PromotorsControllerTest extends Tests
 		$promotion_action = new PromotionAction(['name'=>'action3', 'promotors_id'=>2, 'status'=>'active', 'indefinitely'=>1]);
 		$promotion_action->save();
 
+		$package = new PromotionCodesPackage(['name'=>'package1', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>4, 'codes_value'=>143, 'status'=>'active']);
+		$package->save();
+
 		$client = new Client(['email'=>'test1@test.com', 'name'=>'client1', 'phone_number'=>'123456789', 'hash'=>HashGenerator::generate()]);
 		$client->save();
 
@@ -184,6 +187,46 @@ class PromotorsControllerTest extends Tests
 
 		$elements = $html->find('td.result');	
 		Assert::expect(count($elements)) -> toEqual(4);
+
+		unset($_SESSION['user']);
+		error_reporting(E_ALL);
+	}
+
+	public function testStatsAction()
+	{
+		$this->seed();
+
+		error_reporting(E_ALL & ~E_NOTICE);
+
+		$params['promotors_id'] = 1;
+    	$params['controller'] = 'PromotorsController';
+    	$params['action'] = 'stats';
+
+    	$curl = new TesterTestRequest((new PromotionCodesPackagesController($params))->generate(), 'http://'.Config::get('host').'/package/generate', null, []);
+
+    	$codes = PromotionCode::where('package_id=?', ['package_id'=>1]);
+		$code = $codes[0];
+		$code->update(['used'=>date(Config::get("mysqltime"))]);
+		$code->update(['client_id'=>1]);
+
+		$action = $params['action'];
+
+		$controller = new $params['controller']($params);
+		$view = $controller->$action();
+
+		$html = HtmlDomParser::str_get_html($view);
+
+		$elements = $html->find('tr.result');	
+		Assert::expect(count($elements)) -> toEqual(2);
+
+		$elements = $html->find('div#clients_in_month_chart');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('div#codes_in_month_chart');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('div#codes_in_year_chart');	
+		Assert::expect(count($elements)) -> toEqual(1);
 
 		unset($_SESSION['user']);
 		error_reporting(E_ALL);

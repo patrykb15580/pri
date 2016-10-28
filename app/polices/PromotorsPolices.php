@@ -109,4 +109,34 @@ class PromotorsPolices extends Polices
 			return true;
 		}
 	}
+
+	public function newClientsInMonth()
+	{
+		if ($this->user->isPromotor() && $this->user->id == $this->obj->id) {
+			return true;
+		}
+
+		if ($this->user->isClient()) {
+			return false;
+		}
+
+		if ($this->user->isAdmin()) {
+			return true;
+		}
+	}
+
+	public function codesUsedInMonth()
+	{
+		if ($this->user->isPromotor() && $this->user->id == $this->obj->id) {
+			return true;
+		}
+
+		if ($this->user->isClient()) {
+			return false;
+		}
+
+		if ($this->user->isAdmin()) {
+			return true;
+		}
+	}
 }

@@ -1,6 +1,6 @@
 <h3>Kody użyte przez ostatnie 7 dni</h3>
 <div id="stats_box">
-Ilość użytych kodów: <?= count($promotor->recentlyUsedCodes()) ?>
+Ilość użytych kodów: <?= count($promotor->recentlyUsedCodes()) ?><br /><br />
 <table width="98%">
 	<tr>
 		<td id="first_row">
@@ -21,7 +21,7 @@ Ilość użytych kodów: <?= count($promotor->recentlyUsedCodes()) ?>
 	</tr>
 	<?php
 		foreach ($promotor->recentlyUsedCodes() as $code) { ?>
-			<tr>
+			<tr class="result">
 				<td>
 					<?= $code->code ?>
 				</td>

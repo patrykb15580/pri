@@ -206,7 +206,6 @@ class PromotionCodesPackagesControllerTest extends Tests
 
 	public function testGenerate10PromotionCodes()
 	{
-		$_SESSION['user'] = new Admin;
 		$params['action'] = 'generate';
 		$package = new PromotionCodesPackage(['name'=>'name', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>10, 'codes_value'=>50, 'status'=>'active']);
 		$package->save();
@@ -218,7 +217,6 @@ class PromotionCodesPackagesControllerTest extends Tests
 
 	public function testGenerate5MorePromotionCodes()
 	{
-		$_SESSION['user'] = new Admin;
 		$params['action'] = 'generate';
 		$package = new PromotionCodesPackage(['name'=>'name', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>10, 'generated'=>5, 'codes_value'=>50, 'status'=>'active']);
 		$package->save();
@@ -230,7 +228,6 @@ class PromotionCodesPackagesControllerTest extends Tests
 
 	public function testPromotionCodeHave6Chars()
 	{
-		$_SESSION['user'] = new Admin;
 		$params['action'] = 'generate';
 		$package = new PromotionCodesPackage(['name'=>'name', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>10, 'generated'=>5, 'codes_value'=>50, 'status'=>'active']);
 		$package->save();
@@ -243,7 +240,6 @@ class PromotionCodesPackagesControllerTest extends Tests
 
 	/*public function testPromotionCodeHave5Chars()
 	{
-		$_SESSION['user'] = new Admin;
 		$params['action'] = 'generate';
 		$package = new PromotionCodesPackage(['name'=>'name', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>10, 'generated'=>5, 'codes_value'=>50, 'status'=>'active']);
 		$package->save();
