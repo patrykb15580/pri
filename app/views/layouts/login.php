@@ -5,8 +5,9 @@
 		pri.dev
 	</title>
 	<link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"> 
 </head>
-<body>
+<body class="start_pages_body">
 <?php 
 	$router = Config::get('router');
 	Alerts::showAlert();

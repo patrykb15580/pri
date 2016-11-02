@@ -18,7 +18,7 @@ class Alerts
 
 	static function render($type, $message)
 	{
-		$alert = '<div class="'.$type.'_message">'.$message.'</div><br />';
+		$alert = '<div class="'.$type.'_message">'.$message.'</div>';
 		
 		return $alert;
 	}

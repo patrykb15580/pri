@@ -1,0 +1,1 @@
+<div class="error_message">Kod został już wykorzystany</div>
