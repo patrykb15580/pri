@@ -1,3 +1,7 @@
 $( function() {
-	$( "#tabs" ).tabs();
+	$( "#clients_charts" ).tabs();
+} );
+
+$( function() {
+	$( "#codes_charts" ).tabs();
 } );

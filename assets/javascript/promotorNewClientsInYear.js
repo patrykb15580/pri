@@ -1,22 +1,21 @@
-$( document ).ready(function(){ 
-
+$( window ).ready(function(){ 
   var val;
-  var codes_in_month_rows;
-  var promotor_id = $("#codes_in_month_chart").data("promotorid");
+  var clients_in_year_rows;
+  var promotor_id = $("#clients_in_year_chart").data("promotorid");
 
-  $( "#codes_first_tab" ).click(drawClientsInMonthChartData);
-  $( ".codes_month" ).change(drawClientsInMonthChartData);
+  $( "#clients_second_tab" ).click(drawClientsInYearChartData);
+  $( ".clients_year" ).change(drawClientsInYearChartData);
 
-  function drawClientsInMonthChartData() {
-    val = $('.codes_month').val();
+  function drawClientsInYearChartData() {
+    val = $('.clients_year').val();
     $.ajax({
-      url: "/promotor/codes-used-in-month",
+      url: "/promotor/new-clients-in-year",
       type: 'POST',
-      data: { "codes_month": val, "promotors_id": promotor_id },
+      data: { "clients_year": val, "promotors_id": promotor_id },
       success: function(data){
         console.log(data);
-        codes_in_month_rows = JSON.parse(data);
-        drawCodesInMonthChart();
+        clients_in_year_rows = JSON.parse(data);
+        drawClientsInYearChart();
       },
       error: function(data) {
         alert("nope");
@@ -25,19 +24,19 @@ $( document ).ready(function(){
   }
    
   google.charts.load('current', {'packages':['corechart']});
-  google.charts.setOnLoadCallback(drawCodesInMonthChart);
-    
-  function drawCodesInMonthChart() {
+  google.charts.setOnLoadCallback(drawClientsInYearChart);
+   
+  function drawClientsInYearChart() {
 
     var dataTable = new google.visualization.DataTable();
 
     dataTable.addColumn('string', 'Days');
-    dataTable.addColumn('number', 'Codes');
+    dataTable.addColumn('number', 'Clients');
 
     // A column for custom tooltip content
     dataTable.addColumn({type: 'string', role: 'tooltip'});
 
-    dataTable.addRows(codes_in_month_rows);
+    dataTable.addRows(clients_in_year_rows);
 
     var options = { legend: 'none',
                     hAxis: { 
@@ -50,11 +49,10 @@ $( document ).ready(function(){
                       }
                     },
                     chartArea: {  width: "90%", height: "70%" } };
-    var chart = new google.visualization.LineChart(document.getElementById('codes_in_month_chart'));
+    var chart = new google.visualization.LineChart(document.getElementById('clients_in_year_chart'));
 
     chart.draw(dataTable, options);
   }
 
-  drawClientsInMonthChartData();
+  drawClientsInYearChartData();
 });
-  

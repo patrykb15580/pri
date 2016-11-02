@@ -112,6 +112,64 @@ class PromotorsController extends Controller
 
 	}
 
+	public function newClientsInYear()
+	{
+		$promotor = $this->promotor();
+
+		$arr = [];
+
+	    for ($i=1; $i <= date("m"); $i++) { 
+	    	$date = date("Y-").$i.date("-d");
+	        $row = [(string)PolishMonthName::NAMES[$i], count($promotor->newClientsInMonth($date)) ,'Liczba klientów: '.count($promotor->newClientsInMonth($date))];
+	        array_push($arr, $row);
+	    }
+
+		return json_encode($arr);
+
+	}
+
+	public function newClientsInRange()
+	{
+		$promotor = $this->promotor();
+
+		if (!isset($this->params['clients_from'])) { 
+        	$this->params['clients_from'] = date("Y-m-d", strtotime("-1 week"));
+        }
+
+        if (!isset($this->params['clients_to'])) { 
+        	$this->params['clients_to'] = date("Y-m-d"); 
+        }
+
+        if ($this->params['clients_from'] > $this->params['clients_to']) {
+        	$this->params['clients_from'] = $this->params['clients_to'];
+        }
+		$from = $this->params['clients_from'];
+		$to = $this->params['clients_to'];
+
+		$dates_arr = [];
+		while ($from <= $to) {
+			array_push($dates_arr, $from);
+			$from = date('Y-m-d', strtotime($from."+1 day"));
+		}
+
+		$arr = [];
+		foreach ($dates_arr as $date) {
+
+			$clients_number = count($promotor->newClientsInDay($date));
+
+			$label = '';
+			if (count($dates_arr) <= 14) { 
+				$label = date("d.m", strtotime($date)); 
+			}
+
+			$row = [$label, $clients_number ,'Liczba klientów dnia '.date("d.m.Y", strtotime($date)).': '.$clients_number];
+	        array_push($arr, $row);
+		}
+
+		return json_encode($arr);
+
+	}
+
 	public function codesUsedInMonth()
 	{
 		$promotor = $this->promotor();
@@ -144,6 +202,47 @@ class PromotorsController extends Controller
 	        $row = [(string)PolishMonthName::NAMES[$i], count($promotor->codesUsedInMonth($date)) ,'Liczba kodów: '.count($promotor->codesUsedInMonth($date))];
 	        array_push($arr, $row);
 	    }
+
+		return json_encode($arr);
+
+	}
+
+	public function codesUsedInRange()
+	{
+		$promotor = $this->promotor();
+
+		if (!isset($this->params['codes_from'])) { 
+        	$this->params['codes_from'] = date("Y-m-d", strtotime("-1 week"));
+        }
+
+        if (!isset($this->params['codes_to'])) { 
+        	$this->params['codes_to'] = date("Y-m-d"); 
+        }
+
+        if ($this->params['codes_from'] > $this->params['codes_to']) {
+        	$this->params['codes_from'] = $this->params['codes_to'];
+        }
+		$from = $this->params['codes_from'];
+		$to = $this->params['codes_to'];
+
+		$dates_arr = [];
+		while ($from <= $to) {
+			array_push($dates_arr, $from);
+			$from = date('Y-m-d', strtotime($from."+1 day"));
+		}
+
+		$arr = [];
+		foreach ($dates_arr as $date) {
+
+			$codes_number = count($promotor->codesUsedInDay($date));
+
+			$label = '';
+			if (count($dates_arr) <= 14) { 
+				$label = date("d.m", strtotime($date)); 
+			}
+			$row = [$label, $codes_number,'Liczba klientów dnia '.date("d.m.Y", strtotime($date)).': '.$codes_number];
+	        array_push($arr, $row);
+		}
 
 		return json_encode($arr);
 

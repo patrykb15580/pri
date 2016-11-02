@@ -3,12 +3,13 @@ $( window ).ready(function(){
   var clients_in_month_rows;
   var promotor_id = $("#clients_in_month_chart").data("promotorid");
 
+  $( "#clients_first_tab" ).click(drawClientsInMonthChartData);
   $( ".clients_month" ).change(drawClientsInMonthChartData);
 
   function drawClientsInMonthChartData() {
     val = $('.clients_month').val();
     $.ajax({
-      url: "http://pri.dev/promotor/new-clients-in-month",
+      url: "/promotor/new-clients-in-month",
       type: 'POST',
       data: { "clients_month": val, "promotors_id": promotor_id },
       success: function(data){

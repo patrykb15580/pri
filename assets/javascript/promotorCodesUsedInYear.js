@@ -7,7 +7,7 @@ $( document ).ready(function(){
 
   function drawCodesInYearChartData() {
     $.ajax({
-      url: "http://pri.dev/promotor/codes-used-in-year",
+      url: "/promotor/codes-used-in-year",
       type: 'POST',
       data: { "promotors_id": promotor_id },
       success: function(data){
@@ -30,7 +30,7 @@ $( document ).ready(function(){
     var dataTable = new google.visualization.DataTable();
 
     dataTable.addColumn('string', 'Months');
-    dataTable.addColumn('number', 'Codes');
+    dataTable.addColumn('number', 'Clients');
 
     // A column for custom tooltip content
     dataTable.addColumn({type: 'string', role: 'tooltip'});

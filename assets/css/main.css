@@ -376,6 +376,16 @@ input[type="text"]{
   border-radius: 10px 10px 10px 10px;
   border-style: solid;
 }
+input.date[type="text"]{
+  width: auto;
+  height: 24px;
+  font-size: 14px;
+  text-align: left;
+  padding: 4px 4px 4px 4px;
+  border: 1px;
+  border-radius: 10px 10px 10px 10px;
+  border-style: solid;
+}
 input[type="password"]{
   width: 40%;
   height: 24px;

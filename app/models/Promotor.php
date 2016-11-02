@@ -154,9 +154,7 @@ class Promotor extends Model
 	}
 
 	public function newClientsInDay($date)
-	{	
-		$clients = PointsBalance::where('promotor_id=? AND `created_at` >= "'.$date.' 00:00:00" AND `created_at` <= "'.$date.' 23:59:59"', ['promotor_id'=>$this->id], ['order'=>'created_at DESC']);
-		
+	{		
 		return PointsBalance::where('promotor_id=? AND `created_at` >= "'.$date.' 00:00:00" AND `created_at` <= "'.$date.' 23:59:59"', ['promotor_id'=>$this->id], ['order'=>'created_at DESC']);
 	}
 
