@@ -79,6 +79,7 @@ $router->map( 'GET', '/sign-out', 'SessionController#delete', 'sign_out' );
 $router->map( 'GET', '/', 'StaticPagesController#startPage', 'start_page' );
 $router->map( 'POST', '/insert-code', 'StaticPagesController#insertCode', 'insert_code' );
 $router->map( 'GET', '/[a:code]', 'StaticPagesController#useCode', 'use_code' );
+$router->map( 'GET', '/[a:code]/is-used', 'StaticPagesController#codeIsUsed', 'code_is_used' );
 $router->map( 'POST', '/[a:code]/add-points', 'StaticPagesController#addPoints', 'add_points' );
 $router->map( 'GET', '/[a:code]/confirm', 'StaticPagesController#confirmation', 'confirmation' );
 $router->map( 'GET', '/access-denied', 'StaticPagesController#authorizeError', 'access_denied' );

@@ -6,11 +6,9 @@
 	<input id="insert_code" type="text" name="code" placeholder="Twój kod promocyjny">
 	<input id="insert_code" type="submit" value="Zatwierdź">
 </form>
-<div class="text_align_center">
 <?php
 	$codes = PromotionCode::where('package_id=?', ['package_id'=>1]);
 	foreach ($codes as $code) { ?>
-		<p <?php if (!empty($code->used)) { echo 'class="linethrough"'; } ?>><?= $code->code ?><br /></p>
+		<p <?php if (!empty($code->used)) { echo 'class="linethrough"'; } ?>><?= $code->code ?></p>
 	<?php }
 ?>
-</div>

@@ -1,6 +1,3 @@
-<?php
-  #SELECT `used` FROM promotion_codes WHERE MONTH(`used`) = 10 
-?>
 <h3>Użyte kody</h3>
 <div id="codes_charts">
   <ul>
@@ -33,7 +30,7 @@
 
   </div>
 
-  <div id="clients_in_range_tab">
+  <div id="codes_in_range_tab">
 
     <h3>
       Kody użyte od 
@@ -48,8 +45,7 @@
 
 </div>
 
-<br /><br /><br /><br />
-
+<br /><br /><br />
 
 <script type="text/javascript" src="/assets/javascript/promotorCodesUsedInMonth.js"></script>
 

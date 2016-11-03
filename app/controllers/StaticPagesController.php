@@ -49,7 +49,6 @@ class StaticPagesController extends Controller
 		$router = Config::get('router');
 
 		if ($this->emptyFormCheck($this->params)) {
-			$this->alert('error', 'Wypełnij wszystkie pola');
 			$path = $router->generate('use_code', ['code'=>$this->params['code']]);
 			header('Location: '.$path);
 		} else {
@@ -82,7 +81,12 @@ class StaticPagesController extends Controller
 
 	public function confirmation()
 	{	
-		$view = (new View($this->params, [], 'start'))->render();
+		$code = PromotionCode::findBy('code', $this->params['code']);
+		$package = $code->package();
+		$promotion_action = $package->promotionAction();
+		$promotor = $promotion_action->promotor();
+
+		$view = (new View($this->params, ['code'=>$code, 'package'=>$package, 'promotion_action'=>$promotion_action, 'promotor'=>$promotor], 'start'))->render();
 		return $view;
 	}
 
