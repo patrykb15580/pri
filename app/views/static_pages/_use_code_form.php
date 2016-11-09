@@ -3,7 +3,14 @@
 ?>
 <div id="use_code_container">
 	<div class="use_code_top">
-		<img id="use_code_logo" src="/assets/image/booklet-logo.svg"><br />
+		<?php
+			$avatar = PromotorAvatar::findBy('promotor_id', $promotor->id);
+			if (!empty($avatar)) { ?>
+				<img class="avatar-square" src="/system/promotor_avatars/<?= $promotor->id ?>/small/<?= $avatar->file_name ?>">
+			<?php } else { ?>
+				<div class="avatar-square"></div>
+			<?php } 
+		?>
 		<h3 class="none_bold_text zero_margin"><?= $promotor->name ?></h3>
 		<h2 class="zero_margin dark_font"><b><?= $promotion_action->name ?></b></h2>
 		<table id="use_code">

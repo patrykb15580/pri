@@ -1,4 +1,4 @@
-<table width="100%">
+<table class="single-table">
 	<tr>
 		<td id="first_row" width="25%">Imię</td>
 		<td id="first_row" width="30%">e-mail</td>

@@ -14,15 +14,15 @@
 
 <div id="title-box">
 	<i class="fa fa-product-hunt fa-2x green-icon" aria-hidden="true"></i>
-	<p class="title-box-text">Akcje promocyjne > <?= $package->promotionAction()->name ?> > <?= $package->name ?></p>
-	<a href="<?= $path_new ?>"><a href="<?= $path_new ?>"><button class="title-box-button">+ Nowa paczka kodów</button></a>
+	<p class="title-box-text">Paczka kodów <?= $package->name ?></p>
+	<a href="<?= $path_new ?>"><a href="<?= $path_new ?>"><button class="title-box-button"><i class="zmdi zmdi-plus"></i> Nowa paczka kodów</button></a>
 	<br />
 	<br />
 	<p class="title-box-details">
 		Status: <b><?= PromotionCodesPackage::STATUSES[$package->status] ?></b><br />
 		Liczba kodów: <b><?= $package->generated ?></b><br />
 		Wartość kodów: <b><?= $package->codes_value ?> pkt</b><br />
-		Wykorzystane kody: <b><?= count($package->usedCodes()) ?></b>
+		Wykorzystane kody: <b><?= $package->usedCodesNumber() ?></b>
 	</p>
 	<div class="title-box-options">
 		<a href="<?= $path_update ?>">Edytuj</a>

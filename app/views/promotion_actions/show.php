@@ -16,7 +16,7 @@
 <div id="title-box">
 	<i class="fa fa-product-hunt fa-2x green-icon" aria-hidden="true"></i>
 	<p class="title-box-text">Akcje promocyjne > <?= $promotion_action->name ?></p>
-	<a href="<?= $path_new ?>"><a href="<?= $path_new ?>"><button class="title-box-button">+ Nowa paczka kodów</button></a>
+	<a href="<?= $path_new ?>"><a href="<?= $path_new ?>"><button class="title-box-button"><i class="zmdi zmdi-plus"></i> Nowa paczka kodów</button></a>
 	<br />
 	<br />
 	<p class="title-box-details">

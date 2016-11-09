@@ -28,6 +28,6 @@
 		<img id="reward_image" src="<?= $img_path ?>">
 	<?php }} ?>
 	</div>
-	<br /><input type="file" name="image[]" accept="image/jpeg, image/png, image/gif" multiple="multiple">
+	<br /><input type="file" name="avatar[]" accept="image/jpeg, image/png, image/gif" multiple="multiple">
 	<br /><br /><input type="submit" value="Zapisz zmiany">
 </form>

@@ -1,6 +1,6 @@
 <table width="100%">
 	<tr>
-		<td id="first_row" width="10%"></td>
+		<td id="first_row" width="6%"></td>
 		<td id="first_row" width="60%">Nazwa nagrody</td>
 		<td id="first_row" width="10%">Wydano</td>
 		<td id="first_row" width="10%">Cena</td>
@@ -8,7 +8,7 @@
 <?php foreach ($rewards as $reward) {			
 	$path_show = $router->generate('show_rewards', ['promotors_id' => $params['promotors_id'], 'id' => $reward->id]);?>
 	<tr class="result">
-		<td width="10%">
+		<td width="6%">
 			<?php 
 			$images = RewardImage::where('reward_id=?', ['reward_id'=>$reward->id]);	
 			if (!empty($images)) {

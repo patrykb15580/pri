@@ -25,7 +25,7 @@
 	</title>
 	<link rel="stylesheet" type="text/css" href="/assets/css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-	<link rel="stylesheet" type="text/css" href="/assets/css/titleBox.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/titleBlock.css">
 	<link rel="stylesheet" type="text/css" href="/assets/css/modals.css">
 	<link rel="stylesheet" type="text/css" href="/assets/css/clientRewardDetails.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -35,12 +35,51 @@
 	<script type="text/javascript" src="/assets/javascript/alerts.js"></script> 
 	<script type="text/javascript" src="/assets/javascript/notices.js"></script> 
 	<script src="https://use.fontawesome.com/e806e76f5f.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
 	<script type="text/javascript" src="/assets/javascript/activeInactiveTabs.js"></script>
 	<script type="text/javascript" src="/assets/javascript/promotorStatsTabs.js"></script>
 	<script type="text/javascript" src="/assets/javascript/userOptions.js"></script>
 </head>
 <body>
 <?php Alerts::showAlert(); ?>
+<div class="window-size"></div>
+<div id="top" class="dark_font">
+	<img id="main-layout-logo" src="/assets/image/booklet-logo-2.svg">
+	<div id="main-layout-user" class="dark_font">
+		<p class="user"><?= $user ?><i class="fa fa-caret-down dropdown" aria-hidden="true"></i></p>
+		<?php
+			if ($user_type == 'promotor') { 
+				$avatar = PromotorAvatar::findBy('promotor_id', $promotor->id);
+				if (!empty($avatar)) { ?>
+					<img class="avatar" src="/system/promotor_avatars/<?= $promotor->id ?>/tiny/<?= $avatar->file_name ?>">
+				<?php } else { ?>
+					<div class="avatar"></div>
+				<?php } 
+			}
+		?>
+		<div class="user-options">
+			<?php
+				if ($user_type == 'promotor') { ?>
+					<a href="/promotors/<?= $params['promotors_id'] ?>/account">
+						<i class="fa fa-cog fa-lg dark-purple-icon" aria-hidden="true"></i> Ustawienia konta
+					</a>
+					<br />
+				<?php }
+			?>
+			<a href="<?= $router->generate('sign_out', []) ?>"><i class="fa fa-sign-out fa-lg red-icon" aria-hidden="true"></i> Wyloguj</a>
+		</div>
+	</div>
+</div>
+<div id="container">
+	<?php 
+	include './app/views/layouts/'.$side_bar;?>
+	<div id="content">
+		<?php include($path); ?>
+	</div>
+</div>	
+<div id="bottom">
+
+</div>
 <script type="text/javascript">
 	$(document).ready(function(){
 		var w = $(window).width();
@@ -53,35 +92,5 @@
 		});
 	});
 </script>
-<div class="window-size">
-	
-</div>
-<div id="top" class="dark_font">
-	<img id="main-layout-logo" src="/assets/image/booklet-logo-2.svg">
-	<div id="main-layout-user" class="dark_font">
-		<p class="user"><?= $user ?> <i class="fa fa-caret-down dropdown" aria-hidden="true"></i></p>
-		<div class="user-options">
-			<a href="<?= $router->generate('sign_out', []) ?>"><i class="fa fa-sign-out fa-lg red-icon" aria-hidden="true"></i> Wyloguj</a>
-			<br />
-			<?php
-				if ($user_type == 'promotor') { ?>
-					<a href="/promotors/<?= $params['promotors_id'] ?>/account">
-						<i class="fa fa-cog fa-lg dark-purple-icon" aria-hidden="true"></i> Ustawienia konta
-					</a>
-				<?php }
-			?>
-		</div>
-	</div>
-</div>
-<div id="container">
-	<?php 
-	include './app/views/layouts/'.$side_bar;?>
-	<div id="content">
-		<?php include($path); ?>
-	</div>
-</div>	
-<div id="bottom">
-<?= $_SERVER['REMOTE_ADDR'] ?>
-</div>
 </body>
 </html>

@@ -15,7 +15,7 @@
 	<i class="fa fa-gift fa-2x red-icon" aria-hidden="true"></i><p class="title-box-text"> Katalog nagród</p>
 	<a href="<?= $path_new ?>">
 		<button class="title-box-button">
-			<b>+</b> Nowa nagroda
+			<i class="zmdi zmdi-plus"></i> Nowa nagroda
 		</button>
 	</a>
 </div>

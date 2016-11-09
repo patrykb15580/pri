@@ -49,6 +49,11 @@ class PromotorsController extends Controller
 			if (Promotor::updatePromotor($this->params)) {
 				$this->alert('info', 'Profil został zaktualizowany');
 
+				if (!empty($_FILES)) {
+					$upload = new PromotorAvatar;
+					$upload->uploadAvatar($_FILES, $this->params);
+				}
+
 				header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id']);
 			} else {
 				$this->alert('error', 'Nie udało się zaktualizować profilu<br />Spróbuj jeszcze raz');

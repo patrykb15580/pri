@@ -17,8 +17,9 @@
 </head>
 <body class="start_pages_body">
 <?php Alerts::showAlert(); ?>
-<div id="top">
-	<a href="<?= $router->generate('login', []); ?>" class="white_font">Logowanie</a> Pomoc
+<div id="start-top">
+	<a class="start-layout-top-link" href="<?= $router->generate('login', []); ?>" class="white_font">Logowanie</a>
+	<a class="start-layout-top-link" href="" class="white_font">Pomoc</a>
 </div>
 <?php 
 	include($path); 

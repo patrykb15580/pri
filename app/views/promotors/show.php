@@ -10,8 +10,8 @@
 </div>
 
 <div id="title-box">
-	<i class="fa fa-product-hunt fa-2x green-icon" aria-hidden="true"></i><p class="title-box-text">Akcje promocyjne</p>
-	<a href="<?= $path_new ?>"><button class="title-box-button"><b>+</b> Nowa akcja promocyjna</button></a>
+	<i class="fa fa-product-hunt fa-2x green-icon" aria-hidden="true"></i><p class="title-box-text"> Akcje promocyjne</p>
+	<a href="<?= $path_new ?>"><button class="title-box-button"><i class="zmdi zmdi-plus"></i> Nowa akcja promocyjna</button></a>
 </div>
 <div id="title-box-tabs">
 	<p class="tab1 tab-active">AKTYWNE</p><p class="tab2 tab-inactive">NIEAKTYWNE</p>
