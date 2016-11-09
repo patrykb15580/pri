@@ -1,5 +1,4 @@
 <?php	
-	$router = Config::get('router');
 	$path = $router->generate('start_page', []);
 ?>
 <div id="code_info_top">
@@ -24,6 +23,8 @@
 	</table>
 </div>
 <div id="code_message_error">
+	<i class="fa fa-frown-o fa-5x" aria-hidden="true"></i>
+
 	<p class="code_message_error">Ups,</p>
 
 	Ten kod został już wykorzystany.

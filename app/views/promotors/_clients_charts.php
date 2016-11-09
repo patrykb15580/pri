@@ -1,4 +1,4 @@
-<h3>Nowi klienci</h3>
+<h1 class="stats-title">Nowi klienci</h1>
 <div id="clients_charts">
   <ul>
     <li id="clients_first_tab"><a href="#clients_in_month_tab">Klienci w danym miesiącu</a></li>

@@ -65,6 +65,13 @@ class PromotionCodesPackage extends Model
 		return $this->quantity * $this->codes_value;
 	}
 
+	public function usedCodesNumber(){
+		$codes = PromotionCode::where('package_id=? AND used IS NOT NULL', ['package_id'=>$this->id]);
+		$codes_number = count($codes);
+
+		return $codes_number;
+	}
+
 	public function usedCodes()
 	{	
 		$date = date(Config::get('mysqltime'), strtotime("-1 week"));

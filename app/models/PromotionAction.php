@@ -84,7 +84,7 @@ class PromotionAction extends Model
 		$packages = $this->promotionCodesPackages();
 		$used_codes = 0;
 		foreach ($packages as $package) {
-			$used_codes = $used_codes + count($package->usedCodes());
+			$used_codes = $used_codes + $package->usedCodesNumber();
 		}
 		
 		return $used_codes;

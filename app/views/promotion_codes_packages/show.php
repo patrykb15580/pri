@@ -5,16 +5,30 @@
 	#echo "<pre>";
 	#die(print_r($params));
 ?>	
-<h1 id="show_top_title">Akcje promocyjne > <?= $package->promotionAction()->name ?> > <?= $package->name ?></h1>
-<div id="show_top_options">
-	<a href="<?= $path_update ?>">Edytuj</a>
+<div id="notice">
+	<p id="notice-text"><i class="fa fa-info-circle" aria-hidden="true"></i> W tym panelu możesz ...</p>
+	<button type="button" class="close-notice" data-dismiss="alert" aria-hidden="true">
+		<i class="fa fa-times" aria-hidden="true"></i>
+	</button>
 </div>
-<br /><br />
-Status: <?= PromotionCodesPackage::STATUSES[$package->status] ?><br />
-Liczba kodów: <?= $package->generated ?><br />
-Wartość kodów: <?= $package->codes_value ?> pkt<br />
-Wykorzystane kody: <?= count($package->usedCodes()) ?>
-<br /><br />
+
+<div id="title-box">
+	<i class="fa fa-product-hunt fa-2x green-icon" aria-hidden="true"></i>
+	<p class="title-box-text">Akcje promocyjne > <?= $package->promotionAction()->name ?> > <?= $package->name ?></p>
+	<a href="<?= $path_new ?>"><a href="<?= $path_new ?>"><button class="title-box-button">+ Nowa paczka kodów</button></a>
+	<br />
+	<br />
+	<p class="title-box-details">
+		Status: <b><?= PromotionCodesPackage::STATUSES[$package->status] ?></b><br />
+		Liczba kodów: <b><?= $package->generated ?></b><br />
+		Wartość kodów: <b><?= $package->codes_value ?> pkt</b><br />
+		Wykorzystane kody: <b><?= count($package->usedCodes()) ?></b>
+	</p>
+	<div class="title-box-options">
+		<a href="<?= $path_update ?>">Edytuj</a>
+	</div>
+	<br />
+</div>
 <?php
 	#echo "<pre>";
 	#die(print_r($packages));

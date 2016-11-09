@@ -1,6 +1,3 @@
-<?php
-	
-?>	
 <h1 id="show_top_title">Zamówienie nr <?= $order->id ?></h1>
 <br /><br />
 Status: <b><?= Order::STATUSES[$order->status] ?></b><br />

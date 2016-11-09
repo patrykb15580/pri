@@ -4,13 +4,7 @@
 */
 class SessionController extends Controller
 {
-	public $non_authorized = ['new', 'create'];
-	
-	public function new()
-	{	
-		$view = (new View($this->params, [], 'login'))->render();
-		return $view;
-	}
+	public $non_authorized = ['create'];
 
 	public function create()
 	{
@@ -28,7 +22,7 @@ class SessionController extends Controller
 		$this->auth(__FUNCTION__);
 		$router = Config::get('router');
 		$this->alert('info', 'Zostałeś pomyślnie wylogowany');
-		header('Location: '.$router->generate('login', []));
+		header('Location: '.$router->generate('promotor_login', []));
 		unset($_SESSION['user']);
 	}
 

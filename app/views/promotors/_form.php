@@ -3,8 +3,17 @@
 
 	$path = $router->generate('update_promotor', ['promotors_id' => $params['promotors_id']]);
 ?>
+<div id="notice">
+	<p id="notice-text"><i class="fa fa-info-circle" aria-hidden="true"></i> W tym panelu możesz ...</p>
+	<button type="button" class="close-notice" data-dismiss="alert" aria-hidden="true">
+		<i class="fa fa-times" aria-hidden="true"></i>
+	</button>
+</div>
+
+<div id="title_box">
+	<i class="fa fa-cog fa-2x dark-purple-icon" aria-hidden="true"></i><p class="title-box-text"> Edycja konta</p>
+</div>
 <form method="POST" action="<?= $path ?>">
-	<h1>Edycja konta</h1>
 	Nazwa:<br />
 	<input type="text" name="promotor[name]" value="<?= $promotor->name ?>"><br /><br />
 	E-mail:<br />

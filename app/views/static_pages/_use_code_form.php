@@ -1,5 +1,4 @@
 <?php	
-	$router = Config::get('router');
 	$path = $router->generate('add_points', ['code'=>$params['code']]);
 ?>
 <div id="use_code_container">
@@ -31,7 +30,7 @@
 		<br />
 		<input id="use_code_input" type="text" name="client[phone_number]" required="required">
 		<br />
-		<input id="use_code" type="submit" value="Dodaj punkty">
+		<input id="static_pages_submit" type="submit" value="Dodaj punkty">
 	</form>	
 </div>
 <script type="text/javascript" src="/assets/javascript/useCodeFormGuardianInitialize.js"></script>

@@ -1,4 +1,4 @@
-<h3>Użyte kody</h3>
+<h1 class="stats-title">Użyte kody</h1>
 <div id="codes_charts">
   <ul>
     <li id="codes_first_tab"><a href="#codes_in_month_tab">Kody w danym miesiącu</a></li>

@@ -28,7 +28,7 @@
 			header('Location: '.$router->generate('stats_promotors', ['promotors_id'=>$_SESSION['user']->id]));
 		} else {
 			new Alerts('error', 'Błędny login lub hasło');
-			header('Location: '.$router->generate('login', []));
+			header('Location: '.$router->generate('promotor_login', []));
 		}
 	} 
 

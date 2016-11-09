@@ -5,21 +5,37 @@
 	#echo "<pre>";
 	#die(print_r($active_actions));
 ?>	
-<div id="show_title_box">Nagrody promotora <?= $promotor->name ?>
-<a href="<?= $path_new ?>"><button id="add_new">Nowa nagroda</button></a></div>
-<h3>Aktywne</h3>
-<?php 
-	$rewards = $promotor->activeRewards();
-	#echo "<pre>";
-	#die(print_r($rewards));
-	include 'app/views/rewards/_rewards.php';
-?>
-<br />
-<h3>Nieaktywne</h3>
-<?php 
-	$rewards = $promotor->inactiveRewards();
-	#echo "<pre>";
-	#die(print_r($rewards));
-	include 'app/views/rewards/_rewards.php';
-?>
-	
+<div id="notice">
+	<p id="notice-text"><i class="fa fa-info-circle" aria-hidden="true"></i> W tym panelu możesz ...</p>
+	<button type="button" class="close-notice" data-dismiss="alert" aria-hidden="true">
+		<i class="fa fa-times" aria-hidden="true"></i>
+	</button>
+</div>
+<div id="title-box">
+	<i class="fa fa-gift fa-2x red-icon" aria-hidden="true"></i><p class="title-box-text"> Katalog nagród</p>
+	<a href="<?= $path_new ?>">
+		<button class="title-box-button">
+			<b>+</b> Nowa nagroda
+		</button>
+	</a>
+</div>
+<div id="title-box-tabs">
+	<p class="tab1 tab-active">AKTYWNE</p><p class="tab2 tab-inactive">NIEAKTYWNE</p>
+</div>
+
+<div id="active">
+	<?php 
+		$rewards = $promotor->activeRewards();
+		#echo "<pre>";
+		#die(print_r($rewards));
+		include 'app/views/rewards/_rewards.php';
+	?>
+</div>
+<div id="inactive">
+	<?php 
+		$rewards = $promotor->inactiveRewards();
+		#echo "<pre>";
+		#die(print_r($rewards));
+		include 'app/views/rewards/_rewards.php';
+	?>
+</div>

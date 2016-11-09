@@ -1,7 +1,7 @@
 <?php
 	$router = Config::get('router');
 ?>	
-<div id="show_title_box"><h1><?= $client->name ?></h1></div>
+<div id="title_box"><h1><?= $client->name ?></h1></div>
 
 <?php 
 	#echo "<pre>";

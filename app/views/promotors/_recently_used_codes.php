@@ -1,4 +1,4 @@
-<h3>Kody użyte przez ostatnie 7 dni</h3>
+<h1 class="stats-title">Kody użyte przez ostatnie 7 dni</h1>
 <div id="stats_box">
 Ilość użytych kodów: <?= count($promotor->recentlyUsedCodes()) ?><br /><br />
 <table width="98%">

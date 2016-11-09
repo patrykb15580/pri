@@ -10,6 +10,18 @@ class StaticPagesController extends Controller
 		return $view;
 	}
 
+	public function login()
+	{	
+		$view = (new View($this->params, [], 'start'))->render();
+		return $view;
+	}
+
+	public function promotorLogin()
+	{	
+		$view = (new View($this->params, [], 'start'))->render();
+		return $view;
+	}
+
 	public function insertCode()
 	{
 		$code = CodeChecker::checkCodeExist($this->params);

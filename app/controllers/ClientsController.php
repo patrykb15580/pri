@@ -24,12 +24,18 @@ class ClientsController extends Controller
 
 	public function showRewards()
 	{	
-		$this->auth(__FUNCTION__, $this->client());
+		#$this->auth(__FUNCTION__, $this->client());
 		$reward = Reward::find($this->params['reward_id']);
 		
 		$images = RewardImage::where('reward_id=?', ['reward_id'=>$this->params['reward_id']]);
 		
-		$view = (new View($this->params, ['reward'=>$reward, 'images'=>$images]))->render();
+		ob_start();
+
+		include $path = './app/views/'.StringUntils::camelCaseToUnderscore(str_replace('Controller', '', $this->params['controller'])).'/'.$this->params['action'].'.php';
+		$view = ob_get_contents();
+
+		ob_end_clean();
+
 		return $view;	
 	}
 

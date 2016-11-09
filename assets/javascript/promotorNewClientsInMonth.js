@@ -4,6 +4,7 @@ $( window ).ready(function(){
   var promotor_id = $("#clients_in_month_chart").data("promotorid");
 
   $( "#clients_first_tab" ).click(drawClientsInMonthChartData);
+  $( ".clients-stats-tab" ).click(drawClientsInMonthChartData);
   $( ".clients_month" ).change(drawClientsInMonthChartData);
 
   function drawClientsInMonthChartData() {

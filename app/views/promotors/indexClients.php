@@ -5,8 +5,16 @@
 	#echo "<pre>";
 	#die(print_r($active_actions));
 ?>	
-<h1>Klienci</h1>
-<div id="show_title_box"></div>
+<div id="notice">
+	<p id="notice-text"><i class="fa fa-info-circle" aria-hidden="true"></i> W tym panelu możesz ...</p>
+	<button type="button" class="close-notice" data-dismiss="alert" aria-hidden="true">
+		<i class="fa fa-times" aria-hidden="true"></i>
+	</button>
+</div>
+
+<div id="title-box">
+	<i class="fa fa-users fa-2x light-purple-icon" aria-hidden="true"></i><p class="title-box-text"> Klienci</p>
+</div>
 <?php 
 	#echo "<pre>";
 	#die(print_r($rewards));

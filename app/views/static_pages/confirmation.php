@@ -20,7 +20,8 @@
 	</table>
 </div>
 <div id="confirm_code_message" class="green_font">
-	<p class="zero_margin bold big_font">Gratulacje,</p>
+	<i class="fa fa-smile-o fa-5x" aria-hidden="true"></i>
+	<p class="code_message_confirm">Gratulacje,</p>
 	<?= $package->codes_value ?> punktów zostało dopisanych do Twojego konta.
 </div>
 <div id="confirm_code_bottom">

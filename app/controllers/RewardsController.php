@@ -42,6 +42,10 @@ class RewardsController extends Controller
 		$reward = new Reward($this->params['reward']);
 
 		if ($reward->save()) {
+			
+			$upload = new RewardImage;
+			$upload->uploadImages($_FILES, $this->params);
+
 			header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id']."/rewards");
 		}
 		else {

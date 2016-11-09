@@ -240,7 +240,7 @@ class PromotorsController extends Controller
 			if (count($dates_arr) <= 14) { 
 				$label = date("d.m", strtotime($date)); 
 			}
-			$row = [$label, $codes_number,'Liczba klientów dnia '.date("d.m.Y", strtotime($date)).': '.$codes_number];
+			$row = [$label, $codes_number,'Liczba kodów dnia '.date("d.m.Y", strtotime($date)).': '.$codes_number];
 	        array_push($arr, $row);
 		}
 

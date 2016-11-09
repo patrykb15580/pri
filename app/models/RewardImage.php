@@ -48,15 +48,25 @@ class RewardImage extends Model
 				if ($image->save()) {
 					$copy_path = $_SERVER['DOCUMENT_ROOT'].'/system/'.StringUntils::camelCaseToUnderscore(get_class($image)).'s/'.$image->id.'/';
 
+					if (!file_exists($_SERVER['DOCUMENT_ROOT'].'/system/')) {
+						mkdir($_SERVER['DOCUMENT_ROOT'].'/system/');
+					}
+					if (!file_exists($copy_path)) {
+						mkdir($copy_path, 0777, true);
+					}
 					if (!file_exists($copy_path.'original/')) {
 		   				mkdir($copy_path.'original/', 0777, true);
 		   			}
-		   			rename($files['image']['tmp_name'][$i], $copy_path.'original/'.$file_name);
 		   			if (!file_exists($copy_path.'small/')) {
 		   				mkdir($copy_path.'small/', 0777, true);
 		   			}
 
+		   			rename($files['image']['tmp_name'][$i], $copy_path.'original/'.$file_name);
+
+		   			$this->createBigImage($copy_path.'original/'.$file_name, $copy_path.'big/'.$file_name);
+		   			$this->createMediumImage($copy_path.'original/'.$file_name, $copy_path.'medium/'.$file_name);
 		   			$this->createSmallImage($copy_path.'original/'.$file_name, $copy_path.'small/'.$file_name);
+		   			$this->createVerySmallImage($copy_path.'original/'.$file_name, $copy_path.'very_small/'.$file_name);
 		   			$this->createTinyImage($copy_path.'original/'.$file_name, $copy_path.'tiny/'.$file_name);
 				}
 				else{
@@ -67,12 +77,24 @@ class RewardImage extends Model
 			}	
 		}
 	}
+	public function createBigImage($input_file, $output_file)
+	{
+		Image::open($input_file)->resize(600, 600)->save($output_file, 'jpg', 90);
+	}
+	public function createMediumImage($input_file, $output_file)
+	{
+		Image::open($input_file)->resize(400, 400)->save($output_file, 'jpg', 90);
+	}
 	public function createSmallImage($input_file, $output_file)
 	{
 		Image::open($input_file)->resize(200, 200)->save($output_file, 'jpg', 90);
 	}
-	public function createTinyImage($input_file, $output_file)
+	public function createVerySmallImage($input_file, $output_file)
 	{
 		Image::open($input_file)->resize(100, 100)->save($output_file, 'jpg', 90);
+	}
+	public function createTinyImage($input_file, $output_file)
+	{
+		Image::open($input_file)->resize(50, 50)->save($output_file, 'jpg', 90);
 	}
 }

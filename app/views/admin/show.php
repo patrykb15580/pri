@@ -2,7 +2,7 @@
 	$router = Config::get('router');
 	$path_new = $router->generate('new_promotors', []);
 ?>	
-<div id="show_title_box">Promotorzy
+<div id="title_box">Promotorzy
 <a href="<?= $path_new ?>"><button id="add_new">Nowy promotor</button></a></div>
 <br />
 <?php 
