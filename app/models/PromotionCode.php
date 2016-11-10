@@ -66,7 +66,7 @@ class PromotionCode extends Model
 		$package = $this->package();
 		$promotion_action = $package->promotionAction();
 		
-		if ($package->status == 'active' && $promotion_action->status == 'active') {
+		if ($package->status == 'active' && $promotion_action->isActive()) {
 			return true;
 		} else {
 			return false;

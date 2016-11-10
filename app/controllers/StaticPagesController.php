@@ -23,7 +23,8 @@ class StaticPagesController extends Controller
 	}
 
 	public function insertCode()
-	{
+	{	
+		PromotionActon::checkIfActionsActive()
 		$code = CodeChecker::checkCodeExist($this->params);
 
 		if ($code !== null && $code->isActive()) {

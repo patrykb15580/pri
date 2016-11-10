@@ -47,7 +47,7 @@ class PromotorAvatar extends Model
 		if (!empty($avatar)) {
 			if ($avatar->update(['file_name'=>$file_name, 'size'=>$files['image']['size'][0]])) {
 				$this->removeAvatarFiles($avatar);
-				$this->createAvatarFiles($files, $params, $file_name);
+				$this->createAvatarFiles($files, $params, $file_name, $avatar);
 			} else {
 				$reward = new Reward($params['reward']);
 				$path = 'app/views/'.StringUntils::camelCaseToUnderscore(str_replace('Controller', '', __CLASS__)).'/'.'edit.php';
@@ -70,23 +70,23 @@ class PromotorAvatar extends Model
 
 	public function createBigImage($input_file, $output_file)
 	{
-		Image::open($input_file)->resize(600, 600)->save($output_file, 'jpg', 90);
+		Image::open($input_file)->resize(600, 600, 'white')->save($output_file, 'jpg', 90);
 	}
 	public function createMediumImage($input_file, $output_file)
 	{
-		Image::open($input_file)->resize(400, 400)->save($output_file, 'jpg', 90);
+		Image::open($input_file)->resize(400, 400, 'white')->save($output_file, 'jpg', 90);
 	}
 	public function createSmallImage($input_file, $output_file)
 	{
-		Image::open($input_file)->resize(200, 200)->save($output_file, 'jpg', 90);
+		Image::open($input_file)->resize(200, 200, 'white')->save($output_file, 'jpg', 90);
 	}
 	public function createVerySmallImage($input_file, $output_file)
 	{
-		Image::open($input_file)->resize(100, 100)->save($output_file, 'jpg', 90);
+		Image::open($input_file)->resize(100, 100, 'white')->save($output_file, 'jpg', 90);
 	}
 	public function createTinyImage($input_file, $output_file)
 	{
-		Image::open($input_file)->resize(50, 50)->save($output_file, 'jpg', 90);
+		Image::open($input_file)->resize(50, 50, 'white')->save($output_file, 'jpg', 90);
 	}
 
 	public function createAvatarFiles($files, $params, $file_name, $avatar)

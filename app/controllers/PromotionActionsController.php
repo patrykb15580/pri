@@ -5,7 +5,7 @@
 class PromotionActionsController extends Controller
 {
 	public function show()
-	{
+	{	
 		$promotion_action = $this->promotionAction();
 		$this->auth(__FUNCTION__, $promotion_action);
 
@@ -103,5 +103,10 @@ class PromotionActionsController extends Controller
 	public function promotionAction()
 	{
 		return PromotionAction::find($this->params['id']);
+	}
+
+	public function checkIfActionsActive()
+	{
+		PromotionAction::checkIfActionsActive();
 	}
 }

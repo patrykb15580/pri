@@ -49,6 +49,7 @@ $router->map( 'POST', '/promotors/[i:promotors_id]/promotion-actions', 'Promotio
 $router->map( 'GET', '/promotors/[i:promotors_id]/promotion-actions/[i:id]/edit', 'PromotionActionsController#edit', 'edit_promotion_actions' );
 $router->map( 'POST', '/promotors/[i:promotors_id]/promotion-actions/[i:id]/update', 'PromotionActionsController#update', 'update_promotion_actions' );
 
+$router->map( 'GET', '/promotion-actions-check', 'PromotionActionsController#checkIfActionsActive', 'check_if_actions_active' );
 
 $router->map( 'GET', '/promotors/new', 'PromotorsController#new', 'new_promotor' );
 $router->map( 'GET', '/promotors/[i:promotors_id]/rewards', 'RewardsController#index', 'index_rewards' );

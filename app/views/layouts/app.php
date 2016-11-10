@@ -44,7 +44,6 @@
 <?php Alerts::showAlert(); ?>
 <div class="window-size"></div>
 <div id="top" class="dark_font">
-	<img id="main-layout-logo" src="/assets/image/booklet-logo-2.svg">
 	<div id="main-layout-user" class="dark_font">
 		<p class="user"><?= $user ?><i class="fa fa-caret-down dropdown" aria-hidden="true"></i></p>
 		<?php
@@ -80,6 +79,7 @@
 <div id="bottom">
 
 </div>
+<script type="text/javascript" src="/assets/javascript/datepicker.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		var w = $(window).width();

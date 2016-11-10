@@ -1,7 +1,7 @@
 <h1 class="stats-title">Najnowsi klienci</h1>
 <div id="stats_box">
 Łączna liczba klientów: <?= count($promotor->clients()) ?><br /><br />
-<table width="98%">
+<table width="100%">
 	<tr>
 		<td id="first_row">
 			Nazwa klienta

@@ -55,6 +55,4 @@ $( window ).ready(function(){
 
     chart.draw(dataTable, options);
   }
-
-  drawClientsInRangeChartData();
 });

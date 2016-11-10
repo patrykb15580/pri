@@ -141,4 +141,29 @@ class PromotionAction extends Model
 		
 		return $used_codes;
 	}
+
+	public function isActive()
+	{
+		if ($this->indefinitely == 0) {
+			if ($this->status == 'active') {
+			return true;
+			} else {
+				return false;
+			}
+		} else {
+			if ($this->status == 'active' && $this->indefinitely !== 0 && $this->to_at >= date('Y-m-d')) {
+				return true;
+			} else {
+				return false;
+			}
+		}	
+	}
+	public function checkIfActionsActive()
+	{
+		$actions = PromotionAction::where('status=? AND indefinitely=? AND to_at < "'.date('Y-m-d').'"', ['status'=>'active', 'indefinitely'=>0]);
+
+		foreach ($actions as $action) {
+			$action->update(['status'=>'inactive']);
+		}
+	}
 }
