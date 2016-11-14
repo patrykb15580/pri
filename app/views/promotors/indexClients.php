@@ -13,7 +13,7 @@
 </div>
 
 <div id="title-box">
-	<i class="fa fa-users fa-2x light-purple-icon" aria-hidden="true"></i><p class="title-box-text"> Klienci</p>
+	<i class="fa fa-users title-box-icon light-purple-icon" aria-hidden="true"></i><p class="title-box-text"> Klienci</p>
 </div>
 <?php 
 	#echo "<pre>";

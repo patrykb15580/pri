@@ -17,7 +17,7 @@
 				<img class="index_rewards_image" src="<?= $very_small_img_path ?>"><br />
 			<?php } ?> 
 		</td>
-		<td width="60%"><a href="<?= $path_show ?>"><?= $reward->name ?></a></td>
+		<td width="60%"><a href="<?= $path_show ?>"><b><?= $reward->name ?></b></a></td>
 		<td width="10%"></td>
 		<td width="10%"><?= $reward->prize ?></td>
 	</tr>

@@ -12,7 +12,7 @@
 </div>
 
 <div id="title-box">
-	<i class="fa fa-line-chart fa-2x blue-icon" aria-hidden="true"></i><p class="title-box-text"> Statystyki</p>
+	<i class="fa fa-line-chart title-box-icon blue-icon" aria-hidden="true"></i><p class="title-box-text"> Statystyki</p>
 </div>
 <div id="title-box-tabs">
 	<p class="clients-stats-tab tab-active">KLIENCI</p><p class="codes-stats-tab tab-inactive">KODY</p>

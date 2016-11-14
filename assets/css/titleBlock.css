@@ -1,6 +1,6 @@
   #title-box{
     position: relative;
-    width: 96%;
+    width: calc(96% + 2px);
     background-color: #DCE6F0;
     margin: 0px;
     padding: 1% 2% 1% 2%;
@@ -49,12 +49,12 @@
     padding: 0px;
 
   }
-  .title-box-icon{
+  i.title-box-icon {
     display: inline-block;
-    font-size: 48px;
-    margin: 0px 20px 0px 0px;
+    font-size: 42px;
+    margin: 0px 10px 0px 0px;
     padding: 0px;
-    vertical-align: 0px;
+    vertical-align: -2px;
   }
   .title-box-options{
     display: inline-block;
@@ -76,7 +76,7 @@
   }
   #title-box-tabs{
     background-color: #DCE6F0;
-    width: 94%;
+    width: calc(94% + 2px);
     height: 33px;
     margin: 0px 0px 10px 0px;
     padding: 10px 3% 0px 3%;

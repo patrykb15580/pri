@@ -12,7 +12,7 @@
 </div>
 
 <div id="title_box">
-	<i class="fa fa-cog fa-2x dark-purple-icon" aria-hidden="true"></i><p class="title-box-text"> Edycja konta</p>
+	<i class="fa fa-cog title-box-icon dark-purple-icon" aria-hidden="true"></i><p class="title-box-text"> Edycja konta</p>
 </div>
 <form method="POST" action="<?= $path ?>" enctype="multipart/form-data">
 	<?php

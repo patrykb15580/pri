@@ -16,4 +16,17 @@ class PolishMonthName
 				   10 => 'Październik',
 				   11 => 'Listopad',
 				   12 => 'Grudzień'];
+
+	const NAMES_VARIETLY = ['01' => 'Stycznia',
+						    '02' => 'Lutego',
+						    '03' => 'Marca',
+						    '04' => 'Kwietnia',
+						    '05' => 'Maja',
+						    '06' => 'Czerwca',
+						    '07' => 'Lipca',
+						    '08' => 'Sierpnia',
+						    '09' => 'Września',
+						    '10' => 'Października',
+						    '11' => 'Listopada',
+						    '12' => 'Grudnia'];
 }

@@ -12,7 +12,7 @@
 </div>
 
 <div id="title-box">
-	<i class="fa fa-shopping-basket fa-2x dark-green-icon" aria-hidden="true"></i><p class="title-box-text"> Zamówienia</p>
+	<i class="fa fa-shopping-basket title-box-icon dark-green-icon" aria-hidden="true"></i><p class="title-box-text"> Zamówienia</p>
 </div>
 
 <?php 
