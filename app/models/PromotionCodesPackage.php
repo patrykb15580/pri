@@ -4,7 +4,7 @@
 */
 class PromotionCodesPackage extends Model
 {
-	public $id, $name, $created_at, $updated_at, $action_id, $reusable, $quantity, $generated, $codes_value, $status;
+	public $id, $name, $created_at, $updated_at, $action_id, $reusable, $quantity, $generated, $codes_value, $status, $description;
 
 	const STATUSES = 	['active' => 'Aktywne',
 						'inactive' => 'Nieaktywne'];
@@ -41,7 +41,9 @@ class PromotionCodesPackage extends Model
 									   'default' => null,
 									   'validations' => ['required', 'max_length:11']],
 			'status'				=>['type' => 'string',
-									   'default' => 'active']
+									   'default' => 'active'],
+			'description'			=>['type' => 'string',
+									   'default' => null]
 		];
 	}
 
@@ -58,6 +60,14 @@ class PromotionCodesPackage extends Model
 	public function promotionCodes()
 	{
 		return PromotionCode::where('package_id=?', ['package_id'=>$this->id]);
+	}
+	public function usedPromotionCodes()
+	{
+		return PromotionCode::where('package_id=? AND client_id IS NOT NULL', ['package_id'=>$this->id]);
+	}
+	public function nonUsedPromotionCodes()
+	{
+		return PromotionCode::where('package_id=? AND client_id IS NULL', ['package_id'=>$this->id]);
 	}
 
 	public function packageValue()

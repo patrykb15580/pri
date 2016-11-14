@@ -13,7 +13,7 @@ Klient: <b><?= $order->client()->name ?></b><br />
 	</tr>
 	<tr class="result">
 		<td class="result" width="20%">
-			<?php if (!empty($image)) { ?><img src="/system/reward_images/<?= $image->id ?>/tiny/<?= $image->file_name ?>"><?php } ?>
+			<?php if (!empty($image)) { ?><img src="/system/reward_images/<?= $image->id ?>/small/<?= $image->file_name ?>"><?php } ?>
 		</td>
 		<td class="result" width="80%">
 			<b><?= $reward->name ?></b><br />

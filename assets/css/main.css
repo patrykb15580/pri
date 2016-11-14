@@ -1452,6 +1452,7 @@ div#main-layout-user{
   margin: 2px 0px 0px 0px;
   padding: 1%;
   line-height: 44px;
+  z-index: 10;
 }
 .user{
   display: inline-block;
@@ -1510,7 +1511,6 @@ div#main-layout-user{
 }
 
 .window-size{
-  position: absolute;
   top: 20px;
   left: 20px;
 }
@@ -1543,6 +1543,17 @@ div#main-layout-user{
   border: 1px solid #CBD0D4;
   border-radius: 3px;
   margin: 5px 0px;
+  padding: 6px 4px;
+  color: #5f5f5f;
+}
+.form-page-form input[type=text].integer-input{
+  width: 100px;
+  background-color: white;
+  border: 1px solid #CBD0D4;
+  border-radius: 3px;
+  margin: 5px 0px;
+  padding: 6px 4px;
+  color: #5f5f5f;
 }
 .form-page-form input[type=datetime]{
   width: 140px;
@@ -1551,6 +1562,7 @@ div#main-layout-user{
   border-radius: 3px;
   margin: 5px 0px;
   padding: 8px 3px;
+  color: #5f5f5f;
 }
 .form-page-form textarea{
   width: 500px;
@@ -1560,11 +1572,13 @@ div#main-layout-user{
   border-radius: 3px;
   margin: 5px 0px;
   padding: 8px 3px;
+  color: #5f5f5f;
 }
 .form-page-form select{
   background-color: white;
   border: 1px solid #CBD0D4;
   border-radius: 3px;
+  color: #5f5f5f;
 }
 .form-page-form{
   width: 96%;
@@ -1583,12 +1597,18 @@ div#main-layout-user{
   display: inline-block;
   font-size: 24px;
   font-weight: 600;
+  margin: 0px;
+}
+.form-page-parent-name{
+  display: block;
+  font-size: 16px;
+  margin: 0px 0px 20px 52px;
 }
 .form-page-button{
   display: inline-block;
   color: white;
-  margin: 2px 0px;
-  padding: 1% 1%;
+  margin: 2px 20px 2px 0px;
+  padding: 1% 2%;
   background-color: #007EE5;
   font-size: 16px;
   transition: background-color 0.2s;
@@ -1599,8 +1619,8 @@ div#main-layout-user{
 .form-page-button:hover{
   display: inline-block;
   color: white;
-  margin: 2px 0px;
-  padding: 1% 1%;
+  margin: 2px 20px 2px 0px;
+  padding: 1% 2%;
   background-color: #008cff;
   font-size: 16px;
   border: 0px solid;
@@ -1642,3 +1662,4 @@ div#main-layout-user{
 .hidden-input{
   display: none;
 }
+

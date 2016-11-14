@@ -4,7 +4,7 @@
 */
 class PromotionAction extends Model
 {
-	public $id, $created_at, $updated_at, $name, $promotors_id, $status, $indefinitely, $from_at, $to_at;
+	public $id, $created_at, $updated_at, $name, $promotors_id, $status, $indefinitely, $from_at, $to_at, $description;
 
 	const STATUSES = 	['active' => 'Aktywne',
 						'inactive' => 'Nieaktywne'];
@@ -35,7 +35,9 @@ class PromotionAction extends Model
 			'from_at'				=>['type' => 'datetime',
 										'default' => null],
 			'to_at'					=>['type' => 'datetime',
-										'default' => null]
+										'default' => null],
+			'description'			=>['type' => 'string',
+									   'default' => null]
 		];
 	}
 

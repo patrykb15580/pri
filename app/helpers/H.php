@@ -25,6 +25,9 @@ class H
 		if ($params['controller'] == 'PromotionActionsController') {
 			$menu = 'actions';
 		}
+		if ($params['controller'] == 'PromotionCodesPackagesController') {
+			$menu = 'actions';
+		}
 		if ($params['controller'] == 'PromotorsController' && $params['action'] == 'stats') {
 			$menu = 'stats';
 		}

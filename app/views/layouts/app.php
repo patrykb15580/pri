@@ -30,6 +30,8 @@
 	<link rel="stylesheet" type="text/css" href="/assets/css/clientRewardDetails.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,800&amp;subset=latin-ext" rel="stylesheet"> 
 	<script src="js/jquery.guardian-1.0.min.js"></script>
 	<script type="text/javascript" src="/assets/javascript/alerts.js"></script> 
@@ -42,7 +44,6 @@
 </head>
 <body>
 <?php Alerts::showAlert(); ?>
-<div class="window-size"></div>
 <div id="top" class="dark_font">
 	<div id="main-layout-user" class="dark_font">
 		<p class="user"><?= $user ?><i class="fa fa-caret-down dropdown" aria-hidden="true"></i></p>
@@ -77,7 +78,7 @@
 	</div>
 </div>	
 <div id="bottom">
-
+	<div class="window-size"></div>
 </div>
 <script type="text/javascript" src="/assets/javascript/datepicker.js"></script>
 <script type="text/javascript">

@@ -89,8 +89,8 @@ class PromotorsController extends Controller
 	{
 		$this->auth(__FUNCTION__, $this->promotor());
 		$order = Order::find($this->params['order_id']);
-		$image = $order->client();
 		$reward = $order->reward();
+		$image = $reward->singleImage();
 
 		$view = (new View($this->params, ['order'=>$order, 'image'=>$image, 'reward'=>$reward]))->render();
 		return $view;

@@ -40,9 +40,11 @@ class PromotionCodesPackagesController extends Controller
 										   'order_date'=>$package->created_at]);
 
 			$admin_order->save();
+			$this->alert('info', 'Utworzono nową paczkę kodów');
 			header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id']."/promotion-actions/".$this->params['action_id']);
 		}
 		else{
+			$this->alert('error', 'Paczka kodów nie została utworzona');
 			$view = (new View($this->params, ['package'=>$package]))->render();
 			return $view;
 		} 		
@@ -62,9 +64,14 @@ class PromotionCodesPackagesController extends Controller
 		$package = $this->package();
 		$this->auth(__FUNCTION__, $package);
 
-		$package->update($this->params['promotion_codes_package']);
-		
-		header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id']."/promotion-actions/".$this->params['action_id']."/package/".$this->params['id']); 
+		if ($package->update($this->params['promotion_codes_package'])) {
+		 	$this->alert('info', 'Edycja zakończona pomyślnie');
+			header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id']."/promotion-actions/".$this->params['action_id']."/package/".$this->params['id']);
+		} else {
+			$this->alert('error', 'Edycja zakończona niepowodzeniem, spróbuj jeszcze raz');
+			$view = (new View($this->params, ['package'=>$package]))->render();
+			return $view;
+		}
 	}
 
 	/* Funkcja generująca kody uruchamiana z url */

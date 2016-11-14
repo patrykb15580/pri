@@ -1,6 +1,5 @@
 #!D:\xampp\php\php.exe -q
 <?php
-session_start();
 
 include 'core/Config.php';
 include 'config/application.php';
@@ -210,4 +209,3 @@ function test()
 	}
 	MyDB::clearDatabaseExceptSchema();
 }
-session_destroy();
