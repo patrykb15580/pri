@@ -1,7 +1,7 @@
 <table width="100%">
 	<tr>
-		<td id="first_row" width="35%">Nazwa akcji</td>
-		<td id="first_row" width="50%">Czas trwania akcji</td>
+		<td id="first_row" width="60%">Nazwa akcji</td>
+		<td id="first_row" width="25%">Czas trwania akcji</td>
 		<td class="text_align_right" id="first_row" width="15%">Wykorzystane kody</td>
 	</tr>
 <?php foreach ($promotion_actions as $promotion_action) {			
@@ -17,12 +17,11 @@
 	$to_month = PolishMonthName::NAMES_VARIETLY[date('m', strtotime($promotion_action->to_at))];
 	$to_year = date('Y', strtotime($promotion_action->to_at));
 	
-	$to_at = $to_day." ".$to_month." ".$to_year;
-	?>
+	$to_at = $to_day." ".$to_month." ".$to_year; ?>
 	<tr class="result">
-		<td width="35%"><a href="<?= $path_show ?>"><b><?= $promotion_action->name ?></b></a></td>
-		<td width="50%"><?php if ($promotion_action->indefinitely == 1) { echo "bezterminowo"; } else echo $from_at." - ".$to_at; ?></td>
-		<td class="text_align_right" width="15%"><b><?= $promotion_action->usedCodesNumber() ?></b>/<?= $promotion_action->codesNumber() ?></td>
+		<td width="60%"><a href="<?= $path_show ?>"><b><?= $promotion_action->name ?></b></a></td>
+		<td width="25%"><?php if ($promotion_action->indefinitely == 1) { echo "bezterminowo"; } else echo $from_at." - ".$to_at; ?></td>
+		<td class="text_align_right" width="15%"><b><?= $promotion_action->usedCodesNumber() ?></b> / <?= $promotion_action->codesNumber() ?></td>
 	</tr>
 <?php } ?>	
 </table>

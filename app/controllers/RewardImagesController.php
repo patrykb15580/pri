@@ -10,9 +10,6 @@ class RewardImagesController extends Controller
 		$this->auth(__FUNCTION__, $this->reward());
 		$path = 'system/reward_images/'.$this->params['id'];
 		$files = FilesUntils::listFiles($path);
-		
-		#echo "<pre>";
-		#die(print_r($_SERVER['HTTP_REFERER']));
 
 		$this->params['reward']['id'] = $this->params['id'];
 		$image = new RewardImage($this->params['reward']);

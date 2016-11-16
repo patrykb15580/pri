@@ -2,6 +2,7 @@
 	$router = Config::get('router');
 	$path_new = $router->generate('new_rewards', ['promotors_id' => $params['promotors_id']]);
 	
+	$items_number = count($promotor->rewards());
 	#echo "<pre>";
 	#die(print_r($active_actions));
 ?>	
@@ -26,16 +27,22 @@
 <div id="active">
 	<?php 
 		$rewards = $promotor->activeRewards();
-		#echo "<pre>";
-		#die(print_r($rewards));
-		include 'app/views/rewards/_rewards.php';
+		
+		if (count($rewards) == 0 && $items_number !== 0) {
+			include 'app/views/layouts/_no_results.php';
+		} else if ($items_number == 0) {
+			include 'app/views/rewards/_make_first.php';
+		} else include 'app/views/rewards/_rewards.php';
 	?>
 </div>
 <div id="inactive">
 	<?php 
 		$rewards = $promotor->inactiveRewards();
-		#echo "<pre>";
-		#die(print_r($rewards));
-		include 'app/views/rewards/_rewards.php';
+		
+		if (count($rewards) == 0 && $items_number !== 0) {
+			include 'app/views/layouts/_no_results.php';
+		} else if ($items_number == 0) {
+			include 'app/views/rewards/_make_first.php';
+		} else include 'app/views/rewards/_rewards.php';
 	?>
 </div>

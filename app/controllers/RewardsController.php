@@ -43,12 +43,20 @@ class RewardsController extends Controller
 
 		if ($reward->save()) {
 			
-			$upload = new RewardImage;
-			$upload->uploadImages($_FILES, $this->params);
+			if ($_FILES['image']['name'][0] !== null) {
+				$upload = new RewardImage;
+				if (!$upload->uploadImages($_FILES, $this->params)) {
+					$this->alert('error', 'Nie udało się dodać zdjęć, spróbuj jeszcze raz');
+				}
+			}
+
+			$this->alert('info', 'Nagroda została dodana');
 
 			header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id']."/rewards");
 		}
 		else {
+			$this->alert('error', 'Nagroda nie została dodana, spróbuj jeszcze raz');
+
 			$reward = new Reward($this->params['reward']);
 			$path = 'app/views/'.StringUntils::camelCaseToUnderscore(str_replace('Controller', '', __CLASS__)).'/'.'new.php';
 			include 'app/views/layouts/app.php';
@@ -71,12 +79,20 @@ class RewardsController extends Controller
 		
 		if ($reward->update($this->params['reward'])) {
 
-			$upload = new RewardImage;
-			$upload->uploadImages($_FILES, $this->params);
+			if ($_FILES['image']['name'][0] !== null) {
+				$upload = new RewardImage;
+				if (!$upload->uploadImages($_FILES, $this->params)) {
+					$this->alert('error', 'Nie udało się dodać zdjęć, spróbuj jeszcze raz');
+				}
+			}
+
+			$this->alert('info', 'Nagroda została zaktualizowana');
 
 			header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id']."/rewards/".$this->params['id']); 
 		}
 		else {
+			$this->alert('error', 'Nagroda nie została zaktualizowana, spróbuj jeszcze raz');
+
 			$reward = new Reward($this->params['reward']);
 			
 			$view = (new View($this->params, ['reward'=>$reward]))->render();

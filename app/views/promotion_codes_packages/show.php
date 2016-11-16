@@ -16,7 +16,7 @@
 	<a href="<?= $prev_page ?>"><button class="prev-page-button"><i class="fa fa-chevron-left" aria-hidden="true"></i> Wstecz</button></a>
 
 	<i class="fa fa-product-hunt title-box-icon green-icon" aria-hidden="true"></i>
-	<p class="title-box-text">Paczka kodów <?= $package->name ?></p>
+	<p class="title-box-text"><?= $package->name ?></p>
 	<br />
 	<br />
 	<p class="title-box-details">
@@ -40,28 +40,40 @@
 </div>
 
 <div id="active">
-	<table width="100%">
-		<tr>
-			<td id="first_row" width="60%">Kod</td>
-			<td id="first_row" width="40%">Wykorzystany</td>
-		</tr>
-	<?php foreach ($package->usedPromotionCodes() as $promotion_code) { ?>
-		<tr>
-			<td width="60%"><b><?= $promotion_code->code ?></b></td>
-			<td width="40%"><?= $promotion_code->used ?></td>
-		</tr>
-	<?php } ?>	
-	</table>
+	<?php 
+		if (count($package->usedPromotionCodes()) !== 0) { ?>
+			<table width="100%">
+				<tr>
+					<td id="first_row" width="60%">Kod</td>
+					<td id="first_row" width="40%">Wykorzystany</td>
+				</tr>
+			<?php foreach ($package->usedPromotionCodes() as $promotion_code) { ?>
+				<tr class="result">
+					<td width="60%"><b><?= $promotion_code->code ?></b></td>
+					<td width="40%"><?= $promotion_code->used ?></td>
+				</tr>
+			<?php } ?>	
+			</table>
+		<?php } else { 
+			include 'app/views/layouts/_no_results.php';
+		}
+	?>
 </div>
 <div id="inactive">
-	<table width="100%">
-		<tr>
-			<td id="first_row" width="100%">Kod</td>
-		</tr>
-	<?php foreach ($package->nonUsedPromotionCodes() as $promotion_code) { ?>
-		<tr>
-			<td width="100%"><b><?= $promotion_code->code ?></b></td>
-		</tr>
-	<?php } ?>	
-	</table>
+	<?php
+		if (count($package->nonusedPromotionCodes()) !== 0) { ?>
+			<table width="100%">
+				<tr>
+					<td id="first_row" width="100%">Kod</td>
+				</tr>
+			<?php foreach ($package->nonUsedPromotionCodes() as $promotion_code) { ?>
+				<tr class="result">
+					<td width="100%"><b><?= $promotion_code->code ?></b></td>
+				</tr>
+			<?php } ?>	
+			</table>
+		<?php } else { 
+			include 'app/views/layouts/_no_results.php';
+		}
+	?>	
 </div>

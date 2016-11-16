@@ -1,5 +1,4 @@
 <div id="side_bar">
-	<p class="font-14-px margin-left-10-percent-bottom-10px">Moje konto</p>
 	<a id="menu" class="<?= H::promotorCurrentMenu($params, 'actions') ?> promotor_menu_actions" href="/promotors/<?= $params['promotors_id'] ?>">
 		<i class="fa fa-product-hunt" aria-hidden="true"></i> Akcje promocyjne
 	</a>

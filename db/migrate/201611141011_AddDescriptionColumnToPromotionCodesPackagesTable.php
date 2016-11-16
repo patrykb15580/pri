@@ -7,7 +7,7 @@ class AddDescriptionColumnToPromotionCodesPackagesTable
 	
 	public function up(){
 		$query = 'ALTER TABLE `promotion_codes_packages`
-		ADD `description` varchar(191) NOT NULL';
+		ADD `description` text NULL';
 
 		return $query;
 	}

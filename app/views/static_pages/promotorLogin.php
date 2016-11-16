@@ -1,11 +1,11 @@
 <h1 id="main_page_site_title">punktacja.pl</h1>
-<form id="promotor_login" method="POST" action="<?= $router->generate('sign_in', []) ?>">
+<form id="promotor-login" method="POST" action="<?= $router->generate('sign_in', []) ?>">
 	<h1 class="text_align_center">Logowanie</h1>
 	E-mail:
-	<br /><input id="promotor_login" type="text" name="login">
-	<br /><br />Hasło:
-	<br /><input id="promotor_login" type="password" name="password">
-	<br /><br /><input id="static_pages_submit" id="login" type="submit" value="Zaloguj">
+	<br /><input type="text" name="login">
+	<br />Hasło:
+	<br /><input type="password" name="password">
+	<br /><br /><input id="login" type="submit" value="Zaloguj">
 </form>
 admin -> zaq1@WSX
 <br /><br /><br />

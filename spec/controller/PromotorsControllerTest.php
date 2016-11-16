@@ -62,8 +62,19 @@ class PromotorsControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
-		$elements = $html->find('tr.result');	
+		$elements = $html->find('div#title-box');	
+		Assert::expect(count($elements)) -> toEqual(1);
 
+		$elements = $html->find('div#title-box-tabs');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('div#active');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('div#inactive');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('tr.result');	
 		Assert::expect(count($elements)) -> toEqual(2);
 
 		unset($_SESSION['user']);
@@ -84,9 +95,20 @@ class PromotorsControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
-		$elements = $html->find('input');	
+		$elements = $html->find('.form-page-container');	
+		Assert::expect(count($elements)) -> toEqual(1);
 
-		Assert::expect(count($elements)) -> toEqual(5);
+		$elements = $html->find('.form-page-icon');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.form-page-title');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('input');	
+		Assert::expect(count($elements)) -> toEqual(6);
+
+		$elements = $html->find('.avatar-big');	
+		Assert::expect(count($elements)) -> toEqual(1);
 
 		unset($_SESSION['user']);
 	}
@@ -135,8 +157,10 @@ class PromotorsControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
-		$elements = $html->find('tr.result');	
+		$elements = $html->find('div#title-box');	
+		Assert::expect(count($elements)) -> toEqual(1);
 
+		$elements = $html->find('tr.result');	
 		Assert::expect(count($elements)) -> toEqual(1);
 
 		unset($_SESSION['user']);
@@ -157,8 +181,10 @@ class PromotorsControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
-		$elements = $html->find('tr.result');	
+		$elements = $html->find('div#title-box');	
+		Assert::expect(count($elements)) -> toEqual(1);
 
+		$elements = $html->find('tr.result');	
 		Assert::expect(count($elements)) -> toEqual(2);
 
 		unset($_SESSION['user']);
@@ -186,7 +212,7 @@ class PromotorsControllerTest extends Tests
 		Assert::expect(count($elements)) -> toEqual(2);
 
 		$elements = $html->find('td.result');	
-		Assert::expect(count($elements)) -> toEqual(4);
+		Assert::expect(count($elements)) -> toEqual(6);
 
 		unset($_SESSION['user']);
 		error_reporting(E_ALL);
@@ -216,9 +242,18 @@ class PromotorsControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
-		$elements = $html->find('tr.result');	
+		$elements = $html->find('.clients-charts');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.codes-charts');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('#stats_box');	
 		Assert::expect(count($elements)) -> toEqual(2);
 
+
+		$elements = $html->find('tr.result');	
+		Assert::expect(count($elements)) -> toEqual(2);
 
 
 		$elements = $html->find('div#clients_in_month_chart');	
@@ -231,12 +266,6 @@ class PromotorsControllerTest extends Tests
 		Assert::expect(count($elements)) -> toEqual(1);
 
 
-
-		$elements = $html->find('div#clients_charts');	
-		Assert::expect(count($elements)) -> toEqual(1);
-
-
-
 		$elements = $html->find('li#clients_first_tab');	
 		Assert::expect(count($elements)) -> toEqual(1);
 
@@ -245,12 +274,6 @@ class PromotorsControllerTest extends Tests
 
 		$elements = $html->find('li#clients_third_tab');	
 		Assert::expect(count($elements)) -> toEqual(1);
-
-
-
-		$elements = $html->find('div#codes_charts');	
-		Assert::expect(count($elements)) -> toEqual(1);
-
 
 
 		$elements = $html->find('li#codes_first_tab');	
@@ -272,6 +295,11 @@ class PromotorsControllerTest extends Tests
 
 		$elements = $html->find('div#codes_in_range_chart');	
 		Assert::expect(count($elements)) -> toEqual(1);
+
+
+		$elements = $html->find('.date');	
+		Assert::expect(count($elements)) -> toEqual(4);
+
 
 		unset($_SESSION['user']);
 		error_reporting(E_ALL);

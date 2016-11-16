@@ -14,7 +14,7 @@
 ?>
 <form class="form-page-form" method="POST" action="<?= $path ?>">
 	Nazwa akcji<br />
-	<input type="text" name='promotion_action[name]' value="<?= $promotion_action->name ?>"><br /><br />
+	<input type="text" name='promotion_action[name]' value="<?= $promotion_action->name ?>" required="required"><br /><br />
 	Dodatkowy opis (widoczny tylko dla promotora)<br />
 	<textarea rows="6" name="promotion_action[description]"><?= $promotion_action->description ?></textarea>
 	<br />
@@ -32,12 +32,14 @@
 	?>
 	<br />
 	Czas trwania akcji<br /><br />
-	<input type="radio" name='promotion_action[indefinitely]' value="1" <?php if ($promotion_action->indefinitely == 1) {echo 'checked="checked"';} ?>>bezterminowo
-	<br /><input type="radio" name='promotion_action[indefinitely]' value="0" <?php if ($promotion_action->indefinitely == 0) {echo 'checked="checked"';} ?>>
+	<input type="radio" name='promotion_action[indefinitely]' value="1" <?php if ($promotion_action->indefinitely == 1 || $params['action'] == 'new') {echo 'checked="checked"';} ?>>bezterminowo
+	<br /><input type="radio" name='promotion_action[indefinitely]' value="0" <?php if ($promotion_action->indefinitely == 0 && $params['action'] !== 'new') {echo 'checked="checked"';} ?>>
 	od 
-	<input type="datetime" class="datepick" name="promotion_action[from_at]" <?php if ($promotion_action->from_at !== '0000-00-00' && $promotion_action->indefinitely == 0) {echo 'value="'.$promotion_action->from_at.'"';}  ?>>
+	<input type="datetime" class="datepick" name="promotion_action[from_at]" <?php if ($promotion_action->from_at !== '0000-00-00' && $promotion_action->indefinitely == 0) {echo 'value="'.$promotion_action->from_at.'"';} ?>>
 	 do 
-	<input type="datetime" class="datepick" name='promotion_action[to_at]' <?php if ($promotion_action->from_at !== '0000-00-00' && $promotion_action->indefinitely == 0) {echo 'value="'.$promotion_action->to_at.'"';}  ?>>
+	<input type="datetime" class="datepick" name='promotion_action[to_at]' <?php if ($promotion_action->from_at !== '0000-00-00' && $promotion_action->indefinitely == 0) {echo 'value="'.$promotion_action->to_at.'"';} ?>>
 	<br /><br /><input class="form-page-button" type="submit" value="<?php if ($params['action']=='new') { echo "Utwórz akcję promocyjną"; } else { echo "Zapisz zmiany"; } ?>">
 	<a href="<?= $prev_page ?>">Anuluj</a>
 </form>
+
+<script type="text/javascript" src="/assets/javascript/addRequiredAttrToDateInputs.js"></script>

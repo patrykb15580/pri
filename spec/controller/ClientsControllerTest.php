@@ -120,32 +120,6 @@ class ClientsControllerTest extends Tests
 		unset($_SESSION['user']);
 	}
 
-	public function testShowRewardsAction()
-	{
-		$this->seed();
-
-		$params['promotor_id'] = 1;
-		$params['client_id'] = 1;
-		$params['reward_id'] = 1;
-		$params['controller'] = 'ClientsController';
-		$params['action'] = 'showRewards';
-
-		$action = $params['action'];
-
-		$controller = new $params['controller']($params);
-		$view = $controller->$action();
-
-		$html = HtmlDomParser::str_get_html($view);
-
-		$elements = $html->find('div#reward_description');	
-		Assert::expect(count($elements)) -> toEqual(1);
-
-		$elements = $html->find('div#reward_images_container');	
-		Assert::expect(count($elements)) -> toEqual(1);
-
-		unset($_SESSION['user']);
-	}
-
 	public function testIndexHistoryAction()
 	{
 		$this->seed();

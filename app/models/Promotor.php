@@ -200,14 +200,14 @@ class Promotor extends Model
 
 	public function activeActions()
 	{
-		$actions = PromotionAction::where('promotors_id=? AND status=?', ['promotors_id'=>$this->id, 'status'=>'active']);
+		$actions = PromotionAction::where('promotors_id=? AND status=?', ['promotors_id'=>$this->id, 'status'=>'active'], ['order'=>'created_at DESC']);
 
 		return $actions;
 	}
 
 	public function inactiveActions()
 	{
-		$actions = PromotionAction::where('promotors_id=? AND status=?', ['promotors_id'=>$this->id, 'status'=>'inactive']);
+		$actions = PromotionAction::where('promotors_id=? AND status=?', ['promotors_id'=>$this->id, 'status'=>'inactive'], ['order'=>'created_at DESC']);
 
 		return $actions;
 	}

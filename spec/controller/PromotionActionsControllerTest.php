@@ -46,10 +46,10 @@ class PromotionActionsControllerTest extends Tests
 		$points_balance = new PointsBalance(['client_id'=>2, 'promotor_id'=>1, 'balance'=>232]);
 		$points_balance->save();
 
-		$reward = new Reward(['name' => 'Reward1', 'status' => 'active', 'prize' => 10, 'description' => 'Desc r1', 'promotors_id' => 1]);
+		$reward = new Reward(['name' => 'Reward1', 'status' => 'active', 'prize' => 10, 'description' => 'Desc r1', 'promotors_id' => 1, 'description'=>'desc']);
 		$reward->save();
 
-		$reward = new Reward(['name' => 'Reward2', 'status' => 'active', 'prize' => 15, 'description' => 'Desc r2', 'promotors_id' => 2]);
+		$reward = new Reward(['name' => 'Reward2', 'status' => 'active', 'prize' => 15, 'description' => 'Desc r2', 'promotors_id' => 2, 'description'=>'desc']);
 		$reward->save();
 
 		$order = new Order(['promotor_id'=>1, 'client_id'=>1, 'reward_id'=>1, 'order_date'=>date(Config::get('mysqltime'))]);
@@ -81,8 +81,19 @@ class PromotionActionsControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
-		$elements = $html->find('tr.result');	
+		$elements = $html->find('div#title-box');	
+		Assert::expect(count($elements)) -> toEqual(1);
 
+		$elements = $html->find('div#title-box-tabs');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('div#active');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('div#inactive');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('tr.result');	
 		Assert::expect(count($elements)) -> toEqual(2);
 
 		unset($_SESSION['user']);
@@ -103,9 +114,20 @@ class PromotionActionsControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
-		$elements = $html->find('input');	
+		$elements = $html->find('.form-page-container');	
+		Assert::expect(count($elements)) -> toEqual(1);
 
+		$elements = $html->find('.form-page-icon');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.form-page-title');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('input');	
 		Assert::expect(count($elements)) -> toEqual(6);
+
+		$elements = $html->find('textarea');	
+		Assert::expect(count($elements)) -> toEqual(1);
 
 		unset($_SESSION['user']);
 	}
@@ -157,9 +179,23 @@ class PromotionActionsControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
-		$elements = $html->find('input');	
+		$elements = $html->find('.form-page-container');	
+		Assert::expect(count($elements)) -> toEqual(1);
 
+		$elements = $html->find('.form-page-icon');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.form-page-title');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('input');	
 		Assert::expect(count($elements)) -> toEqual(6);
+
+		$elements = $html->find('select');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('textarea');	
+		Assert::expect(count($elements)) -> toEqual(1);
 
 		unset($_SESSION['user']);
 	}

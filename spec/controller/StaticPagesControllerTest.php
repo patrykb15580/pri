@@ -69,7 +69,7 @@ class StaticPagesControllerTest extends Tests
 		$curl = new TesterTestRequest((new PromotionCodesPackagesController($params))->generate(), 'http://'.Config::get('host').'/package/generate', null, []);
 	}
 
-	public function testIndexAction()
+	public function testStartPageAction()
 	{
 		$params['controller'] = 'StaticPagesController';
 		$params['action'] = 'startPage';
@@ -88,14 +88,61 @@ class StaticPagesControllerTest extends Tests
 		unset($_SESSION['user']);
 	}
 
-	public function useCode()
+	public function testLoginAction()
+	{
+		$params['controller'] = 'StaticPagesController';
+		$params['action'] = 'login';
+
+		$action = $params['action'];
+
+		$controller = new $params['controller']($params);
+		$view = $controller->$action();
+
+		$html = HtmlDomParser::str_get_html($view);
+
+		$elements = $html->find('#login_box');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.login_left_block');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.login_right_block');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('input');	
+		Assert::expect(count($elements)) -> toEqual(2);
+
+		unset($_SESSION['user']);
+	}
+
+	public function testPromotorLoginAction()
+	{
+		$params['controller'] = 'StaticPagesController';
+		$params['action'] = 'promotorLogin';
+
+		$action = $params['action'];
+
+		$controller = new $params['controller']($params);
+		$view = $controller->$action();
+
+		$html = HtmlDomParser::str_get_html($view);
+
+		$elements = $html->find('input');	
+		Assert::expect(count($elements)) -> toEqual(3);
+
+		unset($_SESSION['user']);
+	}
+
+ 	/* insert code */
+
+	public function testUseCodeAction()
 	{
 		$this->seed();
 		
 		$code = PromotionCode::all([]);
 		$code = $code[0];
 
-		$params['controller'] = 'RewardsController';
+		$params['controller'] = 'StaticPagesController';
 		$params['action'] = 'useCode';
 		$params['code'] = $code->code;
 
@@ -106,8 +153,23 @@ class StaticPagesControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
-		$elements = $html->find('tr');	
-		Assert::expect(count($elements)) -> toEqual(2);
+		$elements = $html->find('#use_code_container');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.use_code_top');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('form#use_code');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('table');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.avatar-square');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('label');	
+		Assert::expect(count($elements)) -> toEqual(3);
 
 		$elements = $html->find('input');	
 		Assert::expect(count($elements)) -> toEqual(4);
@@ -115,7 +177,7 @@ class StaticPagesControllerTest extends Tests
 		unset($_SESSION['user']);
 	}
 
-	public function testNewAction()
+	public function testAddPointsAction()
 	{
 		$this->seed();
 

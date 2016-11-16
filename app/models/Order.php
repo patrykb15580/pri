@@ -5,10 +5,8 @@
 class Order extends Model
 {
 	public $id, $promotor_id, $client_id, $reward_id, $order_date, $comment, $status, $created_at, $updated_at;	
-	const STATUSES = 	['active' => 'W trakcie realizacji',
-						'sent' => 'Wysłane',
-						'completed'=>'Zrealizowane',
-						'canceled'=>'Anulowane'];
+	const STATUSES = 	['active' => 'Niezrealizowane',
+						 'completed'=>'Zrealizowane'];
 
 	function __construct($attributes = [])
 	{

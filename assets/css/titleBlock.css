@@ -5,7 +5,7 @@
     margin: 0px;
     padding: 1% 2% 1% 2%;
     text-align: left;
-    font-weight: bold;
+    font-weight: 700;
     font-size: 24px;
     vertical-align: middle;
   }
@@ -47,7 +47,6 @@
     font-size: 32px;
     margin: 0px;
     padding: 0px;
-
   }
   i.title-box-icon {
     display: inline-block;
@@ -76,10 +75,10 @@
   }
   #title-box-tabs{
     background-color: #DCE6F0;
-    width: calc(94% + 2px);
+    width: calc(96% + 2px);
     height: 33px;
     margin: 0px 0px 10px 0px;
-    padding: 10px 3% 0px 3%;
+    padding: 10px 2% 0px 2%;
     line-height: 26px;
   }
   .tab-active{
@@ -88,7 +87,7 @@
     display: inline;
     margin: 0px;
     font-size: 14px;
-    font-weight: bold;
+    font-weight: 600;
     color: #017EE9;
     padding: 10px 25px 7px 25px;
     border-top: 0px;
@@ -98,48 +97,29 @@
     border-color: #017EE5;
     border-style: solid;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: color 0.2s;
   }
-  .tab-active:hover{
-    width: 20%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.1);
-    display: inline;
-    margin: 0px;
-    font-size: 14px;
-    font-weight: bold;
-    color: #017EE5;
-    padding: 10px 25px 7px 25px;
-    border-top: 0px;
-    border-right: 0px;
-    border-bottom: 3px;
-    border-left: 0px;
-    border-color: #017EE5;
-    border-style: solid;
-    cursor: pointer;
 
-  }
   .tab-inactive{
     width: 20%;
     height: 100%;
     display: inline;
     margin: 0px;
     font-size: 14px;
-    font-weight: bold;
+    font-weight: 600;
     color: #6D7E89;
     padding: 10px 25px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: color 0.2s;
   }
   .tab-inactive:hover{
     width: 20%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.1);
     display: inline;
     margin: 0px;
     font-size: 14px;
-    font-weight: bold;
-    color: #6D7E89;
+    font-weight: 600;
+    color: #017EE5;
     padding: 10px 25px;
     cursor: pointer;
   }

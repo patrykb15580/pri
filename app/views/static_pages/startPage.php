@@ -2,9 +2,9 @@
 	$path = $router->generate('insert_code', []);	
 ?>
 <h1 id="main_page_site_title">punktacja.pl</h1>
-<form method="POST" action="<?= $path ?>" id="insert_code">
-	<input id="insert_code" type="text" name="code" placeholder="Twój kod promocyjny">
-	<input id="insert_code" type="submit" value="Zatwierdź">
+<form method="POST" action="<?= $path ?>" id="insert-code">
+	<input class="insert-code-input" type="text" name="code" placeholder="Twój kod promocyjny">
+	<input class="insert-code-button" type="submit" value="Zatwierdź">
 </form>
 <?php
 	$codes = PromotionCode::where('package_id=?', ['package_id'=>1]);

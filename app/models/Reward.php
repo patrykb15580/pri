@@ -6,8 +6,8 @@ class Reward extends Model
 {
 	public $id, $created_at, $updated_at, $name, $status, $description, $prize, $promotors_id;
 
-	const STATUSES = 	['active' => 'Aktywne',
-						'inactive' => 'Nieaktywne'];	
+	const STATUSES = 	['active' => 'Aktywna',
+						'inactive' => 'Nieaktywna'];	
 
 	function __construct($attributes = [])
 	{

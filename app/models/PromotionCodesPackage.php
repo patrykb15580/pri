@@ -63,7 +63,7 @@ class PromotionCodesPackage extends Model
 	}
 	public function usedPromotionCodes()
 	{
-		return PromotionCode::where('package_id=? AND client_id IS NOT NULL', ['package_id'=>$this->id]);
+		return PromotionCode::where('package_id=? AND client_id IS NOT NULL', ['package_id'=>$this->id], ['order'=>'used DESC']);
 	}
 	public function nonUsedPromotionCodes()
 	{

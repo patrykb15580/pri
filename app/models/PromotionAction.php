@@ -146,14 +146,14 @@ class PromotionAction extends Model
 
 	public function isActive()
 	{
-		if ($this->indefinitely == 0) {
+		if ($this->indefinitely == 1) {
 			if ($this->status == 'active') {
-			return true;
+				return true;
 			} else {
 				return false;
 			}
 		} else {
-			if ($this->status == 'active' && $this->indefinitely !== 0 && $this->to_at >= date('Y-m-d')) {
+			if ($this->status == 'active' && $this->indefinitely !== 0 && $this->to_at >= date('Y-m-d') && $this->from_at <= date('Y-m-d')) {
 				return true;
 			} else {
 				return false;

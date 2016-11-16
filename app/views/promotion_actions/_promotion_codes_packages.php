@@ -9,7 +9,7 @@
 	<tr class="result">
 		<td width="45%"><a href="<?= $path_show ?>"><?= $package->name ?></a></td>
 		<td width="40%"><?php if ($package->reusable == 1) {echo "wielorazowe";}else echo "jednorazowe";?></td>
-		<td class="text_align_right" width="15%"><b><?= $package->usedCodesNumber() ?></b>/<?= $package->quantity ?></td>
+		<td class="text_align_right" width="15%"><b><?= $package->usedCodesNumber() ?></b> / <?= $package->quantity ?></td>
 	</tr>
 <?php } ?>	
 </table>

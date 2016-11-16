@@ -1,9 +1,10 @@
 <?php	
 	$path = $router->generate('start_page', []);
+	$avatar = PromotorAvatar::findBy('promotor_id', $promotor->id);
 ?>
 <div id="code_info_top">
 	<div id="code_info_container">
-		<img id="code_info_logo" src="/assets/image/booklet-logo.svg">
+		<img id="code_info_logo" src="/system/promotor_avatars/<?= $promotor->id ?>/small/<?= $avatar->file_name ?>">
 		<div id="code_info_inline_text">
 			<?= $promotor->name ?>
 			<br />

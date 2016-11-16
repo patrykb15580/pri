@@ -16,13 +16,13 @@ class RewardsControllerTest extends Tests
 		$promotor = new Promotor(['email'=>'test2@test.com', 'password_degest'=>Password::encryptPassword('password2'), 'name'=>'promotor2']);
 		$promotor->save();
 
-		$promotion_action = new PromotionAction(['name'=>'action1', 'promotors_id'=>1, 'status'=>'active', 'indefinitely'=>1]);
+		$promotion_action = new PromotionAction(['name'=>'action1', 'promotors_id'=>1, 'status'=>'active', 'indefinitely'=>1, 'description'=>'desc']);
 		$promotion_action->save();
 
-		$promotion_action = new PromotionAction(['name'=>'action2', 'promotors_id'=>1, 'status'=>'active', 'indefinitely'=>1]);
+		$promotion_action = new PromotionAction(['name'=>'action2', 'promotors_id'=>1, 'status'=>'active', 'indefinitely'=>1, 'description'=>'desc']);
 		$promotion_action->save();
 
-		$promotion_action = new PromotionAction(['name'=>'action3', 'promotors_id'=>2, 'status'=>'active', 'indefinitely'=>1]);
+		$promotion_action = new PromotionAction(['name'=>'action3', 'promotors_id'=>2, 'status'=>'active', 'indefinitely'=>1, 'description'=>'desc']);
 		$promotion_action->save();
 
 		$package = new PromotionCodesPackage(['name'=>'package1', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>4, 'codes_value'=>143, 'status'=>'active']);
@@ -46,10 +46,10 @@ class RewardsControllerTest extends Tests
 		$points_balance = new PointsBalance(['client_id'=>2, 'promotor_id'=>1, 'balance'=>232]);
 		$points_balance->save();
 
-		$reward = new Reward(['name' => 'Reward1', 'status' => 'active', 'prize' => 10, 'description' => 'Desc r1', 'promotors_id' => 1]);
+		$reward = new Reward(['name' => 'Reward1', 'status' => 'active', 'prize' => 10, 'description' => 'Desc r1', 'promotors_id' => 1, 'description'=>'desc']);
 		$reward->save();
 
-		$reward = new Reward(['name' => 'Reward2', 'status' => 'active', 'prize' => 15, 'description' => 'Desc r2', 'promotors_id' => 2]);
+		$reward = new Reward(['name' => 'Reward2', 'status' => 'active', 'prize' => 15, 'description' => 'Desc r2', 'promotors_id' => 2, 'description'=>'desc']);
 		$reward->save();
 
 		$order = new Order(['promotor_id'=>1, 'client_id'=>1, 'reward_id'=>1, 'order_date'=>date(Config::get('mysqltime'))]);
@@ -80,8 +80,19 @@ class RewardsControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
-		$elements = $html->find('tr.result');	
+		$elements = $html->find('div#title-box');	
+		Assert::expect(count($elements)) -> toEqual(1);
 
+		$elements = $html->find('div#title-box-tabs');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('div#active');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('div#inactive');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('tr.result');	
 		Assert::expect(count($elements)) -> toEqual(1);
 
 		unset($_SESSION['user']);
@@ -103,10 +114,16 @@ class RewardsControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
-		$elements = $html->find('div#reward_description');	
+		$elements = $html->find('div#title-box');	
 		Assert::expect(count($elements)) -> toEqual(1);
 
 		$elements = $html->find('div#reward_images_container');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.modal-bg');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.modal-image');	
 		Assert::expect(count($elements)) -> toEqual(1);
 
 		unset($_SESSION['user']);
@@ -126,6 +143,15 @@ class RewardsControllerTest extends Tests
 		$view = $controller->$action();
 
 		$html = HtmlDomParser::str_get_html($view);
+
+		$elements = $html->find('.form-page-container');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.form-page-icon');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.form-page-title');	
+		Assert::expect(count($elements)) -> toEqual(1);
 
 		$elements = $html->find('input');	
 		Assert::expect(count($elements)) -> toEqual(4);
@@ -187,6 +213,15 @@ class RewardsControllerTest extends Tests
 		$view = $controller->$action();
 
 		$html = HtmlDomParser::str_get_html($view);
+
+		$elements = $html->find('.form-page-container');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.form-page-icon');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.form-page-title');	
+		Assert::expect(count($elements)) -> toEqual(1);
 
 		$elements = $html->find('input');	
 		Assert::expect(count($elements)) -> toEqual(4);

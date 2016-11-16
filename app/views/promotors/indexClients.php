@@ -16,9 +16,9 @@
 	<i class="fa fa-users title-box-icon light-purple-icon" aria-hidden="true"></i><p class="title-box-text"> Klienci</p>
 </div>
 <?php 
-	#echo "<pre>";
-	#die(print_r($rewards));
-	include 'app/views/promotors/_clients.php';
+	if (count($promotor->clients()) !== 0) {
+		include 'app/views/promotors/_clients.php';
+	} else include 'app/views/layouts/_no_results.php';
 ?>
 
 	

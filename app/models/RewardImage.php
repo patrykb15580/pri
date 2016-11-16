@@ -41,7 +41,7 @@ class RewardImage extends Model
 			$file_name = StringUntils::camelCaseToUnderscore($file['filename']);
 			$file_name = StringUntils::replacePolishChars($file_name);
 			$file_name = StringUntils::replaceSpecialChars($file_name).'.'.$file['extension'];
-
+			
 			$image = new RewardImage(['file_name'=>$file_name, 'size'=>$files['image']['size'][$i], 'reward_id'=>$params['id']]);
 
 			if ($files['image']['tmp_name'][$i] !== '') {
@@ -57,12 +57,10 @@ class RewardImage extends Model
 					if (!file_exists($copy_path.'original/')) {
 		   				mkdir($copy_path.'original/', 0777, true);
 		   			}
-		   			if (!file_exists($copy_path.'small/')) {
-		   				mkdir($copy_path.'small/', 0777, true);
-		   			}
 
 		   			rename($files['image']['tmp_name'][$i], $copy_path.'original/'.$file_name);
 
+		   			$this->createLargeImage($copy_path.'original/'.$file_name, $copy_path.'large/'.$file_name);
 		   			$this->createBigImage($copy_path.'original/'.$file_name, $copy_path.'big/'.$file_name);
 		   			$this->createMediumImage($copy_path.'original/'.$file_name, $copy_path.'medium/'.$file_name);
 		   			$this->createSmallImage($copy_path.'original/'.$file_name, $copy_path.'small/'.$file_name);
@@ -70,16 +68,17 @@ class RewardImage extends Model
 		   			$this->createTinyImage($copy_path.'original/'.$file_name, $copy_path.'tiny/'.$file_name);
 				}
 				else{
-					$reward = new Reward($params['reward']);
-					$path = 'app/views/'.StringUntils::camelCaseToUnderscore(str_replace('Controller', '', __CLASS__)).'/'.'edit.php';
-					include 'app/views/layouts/app.php';
+					return false;
 				}	
 			} else {
-				$reward = new Reward($params['reward']);
-				$path = 'app/views/'.StringUntils::camelCaseToUnderscore(str_replace('Controller', '', __CLASS__)).'/'.'edit.php';
-				include 'app/views/layouts/app.php';
+				return false;
 			}
 		}
+		return true;
+	}
+	public function createLargeImage($input_file, $output_file)
+	{
+		Image::open($input_file)->cropResize(1000, 1000, 'white')->save($output_file, 'jpg', 90);
 	}
 	public function createBigImage($input_file, $output_file)
 	{
@@ -91,14 +90,14 @@ class RewardImage extends Model
 	}
 	public function createSmallImage($input_file, $output_file)
 	{
-		Image::open($input_file)->resize(200, 200, 'white')->save($output_file, 'jpg', 90);
+		Image::open($input_file)->zoomCrop(200, 200, 'white', 'center', 'center')->save($output_file, 'jpg', 90);
 	}
 	public function createVerySmallImage($input_file, $output_file)
 	{
-		Image::open($input_file)->resize(100, 100, 'white')->save($output_file, 'jpg', 90);
+		Image::open($input_file)->zoomCrop(100, 100, 'white', 'center', 'center')->save($output_file, 'jpg', 90);
 	}
 	public function createTinyImage($input_file, $output_file)
 	{
-		Image::open($input_file)->resize(50, 50, 'white')->save($output_file, 'jpg', 90);
+		Image::open($input_file)->zoomCrop(50, 50, 'white', 'center', 'center')->save($output_file, 'jpg', 90);
 	}
 }

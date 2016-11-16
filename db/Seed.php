@@ -15,43 +15,46 @@
 
 		print_r(CLIUntils::colorize("Promotors: OK\n", 'SUCCESS'));
 
-		$promotion_action1 = new PromotionAction(['name'=>'action1', 'promotors_id'=>'1', 'status'=>'active', 'indefinitely'=>1]);
+
+		$promotion_action1 = new PromotionAction(['name'=>'action1', 'promotors_id'=>'1', 'status'=>'active', 'indefinitely'=>1, 'description'=>'desc']);
 		$promotion_action1->save();
 
-		$promotion_action2 = new PromotionAction(['name'=>'action2', 'promotors_id'=>'1', 'status'=>'inactive', 'indefinitely'=>0, 'from_at'=>'2016-04-01', 'to_at'=>'2016-10-01']);
+		$promotion_action2 = new PromotionAction(['name'=>'action2', 'promotors_id'=>'1', 'status'=>'inactive', 'indefinitely'=>0, 'from_at'=>'2016-04-01', 'to_at'=>'2016-10-01', 'description'=>'desc']);
 		$promotion_action2->save();
 
-		$promotion_action3 = new PromotionAction(['name'=>'action3', 'promotors_id'=>'3', 'status'=>'inactive', 'indefinitely'=>0, 'from_at'=>'2016-09-01', 'to_at'=>'2016-11-01']);
+		$promotion_action3 = new PromotionAction(['name'=>'action3', 'promotors_id'=>'3', 'status'=>'inactive', 'indefinitely'=>0, 'from_at'=>'2016-09-01', 'to_at'=>'2016-11-01', 'description'=>'desc']);
 		$promotion_action3->save();
 
-		$promotion_action4 = new PromotionAction(['name'=>'action4', 'promotors_id'=>'2', 'status'=>'active', 'indefinitely'=>0, 'from_at'=>'2016-09-11', 'to_at'=>'2016-09-18']);
+		$promotion_action4 = new PromotionAction(['name'=>'action4', 'promotors_id'=>'2', 'status'=>'active', 'indefinitely'=>0, 'from_at'=>'2016-09-11', 'to_at'=>'2016-09-18', 'description'=>'desc']);
 		$promotion_action4->save();
 
-		$promotion_action5 = new PromotionAction(['name'=>'action5', 'promotors_id'=>'1', 'status'=>'active', 'indefinitely'=>1]);
+		$promotion_action5 = new PromotionAction(['name'=>'action5', 'promotors_id'=>'1', 'status'=>'active', 'indefinitely'=>1, 'description'=>'desc']);
 		$promotion_action5->save();
 
-		$promotion_action6 = new PromotionAction(['name'=>'action6', 'promotors_id'=>'4', 'status'=>'inactive', 'indefinitely'=>0, 'from_at'=>'2016-08-31', 'to_at'=>'2016-09-30']);
+		$promotion_action6 = new PromotionAction(['name'=>'action6', 'promotors_id'=>'4', 'status'=>'inactive', 'indefinitely'=>0, 'from_at'=>'2016-08-31', 'to_at'=>'2016-09-30', 'description'=>'desc']);
 		$promotion_action6->save();
 
-		$promotion_action7 = new PromotionAction(['name'=>'action7', 'promotors_id'=>'1', 'status'=>'active', 'indefinitely'=>1]);
+		$promotion_action7 = new PromotionAction(['name'=>'action7', 'promotors_id'=>'1', 'status'=>'active', 'indefinitely'=>1, 'description'=>'desc']);
 		$promotion_action7->save();
 
-		$promotion_action8 = new PromotionAction(['name'=>'action8', 'promotors_id'=>'4', 'status'=>'inactive', 'indefinitely'=>1]);
+		$promotion_action8 = new PromotionAction(['name'=>'action8', 'promotors_id'=>'4', 'status'=>'inactive', 'indefinitely'=>1, 'description'=>'desc']);
 		$promotion_action8->save();
 
-		$promotion_action9 = new PromotionAction(['name'=>'action9', 'promotors_id'=>'3', 'status'=>'active', 'indefinitely'=>1]);
+		$promotion_action9 = new PromotionAction(['name'=>'action9', 'promotors_id'=>'3', 'status'=>'active', 'indefinitely'=>1, 'description'=>'desc']);
 		$promotion_action9->save();
 
-		$promotion_action10 = new PromotionAction(['name'=>'action10', 'promotors_id'=>'1', 'status'=>'inactive', 'indefinitely'=>0, 'from_at'=>'2016-07-23', 'to_at'=>'2016-11-23']);
+		$promotion_action10 = new PromotionAction(['name'=>'action10', 'promotors_id'=>'1', 'status'=>'inactive', 'indefinitely'=>0, 'from_at'=>'2016-07-23', 'to_at'=>'2016-11-23', 'description'=>'desc']);
 		$promotion_action10->save();
 
 		print_r(CLIUntils::colorize("Promotion actions: OK\n", 'SUCCESS'));
 
-		$package = new PromotionCodesPackage(['name'=>'package1', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>10, 'codes_value'=>2000, 'status'=>'active']);
+
+		$package = new PromotionCodesPackage(['name'=>'package1', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>10, 'codes_value'=>2000, 'status'=>'active', 'description'=>'desc']);
 		$package->save();
 
 		print_r(CLIUntils::colorize("Promotion codes packages: OK\n", 'SUCCESS'));
-
+		
+		
 		$reward1 = new Reward(['name'=>'reward1', 'promotors_id'=>'1', 'status'=>'active', 'description'=>'Reward1 description', 'prize'=>'100']);
 		$reward1->save();
 

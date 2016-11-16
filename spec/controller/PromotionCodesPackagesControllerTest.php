@@ -25,10 +25,10 @@ class PromotionCodesPackagesControllerTest extends Tests
 		$promotion_action = new PromotionAction(['name'=>'action3', 'promotors_id'=>2, 'status'=>'active', 'indefinitely'=>1]);
 		$promotion_action->save();
 
-		$package = new PromotionCodesPackage(['name'=>'package1', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>4, 'codes_value'=>143, 'status'=>'active']);
+		$package = new PromotionCodesPackage(['name'=>'package1', 'action_id'=>1, 'reusable'=>1, 'quantity'=>4, 'codes_value'=>143, 'status'=>'active']);
 		$package->save();
 
-		$package = new PromotionCodesPackage(['name'=>'package2', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>4, 'codes_value'=>1324, 'status'=>'active']);
+		$package = new PromotionCodesPackage(['name'=>'package2', 'action_id'=>1, 'reusable'=>1, 'quantity'=>4, 'codes_value'=>1324, 'status'=>'active']);
 		$package->save();
 
 		$client = new Client(['email'=>'test1@test.com', 'name'=>'client1', 'phone_number'=>'123456789', 'hash'=>HashGenerator::generate()]);
@@ -75,17 +75,28 @@ class PromotionCodesPackagesControllerTest extends Tests
 		$params['controller'] = 'PromotionCodesPackagesController';
 		$params['action'] = 'show';
 
-		$action = $params['action'];
-
 		$curl = new TesterTestRequest((new PromotionCodesPackagesController($params))->generate(), 'http://'.Config::get('host').'/package/generate', null, []);
+
+		$action = $params['action'];
 
 		$controller = new $params['controller']($params);
 		$view = $controller->$action();
 
 		$html = HtmlDomParser::str_get_html($view);
 
-		$elements = $html->find('tr.result');	
+		$elements = $html->find('div#title-box');	
+		Assert::expect(count($elements)) -> toEqual(1);
 
+		$elements = $html->find('div#title-box-tabs');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('div#active');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('div#inactive');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('tr.result');	
 		Assert::expect(count($elements)) -> toEqual(4);
 
 		unset($_SESSION['user']);
@@ -107,11 +118,20 @@ class PromotionCodesPackagesControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
+		$elements = $html->find('.form-page-container');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.form-page-icon');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.form-page-title');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
 		$elements = $html->find('input');	
 		Assert::expect(count($elements)) -> toEqual(4);
 
 		$elements = $html->find('select');	
-		Assert::expect(count($elements)) -> toEqual(2);
+		Assert::expect(count($elements)) -> toEqual(1);
 
 		unset($_SESSION['user']);
 	}
@@ -165,11 +185,20 @@ class PromotionCodesPackagesControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
+		$elements = $html->find('.form-page-container');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.form-page-icon');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.form-page-title');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
 		$elements = $html->find('input');	
 		Assert::expect(count($elements)) -> toEqual(4);
 
 		$elements = $html->find('select');	
-		Assert::expect(count($elements)) -> toEqual(2);
+		Assert::expect(count($elements)) -> toEqual(1);
 
 		unset($_SESSION['user']);
 	}

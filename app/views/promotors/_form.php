@@ -4,26 +4,22 @@
 	$path = $router->generate('update_promotor', ['promotors_id' => $params['promotors_id']]);
 	$image = PromotorAvatar::findBy('promotor_id', $promotor->id);
 ?>
-<div id="notice">
-	<p id="notice-text"><i class="fa fa-info-circle" aria-hidden="true"></i> W tym panelu możesz ...</p>
-	<button type="button" class="close-notice" data-dismiss="alert" aria-hidden="true">
-		<i class="fa fa-times" aria-hidden="true"></i>
-	</button>
-</div>
 
-<div id="title_box">
-	<i class="fa fa-cog title-box-icon dark-purple-icon" aria-hidden="true"></i><p class="title-box-text"> Edycja konta</p>
-</div>
-<form method="POST" action="<?= $path ?>" enctype="multipart/form-data">
-	<?php
-		$avatar = PromotorAvatar::findBy('promotor_id', $promotor->id);
-		if (!empty($avatar)) { ?>
-			<img class="avatar-big" src="/system/promotor_avatars/<?= $promotor->id ?>/tiny/<?= $avatar->file_name ?>">
-		<?php } else { ?>
-			<div class="avatar-big"></div>
-		<?php }  
-	?>
-	<input type="file" name="image[]" accept="image/jpeg, image/png, image/gif" value="Wybierz logo"><br />
+<form class="form-page-form" method="POST" action="<?= $path ?>" enctype="multipart/form-data">
+	<div class="avatar-box">
+		<?php
+			$avatar = PromotorAvatar::findBy('promotor_id', $promotor->id);
+			if (!empty($avatar)) { ?>
+				<img class="avatar-big" src="/system/promotor_avatars/<?= $promotor->id ?>/tiny/<?= $avatar->file_name ?>">
+			<?php } else { ?>
+				<div class="avatar-big"></div>
+			<?php }  
+		?>
+		<label class="form-page-avatar-button" for="form-page-file-button"><?php if (empty($avatar)){ echo '<i class="zmdi zmdi-plus"></i>'; } else echo "Zmień"; ?></label>
+	</div>
+
+	<input id="form-page-file-button" type="file" name="image[]" accept="image/jpeg, image/png, image/gif" value="Wybierz logo">
+	<br /><br />
 	Nazwa:<br />
 	<input type="text" name="promotor[name]" value="<?= $promotor->name ?>"><br /><br />
 	E-mail:<br />
@@ -33,5 +29,5 @@
 	<input type="password" name="promotor[password]"><br /><br />
 	Bieżące hasło:<br />
 	<input type="password" name="old_password"><br /><br />
-	<input type="submit" value="Zapisz zmiany">
+	<input class="form-page-button" type="submit" value="Zapisz zmiany">
 </form>
