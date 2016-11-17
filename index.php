@@ -30,5 +30,6 @@ if ($match) {
 
 else {
 	// no route was matched
-	print_r('404 Not Found');
+	header("HTTP/1.0 404 Not Found");
+	include 'app/views/layouts/404.php';
 }

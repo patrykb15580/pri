@@ -1,6 +1,7 @@
 {
     "require": {
         "gregwar/image": "2.*",
-  		"sunra/php-simple-html-dom-parser": "1.5.1"
+  		"sunra/php-simple-html-dom-parser": "1.5.1",
+  		"phpmailer/phpmailer": "~5.2"
     }
 }

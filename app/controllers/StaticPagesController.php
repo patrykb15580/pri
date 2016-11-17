@@ -4,6 +4,8 @@
 */
 class StaticPagesController extends Controller
 {
+	public $non_authorized = ['startPage', 'login', 'promotorLogin', 'insertCode', 'useCode', 'addPoints', 'confirmation', 'getOrCreateClient'];
+
 	public function startPage()
 	{
 		$view = (new View($this->params, [], 'start'))->render();
@@ -43,12 +45,17 @@ class StaticPagesController extends Controller
 	public function useCode()
 	{
 		$code = PromotionCode::findBy('code', $this->params['code']);
-		$package = $code->package();
-		$promotion_action = $package->promotionAction();
-		$promotor = $promotion_action->promotor();
+		if (!empty($code)) {
+			$package = $code->package();
+			$promotion_action = $package->promotionAction();
+			$promotor = $promotion_action->promotor();
 
-		$view = (new View($this->params, ['code'=>$code, 'package'=>$package, 'promotion_action'=>$promotion_action, 'promotor'=>$promotor], 'start'))->render();
-		return $view;
+			$view = (new View($this->params, ['code'=>$code, 'package'=>$package, 'promotion_action'=>$promotion_action, 'promotor'=>$promotor], 'start'))->render();
+			return $view;
+		} else {
+			$view = (new View($this->params, [], '404'))->render();
+			return $view;
+		}
 	}
 
 	public function addPoints()

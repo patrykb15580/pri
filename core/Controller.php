@@ -17,7 +17,7 @@ class Controller
 			if (!in_array($this->params['action'], $this->non_authorized)) {
 				Auth::isLogged();
 			}
-		}
+		} else Auth::isLogged();
 	}
 
 	public function auth($method, $obj = [])

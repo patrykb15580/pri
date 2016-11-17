@@ -1,12 +1,12 @@
 <div id="login_box">
 	<div class="login_left_block">
-		<h1 class="green_font">
+		<h1>
 			Koniec z hasłami!
 		</h1>
 		Aby zalogować się do panelu wystarczy kliknąć w dowolny link w dowolnej wiadomości email od nas.
 	</div>
 	<div class="login_right_block">
-		<p class="extra_bold medium_font">
+		<p>
 			Skasowałeś wszystkie wiadomości od nas?
 		</p>
 		Nie ma problemu, wpisz poniżej Twój adres e-mail a po chwili otrzymasz na swoją pocztę wiadomość z linkiem do logowania.

@@ -12,7 +12,7 @@
  
  			$router = Config::get('router');
  			
- 			header('Location: '.$router->generate('login', []));
+ 			header('Location: '.$router->generate('promotor_login', []));
  		} 
  	}
 

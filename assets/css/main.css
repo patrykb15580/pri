@@ -25,6 +25,18 @@ body.start_pages_body{
   font-family: 'Open Sans', sans-serif;
 }
 
+body.body-404{
+  background-image: url(/assets/image/bg.jpg);
+  background-position: fixed;
+  width: 100%;
+  height: 60%;
+  margin: 0px;
+  padding: 20% 0px;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+}
+
+
 /* App layout */
 
 
@@ -1022,11 +1034,13 @@ div#clients_charts{
 }
 
 div#login_box{
+  display: block;
   position: absolute;
   top: 18%;
-  left: 30%;
+  left: 0;
+  right: 0;
   width: 40%;
-  margin: 0px;
+  margin: 0 auto;
   padding: 0px;
   background-color: white;
   border: 0px solid;
@@ -1039,7 +1053,11 @@ div#login_box{
   height: 96%;
   padding: 1% 4%;
   margin: 0px;
-  color: #2A2E33;
+  color: #464646;
+}
+.login_left_block h1{
+  color: #53BE31;
+  font-size: 36px;
 }
 .login_right_block{
   float: left;
@@ -1048,10 +1066,23 @@ div#login_box{
   height: 96%;
   padding: 1% 4%;
   margin: 0px;
-  color: #2A2E33;
+  color: #76858F;
   border-left: 2px solid;
   border-color: #E7E7E7;
 }
+.login_right_block p{
+  font-size: 22px;
+  color: #47525D;
+  font-weight: 800;
+}
+.login_right_block input[type=text]{
+  padding: 1%;
+  margin: 0px;
+  color: #76858F;
+  border: 1px solid;
+  border-color: #76858F;
+}
+
 input[type=submit].login_submit{
   width: auto;
   height: 50px;
@@ -1638,40 +1669,6 @@ div#main-layout-user{
   line-height: 80px;
 }
 
-
-
-#select-button{
-  display: inline-block;
-  float: left;
-  margin: 0px;
-  padding: 12px 30px;
-  cursor: pointer;
-  font-size: 16px;
-  text-align: center;
-}
-#select-button.left{
-    border: 1px solid #DBDFE1;
-    border-radius: 3px 0px 0px 3px;
-}
-#select-button.right{
-    border: 1px solid #DBDFE1;
-    border-radius: 0px 3px 3px 0px;
-}
-#select-button.active{
-  color: white;
-  background-color: #53BE31;
-}
-#select-button.inactive{
-  color: #626B74;
-  background-color: #F5F5F5;
-}
-#select-button.inactive:hover{
-  background-color: #F5F5F5;
-}
-.hidden-input{
-  display: none;
-}
-
   .make-first-box{
     display: block;
     width: 60vw;
@@ -1710,3 +1707,17 @@ div#main-layout-user{
     border-radius: 3px;
     line-height: 16px;
   }
+
+.message-404{
+  display: block;
+  margin: 0 auto;
+  color: white;
+  text-align: center;
+  font-size: 40px;
+}
+.message-404 a{
+  color: white;
+  text-align: center;
+  font-size: 12px;
+  margin: 10px;
+}
