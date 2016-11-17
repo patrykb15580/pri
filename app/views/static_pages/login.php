@@ -11,7 +11,7 @@
 		</p>
 		Nie ma problemu, wpisz poniżej Twój adres e-mail a po chwili otrzymasz na swoją pocztę wiadomość z linkiem do logowania.
 		<br /><br />
-		<form>
+		<form method="POST" action="<?= $router->generate('send_client_hash', []) ?>">
 			<label>
 				E-mail
 			</label>

@@ -97,6 +97,7 @@ $router->map( 'GET', '/clients/[i:client_id]/reward/[i:reward_id]', 'ClientsCont
 $router->map( 'POST', '/clients/[i:client_id]/reward/[i:reward_id]/get', 'ClientsController#getReward', 'get_reward' );
 $router->map( 'GET', '/clients/[i:client_id]/orders', 'ClientsController#indexOrders', 'index_client_orders' );
 
+$router->map( 'POST', '/send-hash-email', 'StaticPagesController#loginHashSend', 'send_client_hash' );
 
 // match current request url
 $match = $router->match();

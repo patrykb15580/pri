@@ -88,6 +88,8 @@ class ClientsController extends Controller
 				$description = 'Zakup nagrody '.$reward->name;
 				History::addHistoryRecord($order->client_id, $balance, $reward->prize, $description, 'buy');
 
+				(new ClientMailer)->getReward($this->client(), $order);
+
 				$this->alert('info', 'Dziękujemy za złożenie zamówienia');
 				header('Location: '.$path);
 			}

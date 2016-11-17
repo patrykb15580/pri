@@ -40,8 +40,11 @@ class PromotionCodesPackagesController extends Controller
 										   'order_date'=>$package->created_at]);
 
 			$admin_order->save();
+			
+			(new AdminMailer)->newAdminOrder(Config::get('mailing_address'), $admin_order);
+
 			$this->alert('info', 'Utworzono nową paczkę kodów');
-			header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id']."/promotion-actions/".$this->params['action_id']);
+			header("Location: http://".Config::get('host')."/promotors/".$this->params['promotors_id']."/promotion-actions/".$this->params['action_id']);
 		}
 		else{
 			$this->alert('error', 'Paczka kodów nie została utworzona');

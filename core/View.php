@@ -15,11 +15,13 @@ class View
 
 	}
 
-	public function render()
+	public function render($path = null)
 	{
 		extract($this->variables);
 
-		$path = './app/views/'.StringUntils::camelCaseToUnderscore(str_replace('Controller', '', $params['controller'])).'/'.$params['action'].'.php';
+		if (!$path) {
+			$path = './app/views/'.StringUntils::camelCaseToUnderscore(str_replace('Controller', '', $params['controller'])).'/'.$params['action'].'.php';
+		}
 
 		ob_start();
 		include('./app/views/layouts/'.$layout.'.php');

@@ -4,7 +4,7 @@
 */
 class StaticPagesController extends Controller
 {
-	public $non_authorized = ['startPage', 'login', 'promotorLogin', 'insertCode', 'useCode', 'addPoints', 'confirmation', 'getOrCreateClient'];
+	public $non_authorized = ['startPage', 'login', 'promotorLogin', 'insertCode', 'useCode', 'addPoints', 'confirmation', 'getOrCreateClient', 'loginHashSend'];
 
 	public function startPage()
 	{
@@ -82,6 +82,7 @@ class StaticPagesController extends Controller
 				if ($points_balance->update(['balance'=>$balance])) {
 					$description = 'Wykorzystanie kodu '.$this->params['code'].' w akcji '.$promotion_action->name;
 					History::addHistoryRecord($client->id, $balance, $package->codes_value, $description, 'add');
+					(new ClientMailer)->addPoints($client, $code, $promotor);
 				}
 
 			} else {
@@ -89,6 +90,7 @@ class StaticPagesController extends Controller
 				if ($points_balance->save()) {
 					$description = 'Wykorzystanie kodu '.$this->params['code'].' w akcji '.$promotion_action->name;
 					History::addHistoryRecord($client->id, $package->codes_value, $package->codes_value, $description, 'add');
+					(new ClientMailer)->addPoints($client, $code, $promotor);
 				}
 			} 
 
@@ -124,6 +126,9 @@ class StaticPagesController extends Controller
 			$this->params['client']['hash'] = HashGenerator::generate();
 			$client = new Client($this->params['client']);
 			$client->save();
+
+			(new ClientMailer)->createClient($client);
+
 			return $client;
 		} else {
 			return $client;
@@ -140,6 +145,26 @@ class StaticPagesController extends Controller
 			return true;
 		} else {
 			return false;
+		}
+	}
+
+	public function loginHashSend()
+	{
+		$router = Config::get('router');
+		$prev_page = $router->generate('login', []);
+
+		$email = $this->params['client_email'];
+		$client = Client::findBy('email', $email);
+
+
+		if (empty($client)) {
+			$this->alert('error', 'Brak klienta o podanym adresie email');
+			header('Location: '.$prev_page);
+		} else {
+			(new ClientMailer)->clientHash($client);
+
+			$this->alert('info', 'Twój link do logowania został wysłany na podany adres email');
+			header('Location: '.$prev_page);
 		}
 	}
 }
