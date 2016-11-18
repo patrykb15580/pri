@@ -6,8 +6,8 @@ class PromotionAction extends Model
 {
 	public $id, $created_at, $updated_at, $name, $promotors_id, $status, $indefinitely, $from_at, $to_at, $description;
 
-	const STATUSES = 	['active' => 'Aktywne',
-						'inactive' => 'Nieaktywne'];
+	const STATUSES = 	['active' => 'Aktywna',
+						'inactive' => 'Nieaktywna'];
 
 	function __construct($attributes = [])
 	{
