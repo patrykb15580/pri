@@ -58,6 +58,6 @@ class Contest extends Model
 
 	public function answers()
 	{
-		return ContestAnswer::where('contest_id=?', ['contest_id'=>$this->id]);
+		return ContestAnswer::where('contest_id=?', ['contest_id'=>$this->id], ['order'=>'CHAR_LENGTH(`answer`) DESC']);
 	}
 }

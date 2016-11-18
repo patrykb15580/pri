@@ -71,16 +71,20 @@ class ContestsController extends Controller
 		}		
 	}
 
-	#public function checkDuration($action)
-	#{
-	#	if ($action->from_at == null && $action->indefinitely == 0) {
-	#		return false;
-	#	} else if ($action->to_at == null && $action->indefinitely == 0) {
-	#		return false;
-	#	} else {
-	#		return true;
-	#	}
-	#}
+	public function getRandomAnswer()
+	{
+		$answers = ContestAnswer::where('contest_id=?', ['contest_id'=>$this->params['contest_id']], ['order'=>'created_at DESC']);
+
+		$answer = array_rand($answers, 1);
+		$answer = $answers[$answer];
+
+		ob_start();
+		include 'app/views/'.StringUntils::camelCaseToUnderscore(str_replace('Controller', '', $this->params['controller'])).'/random_answer.php';
+		$view = ob_get_contents();
+		ob_end_clean();
+
+		return $view;
+	}
 
 	public function contest()
 	{

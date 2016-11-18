@@ -31,18 +31,27 @@
 	<br /><br />
 	<p class="title-box-details">
 		Status: <b><?= Contest::STATUSES[$contest->status] ?></b><br />
-		Czas trwania: <b><?= 'od '.$from_at." do ".$to_at ?></b><br /><br />
+		Czas trwania: <b><?= 'od '.$from_at." do ".$to_at ?></b><br />
+		Pytanie: <b><?= $contest->question ?></b><br /><br />
 	</p>
 	<div class="title-box-options">
-		<a href="<?= $path_update ?>">Edytuj</a>
+		<a href="<?= $path_update ?>">Edytuj</a><br /><br />
+		<?php if (count($contest->answers()) > 10) { ?>
+			<b class="get-random-answer" data-contestid="<?= $contest->id ?>">Pomóż mi wybrać odpowiedź</b>
+		<?php } ?>
 	</div>
 </div>
+<div class="modal-bg">
+	<div class="random-answer">
 
-   	<?php 
-		$answers = $contest->answers();
+	</div>
+</div>
+<?php 
+	$answers = $contest->answers();
 
-		if (count($answers) == 0) {
-			include 'app/views/layouts/_no_results.php';
+	if (count($answers) == 0) {
+		include 'app/views/layouts/_no_results.php';
+	} else include 'app/views/contests/_answers.php';
+?>
 
-		} else include 'app/views/contests/_answers.php';
-	?>
+<script type="text/javascript" src="/assets/javascript/randomAnswer.js"></script>

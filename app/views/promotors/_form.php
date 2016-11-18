@@ -10,11 +10,12 @@
 		<?php
 			$avatar = PromotorAvatar::findBy('promotor_id', $promotor->id);
 			if (!empty($avatar)) { ?>
-				<img class="avatar-big" src="/system/promotor_avatars/<?= $promotor->id ?>/tiny/<?= $avatar->file_name ?>">
+				<img class="avatar-big" src="/system/promotor_avatars/<?= $promotor->id ?>/small/<?= $avatar->file_name ?>">
 			<?php } else { ?>
 				<div class="avatar-big"></div>
 			<?php }  
 		?>
+		<img class="avatar-preview" src="#" alt="">
 		<label class="form-page-avatar-button" for="form-page-file-button"><?php if (empty($avatar)){ echo '<i class="zmdi zmdi-plus"></i>'; } else echo "Zmień"; ?></label>
 	</div>
 
@@ -31,3 +32,5 @@
 	<input type="password" name="old_password"><br /><br />
 	<input class="form-page-button" type="submit" value="Zapisz zmiany">
 </form>
+
+<script type="text/javascript" src="/assets/javascript/previewAvatar.js"></script>

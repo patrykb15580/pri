@@ -36,4 +36,14 @@ class ContestAnswer extends Model
 	{
 		return 'ContestsAnswers';
 	}
+
+	public function contest()
+	{
+		return Contest::find($this->contest_id);
+	}
+
+	public function client()
+	{
+		return Client::find($this->client_id);
+	}
 }

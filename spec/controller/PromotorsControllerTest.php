@@ -68,10 +68,10 @@ class PromotorsControllerTest extends Tests
 		$elements = $html->find('div#title-box-tabs');	
 		Assert::expect(count($elements)) -> toEqual(1);
 
-		$elements = $html->find('div#active');	
+		$elements = $html->find('div#tab-1-content');	
 		Assert::expect(count($elements)) -> toEqual(1);
 
-		$elements = $html->find('div#inactive');	
+		$elements = $html->find('div#tab-2-content');	
 		Assert::expect(count($elements)) -> toEqual(1);
 
 		$elements = $html->find('tr.result');	
@@ -108,6 +108,9 @@ class PromotorsControllerTest extends Tests
 		Assert::expect(count($elements)) -> toEqual(6);
 
 		$elements = $html->find('.avatar-big');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.avatar-preview');	
 		Assert::expect(count($elements)) -> toEqual(1);
 
 		unset($_SESSION['user']);
@@ -242,10 +245,10 @@ class PromotorsControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
-		$elements = $html->find('.clients-charts');	
+		$elements = $html->find('.tab1');	
 		Assert::expect(count($elements)) -> toEqual(1);
 
-		$elements = $html->find('.codes-charts');	
+		$elements = $html->find('.tab2');	
 		Assert::expect(count($elements)) -> toEqual(1);
 
 		$elements = $html->find('#stats_box');	

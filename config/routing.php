@@ -64,6 +64,7 @@ $router->map( 'GET', '/promotors/[i:promotors_id]/contest/new', 'ContestsControl
 $router->map( 'POST', '/promotors/[i:promotors_id]/contests/create', 'ContestsController#create', 'create_contests' );
 $router->map( 'GET', '/promotors/[i:promotors_id]/contests/[i:contest_id]/edit', 'ContestsController#edit', 'edit_contests' );
 $router->map( 'POST', '/promotors/[i:promotors_id]/contests/[i:contest_id]/update', 'ContestsController#update', 'update_contests' );
+$router->map( 'POST', '/get-random-answer', 'ContestsController#getRandomAnswer', 'get_random_answer' );
 
 
 /* Promotor -> rewards */
@@ -100,6 +101,8 @@ $router->map( 'GET', '/sign-out', 'SessionController#delete', 'sign_out' );
 
 /* Static pages */
 $router->map( 'GET', '/', 'StaticPagesController#startPage', 'start_page' );
+$router->map( 'GET', '/contest/[i:id]', 'StaticPagesController#contest', 'contest_page' );
+$router->map( 'POST', '/contest/[i:id]/answer', 'StaticPagesController#contestAnswer', 'contest_answer' );
 $router->map( 'GET', '/login', 'StaticPagesController#login', 'login' );
 $router->map( 'GET', '/promotor-login', 'StaticPagesController#promotorLogin', 'promotor_login' );
 $router->map( 'POST', '/insert-code', 'StaticPagesController#insertCode', 'insert_code' );

@@ -14,7 +14,7 @@
 
 <div id="title-box">
 	<i class="fa fa-trophy title-box-icon green-icon" aria-hidden="true"></i><p class="title-box-text">Konkursy</p>
-	<a href="<?= $path_new ?>"><button class="title-box-button"><i class="zmdi zmdi-plus"></i> Nowa akcja promocyjna</button></a>
+	<a href="<?= $path_new ?>"><button class="title-box-button"><i class="zmdi zmdi-plus"></i> Nowy konkurs</button></a>
 </div>
 <div id="title-box-tabs">
 	<p class="tab1 tab-active">AKTYWNE</p><p class="tab2 tab-inactive">NIEAKTYWNE</p>

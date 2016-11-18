@@ -53,7 +53,7 @@
 			if ($user_type == 'promotor') { 
 				$avatar = PromotorAvatar::findBy('promotor_id', $promotor->id);
 				if (!empty($avatar)) { ?>
-					<img class="avatar" src="/system/promotor_avatars/<?= $promotor->id ?>/tiny/<?= $avatar->file_name ?>">
+					<img class="avatar" src="/system/promotor_avatars/<?= $promotor->id ?>/very_small/<?= $avatar->file_name ?>">
 				<?php } else { ?>
 					<div class="avatar"></div>
 				<?php } 

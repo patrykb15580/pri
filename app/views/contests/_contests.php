@@ -19,7 +19,7 @@
 	
 	$to_at = $to_day." ".$to_month." ".$to_year;?>
 	<tr class="result">
-		<td width="55%"><a href="<?= $path_show ?>"><?= $contest->name ?></a></td>
+		<td width="55%"><a href="<?= $path_show ?>"><b><?= $contest->name ?></b></a></td>
 		<td width="30%"><?= $from_at." - ".$to_at ?></td>
 		<td class="text_align_right" width="15%"><b><?= count($contest->answers()) ?></td>
 	</tr>

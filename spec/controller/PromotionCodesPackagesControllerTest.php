@@ -90,10 +90,10 @@ class PromotionCodesPackagesControllerTest extends Tests
 		$elements = $html->find('div#title-box-tabs');	
 		Assert::expect(count($elements)) -> toEqual(1);
 
-		$elements = $html->find('div#active');	
+		$elements = $html->find('div#tab-1-content');	
 		Assert::expect(count($elements)) -> toEqual(1);
 
-		$elements = $html->find('div#inactive');	
+		$elements = $html->find('div#tab-2-content');	
 		Assert::expect(count($elements)) -> toEqual(1);
 
 		$elements = $html->find('tr.result');	

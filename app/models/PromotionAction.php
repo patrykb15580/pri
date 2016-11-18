@@ -160,7 +160,7 @@ class PromotionAction extends Model
 			}
 		}	
 	}
-	public function checkIfActionsActive()
+	public static function checkIfActionsActive()
 	{
 		$actions = PromotionAction::where('status=? AND indefinitely=? AND to_at < "'.date('Y-m-d').'"', ['status'=>'active', 'indefinitely'=>0]);
 

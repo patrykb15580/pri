@@ -58,6 +58,21 @@
 		$contest_answer = new ContestAnswer(['contest_id'=>1, 'client_id'=>1, 'answer'=>'Yes']);
 		$contest_answer->save();
 
+		$contest_answer = new ContestAnswer(['contest_id'=>1, 'client_id'=>2, 'answer'=>'Yes']);
+		$contest_answer->save();
+
+		$contest_answer = new ContestAnswer(['contest_id'=>1, 'client_id'=>3, 'answer'=>'No']);
+		$contest_answer->save();
+
+		$contest_answer = new ContestAnswer(['contest_id'=>1, 'client_id'=>5, 'answer'=>'No']);
+		$contest_answer->save();
+
+		$contest_answer = new ContestAnswer(['contest_id'=>1, 'client_id'=>4, 'answer'=>'Yes']);
+		$contest_answer->save();
+
+		$contest_answer = new ContestAnswer(['contest_id'=>1, 'client_id'=>6, 'answer'=>'No']);
+		$contest_answer->save();
+
 		print_r(CLIUntils::colorize("Contests answers: OK\n", 'SUCCESS'));
 
 
