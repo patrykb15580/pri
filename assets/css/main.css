@@ -892,9 +892,9 @@ div#admin_menu_inactive:hover{
 div#stats_box{
   display: block;
   background-color: white;
-  width: 96%;
+  width: 100%;
   padding: 0px;
-  margin: 0px 2%;
+  margin: 0px;
 }
 
 /* Use code view */
@@ -1023,13 +1023,13 @@ form#hash_email_form{
 
 
 div#codes_charts{
-  width: 96%;
-  margin: 0px 2%;
+  width: 100%;
+  margin: 0px;
   padding: 0px;
 }
 div#clients_charts{
-  width: 96%;
-  margin: 0px 2%;
+  width: 100%;
+  margin: 0px;
   padding: 0px;
 }
 
@@ -1209,11 +1209,11 @@ div#main-layout-user{
 #side_bar .promotor_menu_active i{
   color: white;
 }
-#active{
+#tab-1-content{
   width: 96%;
   margin: 0px 2%;
 }
-#inactive{
+#tab-2-content{
   width: 96%;
   margin: 0px 2%;
 }
@@ -1326,7 +1326,7 @@ div#main-layout-user{
 }
 
 .stats-title{
-  margin: 20px 2%;
+  margin: 20px 0px;
   font-size: 28px;
 }
 
@@ -1706,6 +1706,15 @@ div#main-layout-user{
     border: 0px solid;
     border-radius: 3px;
     line-height: 16px;
+  }
+
+  .no-results{
+    display: block;
+    width: 100%;
+    margin: 10% 0px 0px 0px;
+    font-size: 28px;
+    text-align: center;
+    padding: 0px;
   }
 
 .message-404{

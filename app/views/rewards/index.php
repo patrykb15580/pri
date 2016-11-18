@@ -24,7 +24,7 @@
 	<p class="tab1 tab-active">AKTYWNE</p><p class="tab2 tab-inactive">NIEAKTYWNE</p>
 </div>
 
-<div id="active">
+<div id="tab-1-content">
 	<?php 
 		$rewards = $promotor->activeRewards();
 		
@@ -35,7 +35,7 @@
 		} else include 'app/views/rewards/_rewards.php';
 	?>
 </div>
-<div id="inactive">
+<div id="tab-2-content">
 	<?php 
 		$rewards = $promotor->inactiveRewards();
 		

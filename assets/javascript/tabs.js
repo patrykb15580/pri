@@ -1,6 +1,6 @@
 $(document).ready(function(){
-	$("#active").show();
-    $("#inactive").hide();
+	$("#tab-1-content").show();
+    $("#tab-2-content").hide();
     $(".tab1").click(function(){
 
 	   	$(".tab1").removeClass("tab-active");
@@ -11,8 +11,8 @@ $(document).ready(function(){
 	   	$(".tab2").removeClass("tab-inactive");
 	   	$(".tab2").addClass("tab-inactive");
 
-	  	$("#active").show();
-	    $("#inactive").hide();
+	  	$("#tab-1-content").show();
+	    $("#tab-2-content").hide();
 	});
 	$(".tab2").click(function(){
 	   	$(".tab1").removeClass("tab-active");
@@ -23,7 +23,7 @@ $(document).ready(function(){
 	   	$(".tab2").removeClass("tab-inactive");
 	   	$(".tab2").addClass("tab-active");
 
-	    $("#inactive").show();
-	    $("#active").hide();
+	    $("#tab-2-content").show();
+	    $("#tab-1-content").hide();
 	});
 });

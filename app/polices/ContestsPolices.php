@@ -2,12 +2,26 @@
 /**
 * 
 */
-class PromotionActionsPolices extends Polices
+class ContestsPolices extends Polices
 {
+	public function index()
+	{
+		if ($this->user->isPromotor() && $this->user->id == $this->obj->id) {
+			return true;
+		}
+
+		if ($this->user->isClient()) {
+			return false;
+		}
+
+		if ($this->user->isAdmin()) {
+			return true;
+		}
+	}
 
 	public function show()
 	{
-		if ($this->user->isPromotor() && $this->user->id == $this->obj->promotors_id) {
+		if ($this->user->isPromotor() && $this->user->id == $this->obj->promotor_id) {
 			return true;
 		}
 
@@ -52,7 +66,7 @@ class PromotionActionsPolices extends Polices
 
 	public function edit()
 	{
-		if ($this->user->isPromotor() && $this->user->id == $this->obj->promotors_id) {
+		if ($this->user->isPromotor() && $this->user->id == $this->obj->promotor_id) {
 			return true;
 		}
 
@@ -67,7 +81,7 @@ class PromotionActionsPolices extends Polices
 
 	public function update()
 	{
-		if ($this->user->isPromotor() && $this->user->id == $this->obj->promotors_id) {
+		if ($this->user->isPromotor() && $this->user->id == $this->obj->promotor_id) {
 			return true;
 		}
 
@@ -78,5 +92,7 @@ class PromotionActionsPolices extends Polices
 		if ($this->user->isAdmin()) {
 			return true;
 		}
-	}	
+	}
+
+	
 }

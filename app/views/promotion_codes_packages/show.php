@@ -39,7 +39,7 @@
 	<p class="tab2 tab-inactive">NIEWYKORZYSTANE (<?= count($package->nonUsedPromotionCodes()) ?>)</p>
 </div>
 
-<div id="active">
+<div id="tab-1-content">
 	<?php 
 		if (count($package->usedPromotionCodes()) !== 0) { ?>
 			<table width="100%">
@@ -59,7 +59,7 @@
 		}
 	?>
 </div>
-<div id="inactive">
+<div id="tab-2-content">
 	<?php
 		if (count($package->nonusedPromotionCodes()) !== 0) { ?>
 			<table width="100%">

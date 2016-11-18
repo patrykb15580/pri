@@ -2,6 +2,9 @@
 	<a id="menu" class="<?= H::promotorCurrentMenu($params, 'actions') ?> promotor_menu_actions" href="/promotors/<?= $params['promotors_id'] ?>">
 		<i class="fa fa-product-hunt" aria-hidden="true"></i> Akcje promocyjne
 	</a>
+	<a id="menu" class="<?= H::promotorCurrentMenu($params, 'contests') ?> promotor_menu_actions" href="/promotors/<?= $params['promotors_id'] ?>/contests">
+		<i class="fa fa-trophy" aria-hidden="true"></i> Konkursy
+	</a>
 	<a id="menu" class="<?= H::promotorCurrentMenu($params, 'stats') ?> promotor_menu_stats" href="/promotors/<?= $params['promotors_id'] ?>/stats">
 		<i class="fa fa-line-chart" aria-hidden="true"></i> Statystyki
 	</a>

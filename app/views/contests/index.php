@@ -1,8 +1,8 @@
 <?php
 	$router = Config::get('router');
-	$path_new = $router->generate('new_promotion_actions', ['promotors_id' => $params['promotors_id']]);
+	$path_new = $router->generate('new_contests', ['promotors_id' => $params['promotors_id']]);
 	
-	$items_number = count($promotor->promotionActions());
+	$items_number = count($promotor->contests());
 	
 ?>	
 <div id="notice">
@@ -13,7 +13,7 @@
 </div>
 
 <div id="title-box">
-	<i class="fa fa-product-hunt title-box-icon green-icon" aria-hidden="true"></i><p class="title-box-text">Akcje promocyjne</p>
+	<i class="fa fa-trophy title-box-icon green-icon" aria-hidden="true"></i><p class="title-box-text">Konkursy</p>
 	<a href="<?= $path_new ?>"><button class="title-box-button"><i class="zmdi zmdi-plus"></i> Nowa akcja promocyjna</button></a>
 </div>
 <div id="title-box-tabs">
@@ -22,25 +22,25 @@
 
 <div id="tab-1-content">
    	<?php 
-		$promotion_actions = $promotor->activeActions();
+		$contests = $promotor->activeContests();
 
-		if (count($promotion_actions) == 0 && $items_number !== 0) {
+		if (count($contests) == 0 && $items_number !== 0) {
 			include 'app/views/layouts/_no_results.php';
 		} else if ($items_number == 0) {
 			include '_make_first.php';
-		} else include '_promotion_actions.php';
+		} else include '_contests.php';
 	?>
 </div>
 
 <div id="tab-2-content">
    	<?php 
-		$promotion_actions = $promotor->inactiveActions();
+		$contests = $promotor->inactiveContests();
 		
-		if (count($promotion_actions) == 0 && $items_number !== 0) {
+		if (count($contests) == 0 && $items_number !== 0) {
 			include 'app/views/layouts/_no_results.php';
 		} else if ($items_number == 0) {
 			include '_make_first.php';
-		} else include '_promotion_actions.php';
+		} else include '_contests.php';
 	?>
 </div>
 

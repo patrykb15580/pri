@@ -15,17 +15,17 @@
 	<i class="fa fa-line-chart title-box-icon blue-icon" aria-hidden="true"></i><p class="title-box-text"> Statystyki</p>
 </div>
 <div id="title-box-tabs">
-	<p class="clients-stats-tab tab-active">KLIENCI</p><p class="codes-stats-tab tab-inactive">KODY</p>
+	<p class="tab1 tab-active">KLIENCI</p><p class="tab2 tab-inactive">KODY</p>
 </div>
 
-<div class="clients-charts">
+<div id="tab-1-content">
 <?php 
 	include '_newest_clients.php';
 	include '_clients_charts.php';
 ?>	
 </div>
 
-<div class="codes-charts">
+<div id="tab-2-content">
 <?php
 	include '_recently_used_codes.php';
 	include '_codes_charts.php';

@@ -34,7 +34,7 @@
 	<p class="tab1 tab-active">AKTYWNE</p><p class="tab2 tab-inactive">NIEAKTYWNE</p>
 </div>
 
-<div id="active">
+<div id="tab-1-content">
    	<?php 
 		$packages = $promotion_action->activePackages();
 
@@ -45,7 +45,7 @@
 		} else include 'app/views/promotion_actions/_promotion_codes_packages.php';
 	?>
 </div>
-<div id="inactive">
+<div id="tab-2-content">
    	<?php 
 		$packages = $promotion_action->inactivePackages();
 		

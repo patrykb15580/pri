@@ -45,6 +45,11 @@ class Promotor extends Model
 		return PromotionAction::where('promotors_id=?', ['promotors_id'=>$this->id]);
 	}
 
+	public function contests()
+	{
+		return Contest::where('promotor_id=?', ['promotor_id'=>$this->id]);
+	}
+
 	public function rewards()
 	{
 		return Reward::where('promotors_id=?', ['promotors_id'=>$this->id]);
@@ -210,6 +215,20 @@ class Promotor extends Model
 		$actions = PromotionAction::where('promotors_id=? AND status=?', ['promotors_id'=>$this->id, 'status'=>'inactive'], ['order'=>'created_at DESC']);
 
 		return $actions;
+	}
+
+	public function activeContests()
+	{
+		$contest = Contest::where('promotor_id=? AND status=?', ['promotor_id'=>$this->id, 'status'=>'active'], ['order'=>'created_at DESC']);
+
+		return $contest;
+	}
+
+	public function inactiveContests()
+	{
+		$contest = Contest::where('promotor_id=? AND status=?', ['promotor_id'=>$this->id, 'status'=>'inactive'], ['order'=>'created_at DESC']);
+
+		return $contest;
 	}
 
 	public function activeRewards()

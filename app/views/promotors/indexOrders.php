@@ -18,7 +18,7 @@
 	<p class="tab1 tab-active">NIEZREALIZOWANE</p><p class="tab2 tab-inactive">ZREALIZOWANE</p>
 </div>
 
-<div id="active">
+<div id="tab-1-content">
    	<?php 
 		$orders = $promotor->activeOrders();
 		
@@ -27,7 +27,7 @@
 		} else include 'app/views/layouts/_no_results.php';
 	?>
 </div>
-<div id="inactive">
+<div id="tab-2-content">
    	<?php 
 		$orders = $promotor->completedOrders();
 		

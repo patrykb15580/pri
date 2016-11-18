@@ -38,8 +38,7 @@
 	<script type="text/javascript" src="/assets/javascript/notices.js"></script> 
 	<script src="https://use.fontawesome.com/e806e76f5f.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
-	<script type="text/javascript" src="/assets/javascript/activeInactiveTabs.js"></script>
-	<script type="text/javascript" src="/assets/javascript/promotorStatsTabs.js"></script>
+	<script type="text/javascript" src="/assets/javascript/tabs.js"></script>
 	<script type="text/javascript" src="/assets/javascript/userOptions.js"></script>
 </head>
 <body>

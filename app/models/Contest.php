@@ -38,10 +38,10 @@ class Contest extends Model
 			'updated_at'			=>['type' => 'datetime',
 									   'default' => null],
 			'status'				=>['type' => 'string',
-									   'default' => null,
+									   'default' => 'active',
 									   'validations' => ['required']],
 			'type'					=>['type' => 'boolean',
-									   'default' => false],
+									   'default' => 0],
 			
 		];
 	}
@@ -49,5 +49,15 @@ class Contest extends Model
 	public static function pluralizeClassName()
 	{
 		return 'Contests';
+	}
+
+	public function promotor()
+	{
+		return Promotor::find($this->promotor_id);
+	}
+
+	public function answers()
+	{
+		return ContestAnswer::where('contest_id=?', ['contest_id'=>$this->id]);
 	}
 }

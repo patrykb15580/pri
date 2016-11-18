@@ -46,6 +46,9 @@ class H
 		if ($params['controller'] == 'PromotorsController' && $params['action'] == 'edit') {
 			$menu = 'account';
 		}
+		if ($params['controller'] == 'ContestsController') {
+			$menu = 'contests';
+		}
 
 		if ($menu == $action) {
 			return 'promotor_menu_active';
