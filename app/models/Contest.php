@@ -4,10 +4,10 @@
 */
 class Contest extends Model
 {
-	public $id, $name, $question, $promotor_id, $type, $created_at, $updated_at;	
+	public $id, $name, $question, $from_at, $to_at, $promotor_id, $created_at, $updated_at, $status, $type;	
 
 	const STATUSES = 	['active' => 'Aktywny',
-						'inactive' => 'Nieaktywny'];
+						 'inactive' => 'Nieaktywny'];
 
 	function __construct($attributes = [])
 	{
@@ -30,6 +30,9 @@ class Contest extends Model
 			'to_at'					=>['type' => 'datetime',
 									   'default' => null,
 									   'validations' => ['required']],
+			'promotor_id'			=>['type' => 'integer',
+									   'default' => null,
+									   'validations' => ['required']],
 			'created_at'			=>['type' => 'datetime',
 									   'default' => null],
 			'updated_at'			=>['type' => 'datetime',
@@ -38,7 +41,7 @@ class Contest extends Model
 									   'default' => null,
 									   'validations' => ['required']],
 			'type'					=>['type' => 'boolean',
-										'default' => false],
+									   'default' => false],
 			
 		];
 	}

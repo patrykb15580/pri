@@ -31,7 +31,7 @@ class PromotionAction extends Model
 			'status'				=>['type' => 'string',
 									   'default' => 'active'],
 			'indefinitely'			=>['type' => 'boolean',
-										'default' => false],
+									   'default' => false],
 			'from_at'				=>['type' => 'datetime',
 										'default' => null],
 			'to_at'					=>['type' => 'datetime',

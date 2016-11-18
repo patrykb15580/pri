@@ -16,33 +16,24 @@ class ContestAnswer extends Model
 		return [
 			'id'					=>['type' => 'integer',
 									   'default' => null],
-			'contest_id'			=>['type' => 'string',
-									   'default' => null,
-									   'validations' => ['required', 'max_length:190']],
-			'client_id'				=>['type' => 'string',
+			'contest_id'			=>['type' => 'integer',
 									   'default' => null,
 									   'validations' => ['required']],
-			'answer'				=>['type' => 'datetime',
+			'client_id'				=>['type' => 'integer',
 									   'default' => null,
 									   'validations' => ['required']],
-			'to_at'					=>['type' => 'datetime',
+			'answer'				=>['type' => 'string',
 									   'default' => null,
 									   'validations' => ['required']],
 			'created_at'			=>['type' => 'datetime',
 									   'default' => null],
 			'updated_at'			=>['type' => 'datetime',
-									   'default' => null],
-			'status'				=>['type' => 'string',
-									   'default' => null,
-									   'validations' => ['required']],
-			'type'					=>['type' => 'boolean',
-										'default' => false],
-			
+									   'default' => null],			
 		];
 	}
 
 	public static function pluralizeClassName()
 	{
-		return 'Contests';
+		return 'ContestsAnswers';
 	}
 }
