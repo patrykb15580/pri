@@ -35,11 +35,13 @@
 		<?php }
 	?>
 	<br />
-	Czas trwania akcji<br /><br />
+	Czas trwania akcji<br />
 	od 
 	<input type="datetime" class="datepick" name="contest[from_at]" <?php if ($contest->from_at !== '0000-00-00') {echo 'value="'.$contest->from_at.'"';} ?> required="required">
 	 do 
 	<input type="datetime" class="datepick" name='contest[to_at]' <?php if ($contest->from_at !== '0000-00-00') {echo 'value="'.$contest->to_at.'"';} ?> required="required">
+	<br /><br />Opis
+	<br /><textarea rows="6" name="contest[description]"><?= $contest->description ?></textarea>
 	<br /><br /><input class="form-page-button" type="submit" value="<?php if ($params['action']=='new') { echo "Utwórz konkurs"; } else { echo "Zapisz zmiany"; } ?>">
 	<a href="<?= $prev_page ?>">Anuluj</a>
 </form>

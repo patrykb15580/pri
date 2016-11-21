@@ -33,6 +33,7 @@
 		Status: <b><?= Contest::STATUSES[$contest->status] ?></b><br />
 		Czas trwania: <b><?= 'od '.$from_at." do ".$to_at ?></b><br />
 		Pytanie: <b><?= $contest->question ?></b><br /><br />
+		Opis: <b><?= $contest->description ?></b><br /><br />
 	</p>
 	<div class="title-box-options">
 		<a href="<?= $path_update ?>">Edytuj</a><br /><br />
