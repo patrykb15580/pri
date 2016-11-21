@@ -14,10 +14,28 @@ class StaticPagesController extends Controller
 
 	public function contest()
 	{	
-		$contest = Contest::find($this->params['id']);
+		$contest = Contest::where('id=?', ['id'=>$this->params['id']]);
 
-		$view = (new View($this->params, ['contest'=>$contest], 'start'))->render();
-		return $view;
+		if (!empty($contest)) {
+			$contest = $contest[0];
+
+			if ($contest->checkContestStatus()) {
+				$view = (new View($this->params, ['contest'=>$contest], 'start'))->render();
+				return $view;
+			} else {
+				$router = Config::get('router');
+				$path = $router->generate('start_page', []);
+				
+				$this->alert('error', 'Ten konkurs został zakończony lub jest nie aktywny');
+				header('Location: '.$path);
+			}
+		} else {
+			$router = Config::get('router');
+			$path = $router->generate('start_page', []);
+			
+			$this->alert('error', 'Podany konkurs nie istnieje');
+			header('Location: '.$path);
+		}
 	}
 
 	public function contestAnswer()

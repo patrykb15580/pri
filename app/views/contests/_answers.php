@@ -8,7 +8,7 @@
 	<tr class="result">
 		<td width="20%"><b><?= ($answer->client())->name ?></b></td>
 		<td width="30%"><?= ($answer->client())->email ?></td>
-		<td width="50%"><?= $answer->answer ?></td>
+		<td width="50%"><?= nl2br($answer->answer) ?></td>
 	</tr>
 <?php } ?>	
 </table>

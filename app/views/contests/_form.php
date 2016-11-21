@@ -25,7 +25,7 @@
 
 	<?php 
 		if ($params['action'] == 'edit') { ?>
-			<br />Status<br /><br />
+			<br />Status<br />
 			<select name='contest[status]'>
 				<?php foreach (Contest::STATUSES as $lang_en => $lang_translated) { ?>
 					<option value="<?= $lang_en ?>" <?php if ($contest->status == $lang_en){echo ' selected="selected"';}?>><?= $lang_translated ?></option>

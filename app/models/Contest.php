@@ -61,4 +61,29 @@ class Contest extends Model
 	{
 		return ContestAnswer::where('contest_id=?', ['contest_id'=>$this->id], ['order'=>'CHAR_LENGTH(`answer`) DESC']);
 	}
+
+	public function checkContestStatus()
+	{
+		if ($this->status == 'active' && date('Y-m-d', strtotime($this->from_at)) <= date('Y-m-d') && date('Y-m-d', strtotime($this->to_at)) >= date('Y-m-d')) {
+			return true;
+		} else if ($this->status == 'inactive' && date('Y-m-d', strtotime($this->from_at)) == date('Y-m-d')) {
+			$this->changeStatus();
+			return true;
+		} else if ($this->status == 'active' && date('Y-m-d', strtotime($this->from_at)) < date('Y-m-d')) {
+			$this->changeStatus();
+			return false;
+		} else if ($this->status == 'active' && date('Y-m-d', strtotime($this->to_at)) > date('Y-m-d')) {
+			$this->changeStatus();
+			return false;
+		}  else return false;
+	}
+
+	public function changeStatus()
+	{
+		if ($this->status == 'active') {
+			$this->update(['status'=>'inactive']);
+		} else {
+			$this->update(['status'=>'active']);
+		}
+	}
 }
