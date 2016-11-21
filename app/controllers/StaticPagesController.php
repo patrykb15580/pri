@@ -4,12 +4,65 @@
 */
 class StaticPagesController extends Controller
 {
-	public $non_authorized = ['startPage', 'login', 'promotorLogin', 'insertCode', 'useCode', 'addPoints', 'confirmation', 'getOrCreateClient', 'loginHashSend'];
+	public $non_authorized = ['startPage', 'contest', 'contestAnswer', 'login', 'promotorLogin', 'insertCode', 'useCode', 'addPoints', 'confirmation', 'getOrCreateClient', 'loginHashSend'];
 
 	public function startPage()
 	{
 		$view = (new View($this->params, [], 'start'))->render();
 		return $view;
+	}
+
+	public function contest()
+	{	
+		$contest = Contest::find($this->params['id']);
+
+		$view = (new View($this->params, ['contest'=>$contest], 'start'))->render();
+		return $view;
+	}
+
+	public function contestAnswer()
+	{
+		$router = Config::get('router');
+		$contest = Contest::find($this->params['id']);
+		$promotor = $contest->promotor();
+
+		$client = $this->getOrCreateClient($this->params);
+
+		$answer = ContestAnswer::where('contest_id=? AND client_id=?', ['contest_id'=>$contest->id, 'client_id'=>$client->id]);
+
+		$points_balance = PointsBalance::where('client_id=? AND promotor_id=?', ['client_id'=>$client->id, 'promotor_id'=>$promotor->id]);
+
+		if (empty($points_balance)) {
+			$points_balance = new PointsBalance(['client_id'=>$client->id, 'promotor_id'=>$promotor->id, 'balance'=>0]);
+			$points_balance->save();
+		}
+
+		if (empty($answer)) {
+			$answer = new ContestAnswer(['contest_id'=>$contest->id, 'client_id'=>$client->id, 'answer'=>$this->params['answer']['answer']]);
+
+			if ($answer->save()) {
+				$description = 'Przystąpienie do konkursu '.$contest->name.' u promotora '.$promotor->name;
+				History::addHistoryRecord($client->id, $points_balance->balance, $points_balance->balance, $description, 'add');
+				
+				$path = $router->generate('start_page', []);
+				$this->alert('info', 'Dziękujemy za wzięcie udziału w naszym konkursie');
+				header('Location: '.$path);
+			} else {
+				$this->alert('error', 'Twoja odpowiedź nie została zapisana, spróbuj jeszcze raz');
+				$this->params['action'] = 'contest';
+
+				$contest = Contest::find($this->params['id']);
+
+				$view = (new View($this->params, ['contest'=>$contest], 'start'))->render();
+				return $view;
+			}
+		} else {
+			$this->alert('error', 'Bierzesz już udział w tym konkursie');
+
+			$path = $router->generate('start_page', []);
+
+			header('Location: '.$path);
+		}
 	}
 
 	public function login()

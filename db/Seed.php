@@ -55,6 +55,7 @@
 		print_r(CLIUntils::colorize("Contests: OK\n", 'SUCCESS'));
 
 
+		/*
 		$contest_answer = new ContestAnswer(['contest_id'=>1, 'client_id'=>1, 'answer'=>'Yes']);
 		$contest_answer->save();
 
@@ -74,6 +75,7 @@
 		$contest_answer->save();
 
 		print_r(CLIUntils::colorize("Contests answers: OK\n", 'SUCCESS'));
+		*/
 
 
 		$package = new PromotionCodesPackage(['name'=>'package1', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>10, 'codes_value'=>2000, 'status'=>'active', 'description'=>'desc']);

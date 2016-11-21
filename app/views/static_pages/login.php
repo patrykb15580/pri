@@ -16,7 +16,7 @@
 				E-mail
 			</label>
 			<br /><input type="text" name="client_email">
-			<br /><input class="login_submit" type="submit" value="Wyślij link do logowania">
+			<input class="login_submit" type="submit" value="Wyślij link do logowania">
 		</form>
 		<br /><br />
 		<a class="bottom_left_text" href="<?= $router->generate('promotor_login', []) ?>">Zaloguj jako promotor</a>

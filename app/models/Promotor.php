@@ -203,6 +203,11 @@ class Promotor extends Model
 		} else return true;
 	}
 
+	public function avatar()
+	{
+		return PromotorAvatar::findBy('promotor_id', $this->id);
+	}
+
 	public function activeActions()
 	{
 		$actions = PromotionAction::where('promotors_id=? AND status=?', ['promotors_id'=>$this->id, 'status'=>'active'], ['order'=>'created_at DESC']);

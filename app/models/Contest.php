@@ -4,7 +4,7 @@
 */
 class Contest extends Model
 {
-	public $id, $name, $question, $from_at, $to_at, $promotor_id, $created_at, $updated_at, $status, $type;	
+	public $id, $name, $question, $from_at, $to_at, $promotor_id, $created_at, $updated_at, $status, $type, $description;	
 
 	const STATUSES = 	['active' => 'Aktywny',
 						 'inactive' => 'Nieaktywny'];
@@ -42,7 +42,8 @@ class Contest extends Model
 									   'validations' => ['required']],
 			'type'					=>['type' => 'boolean',
 									   'default' => 0],
-			
+			'description'			=>['type' => 'string',
+									   'default' => null],
 		];
 	}
 

@@ -1,6 +1,6 @@
 <?php	
 	$path = $router->generate('start_page', []);
-	$avatar = PromotorAvatar::findBy('promotor_id', $promotor->id);
+	$avatar = $promotor->avatar();
 ?>
 <div id="code_info_top">
 	<div id="code_info_container">
