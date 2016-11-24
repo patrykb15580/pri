@@ -13,7 +13,7 @@ class AdminMailer extends AppMailer
 		$this->attributes['subject'] = 'Zamówienie nr '.$order->id;
 
 		$method_name = __FUNCTION__;
-		$body = (new View([], ['admin_email'=>$admin, 'method_name'=>$method_name], 'mail'))->render('app/views/mailing/'.$method_name.'.php');
+		$body = (new View([], ['admin_email'=>$admin, 'method_name'=>$method_name, 'order'=>$order], 'mail'))->render('app/views/mailing/'.$method_name.'.php');
 
 		$this->attributes['body'] = $body;
 

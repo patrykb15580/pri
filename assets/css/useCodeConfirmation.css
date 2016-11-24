@@ -72,7 +72,7 @@
   }
   .code-info-avatar{
     display: inline-block;
-    background-color: grey;
+    background-color: #E7ECF3;
     width: 50px;
     height: 50px;
     margin: 0px 10px 0px 20px;
@@ -197,7 +197,7 @@
   }
   .code-info-avatar{
     display: inline-block;
-    background-color: grey;
+    background-color: #E7ECF3;
     width: 50px;
     height: 50px;
     margin: 0px 5px 0px 20px;

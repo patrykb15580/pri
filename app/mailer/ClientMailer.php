@@ -37,7 +37,7 @@ class ClientMailer extends AppMailer
 	public function clientHash($client)
 	{
 		$this->attributes['recipients'] = ['client'=>$client->email];
-		$this->attributes['subject'] = 'Link do logowanie w serwisie Punktacja.pl';
+		$this->attributes['subject'] = 'Link do logowania w serwisie Punktacja.pl';
 
 		$method_name = __FUNCTION__;
 		$body = (new View([], ['client'=>$client, 'method_name'=>$method_name], 'mail'))->render('app/views/mailing/'.$method_name.'.php');
