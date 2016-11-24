@@ -24,6 +24,7 @@ class AppMailer
 		$mail->Password = Config::get('mailing_password');
 		$mail->SMTPSecure = 'tls';
 		$mail->Port = 587;
+		$mail->CharSet = "UTF-8";
 
 		$mail->setFrom(Config::get('mailing_address'), 'Punktacja.pl');
 		
