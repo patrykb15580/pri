@@ -2,31 +2,36 @@
 	$path = $router->generate('start_page', []);
 	$avatar = $promotor->avatar();
 ?>
-<div id="code_info_top">
-	<div id="code_info_container">
-		<img id="code_info_logo" src="/system/promotor_avatars/<?= $promotor->id ?>/small/<?= $avatar->file_name ?>">
-		<div id="code_info_inline_text">
-			<?= $promotor->name ?>
-			<br />
-			<p class="extra_bold dark_font zero_margin"><?= $promotion_action->name ?></p>
-		</div>
+<div class="confirm-code-top">
+	<?php
+		$avatar = PromotorAvatar::findBy('promotor_id', $promotor->id);
+		if (!empty($avatar)) { ?>
+			<img class="code-info-avatar" src="/system/promotor_avatars/<?= $promotor->id ?>/small/<?= $avatar->file_name ?>">
+		<?php } else { ?>
+			<div class="code-info-avatar"></div>
+		<?php } 
+	?>
+	<div class="code-info-title">
+		<?= $promotor->name ?>
+		<br />
+		<p><?= $promotion_action->name ?></p>
 	</div>
-	<hr class="clear_both">
-	<table id="code_info_table" width="100%">
-		<tr class="no_border_table">
-			<td width="50%">Kod</td>
-			<td width="50%">Wartość kodu</td>
+	<hr>
+	<table class="code-info-table">
+		<tr>
+			<td class="left-first" width="50%">Kod</td>
+			<td class="right-first" width="50%">Wartość kodu</td>
 		</tr>
-		<tr class="no_border_table">
-			<td class="dark_font extra_bold medium_font"><?= $params['code'] ?></td>
-			<td class="green_font extra_bold medium_font"><?= $package->codes_value ?> ptk</td>
+		<tr>
+			<td class="left"><?= $params['code'] ?></td>
+			<td class="right">+ <?= $package->codes_value ?> pkt</td>
 		</tr>
 	</table>
 </div>
-<div id="code_message_error">
+<div class="code_message_error">
 	<i class="fa fa-frown-o fa-5x" aria-hidden="true"></i>
 
-	<p class="code_message_error">Ups,</p>
+	<p>Ups,</p>
 
 	Ten kod został już wykorzystany.
 </div>

@@ -1,10 +1,11 @@
-$( window ).ready(function(){ 
+$( document ).ready(function(){ 
   var val;
   var clients_in_year_rows;
   var promotor_id = $("#clients_in_year_chart").data("promotorid");
 
-  $( "#clients_second_tab" ).click(drawClientsInYearChartData);
+  $( ".l2-tab-2" ).click(drawClientsInYearChartData);
   $( ".clients_year" ).change(drawClientsInYearChartData);
+  $( window ).resize(drawClientsInYearChartData);
 
   function drawClientsInYearChartData() {
     val = $('.clients_year').val();

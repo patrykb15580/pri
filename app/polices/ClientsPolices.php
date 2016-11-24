@@ -20,6 +20,21 @@ class ClientsPolices extends Polices
 		}
 	}
 
+	public function indexContests()
+	{
+		if ($this->user->isPromotor()) {
+			return false;
+		}
+
+		if ($this->user->isClient() && $this->user->id == $this->obj->id) {
+			return true;
+		}
+
+		if ($this->user->isAdmin()) {
+			return true;
+		}
+	}
+
 	public function indexRewards()
 	{
 		if ($this->user->isPromotor()) {

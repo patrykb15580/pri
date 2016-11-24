@@ -115,6 +115,7 @@ $router->map( 'GET', '/access-denied', 'StaticPagesController#authorizeError', '
 
 /* Client */
 $router->map( 'GET', '/clients/[i:client_id]', 'ClientsController#show', 'show_client' );
+$router->map( 'GET', '/clients/[i:client_id]/contests', 'ClientsController#indexContests', 'client_index_contests' );
 $router->map( 'GET', '/clients/[i:client_id]/promotor-rewards/[i:promotors_id]', 'ClientsController#indexRewards', 'client_index_rewards' );
 #$router->map( 'GET', '/clients/[i:client_id]/promotor-rewards/[i:promotors_id]/reward/[i:reward_id]', 'ClientsController#showRewards', 'client_show_rewards' );
 $router->map( 'GET', '/clients/[i:client_id]/history', 'ClientsController#indexHistory', 'index_history' );

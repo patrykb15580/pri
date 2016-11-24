@@ -5,7 +5,8 @@ $( window ).ready(function(){
   $( "#clients_date_from" ).datepicker({ dateFormat: 'yy-mm-dd' }).change(drawClientsInRangeChartData);
   $( "#clients_date_to" ).datepicker({ dateFormat: 'yy-mm-dd' }).change(drawClientsInRangeChartData);
 
-  $( "#clients_third_tab" ).click(drawClientsInRangeChartData);
+  $( ".l2-tab-3" ).click(drawClientsInRangeChartData);
+  $( window ).resize(drawClientsInRangeChartData);
 
   function drawClientsInRangeChartData() {
     val_from = $('#clients_date_from').val();

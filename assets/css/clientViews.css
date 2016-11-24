@@ -1,0 +1,992 @@
+@media only screen and (min-width: 800px){
+	.client-view-title-box{
+		margin: 0px;
+		padding: 2%;
+		font-weight: 700;
+		font-size: 24px;
+		vertical-align: middle;
+	}
+	i.client-view-title-icon {
+		display: inline-block;
+		font-size: 42px;
+		margin: 0px 20px 0px 0px;
+		padding: 0px;
+		vertical-align: -2px;
+	}
+	.client-view-title-text{
+	    display: inline;
+	    text-align: left;
+	    font-size: 32px;
+	    margin: 0px;
+	    padding: 0px;
+	}
+	.client-view-item-box{
+		width: calc(92% - 4px);
+		margin: 0px 2% 20px 2%;
+		padding: 1% 2% 2% 2%;
+		background-color: white;
+		border: 2px solid #E9EFF6;
+	}
+	#order-form-table .first-row{
+		padding: 0px;
+		margin: 0px;
+	}
+	#order-form-table td{
+		padding: 1% 0px;
+		margin: 0px;
+	}
+	#order-form-table tr{
+		border-top: 2px solid; 
+		border-bottom: 2px solid; 
+		border-color: #E8EEF5;
+	}
+	.client-order-form{
+		font-size: 14px;
+	}
+	.client-order-form a {
+		font-size: 12px;
+	}
+	.client-order-form textarea{
+	    width: 40%;
+	    height: 100px;
+	    background-color: white;
+	    border: 1px solid #CBD0D4;
+	    border-radius: 3px;
+	    margin: 4px 0px 0px 0px;
+	    padding: 6px 2px;
+	    color: #5f5f5f;
+	    font-size: 12px;
+	    transition: border 0.2s;
+	}
+	  .client-order-form textarea:focus{
+	    width: 40%;
+	    height: 100px;
+	    background-color: white;
+	    border: 1px solid #2895F1;
+	    border-radius: 3px;
+	    margin: 4px 0px 0px 0px;
+	    padding: 6px 2px;
+	    color: #5f5f5f;
+	    font-size: 12px;
+	}
+	.order-table-title{
+		font-size: 20px;
+		font-weight: 700;
+		margin: 6px 0px;
+		padding: 0px;
+	}
+
+	.promotor-name{
+		display: inline;
+		font-size: 28px;
+		font-weight: 600;
+	}
+
+	.order-table-avatar{
+		display: inline-block;
+		width: 32px;
+		height: 32px;
+		background-color: #E7ECF3;
+		border: 1px solid #626B74;
+		border-radius: 16px;
+		vertical-align: -8px;
+		margin: 0px 10px 0px 0px;
+		padding: 0px;
+	}
+	.order-table-prize{
+		text-align: right;
+		font-size: 26px;
+		font-weight: 700;
+	}
+	.client-view-avatar{
+		display: inline-block;
+		width: 50px;
+		height: 50px;
+		background-color: #E7ECF3;
+		border: 1px solid #626B74;
+		border-radius: 25px;
+		vertical-align: -16px;
+		margin: 0px 10px 0px 0px;
+		padding: 0px;
+	}
+	.client-view-item-title{
+		display: inline;
+		font-size: 30px;
+		font-weight: 700;
+		margin: 0px;
+		padding: 0px;
+	}
+	.client-view-item-button{
+		display: block;
+		color: white;
+		margin: 0px;
+		padding: 10px 30px;
+		background-color: #007EE5;
+		font-size: 14px;
+		border: 0px solid;
+		border-radius: 3px;
+		transition: background-color 0.2s;
+	}
+	.client-view-item-button:hover{
+		display: block;
+		color: white;
+		margin: 0px;
+		padding: 10px 30px;
+		background-color: #008cff;
+		font-size: 14px;
+		border: 0px solid;
+		border-radius: 3px;
+	}
+	.client-balance{
+		display: inline;
+		font-size: 22px;
+		color: #53BE31;
+		font-weight: 700;
+		margin: 0px;
+		padding: 0px;
+	}
+	.client-view-item{
+		font-size: 16px;
+	}
+	.client-view-reward-box{
+		position: relative;
+		display: block;
+		width: 260px;
+		min-height: 380px;
+		background-color: white;
+		margin: 1% 0px 1% 2%;
+		padding: 20px 20px 46px 20px;
+		border: 2px solid #E9EFF5;
+		float: left;
+	}
+	.client-view-reward-button{
+		position: absolute;
+		bottom: 10px;
+		left: 0;
+		right: 0;
+		display: block;
+		width: 260px;
+		background-color: #007EE5;
+		text-align: center;
+		color: white;
+		font-size: 14px;
+		margin: 0 auto;
+		padding: 16px 0px;
+		border: 0px solid;
+		transition: background-color 0.2s;
+	}
+	.client-view-reward-button:hover{
+		position: absolute;
+		bottom: 10px;
+		left: 0;
+		right: 0;
+		display: block;
+		width: 260px;
+		background-color: #008cff;
+		text-align: center;
+		color: white;
+		font-size: 14px;
+		margin: 0 auto;
+		padding: 16px 0px;
+		border: 0px solid;
+	}
+	.client-view-reward-img{
+		display: block;
+		width: 260px;
+		height: 260px;
+		background-color: grey;
+		margin: 0px 0px 4px 0px;
+	}
+	.client-view-reward-name{
+		display: inline-block;
+		width: 65%;
+		margin: 0px;
+		padding: 0px;
+		font-size: 18px;
+		font-weight: 700;
+	}
+	.client-view-reward-prize{
+		display: inline-block;
+		width: 35%;
+		margin: 0px;
+		padding: 0px;
+		font-size: 16px;
+		font-weight: 700;
+		text-align: right;
+		color: #53BE31;
+	}
+	.client-view-reward-description{
+		font-size: 14px;
+		margin: 4px 0px 0px 0px;
+		padding: 0px;
+	}
+	.client-view-title-avatar{
+		display: inline-block;
+		width: 60px;
+		height: 60px;
+		background-color: #E7ECF3;
+		border: 1px solid #626B74;
+		border-radius: 30px;
+		margin: 0px 10px 0px 0px;
+		padding: 0px;
+		vertical-align: top;
+	}
+	.client-view-avatar-box{
+		display: inline-block;
+		font-size: 12px;
+		margin: 0px;
+		padding: 0px;
+		vertical-align: top;
+	}
+	.client-view-avatar-box p{
+		font-size: 26px;
+		margin: 0px;
+		padding: 0px;
+		color: black;
+	}
+}
+@media only screen and (max-width: 799px) and (min-width: 600px){
+	.client-view-title-box{
+		margin: 0px;
+		padding: 2%;
+		font-weight: 700;
+		font-size: 24px;
+		vertical-align: middle;
+	}
+	i.client-view-title-icon {
+		display: inline-block;
+		font-size: 42px;
+		margin: 0px 20px 0px 0px;
+		padding: 0px;
+		vertical-align: -2px;
+	}
+	.client-view-title-text{
+	    display: inline;
+	    text-align: left;
+	    font-size: 32px;
+	    margin: 0px;
+	    padding: 0px;
+	}
+	.client-view-item-box{
+		width: calc(92% - 4px);
+		margin: 0px 2% 20px 2%;
+		padding: 1% 2% 2% 2%;
+		background-color: white;
+		border: 2px solid #E9EFF6;
+	}
+	#order-form-table .first-row{
+		padding: 0px;
+		margin: 0px;
+	}
+	#order-form-table td{
+		padding: 1% 0px;
+		margin: 0px;
+	}
+	#order-form-table tr{
+		border-top: 2px solid; 
+		border-bottom: 2px solid; 
+		border-color: #E8EEF5;
+	}
+	.client-order-form{
+		font-size: 14px;
+	}
+	.client-order-form a {
+		font-size: 12px;
+	}
+	.client-order-form textarea{
+	    width: 98%;
+	    height: 100px;
+	    background-color: white;
+	    border: 1px solid #CBD0D4;
+	    border-radius: 3px;
+	    margin: 4px 0px 0px 0px;
+	    padding: 6px 2px;
+	    color: #5f5f5f;
+	    font-size: 12px;
+	    transition: border 0.2s;
+	}
+	  .client-order-form textarea:focus{
+	    width: 98%;
+	    height: 100px;
+	    background-color: white;
+	    border: 1px solid #2895F1;
+	    border-radius: 3px;
+	    margin: 4px 0px 0px 0px;
+	    padding: 6px 2px;
+	    color: #5f5f5f;
+	    font-size: 12px;
+	}
+	.order-table-title{
+		font-size: 20px;
+		font-weight: 700;
+		margin: 6px 0px;
+		padding: 0px;
+	}
+
+	.promotor-name{
+		display: inline;
+		font-size: 28px;
+		font-weight: 600;
+	}
+
+	.order-table-avatar{
+		display: inline-block;
+		width: 32px;
+		height: 32px;
+		background-color: #E7ECF3;
+		border: 1px solid #626B74;
+		border-radius: 16px;
+		vertical-align: -8px;
+		margin: 0px 10px 0px 0px;
+		padding: 0px;
+	}
+	.order-table-prize{
+		text-align: right;
+		font-size: 26px;
+		font-weight: 700;
+	}
+	.client-view-avatar{
+		display: inline-block;
+		width: 50px;
+		height: 50px;
+		background-color: #E7ECF3;
+		border: 1px solid #626B74;
+		border-radius: 25px;
+		vertical-align: -16px;
+		margin: 0px 10px 0px 0px;
+		padding: 0px;
+	}
+	.client-view-item-title{
+		display: inline;
+		font-size: 30px;
+		font-weight: 700;
+		margin: 0px;
+		padding: 0px;
+	}
+	.client-view-item-button{
+		display: block;
+		color: white;
+		margin: 0px;
+		padding: 10px 30px;
+		background-color: #007EE5;
+		font-size: 14px;
+		border: 0px solid;
+		border-radius: 3px;
+		transition: background-color 0.2s;
+	}
+	.client-view-item-button:hover{
+		display: block;
+		color: white;
+		margin: 0px;
+		padding: 10px 30px;
+		background-color: #008cff;
+		font-size: 14px;
+		border: 0px solid;
+		border-radius: 3px;
+	}
+
+	.client-view-reward-box{
+		position: relative;
+		display: block;
+		width: 260px;
+		min-height: 380px;
+		background-color: white;
+		margin: 1% 0px 1% 2%;
+		padding: 20px 20px 46px 20px;
+		border: 2px solid #E9EFF5;
+		float: left;
+	}
+	.client-view-reward-button{
+		position: absolute;
+		bottom: 10px;
+		left: 0;
+		right: 0;
+		display: block;
+		width: 260px;
+		background-color: #007EE5;
+		text-align: center;
+		color: white;
+		font-size: 14px;
+		margin: 0 auto;
+		padding: 16px 0px;
+		border: 0px solid;
+		transition: background-color 0.2s;
+	}
+	.client-view-reward-button:hover{
+		position: absolute;
+		bottom: 10px;
+		left: 0;
+		right: 0;
+		display: block;
+		width: 260px;
+		background-color: #008cff;
+		text-align: center;
+		color: white;
+		font-size: 14px;
+		margin: 0 auto;
+		padding: 16px 0px;
+		border: 0px solid;
+	}
+	.client-balance{
+		display: inline;
+		font-size: 18px;
+		color: #53BE31;
+		font-weight: 700;
+		margin: 0px;
+		padding: 0px;
+	}
+	.client-view-item{
+		font-size: 14px;
+	}
+	.client-view-reward-img{
+		display: block;
+		width: 260px;
+		height: 260px;
+		background-color: grey;
+		margin: 0px 0px 4px 0px;
+	}
+	.client-view-reward-name{
+		display: inline-block;
+		width: 65%;
+		margin: 0px;
+		padding: 0px;
+		font-size: 18px;
+		font-weight: 700;
+	}
+	.client-view-reward-prize{
+		display: inline-block;
+		width: 35%;
+		margin: 0px;
+		padding: 0px;
+		font-size: 16px;
+		font-weight: 700;
+		text-align: right;
+		color: #53BE31;
+	}
+	.client-view-reward-description{
+		font-size: 14px;
+		margin: 4px 0px 0px 0px;
+		padding: 0px;
+	}
+	.client-view-title-avatar{
+		display: inline-block;
+		width: 60px;
+		height: 60px;
+		background-color: #E7ECF3;
+		border: 1px solid #626B74;
+		border-radius: 30px;
+		margin: 0px 10px 0px 0px;
+		padding: 0px;
+		vertical-align: top;
+	}
+	.client-view-avatar-box{
+		display: inline-block;
+		font-size: 12px;
+		margin: 0px;
+		padding: 0px;
+		vertical-align: top;
+	}
+	.client-view-avatar-box p{
+		font-size: 26px;
+		margin: 0px;
+		padding: 0px;
+		color: black;
+	}
+}
+@media only screen and (max-width: 599px) and (min-width: 400px){
+	.client-view-title-box{
+		margin: 0px;
+		padding: 2%;
+		font-weight: 700;
+		font-size: 24px;
+		vertical-align: middle;
+	}
+	i.client-view-title-icon {
+		display: inline-block;
+		font-size: 42px;
+		margin: 0px 20px 0px 0px;
+		padding: 0px;
+		vertical-align: -2px;
+	}
+	.client-view-title-text{
+	    display: inline;
+	    text-align: left;
+	    font-size: 32px;
+	    margin: 0px;
+	    padding: 0px;
+	}
+	.client-view-item-box{
+		width: calc(92% - 4px);
+		margin: 0px 2% 20px 2%;
+		padding: 1% 2% 2% 2%;
+		background-color: white;
+		border: 2px solid #E9EFF6;
+	}
+	#order-form-table .first-row{
+		padding: 0px;
+		margin: 0px;
+	}
+	#order-form-table td{
+		padding: 1% 0px;
+		margin: 0px;
+	}
+	#order-form-table tr{
+		border-top: 2px solid; 
+		border-bottom: 2px solid; 
+		border-color: #E8EEF5;
+	}
+
+	.order-table-title{
+		font-size: 20px;
+		font-weight: 700;
+		margin: 6px 0px;
+		padding: 0px;
+	}
+
+	.promotor-name{
+		display: inline;
+		font-size: 28px;
+		font-weight: 600;
+	}
+
+	.order-table-avatar{
+		display: inline-block;
+		width: 32px;
+		height: 32px;
+		background-color: #E7ECF3;
+		border: 1px solid #626B74;
+		border-radius: 16px;
+		vertical-align: -8px;
+		margin: 0px 10px 0px 0px;
+		padding: 0px;
+	}
+	.client-order-form{
+		font-size: 14px;
+	}
+	.client-order-form a {
+		font-size: 12px;
+	}
+	.client-order-form textarea{
+	    width: 98%;
+	    height: 100px;
+	    background-color: white;
+	    border: 1px solid #CBD0D4;
+	    border-radius: 3px;
+	    margin:  4px 0px 0px 0px;
+	    padding: 6px 2px;
+	    color: #5f5f5f;
+	    font-size: 12px;
+	    transition: border 0.2s;
+	}
+	  .client-order-form textarea:focus{
+	    width: 98%;
+	    height: 100px;
+	    background-color: white;
+	    border: 1px solid #2895F1;
+	    border-radius: 3px;
+	    margin:  4px 0px 0px 0px;
+	    padding: 6px 2px;
+	    color: #5f5f5f;
+	    font-size: 12px;
+	}
+
+	.order-table-prize{
+		text-align: right;
+		font-size: 22px;
+		font-weight: 700;
+	}
+	.client-view-avatar{
+		display: inline-block;
+		width: 50px;
+		height: 50px;
+		background-color: #E7ECF3;
+		border: 1px solid #626B74;
+		border-radius: 25px;
+		vertical-align: -16px;
+		margin: 0px 10px 0px 0px;
+		padding: 0px;
+	}
+	.client-view-item-title{
+		display: inline;
+		font-size: 30px;
+		font-weight: 700;
+		margin: 0px;
+		padding: 0px;
+	}
+	.client-view-item-button{
+		display: block;
+		color: white;
+		margin: 0px;
+		padding: 10px 30px;
+		background-color: #007EE5;
+		font-size: 14px;
+		border: 0px solid;
+		border-radius: 3px;
+		transition: background-color 0.2s;
+	}
+	.client-view-item-button:hover{
+		display: block;
+		color: white;
+		margin: 0px;
+		padding: 10px 30px;
+		background-color: #008cff;
+		font-size: 14px;
+		border: 0px solid;
+		border-radius: 3px;
+	}
+	.client-view-item{
+		font-size: 14px;
+	}
+	.client-balance{
+		display: inline;
+		font-size: 16px;
+		color: #53BE31;
+		font-weight: 700;
+		margin: 0px;
+		padding: 0px;
+	}
+	.client-view-reward-box{
+		position: relative;
+		display: block;
+		width: 260px;
+		min-height: 380px;
+		background-color: white;
+		margin: 1% 0px 1% 2%;
+		padding: 20px 20px 46px 20px;
+		border: 2px solid #E9EFF5;
+		float: left;
+	}
+	.client-view-reward-button{
+		position: absolute;
+		bottom: 10px;
+		left: 0;
+		right: 0;
+		display: block;
+		width: 260px;
+		background-color: #007EE5;
+		text-align: center;
+		color: white;
+		font-size: 14px;
+		margin: 0 auto;
+		padding: 16px 0px;
+		border: 0px solid;
+		transition: background-color 0.2s;
+	}
+	.client-view-reward-button:hover{
+		position: absolute;
+		bottom: 10px;
+		left: 0;
+		right: 0;
+		display: block;
+		width: 260px;
+		background-color: #008cff;
+		text-align: center;
+		color: white;
+		font-size: 14px;
+		margin: 0 auto;
+		padding: 16px 0px;
+		border: 0px solid;
+	}
+	.client-view-reward-img{
+		display: block;
+		width: 260px;
+		height: 260px;
+		background-color: grey;
+		margin: 0px 0px 4px 0px;
+	}
+	.client-view-reward-name{
+		display: inline-block;
+		width: 65%;
+		margin: 0px;
+		padding: 0px;
+		font-size: 18px;
+		font-weight: 700;
+	}
+	.client-view-reward-prize{
+		display: inline-block;
+		width: 35%;
+		margin: 0px;
+		padding: 0px;
+		font-size: 16px;
+		font-weight: 700;
+		text-align: right;
+		color: #53BE31;
+	}
+	.client-view-reward-description{
+		font-size: 14px;
+		margin: 4px 0px 0px 0px;
+		padding: 0px;
+	}
+	.client-view-title-avatar{
+		display: inline-block;
+		width: 60px;
+		height: 60px;
+		background-color: #E7ECF3;
+		border: 1px solid #626B74;
+		border-radius: 30px;
+		margin: 0px 10px 0px 0px;
+		padding: 0px;
+		vertical-align: top;
+	}
+	.client-view-avatar-box{
+		display: inline-block;
+		font-size: 12px;
+		margin: 0px;
+		padding: 0px;
+		vertical-align: top;
+	}
+	.client-view-avatar-box p{
+		font-size: 26px;
+		margin: 0px;
+		padding: 0px;
+		color: black;
+	}
+}
+@media only screen and (max-width: 399px){
+	.client-view-title-box{
+		margin: 0px;
+		padding: 2%;
+		font-weight: 700;
+		font-size: 24px;
+		vertical-align: middle;
+	}
+	i.client-view-title-icon {
+		display: inline-block;
+		font-size: 30px;
+		margin: 0px 20px 0px 0px;
+		padding: 0px;
+		vertical-align: -3px;
+	}
+	.client-view-title-text{
+	    display: inline;
+	    text-align: left;
+	    font-size: 20px;
+	    margin: 0px;
+	    padding: 0px;
+	}
+	.client-view-item-box{
+		width: calc(92% - 4px);
+		margin: 0px 2% 20px 2%;
+		padding: 1% 2% 2% 2%;
+		background-color: white;
+		border: 2px solid #E9EFF6;
+	}
+	#order-form-table .first-row{
+		padding: 0px;
+		margin: 0px;
+	}
+	#order-form-table td{
+		padding: 1% 0px;
+		margin: 0px;
+	}
+	#order-form-table tr{
+		border-top: 2px solid; 
+		border-bottom: 2px solid; 
+		border-color: #E8EEF5;
+	}
+
+	.order-table-title{
+		font-size: 16px;
+		font-weight: 700;
+		margin: 6px 0px;
+		padding: 0px;
+	}
+
+	.promotor-name{
+		display: inline;
+		font-size: 22px;
+		font-weight: 600;
+	}
+
+	.order-table-avatar{
+		display: inline-block;
+		width: 32px;
+		height: 32px;
+		background-color: #E7ECF3;
+		border: 1px solid #626B74;
+		border-radius: 16px;
+		vertical-align: -12px;
+		margin: 0px 10px 0px 0px;
+		padding: 0px;
+	}
+	.client-order-form{
+		font-size: 12px;
+	}
+	.client-order-form a {
+		font-size: 10px;
+	}
+	.client-order-form textarea{
+	    width: 98%;
+	    height: 100px;
+	    background-color: white;
+	    border: 1px solid #CBD0D4;
+	    border-radius: 3px;
+	    margin: 4px 0px 0px 0px;
+	    padding: 6px 2px;
+	    color: #5f5f5f;
+	    font-size: 12px;
+	    transition: border 0.2s;
+	}
+	  .client-order-form textarea:focus{
+	    width: 98%;
+	    height: 100px;
+	    background-color: white;
+	    border: 1px solid #2895F1;
+	    border-radius: 3px;
+	    margin: 4px 0px 0px 0px;
+	    padding: 6px 2px;
+	    color: #5f5f5f;
+	    font-size: 12px;
+	}
+	.order-table-prize{
+		text-align: right;
+		font-size: 14px;
+		font-weight: 700;
+	}
+	.client-view-avatar{
+		display: inline-block;
+		width: 50px;
+		height: 50px;
+		background-color: #E7ECF3;
+		border: 1px solid #626B74;
+		border-radius: 25px;
+		vertical-align: -16px;
+		margin: 0px 10px 0px 0px;
+		padding: 0px;
+	}
+	.client-view-item-title{
+		display: inline;
+		font-size: 30px;
+		font-weight: 700;
+		margin: 0px;
+		padding: 0px;
+	}
+	.client-view-item-button{
+		display: block;
+		color: white;
+		margin: 0px;
+		padding: 5px 10px;
+		background-color: #007EE5;
+		font-size: 10px;
+		border: 0px solid;
+		border-radius: 3px;
+		transition: background-color 0.2s;
+	}
+	.client-balance{
+		display: inline;
+		font-size: 14px;
+		color: #53BE31;
+		font-weight: 700;
+		margin: 0px;
+		padding: 0px;
+	}
+	.client-view-item-button:hover{
+		display: block;
+		color: white;
+		margin: 0px;
+		padding: 5px 10px;
+		background-color: #008cff;
+		font-size: 10px;
+		border: 0px solid;
+		border-radius: 3px;
+	}
+	.client-view-item{
+		font-size: 12px;
+	}
+	.client-view-reward-box{
+		position: relative;
+		display: block;
+		width: 110px;
+		min-height: 140px;
+		background-color: white;
+		margin: 5px 0px 5px 2%;
+		padding: 10px 10px 32px 10px;
+		border: 2px solid #E9EFF5;
+		float: left;
+	}
+	.client-view-reward-button{
+		position: absolute;
+		bottom: 0px;
+		left: 0;
+		right: 0;
+		display: block;
+		width: 110px;
+		background-color: #007EE5;
+		text-align: center;
+		color: white;
+		font-size: 10px;
+		margin: 0 auto;
+		padding: 4px 0px;
+		border: 0px solid;
+		transition: background-color 0.2s;
+	}
+	.client-view-reward-button:hover{
+		position: absolute;
+		bottom: 0px;
+		left: 0;
+		right: 0;
+		display: block;
+		width: 110px;
+		background-color: #008cff;
+		text-align: center;
+		color: white;
+		font-size: 10px;
+		margin: 0 auto;
+		padding: 4px 0px;
+		border: 0px solid;
+	}
+	.client-view-reward-img{
+		display: block;
+		width: 110px;
+		height: 100px;
+		background-color: grey;
+		margin: 0px 0px 4px 0px;
+	}
+	.client-view-reward-name{
+		display: inline-block;
+		width: 59%;
+		margin: 0px;
+		padding: 0px;
+		font-size: 10px;
+		font-weight: 700;
+	}
+	.client-view-reward-prize{
+		display: inline-block;
+		width: 40%;
+		margin: 0px;
+		padding: 0px;
+		font-size: 10px;
+		font-weight: 700;
+		text-align: right;
+		color: #53BE31;
+	}
+	.client-view-reward-description{
+		font-size: 10px;
+		margin: 4px 0px 0px 0px;
+		padding: 0px;
+	}
+	.client-view-title-avatar{
+		display: inline-block;
+		width: 40px;
+		height: 40px;
+		background-color: #E7ECF3;
+		border: 1px solid #626B74;
+		border-radius: 20px;
+		margin: 0px 10px 0px 0px;
+		padding: 0px;
+		vertical-align: top;
+	}
+	.client-view-avatar-box{
+		display: inline-block;
+		font-size: 8px;
+		margin: 0px;
+		padding: 0px;
+		vertical-align: top;
+	}
+	.client-view-avatar-box p{
+		font-size: 18px;
+		margin: 0px;
+		padding: 0px;
+		color: black;
+	}
+}

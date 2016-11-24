@@ -3,19 +3,19 @@
 Ilość użytych kodów: <?= count($promotor->recentlyUsedCodes()) ?><br /><br />
 <table width="100%">
 	<tr>
-		<td id="first_row">
+		<td class="first-row">
 			Kod
 		</td>
-		<td id="first_row">
+		<td class="first-row">
 			Klient
 		</td>
-		<td id="first_row">
+		<td class="first-row">
 			Data użycia
 		</td>
-		<td id="first_row">
+		<td class="first-row">
 			Akcja promocyjna
 		</td>
-		<td id="first_row">
+		<td class="first-row">
 			Paczka kodów
 		</td>
 	</tr>

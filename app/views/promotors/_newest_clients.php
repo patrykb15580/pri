@@ -3,16 +3,16 @@
 Łączna liczba klientów: <?= count($promotor->clients()) ?><br /><br />
 <table width="100%">
 	<tr>
-		<td id="first_row">
+		<td class="first-row">
 			Nazwa klienta
 		</td>
-		<td id="first_row">
+		<td class="first-row">
 			Email klienta
 		</td>
-		<td id="first_row">
+		<td class="first-row">
 			Numer telefonu
 		</td>
-		<td id="first_row">
+		<td class="first-row text_align_right">
 			Ostatnia aktywność
 		</td>
 	</tr>
@@ -29,7 +29,7 @@
 				<td>
 					<?= $client->phone_number ?>
 				</td>
-				<td>
+				<td class="text_align_right">
 					<?= $balance->updated_at ?>
 				</td>
 			</tr>

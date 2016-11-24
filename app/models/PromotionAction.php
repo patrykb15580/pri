@@ -153,7 +153,7 @@ class PromotionAction extends Model
 				return false;
 			}
 		} else {
-			if ($this->status == 'active' && $this->indefinitely !== 0 && $this->to_at >= date('Y-m-d') && $this->from_at <= date('Y-m-d')) {
+			if ($this->status == 'active' && date('Y-m-d', strtotime($this->to_at)) >= date('Y-m-d') && date('Y-m-d', strtotime($this->from_at)) <= date('Y-m-d')) {
 				return true;
 			} else {
 				return false;

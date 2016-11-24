@@ -4,19 +4,19 @@ foreach ($promotors as $promotor) {
 		<h3><?= $promotor->name ?></h3>
 			<table width="100%">
 				<tr>
-					<td id="first_row" width="20%">
+					<td class="first-row" width="20%">
 						Nazwa paczki
 					</td>
-					<td id="first_row" width="35%">
+					<td class="first-row" width="35%">
 						Data zamówienia
 					</td>
-					<td id="first_row" width="10%">
+					<td class="first-row" width="10%">
 						Nakład
 					</td>
-					<td id="first_row" width="15%">
+					<td class="first-row" width="15%">
 						Typ
 					</td>
-					<td id="first_row" width="20%">
+					<td class="first-row" width="20%">
 						Status
 					</td>
 				</tr>

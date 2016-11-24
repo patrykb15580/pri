@@ -8,3 +8,5 @@
 		include 'app/views/promotion_codes_packages/_form.php';
 	?>
 </div>
+
+<script type="text/javascript" src="/assets/javascript/blueBg.js"></script>

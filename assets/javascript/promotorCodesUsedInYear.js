@@ -3,7 +3,8 @@ $( document ).ready(function(){
   var codes_in_year_rows;
   var promotor_id = $("#codes_in_year_chart").data("promotorid");
 
-  $( '#codes_second_tab' ).click(drawCodesInYearChartData);
+  $( '.l2-tab-2' ).click(drawCodesInYearChartData);
+  $( window ).resize(drawCodesInYearChartData);
 
   function drawCodesInYearChartData() {
     $.ajax({

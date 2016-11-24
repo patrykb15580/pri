@@ -1,8 +1,24 @@
 /* Rewards detals for client */
-  .reward-details-image{
+@media only screen and (min-width: 800px){
+    img.reward-details-image{
     max-width: 500px;
     max-height: 500px;
     display: block;
+    margin: 0 auto;
+    background-color: #CACED2;
+  }
+  div.reward-details-image{
+    width: 500px;
+    height: 500px;
+    display: block;
+    margin: 0 auto;
+    background-color: #CACED2;
+  }
+  .reward-details-image i{
+    display: block;
+    font-size: 200px;
+    text-align: center;
+    line-height: 500px;
     margin: 0 auto;
   }
   .reward-details-images-box{
@@ -75,3 +91,285 @@
     overflow-y: auto;
 
   } 
+}
+@media only screen and (max-width: 799px) and (min-width: 600px){
+    img.reward-details-image{
+    max-width: 400px;
+    max-height: 400px;
+    display: block;
+    margin: 0 auto;
+    background-color: #CACED2;
+  }
+  div.reward-details-image{
+    width: 400px;
+    height: 400px;
+    display: block;
+    margin: 0 auto;
+    background-color: #CACED2;
+  }
+  .reward-details-image i{
+    display: block;
+    font-size: 160px;
+    text-align: center;
+    line-height: 400px;
+    margin: 0 auto;
+  }
+  .reward-details-images-box{
+    overflow-y: auto;
+    width: 100%;
+    max-height: 80px;
+    margin: 0px;
+    padding: 0px;
+  }
+  .reward-details-images{
+    width: 48px;
+    display: inline-block;
+    margin: 0px 4px;
+    transition: opacity 0.2s;
+    border: 2px solid;
+    border-color: #F2F2F2;
+    border-radius: 8px;
+  }
+  .reward-details-images:hover{
+    width: 48px;
+    display: inline-block;
+    opacity: 0.8;
+    cursor: pointer;
+    border: 2px solid;
+    border-color: #F2F2F2;
+    border-radius: 8px;
+  }
+  .reward-details-button{
+    background-color: #007EE5;
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+    margin: 0px 0px 0px auto;
+    padding: 14px 40px;
+    border: 0px solid;
+    border-radius: 3px;
+  }
+  .reward-details-button:hover{
+    background-color: #008cff;
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+    margin: 0px 0px 0px auto;
+    padding: 14px 40px;
+    border: 0px solid;
+    border-radius: 3px;
+  }
+  .reward-details-name{
+    display: inline-block;
+    width: 60%;
+    color: #282828;
+    font-size: 28px;
+    font-weight: 600;
+    margin: 8px 0px;
+  }
+  .reward-details-price{
+    display: inline-block;
+    width: 39%;
+    color: #53BE31;
+    font-size: 28px;
+    font-weight: 600;
+    margin: 8px 0px;
+    text-align: right;
+  }
+  .reward-details-description{
+    display: block;
+    font-size: 16px;
+    margin: 0px;
+    max-height: 10vh;
+    overflow-y: auto;
+
+  } 
+}
+@media only screen and (max-width: 599px) and (min-width: 400px){
+    img.reward-details-image{
+    max-width: 320px;
+    max-height: 320px;
+    display: block;
+    margin: 0 auto;
+    background-color: #CACED2;
+  }
+  div.reward-details-image{
+    width: 320px;
+    height: 320px;
+    display: block;
+    margin: 0 auto;
+    background-color: #CACED2;
+  }
+  .reward-details-image i{
+    display: block;
+    font-size: 140px;
+    text-align: center;
+    line-height: 320px;
+    margin: 0 auto;
+  }
+  .reward-details-images-box{
+    overflow-y: auto;
+    width: 100%;
+    max-height: 80px;
+    margin: 0px;
+    padding: 0px;
+  }
+  .reward-details-images{
+    width: 40px;
+    display: inline-block;
+    margin: 0px 4px;
+    transition: opacity 0.2s;
+    border: 2px solid;
+    border-color: #F2F2F2;
+    border-radius: 8px;
+  }
+  .reward-details-images:hover{
+    width: 40px;
+    display: inline-block;
+    opacity: 0.8;
+    cursor: pointer;
+    border: 2px solid;
+    border-color: #F2F2F2;
+    border-radius: 8px;
+  }
+  .reward-details-button{
+    background-color: #007EE5;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0px 0px 0px auto;
+    padding: 12px 20px;
+    border: 0px solid;
+    border-radius: 3px;
+  }
+  .reward-details-button:hover{
+    background-color: #008cff;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0px 0px 0px auto;
+    padding: 12px 20px;
+    border: 0px solid;
+    border-radius: 3px;
+  }
+  .reward-details-name{
+    display: inline-block;
+    width: 59%;
+    color: #282828;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 8px 0px;
+  }
+  .reward-details-price{
+    display: inline-block;
+    width: 39%;
+    color: #53BE31;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 8px 0px;
+    text-align: right;
+  }
+  .reward-details-description{
+    display: block;
+    font-size: 14px;
+    margin: 0px;
+    max-height: 10vh;
+    overflow-y: auto;
+
+  } 
+}
+@media only screen and (max-width: 399px){
+    img.reward-details-image{
+    max-width: 200px;
+    max-height: 200px;
+    display: block;
+    margin: 0 auto;
+    background-color: #CACED2;
+  }
+  div.reward-details-image{
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin: 0 auto;
+    background-color: #CACED2;
+  }
+  .reward-details-image i{
+    display: block;
+    font-size: 100px;
+    text-align: center;
+    line-height: 200px;
+    margin: 0 auto;
+  }
+  .reward-details-images-box{
+    overflow-y: auto;
+    width: 100%;
+    max-height: 60px;
+    margin: 0px;
+    padding: 0px;
+  }
+  .reward-details-images{
+    width: 30px;
+    display: inline-block;
+    margin: 0px 2px;
+    transition: opacity 0.2s;
+    border: 1px solid;
+    border-color: #F2F2F2;
+    border-radius: 3px;
+  }
+  .reward-details-images:hover{
+    width: 30px;
+    display: inline-block;
+    opacity: 0.8;
+    cursor: pointer;
+    border: 1px solid;
+    border-color: #F2F2F2;
+    border-radius: 3px;
+  }
+  .reward-details-button{
+    background-color: #007EE5;
+    width: 100%;
+    color: white;
+    font-size: 12px;
+    font-weight: 400;
+    margin: 0 auto;
+    padding: 8px 0px;
+    border: 0px solid;
+    border-radius: 3px;
+  }
+  .reward-details-button:hover{
+    background-color: #008cff;
+    width: 100%;
+    color: white;
+    font-size: 12px;
+    font-weight: 400;
+    margin: 0px 0px 0px auto;
+    padding: 8px 0px;
+    border: 0px solid;
+    border-radius: 3px;
+  }
+  .reward-details-name{
+    display: inline-block;
+    width: 59%;
+    color: #282828;
+    font-size: 12px;
+    font-weight: 600;
+    margin: 8px 0px;
+  }
+  .reward-details-price{
+    display: inline-block;
+    width: 39%;
+    color: #53BE31;
+    font-size: 12px;
+    font-weight: 600;
+    margin: 8px 0px;
+    text-align: right;
+  }
+  .reward-details-description{
+    display: block;
+    font-size: 10px;
+    margin: 0px;
+    max-height: 10vh;
+    overflow-y: auto;
+
+  } 
+}

@@ -21,8 +21,3 @@
 		<i class="fa fa-bullhorn" aria-hidden="true"></i> Informacje dla klientów
 	</a>
 </div>
-
-<!--
-	<i class="fa fa-trophy" aria-hidden="true"></i>
-
--->

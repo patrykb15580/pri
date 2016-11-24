@@ -53,6 +53,8 @@ class StaticPagesController extends Controller
 		if (empty($points_balance)) {
 			$points_balance = new PointsBalance(['client_id'=>$client->id, 'promotor_id'=>$promotor->id, 'balance'=>0]);
 			$points_balance->save();
+		} else {
+			$points_balance = $points_balance[0];
 		}
 
 		if (empty($answer)) {

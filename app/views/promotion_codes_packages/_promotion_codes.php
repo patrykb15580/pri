@@ -1,7 +1,7 @@
 <table class="single-table">
 	<tr>
-		<td id="first_row" width="60%">Kod</td>
-		<td id="first_row" width="40%">Wykorzystany</td>
+		<td class="first-row" width="60%">Kod</td>
+		<td class="first-row" width="40%">Wykorzystany</td>
 	</tr>
 <?php foreach ($promotion_codes as $promotion_code) { ?>
 	<tr class="result">

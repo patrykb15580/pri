@@ -1,0 +1,1 @@
+$('#content').css('background-color', '#F2F6FA');

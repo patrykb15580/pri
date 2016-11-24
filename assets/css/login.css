@@ -1,0 +1,380 @@
+@media only screen and (min-width: 900px){
+  div#login_box{
+    display: block;
+    position: absolute;
+    top: 18%;
+    left: 0;
+    right: 0;
+    width: 768px;
+    margin: 0 auto;
+    padding: 0px;
+    background-color: white;
+    border: 0px solid;
+    border-radius: 5px;
+  }
+  .login_left_block{
+    float: left;
+    display: inline-block;
+    width: 32%;
+    height: 96%;
+    padding: 1% 4%;
+    margin: 0px;
+    color: #464646;
+  }
+  .login_left_block h1{
+    color: #53BE31;
+    font-size: 36px;
+  }
+  .login_right_block{
+    float: left;
+    display: inline-block;
+    width: 51%;
+    height: 96%;
+    padding: 1% 4%;
+    margin: 0px;
+    color: #76858F;
+    border-left: 2px solid;
+    border-color: #E7E7E7;
+  }
+  .login_right_block p{
+    font-size: 22px;
+    color: #47525D;
+    font-weight: 800;
+  }
+  .login_right_block input[type=text]{
+    width: 70%;
+    height: 32px;
+    font-size: 18px;
+    text-align: left;
+    padding: 4px;
+    border: 1px solid #76858F;
+    border-radius: 3px;
+    transition: border 0.2s;
+  }
+  .login_right_block input[type=text]:focus{
+    width: 70%;
+    height: 32px;
+    font-size: 18px;
+    text-align: left;
+    padding: 4px;
+    border: 1px solid #2895F1;
+    border-radius: 3px;
+  }
+  input[type=submit].login_submit{
+    width: auto;
+    height: 50px;
+    background-color: #53BE31;
+    border: 0px solid;
+    border-radius: 3px;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    margin: 20px 0px 40px 0px;
+    padding: 4px 30px;
+    transition: background-color 0.2s;
+  }
+  input[type=submit].login_submit:hover{
+    width: auto;
+    height: 50px;
+    background-color: #68D049;
+    border: 0px solid;
+    border-radius: 3px;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    margin: 20px 0px 40px 0px;
+    padding: 4px 30px;
+    cursor: pointer;
+  }
+  .promotor-login-link{
+    position: absolute;
+    bottom: 4px;
+  }
+}
+@media only screen and (max-width: 899px) and (min-width: 600px){
+  div#login_box{
+    display: block;
+    position: absolute;
+    top: 18%;
+    left: 0;
+    right: 0;
+    width: 580px;
+    margin: 0 auto;
+    padding: 0px;
+    background-color: white;
+    border: 0px solid;
+    border-radius: 5px;
+  }
+  .login_left_block{
+    float: left;
+    display: inline-block;
+    width: 32%;
+    height: 96%;
+    padding: 1% 4%;
+    margin: 0px;
+    color: #464646;
+  }
+  .login_left_block h1{
+    color: #53BE31;
+    font-size: 36px;
+  }
+  .login_right_block{
+    float: left;
+    display: inline-block;
+    width: 51%;
+    height: 96%;
+    padding: 1% 4%;
+    margin: 0px;
+    color: #76858F;
+    border-left: 2px solid;
+    border-color: #E7E7E7;
+  }
+  .login_right_block p{
+    font-size: 22px;
+    color: #47525D;
+    font-weight: 800;
+  }
+  .login_right_block input[type=text]{
+    width: 70%;
+    height: 32px;
+    font-size: 18px;
+    text-align: left;
+    padding: 4px;
+    border: 1px solid #76858F;
+    border-radius: 3px;
+    transition: border 0.2s;
+  }
+  .login_right_block input[type=text]:focus{
+    width: 70%;
+    height: 32px;
+    font-size: 18px;
+    text-align: left;
+    padding: 4px;
+    border: 1px solid #2895F1;
+    border-radius: 3px;
+  }
+  input[type=submit].login_submit{
+    width: auto;
+    height: 50px;
+    background-color: #53BE31;
+    border: 0px solid;
+    border-radius: 3px;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    margin: 20px 0px 40px 0px;
+    padding: 4px 30px;
+    transition: background-color 0.2s;
+  }
+  input[type=submit].login_submit:hover{
+    width: auto;
+    height: 50px;
+    background-color: #68D049;
+    border: 0px solid;
+    border-radius: 3px;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    margin: 20px 0px 40px 0px;
+    padding: 4px 30px;
+    cursor: pointer;
+  }
+  .promotor-login-link{
+    position: absolute;
+    bottom: 4px;
+  }
+}
+@media only screen and (max-width: 599px) and (min-width: 400px){
+  div#login_box{
+    display: block;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    width: 380px;
+    margin: 0 auto;
+    padding: 0px;
+    background-color: white;
+    border: 0px solid;
+    border-radius: 5px;
+  }
+  .login_left_block{
+    display: block;
+    width: 340px;
+    padding: 20px 20px 5px 20px;
+    margin: 0px;
+    font-size: 12px;
+    color: #464646;
+  }
+  .login_left_block h1{
+    color: #53BE31;
+    font-size: 28px;
+  }
+  .login_right_block{
+    display: block;
+    width: 340px;
+    padding: 0px 20px 20px 20px;
+    margin: 0px;
+    font-size: 12px;
+    color: #76858F;
+    border-left: 0px solid;
+  }
+  .login_right_block p{
+    font-size: 14px;
+    color: #47525D;
+    font-weight: 800;
+  }
+  .login_right_block input[type=text]{
+    width: 330px;
+    height: 22px;
+    font-size: 14px;
+    text-align: left;
+    padding: 4px;
+    border: 1px solid #76858F;
+    border-radius: 3px;
+    transition: border 0.2s;
+  }
+  .login_right_block input[type=text]:focus{
+    width: 330px;
+    height: 22px;
+    font-size: 14px;
+    text-align: left;
+    padding: 4px;
+    border: 1px solid #2895F1;
+    border-radius: 3px;
+  }
+  input[type=submit].login_submit{
+    width: 340px;
+    height: 40px;
+    background-color: #53BE31;
+    border: 0px solid;
+    border-radius: 3px;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    margin: 10px 0px 0px 0px;
+    padding: 4px 0px;
+    transition: background-color 0.2s;
+  }
+  input[type=submit].login_submit:hover{
+    width: 340px;
+    height: 40px;
+    background-color: #68D049;
+    border: 0px solid;
+    border-radius: 3px;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    margin: 10px 0px 0px 0px;
+    padding: 4px 0px;
+    cursor: pointer;
+  }
+  .promotor-login-link{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 4px;
+    text-align: center;
+  }
+}
+@media only screen and (max-width: 399px){
+  div#login_box{
+    display: block;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    right: 0;
+    width: 260px;
+    margin: 0 auto;
+    padding: 0px;
+    background-color: white;
+    border: 0px solid;
+    border-radius: 5px;
+  }
+  .login_left_block{
+    display: block;
+    width: 222px;
+    padding: 20px 20px 5px 20px;
+    margin: 0px;
+    font-size: 12px;
+    color: #464646;
+  }
+  .login_left_block h1{
+    color: #53BE31;
+    font-size: 28px;
+  }
+  .login_right_block{
+    display: block;
+    width: 222px;
+    padding: 0px 20px 20px 20px;
+    margin: 0px;
+    font-size: 12px;
+    color: #76858F;
+    border-left: 0px solid;
+  }
+  .login_right_block p{
+    font-size: 14px;
+    color: #47525D;
+    font-weight: 800;
+  }
+  .login_right_block input[type=text]{
+    width: 212px;
+    height: 22px;
+    font-size: 14px;
+    text-align: left;
+    padding: 4px;
+    border: 1px solid #76858F;
+    border-radius: 3px;
+    transition: border 0.2s;
+  }
+  .login_right_block input[type=text]:focus{
+    width: 212px;
+    height: 22px;
+    font-size: 14px;
+    text-align: left;
+    padding: 4px;
+    border: 1px solid #2895F1;
+    border-radius: 3px;
+  }
+  input[type=submit].login_submit{
+    width: 222px;
+    height: 40px;
+    background-color: #53BE31;
+    border: 0px solid;
+    border-radius: 3px;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    margin: 10px 0px 0px 0px;
+    padding: 4px 0px;
+    transition: background-color 0.2s;
+  }
+  input[type=submit].login_submit:hover{
+    width: 222px;
+    height: 40px;
+    background-color: #68D049;
+    border: 0px solid;
+    border-radius: 3px;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    margin: 10px 0px 0px 0px;
+    padding: 4px 0px;
+    cursor: pointer;
+  }
+  .promotor-login-link{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 4px;
+    text-align: center;
+  }
+}

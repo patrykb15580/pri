@@ -1,0 +1,145 @@
+/* Tables */
+@media only screen and (min-width: 1200px) {
+  table{ 
+    border-collapse: collapse; 
+    line-height: 40px;
+  }
+  tr{ 
+    border-bottom: 2px solid; 
+    border-color: #E8EEF5;
+  }
+  tr#last_row{ 
+    border-bottom: none; 
+  }
+  .first-row{
+    color: #AFB8C2;
+    font-size: 12px;
+    padding: 4px 0px;
+    font-weight: 600;
+    line-height: 40px;
+  }
+  td#edit_cell{
+    font-size: 16px;
+    padding: 4px 0px 8px 0px;
+    text-align: center;
+  }
+  td{
+    font-size: 16px;
+    padding: 4px 2px;
+  }
+  .single-table-title{ 
+    font-size: 24px;
+    font-weight: 700;
+    margin: 20px 2% 0px 2%;
+  }
+  .single-table{ 
+    border-collapse: collapse; 
+    line-height: 40px;
+    width: 96%;
+    margin: 10px 2%;
+  }
+  .single-table tr{ 
+    border-bottom: 2px solid; 
+    border-color: #E8EEF5;
+  }
+  .single-table td{
+    font-size: 16px;
+    padding: 4px 2px;
+  }
+}
+@media only screen and (max-width: 1199px) and (min-width: 600px) {
+  table{ 
+    border-collapse: collapse; 
+    line-height: 34px;
+  }
+  tr{ 
+    border-bottom: 2px solid; 
+    border-color: #E8EEF5;
+  }
+  tr#last_row{ 
+    border-bottom: none; 
+  }
+  .first-row{
+    color: #AFB8C2;
+    font-size: 10px;
+    padding: 4px 0px;
+    font-weight: 600;
+    line-height: 20px;
+  }
+  td#edit_cell{
+    font-size: 12px;
+    padding: 4px 0px 8px 0px;
+    text-align: center;
+  }
+  td{
+    font-size: 12px;
+    padding: 4px 2px;
+  }
+  .single-table-title{ 
+    font-size: 20px;
+    font-weight: 700;
+    margin: 20px 2% 0px 2%;
+  }
+  .single-table{ 
+    border-collapse: collapse; 
+    line-height: 36px;
+    width: 96%;
+    margin: 10px 2%;
+  }
+  .single-table tr{ 
+    border-bottom: 2px solid; 
+    border-color: #E8EEF5;
+  }
+  .single-table td{
+    font-size: 12px;
+    padding: 4px 2px;
+  }
+}
+@media only screen and (max-width: 599px) {
+  table{ 
+    border-collapse: collapse; 
+    line-height: 26px;
+  }
+  tr{ 
+    border-bottom: 2px solid; 
+    border-color: #E8EEF5;
+  }
+  tr#last_row{ 
+    border-bottom: none; 
+  }
+  .first-row{
+    color: #AFB8C2;
+    font-size: 8px;
+    padding: 4px 0px;
+    font-weight: 600;
+    line-height: 12px;
+  }
+  td#edit_cell{
+    font-size: 10px;
+    padding: 4px 0px 8px 0px;
+    text-align: center;
+  }
+  td{
+    font-size: 12px;
+    padding: 4px 2px;
+  }
+  .single-table-title{ 
+    font-size: 16px;
+    font-weight: 700;
+    margin: 20px 2% 0px 2%;
+  }
+  .single-table{ 
+    border-collapse: collapse; 
+    line-height: 26px;
+    width: 96%;
+    margin: 10px 2%;
+  }
+  .single-table tr{ 
+    border-bottom: 2px solid; 
+    border-color: #E8EEF5;
+  }
+  .single-table td{
+    font-size: 10px;
+    padding: 4px 2px;
+  }
+}

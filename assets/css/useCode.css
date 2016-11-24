@@ -1,0 +1,243 @@
+@media only screen and (min-width: 481px){
+  div#use_code_container{
+    width: 300px;
+    position: absolute;
+    top: 14%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
+  .use-code-table{
+    text-align: center;
+    width: 100%;
+    margin: 0px;
+    line-height: 26px;
+  }
+  .use-code-table tr{
+    border: none;
+  }
+  .use-code-table td.left-first{
+    font-size: 14px;
+    text-align: left;
+  }
+  .use-code-table td.right-first{
+    font-size: 14px;
+    text-align: right;
+  }
+  .use-code-table td.left{
+    font-size: 26px;
+    font-weight: 700;
+    text-align: left;
+    color: #2A2E33;
+  }
+  .use-code-table td.right{
+    font-size: 26px;
+    font-weight: 700;
+    text-align: right;
+    color: #53BE31;
+  }
+  .use-code-avatar{
+    display: inline-block;
+    background-color: #E7ECF3;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+  }
+  form#use_code{
+    background: white;
+    color: #737C85;
+    width: 90%;
+    margin: 0px auto;
+    padding: 5%;
+    border: 0px solid;
+    border-radius: 0px 0px 5px 5px;
+  }
+  #use_code label{
+    margin: 0px;
+  }
+  div.use_code_top{
+    background: white;
+    color: #737C85;
+    width: 90%;
+    margin: 0px auto;
+    padding: 5%;
+    text-align: center;
+    border: 0px solid;
+    border-radius: 5px 5px 0px 0px;
+  }
+  #use_code input[type=submit]{
+    width: 100%;
+    height: 50px;
+    background-color: #53BE31;
+    border: 0px solid;
+    border-radius: 5px;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    margin: 20px auto;
+    transition: background-color 0.2s;
+  }
+  #use_code input[type=submit]:hover{
+    width: 100%;
+    height: 50px;
+    background-color: #68d049;
+    border: 0px solid;
+    border-radius: 5px;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    margin: 20px auto;
+    cursor: pointer;
+  }
+  #use_code input[type=text]{
+    width: 96%;
+    color: #737C85;
+    font-size: 20px;
+    margin: 0px auto;
+    border: 1px solid;
+    border-radius: 5px;
+  }
+  #use_code input[type=email]{
+    width: 96%;
+    color: #737C85;
+    font-size: 20px;
+    margin: 0px auto;
+    border: 1px solid;
+    border-radius: 5px;
+  }
+  #use_code_container .promotor-name{
+    margin: 0px;
+    padding: 0px;
+    font-size: 20px;
+  }
+  #use_code_container .action-name{
+    margin: 0px;
+    padding: 0px;
+    color: #2A2E33;
+    font-size: 26px;
+    font-weight: 700;
+  }
+}
+@media only screen and (max-width: 480px){
+  div#use_code_container{
+    width: 260px;
+    position: absolute;
+    top: 6%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
+  .use-code-table{
+    text-align: center;
+    width: 100%;
+    margin: 0px;
+    line-height: 20px;
+  }
+  .use-code-table tr{
+    border: none;
+  }
+  .use-code-table td.left-first{
+    font-size: 10px;
+    text-align: left;
+  }
+  .use-code-table td.right-first{
+    font-size: 10px;
+    text-align: right;
+  }
+  .use-code-table td.left{
+    font-size: 20px;
+    font-weight: 700;
+    text-align: left;
+    color: #2A2E33;
+  }
+  .use-code-table td.right{
+    font-size: 20px;
+    font-weight: 700;
+    text-align: right;
+    color: #53BE31;
+  }
+  .use-code-avatar{
+    display: inline-block;
+    background-color: #E7ECF3;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+  }
+  form#use_code{
+    background: white;
+    color: #737C85;
+    width: 90%;
+    margin: 0px auto;
+    padding: 5%;
+    border: 0px solid;
+    border-radius: 0px 0px 5px 5px;
+  }
+  #use_code label{
+    font-size: 12px;
+    margin: 0px;
+  }
+  div.use_code_top{
+    background: white;
+    color: #737C85;
+    width: 90%;
+    margin: 0px auto;
+    padding: 5%;
+    text-align: center;
+    border: 0px solid;
+    border-radius: 5px 5px 0px 0px;
+  }
+  #use_code input[type=submit]{
+    width: 100%;
+    height: 40px;
+    background-color: #53BE31;
+    border: 0px solid;
+    border-radius: 5px;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    margin: 10px 0px 5px 0px;
+    transition: background-color 0.2s;
+  }
+  #use_code input[type=submit]:hover{
+    width: 100%;
+    height: 40px;
+    background-color: #68d049;
+    border: 0px solid;
+    border-radius: 5px;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    margin: 10px 0px 5px 0px;
+    cursor: pointer;
+  }
+  #use_code input[type=text]{
+    width: 96%;
+    height: 18px;
+    color: #737C85;
+    font-size: 16px;
+    margin: 0 auto;
+    border: 1px solid;
+    border-radius: 5px;
+  }
+  #use_code input[type=email]{
+    width: 96%;
+    height: 18px;
+    color: #737C85;
+    font-size: 16px;
+    margin: 0 auto;
+    border: 1px solid;
+    border-radius: 5px;
+  }
+  #use_code_container .promotor-name{
+    margin: 0px;
+    padding: 0px;
+    font-size: 14px;
+  }
+  #use_code_container .action-name{
+    margin: 0px;
+    padding: 0px;
+    color: #2A2E33;
+    font-size: 20px;
+    font-weight: 700;
+  }
+}

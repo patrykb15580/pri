@@ -1,9 +1,9 @@
 <table width="100%">
 	<tr>
-		<td id="first_row" width="25%">Imię</td>
-		<td id="first_row" width="30%">e-mail</td>
-		<td id="first_row" width="30%">Ostatnia aktywność</td>
-		<td id="first_row" width="15%">Saldo w pkt</td>
+		<td class="first-row" width="25%">Imię</td>
+		<td class="first-row" width="30%">e-mail</td>
+		<td class="first-row" width="30%">Ostatnia aktywność</td>
+		<td class="first-row" width="15%">Saldo w pkt</td>
 	</tr>
 <?php foreach ($promotor->clients() as $client) {		
 	$balance = PointsBalance::where('client_id=? AND promotor_id=?', ['client_id'=>$client->id, 'promotor_id'=>$promotor->id]);

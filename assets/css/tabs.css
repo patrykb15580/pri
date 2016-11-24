@@ -1,0 +1,231 @@
+#tab-1-content{
+  width: 96%;
+  margin: 0px 2%;
+}
+#tab-2-content{
+  width: 96%;
+  margin: 0px 2%;
+}
+
+@media only screen and (min-width: 1000px){
+	.l2-tabs-box{
+		display: block;
+		width: 100%;
+		margin: 0 auto;
+		padding: 0px;
+		background-color: #E9E9E9;
+	}
+	.l2-tab-active{
+		display: inline-block;
+		color: white;
+		background-color: #017EE9;
+		text-align: center;
+		padding: 16px 30px;
+		font-size: 16px;
+	}
+	.l2-tab-active:hover{
+		display: inline-block;
+		color: white;
+		background-color: #017EE9;
+		text-align: center;
+		padding: 16px 30px;
+		font-size: 16px;
+		cursor: pointer;
+	}
+	.l2-tab-inactive{
+		display: inline-block;
+		color: #6D7E89;
+		text-align: center;
+		padding: 16px 30px;
+		font-size: 16px;
+		transition: color 0.2s;
+	}
+	.l2-tab-inactive:hover{
+		display: inline-block;
+		color: #017EE9;
+		text-align: center;
+		padding: 16px 30px;
+		font-size: 16px;
+		cursor: pointer;
+	}
+	.l2-tab-content{
+		display: block;
+		width: 100%;
+		margin: 0px;
+		padding: 0px;
+	}
+	.l2-tab-content h3{
+		font-size: 24px;
+	}
+	.l2-tab-content input[type=text]{
+		width: 100px;
+	}
+}
+@media only screen and (max-width: 999px) and (min-width: 620px){
+	.l2-tabs-box{
+		display: block;
+		width: 100%;
+		margin: 0 auto;
+		padding: 0px;
+		background-color: #E9E9E9;
+	}
+	.l2-tab-active{
+		display: inline-block;
+		color: white;
+		background-color: #017EE9;
+		text-align: center;
+		padding: 14px 20px;
+		font-size: 14px;
+	}
+	.l2-tab-active:hover{
+		display: inline-block;
+		color: white;
+		background-color: #017EE9;
+		text-align: center;
+		padding: 14px 20px;
+		font-size: 14px;
+		cursor: pointer;
+	}
+	.l2-tab-inactive{
+		display: inline-block;
+		color: #6D7E89;
+		text-align: center;
+		padding: 14px 20px;
+		font-size: 14px;
+		transition: color 0.2s;
+	}
+	.l2-tab-inactive:hover{
+		display: inline-block;
+		color: #017EE9;
+		text-align: center;
+		padding: 14px 20px;
+		font-size: 14px;
+		cursor: pointer;
+	}
+	.l2-tab-content{
+		display: block;
+		width: 100%;
+		margin: 0px;
+		padding: 0px;
+	}
+	.l2-tab-content h3{
+		font-size: 24px;
+	}
+	.l2-tab-content input[type=text]{
+		width: 100px;
+	}
+}
+@media only screen and (max-width: 619px) and (min-width: 540px){
+	.l2-tabs-box{
+		display: block;
+		width: 100%;
+		margin: 0 auto;
+		padding: 0px;
+		background-color: #E9E9E9;
+	}
+	.l2-tab-active{
+		display: inline-block;
+		color: white;
+		background-color: #017EE9;
+		text-align: center;
+		padding: 12px 16px;
+		font-size: 14px;
+	}
+	.l2-tab-active:hover{
+		display: inline-block;
+		color: white;
+		background-color: #017EE9;
+		text-align: center;
+		padding: 12px 16px;
+		font-size: 12px;
+		cursor: pointer;
+	}
+	.l2-tab-inactive{
+		display: inline-block;
+		color: #6D7E89;
+		text-align: center;
+		padding: 12px 16px;
+		font-size: 12px;
+		transition: color 0.2s;
+	}
+	.l2-tab-inactive:hover{
+		display: inline-block;
+		color: #017EE9;
+		text-align: center;
+		padding: 12px 16px;
+		font-size: 12px;
+		cursor: pointer;
+	}
+	.l2-tab-content{
+		display: block;
+		width: 100%;
+		margin: 0px;
+		padding: 0px;
+	}
+	.l2-tab-content h3{
+		font-size: 24px;
+	}
+	.l2-tab-content input[type=text]{
+		width: 90px;
+		font-size: 14px;
+	}
+}
+@media only screen and (max-width: 539px) and (min-width: 140px){
+	.l2-tabs-box{
+		display: block;
+		width: 100%;
+		margin: 0 auto;
+		padding: 0px;
+		background-color: #E9E9E9;
+	}
+	.l2-tab-active{
+		display: block;
+		width: calc(100% - 32px);
+		color: white;
+		background-color: #017EE9;
+		text-align: center;
+		padding: 12px 16px;
+		font-size: 12px;
+	}
+	.l2-tab-active:hover{
+		display: block;
+		width: calc(100% - 32px);
+		color: white;
+		background-color: #017EE9;
+		text-align: center;
+		padding: 12px 16px;
+		font-size: 12px;
+		cursor: pointer;
+	}
+	.l2-tab-inactive{
+		display: block;
+		width: calc(100% - 32px);
+		color: #6D7E89;
+		text-align: center;
+		padding: 12px 16px;
+		font-size: 12px;
+		transition: color 0.2s;
+	}
+	.l2-tab-inactive:hover{
+		display: block;
+		width: calc(100% - 32px);
+		color: #017EE9;
+		text-align: center;
+		padding: 12px 16px;
+		font-size: 12px;
+		cursor: pointer;
+	}
+	.l2-tab-content{
+		display: block;
+		width: 100%;
+		margin: 0px;
+		padding: 0px;
+	}
+	.l2-tab-content h3{
+		font-size: 14px;
+	}
+	.l2-tab-content input[type=text]{
+		width: 80px;
+		font-size: 12px;
+	}
+}

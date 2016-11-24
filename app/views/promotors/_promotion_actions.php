@@ -1,8 +1,8 @@
 <table width="100%">
 	<tr>
-		<td id="first_row" width="60%">Nazwa akcji</td>
-		<td id="first_row" width="25%">Czas trwania akcji</td>
-		<td class="text_align_right" id="first_row" width="15%">Wykorzystane kody</td>
+		<td class="first-row" width="60%">Nazwa akcji</td>
+		<td class="first-row" width="25%">Czas trwania akcji</td>
+		<td class="text_align_right first-row" width="15%">Wykorzystane kody</td>
 	</tr>
 <?php foreach ($promotion_actions as $promotion_action) {			
 	$path_show = $router->generate('show_promotion_actions', ['promotors_id' => $params['promotors_id'], 'id' => $promotion_action->id]);

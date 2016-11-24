@@ -13,6 +13,15 @@ class ClientsController extends Controller
 		return $view;
 	}
 
+	public function indexContests()
+	{
+		$client = $this->client();
+		$this->auth(__FUNCTION__, $client);
+
+		$view = (new View($this->params, ['client'=>$client]))->render();
+		return $view;
+	}
+
 	public function indexRewards()
 	{
 		$this->auth(__FUNCTION__, $this->client());

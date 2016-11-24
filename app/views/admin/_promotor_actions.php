@@ -1,9 +1,9 @@
 <table width="100%">
 	<tr>
-		<td id="first_row" width="30%">Nazwa akcji</td>
-		<td id="first_row" width="40%">Czas trwania akcji</td>
-		<td id="first_row" width="15%">Liczba kodów</td>
-		<td id="first_row" width="15%">Wykorzystane kody</td>
+		<td class="first-row" width="30%">Nazwa akcji</td>
+		<td class="first-row" width="40%">Czas trwania akcji</td>
+		<td class="first-row" width="15%">Liczba kodów</td>
+		<td class="first-row" width="15%">Wykorzystane kody</td>
 	</tr>
 	<?php foreach ($promotor->promotionActions() as $promotion_action) { 
 		$path_show = $router->generate('show_promotor_action', ['promotor_id' => $promotor->id, 'action_id' => $promotion_action->id]); ?>

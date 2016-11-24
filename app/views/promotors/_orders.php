@@ -3,9 +3,9 @@
 ?>
 <table class="single-table">
 	<tr>
-		<td id="first_row" width="50%"></td>
-		<td id="first_row" width="30%">Kiedy</td>
-		<td id="first_row" width="20%">Wartość punktowa</td>
+		<td class="first-row" width="50%"></td>
+		<td class="first-row" width="30%">Kiedy</td>
+		<td class="first-row" width="20%">Wartość punktowa</td>
 	</tr>
 <?php foreach ($orders as $order) { 
 	$reward = $order->reward();

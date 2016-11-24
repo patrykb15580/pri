@@ -44,8 +44,8 @@
 		if (count($package->usedPromotionCodes()) !== 0) { ?>
 			<table width="100%">
 				<tr>
-					<td id="first_row" width="60%">Kod</td>
-					<td id="first_row" width="40%">Wykorzystany</td>
+					<td class="first-row" width="60%">Kod</td>
+					<td class="first-row" width="40%">Wykorzystany</td>
 				</tr>
 			<?php foreach ($package->usedPromotionCodes() as $promotion_code) { ?>
 				<tr class="result">
@@ -64,7 +64,7 @@
 		if (count($package->nonusedPromotionCodes()) !== 0) { ?>
 			<table width="100%">
 				<tr>
-					<td id="first_row" width="100%">Kod</td>
+					<td class="first-row" width="100%">Kod</td>
 				</tr>
 			<?php foreach ($package->nonUsedPromotionCodes() as $promotion_code) { ?>
 				<tr class="result">

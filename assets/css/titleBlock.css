@@ -1,3 +1,4 @@
+@media only screen and (min-width: 1500px){
   #title-box{
     position: relative;
     width: calc(96% + 2px);
@@ -26,8 +27,7 @@
     display: inline;
     font-size: 22px;
     vertical-align: -3px;
-    margin: 0px 10px 0px 0px;
-    
+    margin: 0px 10px 0px 0px;  
   }
   .title-box-button:hover{
     display: inline-block;
@@ -123,24 +123,609 @@
     padding: 10px 25px;
     cursor: pointer;
   }
-.prev-page-button{
-  margin: 10px 0px;
-  font-size: 12px;
-  font-weight: normal;
-  vertical-align: top;
-  background-color: transparent;
-  border: 0px solid;
-  color: #5f5f5f;
-  opacity: 0.5;
-  transition: opacity 0.2s;
+  .prev-page-button{
+    margin: 10px 0px;
+    font-size: 12px;
+    font-weight: normal;
+    vertical-align: top;
+    background-color: transparent;
+    border: 0px solid;
+    color: #5f5f5f;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+  }
+  .prev-page-button:hover{
+    margin: 10px 0px;
+    font-size: 12px;
+    font-weight: normal;
+    vertical-align: top;
+    background-color: transparent;
+    border: 0px solid;
+    color: #5f5f5f;
+    opacity: 1;
+  }
 }
-.prev-page-button:hover{
-  margin: 10px 0px;
-  font-size: 12px;
-  font-weight: normal;
-  vertical-align: top;
-  background-color: transparent;
-  border: 0px solid;
-  color: #5f5f5f;
-  opacity: 1;
+@media only screen and (max-width: 1500px) and (min-width: 1000px){
+  #title-box{
+    position: relative;
+    width: 96%;
+    background-color: #DCE6F0;
+    margin: 0px;
+    padding: 1% 2% 1% 2%;
+    text-align: left;
+    font-weight: 700;
+    font-size: 24px;
+    vertical-align: middle;
+  }
+  .title-box-button{
+    display: inline-block;
+    float: right;
+    color: white;
+    margin: 2px 10px;
+    padding: 0.6% 1%;
+    background-color: #007EE5;
+    font-size: 16px;
+    transition: background-color 0.2s;
+    border: 0px solid;
+    border-radius: 3px;
+    line-height: 16px;
+  }
+  .title-box-button i{
+    display: inline;
+    font-size: 22px;
+    vertical-align: -3px;
+    margin: 0px 10px 0px 0px;  
+  }
+  .title-box-button:hover{
+    display: inline-block;
+    float: right;
+    color: white;
+    margin: 2px 10px;
+    padding: 0.6% 1%;
+    background-color: #008cff;
+    font-size: 16px;
+    border: 0px solid;
+    border-radius: 3px;
+    line-height: 16px;
+  }
+  .title-box-text{
+    display: inline;
+    text-align: left;
+    font-size: 32px;
+    margin: 0px;
+    padding: 0px;
+  }
+  i.title-box-icon {
+    display: inline-block;
+    font-size: 42px;
+    margin: 0px 10px 0px 0px;
+    padding: 0px;
+    vertical-align: -2px;
+  }
+  .title-box-options{
+    display: inline-block;
+    width: 19%;
+    font-size: 16px;
+    font-weight: normal;
+    text-align: right;
+    margin: 0px;
+    padding: 0px;
+    vertical-align: top;
+  }
+  .title-box-details{
+    display: inline-block;
+    width: 79%;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0px;
+    padding: 0px;
+  }
+  #title-box-tabs{
+    background-color: #DCE6F0;
+    width: calc(96% + 2px);
+    height: 33px;
+    margin: 0px 0px 10px 0px;
+    padding: 10px 2% 0px 2%;
+    line-height: 26px;
+  }
+  .tab-active{
+    width: 20%;
+    height: 100%;
+    display: inline;
+    margin: 0px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #017EE9;
+    padding: 10px 25px 7px 25px;
+    border-top: 0px;
+    border-right: 0px;
+    border-bottom: 3px;
+    border-left: 0px;
+    border-color: #017EE5;
+    border-style: solid;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  .tab-inactive{
+    width: 20%;
+    height: 100%;
+    display: inline;
+    margin: 0px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #6D7E89;
+    padding: 10px 25px;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .tab-inactive:hover{
+    width: 20%;
+    height: 100%;
+    display: inline;
+    margin: 0px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #017EE5;
+    padding: 10px 25px;
+    cursor: pointer;
+  }
+  .prev-page-button{
+    margin: 10px 0px;
+    font-size: 12px;
+    font-weight: normal;
+    vertical-align: top;
+    background-color: transparent;
+    border: 0px solid;
+    color: #5f5f5f;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+  }
+  .prev-page-button:hover{
+    margin: 10px 0px;
+    font-size: 12px;
+    font-weight: normal;
+    vertical-align: top;
+    background-color: transparent;
+    border: 0px solid;
+    color: #5f5f5f;
+    opacity: 1;
+  }
+}
+@media only screen and (max-width: 999px) and (min-width: 801px){
+  #title-box{
+    position: relative;
+    width: calc(96% + 2px);
+    background-color: #DCE6F0;
+    margin: 0px;
+    padding: 1% 2% 1% 2%;
+    text-align: left;
+    font-weight: 700;
+    font-size: 24px;
+    vertical-align: middle;
+  }
+  .title-box-button{
+    display: inline-block;
+    float: right;
+    color: white;
+    margin: 2px 10px;
+    padding: 0.6% 1%;
+    background-color: #007EE5;
+    font-size: 16px;
+    transition: background-color 0.2s;
+    border: 0px solid;
+    border-radius: 3px;
+    line-height: 16px;
+  }
+  .title-box-button i{
+    display: inline;
+    font-size: 22px;
+    vertical-align: -3px;
+    margin: 0px 10px 0px 0px;  
+  }
+  .title-box-button:hover{
+    display: inline-block;
+    float: right;
+    color: white;
+    margin: 2px 10px;
+    padding: 0.6% 1%;
+    background-color: #008cff;
+    font-size: 16px;
+    border: 0px solid;
+    border-radius: 3px;
+    line-height: 16px;
+  }
+  .title-box-text{
+    display: inline;
+    text-align: left;
+    font-size: 32px;
+    margin: 0px;
+    padding: 0px;
+  }
+  i.title-box-icon {
+    display: inline-block;
+    font-size: 42px;
+    margin: 0px 10px 0px 0px;
+    padding: 0px;
+    vertical-align: -2px;
+  }
+  .title-box-options{
+    display: inline-block;
+    width: 19%;
+    font-size: 16px;
+    font-weight: normal;
+    text-align: right;
+    margin: 0px;
+    padding: 0px;
+    vertical-align: top;
+  }
+  .title-box-details{
+    display: inline-block;
+    width: 79%;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0px;
+    padding: 0px;
+  }
+  #title-box-tabs{
+    background-color: #DCE6F0;
+    width: calc(96% + 2px);
+    height: 33px;
+    margin: 0px 0px 10px 0px;
+    padding: 10px 2% 0px 2%;
+    line-height: 26px;
+  }
+  .tab-active{
+    width: 20%;
+    height: 100%;
+    display: inline;
+    margin: 0px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #017EE9;
+    padding: 10px 25px 7px 25px;
+    border-top: 0px;
+    border-right: 0px;
+    border-bottom: 3px;
+    border-left: 0px;
+    border-color: #017EE5;
+    border-style: solid;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  .tab-inactive{
+    width: 20%;
+    height: 100%;
+    display: inline;
+    margin: 0px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #6D7E89;
+    padding: 10px 25px;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .tab-inactive:hover{
+    width: 20%;
+    height: 100%;
+    display: inline;
+    margin: 0px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #017EE5;
+    padding: 10px 25px;
+    cursor: pointer;
+  }
+  .prev-page-button{
+    margin: 10px 0px;
+    font-size: 12px;
+    font-weight: normal;
+    vertical-align: top;
+    background-color: transparent;
+    border: 0px solid;
+    color: #5f5f5f;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+  }
+  .prev-page-button:hover{
+    margin: 10px 0px;
+    font-size: 12px;
+    font-weight: normal;
+    vertical-align: top;
+    background-color: transparent;
+    border: 0px solid;
+    color: #5f5f5f;
+    opacity: 1;
+  }
+}
+@media only screen and (max-width: 800px) and (min-width: 480px){
+  #title-box{
+    position: relative;
+    width: 96%;
+    background-color: #DCE6F0;
+    margin: 0px;
+    padding: 1% 2% 1% 2%;
+    text-align: left;
+    font-weight: 700;
+    font-size: 24px;
+    vertical-align: middle;
+  }
+  .title-box-button{
+    display: inline-block;
+    float: right;
+    color: white;
+    margin: 5px 0px 5px 5px;
+    padding: 1%;
+    background-color: #007EE5;
+    font-size: 14px;
+    transition: background-color 0.2s;
+    border: 0px solid;
+    border-radius: 3px;
+    line-height: 14px;
+  }
+  .title-box-button i{
+    display: inline;
+    font-size: 18px;
+    vertical-align: -3px;
+    margin: 0px 6px 0px 0px;  
+  }
+  .title-box-button:hover{
+    display: inline-block;
+    float: right;
+    color: white;
+    margin: 5px 0px 5px 5px;
+    padding: 1%;
+    background-color: #008cff;
+    font-size: 14px;
+    border: 0px solid;
+    border-radius: 3px;
+    line-height: 14px;
+  }
+  .title-box-text{
+    display: inline;
+    text-align: left;
+    font-size: 22px;
+    margin: 0px;
+    padding: 0px;
+  }
+  i.title-box-icon {
+    display: inline-block;
+    font-size: 32px;
+    margin: 0px 10px 0px 0px;
+    padding: 0px;
+    vertical-align: -2px;
+  }
+  .title-box-options{
+    display: inline-block;
+    width: 19%;
+    font-size: 14px;
+    font-weight: normal;
+    text-align: right;
+    margin: 0px;
+    padding: 0px;
+    vertical-align: top;
+  }
+  .title-box-details{
+    display: inline-block;
+    width: 79%;
+    font-size: 14px;
+    font-weight: normal;
+    margin: 0px;
+    padding: 0px;
+  }
+  #title-box-tabs{
+    background-color: #DCE6F0;
+    width: 96%;
+    height: 33px;
+    margin: 0px 0px 10px 0px;
+    padding: 10px 2% 0px 2%;
+    line-height: 26px;
+  }
+  .tab-active{
+    width: 20%;
+    height: 100%;
+    display: inline;
+    margin: 0px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #017EE9;
+    padding: 10px 25px 7px 25px;
+    border-top: 0px;
+    border-right: 0px;
+    border-bottom: 3px;
+    border-left: 0px;
+    border-color: #017EE5;
+    border-style: solid;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .tab-inactive{
+    width: 20%;
+    height: 100%;
+    display: inline;
+    margin: 0px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #6D7E89;
+    padding: 10px 25px;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .tab-inactive:hover{
+    width: 20%;
+    height: 100%;
+    display: inline;
+    margin: 0px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #017EE5;
+    padding: 10px 25px;
+    cursor: pointer;
+  }
+  .prev-page-button{
+    margin: 10px 0px;
+    font-size: 12px;
+    font-weight: normal;
+    vertical-align: top;
+    background-color: transparent;
+    border: 0px solid;
+    color: #5f5f5f;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+  }
+  .prev-page-button:hover{
+    margin: 10px 0px;
+    font-size: 12px;
+    font-weight: normal;
+    vertical-align: top;
+    background-color: transparent;
+    border: 0px solid;
+    color: #5f5f5f;
+    opacity: 1;
+  }
+}
+@media only screen and (max-width: 479px){
+  #title-box{
+    position: relative;
+    width: 96%;
+    background-color: #DCE6F0;
+    margin: 0px;
+    padding: 1% 2% 1% 2%;
+    text-align: left;
+    font-weight: 700;
+    font-size: 24px;
+    vertical-align: middle;
+  }
+  .title-box-button{
+    display: block;
+    color: white;
+    margin: 5px 0px 5px auto;
+    padding: 1%;
+    background-color: #007EE5;
+    font-size: 10px;
+    transition: background-color 0.2s;
+    border: 0px solid;
+    border-radius: 3px;
+    line-height: 14px;
+  }
+  .title-box-button i{
+    display: inline;
+    font-size: 14px;
+    vertical-align: -1px;
+    margin: 0px 6px 0px 0px;  
+  }
+  .title-box-button:hover{
+    display: block;
+    color: white;
+    margin: 5px 0px 5px auto;
+    padding: 1%;
+    background-color: #008cff;
+    font-size: 10px;
+    border: 0px solid;
+    border-radius: 3px;
+    line-height: 14px;
+  }
+  .title-box-text{
+    display: inline;
+    text-align: left;
+    font-size: 18px;
+    margin: 0px;
+    padding: 0px;
+  }
+  i.title-box-icon {
+    display: inline-block;
+    font-size: 28px;
+    margin: 0px 10px 0px 0px;
+    padding: 0px;
+    vertical-align: -2px;
+  }
+  .title-box-options{
+    display: inline-block;
+    width: 18%;
+    font-size: 10px;
+    font-weight: normal;
+    text-align: right;
+    margin: 0px;
+    padding: 0px;
+    vertical-align: top;
+  }
+  .title-box-details{
+    display: inline-block;
+    width: 79%;
+    font-size: 10px;
+    font-weight: normal;
+    margin: 0px;
+    padding: 0px;
+  }
+  #title-box-tabs{
+    background-color: #DCE6F0;
+    width: 96%;
+    height: 33px;
+    margin: 0px 0px 10px 0px;
+    padding: 10px 2% 0px 2%;
+    line-height: 26px;
+  }
+  .tab-active{
+    width: 20%;
+    height: 100%;
+    display: inline;
+    margin: 0px;
+    font-size: 10px;
+    font-weight: 600;
+    color: #017EE9;
+    padding: 10px 25px 7px 25px;
+    border-top: 0px;
+    border-right: 0px;
+    border-bottom: 3px;
+    border-left: 0px;
+    border-color: #017EE5;
+    border-style: solid;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .tab-inactive{
+    width: 20%;
+    height: 100%;
+    display: inline;
+    margin: 0px;
+    font-size: 10px;
+    font-weight: 600;
+    color: #6D7E89;
+    padding: 10px 25px;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .tab-inactive:hover{
+    width: 20%;
+    height: 100%;
+    display: inline;
+    margin: 0px;
+    font-size: 10px;
+    font-weight: 600;
+    color: #017EE5;
+    padding: 10px 25px;
+    cursor: pointer;
+  }
+  .prev-page-button{
+    margin: 10px 0px;
+    font-size: 8px;
+    font-weight: normal;
+    vertical-align: top;
+    background-color: transparent;
+    border: 0px solid;
+    color: #5f5f5f;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+  }
+  .prev-page-button:hover{
+    margin: 10px 0px;
+    font-size: 8px;
+    font-weight: normal;
+    vertical-align: top;
+    background-color: transparent;
+    border: 0px solid;
+    color: #5f5f5f;
+    opacity: 1;
+  }
 }

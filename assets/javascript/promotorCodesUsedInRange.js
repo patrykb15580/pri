@@ -1,11 +1,12 @@
-$( window ).ready(function(){ 
+$( document ).ready(function(){ 
   var codes_in_range_rows;
   var promotor_id = $("#codes_in_range_chart").data("promotorid");
 
   $( "#codes_date_from" ).datepicker({ dateFormat: 'yy-mm-dd' }).change(drawCodesInRangeChartData);
   $( "#codes_date_to" ).datepicker({ dateFormat: 'yy-mm-dd' }).change(drawCodesInRangeChartData);
 
-  $( "#codes_third_tab" ).click(drawCodesInRangeChartData);
+  $( ".l2-tab-3" ).click(drawCodesInRangeChartData);
+  $( window ).resize(drawCodesInRangeChartData);
 
   function drawCodesInRangeChartData() {
     val_from = $('#codes_date_from').val();

@@ -4,3 +4,5 @@
 		include 'app/views/rewards/_form.php';
 	?>
 </div>
+
+<script type="text/javascript" src="/assets/javascript/blueBg.js"></script>

@@ -1,9 +1,9 @@
 <table width="100%">
 	<tr>
-		<td id="first_row" width="40%">Nazwa pakietu</td>
-		<td id="first_row" width="30%">Rodzaj</td>
-		<td id="first_row" width="15%">Liczba kodów</td>
-		<td id="first_row" width="15%">Wykorzystane kody</td>
+		<td class="first-row" width="40%">Nazwa pakietu</td>
+		<td class="first-row" width="30%">Rodzaj</td>
+		<td class="first-row" width="15%">Liczba kodów</td>
+		<td class="first-row" width="15%">Wykorzystane kody</td>
 	</tr>
 <?php foreach ($packages as $package) {
 	$path_show = $router->generate('show_promotor_package', ['promotor_id' => $params['promotor_id'], 'action_id' => $params['action_id'], 'package_id' => $package->id]);?>

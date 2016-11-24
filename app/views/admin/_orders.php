@@ -1,15 +1,15 @@
 <table width="100%">
 	<tr>
-		<td id="first_row" width="60%">
+		<td class="first-row" width="60%">
 			Nazwa promotora
 		</td>
-		<td id="first_row" width="20%">
+		<td class="first-row" width="20%">
 			Akcji promocyjnych
 		</td>
-		<td id="first_row" width="10%">
+		<td class="first-row" width="10%">
 			Klientów
 		</td>
-		<td id="first_row" width="10%">
+		<td class="first-row" width="10%">
 			
 		</td>
 	</tr>

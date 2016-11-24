@@ -1,8 +1,8 @@
 <table width="100%">
 	<tr>
-		<td id="first_row" width="55%">Nazwa konkursu</td>
-		<td id="first_row" width="30%">Czas trwania</td>
-		<td id="first_row" class="text_align_right" width="15%">Liczba odpowiedzi</td>
+		<td class="first-row" width="55%">Nazwa konkursu</td>
+		<td class="first-row" width="30%">Czas trwania</td>
+		<td class="first-row text_align_right" width="15%">Liczba odpowiedzi</td>
 	</tr>
 <?php foreach ($contests as $contest) {
 	$path_show = $router->generate('show_contests', ['promotors_id' => $params['promotors_id'], 'contest_id' => $contest->id]);

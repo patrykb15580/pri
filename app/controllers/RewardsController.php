@@ -36,14 +36,14 @@ class RewardsController extends Controller
 	}
 
 	public function create()
-	{
+	{	
 		$this->auth(__FUNCTION__, Promotor::find($this->params['promotors_id']));
 		$this->params['reward']['promotors_id'] = $this->params['promotors_id'];
 		$reward = new Reward($this->params['reward']);
 
 		if ($reward->save()) {
 			
-			if ($_FILES['image']['name'][0] !== null) {
+			if (!empty($_FILES['image']['name'][0])) {
 				$upload = new RewardImage;
 				if (!$upload->uploadImages($_FILES, $this->params)) {
 					$this->alert('error', 'Nie udało się dodać zdjęć, spróbuj jeszcze raz');
@@ -79,7 +79,7 @@ class RewardsController extends Controller
 		
 		if ($reward->update($this->params['reward'])) {
 
-			if ($_FILES['image']['name'][0] !== null) {
+			if (!empty($_FILES['image']['name'][0])) {
 				$upload = new RewardImage;
 				if (!$upload->uploadImages($_FILES, $this->params)) {
 					$this->alert('error', 'Nie udało się dodać zdjęć, spróbuj jeszcze raz');

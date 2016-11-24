@@ -24,10 +24,20 @@
 		punktacja.pl
 	</title>
 	<link rel="stylesheet" type="text/css" href="/assets/css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/app.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/promotorSidebar.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/clientSidebar.css">
 	<link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/appTop.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/formPage.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/clientViews.css">
 	<link rel="stylesheet" type="text/css" href="/assets/css/titleBlock.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/tables.css">
 	<link rel="stylesheet" type="text/css" href="/assets/css/modals.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/notice.css">
 	<link rel="stylesheet" type="text/css" href="/assets/css/clientRewardDetails.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/alerts.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/tabs.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -46,6 +56,7 @@
 <div class="window-size"></div>
 
 <?php Alerts::showAlert(); ?>
+
 <div id="top" class="dark_font">
 	<div id="main-layout-user" class="dark_font">
 		<p class="user"><?= $user ?><i class="fa fa-caret-down dropdown" aria-hidden="true"></i></p>
@@ -72,25 +83,24 @@
 		</div>
 	</div>
 </div>
-<div id="container">
-	<?php 
-	include './app/views/layouts/'.$side_bar;?>
-	<div id="content">
-		<?php include($path); ?>
-	</div>
-</div>	
+
+<?php 
+include './app/views/layouts/'.$side_bar;?>
+<div id="content">
+	<?php include($path); ?>
+</div>
 <script type="text/javascript" src="/assets/javascript/datepicker.js"></script>
 <script type="text/javascript" src="/assets/javascript/guardianInitialize.js"></script>
 <script type="text/javascript">
-	$(document).ready(function(){
-		var w = $(window).width();
-		var h = $(window).height();
-		$(".window-size").html(w + 'x' + h);
-		$(window).resize(function(){
-			w = $(window).width();
-			h = $(window).height();
-			$(".window-size").html(w + 'x' + h);
-		});
+	var w = $(window).width();
+	var h = $(window).height();
+	var size = w + 'x' + h;
+	$('.window-size').html(size);
+	$(window).resize(function(){
+		w = $(window).width();
+		h = $(window).height();
+		size = w + 'x' + h;
+		$('.window-size').html(size);
 	});
 </script>
 </body>

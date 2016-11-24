@@ -1,0 +1,106 @@
+@media only screen and (min-width: 800px){
+  .user-options{
+    width: 300px;
+    background-color: white;
+    position: absolute;
+    right: 2%;
+    text-align: left;
+    border: 2px solid;
+    border-color: #CED3D8;
+    border-radius: 4px;
+    margin: 2px 0px 0px 0px;
+    padding: 10px;
+    line-height: 44px;
+    z-index: 10;
+  }
+  .user{
+    display: inline-block;
+    font-size: 20px;
+    color: #47525D;
+  }
+  .user:hover{
+    display: inline-block;
+    font-size: 20px;
+    color: #647382;
+    cursor: pointer;
+  }
+  .dropdown{
+    cursor: pointer;
+    font-size: 10px;
+    margin: 0px 10px;
+  }
+  .avatar{
+    display: inline-block;
+    background-color: #E7ECF3;
+    width: 46px;
+    height: 46px;
+    border: 1px solid #788088;
+    border-radius: 23px;
+    vertical-align: -16px;
+    margin: 0px;
+  }
+  .avatar:hover{
+    display: inline-block;
+    background-color: #E7ECF3;
+    width: 46px;
+    height: 46px;
+    border: 1px solid #788088;
+    border-radius: 23px;
+    vertical-align: -16px;
+    margin: 0px;
+    cursor: pointer;
+  }
+}
+@media only screen and (max-width: 799px){
+  .user-options{
+    width: 200px;
+    background-color: white;
+    position: absolute;
+    right: 2%;
+    text-align: left;
+    border: 2px solid;
+    border-color: #CED3D8;
+    border-radius: 4px;
+    margin: 2px 0px 0px 0px;
+    padding: 10px;
+    line-height: 44px;
+    z-index: 10;
+  }
+  .user{
+    display: inline-block;
+    font-size: 16px;
+    color: #47525D;
+  }
+  .user:hover{
+    display: inline-block;
+    font-size: 16px;
+    color: #647382;
+    cursor: pointer;
+  }
+  .dropdown{
+    cursor: pointer;
+    font-size: 8px;
+    margin: 0px 0px 0px 4px;
+  }
+  .avatar{
+    display: inline-block;
+    background-color: #E7ECF3;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #788088;
+    border-radius: 23px;
+    vertical-align: -10px;
+    margin: 0px;
+  }
+  .avatar:hover{
+    display: inline-block;
+    background-color: #E7ECF3;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #788088;
+    border-radius: 23px;
+    vertical-align: -10px;
+    margin: 0px;
+    cursor: pointer;
+  }
+}

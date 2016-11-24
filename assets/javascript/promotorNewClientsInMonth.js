@@ -1,11 +1,12 @@
-$( window ).ready(function(){ 
+$( document ).ready(function(){ 
   var val;
   var clients_in_month_rows;
   var promotor_id = $("#clients_in_month_chart").data("promotorid");
 
-  $( "#clients_first_tab" ).click(drawClientsInMonthChartData);
+  $( ".l2-tab-1" ).click(drawClientsInMonthChartData);
   $( ".clients-stats-tab" ).click(drawClientsInMonthChartData);
   $( ".clients_month" ).change(drawClientsInMonthChartData);
+  $( window ).resize(drawClientsInMonthChartData);
 
   function drawClientsInMonthChartData() {
     val = $('.clients_month').val();

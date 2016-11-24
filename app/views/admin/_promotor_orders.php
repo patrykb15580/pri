@@ -1,8 +1,8 @@
 <table width="100%">
 	<tr>
-		<td id="first_row" width="45%"></td>
-		<td id="first_row" width="40%">Kiedy</td>
-		<td id="first_row" width="15%">Wartość punktowa</td>
+		<td class="first-row" width="45%"></td>
+		<td class="first-row" width="40%">Kiedy</td>
+		<td class="first-row" width="15%">Wartość punktowa</td>
 	</tr>
 <?php foreach ($promotor->orders() as $order) { 
 	$reward = $order->reward(); 

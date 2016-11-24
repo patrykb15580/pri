@@ -3,16 +3,16 @@
 Łączna liczba klientów: <?= count($promotor->clients()) ?>
 <table width="98%">
 	<tr>
-		<td id="first_row">
+		<td class="first-row">
 			Nazwa klienta
 		</td>
-		<td id="first_row">
+		<td class="first-row">
 			Email klienta
 		</td>
-		<td id="first_row">
+		<td class="first-row">
 			Numer telefonu
 		</td>
-		<td id="first_row">
+		<td class="first-row">
 			Ostatnia aktywność
 		</td>
 	</tr>

@@ -11,14 +11,14 @@
 		</p>
 		Nie ma problemu, wpisz poniżej Twój adres e-mail a po chwili otrzymasz na swoją pocztę wiadomość z linkiem do logowania.
 		<br /><br />
-		<form method="POST" action="<?= $router->generate('send_client_hash', []) ?>">
+		<form class="guardianInitialize" method="POST" action="<?= $router->generate('send_client_hash', []) ?>">
 			<label>
 				E-mail
 			</label>
-			<br /><input type="text" name="client_email">
+			<br /><input type="text" name="client_email" required="required">
 			<input class="login_submit" type="submit" value="Wyślij link do logowania">
 		</form>
-		<br /><br />
-		<a class="bottom_left_text" href="<?= $router->generate('promotor_login', []) ?>">Zaloguj jako promotor</a>
+		<br />
+		<a class="promotor-login-link" href="<?= $router->generate('promotor_login', []) ?>">Zaloguj jako promotor</a>
 	</div>
 </div>

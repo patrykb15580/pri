@@ -1,0 +1,113 @@
+/* Alerts */
+@media only screen and (min-width: 800px){
+  div.info_message{
+    position: relative;
+    background-color: #D4ffDA;
+    width: 100%;
+    padding: 6px 0px;
+    margin: 0px;
+    color: green;
+  }
+  div.warning_message{
+    position: relative;
+    background-color: #E0E085;
+    width: 100%;
+    padding: 6px 0px;
+    margin: 0px;
+    color: white;
+  }
+  div.error_message{
+    position: relative;
+    background-color: #F0D7E8;
+    width: 100%;
+    padding: 6px 0px;
+    margin: 0px;
+    color: red;
+  }
+  button.close{
+    position: absolute;
+    display: inline-block;
+    right: 6px;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    font-size: 18px;
+    margin: 0px;
+    padding: 0px;
+  }
+  button.close:hover{
+    position: absolute;
+    display: inline-block;
+    right: 6px;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0px 0px;
+    padding: 0px;
+    cursor: pointer;
+  }
+  p#alert_text{
+    display: inline-block;
+    text-align: center;
+    width: 98%;
+    margin: 1px 1%;
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+@media only screen and (max-width: 799px){
+  div.info_message{
+    position: relative;
+    background-color: #D4ffDA;
+    width: 100%;
+    padding: 5px 0px;
+    margin: 0px;
+    color: green;
+  }
+  div.warning_message{
+    position: relative;
+    background-color: #E0E085;
+    width: 100%;
+    padding: 5px 0px;
+    margin: 0px;
+    color: white;
+  }
+  div.error_message{
+    position: relative;
+    background-color: #F0D7E8;
+    width: 100%;
+    padding: 5px 0px;
+    margin: 0px;
+    color: red;
+  }
+  button.close{
+    position: absolute;
+    display: inline-block;
+    right: 4px;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    font-size: 16px;
+    margin: 0px;
+    padding: 0px;
+  }
+  button.close:hover{
+    position: absolute;
+    display: inline-block;
+    right: 4px;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0px 0px;
+    padding: 0px;
+    cursor: pointer;
+  }
+  p#alert_text{
+    display: inline-block;
+    text-align: center;
+    width: 98%;
+    margin: 1px 1%;
+    font-size: 14px;
+    font-weight: 600;
+  }
+}

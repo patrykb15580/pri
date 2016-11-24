@@ -44,7 +44,7 @@ class Client extends Model
 
 	public function promotionCodes()
 	{
-		return PromotionCode::where('client_id=?', ['client_id'=>$this->id]);
+		return PromotionCode::where('client_id=?', ['client_id'=>$this->id], ['order'=>'updated_at DESC']);
 	}
 
 	public function packages()
@@ -108,6 +108,12 @@ class Client extends Model
 			$promotor = $promotion_action->promotor();
 			$promotors[$promotion_action->promotors_id] = $promotor;
 		}
+		foreach ($this->contests() as $contest) {
+			$promotor = $contest->promotor();
+			if (!array_key_exists($promotor->id, $promotors)) {
+				$promotors[$promotor->id] = $promotor;
+			}
+		}
 		return $promotors;
 	}
 
@@ -117,6 +123,31 @@ class Client extends Model
 		return $balance[0];
 	}
 
+	public function contests()
+	{
+		$answers = ContestAnswer::where('client_id=?', ['client_id'=>$this->id], ['order'=>'created_at DESC']);
+
+		$contests = [];
+		foreach ($answers as $answer) {
+			$contest = Contest::find($answer->contest_id);
+			array_push($contests, $contest);
+		}
+
+		return $contests;
+	}
+
+	public function contestAnswer($contest_id)
+	{
+		$answer = ContestAnswer::where('contest_id=? AND client_id=?', ['contest_id'=>$contest_id, 'client_id'=>$this->id]);
+		return $answer[0];
+	}
+
+	public function orders()
+	{
+		$orders = Order::where('client_id=?', ['client_id'=>$this->id]);
+		
+		return $orders;
+	}
 	public function activeOrders()
 	{
 		$orders = Order::where('client_id=? AND status=?', ['client_id'=>$this->id, 'status'=>'active']);
