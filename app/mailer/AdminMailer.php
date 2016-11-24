@@ -17,6 +17,6 @@ class AdminMailer extends AppMailer
 
 		$this->attributes['body'] = $body;
 
-		$send = new AppMailer($this->attributes);
+		$send = (new AppMailer($this->attributes))->send();
 	}
 }

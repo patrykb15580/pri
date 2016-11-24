@@ -11,11 +11,9 @@ class AppMailer
 		foreach ($attributes as $key => $value) {
 			$this->$key = $value;
 		}
-
-		$this->send();
 	}
 
-	private function send()
+	function send()
 	{
 		$mail = new PHPMailer;
 

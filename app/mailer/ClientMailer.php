@@ -4,7 +4,7 @@
 */
 class ClientMailer extends AppMailer
 {
-	public $non_authorized = ['clientHash', 'addPoints', 'clientHash', 'getReward'];
+	public $non_authorized = ['createClient', 'addPoints', 'clientHash', 'getReward'];
 
 	public $attributes = [];
 
@@ -18,7 +18,7 @@ class ClientMailer extends AppMailer
 
 		$this->attributes['body'] = $body;
 
-		$send = new AppMailer($this->attributes);
+		$send = (new AppMailer($this->attributes))->send();
 	}
 
 	public function addPoints($client, $code, $promotor)
@@ -31,7 +31,7 @@ class ClientMailer extends AppMailer
 
 		$this->attributes['body'] = $body;
 
-		$send = new AppMailer($this->attributes);
+		$send = (new AppMailer($this->attributes))->send();
 	}
 
 	public function clientHash($client)
@@ -44,7 +44,7 @@ class ClientMailer extends AppMailer
 
 		$this->attributes['body'] = $body;
 
-		$send = new AppMailer($this->attributes);
+		$send = (new AppMailer($this->attributes))->send();
 	}
 
 	public function getReward($client, $order)
@@ -57,6 +57,6 @@ class ClientMailer extends AppMailer
 
 		$this->attributes['body'] = $body;
 
-		$send = new AppMailer($this->attributes);
+		$send = (new AppMailer($this->attributes))->send();
 	}
 }
