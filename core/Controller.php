@@ -7,7 +7,7 @@ class Controller
 	public $params;
 
 	function __construct($params = [])
-	{
+	{	
 		$this->params = $params;
 
 		if (isset($this->params['hash'])) {
@@ -22,7 +22,6 @@ class Controller
 
 	public function auth($method, $obj = [])
 	{
-	
 		$polices_class = str_replace('Controller', '', $this->params['controller']).'Polices';
 		$polices = new $polices_class($this->currentUser(), $obj);
 		if ($polices->$method() == true) {

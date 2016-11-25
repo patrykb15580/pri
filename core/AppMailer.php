@@ -14,7 +14,7 @@ class AppMailer
 	}
 
 	function send()
-	{
+	{	
 		$mail = new PHPMailer;
 
 		$mail->isSMTP();

@@ -2,8 +2,7 @@
 	$router = Config::get('router');
 	$path_new = $router->generate('new_promotion_actions', ['promotors_id' => $params['promotors_id']]);
 	
-	$items_number = count($promotor->promotionActions());
-	
+	$items_number = count($promotor->promotionActions());	
 ?>	
 <div id="notice">
 	<p id="notice-text"><i class="fa fa-info-circle" aria-hidden="true"></i> W tym panelu możesz ...</p>

@@ -40,7 +40,7 @@ class PromotionCodesPackagesPolices extends Polices
 
 	public function create()
 	{
-		if ($this->user->isPromotor() && $this->user->id == $promotor->id) {
+		if ($this->user->isPromotor() && $this->user->id == $this->obj->id) {
 			return true;
 		}
 

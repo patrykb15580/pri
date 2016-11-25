@@ -12,7 +12,7 @@
   </div>
 </div>
 
-<div class="l2-tab-content l2-tab-1-content">
+<div class="l2-tab-content l2-tab-1-content codes-chart-1">
 
   <h3>Wykorzystane kody w miesiącu 
   <select class="codes_month" name="codes_month">

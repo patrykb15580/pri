@@ -5,6 +5,7 @@
 class AdminMailer extends AppMailer
 {
 	public $non_authorized = ['newAdminOrder'];
+
 	public $attributes = [];
 
 	public function newAdminOrder($admin, $order)

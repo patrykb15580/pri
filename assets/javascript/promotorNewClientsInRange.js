@@ -1,4 +1,4 @@
-$( window ).ready(function(){ 
+$( document ).ready(function(){ 
   var clients_in_range_rows;
   var promotor_id = $("#clients_in_range_chart").data("promotorid");
 
