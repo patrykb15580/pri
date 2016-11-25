@@ -61,6 +61,9 @@ class StaticPagesControllerTest extends Tests
 		$order = new Order(['promotor_id'=>2, 'client_id'=>1, 'reward_id'=>1, 'order_date'=>date(Config::get('mysqltime'))]);
 		$order->save();
 
+		$contest = new Contest(['name'=>'contest1', 'question'=>'Is this question?', 'from_at'=>date("Y-m-d", strtotime("-3 days")), 'to_at'=>date("Y-m-d", strtotime("+4 days")), 'promotor_id'=>'1', 'status'=>'active', 'type'=>0]);
+		$contest->save();
+
 		$description = 'Wykorzystanie kodu zaqwsx w akcji action1';
 		History::addHistoryRecord(1, 100, 243, $description, 'add');
 
@@ -159,13 +162,19 @@ class StaticPagesControllerTest extends Tests
 		$elements = $html->find('.use_code_top');	
 		Assert::expect(count($elements)) -> toEqual(1);
 
+		$elements = $html->find('.use-code-avatar');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.promotor-name');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.action-name');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
 		$elements = $html->find('form#use_code');	
 		Assert::expect(count($elements)) -> toEqual(1);
 
 		$elements = $html->find('table');	
-		Assert::expect(count($elements)) -> toEqual(1);
-
-		$elements = $html->find('.avatar-square');	
 		Assert::expect(count($elements)) -> toEqual(1);
 
 		$elements = $html->find('label');	
@@ -208,4 +217,74 @@ class StaticPagesControllerTest extends Tests
 		unset($_SESSION['user']);
 		error_reporting(E_ALL);
 	}
+
+	public function testContestAction()
+	{
+		$this->seed();
+
+		$params['controller'] = 'StaticPagesController';
+		$params['action'] = 'contest';
+		$params['id'] = 1;
+
+		$action = $params['action'];
+		
+		$controller = new $params['controller']($params);
+		$view = $controller->$action();
+
+		$html = HtmlDomParser::str_get_html($view);
+
+		$elements = $html->find('.answer-box');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.answer-form-top');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.answer-form-avatar');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.answer-form-title');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.answer-form');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('textarea');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('input');	
+		Assert::expect(count($elements)) -> toEqual(4);
+
+		unset($_SESSION['user']);
+	}
+
+	/*public function testContestAnswerAction()
+	{
+		$this->seed();
+
+		error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
+
+      	$params['id'] = 1;
+    	$params['controller'] = 'StaticPagesController';
+    	$params['action'] = 'contestAnswer';
+    	$params['answer'] = ['answer' => 'answer'];
+
+    	$params['client'] = ['email'=>'test1@test.com',
+          					  'name' => 'Client',
+            				  'phone_number' => '123456789'];
+
+		$action = $params['action'];
+
+		$controller = new $params['controller']($params);
+		$view = $controller->$action();
+
+		$contest = Contest::find($params['id']);
+		$client = Client::findBy('email', $params['client']['email']);
+		
+		$answer = ContestAnswer::where('contest_id=? AND client_id=?', ['contest_id'=>$contest->id, 'client_id'=>$client->id]);
+
+		Assert::expect(empty($answer)) -> toEqual(false);
+
+		unset($_SESSION['user']);
+		error_reporting(E_ALL);
+	}*/
 }

@@ -90,8 +90,31 @@ class ClientsControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
-		$elements = $html->find('tr.result');	
+		$elements = $html->find('.client-view-title-box');	
+		Assert::expect(count($elements)) -> toEqual(1);
 
+		$elements = $html->find('.client-view-title-icon');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.client-view-title-text');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.client-view-item-box');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.client-view-avatar');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.client-view-item-title');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.result');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.client-view-item-button');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.client-balance');	
 		Assert::expect(count($elements)) -> toEqual(1);
 
 		unset($_SESSION['user']);
@@ -113,8 +136,37 @@ class ClientsControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
-		$elements = $html->find('div#reward_box');	
+		$elements = $html->find('.client-view-title-box');	
+		Assert::expect(count($elements)) -> toEqual(1);
 
+		$elements = $html->find('.client-view-title-avatar');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.client-view-avatar-box');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.client-view-reward-container');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.modal-bg');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.modal-box');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.modal-content');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.client-view-reward-img');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.client-view-reward-name');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.client-view-reward-description');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.client-view-reward-button');	
 		Assert::expect(count($elements)) -> toEqual(1);
 
 		unset($_SESSION['user']);
@@ -134,6 +186,18 @@ class ClientsControllerTest extends Tests
 		$view = $controller->$action();
 
 		$html = HtmlDomParser::str_get_html($view);
+
+		$elements = $html->find('.client-view-title-box');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.client-view-title-icon');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.client-view-title-text');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.client-view-item-box');	
+		Assert::expect(count($elements)) -> toEqual(1);
 
 		$elements = $html->find('tr.result');	
 		Assert::expect(count($elements)) -> toEqual(1);
@@ -157,6 +221,24 @@ class ClientsControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
+		$elements = $html->find('.client-view-title-box');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.client-view-title-icon');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.client-view-title-text');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.client-view-item-box');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.client-order-form');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('#order-form-table');	
+		Assert::expect(count($elements)) -> toEqual(2);
+
 		$elements = $html->find('tr.result');	
 		Assert::expect(count($elements)) -> toEqual(2);
 
@@ -164,6 +246,9 @@ class ClientsControllerTest extends Tests
 		Assert::expect(count($elements)) -> toEqual(1);
 
 		$elements = $html->find('input');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.form-page-button');	
 		Assert::expect(count($elements)) -> toEqual(1);
 
 		unset($_SESSION['user']);
@@ -211,8 +296,19 @@ class ClientsControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
-		$elements = $html->find('tr.result');	
+		$elements = $html->find('.client-view-title-box');	
+		Assert::expect(count($elements)) -> toEqual(1);
 
+		$elements = $html->find('.client-view-title-icon');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.client-view-title-text');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.client-view-item-box');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('tr.result');	
 		Assert::expect(count($elements)) -> toEqual(2);
 
 		unset($_SESSION['user']);

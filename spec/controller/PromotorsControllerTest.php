@@ -269,25 +269,14 @@ class PromotorsControllerTest extends Tests
 		Assert::expect(count($elements)) -> toEqual(1);
 
 
-		$elements = $html->find('li#clients_first_tab');	
-		Assert::expect(count($elements)) -> toEqual(1);
+		$elements = $html->find('.l2-tab-1');	
+		Assert::expect(count($elements)) -> toEqual(2);
 
-		$elements = $html->find('li#clients_second_tab');	
-		Assert::expect(count($elements)) -> toEqual(1);
+		$elements = $html->find('.l2-tab-2');	
+		Assert::expect(count($elements)) -> toEqual(2);
 
-		$elements = $html->find('li#clients_third_tab');	
-		Assert::expect(count($elements)) -> toEqual(1);
-
-
-		$elements = $html->find('li#codes_first_tab');	
-		Assert::expect(count($elements)) -> toEqual(1);
-
-		$elements = $html->find('li#codes_second_tab');	
-		Assert::expect(count($elements)) -> toEqual(1);
-
-		$elements = $html->find('li#codes_third_tab');	
-		Assert::expect(count($elements)) -> toEqual(1);
-
+		$elements = $html->find('.l2-tab-3');	
+		Assert::expect(count($elements)) -> toEqual(2);
 
 
 		$elements = $html->find('div#codes_in_month_chart');	
@@ -300,7 +289,7 @@ class PromotorsControllerTest extends Tests
 		Assert::expect(count($elements)) -> toEqual(1);
 
 
-		$elements = $html->find('.date');	
+		$elements = $html->find('.datepick');	
 		Assert::expect(count($elements)) -> toEqual(4);
 
 
