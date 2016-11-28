@@ -14,13 +14,24 @@
 
 <div id="title-box">
 	<i class="fa fa-trophy title-box-icon green-icon" aria-hidden="true"></i><p class="title-box-text">Konkursy</p>
-	<a href="<?= $path_new ?>"><button class="title-box-button"><i class="zmdi zmdi-plus"></i> Nowy konkurs</button></a>
 </div>
-<div id="title-box-tabs">
-	<p class="tab1 tab-active">AKTYWNE</p><p class="tab2 tab-inactive">NIEAKTYWNE</p>
+<div id="title-box-options-bar">
+	<a href="<?= $path_new ?>"><button class="options-bar-button"><i class="zmdi zmdi-plus"></i> Nowy konkurs</button></a>
 </div>
 
-<div id="tab-1-content">
+<select id="select-tab">
+	<option value="tab-1">
+		Wykorzystane
+	</option>
+	<option value="tab-2">
+		Niewykorzystane
+	</option>
+	<option value="tab-3">
+		Wszystkie
+	</option>
+</select>
+
+<div id="tab-1-content" class="tab-content">
    	<?php 
 		$contests = $promotor->activeContests();
 
@@ -32,13 +43,23 @@
 	?>
 </div>
 
-<div id="tab-2-content">
+<div id="tab-2-content" class="tab-content">
    	<?php 
 		$contests = $promotor->inactiveContests();
 		
 		if (count($contests) == 0 && $items_number !== 0) {
 			include 'app/views/layouts/_no_results.php';
 		} else if ($items_number == 0) {
+			include '_make_first.php';
+		} else include '_contests.php';
+	?>
+</div>
+
+<div id="tab-3-content" class="tab-content">
+   	<?php 
+		$contests = $promotor->contests();
+		
+		if ($items_number == 0) {
 			include '_make_first.php';
 		} else include '_contests.php';
 	?>

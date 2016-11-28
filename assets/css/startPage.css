@@ -1,10 +1,6 @@
 @media only screen and (min-width: 500px){
   #insert-code{
     background-color: white;
-    position: absolute;
-    top: 36%;
-    left: 0;
-    right: 0;
     width: 460px;
     display: block;
     text-align: center;
@@ -55,10 +51,6 @@
 @media only screen and (max-width: 499px){
   #insert-code{
     background-color: white;
-    position: absolute;
-    top: 36%;
-    left: 0;
-    right: 0;
     width: 260px;
     display: block;
     text-align: center;

@@ -1,6 +1,32 @@
-$(document).ready(function(){
-	$("#tab-1-content").show();
-    $("#tab-2-content").hide();
+$(document).ready( function() {
+	$('#tab-2-content').hide();
+	$('#tab-3-content').hide();
+	$('#select-tab').bind('change', function (e) { 
+		if($('#select-tab').val() == 'tab-1') {
+	      	$('#tab-2-content').fadeOut(function(){
+	      		$('#tab-3-content').fadeOut(function(){
+		      		$('#tab-1-content').fadeIn();
+		 		});
+	    	});
+	    }
+	    else if($('#select-tab').val() == 'tab-2'){
+	    	$('#tab-1-content').fadeOut(function(){
+	     		$('#tab-3-content').fadeOut(function(){
+		    		$('#tab-2-content').fadeIn();
+		    	});
+	    	});
+	    }
+	    else {
+	    	$('#tab-1-content').fadeOut(function(){
+	     		$('#tab-2-content').fadeOut(function(){
+		    		$('#tab-3-content').fadeIn();
+				});
+	    	});
+		}        
+	});
+
+
+
     $(".tab1").click(function(){
 
 	   	$(".tab1").removeClass("tab-active");

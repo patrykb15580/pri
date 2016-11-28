@@ -1,11 +1,7 @@
 @media only screen and (min-width: 481px){
   div#use_code_container{
     width: 300px;
-    position: absolute;
-    top: 14%;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
+    margin: 60px auto;
   }
   .use-code-table{
     text-align: center;
@@ -121,11 +117,7 @@
 @media only screen and (max-width: 480px){
   div#use_code_container{
     width: 260px;
-    position: absolute;
-    top: 6%;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
+    margin: 30px auto;
   }
   .use-code-table{
     text-align: center;

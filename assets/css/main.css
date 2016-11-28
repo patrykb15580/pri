@@ -211,7 +211,7 @@ div#reward_images_container{
   background-color: transparent;
   border: 0px solid;
   text-align: center;
-  color: white;
+  color: grey;
   opacity: 0.5;
   transition: opacity 0.2s;
 }
@@ -224,7 +224,7 @@ div#reward_images_container{
   background-color: transparent;
   border: 0px solid;
   text-align: center;
-  color: white;
+  color: grey;
   opacity: 1;
   cursor: pointer;
 }
@@ -800,6 +800,7 @@ div#main-layout-user{
 .get-random-answer:hover{
   cursor: pointer;
 }
+
 
 @media only screen and (max-width: 450px){
   .static-pages-data{

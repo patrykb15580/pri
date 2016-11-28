@@ -13,13 +13,26 @@
 
 <div id="title-box">
 	<i class="fa fa-product-hunt title-box-icon green-icon" aria-hidden="true"></i><p class="title-box-text">Akcje promocyjne</p>
-	<a href="<?= $path_new ?>"><button class="title-box-button"><i class="zmdi zmdi-plus"></i> Nowa akcja promocyjna</button></a>
 </div>
-<div id="title-box-tabs">
-	<p class="tab1 tab-active">AKTYWNE</p><p class="tab2 tab-inactive">NIEAKTYWNE</p>
+<div id="title-box-options-bar">
+	<a href="<?= $path_new ?>"><button class="options-bar-button"><i class="zmdi zmdi-plus"></i> Nowa akcja promocyjna</button></a>
+
+	<!--<p class="tab1 tab-active">AKTYWNE</p><p class="tab2 tab-inactive">NIEAKTYWNE</p>-->
 </div>
 
-<div id="tab-1-content">
+<select id="select-tab">
+	<option value="tab-1">
+		Aktywne
+	</option>
+	<option value="tab-2">
+		Nieaktywne
+	</option>
+	<option value="tab-3">
+		Wszystkie
+	</option>
+</select>
+
+<div id="tab-1-content" class="tab-content">
    	<?php 
 		$promotion_actions = $promotor->activeActions();
 
@@ -31,7 +44,7 @@
 	?>
 </div>
 
-<div id="tab-2-content">
+<div id="tab-2-content" class="tab-content">
    	<?php 
 		$promotion_actions = $promotor->inactiveActions();
 		
@@ -43,3 +56,12 @@
 	?>
 </div>
 
+<div id="tab-3-content" class="tab-content">
+   	<?php 
+		$promotion_actions = $promotor->promotionActions();
+		
+		if ($items_number == 0) {
+			include '_make_first.php';
+		} else include '_promotion_actions.php';
+	?>
+</div>

@@ -17,10 +17,10 @@
 		Cena: <?= $reward->prize ?> pkt<br /><br />
 		<?= nl2br($reward->description) ?>
 	</p>
-	<div class="title-box-options">
-		<a href="<?= $path_update ?>">Edytuj</a>
-		<a href="<?= $path_delete ?>">Usuń</a>
-	</div>
+</div>
+<div id="title-box-options-bar">
+	<a href="<?= $path_update ?>"><button class="options-bar-button">Edycja</button></a>
+	<a href="<?= $path_delete ?>"><button class="options-bar-button">Usuń</button></a>
 </div>
 
 <div id="reward_images_container">

@@ -23,8 +23,8 @@
 			<td class="right-first" width="50%">Wartość kodu</td>
 		</tr>
 		<tr>
-			<td class="left"><?= $params['code'] ?></td>
-			<td class="right">+ <?= $package->codes_value ?> pkt</td>
+			<td class="left" width="50%"><?= $params['code'] ?></td>
+			<td class="right" width="50%">+ <?= $package->codes_value ?> pkt</td>
 		</tr>
 	</table>
 </div>

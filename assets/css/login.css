@@ -1,12 +1,9 @@
 @media only screen and (min-width: 900px){
   div#login_box{
     display: block;
-    position: absolute;
-    top: 18%;
-    left: 0;
-    right: 0;
     width: 768px;
-    margin: 0 auto;
+    height: 400px;
+    margin: 80px auto;
     padding: 0px;
     background-color: white;
     border: 0px solid;
@@ -14,9 +11,10 @@
   }
   .login_left_block{
     float: left;
+    position: relative;
     display: inline-block;
     width: 32%;
-    height: 96%;
+    height: 98%;
     padding: 1% 4%;
     margin: 0px;
     color: #464646;
@@ -27,6 +25,7 @@
   }
   .login_right_block{
     float: left;
+    position: relative;
     display: inline-block;
     width: 51%;
     height: 96%;
@@ -96,12 +95,9 @@
 @media only screen and (max-width: 899px) and (min-width: 600px){
   div#login_box{
     display: block;
-    position: absolute;
-    top: 18%;
-    left: 0;
-    right: 0;
     width: 580px;
-    margin: 0 auto;
+    height: 380px;
+    margin: 80px auto;
     padding: 0px;
     background-color: white;
     border: 0px solid;
@@ -109,9 +105,10 @@
   }
   .login_left_block{
     float: left;
+    position: relative;
     display: inline-block;
     width: 32%;
-    height: 96%;
+    height: 98%;
     padding: 1% 4%;
     margin: 0px;
     color: #464646;
@@ -122,6 +119,7 @@
   }
   .login_right_block{
     float: left;
+    position: relative;
     display: inline-block;
     width: 51%;
     height: 96%;
@@ -191,12 +189,8 @@
 @media only screen and (max-width: 599px) and (min-width: 400px){
   div#login_box{
     display: block;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    right: 0;
     width: 380px;
-    margin: 0 auto;
+    margin: 60px auto;
     padding: 0px;
     background-color: white;
     border: 0px solid;
@@ -204,6 +198,7 @@
   }
   .login_left_block{
     display: block;
+    position: relative;
     width: 340px;
     padding: 20px 20px 5px 20px;
     margin: 0px;
@@ -216,6 +211,7 @@
   }
   .login_right_block{
     display: block;
+    position: relative;
     width: 340px;
     padding: 0px 20px 20px 20px;
     margin: 0px;
@@ -286,12 +282,8 @@
 @media only screen and (max-width: 399px){
   div#login_box{
     display: block;
-    position: absolute;
-    top: 40px;
-    left: 0;
-    right: 0;
     width: 260px;
-    margin: 0 auto;
+    margin: 40px auto;
     padding: 0px;
     background-color: white;
     border: 0px solid;
@@ -299,6 +291,7 @@
   }
   .login_left_block{
     display: block;
+    position: relative;
     width: 222px;
     padding: 20px 20px 5px 20px;
     margin: 0px;
@@ -311,6 +304,7 @@
   }
   .login_right_block{
     display: block;
+    position: relative;
     width: 222px;
     padding: 0px 20px 20px 20px;
     margin: 0px;

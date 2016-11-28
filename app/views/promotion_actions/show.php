@@ -19,22 +19,31 @@
 	
 	<i class="fa fa-product-hunt title-box-icon green-icon" aria-hidden="true"></i>
 	<p class="title-box-text"><?= $promotion_action->name ?></p>
-	<a href="<?= $path_new ?>"><button class="title-box-button"><i class="zmdi zmdi-plus"></i> Nowy pakiet kodów</button></a>
+	
 	<br /><br />
 	<p class="title-box-details">
 		Status: <b><?= PromotionAction::STATUSES[$promotion_action->status] ?></b><br />
 		Czas trwania: <b><?php if ($promotion_action->indefinitely == 0) {echo "od ".$promotion_action->from_at." do ".$promotion_action->to_at;} else echo "bezterminowo"; ?></b><br /><br />
 		<?= $promotion_action->description ?>
 	</p>
-	<div class="title-box-options">
-		<a href="<?= $path_update ?>">Edytuj</a>
-	</div>
 </div>
-<div id="title-box-tabs">
-	<p class="tab1 tab-active">AKTYWNE</p><p class="tab2 tab-inactive">NIEAKTYWNE</p>
+<div id="title-box-options-bar">
+<a href="<?= $path_new ?>"><button class="options-bar-button"><i class="zmdi zmdi-plus"></i> Nowy pakiet kodów</button></a><a href="<?= $path_update ?>"><button class="options-bar-button">Edycja</button></a>
 </div>
 
-<div id="tab-1-content">
+<select id="select-tab">
+	<option value="tab-1">
+		Aktywne
+	</option>
+	<option value="tab-2">
+		Nieaktywne
+	</option>
+	<option value="tab-3">
+		Wszystkie
+	</option>
+</select>
+
+<div id="tab-1-content" class="tab-content">
    	<?php 
 		$packages = $promotion_action->activePackages();
 
@@ -45,13 +54,24 @@
 		} else include 'app/views/promotion_actions/_promotion_codes_packages.php';
 	?>
 </div>
-<div id="tab-2-content">
+
+<div id="tab-2-content" class="tab-content">
    	<?php 
 		$packages = $promotion_action->inactivePackages();
 		
 		if (count($packages) == 0 && $items_number !== 0) {
 			include 'app/views/layouts/_no_results.php';
 		} else if ($items_number == 0) {
+			include 'app/views/promotion_actions/_make_first.php';
+		} else include 'app/views/promotion_actions/_promotion_codes_packages.php';
+	?>
+</div>
+
+<div id="tab-3-content" class="tab-content">
+   	<?php 
+		$packages = $promotion_action->promotionCodesPackages();
+		
+		if ($items_number == 0) {
 			include 'app/views/promotion_actions/_make_first.php';
 		} else include 'app/views/promotion_actions/_promotion_codes_packages.php';
 	?>

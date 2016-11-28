@@ -14,17 +14,24 @@
 </div>
 <div id="title-box">
 	<i class="fa fa-gift title-box-icon red-icon" aria-hidden="true"></i><p class="title-box-text"> Katalog nagród</p>
-	<a href="<?= $path_new ?>">
-		<button class="title-box-button">
-			<i class="zmdi zmdi-plus"></i> Nowa nagroda
-		</button>
-	</a>
 </div>
-<div id="title-box-tabs">
-	<p class="tab1 tab-active">AKTYWNE</p><p class="tab2 tab-inactive">NIEAKTYWNE</p>
+<div id="title-box-options-bar">
+	<a href="<?= $path_new ?>"><button class="options-bar-button"><i class="zmdi zmdi-plus"></i> Nowa nagroda</button></a>
 </div>
 
-<div id="tab-1-content">
+<select id="select-tab">
+	<option value="tab-1">
+		Aktywne
+	</option>
+	<option value="tab-2">
+		Nieaktywne
+	</option>
+	<option value="tab-3">
+		Wszystkie
+	</option>
+</select>
+
+<div id="tab-1-content" class="tab-content">
 	<?php 
 		$rewards = $promotor->activeRewards();
 		
@@ -35,13 +42,22 @@
 		} else include 'app/views/rewards/_rewards.php';
 	?>
 </div>
-<div id="tab-2-content">
+<div id="tab-2-content" class="tab-content">
 	<?php 
 		$rewards = $promotor->inactiveRewards();
 		
 		if (count($rewards) == 0 && $items_number !== 0) {
 			include 'app/views/layouts/_no_results.php';
 		} else if ($items_number == 0) {
+			include 'app/views/rewards/_make_first.php';
+		} else include 'app/views/rewards/_rewards.php';
+	?>
+</div>
+<div id="tab-3-content" class="tab-content">
+	<?php 
+		$rewards = $promotor->rewards();
+		
+		if ($items_number == 0) {
 			include 'app/views/rewards/_make_first.php';
 		} else include 'app/views/rewards/_rewards.php';
 	?>

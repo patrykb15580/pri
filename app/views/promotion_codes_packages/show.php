@@ -29,17 +29,25 @@
 			}
 		?>
 	</p>
-	<div class="title-box-options">
-		<a href="<?= $path_update ?>">Edytuj</a>
-	</div>
 	<br />
 </div>
-<div id="title-box-tabs">
-	<p class="tab1 tab-active">WYKORZYSTANE (<?= count($package->usedPromotionCodes()) ?>)</p>
-	<p class="tab2 tab-inactive">NIEWYKORZYSTANE (<?= count($package->nonUsedPromotionCodes()) ?>)</p>
+<div id="title-box-options-bar">
+	<a href="<?= $path_update ?>"><button class="options-bar-button">Edytuj</button></a>
 </div>
 
-<div id="tab-1-content">
+<select id="select-tab">
+	<option value="tab-1">
+		Wykorzystane (<?= count($package->usedPromotionCodes()) ?>)
+	</option>
+	<option value="tab-2">
+		Niewykorzystane (<?= count($package->nonUsedPromotionCodes()) ?>)
+	</option>
+	<option value="tab-3">
+		Wszystkie (<?= count($package->promotionCodes()) ?>)
+	</option>
+</select>
+
+<div id="tab-1-content" class="tab-content">
 	<?php 
 		if (count($package->usedPromotionCodes()) !== 0) { ?>
 			<table width="100%">
@@ -59,7 +67,8 @@
 		}
 	?>
 </div>
-<div id="tab-2-content">
+
+<div id="tab-2-content" class="tab-content">
 	<?php
 		if (count($package->nonusedPromotionCodes()) !== 0) { ?>
 			<table width="100%">
@@ -67,6 +76,25 @@
 					<td class="first-row" width="100%">Kod</td>
 				</tr>
 			<?php foreach ($package->nonUsedPromotionCodes() as $promotion_code) { ?>
+				<tr class="result">
+					<td width="100%"><b><?= $promotion_code->code ?></b></td>
+				</tr>
+			<?php } ?>	
+			</table>
+		<?php } else { 
+			include 'app/views/layouts/_no_results.php';
+		}
+	?>	
+</div>
+
+<div id="tab-3-content" class="tab-content">
+	<?php
+		if (count($package->promotionCodes()) !== 0) { ?>
+			<table width="100%">
+				<tr>
+					<td class="first-row" width="100%">Kod</td>
+				</tr>
+			<?php foreach ($package->promotionCodes() as $promotion_code) { ?>
 				<tr class="result">
 					<td width="100%"><b><?= $promotion_code->code ?></b></td>
 				</tr>

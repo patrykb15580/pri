@@ -44,7 +44,7 @@ class PromotionCode extends Model
 	}
 	public function promotionAction()
 	{
-		$package = PromotionCodesPackage::find($this->package_id);
+		$package = $this->package();
 
 		return $package->promotionAction();
 	}

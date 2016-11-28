@@ -22,7 +22,7 @@
 	<script src="js/jquery.guardian-1.0.min.js"></script>
 	<script src="https://use.fontawesome.com/e806e76f5f.js"></script>
 	<script type="text/javascript" src="/assets/javascript/alerts.js"></script>
-	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body class="start_pages_body">
 <?php Alerts::showAlert(); ?>

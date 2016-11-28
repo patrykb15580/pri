@@ -99,7 +99,6 @@
     cursor: pointer;
     transition: color 0.2s;
   }
-
   .tab-inactive{
     width: 20%;
     height: 100%;
@@ -121,6 +120,50 @@
     font-weight: 600;
     color: #017EE5;
     padding: 10px 25px;
+    cursor: pointer;
+  }
+  #title-box-options-bar{
+    background-color: #DCE6F0;
+    width: calc(96% + 2px);
+    height: 33px;
+    margin: 0px 0px 10px 0px;
+    padding: 10px 2% 0px 2%;
+    line-height: 26px;
+  }
+  .options-bar-button{
+    background-color: transparent;
+    height: 100%;
+    display: inline;
+    margin: 0px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #6D7E89;
+    padding: 10px 25px 7px 25px;
+    border-radius: 0px;
+    border-top: 0px;
+    border-right: 0px;
+    border-bottom: 3px;
+    border-left: 0px;
+    border-color: transparent;
+    border-style: solid;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .options-bar-button:hover{
+    background-color: transparent;
+    height: 100%;
+    display: inline;
+    margin: 0px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #017EE9;
+    padding: 10px 25px 7px 25px;
+    border-radius: 0px;
+    border-top: 0px;
+    border-right: 0px;
+    border-bottom: 3px;
+    border-left: 0px;
+    border-color: #017EE5;
+    border-style: solid;
     cursor: pointer;
   }
   .prev-page-button{
@@ -220,7 +263,7 @@
     margin: 0px;
     padding: 0px;
   }
-  #title-box-tabs{
+   #title-box-tabs{
     background-color: #DCE6F0;
     width: calc(96% + 2px);
     height: 33px;
@@ -246,7 +289,6 @@
     cursor: pointer;
     transition: color 0.2s;
   }
-
   .tab-inactive{
     width: 20%;
     height: 100%;
@@ -268,6 +310,48 @@
     font-weight: 600;
     color: #017EE5;
     padding: 10px 25px;
+    cursor: pointer;
+  }
+  #title-box-options-bar{
+    background-color: #DCE6F0;
+    width: calc(96% + 2px);
+    height: 33px;
+    margin: 0px 0px 10px 0px;
+    padding: 10px 2% 0px 2%;
+    line-height: 26px;
+  }
+  .options-bar-button{
+    width: 20%;
+    height: 100%;
+    display: inline;
+    margin: 0px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #6D7E89;
+    padding: 10px 25px 7px 25px;
+    border-top: 0px;
+    border-right: 0px;
+    border-bottom: 3px;
+    border-left: 0px;
+    border-color: transparent;
+    border-style: solid;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .options-bar-button:hover{
+    width: 20%;
+    height: 100%;
+    display: inline;
+    margin: 0px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #017EE9;
+    padding: 10px 25px 7px 25px;
+    border-top: 0px;
+    border-right: 0px;
+    border-bottom: 3px;
+    border-left: 0px;
+    border-color: #017EE5;
+    border-style: solid;
     cursor: pointer;
   }
   .prev-page-button{
@@ -393,7 +477,6 @@
     cursor: pointer;
     transition: color 0.2s;
   }
-
   .tab-inactive{
     width: 20%;
     height: 100%;
@@ -415,6 +498,48 @@
     font-weight: 600;
     color: #017EE5;
     padding: 10px 25px;
+    cursor: pointer;
+  }
+  #title-box-options-bar{
+    background-color: #DCE6F0;
+    width: calc(96% + 2px);
+    height: 33px;
+    margin: 0px 0px 10px 0px;
+    padding: 10px 2% 0px 2%;
+    line-height: 26px;
+  }
+  .options-bar-button{
+    width: 20%;
+    height: 100%;
+    display: inline;
+    margin: 0px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #6D7E89;
+    padding: 10px 25px 7px 25px;
+    border-top: 0px;
+    border-right: 0px;
+    border-bottom: 3px;
+    border-left: 0px;
+    border-color: transparent;
+    border-style: solid;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .options-bar-button:hover{
+    width: 20%;
+    height: 100%;
+    display: inline;
+    margin: 0px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #017EE9;
+    padding: 10px 25px 7px 25px;
+    border-top: 0px;
+    border-right: 0px;
+    border-bottom: 3px;
+    border-left: 0px;
+    border-color: #017EE5;
+    border-style: solid;
     cursor: pointer;
   }
   .prev-page-button{
@@ -563,6 +688,48 @@
     padding: 10px 25px;
     cursor: pointer;
   }
+  #title-box-options-bar{
+    background-color: #DCE6F0;
+    width: 96%;
+    height: 33px;
+    margin: 0px 0px 10px 0px;
+    padding: 10px 2% 0px 2%;
+    line-height: 26px;
+  }
+  .options-bar-button{
+    width: 20%;
+    height: 100%;
+    display: inline;
+    margin: 0px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #6D7E89;
+    padding: 10px 25px 7px 25px;
+    border-top: 0px;
+    border-right: 0px;
+    border-bottom: 3px;
+    border-left: 0px;
+    border-color: transparent;
+    border-style: solid;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .options-bar-button:hover{
+    width: 20%;
+    height: 100%;
+    display: inline;
+    margin: 0px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #017EE9;
+    padding: 10px 25px 7px 25px;
+    border-top: 0px;
+    border-right: 0px;
+    border-bottom: 3px;
+    border-left: 0px;
+    border-color: #017EE5;
+    border-style: solid;
+    cursor: pointer;
+  }
   .prev-page-button{
     margin: 10px 0px;
     font-size: 12px;
@@ -705,6 +872,48 @@
     font-weight: 600;
     color: #017EE5;
     padding: 10px 25px;
+    cursor: pointer;
+  }
+  #title-box-options-bar{
+    background-color: #DCE6F0;
+    width: 96%;
+    height: 33px;
+    margin: 0px 0px 10px 0px;
+    padding: 10px 2% 0px 2%;
+    line-height: 26px;
+  }
+  .options-bar-button{
+    width: 20%;
+    height: 100%;
+    display: inline;
+    margin: 0px;
+    font-size: 10px;
+    font-weight: 600;
+    color: #6D7E89;
+    padding: 10px 25px 7px 25px;
+    border-top: 0px;
+    border-right: 0px;
+    border-bottom: 3px;
+    border-left: 0px;
+    border-color: transparent;
+    border-style: solid;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .options-bar-button:hover{
+    width: 20%;
+    height: 100%;
+    display: inline;
+    margin: 0px;
+    font-size: 10px;
+    font-weight: 600;
+    color: #017EE9;
+    padding: 10px 25px 7px 25px;
+    border-top: 0px;
+    border-right: 0px;
+    border-bottom: 3px;
+    border-left: 0px;
+    border-color: #017EE5;
+    border-style: solid;
     cursor: pointer;
   }
   .prev-page-button{
