@@ -28,6 +28,6 @@
 	Dodatkowy opis (widoczny tylko dla promotora)<br />
 	<textarea rows="6" name="promotion_codes_package[description]"><?= $package->description ?></textarea>
 	<br />
-	<br /><br /><input class="form-page-button" type="submit" value="<?php if ($params['action'] == 'new') { echo "Utwórz nowy pakiet kodów"; } else echo "Zapisz zmiany"; ?>">
+	<br /><br /><input class="form-page-button" type="submit" value="<?php if ($params['action'] == 'new') { echo "Zamów pakiet kodów"; } else echo "Zapisz zmiany"; ?>">
 	<a href="<?= $prev_page ?>">Anuluj</a>
 </form>

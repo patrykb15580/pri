@@ -36,7 +36,7 @@ foreach ($promotors as $promotor) {
 						<?= $order->quantity ?>
 					</td>
 					<td width="15%">
-						<?= AdminOrder::TYPES[$order->reusable] ?>
+						<?= AdminOrder::TYPES[$order->package_type] ?>
 					</td>
 					<td width="20%">
 						<?= AdminOrder::STATUSES[$order->status] ?>

@@ -7,9 +7,9 @@ class PromotionCodesPackage extends Model
 	public $id, $name, $created_at, $updated_at, $action_id, $reusable, $quantity, $generated, $codes_value, $status, $description;
 
 	const STATUSES = 	['active' => 'Aktywne',
-						'inactive' => 'Nieaktywne'];
+						 'inactive' => 'Nieaktywne'];
 	const TYPES = 		[0 => 'Jednorazowe',
-						1 => 'Wielorazowe'];
+						 1 => 'Wielorazowe'];
 
 	function __construct($attributes = [])
 	{

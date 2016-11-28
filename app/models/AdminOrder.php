@@ -4,14 +4,15 @@
 */
 class AdminOrder extends Model
 {
-	public $id, $promotor_id, $package_id, $quantity, $reusable, $order_date, $created_at, $updated_at, $status;	
-	const STATUSES = 	['waiting' => 'Oczekujące',
-						'active' => 'W trakcie reazlizacji',
-						'sent' => 'Wysłane',
-						'completed'=>'Zrealizowane',
-						'canceled'=>'Anulowane'];
-	const TYPES = 	['0' => 'Jednorazowe',
-					 '1' => 'Wielorazowe'];
+	public $id, $promotor_id, $package_type, $package_id, $quantity, $order_date, $created_at, $updated_at, $status;	
+	const STATUSES = ['waiting' => 'Oczekujące',
+					  'active' => 'W trakcie reazlizacji',
+					  'sent' => 'Wysłane',
+					  'completed'=>'Zrealizowane',
+					  'canceled'=>'Anulowane'];
+
+	const TYPES = ['action' => 'Akcja promocyjna',
+				   'contest' => 'Konkurs'];
 
 	function __construct($attributes = [])
 	{
@@ -25,13 +26,13 @@ class AdminOrder extends Model
 			'promotor_id'			=>['type' => 'integer',
 									   'default' => null,
 									   'validations' => ['required']],
+			'package_type'			=>['type' => 'string',
+									   'default' => null,
+									   'validations' => ['required']],
 			'package_id'			=>['type' => 'integer',
 									   'default' => null,
 									   'validations' => ['required']],
 			'quantity'				=>['type' => 'integer',
-									   'default' => null,
-									   'validations' => ['required']],
-			'reusable'				=>['type' => 'boolean',
 									   'default' => null,
 									   'validations' => ['required']],
 			'order_date'			=>['type' => 'datetime',

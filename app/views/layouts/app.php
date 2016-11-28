@@ -50,6 +50,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
 	<script type="text/javascript" src="/assets/javascript/tabs.js"></script>
 	<script type="text/javascript" src="/assets/javascript/userOptions.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 

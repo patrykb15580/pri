@@ -23,7 +23,7 @@
 		<td width="40%">Nakład:</td><td width="60%"><?= $order->quantity ?> szt</td>
 	</tr>
 	<tr class="result">
-		<td width="40%">Typ:</td><td width="60%"><?= AdminOrder::TYPES[$order->reusable] ?></td>
+		<td width="40%">Typ:</td><td width="60%"><?= AdminOrder::TYPES[$order->package_type] ?></td>
 	</tr>
 	<tr class="result">
 		<td width="40%">Data zamówienia:</td><td width="60%"><?= $order->order_date ?></td>

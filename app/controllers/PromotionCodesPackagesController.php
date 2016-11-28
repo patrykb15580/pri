@@ -34,9 +34,9 @@ class PromotionCodesPackagesController extends Controller
 		if ($package->save()) {
 
 			$admin_order = new AdminOrder(['promotor_id'=>$this->params['promotors_id'],
+										   'package_type' => 'action',
 										   'package_id'=>$package->id,
 										   'quantity'=>$package->quantity,
-										   'reusable'=>$package->reusable,
 										   'order_date'=>$package->created_at]);
 
 			$admin_order->save();

@@ -65,6 +65,8 @@ $router->map( 'POST', '/promotors/[i:promotors_id]/contests/create', 'ContestsCo
 $router->map( 'GET', '/promotors/[i:promotors_id]/contests/[i:contest_id]/edit', 'ContestsController#edit', 'edit_contests' );
 $router->map( 'POST', '/promotors/[i:promotors_id]/contests/[i:contest_id]/update', 'ContestsController#update', 'update_contests' );
 $router->map( 'POST', '/get-random-answer', 'ContestsController#getRandomAnswer', 'get_random_answer' );
+$router->map( 'GET', '/promotors/[i:promotors_id]/contest/[i:contest_id]/new-stickers-package', 'ContestsController#newContestStickersPackage', 'new_contest_stickers_package' );
+$router->map( 'POST', '/promotors/[i:promotors_id]/contest/[i:contest_id]/create-stickers-package', 'ContestsController#createContestStickersPackage', 'create_contest_stickers_package' );
 
 
 /* Promotor -> rewards */

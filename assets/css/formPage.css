@@ -412,6 +412,39 @@
     transition: border 0.2s;
   }
 
+  .form-page-form input[type=number]{
+    width: 60px;
+    background-color: white;
+    border: 1px solid #CBD0D4;
+    border-radius: 3px;
+    margin: 2px 0px;
+    padding: 6px 4px;
+    color: #5f5f5f;
+    font-size: 12px;
+    transition: border 0.2s;
+  }
+  .form-page-form input[type=number]:focus{
+    width: 60px;
+    background-color: white;
+    border: 1px solid #2895F1;
+    border-radius: 3px;
+    margin: 2px 0px;
+    padding: 6px 4px;
+    color: #5f5f5f;
+    font-size: 12px;
+  }
+  .form-page-form input[type=number]:disabled{
+    width: 60px;
+    background-color: #DBDFE1;
+    border: 1px solid #CBD0D4;
+    border-radius: 3px;
+    margin: 2px 0px;
+    padding: 6px 4px;
+    color: #5f5f5f;
+    font-size: 12px;
+    transition: border 0.2s;
+  }
+
   .form-page-form input[type=text].integer-input{
     width: 60px;
     background-color: white;
@@ -666,8 +699,8 @@
   .avatar-preview{
     display: none;
     background-color: #E7ECF3;
-    width: 60px;
-    height: 60px;
+    max-width: 60px;
+    max-height: 60px;
     border: 1px solid #788088;
     border-radius: 30px;
     vertical-align: -16px;

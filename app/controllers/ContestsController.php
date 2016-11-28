@@ -71,6 +71,46 @@ class ContestsController extends Controller
 		}		
 	}
 
+	public function newContestStickersPackage()
+	{
+		$contest = $this->contest();
+		$this->auth(__FUNCTION__, $contest);
+		
+		$view = (new View($this->params, ['contest'=>$contest]))->render();
+		return $view;
+	}
+
+	public function createContestStickersPackage()
+	{
+		$contest = $this->contest();
+		$this->auth(__FUNCTION__, $contest);
+
+		$this->params['package']['contest_id'] = $this->params['contest_id'];
+		$package = new ContestStickersPackage($this->params['package']);
+
+		if ($package->save()) {
+			$this->alert('info', 'Zamówienie zostało przekazane do realizacji');
+
+			$admin_order = new AdminOrder(['promotor_id'=>$this->params['promotors_id'],
+										   'package_type' => 'contest',
+										   'package_id'=>$package->id,
+										   'quantity'=>$package->quantity,
+										   'order_date'=>$package->created_at]);
+
+			$admin_order->save();
+
+			(new AdminMailer)->newAdminOrder(Config::get('mailing_address'), $admin_order);
+
+			header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id']."/contests/".$this->params['contest_id']);
+		} else {
+			$this->alert('error', 'Nie udało się zamówić pakietu naklejek, spróbuj ponownie');
+
+			$this->params['action'] = 'newContestStickersPackage';
+			$view = (new View($this->params, ['contest'=>$contest]))->render();
+		return $view;
+		}
+	}
+
 	public function getRandomAnswer()
 	{
 		$answers = ContestAnswer::where('contest_id=?', ['contest_id'=>$this->params['contest_id']], ['order'=>'created_at DESC']);

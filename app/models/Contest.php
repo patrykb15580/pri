@@ -86,4 +86,21 @@ class Contest extends Model
 			$this->update(['status'=>'active']);
 		}
 	}
+
+	public function packages()
+	{
+		return ContestStickersPackage::where('contest_id=?', ['contest_id'=>$this->id]);
+	}
+
+	public function stickersNumber()
+	{
+		$packages = $this->packages();
+
+		$number = 0;
+		foreach ($packages as $package) {
+			$number = $number + $package->quantity;
+		}
+
+		return $number;
+	}
 }

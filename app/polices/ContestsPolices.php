@@ -94,5 +94,33 @@ class ContestsPolices extends Polices
 		}
 	}
 
-	
+	public function newContestStickersPackage()
+	{
+		if ($this->user->isPromotor() && $this->user->id == $this->obj->promotor_id) {
+			return true;
+		}
+
+		if ($this->user->isClient()) {
+			return false;
+		}
+
+		if ($this->user->isAdmin()) {
+			return true;
+		}
+	}
+
+	public function createContestStickersPackage()
+	{
+		if ($this->user->isPromotor() && $this->user->id == $this->obj->promotor_id) {
+			return true;
+		}
+
+		if ($this->user->isClient()) {
+			return false;
+		}
+
+		if ($this->user->isAdmin()) {
+			return true;
+		}
+	}
 }

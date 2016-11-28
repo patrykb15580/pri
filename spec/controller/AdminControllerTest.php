@@ -28,13 +28,13 @@ class AdminControllerTest extends Tests
 		$package = new PromotionCodesPackage(['name'=>'package1', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>4, 'codes_value'=>143, 'status'=>'active']);
 		$package->save();
 
-		$admin_order = new AdminOrder(['promotor_id'=>1, 'package_id'=>1, 'quantity'=>4, 'reusable'=>0, 'order_date'=>$package->created_at]);
+		$admin_order = new AdminOrder(['promotor_id'=>1, 'package_id'=>1, 'quantity'=>4, 'package_type'=>'contest', 'order_date'=>$package->created_at]);
 		$admin_order->save();
 
 		$package = new PromotionCodesPackage(['name'=>'package2', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>4, 'codes_value'=>1324, 'status'=>'active']);
 		$package->save();
 
-		$admin_order = new AdminOrder(['promotor_id'=>1, 'package_id'=>2, 'quantity'=>4, 'reusable'=>0, 'order_date'=>$package->created_at]);
+		$admin_order = new AdminOrder(['promotor_id'=>1, 'package_id'=>2, 'quantity'=>4, 'package_type'=>'action', 'order_date'=>$package->created_at]);
 		$admin_order->save();
 
 		$client = new Client(['email'=>'test1@test.com', 'name'=>'client1', 'phone_number'=>'123456789', 'hash'=>HashGenerator::generate()]);
@@ -230,8 +230,8 @@ class AdminControllerTest extends Tests
 		$params['controller'] = 'AdminController';
     	$params['action'] = 'createPromotor';
     	$params['promotor'] = ['name' => 'Promotor',
-				    	        'email' => 'test@prom.com',
-				    	        'password_degest' => 'pass'];
+				    	       'email' => 'test@prom.com',
+				    	       'password_degest' => 'pass'];
 
     	$params['confirm_password'] = 'pass';
 

@@ -2,6 +2,7 @@
 	$router = Config::get('router');
 	$path_actions = $router->generate('show_promotors', ['promotors_id' => $params['promotors_id']]);
 	$path_update = $router->generate('edit_contests', ['promotors_id' => $params['promotors_id'], 'contest_id' => $params['contest_id']]);
+	$new_package = $router->generate('new_contest_stickers_package', ['promotors_id' => $params['promotors_id'], 'contest_id' => $params['contest_id']]);
 	$prev_page = $router->generate('index_contests', ['promotors_id' => $params['promotors_id']]);
 
 	$from_day = intval(date('d', strtotime($contest->from_at)));
@@ -28,10 +29,12 @@
 	
 	<i class="fa fa-trophy title-box-icon green-icon" aria-hidden="true"></i>
 	<p class="title-box-text"><?= $contest->name ?></p>
+	<a href="<?= $new_package ?>"><button class="title-box-button"><i class="zmdi zmdi-plus"></i> Zamów pakiet naklejek</button></a>
 	<br /><br />
 	<p class="title-box-details">
 		Status: <b><?= Contest::STATUSES[$contest->status] ?></b><br />
 		Czas trwania: <b><?= 'od '.$from_at." do ".$to_at ?></b><br />
+		Ilość zamówionych naklejek: <b><?= $contest->stickersNumber() ?> szt</b><br />
 		Pytanie: <b><?= $contest->question ?></b><br /><br />
 		<?= $contest->description ?><br /><br />
 	</p>
