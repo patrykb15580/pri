@@ -40,14 +40,19 @@ class Promotor extends Model
 		return 'Promotors';
 	}
 
+	public function actions()
+	{
+		return Action::where('promotor_id=?', ['promotor_id'=>$this->id]);
+	}
+
 	public function promotionActions()
 	{
-		return PromotionAction::where('promotors_id=?', ['promotors_id'=>$this->id]);
+		return Action::where('promotor_id=? AND type=?', ['promotor_id'=>$this->id, 'type'=>'PromotionActions']);
 	}
 
 	public function contests()
 	{
-		return Contest::where('promotor_id=?', ['promotor_id'=>$this->id]);
+		return Action::where('promotor_id=? AND type=?', ['promotor_id'=>$this->id, 'type'=>'Contests']);
 	}
 
 	public function rewards()
@@ -210,28 +215,28 @@ class Promotor extends Model
 
 	public function activeActions()
 	{
-		$actions = PromotionAction::where('promotors_id=? AND status=?', ['promotors_id'=>$this->id, 'status'=>'active'], ['order'=>'created_at DESC']);
+		$actions = Action::where('promotor_id=? AND status=? AND type=?', ['promotor_id'=>$this->id, 'status'=>'active', 'type'=>'PromotionActions'], ['order'=>'created_at DESC']);
 
 		return $actions;
 	}
 
 	public function inactiveActions()
 	{
-		$actions = PromotionAction::where('promotors_id=? AND status=?', ['promotors_id'=>$this->id, 'status'=>'inactive'], ['order'=>'created_at DESC']);
+		$actions = Action::where('promotor_id=? AND status=? AND type=?', ['promotor_id'=>$this->id, 'status'=>'inactive', 'type'=>'PromotionActions'], ['order'=>'created_at DESC']);
 
 		return $actions;
 	}
 
 	public function activeContests()
 	{
-		$contest = Contest::where('promotor_id=? AND status=?', ['promotor_id'=>$this->id, 'status'=>'active'], ['order'=>'created_at DESC']);
+		$contest = Action::where('promotor_id=? AND status=? AND type=?', ['promotor_id'=>$this->id, 'status'=>'active', 'type'=>'Contests'], ['order'=>'created_at DESC']);
 
 		return $contest;
 	}
 
 	public function inactiveContests()
 	{
-		$contest = Contest::where('promotor_id=? AND status=?', ['promotor_id'=>$this->id, 'status'=>'inactive'], ['order'=>'created_at DESC']);
+		$contest = Action::where('promotor_id=? AND status=? AND type=?', ['promotor_id'=>$this->id, 'status'=>'inactive', 'type'=>'Contests'], ['order'=>'created_at DESC']);
 
 		return $contest;
 	}

@@ -1,5 +1,6 @@
 <?php
 	$router = Config::get('router');
+
 	if ($params['action'] == 'edit') {
 		$path = $router->generate('update_promotion_codes_packages', ['promotors_id' => $params['promotors_id'], 'action_id' => $params['action_id'], 'id'=>$params['id']]);
 		$prev_page = $router->generate('show_promotion_codes_packages', ['promotors_id' => $params['promotors_id'], 'action_id' => $params['action_id'], 'id' => $params['id']]);
@@ -11,8 +12,6 @@
 	#die(print_r($params));
 ?>
 <form class="form-page-form" method="POST" action="<?= $path ?>">
-	Nazwa<br />
-	<input type="text" name='promotion_codes_package[name]' value="<?= $package->name ?>" required="required"><br /><br />
 	Liczba kodów<br />
 	<input class="integer-input" type="text" name='promotion_codes_package[quantity]' value="<?= $package->quantity ?>" <?php if ($params['action'] == 'edit') { echo "disabled"; } ?> required="required"> szt.<br /><br />
 	
@@ -21,7 +20,7 @@
 
 	Status<br />
 	<select name="promotion_codes_package[status]">
-		<?php foreach (PromotionCodesPackage::STATUSES as $lang_en => $lang_translated) { ?>
+		<?php foreach (CodesPackage::STATUSES as $lang_en => $lang_translated) { ?>
 			<option value="<?= $lang_en ?>" <?php if ($package->status == $lang_en){echo ' selected="selected"';}?>><?= $lang_translated ?></option>
 		<?php } ?>
 	</select><br /><br />

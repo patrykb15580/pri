@@ -4,7 +4,7 @@
 */
 class Contest extends Model
 {
-	public $id, $name, $question, $from_at, $to_at, $promotor_id, $created_at, $updated_at, $status, $type, $description;	
+	public $id, $question, $from_at, $to_at, $action_id, $created_at, $updated_at;	
 
 	const STATUSES = 	['active' => 'Aktywny',
 						 'inactive' => 'Nieaktywny'];
@@ -18,9 +18,6 @@ class Contest extends Model
 		return [
 			'id'					=>['type' => 'integer',
 									   'default' => null],
-			'name'					=>['type' => 'string',
-									   'default' => null,
-									   'validations' => ['required', 'max_length:190']],
 			'question'				=>['type' => 'string',
 									   'default' => null,
 									   'validations' => ['required']],
@@ -30,19 +27,12 @@ class Contest extends Model
 			'to_at'					=>['type' => 'datetime',
 									   'default' => null,
 									   'validations' => ['required']],
-			'promotor_id'			=>['type' => 'integer',
+			'action_id'				=>['type' => 'integer',
 									   'default' => null,
 									   'validations' => ['required']],
 			'created_at'			=>['type' => 'datetime',
 									   'default' => null],
 			'updated_at'			=>['type' => 'datetime',
-									   'default' => null],
-			'status'				=>['type' => 'string',
-									   'default' => 'active',
-									   'validations' => ['required']],
-			'type'					=>['type' => 'boolean',
-									   'default' => 0],
-			'description'			=>['type' => 'string',
 									   'default' => null],
 		];
 	}

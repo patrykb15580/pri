@@ -32,10 +32,10 @@ Ilość użytych kodów: <?= count($promotor->recentlyUsedCodes()) ?><br /><br /
 					<?= $code->used ?>
 				</td>
 				<td>
-					<?= $code->promotionAction()->name ?>
+					<?= $code->action()->name ?>
 				</td>
 				<td>
-					<?= $code->package()->name ?>
+					Pakiet #<?= $code->package()->id ?>
 				</td>
 			</tr>
 		<?php }

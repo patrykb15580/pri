@@ -89,6 +89,7 @@ $router->map( 'POST', '/promotors/[i:promotors_id]/promotion-actions/[i:action_i
 
 /* Server operations */
 $router->map( 'GET', '/package/generate', 'PromotionCodesPackagesController#generate', 'generate_promotion_codes_packages' );
+$router->map( 'GET', '/stickers-package/generate', 'ContestsController#generate', 'generate_stickers_packages_codes' );
 $router->map( 'GET', '/promotion-actions-check', 'PromotionActionsController#checkIfActionsActive', 'check_if_actions_active' );
 
 
@@ -103,8 +104,8 @@ $router->map( 'GET', '/sign-out', 'SessionController#delete', 'sign_out' );
 
 /* Static pages */
 $router->map( 'GET', '/', 'StaticPagesController#startPage', 'start_page' );
-$router->map( 'GET', '/contest/[i:id]', 'StaticPagesController#contest', 'contest_answer' );
-$router->map( 'POST', '/contest/[i:id]/answer', 'StaticPagesController#contestAnswer', 'give_answer' );
+$router->map( 'GET', '/contest/[a:code]', 'StaticPagesController#contest', 'contest_answer' );
+$router->map( 'POST', '/contest/[i:id]/[a:code]/answer', 'StaticPagesController#contestAnswer', 'give_answer' );
 $router->map( 'GET', '/login', 'StaticPagesController#login', 'login' );
 $router->map( 'GET', '/promotor-login', 'StaticPagesController#promotorLogin', 'promotor_login' );
 $router->map( 'POST', '/insert-code', 'StaticPagesController#insertCode', 'insert_code' );

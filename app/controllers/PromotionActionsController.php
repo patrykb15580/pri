@@ -6,25 +6,30 @@ class PromotionActionsController extends Controller
 {
 	public function show()
 	{	
-		$promotion_action = $this->promotionAction();
-		$this->auth(__FUNCTION__, $promotion_action);
+		$action = $this->action();
+		$this->auth(__FUNCTION__, $action);
 
-		$view = (new View($this->params, ['promotion_action'=>$promotion_action]))->render();
+		$view = (new View($this->params, ['action'=>$action]))->render();
 		return $view;
 		
 	}
 	public function new()
 	{
 		$this->auth(__FUNCTION__, Promotor::find($this->params['promotors_id']));
-		$promotion_action = new PromotionAction;
+		$action = new Action;
 		
-		$view = (new View($this->params, ['promotion_action'=>$promotion_action]))->render();
+		$view = (new View($this->params, ['action'=>$action]))->render();
 		return $view;
 	}
 	public function create()
 	{
 		$this->auth(__FUNCTION__, Promotor::find($this->params['promotors_id']));
-		$this->params['promotion_action']['promotors_id'] = $this->params['promotors_id'];
+		$this->params['action']['promotor_id'] = $this->params['promotors_id'];
+		$this->params['action']['type'] = 'PromotionActions';
+
+		$router = Config::get('router');
+
+		$action = new Action($this->params['action']);
 		$promotion_action = new PromotionAction($this->params['promotion_action']);
 		
 		if ($promotion_action->indefinitely == 1) {
@@ -32,17 +37,21 @@ class PromotionActionsController extends Controller
 			$promotion_action->to_at = NULL;
 		}
 
-		if (!$this->checkDuration($promotion_action)) {
-			$this->alert('error', 'Wypełnij wymagane pola');
+		if ($action->save()) {
+			$promotion_action->action_id = $action->id;
 
-			$this->params['action'] = 'new';
-			$view = (new View($this->params, ['promotion_action'=>$promotion_action]))->render();
-			return $view;
-		}
+			if ($promotion_action->save()) {
+				$this->alert('info', 'Utworzono akcje '.$action->name);
 
-		if ($promotion_action->save()) {
-			$this->alert('info', 'Utworzono akcje '.$promotion_action->name);
-			header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id']);
+				$path = $router->generate('show_promotion_actions', ['promotors_id'=>$this->params['promotors_id'], 'id'=>$action->id]);
+				header("Location: ".$path);
+			} else {
+				$this->alert('error', 'Nie udało się dodać akcji<br />Spróbuj pomownie');
+
+				$this->params['action'] = 'new';
+				$view = (new View($this->params, ['promotion_action'=>$promotion_action]))->render();
+				return $view;
+			}			
 		} else {
 			$this->alert('error', 'Nie udało się dodać akcji<br />Spróbuj pomownie');
 
@@ -53,33 +62,33 @@ class PromotionActionsController extends Controller
 	}
 	public function edit()
 	{
-		$promotion_action = $this->promotionAction();
-		$this->auth(__FUNCTION__, $promotion_action);
+		$action = $this->action();
+		$this->auth(__FUNCTION__, $action);
 		
-		$view = (new View($this->params, ['promotion_action'=>$promotion_action]))->render();
+		$view = (new View($this->params, ['action'=>$action]))->render();
 		return $view;
 	}
 	public function update()
 	{
-		$promotion_action = $this->promotionAction();
-		$this->auth(__FUNCTION__, $promotion_action);
+		$action = $this->action();
+		$this->auth(__FUNCTION__, $action);
 		
-		if (!$this->checkDuration(new PromotionAction($this->params['promotion_action']))) {
-			$this->params['action'] = 'edit';
-			
-			$this->alert('error', 'Wypełnij wymagane pola');
-			$view = (new View($this->params, ['promotion_action'=>$promotion_action]))->render();
-			return $view;
+		$router = Config::get('router');
 
-		}
+		$promotion_action = $action->promotionAction();
+		
 		if ($this->params['promotion_action']['indefinitely'] == '1') {
 			
 			unset($this->params['promotion_action']['from_at']);
 			unset($this->params['promotion_action']['to_at']);
 		}
 
-		if ($promotion_action->update($this->params['promotion_action'])) {
-			header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id']."/promotion-actions/".$this->params['id']); 
+		if ($action->update($this->params['action'])) {
+			
+			$promotion_action->update($this->params['promotion_action']);
+
+			$path = $router->generate('show_promotion_actions', ['promotors_id'=>$this->params['promotors_id'], 'id'=>$action->id]);
+			header("Location: ".$path);
 		} else {
 			$this->params['action'] = 'edit';
 
@@ -100,9 +109,9 @@ class PromotionActionsController extends Controller
 		}
 	}
 
-	public function promotionAction()
+	public function action()
 	{
-		return PromotionAction::find($this->params['id']);
+		return Action::find($this->params['id']);
 	}
 
 	public function checkIfActionsActive()

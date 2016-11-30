@@ -16,11 +16,11 @@
 	<a href="<?= $prev_page ?>"><button class="prev-page-button"><i class="fa fa-chevron-left" aria-hidden="true"></i> Wstecz</button></a>
 
 	<i class="fa fa-product-hunt title-box-icon green-icon" aria-hidden="true"></i>
-	<p class="title-box-text"><?= $package->name ?></p>
+	<p class="title-box-text">Pakiet #<?= $package->id ?></p>
 	<br />
 	<br />
 	<p class="title-box-details">
-		Status: <b><?= PromotionCodesPackage::STATUSES[$package->status] ?></b><br />
+		Status: <b><?= CodesPackage::STATUSES[$package->status] ?></b><br />
 		Liczba kodów: <b><?= $package->generated ?></b><br />
 		Wartość kodów: <b><?= $package->codes_value ?> pkt</b>
 		<?php

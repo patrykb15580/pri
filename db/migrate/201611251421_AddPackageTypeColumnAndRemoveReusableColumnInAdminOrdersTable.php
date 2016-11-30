@@ -7,7 +7,7 @@ class AddPackageTypeColumnAndRemoveReusableColumnInAdminOrdersTable
 	
 	public function up(){
 		$query = 'ALTER TABLE `admin_orders`
-		ADD `package_type` varchar(190) NOT NULL,
+		ADD `package_type` varchar(191) NOT NULL,
 		DROP COLUMN `reusable`';
 
 		return $query;

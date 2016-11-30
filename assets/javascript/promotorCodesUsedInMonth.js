@@ -4,6 +4,7 @@ $( document ).ready(function(){
   var codes_in_month_rows;
   var promotor_id = $("#codes_in_month_chart").data("promotorid");
 
+  $( ".tab2" ).click(drawClientsInMonthChartData);
   $( ".l2-tab-1" ).click(drawClientsInMonthChartData);
   $( ".codes-stats-tab" ).click(drawClientsInMonthChartData);
   $( ".codes_month" ).change(drawClientsInMonthChartData);

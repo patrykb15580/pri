@@ -2,9 +2,9 @@
 /**
 * 
 */
-class PromotionCodesPackage extends Model
+class CodesPackage extends Model
 {
-	public $id, $name, $created_at, $updated_at, $action_id, $reusable, $quantity, $generated, $codes_value, $status, $description;
+	public $id, $created_at, $updated_at, $action_id, $quantity, $generated, $codes_value, $status, $description;
 
 	const STATUSES = 	['active' => 'Aktywne',
 						 'inactive' => 'Nieaktywne'];
@@ -20,9 +20,6 @@ class PromotionCodesPackage extends Model
 		return [
 			'id'					=>['type' => 'integer',
 									   'default' => null],
-			'name'					=>['type' => 'string',
-									   'default' => null,
-									   'validations' => ['required', 'max_length:190']],
 			'created_at'			=>['type' => 'datetime',
 									   'default' => null],
 			'updated_at'			=>['type' => 'datetime',
@@ -30,8 +27,6 @@ class PromotionCodesPackage extends Model
 			'action_id'				=>['type' => 'integer',
 									   'default' => null,
 									   'validations' => ['required']],
-			'reusable'				=>['type' => 'boolean',
-									   'default' => 0],
 			'quantity'				=>['type' => 'integer',
 									   'default' => null,
 									   'validations' => ['required', 'max_length:11']],
@@ -49,25 +44,25 @@ class PromotionCodesPackage extends Model
 
 	public static function pluralizeClassName()
 	{
-		return 'PromotionCodesPackages';
+		return 'CodesPackages';
 	}
 
-	public function promotionAction()
+	public function action()
 	{
-		return PromotionAction::find($this->action_id);
+		return Action::find($this->action_id);
 	}
 
 	public function promotionCodes()
 	{
-		return PromotionCode::where('package_id=?', ['package_id'=>$this->id]);
+		return Code::where('package_id=?', ['package_id'=>$this->id]);
 	}
 	public function usedPromotionCodes()
 	{
-		return PromotionCode::where('package_id=? AND client_id IS NOT NULL', ['package_id'=>$this->id], ['order'=>'used DESC']);
+		return Code::where('package_id=? AND client_id IS NOT NULL', ['package_id'=>$this->id], ['order'=>'used DESC']);
 	}
 	public function nonUsedPromotionCodes()
 	{
-		return PromotionCode::where('package_id=? AND client_id IS NULL', ['package_id'=>$this->id]);
+		return Code::where('package_id=? AND client_id IS NULL', ['package_id'=>$this->id]);
 	}
 
 	public function packageValue()
@@ -76,22 +71,21 @@ class PromotionCodesPackage extends Model
 	}
 
 	public function usedCodesNumber(){
-		$codes = PromotionCode::where('package_id=? AND used IS NOT NULL', ['package_id'=>$this->id]);
-		$codes_number = count($codes);
+		$codes = Code::where('package_id=? AND used IS NOT NULL', ['package_id'=>$this->id]);
 
-		return $codes_number;
+		return count($codes);
 	}
 
 	public function usedCodes()
 	{	
 		$date = date(Config::get('mysqltime'), strtotime("-1 week"));
-		return PromotionCode::where('package_id=? AND `used` >= "'.$date.'"', ['package_id'=>$this->id], ['order'=>'used DESC']);
+		return Code::where('package_id=? AND `used` >= "'.$date.'"', ['package_id'=>$this->id], ['order'=>'used DESC']);
 	}
 
 	public function usedCodesInMonth($date)
 	{	
 		$month = date("m", strtotime($date));
-		$codes = PromotionCode::where('package_id=? AND MONTH(`used`)=?', ['package_id'=>$this->id, 'used'=>$month], ['order'=>'used DESC']);
+		$codes = Code::where('package_id=? AND MONTH(`used`)=?', ['package_id'=>$this->id, 'used'=>$month], ['order'=>'used DESC']);
 
 		$codes_arr = [];
 		foreach ($codes as $code) {
@@ -108,13 +102,13 @@ class PromotionCodesPackage extends Model
 	public function usedCodesFromTo($from, $to)
 	{	
 		if (empty($from)) {
-			$codes = PromotionCode::where('package_id=? AND `used` <= "'.$to.' 23:59:59"', ['package_id'=>$this->id], ['order'=>'used DESC']);
+			$codes = Code::where('package_id=? AND `used` <= "'.$to.' 23:59:59"', ['package_id'=>$this->id], ['order'=>'used DESC']);
 		} else if (empty($to)) {
-			$codes = PromotionCode::where('package_id=? AND `used` >= "'.$from.' 00:00:00"', ['package_id'=>$this->id], ['order'=>'used DESC']);
+			$codes = Code::where('package_id=? AND `used` >= "'.$from.' 00:00:00"', ['package_id'=>$this->id], ['order'=>'used DESC']);
 		} else if (empty($from) && empty($to)) {
-			$codes = PromotionCode::where('package_id=? AND `used` IS NOT NULL', ['package_id'=>$this->id], ['order'=>'used DESC']);
+			$codes = Code::where('package_id=? AND `used` IS NOT NULL', ['package_id'=>$this->id], ['order'=>'used DESC']);
 		} else {
-			$codes = PromotionCode::where('package_id=? AND `used` >= "'.$from.' 00:00:00" AND `used` <= "'.$to.' 23:59:59"', ['package_id'=>$this->id], ['order'=>'used DESC']);
+			$codes = Code::where('package_id=? AND `used` >= "'.$from.' 00:00:00" AND `used` <= "'.$to.' 23:59:59"', ['package_id'=>$this->id], ['order'=>'used DESC']);
 		}
 
 		return $codes;
@@ -122,12 +116,12 @@ class PromotionCodesPackage extends Model
 
 	public function usedCodesInDay($date)
 	{	
-		return PromotionCode::where('package_id=? AND `used` >= "'.$date.' 00:00:00" AND `used` <= "'.$date.' 23:59:59"', ['package_id'=>$this->id], ['order'=>'used DESC']);
+		return Code::where('package_id=? AND `used` >= "'.$date.' 00:00:00" AND `used` <= "'.$date.' 23:59:59"', ['package_id'=>$this->id], ['order'=>'used DESC']);
 	}
 
 	public function promotor()
 	{
-		$action = PromotionAction::find($this->action_id);
-		return Promotor::find($action->promotors_id);
+		$action = Action::find($this->action_id);
+		return Promotor::find($action->promotor_id);
 	}
 }

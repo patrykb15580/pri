@@ -1,5 +1,5 @@
 <?php
-	$action = PromotionAction::find($params['action_id']);
+	$action = Action::find($params['action_id']);
 ?>
 <div class="form-page-container">
 	<p class="form-page-icon green-icon"><i class="fa fa-product-hunt" aria-hidden="true"></i></p><p class="form-page-title">Nowy pakiet kodów</p>

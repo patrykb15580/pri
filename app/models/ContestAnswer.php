@@ -4,7 +4,7 @@
 */
 class ContestAnswer extends Model
 {
-	public $id, $contest_id, $client_id, $answer, $created_at, $updated_at;	
+	public $id, $action_id, $client_id, $answer, $created_at, $updated_at;	
 
 
 	function __construct($attributes = [])
@@ -16,7 +16,7 @@ class ContestAnswer extends Model
 		return [
 			'id'					=>['type' => 'integer',
 									   'default' => null],
-			'contest_id'			=>['type' => 'integer',
+			'action_id'			=>['type' => 'integer',
 									   'default' => null,
 									   'validations' => ['required']],
 			'client_id'				=>['type' => 'integer',
@@ -37,9 +37,9 @@ class ContestAnswer extends Model
 		return 'ContestsAnswers';
 	}
 
-	public function contest()
+	public function action()
 	{
-		return Contest::find($this->contest_id);
+		return Action::find($this->action_id);
 	}
 
 	public function client()

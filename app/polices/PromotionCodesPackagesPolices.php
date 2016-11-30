@@ -7,8 +7,8 @@ class PromotionCodesPackagesPolices extends Polices
 
 	public function show()
 	{
-		$promotion_action = $this->obj->promotionAction();
-		$promotor = $promotion_action->promotor();
+		$package = $this->obj;
+		$promotor = $package->promotor();
 
 		if ($this->user->isPromotor() && $this->user->id == $promotor->id) {
 			return true;
@@ -55,8 +55,8 @@ class PromotionCodesPackagesPolices extends Polices
 
 	public function edit()
 	{
-		$promotion_action = $this->obj->promotionAction();
-		$promotor = $promotion_action->promotor();
+		$package = $this->obj;
+		$promotor = $package->promotor();
 
 		if ($this->user->isPromotor() && $this->user->id == $promotor->id) {
 			return true;
@@ -73,8 +73,8 @@ class PromotionCodesPackagesPolices extends Polices
 
 	public function update()
 	{
-		$promotion_action = $this->obj->promotionAction();
-		$promotor = $promotion_action->promotor();
+		$package = $this->obj;
+		$promotor = $package->promotor();
 
 		if ($this->user->isPromotor() && $this->user->id == $promotor->id) {
 			return true;

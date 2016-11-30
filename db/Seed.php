@@ -15,41 +15,82 @@
 
 		print_r(CLIUntils::colorize("Promotors: OK\n", 'SUCCESS'));
 
+		$action = new Action(['name'=>'Action 1', 'description'=>'Description for action 1', 'promotor_id'=>1, 'status'=>'active', 'type'=>'PromotionActions']);
+		$action->save();
 
-		$promotion_action = new PromotionAction(['name'=>'action1', 'promotors_id'=>'1', 'status'=>'active', 'indefinitely'=>1, 'description'=>'desc']);
+		$promotion_action = new PromotionAction(['action_id'=>'1', 'indefinitely'=>1]);
 		$promotion_action->save();
 
-		$promotion_action = new PromotionAction(['name'=>'action2', 'promotors_id'=>'1', 'status'=>'inactive', 'indefinitely'=>0, 'from_at'=>date("Y-m-d", strtotime("-1 week")), 'to_at'=>date("Y-m-d", strtotime("+1 week")), 'description'=>'desc']);
+
+		$action = new Action(['name'=>'Action 2', 'description'=>'Description for action 2', 'promotor_id'=>2, 'status'=>'active', 'type'=>'PromotionActions']);
+		$action->save();
+
+		$promotion_action = new PromotionAction(['action_id'=>'2', 'indefinitely'=>0, 'from_at'=>date("Y-m-d", strtotime("-1 week")), 'to_at'=>date("Y-m-d", strtotime("+1 week"))]);
 		$promotion_action->save();
 
-		$promotion_action = new PromotionAction(['name'=>'action3', 'promotors_id'=>'3', 'status'=>'inactive', 'indefinitely'=>0, 'from_at'=>date("Y-m-d", strtotime("+1 day")), 'to_at'=>date("Y-m-d", strtotime("+1 week")), 'description'=>'desc']);
+
+		$action = new Action(['name'=>'Action 3', 'description'=>'Description for action 3', 'promotor_id'=>1, 'status'=>'inactive', 'type'=>'PromotionActions']);
+		$action->save();
+
+		$promotion_action = new PromotionAction(['action_id'=>'3', 'indefinitely'=>0, 'from_at'=>date("Y-m-d", strtotime("+1 day")), 'to_at'=>date("Y-m-d", strtotime("+1 week"))]);
 		$promotion_action->save();
 
-		$promotion_action = new PromotionAction(['name'=>'action4', 'promotors_id'=>'2', 'status'=>'active', 'indefinitely'=>0, 'from_at'=>date("Y-m-d", strtotime("-1 day")), 'to_at'=>date("Y-m-d", strtotime("+2 week")), 'description'=>'desc']);
+
+		$action = new Action(['name'=>'Action 4', 'description'=>'Description for action 4', 'promotor_id'=>4, 'status'=>'active', 'type'=>'PromotionActions']);
+		$action->save();
+
+		$promotion_action = new PromotionAction(['action_id'=>'4', 'indefinitely'=>0, 'from_at'=>date("Y-m-d", strtotime("-1 day")), 'to_at'=>date("Y-m-d", strtotime("+2 week"))]);
 		$promotion_action->save();
 
-		$promotion_action = new PromotionAction(['name'=>'action5', 'promotors_id'=>'1', 'status'=>'active', 'indefinitely'=>1, 'description'=>'desc']);
+
+		$action = new Action(['name'=>'Action 5', 'description'=>'Description for action 5', 'promotor_id'=>1, 'status'=>'inactive', 'type'=>'PromotionActions']);
+		$action->save();
+
+		$promotion_action = new PromotionAction(['action_id'=>'5', 'indefinitely'=>1]);
 		$promotion_action->save();
 
-		$promotion_action = new PromotionAction(['name'=>'action6', 'promotors_id'=>'4', 'status'=>'inactive', 'indefinitely'=>0, 'from_at'=>date("Y-m-d", strtotime("-2 week")), 'to_at'=>date("Y-m-d", strtotime("-1 week")), 'description'=>'desc']);
+
+		$action = new Action(['name'=>'Action 6', 'description'=>'Description for action 6', 'promotor_id'=>3, 'status'=>'active', 'type'=>'PromotionActions']);
+		$action->save();
+
+		$promotion_action = new PromotionAction(['action_id'=>'6', 'indefinitely'=>0, 'from_at'=>date("Y-m-d", strtotime("-2 week")), 'to_at'=>date("Y-m-d", strtotime("-1 week"))]);
 		$promotion_action->save();
 
-		$promotion_action = new PromotionAction(['name'=>'action7', 'promotors_id'=>'1', 'status'=>'active', 'indefinitely'=>1, 'description'=>'desc']);
+
+		$action = new Action(['name'=>'Action 7', 'description'=>'Description for action 7', 'promotor_id'=>3, 'status'=>'active', 'type'=>'PromotionActions']);
+		$action->save();
+
+		$promotion_action = new PromotionAction(['action_id'=>'7', 'indefinitely'=>1]);
 		$promotion_action->save();
 
-		$promotion_action = new PromotionAction(['name'=>'action8', 'promotors_id'=>'4', 'status'=>'inactive', 'indefinitely'=>1, 'description'=>'desc']);
+
+		$action = new Action(['name'=>'Action 8', 'description'=>'Description for action 8', 'promotor_id'=>2, 'status'=>'inactive', 'type'=>'PromotionActions']);
+		$action->save();
+
+		$promotion_action = new PromotionAction(['action_id'=>'8', 'indefinitely'=>1]);
 		$promotion_action->save();
 
-		$promotion_action = new PromotionAction(['name'=>'action9', 'promotors_id'=>'3', 'status'=>'active', 'indefinitely'=>1, 'description'=>'desc']);
+
+		$action = new Action(['name'=>'Action 9', 'description'=>'Description for action 9', 'promotor_id'=>4, 'status'=>'inactive', 'type'=>'PromotionActions']);
+		$action->save();
+
+		$promotion_action = new PromotionAction(['action_id'=>'9', 'indefinitely'=>1]);
 		$promotion_action->save();
 
-		$promotion_action = new PromotionAction(['name'=>'action10', 'promotors_id'=>'1', 'status'=>'inactive', 'indefinitely'=>0, 'from_at'=>date("Y-m-d", strtotime("-2 week")), 'to_at'=>date("Y-m-d", strtotime("+5 days")), 'description'=>'desc']);
+
+		$action = new Action(['name'=>'Action 10', 'description'=>'Description for action 10', 'promotor_id'=>1, 'status'=>'active', 'type'=>'PromotionActions']);
+		$action->save();
+
+		$promotion_action = new PromotionAction(['action_id'=>'10', 'indefinitely'=>0, 'from_at'=>date("Y-m-d", strtotime("-2 week")), 'to_at'=>date("Y-m-d", strtotime("+5 days"))]);
 		$promotion_action->save();
 
 		print_r(CLIUntils::colorize("Promotion actions: OK\n", 'SUCCESS'));
 
 
-		$contest = new Contest(['name'=>'contest1', 'question'=>'Is this question?', 'from_at'=>date("Y-m-d", strtotime("-3 days")), 'to_at'=>date("Y-m-d", strtotime("+4 days")), 'promotor_id'=>'1', 'status'=>'active', 'type'=>0]);
+		$action = new Action(['name'=>'Contest 1', 'description'=>'Description for contest 1', 'promotor_id'=>1, 'status'=>'active', 'type'=>'Contests']);
+		$action->save();
+
+		$contest = new Contest(['question'=>'Question?', 'from_at'=>date("Y-m-d", strtotime("-3 days")), 'to_at'=>date("Y-m-d", strtotime("+4 days")), 'action_id'=>'11']);
 		$contest->save();
 
 		print_r(CLIUntils::colorize("Contests: OK\n", 'SUCCESS'));
@@ -78,7 +119,10 @@
 		*/
 
 
-		$package = new PromotionCodesPackage(['name'=>'package1', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>10, 'codes_value'=>2000, 'status'=>'active', 'description'=>'desc']);
+		$package = new CodesPackage(['action_id'=>'1', 'quantity'=>20, 'codes_value'=>2000, 'status'=>'active', 'description'=>'Codes package for action 1']);
+		$package->save();
+
+		$package = new CodesPackage(['action_id'=>'2', 'quantity'=>30, 'codes_value'=>1000, 'status'=>'active', 'description'=>'Codes package for action 2']);
 		$package->save();
 
 		print_r(CLIUntils::colorize("Promotion codes packages: OK\n", 'SUCCESS'));

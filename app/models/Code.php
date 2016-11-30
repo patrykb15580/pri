@@ -2,7 +2,7 @@
 /**
 * 
 */
-class PromotionCode extends Model
+class Code extends Model
 {
 	public $id, $code, $created_at, $updated_at, $package_id, $used, $client_id;
 
@@ -36,17 +36,17 @@ class PromotionCode extends Model
 	}
 	public static function pluralizeClassName()
 	{
-		return 'PromotionCodes';
+		return 'Codes';
 	}
 	public function package()
 	{
-		return PromotionCodesPackage::find($this->package_id);
+		return CodesPackage::find($this->package_id);
 	}
-	public function promotionAction()
+	public function action()
 	{
-		$package = $this->package();
+		$package = CodesPackage::find($this->package_id);
 
-		return $package->promotionAction();
+		return $package->action();
 	}
 	public function client()
 	{
@@ -54,7 +54,7 @@ class PromotionCode extends Model
 	}
 	public function codeValue()
 	{
-		$package = PromotionCodesPackage::find($this->package_id);
+		$package = CodesPackage::find($this->package_id);
 		return $package->codes_value;
 	}
 	public function isUsed()
@@ -64,9 +64,9 @@ class PromotionCode extends Model
 	public function isActive()
 	{
 		$package = $this->package();
-		$promotion_action = $package->promotionAction();
+		$action = $package->Action();
 		
-		if ($package->status == 'active' && $promotion_action->isActive()) {
+		if ($package->status == 'active' && $action->isActive() && $this->used == null) {
 			return true;
 		} else {
 			return false;

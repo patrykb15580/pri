@@ -4,8 +4,11 @@
 		<td class="first-row" width="30%">Czas trwania</td>
 		<td class="first-row text_align_right" width="15%">Liczba odpowiedzi</td>
 	</tr>
-<?php foreach ($contests as $contest) {
-	$path_show = $router->generate('show_contests', ['promotors_id' => $params['promotors_id'], 'contest_id' => $contest->id]);
+<?php foreach ($actions as $action) {
+
+	$contest = $action->contest();
+
+	$path_show = $router->generate('show_contests', ['promotors_id' => $params['promotors_id'], 'contest_id' => $contest->action_id]);
 
 	$from_day = intval(date('d', strtotime($contest->from_at)));
 	$from_month = PolishMonthName::NAMES_VARIETLY[date('m', strtotime($contest->from_at))];
@@ -19,9 +22,9 @@
 	
 	$to_at = $to_day." ".$to_month." ".$to_year;?>
 	<tr class="result">
-		<td width="55%"><a href="<?= $path_show ?>"><b><?= $contest->name ?></b></a></td>
+		<td width="55%"><a href="<?= $path_show ?>"><b><?= $action->name ?></b></a></td>
 		<td width="30%"><?= $from_at." - ".$to_at ?></td>
-		<td class="text_align_right" width="15%"><b><?= count($contest->answers()) ?></td>
+		<td class="text_align_right" width="15%"><b><?= count($action->answers()) ?></b></td>
 	</tr>
 <?php } ?>	
 </table>

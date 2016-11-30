@@ -1,6 +1,7 @@
 <?php
-	$contest_answer_path = $router->generate('give_answer', ['id'=>$contest->id]);
-	$promotor = $contest->promotor();
+	$contest = $action->contest();
+	$contest_answer_path = $router->generate('give_answer', ['id'=>$action->id, 'code'=>$params['code']]);
+	$promotor = $action->promotor();
 	$avatar = $promotor->avatar();
 ?>
 <div class="answer-box">
@@ -12,7 +13,7 @@
 		<?php } ?>
 		<div class="answer-form-title">
 			<p><?= $promotor->name ?></p>
-			<?= $contest->name ?>
+			<?= $action->name ?>
 		</div>
 		<br /><br />
 		Pytanie konkursowe:<br />

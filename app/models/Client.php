@@ -44,7 +44,7 @@ class Client extends Model
 
 	public function promotionCodes()
 	{
-		return PromotionCode::where('client_id=?', ['client_id'=>$this->id], ['order'=>'updated_at DESC']);
+		return Code::where('client_id=?', ['client_id'=>$this->id], ['order'=>'updated_at DESC']);
 	}
 
 	public function packages()
@@ -63,7 +63,7 @@ class Client extends Model
 		
 		foreach ($this->packages() as $package) {
 
-			$codes_number = count(PromotionCode::where('package_id=? AND client_id=?', ['package_id'=>$package->id, 'client_id'=>$this->id]));
+			$codes_number = count(Code::where('package_id=? AND client_id=?', ['package_id'=>$package->id, 'client_id'=>$this->id]));
 			$package_value = $codes_number*$package->codes_value;
 
 			$packages_values[$package->id] = $package_value;
@@ -77,8 +77,10 @@ class Client extends Model
 		$promotion_actions = [];
 
 		foreach ($this->packages() as $package) {
-			$promotion_action = $package->promotionAction();
-			$promotion_actions[$package->action_id] = $promotion_action;
+			$action = $package->action();
+			if ($action->type == 'PromotionActions') {
+				$promotion_actions[$package->action_id] = $action;
+			}
 		}
 
 		return $promotion_actions;
@@ -106,7 +108,7 @@ class Client extends Model
 		$promotors = [];
 		foreach ($this->promotionActions() as $promotion_action) {
 			$promotor = $promotion_action->promotor();
-			$promotors[$promotion_action->promotors_id] = $promotor;
+			$promotors[$promotion_action->promotor_id] = $promotor;
 		}
 		foreach ($this->contests() as $contest) {
 			$promotor = $contest->promotor();
@@ -129,16 +131,18 @@ class Client extends Model
 
 		$contests = [];
 		foreach ($answers as $answer) {
-			$contest = Contest::find($answer->contest_id);
-			array_push($contests, $contest);
+			$action = Action::find($answer->action_id);
+			if ($action->type == 'Contests') {
+				array_push($contests, $action);
+			}
 		}
 
 		return $contests;
 	}
 
-	public function contestAnswer($contest_id)
+	public function contestAnswer($action_id)
 	{
-		$answer = ContestAnswer::where('contest_id=? AND client_id=?', ['contest_id'=>$contest_id, 'client_id'=>$this->id]);
+		$answer = ContestAnswer::where('action_id=? AND client_id=?', ['action_id'=>$action_id, 'client_id'=>$this->id]);
 		return $answer[0];
 	}
 

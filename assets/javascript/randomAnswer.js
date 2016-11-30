@@ -1,11 +1,11 @@
 $(document).ready(function(){
 	$('.modal-bg').hide()
 	$('.get-random-answer').click(function(){
-		contest_id = $('.get-random-answer').data('contestid');
+		action_id = $('.get-random-answer').data('actionid');
 		$.ajax({
 		    url: "/get-random-answer",
 		    type: 'POST',
-		    data: { "contest_id": contest_id },
+		    data: { "action_id": action_id },
 		    success: function(data){
 		      $('.random-answer').html(data);
 		    },

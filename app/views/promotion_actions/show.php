@@ -4,27 +4,31 @@
 	$path_new = $router->generate('new_promotion_codes_packages', ['promotors_id' => $params['promotors_id'], 'action_id' => $params['id']]);
 	$path_update = $router->generate('edit_promotion_actions', ['promotors_id' => $params['promotors_id'], 'id' => $params['id']]);
 	$prev_page = $router->generate('show_promotors', ['promotors_id' => $params['promotors_id']]);
-	
-	$items_number = count($promotion_action->promotionCodesPackages());
+
+	$promotion_action = $action->promotionAction();
+
+	$items_number = count($action->promotionCodesPackages());
 ?>	
+<!--
 <div id="notice">
 	<p id="notice-text"><i class="fa fa-info-circle" aria-hidden="true"></i> W tym panelu możesz ...</p>
 	<button type="button" class="close-notice" data-dismiss="alert" aria-hidden="true">
 		<i class="fa fa-times" aria-hidden="true"></i>
 	</button>
 </div>
+-->
 
 <div id="title-box">
 	<a href="<?= $prev_page ?>"><button class="prev-page-button"><i class="fa fa-chevron-left" aria-hidden="true"></i> Wstecz</button></a>
 	
 	<i class="fa fa-product-hunt title-box-icon green-icon" aria-hidden="true"></i>
-	<p class="title-box-text"><?= $promotion_action->name ?></p>
+	<p class="title-box-text"><?= $action->name ?></p>
 	
 	<br /><br />
 	<p class="title-box-details">
-		Status: <b><?= PromotionAction::STATUSES[$promotion_action->status] ?></b><br />
+		Status: <b><?= Action::STATUSES[$action->status] ?></b><br />
 		Czas trwania: <b><?php if ($promotion_action->indefinitely == 0) {echo "od ".$promotion_action->from_at." do ".$promotion_action->to_at;} else echo "bezterminowo"; ?></b><br /><br />
-		<?= $promotion_action->description ?>
+		<?= $action->description ?>
 	</p>
 </div>
 <div id="title-box-options-bar">
@@ -45,7 +49,7 @@
 
 <div id="tab-1-content" class="tab-content">
    	<?php 
-		$packages = $promotion_action->activePackages();
+		$packages = $action->activePackages();
 
 		if (count($packages) == 0 && $items_number !== 0) {
 			include 'app/views/layouts/_no_results.php';
@@ -57,7 +61,7 @@
 
 <div id="tab-2-content" class="tab-content">
    	<?php 
-		$packages = $promotion_action->inactivePackages();
+		$packages = $action->inactivePackages();
 		
 		if (count($packages) == 0 && $items_number !== 0) {
 			include 'app/views/layouts/_no_results.php';
@@ -69,7 +73,7 @@
 
 <div id="tab-3-content" class="tab-content">
    	<?php 
-		$packages = $promotion_action->promotionCodesPackages();
+		$packages = $action->promotionCodesPackages();
 		
 		if ($items_number == 0) {
 			include 'app/views/promotion_actions/_make_first.php';

@@ -18,7 +18,7 @@ class PromotionCodesPackagesController extends Controller
 
 	public function new()
 	{
-		$package = new PromotionCodesPackage;
+		$package = new CodesPackage;
 		$this->auth(__FUNCTION__, Promotor::find($this->params['promotors_id']));	
 		
 		$view = (new View($this->params, ['package'=>$package]))->render();
@@ -29,7 +29,7 @@ class PromotionCodesPackagesController extends Controller
 	{
 		$this->auth(__FUNCTION__, Promotor::find($this->params['promotors_id']));	
 		$this->params['promotion_codes_package']['action_id'] = $this->params['action_id'];
-		$package = new PromotionCodesPackage($this->params['promotion_codes_package']);
+		$package = new CodesPackage($this->params['promotion_codes_package']);
 
 		if ($package->save()) {
 
@@ -80,7 +80,7 @@ class PromotionCodesPackagesController extends Controller
 	/* Funkcja generująca kody uruchamiana z url */
 	public function generate()
 	{	
-		$packages = PromotionCodesPackage::where('`generated` < `quantity`', []);
+		$packages = CodesPackage::where('`generated` < `quantity`', []);
 
 		foreach ($packages as $package) {
 			$i = 0;
@@ -89,7 +89,7 @@ class PromotionCodesPackagesController extends Controller
 			while ($i < $number_codes_to_generate) { 
 				$code_generator = new PromotionCodesGenerator;
 				$code = $code_generator->promotionCodeGenerator(6);
-				$promotion_code = new PromotionCode(['code'=>$code, 'package_id'=>$package->id]);
+				$promotion_code = new Code(['code'=>$code, 'package_id'=>$package->id]);
 
 				if ($promotion_code->save()) {
 					$i++;
@@ -102,6 +102,11 @@ class PromotionCodesPackagesController extends Controller
 
 	public function package()
 	{
-		return PromotionCodesPackage::find($this->params['id']);
+		return CodesPackage::find($this->params['id']);
+	}
+
+	public function action()
+	{
+		return Action::find($this->params['action_id']);
 	}
 }

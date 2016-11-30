@@ -5,12 +5,14 @@
 	$items_number = count($promotor->contests());
 	
 ?>	
+<!--
 <div id="notice">
 	<p id="notice-text"><i class="fa fa-info-circle" aria-hidden="true"></i> W tym panelu możesz ...</p>
 	<button type="button" class="close-notice" data-dismiss="alert" aria-hidden="true">
 		<i class="fa fa-times" aria-hidden="true"></i>
 	</button>
 </div>
+-->
 
 <div id="title-box">
 	<i class="fa fa-trophy title-box-icon green-icon" aria-hidden="true"></i><p class="title-box-text">Konkursy</p>
@@ -21,10 +23,10 @@
 
 <select id="select-tab">
 	<option value="tab-1">
-		Wykorzystane
+		Aktywne
 	</option>
 	<option value="tab-2">
-		Niewykorzystane
+		Nieaktywne
 	</option>
 	<option value="tab-3">
 		Wszystkie
@@ -33,9 +35,9 @@
 
 <div id="tab-1-content" class="tab-content">
    	<?php 
-		$contests = $promotor->activeContests();
+		$actions = $promotor->activeContests();
 
-		if (count($contests) == 0 && $items_number !== 0) {
+		if (count($actions) == 0 && $items_number !== 0) {
 			include 'app/views/layouts/_no_results.php';
 		} else if ($items_number == 0) {
 			include '_make_first.php';
@@ -45,9 +47,9 @@
 
 <div id="tab-2-content" class="tab-content">
    	<?php 
-		$contests = $promotor->inactiveContests();
+		$actions = $promotor->inactiveContests();
 		
-		if (count($contests) == 0 && $items_number !== 0) {
+		if (count($actions) == 0 && $items_number !== 0) {
 			include 'app/views/layouts/_no_results.php';
 		} else if ($items_number == 0) {
 			include '_make_first.php';
@@ -57,7 +59,7 @@
 
 <div id="tab-3-content" class="tab-content">
    	<?php 
-		$contests = $promotor->contests();
+		$actions = $promotor->contests();
 		
 		if ($items_number == 0) {
 			include '_make_first.php';

@@ -9,7 +9,7 @@
 
 <div class="static-pages-data">
 	<?php
-		$codes = PromotionCode::where('package_id=?', ['package_id'=>1]);
+		$codes = Code::where('package_id=?', ['package_id'=>1]);
 		foreach ($codes as $code) { ?>
 			<p <?php if (!empty($code->used)) { echo 'class="linethrough"'; } ?>><?= $code->code ?></p>
 		<?php }
