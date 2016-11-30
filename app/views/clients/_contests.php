@@ -8,15 +8,10 @@ foreach ($client->promotors() as $promotor) {
 	}
 	if ($i !== 0) { 
 		$avatar = $promotor->avatar();?>
-		<div class="client-view-item-box">
-			<?php 
-				if (empty($avatar)) { ?>
-					<div class="client-view-avatar"></div>
-				<?php } else { ?>
-					<img class="client-view-avatar" src="/system/promotor_avatars/<?= $promotor->id ?>/small/<?= $avatar->file_name ?>">
-				<?php }
-			?>
+		<div class="client-view-item-top">
 			<p class="client-view-item-title"><?= $promotor->name ?></p>
+		</div>
+		<div class="client-view-item-box">
 			<table width="100%">
 				<tr>
 					<td class="first-row" width="50%">Nazwa konkursu</td>

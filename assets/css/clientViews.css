@@ -20,12 +20,20 @@
 	    margin: 0px;
 	    padding: 0px;
 	}
+	.client-view-item-top{
+		display: block;
+		width: calc(92% - 4px);
+		margin: 0px 2%;
+		padding: 1% 2%;
+		background-color: #dbe5f0;
+		border: 2px solid #dbe5f0;
+	}
 	.client-view-item-box{
 		width: calc(92% - 4px);
-		margin: 0px 2% 20px 2%;
+		margin: 0px 2% 40px 2%;
 		padding: 1% 2% 2% 2%;
 		background-color: white;
-		border: 2px solid #E9EFF6;
+		border: 2px solid #dbe5f0;
 	}
 	#order-form-table .first-row{
 		padding: 0px;
@@ -111,13 +119,14 @@
 	}
 	.client-view-item-title{
 		display: inline;
-		font-size: 30px;
+		font-size: 28px;
 		font-weight: 700;
 		margin: 0px;
 		padding: 0px;
 	}
 	.client-view-item-button{
-		display: block;
+		display: inline-block;
+		float: right;
 		color: white;
 		margin: 0px;
 		padding: 10px 30px;
@@ -128,7 +137,8 @@
 		transition: background-color 0.2s;
 	}
 	.client-view-item-button:hover{
-		display: block;
+		display: inline-block;
+		float: right;
 		color: white;
 		margin: 0px;
 		padding: 10px 30px;
@@ -267,9 +277,17 @@
 	    margin: 0px;
 	    padding: 0px;
 	}
+	.client-view-item-top{
+		display: block;
+		width: calc(92% - 4px);
+		margin: 0px 2%;
+		padding: 1% 2%;
+		background-color: #dbe5f0;
+		border: 2px solid #dbe5f0;
+	}
 	.client-view-item-box{
 		width: calc(92% - 4px);
-		margin: 0px 2% 20px 2%;
+		margin: 0px 2% 30px 2%;
 		padding: 1% 2% 2% 2%;
 		background-color: white;
 		border: 2px solid #E9EFF6;
@@ -358,13 +376,14 @@
 	}
 	.client-view-item-title{
 		display: inline;
-		font-size: 30px;
+		font-size: 28px;
 		font-weight: 700;
 		margin: 0px;
 		padding: 0px;
 	}
 	.client-view-item-button{
-		display: block;
+		display: inline-block;
+		float: right;
 		color: white;
 		margin: 0px;
 		padding: 10px 30px;
@@ -375,7 +394,8 @@
 		transition: background-color 0.2s;
 	}
 	.client-view-item-button:hover{
-		display: block;
+		display: inline-block;
+		float: right;
 		color: white;
 		margin: 0px;
 		padding: 10px 30px;
@@ -515,6 +535,14 @@
 	    margin: 0px;
 	    padding: 0px;
 	}
+	.client-view-item-top{
+		display: block;
+		width: calc(92% - 4px);
+		margin: 0px 2%;
+		padding: 1% 2%;
+		background-color: #dbe5f0;
+		border: 2px solid #dbe5f0;
+	}
 	.client-view-item-box{
 		width: calc(92% - 4px);
 		margin: 0px 2% 20px 2%;
@@ -608,13 +636,14 @@
 	}
 	.client-view-item-title{
 		display: inline;
-		font-size: 30px;
+		font-size: 26px;
 		font-weight: 700;
 		margin: 0px;
 		padding: 0px;
 	}
 	.client-view-item-button{
-		display: block;
+		display: inline-block;
+		float: right;
 		color: white;
 		margin: 0px;
 		padding: 10px 30px;
@@ -625,7 +654,8 @@
 		transition: background-color 0.2s;
 	}
 	.client-view-item-button:hover{
-		display: block;
+		display: inline-block;
+		float: right;
 		color: white;
 		margin: 0px;
 		padding: 10px 30px;
@@ -764,6 +794,14 @@
 	    margin: 0px;
 	    padding: 0px;
 	}
+	.client-view-item-top{
+		display: block;
+		width: calc(92% - 4px);
+		margin: 0px 2%;
+		padding: 1% 2%;
+		background-color: #dbe5f0;
+		border: 2px solid #dbe5f0;
+	}
 	.client-view-item-box{
 		width: calc(92% - 4px);
 		margin: 0px 2% 20px 2%;
@@ -856,13 +894,14 @@
 	}
 	.client-view-item-title{
 		display: inline;
-		font-size: 30px;
+		font-size: 22px;
 		font-weight: 700;
 		margin: 0px;
 		padding: 0px;
 	}
 	.client-view-item-button{
-		display: block;
+		display: inline-block;
+		float: right;
 		color: white;
 		margin: 0px;
 		padding: 5px 10px;
@@ -881,7 +920,8 @@
 		padding: 0px;
 	}
 	.client-view-item-button:hover{
-		display: block;
+		display: inline-block;
+		float: right;
 		color: white;
 		margin: 0px;
 		padding: 5px 10px;

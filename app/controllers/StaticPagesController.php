@@ -102,13 +102,20 @@ class StaticPagesController extends Controller
 
 	public function insertCode()
 	{	
+		$router = Config::get('router');
+
+		if (empty($this->params['code'])) {
+			$this->alert('error', 'Podaj swój kod');
+			$path = $router->generate('start_page', []);
+			header('Location: '.$path);
+		}
+
 		$code = CodeChecker::checkCodeExist($this->params);
 		$action = $code->action();
 
 		Action::checkIfActionsActive();
 
 		if ($code !== null && $code->isActive()) {
-			$router = Config::get('router');
 			if ($action->type == 'PromotionActions') {
 				$path = $router->generate('use_code', ['code'=>$this->params['code']]);
 				header('Location: '.$path);
