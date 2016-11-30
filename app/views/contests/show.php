@@ -44,7 +44,7 @@
 <div id="title-box-options-bar">
 	<a href="<?= $new_package ?>"><button class="options-bar-button"><i class="zmdi zmdi-plus"></i> Zamów pakiet naklejek</button></a>
 	<a href="<?= $path_update ?>"><button class="options-bar-button">Edytuj</button></a>
-	<?php if (count($action->answers()) >= 0) { ?>
+	<?php if (count($action->answers()) >= 10) { ?>
 		<button class="options-bar-button get-random-answer" data-actionid="<?= $action->id ?>">Pomóż mi wybrać odpowiedź</button>
 	<?php } ?>
 </div>
