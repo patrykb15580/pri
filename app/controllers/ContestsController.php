@@ -126,7 +126,7 @@ class ContestsController extends Controller
 
 	public function getRandomAnswer()
 	{
-		$answers = ContestAnswer::where('action_id=?', ['action_id'=>$this->params['contest_id']], ['order'=>'created_at DESC']);
+		$answers = ContestAnswer::where('action_id=?', ['action_id'=>$this->params['action_id']], ['order'=>'created_at DESC']);
 
 		$answer = array_rand($answers, 1);
 		$answer = $answers[$answer];

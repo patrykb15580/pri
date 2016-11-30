@@ -44,18 +44,18 @@
 <div id="title-box-options-bar">
 	<a href="<?= $new_package ?>"><button class="options-bar-button"><i class="zmdi zmdi-plus"></i> Zamów pakiet naklejek</button></a>
 	<a href="<?= $path_update ?>"><button class="options-bar-button">Edytuj</button></a>
-	<?php if (count($action->answers()) >= 10) { ?>
+	<?php if (count($action->answers()) >= 0) { ?>
 		<button class="options-bar-button get-random-answer" data-actionid="<?= $action->id ?>">Pomóż mi wybrać odpowiedź</button>
 	<?php } ?>
 </div>
 
-<!--
+
 <div class="modal-bg">
 	<div class="random-answer">
 
 	</div>
 </div>
--->
+
 
 <?php 
 	$answers = $action->answers();
@@ -65,29 +65,4 @@
 	} else include 'app/views/contests/_answers.php';
 ?>
 
-<script type="text/javascript">
-
-	$('.modal-bg').hide()
-	$('.get-random-answer').click(function(){
-		action_id = $('.get-random-answer').data('actionid');
-		$.ajax({
-		    url: "/get-random-answer",
-		    type: 'POST',
-		    data: { "action_id": action_id },
-		    success: function(data){
-		      $('.random-answer').html(data);
-		    },
-		    error: function(data) {
-		      alert("nope");
-		    }
-		});
-		$('.modal-bg').fadeIn();
-	});
-	$(document).mouseup(function (e){
-	    if (!$(".random-answer").is(e.target) && $(".random-answer").has(e.target).length === 0) {
-	        $(".modal-bg").fadeOut();
-	    }
-	});
-
-</script>
 <script type="text/javascript" src="/assets/javascript/randomAnswer.js"></script>
