@@ -105,6 +105,8 @@ class StaticPagesController extends Controller
 		$code = CodeChecker::checkCodeExist($this->params);
 		$action = $code->action();
 
+		Action::checkIfActionsActive();
+
 		if ($code !== null && $code->isActive()) {
 			$router = Config::get('router');
 			if ($action->type == 'PromotionActions') {
@@ -243,5 +245,10 @@ class StaticPagesController extends Controller
 			$this->alert('info', 'Twój link do logowania został wysłany na podany adres email');
 			header('Location: '.$prev_page);
 		}
+	}
+
+	public function checkIfActionsActive()
+	{
+		Action::checkIfActionsActive();
 	}
 }

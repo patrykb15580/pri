@@ -22,7 +22,7 @@
 			
 		</td>
 		<td class="result" width="40%">
-			
+			Dodatkowe informacje
 		</td>
 	</tr>
 	<tr class="result">
@@ -36,7 +36,6 @@
 		<td class="result" width="40%">
 			<?php
 				if (!empty($order->comment)) { ?>
-					Dodatkowe informacje:<br />
 					<?= $order->comment ?>
 				<?php } 
 			?>	

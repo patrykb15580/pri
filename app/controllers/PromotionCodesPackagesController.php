@@ -31,6 +31,8 @@ class PromotionCodesPackagesController extends Controller
 		$this->params['promotion_codes_package']['action_id'] = $this->params['action_id'];
 		$package = new CodesPackage($this->params['promotion_codes_package']);
 
+		$router = Config::get('router');
+
 		if ($package->save()) {
 
 			$admin_order = new AdminOrder(['promotor_id'=>$this->params['promotors_id'],
@@ -44,7 +46,8 @@ class PromotionCodesPackagesController extends Controller
 			(new AdminMailer)->newAdminOrder(Config::get('mailing_address'), $admin_order);
 
 			$this->alert('info', 'Utworzono nową paczkę kodów');
-			header("Location: http://".Config::get('host')."/promotors/".$this->params['promotors_id']."/promotion-actions/".$this->params['action_id']);
+			$path = $router->generate('show_promotion_codes_packages', ['promotors_id'=>$this->params['promotors_id'], 'action_id'=>$this->params['action_id'], 'id'=>$package->id]);
+			header("Location: ".$path);
 		}
 		else{
 			$this->alert('error', 'Paczka kodów nie została utworzona');
@@ -67,9 +70,12 @@ class PromotionCodesPackagesController extends Controller
 		$package = $this->package();
 		$this->auth(__FUNCTION__, $package);
 
+		$router = Config::get('router');
+
 		if ($package->update($this->params['promotion_codes_package'])) {
 		 	$this->alert('info', 'Edycja zakończona pomyślnie');
-			header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id']."/promotion-actions/".$this->params['action_id']."/package/".$this->params['id']);
+		 	$path = $router->generate('show_promotion_codes_packages', ['promotors_id'=>$this->params['promotors_id'], 'action_id'=>$this->params['action_id'], 'id'=>$this->params['id']]);
+			header("Location: ".$path);
 		} else {
 			$this->alert('error', 'Edycja zakończona niepowodzeniem, spróbuj jeszcze raz');
 			$view = (new View($this->params, ['package'=>$package]))->render();

@@ -90,7 +90,7 @@ $router->map( 'POST', '/promotors/[i:promotors_id]/promotion-actions/[i:action_i
 /* Server operations */
 $router->map( 'GET', '/package/generate', 'PromotionCodesPackagesController#generate', 'generate_promotion_codes_packages' );
 $router->map( 'GET', '/stickers-package/generate', 'ContestsController#generate', 'generate_stickers_packages_codes' );
-$router->map( 'GET', '/promotion-actions-check', 'PromotionActionsController#checkIfActionsActive', 'check_if_actions_active' );
+$router->map( 'GET', '/promotion-actions-check', 'StaticPagesController#checkIfActionsActive', 'check_if_actions_active' );
 
 
 /* Promotor -> reward -> delete image */

@@ -231,6 +231,25 @@ class Action extends Model
 		return $used_codes;
 	}
 
+	public static function checkIfActionsActive()
+	{
+		$actions = Action::where('status=?', ['status'=>'active']);
+
+		foreach ($actions as $action) {
+			if ($action->type == 'PromotionActions') {
+				$promotion_action = PromotionAction::findBy('action_id', $action->id);
+				if ($promotion_action->indefinitely == 0 && date('Y-m-d', strtotime($promotion_action->to_at)) < date('Y-m-d')) {
+					$action->update(['status'=>'inactive']);
+				}
+			} else {
+				$contest = Contest::findBy('action_id', $action->id);
+				if (date('Y-m-d', strtotime($contest->to_at)) < date('Y-m-d')) {
+					$action->update(['status'=>'inactive']);
+				}
+			}
+		}
+	}
+
 	public function changeStatus()
 	{
 		if ($this->status == 'active') {

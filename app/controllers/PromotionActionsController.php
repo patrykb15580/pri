@@ -113,9 +113,4 @@ class PromotionActionsController extends Controller
 	{
 		return Action::find($this->params['id']);
 	}
-
-	public function checkIfActionsActive()
-	{
-		PromotionAction::checkIfActionsActive();
-	}
 }

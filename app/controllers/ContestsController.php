@@ -43,8 +43,8 @@ class ContestsController extends Controller
 			$contest->action_id = $action->id;
 			$contest->save();
 
-			$this->alert('info', 'Utworzono konkurs '.$contest->name);
-			header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id']."/contests");
+			$this->alert('info', 'Utworzono konkurs '.$action->name);
+			header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id']."/contests/".$action->id);
 		} else {
 			$this->alert('error', 'Nie udało się utworzyć konkursu, spróbuj ponownie');
 
