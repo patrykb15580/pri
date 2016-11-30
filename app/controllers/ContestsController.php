@@ -33,10 +33,10 @@ class ContestsController extends Controller
 	public function create()
 	{
 		$this->auth(__FUNCTION__, Promotor::find($this->params['promotors_id']));
-		$this->params['action']['promotor_id'] = $this->params['promotors_id'];
-		$this->params['action']['type'] = 'Contests';
+		$this->params['actions']['promotor_id'] = $this->params['promotors_id'];
+		$this->params['actions']['type'] = 'Contests';
 
-		$action = new Action($this->params['action']);
+		$action = new Action($this->params['actions']);
 		$contest = new Contest($this->params['contest']);
 
 		if ($action->save()) {
@@ -68,7 +68,7 @@ class ContestsController extends Controller
 
 		$contest = Contest::findBy('action_id', $action->id);
 
-		if ($action->update($this->params['action'])) {
+		if ($action->update($this->params['actions'])) {
 			$contest->update($this->params['contest']);
 
 			$this->alert('info', 'Dane konkursu zostały zaktualizowane');

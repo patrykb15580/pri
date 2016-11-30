@@ -16,16 +16,27 @@ class PromotorsControllerTest extends Tests
 		$promotor = new Promotor(['email'=>'test2@test.com', 'password_degest'=>Password::encryptPassword('password2'), 'name'=>'promotor2']);
 		$promotor->save();
 
-		$promotion_action = new PromotionAction(['name'=>'action1', 'promotors_id'=>1, 'status'=>'active', 'indefinitely'=>1]);
+		$action = new Action(['name'=>'Action 1', 'description'=>'Description for action 1', 'promotor_id'=>1, 'status'=>'active', 'type'=>'PromotionActions']);
+		$action->save();
+
+		$promotion_action = new PromotionAction(['action_id'=>'1', 'indefinitely'=>1]);
 		$promotion_action->save();
 
-		$promotion_action = new PromotionAction(['name'=>'action2', 'promotors_id'=>1, 'status'=>'active', 'indefinitely'=>1]);
+
+		$action = new Action(['name'=>'Action 2', 'description'=>'Description for action 2', 'promotor_id'=>2, 'status'=>'active', 'type'=>'PromotionActions']);
+		$action->save();
+
+		$promotion_action = new PromotionAction(['action_id'=>'2', 'indefinitely'=>0, 'from_at'=>date("Y-m-d", strtotime("-1 week")), 'to_at'=>date("Y-m-d", strtotime("+1 week"))]);
 		$promotion_action->save();
 
-		$promotion_action = new PromotionAction(['name'=>'action3', 'promotors_id'=>2, 'status'=>'active', 'indefinitely'=>1]);
+
+		$action = new Action(['name'=>'Action 3', 'description'=>'Description for action 3', 'promotor_id'=>1, 'status'=>'inactive', 'type'=>'PromotionActions']);
+		$action->save();
+
+		$promotion_action = new PromotionAction(['action_id'=>'3', 'indefinitely'=>0, 'from_at'=>date("Y-m-d", strtotime("+1 day")), 'to_at'=>date("Y-m-d", strtotime("+1 week"))]);
 		$promotion_action->save();
 
-		$package = new PromotionCodesPackage(['name'=>'package1', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>4, 'codes_value'=>143, 'status'=>'active']);
+		$package = new CodesPackage(['action_id'=>'1', 'quantity'=>4, 'codes_value'=>143, 'status'=>'active']);
 		$package->save();
 
 		$client = new Client(['email'=>'test1@test.com', 'name'=>'client1', 'phone_number'=>'123456789', 'hash'=>HashGenerator::generate()]);
@@ -65,7 +76,7 @@ class PromotorsControllerTest extends Tests
 		$elements = $html->find('div#title-box');	
 		Assert::expect(count($elements)) -> toEqual(1);
 
-		$elements = $html->find('div#title-box-tabs');	
+		$elements = $html->find('div#title-box-options-bar');	
 		Assert::expect(count($elements)) -> toEqual(1);
 
 		$elements = $html->find('div#tab-1-content');	
@@ -74,8 +85,11 @@ class PromotorsControllerTest extends Tests
 		$elements = $html->find('div#tab-2-content');	
 		Assert::expect(count($elements)) -> toEqual(1);
 
+		$elements = $html->find('div#tab-3-content');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
 		$elements = $html->find('tr.result');	
-		Assert::expect(count($elements)) -> toEqual(2);
+		Assert::expect(count($elements)) -> toEqual(4);
 
 		unset($_SESSION['user']);
 	}
@@ -233,7 +247,7 @@ class PromotorsControllerTest extends Tests
 
     	$curl = new TesterTestRequest((new PromotionCodesPackagesController($params))->generate(), 'http://'.Config::get('host').'/package/generate', null, []);
 
-    	$codes = PromotionCode::where('package_id=?', ['package_id'=>1]);
+    	$codes = Code::where('package_id=?', ['package_id'=>1]);
 		$code = $codes[0];
 		$code->update(['used'=>date(Config::get("mysqltime"))]);
 		$code->update(['client_id'=>1]);

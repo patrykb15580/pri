@@ -23,13 +23,14 @@ class Action extends Model
 									   'validations' => ['required']],
 			'name'					=>['type' => 'string',
 									   'default' => null,
-									   'validations' => ['required']],
+									   'validations' => ['required', 'max_length:191']],
 			'status'				=>['type' => 'string',
 									   'default' => 'active'],
 			'description'			=>['type' => 'string',
 									   'default' => null],
 			'type'					=>['type' => 'string',
-									   'default' => null],
+									   'default' => null,
+									   'validations' => ['required']],
 			'created_at'			=>['type' => 'datetime',
 									   'default' => null],
 			'updated_at'			=>['type' => 'datetime',
@@ -154,6 +155,19 @@ class Action extends Model
 		if ($this->status == 'inactive') {
 			return false;
 		}
+	}
+
+	public function codes()
+	{
+		$codes = [];
+
+		foreach ($this->codesPackages() as $package) {
+			foreach ($package->promotionCodes() as $code) {
+				array_push($codes, $code);
+			}
+		}
+
+		return $codes;
 	}
 
 	public function usedCodes()

@@ -16,19 +16,30 @@ class StaticPagesControllerTest extends Tests
 		$promotor = new Promotor(['email'=>'test2@test.com', 'password_degest'=>Password::encryptPassword('password2'), 'name'=>'promotor2']);
 		$promotor->save();
 
-		$promotion_action = new PromotionAction(['name'=>'action1', 'promotors_id'=>1, 'status'=>'active', 'indefinitely'=>1]);
+		$action = new Action(['name'=>'Action 1', 'description'=>'Description for action 1', 'promotor_id'=>1, 'status'=>'active', 'type'=>'PromotionActions']);
+		$action->save();
+
+		$promotion_action = new PromotionAction(['action_id'=>'1', 'indefinitely'=>1]);
 		$promotion_action->save();
 
-		$promotion_action = new PromotionAction(['name'=>'action2', 'promotors_id'=>1, 'status'=>'active', 'indefinitely'=>1]);
+
+		$action = new Action(['name'=>'Action 2', 'description'=>'Description for action 2', 'promotor_id'=>2, 'status'=>'active', 'type'=>'PromotionActions']);
+		$action->save();
+
+		$promotion_action = new PromotionAction(['action_id'=>'2', 'indefinitely'=>0, 'from_at'=>date("Y-m-d", strtotime("-1 week")), 'to_at'=>date("Y-m-d", strtotime("+1 week"))]);
 		$promotion_action->save();
 
-		$promotion_action = new PromotionAction(['name'=>'action3', 'promotors_id'=>2, 'status'=>'active', 'indefinitely'=>1]);
+
+		$action = new Action(['name'=>'Action 3', 'description'=>'Description for action 3', 'promotor_id'=>1, 'status'=>'inactive', 'type'=>'PromotionActions']);
+		$action->save();
+
+		$promotion_action = new PromotionAction(['action_id'=>'3', 'indefinitely'=>0, 'from_at'=>date("Y-m-d", strtotime("+1 day")), 'to_at'=>date("Y-m-d", strtotime("+1 week"))]);
 		$promotion_action->save();
 
-		$package = new PromotionCodesPackage(['name'=>'package1', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>4, 'codes_value'=>143, 'status'=>'active']);
+		$package = new CodesPackage(['action_id'=>1, 'quantity'=>4, 'codes_value'=>143, 'status'=>'active']);
 		$package->save();
 
-		$package = new PromotionCodesPackage(['name'=>'package2', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>4, 'codes_value'=>1324, 'status'=>'active']);
+		$package = new CodesPackage(['action_id'=>1, 'quantity'=>4, 'codes_value'=>1324, 'status'=>'active']);
 		$package->save();
 
 		$client = new Client(['email'=>'test1@test.com', 'name'=>'client1', 'phone_number'=>'123456789', 'hash'=>HashGenerator::generate()]);
@@ -61,8 +72,14 @@ class StaticPagesControllerTest extends Tests
 		$order = new Order(['promotor_id'=>2, 'client_id'=>1, 'reward_id'=>1, 'order_date'=>date(Config::get('mysqltime'))]);
 		$order->save();
 
-		$contest = new Contest(['name'=>'contest1', 'question'=>'Is this question?', 'from_at'=>date("Y-m-d", strtotime("-3 days")), 'to_at'=>date("Y-m-d", strtotime("+4 days")), 'promotor_id'=>'1', 'status'=>'active', 'type'=>0]);
+		$action = new Action(['name'=>'Contest 1', 'description'=>'Description for contest 1', 'promotor_id'=>1, 'status'=>'active', 'type'=>'Contests']);
+		$action->save();
+
+		$contest = new Contest(['question'=>'Question?', 'from_at'=>date("Y-m-d", strtotime("-3 days")), 'to_at'=>date("Y-m-d", strtotime("+4 days")), 'action_id'=>'4']);
 		$contest->save();
+
+		$package = new CodesPackage(['action_id'=>4, 'quantity'=>4, 'codes_value'=>0, 'status'=>'active']);
+		$package->save();
 
 		$description = 'Wykorzystanie kodu zaqwsx w akcji action1';
 		History::addHistoryRecord(1, 100, 243, $description, 'add');
@@ -142,7 +159,7 @@ class StaticPagesControllerTest extends Tests
 	{
 		$this->seed();
 		
-		$code = PromotionCode::all([]);
+		$code = Code::where('package_id=?', ['package_id'=>1]);
 		$code = $code[0];
 
 		$params['controller'] = 'StaticPagesController';
@@ -192,7 +209,7 @@ class StaticPagesControllerTest extends Tests
 
 		error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
 
-		$code = PromotionCode::all([]);
+		$code = Code::where('package_id=?', ['package_id'=>1]);
 		$code = $code[0];
 
 		$params['code'] = $code->code;
@@ -222,9 +239,13 @@ class StaticPagesControllerTest extends Tests
 	{
 		$this->seed();
 
+		$codes = Code::where('package_id=?', ['package_id'=>3]);
+		$code = $codes[0];
+
 		$params['controller'] = 'StaticPagesController';
 		$params['action'] = 'contest';
-		$params['id'] = 1;
+		$params['id'] = 4;
+		$params['code'] = $code->code;
 
 		$action = $params['action'];
 		
@@ -263,24 +284,28 @@ class StaticPagesControllerTest extends Tests
 
 		error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
 
-      	$params['id'] = 1;
+		$codes = Code::where('package_id=?', ['package_id'=>3]);
+		$code = $codes[1];
+
+      	$params['id'] = 4;
     	$params['controller'] = 'StaticPagesController';
     	$params['action'] = 'contestAnswer';
     	$params['answer'] = ['answer' => 'answer'];
+    	$params['code'] = $code->code;
 
     	$params['client'] = ['email'=>'test1@test.com',
-          					  'name' => 'Client',
-            				  'phone_number' => '123456789'];
+          					 'name' => 'Client',
+            				 'phone_number' => '123456789'];
 
 		$action = $params['action'];
 
 		$controller = new $params['controller']($params);
 		$view = $controller->$action();
 
-		$contest = Contest::find($params['id']);
+		$contest = Action::find($params['id']);
 		$client = Client::findBy('email', $params['client']['email']);
 		
-		$answer = ContestAnswer::where('contest_id=? AND client_id=?', ['contest_id'=>$contest->id, 'client_id'=>$client->id]);
+		$answer = ContestAnswer::where('action_id=? AND client_id=?', ['action_id'=>$contest->id, 'client_id'=>$client->id]);
 
 		Assert::expect(empty($answer)) -> toEqual(false);
 

@@ -800,8 +800,14 @@ div#main-layout-user{
   cursor: pointer;
 }
 
-
-@media only screen and (max-width: 450px){
+@media only screen and (min-width: 450px){
+  .static-pages-data{
+    display: inline-block;
+    margin: 0px 40px 0px 0px;
+    float: left;
+  }
+}
+@media only screen and (max-width: 449px){
   .static-pages-data{
     display: none;
   }

@@ -5,7 +5,7 @@ use Sunra\PhpSimple\HtmlDomParser;
 */
 class AdminControllerTest extends Tests
 {
-	function seed(){
+	/*function seed(){
 		MyDB::clearDatabaseExceptSchema();
 
 		$promotor = new Promotor(['email'=>'test1@test.com', 'password_degest'=>Password::encryptPassword('password1'), 'name'=>'promotor1']);
@@ -16,22 +16,34 @@ class AdminControllerTest extends Tests
 		$promotor = new Promotor(['email'=>'test2@test.com', 'password_degest'=>Password::encryptPassword('password2'), 'name'=>'promotor2']);
 		$promotor->save();
 
-		$promotion_action = new PromotionAction(['name'=>'action1', 'promotors_id'=>1, 'status'=>'active', 'indefinitely'=>1]);
+		$action = new Action(['name'=>'Action 1', 'description'=>'Description for action 1', 'promotor_id'=>1, 'status'=>'active', 'type'=>'PromotionActions']);
+		$action->save();
+
+		$promotion_action = new PromotionAction(['action_id'=>'1', 'indefinitely'=>1]);
 		$promotion_action->save();
 
-		$promotion_action = new PromotionAction(['name'=>'action2', 'promotors_id'=>1, 'status'=>'active', 'indefinitely'=>1]);
+
+		$action = new Action(['name'=>'Action 2', 'description'=>'Description for action 2', 'promotor_id'=>2, 'status'=>'active', 'type'=>'PromotionActions']);
+		$action->save();
+
+		$promotion_action = new PromotionAction(['action_id'=>'2', 'indefinitely'=>0, 'from_at'=>date("Y-m-d", strtotime("-1 week")), 'to_at'=>date("Y-m-d", strtotime("+1 week"))]);
 		$promotion_action->save();
 
-		$promotion_action = new PromotionAction(['name'=>'action3', 'promotors_id'=>2, 'status'=>'active', 'indefinitely'=>1]);
+
+		$action = new Action(['name'=>'Action 3', 'description'=>'Description for action 3', 'promotor_id'=>1, 'status'=>'inactive', 'type'=>'PromotionActions']);
+		$action->save();
+
+		$promotion_action = new PromotionAction(['action_id'=>'3', 'indefinitely'=>0, 'from_at'=>date("Y-m-d", strtotime("+1 day")), 'to_at'=>date("Y-m-d", strtotime("+1 week"))]);
 		$promotion_action->save();
 
-		$package = new PromotionCodesPackage(['name'=>'package1', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>4, 'codes_value'=>143, 'status'=>'active']);
+
+		$package = new CodesPackage(['action_id'=>'1', 'quantity'=>4, 'codes_value'=>143, 'status'=>'active']);
 		$package->save();
 
 		$admin_order = new AdminOrder(['promotor_id'=>1, 'package_id'=>1, 'quantity'=>4, 'package_type'=>'contest', 'order_date'=>$package->created_at]);
 		$admin_order->save();
 
-		$package = new PromotionCodesPackage(['name'=>'package2', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>4, 'codes_value'=>1324, 'status'=>'active']);
+		$package = new CodesPackage(['action_id'=>'1', 'quantity'=>4, 'codes_value'=>1324, 'status'=>'active']);
 		$package->save();
 
 		$admin_order = new AdminOrder(['promotor_id'=>1, 'package_id'=>2, 'quantity'=>4, 'package_type'=>'action', 'order_date'=>$package->created_at]);
@@ -343,5 +355,5 @@ class AdminControllerTest extends Tests
 		Assert::expect(count($elements)) -> toEqual(7);
 
 		unset($_SESSION['user']);
-	}
+	}*/
 }

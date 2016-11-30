@@ -3,7 +3,7 @@ use Sunra\PhpSimple\HtmlDomParser;
 /**
 * 
 */
-class PromotionCodesPackagesControllerTest extends Tests
+class CodesPackagesControllerTest extends Tests
 {
 	function seed(){
 		MyDB::clearDatabaseExceptSchema();
@@ -16,19 +16,30 @@ class PromotionCodesPackagesControllerTest extends Tests
 		$promotor = new Promotor(['email'=>'test2@test.com', 'password_degest'=>Password::encryptPassword('password2'), 'name'=>'promotor2']);
 		$promotor->save();
 
-		$promotion_action = new PromotionAction(['name'=>'action1', 'promotors_id'=>1, 'status'=>'active', 'indefinitely'=>1]);
+		$action = new Action(['name'=>'Action 1', 'description'=>'Description for action 1', 'promotor_id'=>1, 'status'=>'active', 'type'=>'PromotionActions']);
+		$action->save();
+
+		$promotion_action = new PromotionAction(['action_id'=>'1', 'indefinitely'=>1]);
 		$promotion_action->save();
 
-		$promotion_action = new PromotionAction(['name'=>'action2', 'promotors_id'=>1, 'status'=>'active', 'indefinitely'=>1]);
+
+		$action = new Action(['name'=>'Action 2', 'description'=>'Description for action 2', 'promotor_id'=>2, 'status'=>'active', 'type'=>'PromotionActions']);
+		$action->save();
+
+		$promotion_action = new PromotionAction(['action_id'=>'2', 'indefinitely'=>0, 'from_at'=>date("Y-m-d", strtotime("-1 week")), 'to_at'=>date("Y-m-d", strtotime("+1 week"))]);
 		$promotion_action->save();
 
-		$promotion_action = new PromotionAction(['name'=>'action3', 'promotors_id'=>2, 'status'=>'active', 'indefinitely'=>1]);
+
+		$action = new Action(['name'=>'Action 3', 'description'=>'Description for action 3', 'promotor_id'=>1, 'status'=>'inactive', 'type'=>'PromotionActions']);
+		$action->save();
+
+		$promotion_action = new PromotionAction(['action_id'=>'3', 'indefinitely'=>0, 'from_at'=>date("Y-m-d", strtotime("+1 day")), 'to_at'=>date("Y-m-d", strtotime("+1 week"))]);
 		$promotion_action->save();
 
-		$package = new PromotionCodesPackage(['name'=>'package1', 'action_id'=>1, 'reusable'=>1, 'quantity'=>4, 'codes_value'=>143, 'status'=>'active']);
+		$package = new CodesPackage(['action_id'=>1, 'quantity'=>4, 'codes_value'=>143, 'status'=>'active']);
 		$package->save();
 
-		$package = new PromotionCodesPackage(['name'=>'package2', 'action_id'=>1, 'reusable'=>1, 'quantity'=>4, 'codes_value'=>1324, 'status'=>'active']);
+		$package = new CodesPackage(['action_id'=>1, 'quantity'=>4, 'codes_value'=>1324, 'status'=>'active']);
 		$package->save();
 
 		$client = new Client(['email'=>'test1@test.com', 'name'=>'client1', 'phone_number'=>'123456789', 'hash'=>HashGenerator::generate()]);
@@ -87,7 +98,7 @@ class PromotionCodesPackagesControllerTest extends Tests
 		$elements = $html->find('div#title-box');	
 		Assert::expect(count($elements)) -> toEqual(1);
 
-		$elements = $html->find('div#title-box-tabs');	
+		$elements = $html->find('div#title-box-options-bar');	
 		Assert::expect(count($elements)) -> toEqual(1);
 
 		$elements = $html->find('div#tab-1-content');	
@@ -96,8 +107,11 @@ class PromotionCodesPackagesControllerTest extends Tests
 		$elements = $html->find('div#tab-2-content');	
 		Assert::expect(count($elements)) -> toEqual(1);
 
+		$elements = $html->find('div#tab-3-content');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
 		$elements = $html->find('tr.result');	
-		Assert::expect(count($elements)) -> toEqual(4);
+		Assert::expect(count($elements)) -> toEqual(8);
 
 		unset($_SESSION['user']);
 	}
@@ -128,7 +142,7 @@ class PromotionCodesPackagesControllerTest extends Tests
 		Assert::expect(count($elements)) -> toEqual(1);
 
 		$elements = $html->find('input');	
-		Assert::expect(count($elements)) -> toEqual(4);
+		Assert::expect(count($elements)) -> toEqual(3);
 
 		$elements = $html->find('select');	
 		Assert::expect(count($elements)) -> toEqual(1);
@@ -143,24 +157,21 @@ class PromotionCodesPackagesControllerTest extends Tests
 		error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
 
 		$params['promotors_id'] = 1;
-		$params['action_id'] = 1;
+		$params['action_id'] = 6;
 		$params['controller'] = 'PromotionCodesPackagesController';
 		$params['action'] = 'create';
-		$params['promotion_codes_package'] = ['name' => 'test',
-            								  'quantity' => 10,
+		$params['promotion_codes_package'] = ['quantity' => 10,
             								  'codes_value' => 1241,
             								  'status' => 'active',
-            								  'reusable' => 0];
+            								  'action_id' => 6];
 
 		$action = $params['action'];
 
 		$controller = new $params['controller']($params);
 		$view = $controller->$action();
 		
-		$package = PromotionCodesPackage::where('action_id=? AND name=?', ['action_id'=>$params['action_id'], 'name'=>$params['promotion_codes_package']['name']]);
-		$package = $package[0];
+		$package = CodesPackage::findBy('action_id', $params['action_id']);
 
-		Assert::expect($package->name) -> toEqual($params['promotion_codes_package']['name']);
 		Assert::expect($package->action_id) -> toEqual($params['action_id']);
 		Assert::expect($package->status) -> toEqual($params['promotion_codes_package']['status']);
 
@@ -195,7 +206,7 @@ class PromotionCodesPackagesControllerTest extends Tests
 		Assert::expect(count($elements)) -> toEqual(1);
 
 		$elements = $html->find('input');	
-		Assert::expect(count($elements)) -> toEqual(4);
+		Assert::expect(count($elements)) -> toEqual(3);
 
 		$elements = $html->find('select');	
 		Assert::expect(count($elements)) -> toEqual(1);
@@ -214,20 +225,16 @@ class PromotionCodesPackagesControllerTest extends Tests
 		$params['id'] = 1;
 		$params['controller'] = 'PromotionCodesPackagesController';
 		$params['action'] = 'update';
-		$params['promotion_codes_package'] = ['name' => 'test',
-            								  'status' => 'inactive',
-            								  'reusable' => 1];
+		$params['promotion_codes_package'] = ['status' => 'inactive'];
 
 		$action = $params['action'];
 
 		$controller = new $params['controller']($params);
 		$view = $controller->$action();
 		
-		$package = PromotionCodesPackage::find($params['id']);
+		$package = CodesPackage::find($params['id']);
 
-		Assert::expect($package->name) -> toEqual($params['promotion_codes_package']['name']);
 		Assert::expect($package->status) -> toEqual($params['promotion_codes_package']['status']);
-		Assert::expect($package->reusable) -> toEqual($params['promotion_codes_package']['reusable']);
 
 		unset($_SESSION['user']);
 		error_reporting(E_ALL);
@@ -236,10 +243,10 @@ class PromotionCodesPackagesControllerTest extends Tests
 	public function testGenerate10PromotionCodes()
 	{
 		$params['action'] = 'generate';
-		$package = new PromotionCodesPackage(['name'=>'name', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>10, 'codes_value'=>50, 'status'=>'active']);
+		$package = new CodesPackage(['action_id'=>'1', 'quantity'=>10, 'codes_value'=>50, 'status'=>'active']);
 		$package->save();
 		$curl = new TesterTestRequest((new PromotionCodesPackagesController($params))->generate(), 'http://'.Config::get('host').'/package/generate', null, []);
-		$codes = PromotionCode::where('package_id=?', ['package_id'=>$package->id]);
+		$codes = Code::where('package_id=?', ['package_id'=>$package->id]);
 
 		Assert::expect(count($codes)) -> toEqual(10);
 	}
@@ -247,10 +254,10 @@ class PromotionCodesPackagesControllerTest extends Tests
 	public function testGenerate5MorePromotionCodes()
 	{
 		$params['action'] = 'generate';
-		$package = new PromotionCodesPackage(['name'=>'name', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>10, 'generated'=>5, 'codes_value'=>50, 'status'=>'active']);
+		$package = new CodesPackage(['action_id'=>'1', 'quantity'=>10, 'generated'=>5, 'codes_value'=>50, 'status'=>'active']);
 		$package->save();
 		$curl = new TesterTestRequest((new PromotionCodesPackagesController($params))->generate(), 'http://'.Config::get('host').'/package/generate', null, []);
-		$codes = PromotionCode::where('package_id=?', ['package_id'=>$package->id]);
+		$codes = Code::where('package_id=?', ['package_id'=>$package->id]);
 
 		Assert::expect(count($codes)) -> toEqual(5);
 	}
@@ -258,10 +265,10 @@ class PromotionCodesPackagesControllerTest extends Tests
 	public function testPromotionCodeHave6Chars()
 	{
 		$params['action'] = 'generate';
-		$package = new PromotionCodesPackage(['name'=>'name', 'action_id'=>'1', 'reusable'=>0, 'quantity'=>10, 'generated'=>5, 'codes_value'=>50, 'status'=>'active']);
+		$package = new CodesPackage(['action_id'=>'1', 'quantity'=>10, 'generated'=>5, 'codes_value'=>50, 'status'=>'active']);
 		$package->save();
 		$curl = new TesterTestRequest((new PromotionCodesPackagesController($params))->generate(), 'http://'.Config::get('host').'/package/generate', null, []);
-		$codes = PromotionCode::where('package_id=?', ['package_id'=>$package->id]);
+		$codes = Code::where('package_id=?', ['package_id'=>$package->id]);
 
 		$code = $codes[0];
 		Assert::expect(strlen($code->code)) -> toEqual(6);

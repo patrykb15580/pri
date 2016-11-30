@@ -56,7 +56,7 @@ class History extends Model
 			$points = '+'.$action_value;
 		}
 		$history = new History(['client_id'=>$client_id, 'points'=>$points, 'balance_before'=>$balance_before, 'balance_after'=>$balance_after, 'description'=>$description]);
-
+		
 		if (!$history->save()) {
 			die(print_r('Error'));
 		}

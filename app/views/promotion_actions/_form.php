@@ -13,15 +13,15 @@
 ?>
 <form class="form-page-form" method="POST" action="<?= $path ?>">
 	Nazwa akcji<br />
-	<input type="text" name='action[name]' value="<?= $action->name ?>" required="required"><br /><br />
+	<input type="text" name='actions[name]' value="<?= $action->name ?>" required="required"><br /><br />
 	Dodatkowy opis (widoczny tylko dla promotora)<br />
-	<textarea rows="6" name="action[description]"><?= $action->description ?></textarea>
+	<textarea rows="6" name="actions[description]"><?= $action->description ?></textarea>
 	<br />
 
 	<?php 
 		if ($params['action'] == 'edit') { ?>
 			<br />Status<br /><br />
-			<select name='action[status]'>
+			<select name='actions[status]'>
 				<?php foreach (Action::STATUSES as $lang_en => $lang_translated) { ?>
 					<option value="<?= $lang_en ?>"<?php if ($action->status == $lang_en){echo ' selected="selected"';}?>><?= $lang_translated ?></option>
 				<?php } ?>

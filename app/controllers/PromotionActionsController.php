@@ -24,12 +24,12 @@ class PromotionActionsController extends Controller
 	public function create()
 	{
 		$this->auth(__FUNCTION__, Promotor::find($this->params['promotors_id']));
-		$this->params['action']['promotor_id'] = $this->params['promotors_id'];
-		$this->params['action']['type'] = 'PromotionActions';
+		$this->params['actions']['promotor_id'] = $this->params['promotors_id'];
+		$this->params['actions']['type'] = 'PromotionActions';
 
 		$router = Config::get('router');
 
-		$action = new Action($this->params['action']);
+		$action = new Action($this->params['actions']);
 		$promotion_action = new PromotionAction($this->params['promotion_action']);
 		
 		if ($promotion_action->indefinitely == 1) {
@@ -83,7 +83,7 @@ class PromotionActionsController extends Controller
 			unset($this->params['promotion_action']['to_at']);
 		}
 
-		if ($action->update($this->params['action'])) {
+		if ($action->update($this->params['actions'])) {
 			
 			$promotion_action->update($this->params['promotion_action']);
 

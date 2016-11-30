@@ -62,7 +62,7 @@ class StaticPagesController extends Controller
 			$answer = new ContestAnswer(['action_id'=>$action->id, 'client_id'=>$client->id, 'answer'=>$this->params['answer']['answer']]);
 
 			if ($answer->save()) {
-				$description = 'Przystąpienie do konkursu '.$contest->name.' u promotora '.$promotor->name;
+				$description = 'Przystąpienie do konkursu '.$action->name.' u promotora '.$promotor->name;
 
 				$code->update(['used'=>date(Config::get('mysqltime')), 'client_id'=>$client->id]);
 				History::addHistoryRecord($client->id, $points_balance->balance, $points_balance->balance, $description, 'add');
@@ -74,9 +74,9 @@ class StaticPagesController extends Controller
 				$this->alert('error', 'Twoja odpowiedź nie została zapisana, spróbuj jeszcze raz');
 				$this->params['action'] = 'contest';
 
-				$contest = Contest::find($this->params['id']);
+				$action = Action::find($this->params['id']);
 
-				$view = (new View($this->params, ['contest'=>$contest], 'start'))->render();
+				$view = (new View($this->params, ['action'=>$action], 'start'))->render();
 				return $view;
 			}
 		} else {
