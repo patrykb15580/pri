@@ -54,6 +54,9 @@ class History extends Model
 		else if ($action == 'add') {
 			$balance_before = $balance_after-$action_value;
 			$points = '+'.$action_value;
+		} else {
+			$balance_before = $balance_after;
+			$points = $action_value;
 		}
 		$history = new History(['client_id'=>$client_id, 'points'=>$points, 'balance_before'=>$balance_before, 'balance_after'=>$balance_after, 'description'=>$description]);
 		

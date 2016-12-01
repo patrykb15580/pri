@@ -237,7 +237,7 @@ class ClientsController extends Controller
 				$description = 'Przystąpienie do konkursu '.$action->name.' u promotora '.$promotor->name;
 
 				$code->update(['used'=>date(Config::get('mysqltime')), 'client_id'=>$client->id]);
-				History::addHistoryRecord($client->id, $points_balance->balance, $points_balance->balance, $description, 'add');
+				History::addHistoryRecord($client->id, $points_balance->balance, 0, $description, 'contest');
 				
 				$path = $router->generate('client_code', ['client_id'=>$client->id]);
 				$this->alert('info', 'Dziękujemy za wzięcie udziału w naszym konkursie');
