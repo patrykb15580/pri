@@ -65,6 +65,6 @@ class AdminOrder extends Model
 
 	public function package()
 	{
-		return PromotionCodesPackage::find($this->package_id);
+		return CodesPackage::find($this->package_id);
 	}
 }

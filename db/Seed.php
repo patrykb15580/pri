@@ -119,13 +119,22 @@
 		*/
 
 
-		$package = new CodesPackage(['action_id'=>'1', 'quantity'=>20, 'codes_value'=>2000, 'status'=>'active', 'description'=>'Codes package for action 1']);
+		$package = new CodesPackage(['action_id'=>1, 'quantity'=>20, 'codes_value'=>2000, 'status'=>'active', 'description'=>'Codes package for action 1']);
 		$package->save();
 
-		$package = new CodesPackage(['action_id'=>'2', 'quantity'=>30, 'codes_value'=>1000, 'status'=>'active', 'description'=>'Codes package for action 2']);
+		$package = new CodesPackage(['action_id'=>2, 'quantity'=>20, 'codes_value'=>1000, 'status'=>'active', 'description'=>'Codes package for action 2']);
 		$package->save();
 
 		print_r(CLIUntils::colorize("Promotion codes packages: OK\n", 'SUCCESS'));
+
+
+		$admin_order = new AdminOrder(['promotor_id'=>1, 'package_type'=>'action', 'package_id'=>1, 'quantity'=>20, 'order_date'=>date(Config::get('mysqltime'))]);
+		$admin_order->save();
+
+		$admin_order = new AdminOrder(['promotor_id'=>2, 'package_type'=>'action', 'package_id'=>2, 'quantity'=>20, 'order_date'=>date(Config::get('mysqltime'))]);
+		$admin_order->save();
+
+		print_r(CLIUntils::colorize("Admin orders: OK\n", 'SUCCESS'));
 		
 		
 		$reward = new Reward(['name'=>'reward1', 'promotors_id'=>'1', 'status'=>'active', 'description'=>'Reward1 description', 'prize'=>'100']);

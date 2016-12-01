@@ -42,7 +42,7 @@
 	</p>
 </div>
 <div id="title-box-options-bar">
-	<a href="<?= $new_package ?>"><button class="options-bar-button"><i class="zmdi zmdi-plus"></i> Zamów pakiet naklejek</button></a>
+	<a href="<?= $new_package ?>"><button class="options-bar-button">Zamów pakiet naklejek</button></a>
 	<a href="<?= $path_update ?>"><button class="options-bar-button">Edytuj</button></a>
 	<?php if (count($action->answers()) >= 10) { ?>
 		<button class="options-bar-button get-random-answer" data-actionid="<?= $action->id ?>">Pomóż mi wybrać odpowiedź</button>
@@ -60,7 +60,9 @@
 <?php 
 	$answers = $action->answers();
 
-	if (count($answers) == 0) {
+	if (count($answers) == 0 && $action->codesNumber() == 0) {
+		include 'app/views/contests/_make_first_package.php';
+	} else if (count($answers) == 0) {
 		include 'app/views/layouts/_no_results.php';
 	} else include 'app/views/contests/_answers.php';
 ?>

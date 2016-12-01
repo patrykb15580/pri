@@ -26,7 +26,7 @@ foreach ($promotors as $promotor) {
 				<tr class="result">
 					<td width="20%">
 						<a href="<?= $path_show ?>">
-							<?= $order->package()->name ?>
+							Pakiet #<?= $order->package()->id ?>
 						</a>
 					</td>
 					<td width="35%">

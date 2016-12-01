@@ -49,6 +49,15 @@ class ClientsControllerTest extends Tests
 		$client = new Client(['email'=>'test2@test.com', 'name'=>'client2', 'phone_number'=>'123456789', 'hash'=>HashGenerator::generate()]);
 		$client->save();
 
+		$action = new Action(['name'=>'Action 4', 'description'=>'Description for action 4', 'promotor_id'=>1, 'status'=>'active', 'type'=>'Contests']);
+		$action->save();
+
+		$contest = new Contest(['question'=>'Question?', 'from_at'=>date("Y-m-d", strtotime("-3 days")), 'to_at'=>date("Y-m-d", strtotime("+4 days")), 'action_id'=>'4']);
+		$contest->save();
+
+		$package = new CodesPackage(['action_id'=>4, 'quantity'=>4, 'codes_value'=>0, 'status'=>'active']);
+		$package->save();
+
 		$points_balance = new PointsBalance(['client_id'=>1, 'promotor_id'=>1, 'balance'=>100]);
 		$points_balance->save();
 
@@ -114,9 +123,6 @@ class ClientsControllerTest extends Tests
 		$elements = $html->find('.client-view-item-box');	
 		Assert::expect(count($elements)) -> toEqual(1);
 
-		$elements = $html->find('.client-view-avatar');	
-		Assert::expect(count($elements)) -> toEqual(1);
-
 		$elements = $html->find('.client-view-item-title');	
 		Assert::expect(count($elements)) -> toEqual(1);
 
@@ -127,6 +133,58 @@ class ClientsControllerTest extends Tests
 		Assert::expect(count($elements)) -> toEqual(1);
 
 		$elements = $html->find('.client-balance');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		unset($_SESSION['user']);
+	}
+
+	public function testIndexContestsAction()
+	{
+		$this->seed();
+
+		$params['client_id'] = 1;
+		$params['controller'] = 'ClientsController';
+		$params['action'] = 'indexContests';
+
+		$action = $params['action'];
+
+		$curl = new TesterTestRequest((new PromotionCodesPackagesController($params))->generate(), 'http://'.Config::get('host').'/package/generate', null, []);
+
+		$code = Code::all();
+
+		$code1 = $code[0];
+		$code1->update(['used'=>date(Config::get('mysqltime')), 'client_id'=>1]);
+
+		$code2 = $code[1];
+		$code2->update(['used'=>date(Config::get('mysqltime')), 'client_id'=>1]);
+
+		$code3 = Code::last();
+		$code3->update(['used'=>date(Config::get('mysqltime')), 'client_id'=>1]);
+
+		$answer = new ContestAnswer(['action_id'=>4, 'client_id'=>1, 'answer'=>'Yes']);
+		$answer->save();
+
+		$controller = new $params['controller']($params);
+		$view = $controller->$action();
+
+		$html = HtmlDomParser::str_get_html($view);
+
+		$elements = $html->find('.client-view-title-box');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.client-view-title-icon');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.client-view-title-text');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.client-view-item-box');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.client-view-item-title');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.result');	
 		Assert::expect(count($elements)) -> toEqual(1);
 
 		unset($_SESSION['user']);
@@ -321,6 +379,39 @@ class ClientsControllerTest extends Tests
 		Assert::expect(count($elements)) -> toEqual(1);
 
 		$elements = $html->find('tr.result');	
+		Assert::expect(count($elements)) -> toEqual(2);
+
+		unset($_SESSION['user']);
+	}
+
+	public function testCodeAction()
+	{
+		$this->seed();
+
+		$params['client_id'] = 1;
+    	$params['controller'] = 'ClientsController';
+    	$params['action'] = 'code';
+
+		$action = $params['action'];
+
+		$controller = new $params['controller']($params);
+		$view = $controller->$action();
+
+		$html = HtmlDomParser::str_get_html($view);
+
+		$elements = $html->find('.client-view-title-box');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.client-view-title-icon');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.client-view-title-text');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.client-view-item-box');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('input');	
 		Assert::expect(count($elements)) -> toEqual(2);
 
 		unset($_SESSION['user']);

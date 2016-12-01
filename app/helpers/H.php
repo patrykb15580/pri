@@ -78,6 +78,12 @@ class H
 		if ($params['action'] == 'indexOrders') {
 			$menu = 'orders';
 		}
+		if ($params['action'] == 'code') {
+			$menu = 'code';
+		}
+		if ($params['action'] == 'answer') {
+			$menu = 'code';
+		}
 		
 
 		if ($menu == $action) {

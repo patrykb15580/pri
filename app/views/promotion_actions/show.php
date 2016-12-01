@@ -32,7 +32,7 @@
 	</p>
 </div>
 <div id="title-box-options-bar">
-<a href="<?= $path_new ?>"><button class="options-bar-button"><i class="zmdi zmdi-plus"></i> Nowy pakiet kodów</button></a><a href="<?= $path_update ?>"><button class="options-bar-button">Edycja</button></a>
+<a href="<?= $path_new ?>"><button class="options-bar-button">Zamów pakiet kodów</button></a><a href="<?= $path_update ?>"><button class="options-bar-button">Edycja</button></a>
 </div>
 
 <select id="select-tab">

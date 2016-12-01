@@ -124,4 +124,64 @@ class ClientsPolices extends Polices
 			return true;
 		}
 	}
+
+	public function code()
+	{
+		if ($this->user->isPromotor()) {
+			return false;
+		}
+
+		if ($this->user->isClient() && $this->user->id == $this->obj->id) {
+			return true;
+		}
+
+		if ($this->user->isAdmin()) {
+			return true;
+		}
+	}
+
+	public function insertCode()
+	{
+		if ($this->user->isPromotor()) {
+			return false;
+		}
+
+		if ($this->user->isClient() && $this->user->id == $this->obj->id) {
+			return true;
+		}
+
+		if ($this->user->isAdmin()) {
+			return true;
+		}
+	}
+
+	public function answer()
+	{
+		if ($this->user->isPromotor()) {
+			return false;
+		}
+
+		if ($this->user->isClient() && $this->user->id == $this->obj->id) {
+			return true;
+		}
+
+		if ($this->user->isAdmin()) {
+			return true;
+		}
+	}
+
+	public function giveAnswer()
+	{
+		if ($this->user->isPromotor()) {
+			return false;
+		}
+
+		if ($this->user->isClient() && $this->user->id == $this->obj->id) {
+			return true;
+		}
+
+		if ($this->user->isAdmin()) {
+			return true;
+		}
+	}
 }

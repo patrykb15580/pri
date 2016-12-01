@@ -108,7 +108,7 @@ $router->map( 'GET', '/contest/[a:code]', 'StaticPagesController#contest', 'cont
 $router->map( 'POST', '/contest/[i:id]/[a:code]/answer', 'StaticPagesController#contestAnswer', 'give_answer' );
 $router->map( 'GET', '/login', 'StaticPagesController#login', 'login' );
 $router->map( 'GET', '/promotor-login', 'StaticPagesController#promotorLogin', 'promotor_login' );
-$router->map( 'POST', '/insert-code', 'StaticPagesController#insertCode', 'insert_code' );
+$router->map( 'POST', '/insert-code', 'StaticPagesController#insertCode', 'enter_code' );
 $router->map( 'GET', '/[a:code]', 'StaticPagesController#useCode', 'use_code' );
 $router->map( 'GET', '/[a:code]/is-used', 'StaticPagesController#codeIsUsed', 'code_is_used' );
 $router->map( 'POST', '/[a:code]/add-points', 'StaticPagesController#addPoints', 'add_points' );
@@ -125,6 +125,10 @@ $router->map( 'GET', '/clients/[i:client_id]/history', 'ClientsController#indexH
 $router->map( 'GET', '/clients/[i:client_id]/reward/[i:reward_id]', 'ClientsController#newOrder', 'new_order' );
 $router->map( 'POST', '/clients/[i:client_id]/reward/[i:reward_id]/get', 'ClientsController#getReward', 'get_reward' );
 $router->map( 'GET', '/clients/[i:client_id]/orders', 'ClientsController#indexOrders', 'index_client_orders' );
+$router->map( 'GET', '/clients/[i:client_id]/code', 'ClientsController#code', 'client_code' );
+$router->map( 'POST', '/clients/[i:client_id]/insert-code', 'ClientsController#insertCode', 'client_enter_code' );
+$router->map( 'GET', '/clients/[i:client_id]/[a:code]', 'ClientsController#answer', 'client_answer' );
+$router->map( 'POST', '/clients/[i:client_id]/[a:code]/answer', 'ClientsController#giveAnswer', 'client_give_answer' );
 
 
 /* Mailing */

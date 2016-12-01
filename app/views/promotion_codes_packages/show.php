@@ -4,13 +4,15 @@
 	$prev_page = $router->generate('show_promotion_actions', ['promotors_id' => $params['promotors_id'], 'id' => $params['action_id']]);
 	#echo "<pre>";
 	#die(print_r($params));
-?>	
+?>
+<!--	
 <div id="notice">
 	<p id="notice-text"><i class="fa fa-info-circle" aria-hidden="true"></i> W tym panelu możesz ...</p>
 	<button type="button" class="close-notice" data-dismiss="alert" aria-hidden="true">
 		<i class="fa fa-times" aria-hidden="true"></i>
 	</button>
 </div>
+-->
 
 <div id="title-box">
 	<a href="<?= $prev_page ?>"><button class="prev-page-button"><i class="fa fa-chevron-left" aria-hidden="true"></i> Wstecz</button></a>

@@ -8,10 +8,7 @@
 <hr>
 <table width="50%">
 	<tr class="result">
-		<td width="40%"><h1><?= $order->promotor()->name ?></h1></td><td width="60%"></td>
-	</tr>
-	<tr class="result">
-		<td width="40%">Paczka kodów:</td><td width="60%"><?= $order->package()->name ?></td>
+		<td width="40%"><h1>Pakiet #<?= $order->promotor()->id ?></h1></td><td width="60%"></td>
 	</tr>
 	<tr class="result">
 		<td width="40%">Id paczki kodów:</td><td width="60%"><?= $order->package()->id ?></td>

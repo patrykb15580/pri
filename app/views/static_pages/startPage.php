@@ -1,9 +1,9 @@
 <?php
-	$path = $router->generate('insert_code', []);	
+	$path = $router->generate('enter_code', []);	
 ?>
 <h1 id="main_page_site_title">punktacja.pl</h1>
-<form method="POST" action="<?= $path ?>" id="insert-code">
-	<input class="insert-code-input" type="text" name="code" placeholder="Twój kod promocyjny" required="required">
+<form method="POST" action="<?= $path ?>" id="insert-code" class="guardian-initialize">
+	<input class="insert-code-input" type="text" name="code" placeholder="Twój kod promocyjny" required="required" maxlength="6">
 	<input class="insert-code-button" type="submit" value="Zatwierdź">
 </form>
 

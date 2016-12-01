@@ -10,6 +10,9 @@
 #side_bar .client_menu_history i{
   color: #91766C;
 }
+#side_bar .client_menu_code i{
+  color: #ffb84d;
+}
 #side_bar .client_menu_active i{
   color: white;
 }

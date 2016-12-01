@@ -19,7 +19,7 @@
 	<i class="fa fa-gift title-box-icon red-icon" aria-hidden="true"></i><p class="title-box-text"> Katalog nagród</p>
 </div>
 <div id="title-box-options-bar">
-	<a href="<?= $path_new ?>"><button class="options-bar-button"><i class="zmdi zmdi-plus"></i> Nowa nagroda</button></a>
+	<a href="<?= $path_new ?>"><button class="options-bar-button">Nowa nagroda</button></a>
 </div>
 
 <select id="select-tab">

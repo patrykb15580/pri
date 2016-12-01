@@ -18,7 +18,7 @@
 	<i class="fa fa-product-hunt title-box-icon green-icon" aria-hidden="true"></i><p class="title-box-text">Akcje promocyjne</p>
 </div>
 <div id="title-box-options-bar">
-	<a href="<?= $path_new ?>"><button class="options-bar-button"><i class="zmdi zmdi-plus"></i> Nowa akcja promocyjna</button></a>
+	<a href="<?= $path_new ?>"><button class="options-bar-button">Nowa akcja promocyjna</button></a>
 </div>
 
 <select id="select-tab">

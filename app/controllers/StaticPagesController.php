@@ -111,11 +111,12 @@ class StaticPagesController extends Controller
 		}
 
 		$code = CodeChecker::checkCodeExist($this->params);
-		$action = $code->action();
-
+		
 		Action::checkIfActionsActive();
 
 		if ($code !== null && $code->isActive()) {
+			$action = $code->action();
+			
 			if ($action->type == 'PromotionActions') {
 				$path = $router->generate('use_code', ['code'=>$this->params['code']]);
 				header('Location: '.$path);
@@ -158,7 +159,6 @@ class StaticPagesController extends Controller
 		
 		$router = Config::get('router');
 
-		$code = Code::findBy('code', $this->params['code']);
 		$code->update(['used'=>date(Config::get('mysqltime')), 'client_id'=>$client->id]);
 
 		$points_balance = PointsBalance::where('client_id=? AND promotor_id=?', ['client_id'=>$client->id, 'promotor_id'=>$promotor->id]);
