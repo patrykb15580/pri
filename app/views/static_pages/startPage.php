@@ -1,5 +1,16 @@
 <?php
 	$path = $router->generate('enter_code', []);	
+	$codes = Code::where('used IS NULL', [], ['order'=>'created_at DESC']);
+	$actions_codes = [];
+	$contests_codes = [];
+	foreach ($codes as $code) { 
+		$action = $code->action();
+		if ($action->type == 'PromotionActions') {
+	 	array_push($actions_codes, $code);
+		} else { 
+			array_push($contests_codes, $code); 
+		}
+	}
 ?>
 <h1 id="main_page_site_title">punktacja.pl</h1>
 <form method="POST" action="<?= $path ?>" id="insert-code" class="guardian-initialize">
@@ -7,25 +18,26 @@
 	<input class="insert-code-button" type="submit" value="Zatwierdź">
 </form>
 
+<br /><br />
 <div class="static-pages-data">
-Akcje promocyjne<br /><br />
-	<?php
-		$codes = Code::where('package_id=?', ['package_id'=>1]);
-		foreach ($codes as $code) { ?>
-			<p <?php if (!empty($code->used)) { echo 'class="linethrough"'; } ?>><?= $code->code ?></p>
-		<?php }
-	?>
+<b>Akcje promocyjne</b>
+<?php
+	foreach ($actions_codes as $code) { 
+		$action = $code->action(); ?>
+		<p><?= $code->code.' -> '.$action->name ?></p>
+	<?php }
+?>
 </div>
+
 <div class="static-pages-data">
-Konkursy<br /><br />
-	<?php
-		$contest = Action::findBy('type', 'Contests');
-		if (!empty($contest)) {
-			foreach ($contest->codes() as $code) { ?>
-				<p <?php if (!empty($code->used)) { echo 'class="linethrough"'; } ?>><?= $code->code ?></p>
-			<?php }
-		}
-	?>
+<b>Konkursy</b>
+<?php
+	foreach ($contests_codes as $code) { 
+		$action = $code->action(); ?>
+		<p><?= $code->code.' -> '.$action->name ?></p>
+	<?php }
+?>
 </div>
+
 
 <script type="text/javascript" src="/assets/javascript/guardianInitialize.js"></script>

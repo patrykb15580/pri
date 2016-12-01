@@ -113,6 +113,7 @@ $router->map( 'GET', '/[a:code]', 'StaticPagesController#useCode', 'use_code' );
 $router->map( 'GET', '/[a:code]/is-used', 'StaticPagesController#codeIsUsed', 'code_is_used' );
 $router->map( 'POST', '/[a:code]/add-points', 'StaticPagesController#addPoints', 'add_points' );
 $router->map( 'GET', '/[a:code]/confirm', 'StaticPagesController#confirmation', 'confirmation' );
+$router->map( 'GET', '/[a:code]/contest-confirm', 'StaticPagesController#contestConfirmation', 'contest_confirm' );
 $router->map( 'GET', '/access-denied', 'StaticPagesController#authorizeError', 'access_denied' );
 
 

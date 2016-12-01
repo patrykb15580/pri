@@ -38,10 +38,10 @@ body.body-404{
 
 div#start-top{
   display: block;
-  width: 99%;
-  height: 20%;
+  width: calc(100% - 20px);
+  height: 20px;
   margin: 0px;
-  padding: 0.5% 1% 0.5% 0px;
+  padding: 6px 20px 6px 0px;
   text-align: right; 
   font-weight: bold;
   color: white;
@@ -808,6 +808,10 @@ div#main-layout-user{
     display: inline-block;
     margin: 0px 40px 0px 0px;
     float: left;
+    width: 40%;
+    min-width: 220px;
+    height: 70vh;
+    overflow-y: auto;
   }
 }
 @media only screen and (max-width: 449px){

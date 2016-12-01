@@ -1,6 +1,6 @@
 /* Rewards detals for client */
 @media only screen and (min-width: 800px){
-    img.reward-details-image{
+  img.reward-details-image{
     max-width: 500px;
     max-height: 500px;
     display: block;

@@ -4,7 +4,7 @@
 */
 class StaticPagesController extends Controller
 {
-	public $non_authorized = ['startPage', 'contest', 'contestAnswer', 'login', 'promotorLogin', 'insertCode', 'useCode', 'addPoints', 'confirmation', 'getOrCreateClient', 'loginHashSend'];
+	public $non_authorized = ['startPage', 'contest', 'contestAnswer', 'login', 'promotorLogin', 'insertCode', 'useCode', 'addPoints', 'confirmation', 'contestConfirmation', 'getOrCreateClient', 'loginHashSend'];
 
 	public function startPage()
 	{
@@ -67,8 +67,8 @@ class StaticPagesController extends Controller
 				$code->update(['used'=>date(Config::get('mysqltime')), 'client_id'=>$client->id]);
 				History::addHistoryRecord($client->id, $points_balance->balance, $points_balance->balance, $description, 'add');
 				
-				$path = $router->generate('start_page', []);
-				$this->alert('info', 'Dziękujemy za wzięcie udziału w naszym konkursie');
+				$path = $router->generate('contest_confirm', ['code'=>$code->code]);
+				
 				header('Location: '.$path);
 			} else {
 				$this->alert('error', 'Twoja odpowiedź nie została zapisana, spróbuj jeszcze raz');
@@ -188,6 +188,22 @@ class StaticPagesController extends Controller
 	}
 
 	public function confirmation()
+	{	
+		$code = Code::findBy('code', $this->params['code']);
+		if (!empty($code)) {
+			$package = $code->package();
+			$action = $package->action();
+			$promotor = $action->promotor();
+
+			$view = (new View($this->params, ['code'=>$code, 'package'=>$package, 'promotion_action'=>$action, 'promotor'=>$promotor], 'start'))->render();
+		return $view;
+		} else {
+			$view = (new View($this->params, [], '404'))->render();
+			return $view;
+		}
+	}
+
+	public function contestConfirmation()
 	{	
 		$code = Code::findBy('code', $this->params['code']);
 		if (!empty($code)) {
