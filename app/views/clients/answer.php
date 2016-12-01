@@ -11,7 +11,7 @@
 
 <form class="guardian-initialize client-view-item-box" method="POST" action="<?= $path ?>">
 	<h2><?= $contest->question ?></h2>
-	<textarea rows="4" name="answer[answer]" required="required"></textarea><br /><br />
+	<textarea rows="6" name="answer[answer]" required="required"></textarea><br />
 	<input type="submit" value="Zatwierdź">
 </form>
 

@@ -116,7 +116,7 @@ class StaticPagesController extends Controller
 
 		if ($code !== null && $code->isActive()) {
 			$action = $code->action();
-			
+
 			if ($action->type == 'PromotionActions') {
 				$path = $router->generate('use_code', ['code'=>$this->params['code']]);
 				header('Location: '.$path);
@@ -190,12 +190,17 @@ class StaticPagesController extends Controller
 	public function confirmation()
 	{	
 		$code = Code::findBy('code', $this->params['code']);
-		$package = $code->package();
-		$action = $package->action();
-		$promotor = $action->promotor();
+		if (!empty($code)) {
+			$package = $code->package();
+			$action = $package->action();
+			$promotor = $action->promotor();
 
-		$view = (new View($this->params, ['code'=>$code, 'package'=>$package, 'promotion_action'=>$action, 'promotor'=>$promotor], 'start'))->render();
+			$view = (new View($this->params, ['code'=>$code, 'package'=>$package, 'promotion_action'=>$action, 'promotor'=>$promotor], 'start'))->render();
 		return $view;
+		} else {
+			$view = (new View($this->params, [], '404'))->render();
+			return $view;
+		}
 	}
 
 	public function authorizeError()
