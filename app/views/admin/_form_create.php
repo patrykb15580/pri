@@ -1,18 +1,4 @@
-<?php
-	$router = Config::get('router');
-
-	$path = $router->generate('create_promotors', []);
-	
-	if (isset($params['update'])) {
-		if ($params['update'] == 'error') { ?>
-			<div class="error_message">
-				Nie udało się zaktualizować prifilu.<br /> Spróbuj jeszcze raz
-			</div><br /><br />
-		<?php }
-	}
-?>
-<form method="POST" action="<?= $path ?>">
-	<h1>Nowy promotor</h1>
+<form class="form-page-form" method="POST" action="<?= $path ?>">
 	Nazwa:<br />
 	<input type="text" name="promotor[name]" value="<?= $promotor->name ?>"><br /><br />
 	E-mail:<br />
@@ -26,5 +12,5 @@
 	} ?><br /><br />
 	Potwierdź hasło:<br />
 	<input type="password" name="confirm_password"><br /><br />
-	<input type="submit" value="Zapisz zmiany">
+	<input class="form-page-button" type="submit" value="Zapisz zmiany"> <a href="/admin/">Anuluj</a>
 </form>

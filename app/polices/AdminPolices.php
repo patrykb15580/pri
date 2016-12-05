@@ -199,4 +199,19 @@ class AdminPolices extends Polices
 			return true;
 		}
 	}
+
+	/*public function getCSV()
+	{
+		if ($this->user->isPromotor()) {
+			return false;
+		}
+
+		if ($this->user->isClient()) {
+			return false;
+		}
+
+		if ($this->user->isAdmin()) {
+			return true;
+		}
+	}*/
 }

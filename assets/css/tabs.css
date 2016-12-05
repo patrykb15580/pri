@@ -61,6 +61,11 @@
 	  	font-size: 14px;
 	  	margin: 10px 2% 10px auto;
 	}
+	#admin-select-tabs{
+		float: right;
+	  	font-size: 14px;
+	  	margin: 10px 2% 10px auto;
+	}
 }
 @media only screen and (max-width: 999px) and (min-width: 620px){
 	.l2-tabs-box{
@@ -116,6 +121,11 @@
 		width: 100px;
 	}
 	#select-tab{
+		float: right;
+	  	font-size: 12px;
+	 	margin: 10px 2% 10px auto;
+	}
+	#admin-select-tabs{
 		float: right;
 	  	font-size: 12px;
 	 	margin: 10px 2% 10px auto;
@@ -180,6 +190,11 @@
 	 	font-size: 10px;
 	 	margin: 10px 2% 10px auto;
 	}
+	#admin-select-tabs{
+		float: right;
+	 	font-size: 10px;
+	 	margin: 10px 2% 10px auto;
+	}
 }
 @media only screen and (max-width: 539px){
 	.l2-tabs-box{
@@ -240,6 +255,11 @@
 		font-size: 12px;
 	}
 	#select-tab{
+		float: right;
+	 	font-size: 10px;
+	 	margin: 10px 2% 10px auto;
+	}
+	#admin-select-tabs{
 		float: right;
 	 	font-size: 10px;
 	 	margin: 10px 2% 10px auto;

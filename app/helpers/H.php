@@ -4,15 +4,60 @@
 */
 class H
 {
-	
-	static public function adminCurrentMenu($params, $action)
+	static public function adminPromotorsCurrentMenu($params, $action)
 	{
 		if (isset($params['show']) && $params['show'] == $action) {
-			return 'admin_menu_active';
+			return 'admin_promotors_menu_active';
 		}
 		if (!isset($params['show']) && $action == 'actions') {
+			return 'admin_promotors_menu_active';
+		}
+		return 'admin_promotors_menu_inactive';
+	}
+	static public function adminCurrentMenu($params, $action)
+	{
+		$menu = '';
+		if ($params['action'] == 'show') {
+			$menu = 'promotors';
+		}
+		if ($params['action'] == 'showPromotor') {
+			$menu = 'promotors';
+		}
+		if ($params['action'] == 'showPromotorAction') {
+			$menu = 'promotors';
+		}
+		if ($params['action'] == 'showPromotorContest') {
+			$menu = 'promotors';
+		}
+		if ($params['action'] == 'showPromotorStats') {
+			$menu = 'promotors';
+		}
+		if ($params['action'] == 'showPromotorPackage') {
+			$menu = 'promotors';
+		}
+		if ($params['action'] == 'showPromotorReward') {
+			$menu = 'promotors';
+		}
+		if ($params['action'] == 'showPromotorOrder') {
+			$menu = 'promotors';
+		}
+		if ($params['action'] == 'newPromotor') {
+			$menu = 'promotors';
+		}
+		if ($params['action'] == 'editPromotor') {
+			$menu = 'promotors';
+		}
+		if ($params['action'] == 'indexOrders') {
+			$menu = 'orders';
+		}
+		if ($params['action'] == 'showOrder') {
+			$menu = 'orders';
+		}
+
+		if ($menu == $action) {
 			return 'admin_menu_active';
 		}
+
 		return 'admin_menu_inactive';
 	}
 

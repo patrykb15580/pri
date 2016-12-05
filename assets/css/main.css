@@ -457,7 +457,7 @@ div#admin_menu_box{
   padding: 0px;
   margin: 0px;
 }
-div#admin_menu_active{
+div#admin_promotors_menu_active{
   display: inline-block;
   float: left;
   width: 19.9%;
@@ -468,7 +468,7 @@ div#admin_menu_active{
   border-bottom: 0px;
   border-style: solid;
 }
-div#admin_menu_active:hover{
+div#admin_promotors_menu_active:hover{
   display: inline-block;
   float: left;
   background-color: rgba(64, 64, 64, 0.3);
@@ -481,7 +481,7 @@ div#admin_menu_active:hover{
   border-bottom: 0px;
   border-style: solid;
 }
-div#admin_menu_inactive{
+div#admin_promotors_menu_inactive{
   display: inline-block;
   float: left;
   width: 19.9%;
@@ -492,7 +492,7 @@ div#admin_menu_inactive{
   border-bottom: 1px;
   border-style: solid;
 }
-div#admin_menu_inactive:hover{
+div#admin_promotors_menu_inactive:hover{
   display: inline-block;
   float: left;
   background-color: rgba(64, 64, 64, 0.3);
@@ -818,4 +818,11 @@ div#main-layout-user{
   .static-pages-data{
     display: none;
   }
+}
+
+
+
+
+.hide{
+  display: none;
 }

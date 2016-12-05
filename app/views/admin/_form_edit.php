@@ -11,7 +11,7 @@
 		<?php }
 	}
 ?>
-<form method="POST" action="<?= $path ?>">
+<form class="form-page-form" method="POST" action="<?= $path ?>">
 	<h1>Edycja konta promotora</h1>
 	Nazwa:<br />
 	<input type="text" name="promotor[name]" value="<?= $promotor->name ?>"><br /><br />
@@ -23,5 +23,5 @@
 	<br /><br />
 	Bieżące hasło:<br />
 	<input type="password" name="old_password"><br /><br />
-	<input type="submit" value="Zapisz zmiany">
+	<input class="form-page-button" type="submit" value="Zapisz zmiany"> <a href="/admin/promotor/<?= $promotor->id ?>">Anuluj</a>
 </form>

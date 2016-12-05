@@ -119,6 +119,16 @@ class Client extends Model
 		return $promotors;
 	}
 
+	public function promotorsActions()
+	{
+		$promotors = [];
+		foreach ($this->promotionActions() as $promotion_action) {
+			$promotor = $promotion_action->promotor();
+			$promotors[$promotion_action->promotor_id] = $promotor;
+		}
+		return $promotors;
+	}
+
 	public function balance($promotor)
 	{
 		$balance = PointsBalance::where('client_id=? AND promotor_id=?', ['client_id'=>$this->id, 'promotor_id'=>$promotor->id]);

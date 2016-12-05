@@ -43,6 +43,8 @@
   .modal-image{
     display: block;
     margin: 0 auto;
+    max-width: 80vw;
+    max-height: 80vh;
   }
 }
 @media only screen and (max-width: 799px) and (min-width: 600px){
@@ -137,6 +139,8 @@
   .modal-image{
     display: block;
     margin: 0 auto;
+    max-width: 80vw;
+    max-height: 80vh;
   }
 }
 @media only screen and (max-width: 399px){
@@ -184,5 +188,7 @@
   .modal-image{
     display: block;
     margin: 0 auto;
+    max-width: 80vw;
+    max-height: 80vh;
   }
 }

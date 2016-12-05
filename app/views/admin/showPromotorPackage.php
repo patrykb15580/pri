@@ -1,23 +1,18 @@
 <?php
 	$router = Config::get('router');
+	$action = $package->action();
 ?>	
-<h2 id="show_top_title">
-	<a href="<?= $router->generate('show_promotor', ['promotor_id' => $params['promotor_id']]) ?>" id="link_underline">
-		<?= $package->promotionAction()->promotor()->name ?>
-	</a> > 
-	<a href="<?= $router->generate('show_promotor', ['promotor_id' => $params['promotor_id']]).'?show=actions' ?>" id="link_underline">
-		Akcje promocyjne
-	</a> > 
-	<a href="<?= $router->generate('show_promotor_action', ['promotor_id' => $params['promotor_id'], 'action_id' => $params['action_id']]) ?>" id="link_underline">
-		<?= $package->promotionAction()->name ?>
-	</a> > <?= $package->name ?>
-</h2>
-<br /><br />
-Status: <?= PromotionCodesPackage::STATUSES[$package->status] ?><br />
-Liczba kodów: <?= $package->generated ?><br />
-Wartość kodów: <?= $package->codes_value ?> pkt<br />
-Wykorzystane kody: <?= count($package->usedCodes()) ?>
-<br /><br />
+<div id="title-box">
+	<i class="fa fa-product-hunt title-box-icon green-icon" aria-hidden="true"></i><p class="title-box-text"><?= $action->name ?></p>
+
+	<br /><br />
+	<p class="title-box-details">
+		Status: <?= CodesPackage::STATUSES[$package->status] ?><br />
+		Liczba kodów: <?= $package->generated ?><br />
+		Wartość kodów: <?= $package->codes_value ?> pkt<br />
+		Wykorzystane kody: <?= count($package->usedCodes()) ?>
+	</p>
+</div>
 <?php
 	include 'app/views/admin/_promotion_codes.php';
 ?>

@@ -45,14 +45,14 @@ class Promotor extends Model
 		return Action::where('promotor_id=?', ['promotor_id'=>$this->id]);
 	}
 
-	public function promotionActions()
+	public function promotionActions($params = [])
 	{
-		return Action::where('promotor_id=? AND type=?', ['promotor_id'=>$this->id, 'type'=>'PromotionActions']);
+		return Action::where('promotor_id=? AND type=?', ['promotor_id'=>$this->id, 'type'=>'PromotionActions'], $params);
 	}
 
-	public function contests()
+	public function contests($params = [])
 	{
-		return Action::where('promotor_id=? AND type=?', ['promotor_id'=>$this->id, 'type'=>'Contests']);
+		return Action::where('promotor_id=? AND type=?', ['promotor_id'=>$this->id, 'type'=>'Contests'], $params);
 	}
 
 	public function rewards()

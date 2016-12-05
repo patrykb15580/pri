@@ -27,6 +27,7 @@
 	<link rel="stylesheet" type="text/css" href="/assets/css/app.css">
 	<link rel="stylesheet" type="text/css" href="/assets/css/promotorSidebar.css">
 	<link rel="stylesheet" type="text/css" href="/assets/css/clientSidebar.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/adminSidebar.css">
 	<link rel="stylesheet" type="text/css" href="/assets/css/main.css">
 	<link rel="stylesheet" type="text/css" href="/assets/css/appTop.css">
 	<link rel="stylesheet" type="text/css" href="/assets/css/formPage.css">

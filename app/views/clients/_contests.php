@@ -14,17 +14,20 @@ foreach ($client->promotors() as $promotor) {
 		<div class="client-view-item-box">
 			<table width="100%">
 				<tr>
-					<td class="first-row" width="50%">Nazwa konkursu</td>
-					<td class="first-row" width="50%">Odpowiedź</td>
+					<td class="first-row" width="40%">Nazwa konkursu</td>
+					<td class="first-row" width="30%">pytanie</td>
+					<td class="first-row" width="30%">Odpowiedź</td>
 				</tr>
 			<?php foreach ($contests as $contest) { 
-				if ($contest->promotor_id == $promotor->id) { ?>
+				if ($contest->promotor_id == $promotor->id) { 
+					$answer = ($contest->contest())->question;?>
 					<tr class="result">
-						<td width="30%"><?= $contest->name ?></td>
-						<td width="70%"><?= nl2br(($client->contestAnswer($contest->id))->answer) ?></td>
+						<td width="40%"><?= $contest->name ?></td>
+						<td width="30%"><?= $answer ?></td>
+						<td width="30%"><?= nl2br(($client->contestAnswer($contest->id))->answer) ?></td>
 					</tr>
 				<?php } } ?>
-				<tr id="last_row"><td width="50%">Liczba konkursów: <b><?= $i ?></b></td><td width="50%"></td></tr>	
+				<tr id="last_row"><td width="40%">Liczba konkursów: <b><?= $i ?></b></td><td width="30%"></td><td width="30%"></td></tr>	
 			</table>
 		</div>
 	<?php } 

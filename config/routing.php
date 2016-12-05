@@ -19,6 +19,7 @@ $router->map( 'GET', '/admin/edit-promotor/[i:promotors_id]', 'AdminController#e
 $router->map( 'POST', '/admin/update-promotor/[i:promotors_id]', 'AdminController#updatePromotor', 'update_promotor_by_admin' );
 $router->map( 'GET', '/admin/orders', 'AdminController#indexOrders', 'index_admin_orders' );
 $router->map( 'GET', '/admin/orders/[i:order_id]', 'AdminController#showOrder', 'show_admin_order' );
+$router->map( 'POST', '/admin/getCSV', 'AdminController#getCSV', 'getCSV' );
 
 /* Admin -> new promotor */
 $router->map( 'GET', '/promotors/new', 'PromotorsController#new', 'new_promotor' );

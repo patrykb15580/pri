@@ -1,5 +1,5 @@
 <?php 
-foreach ($client->promotors() as $promotor) { 
+foreach ($client->promotorsActions() as $promotor) { 
 	$path_rewards = $router->generate('client_index_rewards', ['client_id' => $params['client_id'], 'promotors_id' => $promotor->id]);
 	$balance = PointsBalance::where('client_id=? AND promotor_id=?', ['client_id'=>$client->id, 'promotor_id'=>$promotor->id]);
 	$balance = $balance[0];
