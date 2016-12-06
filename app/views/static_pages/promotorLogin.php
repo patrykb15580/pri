@@ -1,10 +1,10 @@
 <h1 id="main_page_site_title">punktacja.pl</h1>
-<form id="promotor-login" method="POST" action="<?= $router->generate('sign_in', []) ?>">
+<form id="promotor-login" class="guardian-initialize" method="POST" action="<?= $router->generate('sign_in', []) ?>">
 	<h1 class="text_align_center">Logowanie</h1>
 	E-mail:
-	<br /><input type="text" name="login">
+	<br /><input type="text" name="login" required="required">
 	<br />Hasło:
-	<br /><input type="password" name="password">
+	<br /><input type="password" name="password" required="required">
 	<br /><br /><input id="login" type="submit" value="Zaloguj">
 </form>
 <div class="static-pages-data">

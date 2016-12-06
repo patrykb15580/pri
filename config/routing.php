@@ -10,6 +10,7 @@ $router->map( 'GET', '/admin', 'AdminController#show', 'show_admin' );
 $router->map( 'GET', '/admin/new-promotor', 'AdminController#newPromotor', 'new_promotors' );
 $router->map( 'GET', '/admin/promotor/[i:promotor_id]', 'AdminController#showPromotor', 'show_promotor' );
 $router->map( 'GET', '/admin/promotor/[i:promotor_id]/action/[i:action_id]', 'AdminController#showPromotorAction', 'show_promotor_action' );
+$router->map( 'GET', '/admin/promotor/[i:promotor_id]/contest/[i:action_id]', 'AdminController#showPromotorContest', 'show_promotor_contest' );
 $router->map( 'GET', '/admin/promotor/[i:promotor_id]/stats', 'AdminController#showPromotorStats', 'show_promotor_stats' );
 $router->map( 'GET', '/admin/promotor/[i:promotor_id]/action/[i:action_id]/package/[i:package_id]', 'AdminController#showPromotorPackage', 'show_promotor_package' );
 $router->map( 'GET', '/admin/promotor/[i:promotor_id]/reward/[i:reward_id]', 'AdminController#showPromotorReward', 'show_promotor_reward' );
@@ -20,6 +21,7 @@ $router->map( 'POST', '/admin/update-promotor/[i:promotors_id]', 'AdminControlle
 $router->map( 'GET', '/admin/orders', 'AdminController#indexOrders', 'index_admin_orders' );
 $router->map( 'GET', '/admin/orders/[i:order_id]', 'AdminController#showOrder', 'show_admin_order' );
 $router->map( 'POST', '/admin/getCSV', 'AdminController#getCSV', 'getCSV' );
+$router->map( 'POST', '/admin/change-order-status', 'AdminController#changeOrderStatus', 'change_admin_order_status' );
 
 /* Admin -> new promotor */
 $router->map( 'GET', '/promotors/new', 'PromotorsController#new', 'new_promotor' );

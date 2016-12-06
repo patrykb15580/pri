@@ -4,7 +4,7 @@
 		<td class="first-row" width="10%"></td>
 		<td class="first-row text_align_right" width="10%">Cena</td>
 	</tr>
-<?php foreach ($promotor->rewards() as $reward) { 
+<?php foreach ($rewards as $reward) { 
 	$path_show = $router->generate('show_promotor_reward', ['promotor_id' => $promotor->id, 'reward_id' => $reward->id]);?>
 	<tr class="result">
 		<td width="80%"><a href="<?= $path_show ?>"><?= $reward->name ?></a></td>

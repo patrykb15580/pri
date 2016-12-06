@@ -441,6 +441,7 @@ input[type=submit]:hover{
 */
 
 select{
+  background-color: rgba(250, 250, 250, 0.0);
   width: auto;
   height: 30px;
   border: 1px;
@@ -820,8 +821,11 @@ div#main-layout-user{
   }
 }
 
-
-
+.files-number{
+  display: inline;
+  margin: 0px;
+  padding: 0px;
+}
 
 .hide{
   display: none;

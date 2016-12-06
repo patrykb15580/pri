@@ -1,13 +1,13 @@
 <h1 class="stats-title">Użyte kody</h1>
 
 <div class="l2-tabs-box">
-  <div class="l2-tab-1 l2-tab-active">
+  <div class="l2-tab l2-tab-1 l2-tab-active" data-tab="l2-tab-1">
     Kody w danym miesiącu
   </div>
-  <div class="l2-tab-2 l2-tab-inactive">
+  <div class="l2-tab l2-tab-2 l2-tab-inactive" data-tab="l2-tab-2">
     Kody w bieżącym roku
   </div>
-  <div class="l2-tab-3 l2-tab-inactive">
+  <div class="l2-tab l2-tab-3 l2-tab-inactive" data-tab="l2-tab-3">
     Kody w okresie
   </div>
 </div>

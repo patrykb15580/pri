@@ -1,16 +1,13 @@
 <table width="100%">
 	<tr>
-		<td class="first-row" width="40%">
+		<td class="first-row" width="50%">
 			Promotor
 		</td>
-		<td class="first-row" width="20%">
+		<td class="first-row" width="35%">
 			Data zamówienia
 		</td>
-		<td class="first-row text_align_right" width="10%">
+		<td class="first-row text_align_right" width="15%">
 			Nakład
-		</td>
-		<td class="first-row text_align_right" width="20%">
-			Status
 		</td>
 	</tr>
 	<?php
@@ -18,19 +15,16 @@
 		$promotor = $order->promotor();
 		$path_show = $router->generate('show_admin_order', ['order_id' => $order->id]);?>
 			<tr class="result">
-				<td width="40%">
+				<td width="50%">
 					<a href="<?= $path_show ?>">
 						<?= $promotor->name ?>
 					</a>
 				</td>
-				<td width="25%">
+				<td width="35%">
 					<?= $order->order_date ?>	
 				</td>
-				<td class="text_align_right" width="10%">
+				<td class="text_align_right" width="15%">
 					<?= $order->quantity ?>
-				</td>
-				<td class="text_align_right" width="25%">
-					<?= AdminOrder::STATUSES[$order->status] ?>
 				</td>
 			</tr>
 	<?php } ?>

@@ -17,10 +17,10 @@
 	<i class="fa fa-shopping-basket title-box-icon dark-green-icon" aria-hidden="true"></i><p class="title-box-text"> Zamówienia</p>
 </div>
 <div id="title-box-tabs">
-	<p class="tab1 tab-active">NIEZREALIZOWANE</p><p class="tab2 tab-inactive">ZREALIZOWANE</p>
+	<p class="tab tab1 tab-active" data-tab="tab-1">NIEZREALIZOWANE</p><p class="tab tab2 tab-inactive" data-tab="tab-2">ZREALIZOWANE</p>
 </div>
 
-<div id="tab-1-content">
+<div id="tab-1-content" class="tab-content">
    	<?php 
 		$orders = $promotor->activeOrders();
 		
@@ -29,7 +29,7 @@
 		} else include 'app/views/layouts/_no_results.php';
 	?>
 </div>
-<div id="tab-2-content">
+<div id="tab-2-content" class="tab-content">
    	<?php 
 		$orders = $promotor->completedOrders();
 		

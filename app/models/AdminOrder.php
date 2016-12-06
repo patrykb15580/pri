@@ -67,4 +67,29 @@ class AdminOrder extends Model
 	{
 		return CodesPackage::find($this->package_id);
 	}
+
+	public static function waitingOrders($params = [])
+	{
+		return AdminOrder::where('status=?', ['status'=>'waiting'], $params);
+	}
+
+	public static function activeOrders($params = [])
+	{
+		return AdminOrder::where('status=?', ['status'=>'active'], $params);
+	}
+
+	public static function sentOrders($params = [])
+	{
+		return AdminOrder::where('status=?', ['status'=>'sent'], $params);
+	}
+
+	public static function completedOrders($params = [])
+	{
+		return AdminOrder::where('status=?', ['status'=>'completed'], $params);
+	}
+
+	public static function canceledOrders($params = [])
+	{
+		return AdminOrder::where('status=?', ['status'=>'canceled'], $params);
+	}
 }

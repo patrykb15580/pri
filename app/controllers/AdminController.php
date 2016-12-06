@@ -32,6 +32,15 @@ class AdminController extends Controller
 		return $view;
 	}
 
+	public function showPromotorContest()
+	{
+		$this->auth(__FUNCTION__, new Admin);
+		$action = Action::find($this->params['action_id']);
+
+		$view = (new View($this->params, ['action'=>$action]))->render();
+		return $view;
+	}
+
 	public function showPromotorStats()
 	{
 		$this->auth(__FUNCTION__, new Admin);
@@ -140,7 +149,7 @@ class AdminController extends Controller
 
 				header("Location: http://".$_SERVER['HTTP_HOST']."/admin/promotor/".$this->params['promotors_id']);
 			} else {
-				$this->alert('error', 'Nie udało się zaktualizować profilu<br />Spróbuj jeszcze raz');
+				$this->alert('error', 'Nie udało się zaktualizować profilu, spróbuj jeszcze raz');
 
 				header("Location: http://".$_SERVER['HTTP_HOST']."/admin/edit-promotor/".$this->params['promotors_id']);
 			}
@@ -169,10 +178,10 @@ class AdminController extends Controller
 		return $view;
 	}
 
-	function getCSV()
+	public function getCSV()
 	{
 		header('Content-Type: text/csv; charset=utf-8');
-		header('Content-Disposition: attachment; filename=pakiet'.$this->params['package_id'].'.csv');
+		header('Content-Disposition: attachment; filename=pakiet-'.$this->params['package_id'].'.csv');
 
 		// create a file pointer connected to the output stream
 		$output = fopen('php://output', 'w');
@@ -189,5 +198,17 @@ class AdminController extends Controller
 		}
 
 		fputcsv($output, $data, "\n");
+	}
+
+	public function changeOrderStatus()
+	{
+		$router = Config::get('router');
+		$path = $router->generate('show_admin_order', ['order_id'=>$this->params['order_id']]);
+
+		$order = AdminOrder::find($this->params['order_id']);
+
+		$order->update(['status'=>$this->params['status']]);
+
+		header('Location: '.$path);
 	}
 }

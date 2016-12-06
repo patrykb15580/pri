@@ -17,19 +17,19 @@
 	<i class="fa fa-line-chart title-box-icon blue-icon" aria-hidden="true"></i><p class="title-box-text"> Statystyki</p>
 </div>
 <div id="title-box-tabs">
-	<p class="tab1 tab-active">KLIENCI</p><p class="tab2 tab-inactive">KODY</p>
+	<p class="tab tab1 tab-active" data-tab="tab-1">KLIENCI</p><p class="tab tab2 tab-inactive" data-tab="tab-2">KODY</p>
 </div>
 
 <div id="tab-1-content" class="tab-content">
 <?php 
-	include '_newest_clients.php';
+	#include '_newest_clients.php';
 	include '_clients_charts.php';
 ?>	
 </div>
 
 <div id="tab-2-content" class="tab-content">
 <?php
-	include '_recently_used_codes.php';
+	#include '_recently_used_codes.php';
 	include '_codes_charts.php';
 ?>
 </div>

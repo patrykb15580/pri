@@ -4,7 +4,7 @@
 		<td class="first-row" width="30%">Czas trwania akcji</td>
 		<td class="first-row text_align_right" width="15%">Wykorzystane kody</td>
 	</tr>
-	<?php foreach ($promotor->promotionActions(['order'=>'id DESC']) as $action) { 
+	<?php foreach ($promotion_actions as $action) { 
 		$promotion_action = $action->promotionAction();
 		$path_show = $router->generate('show_promotor_action', ['promotor_id' => $promotor->id, 'action_id' => $promotion_action->id]); ?>
 		<tr class="result">
