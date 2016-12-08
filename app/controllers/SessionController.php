@@ -10,9 +10,9 @@ class SessionController extends Controller
 	{
 		if ($this->params['login'] == 'admin') {
 			Auth::authorizeAdmin($this->params);
-		}
-
-		else {
+		} else if (isset($this->params['client'])) {
+			Auth::authorizeClient($this->params);
+		} else {
 			Auth::authorizePromotor($this->params);
 		}
 	}

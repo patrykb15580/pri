@@ -12,7 +12,7 @@
  
  			$router = Config::get('router');
  			
- 			header('Location: '.$router->generate('promotor_login', []));
+ 			header('Location: '.$router->generate('login', []));
  		} 
  	}
 
@@ -48,16 +48,24 @@
 
 	public static function authorizeClient($params)
 	{
-		
-		$client = Client::findBy('hash', $params['hash']);
-		
 		$router = Config::get('router');
 
+		$client = [];
+		$login_error = '';
+		
+		if (isset($params['hash'])) {
+			$client = Client::findBy('hash', $params['hash']);
+			$login_error = 'Błędny identyfikator klienta';
+		} else {
+			$client = Client::where('email=? AND password_digest=?', ['email'=>$params['client']['email'], 'password_digest'=>Password::encryptPassword($params['client']['password'])]);
+			$login_error = 'Błędny login lub hasło';
+		}
+		
 		if (!empty($client)) {
 			Auth::login($client);
 			header('Location: '.$router->generate('show_client', ['client_id'=>$_SESSION['user']->id]));
 		} else {
-			new Alerts('error', 'Błędny identyfikator klienta');
+			new Alerts('error', $login_error);
 			header('Location: '.$router->generate('login', []));
 		}
 	} 

@@ -265,12 +265,12 @@ class PromotorsControllerTest extends Tests
 		$elements = $html->find('.tab2');	
 		Assert::expect(count($elements)) -> toEqual(1);
 
-		$elements = $html->find('#stats_box');	
-		Assert::expect(count($elements)) -> toEqual(2);
+		#$elements = $html->find('#stats_box');	
+		#Assert::expect(count($elements)) -> toEqual(2);
 
 
-		$elements = $html->find('tr.result');	
-		Assert::expect(count($elements)) -> toEqual(2);
+		#$elements = $html->find('tr.result');	
+		#Assert::expect(count($elements)) -> toEqual(2);
 
 
 		$elements = $html->find('div#clients_in_month_chart');	

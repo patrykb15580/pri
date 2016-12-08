@@ -4,6 +4,7 @@
 			Koniec z hasłami!
 		</h1>
 		Aby zalogować się do panelu wystarczy kliknąć w dowolny link w dowolnej wiadomości email od nas.
+		<br /><br />
 	</div>
 	<div class="login_right_block">
 		<p>
@@ -16,7 +17,7 @@
 				E-mail
 			</label>
 			<br /><input type="text" name="client_email" required="required">
-			<input class="login_submit" type="submit" value="Wyślij link do logowania">
+			<br /><input class="login_submit" type="submit" value="Wyślij link do logowania">
 		</form>
 		<br />
 		<a class="promotor-login-link" href="<?= $router->generate('promotor_login', []) ?>">Zaloguj jako promotor</a>

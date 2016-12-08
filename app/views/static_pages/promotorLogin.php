@@ -1,12 +1,14 @@
 <h1 id="main_page_site_title">punktacja.pl</h1>
-<form id="promotor-login" class="guardian-initialize" method="POST" action="<?= $router->generate('sign_in', []) ?>">
+<div id="login">
 	<h1 class="text_align_center">Logowanie</h1>
-	E-mail:
-	<br /><input type="text" name="login" required="required">
-	<br />Hasło:
-	<br /><input type="password" name="password" required="required">
-	<br /><br /><input id="login" type="submit" value="Zaloguj">
-</form>
+	<form class="promotor-login-form login-form guardian-initialize" method="POST" action="<?= $router->generate('sign_in', []) ?>">
+		E-mail:
+		<br /><input type="text" name="login" required="required">
+		<br />Hasło:
+		<br /><input type="password" name="password" required="required">
+		<br /><br /><input type="submit" value="Zaloguj">
+	</form>
+</div>
 <div class="static-pages-data">
 	admin -> zaq1@WSX
 	<br /><br /><br />
@@ -24,3 +26,4 @@
 		}
 	?>
 </div>
+

@@ -3,7 +3,7 @@
     display: block;
     background-color: white;
     color: #737C85;
-    width: 308px;
+    width: 328px;
     padding: 20px 0px 4px 0px;
     margin: 40px auto 0px auto;
     border: 0px solid;
@@ -16,7 +16,7 @@
     font-weight: 600;
     text-align: center;
     font-size: 16px;
-    width: 268px;
+    width: 288px;
     padding: 20px;
     margin: 0px auto;
     border: 0px solid;
@@ -26,11 +26,35 @@
     background-color: white;
     color: #737C85;
     font-size: 16px;
-    width: 268px;
-    padding: 20px;
+    width: 308px;
+    padding: 20px 10px;
     margin: 0px auto;
     border: 0px solid;
     border-radius: 0px 0px 5px 5px;
+  }
+  .confirm_code_bottom button {
+    width: 268px;
+    background-color: #53BE31;
+    border: 0px solid;
+    border-radius: 5px;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    margin: 0px auto;
+    padding: 10px;
+    transition: background-color 0.2s;
+  }
+  .confirm_code_bottom button:hover {
+    width: 268px;
+    background-color: #68d049;
+    border: 0px solid;
+    border-radius: 5px;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    margin: 0px auto;
+    padding: 10px;
+    cursor: pointer;
   }
   .code_info_top{
     display: block;
@@ -92,7 +116,7 @@
   }
   .code-info-table{
     text-align: center;
-    width: 266px;
+    width: 286px;
     margin: 0px 20px;
     line-height: 26px;
   }
@@ -157,6 +181,30 @@
     margin: 0px auto;
     border: 0px solid;
     border-radius: 0px 0px 5px 5px;
+  }
+  .confirm_code_bottom button {
+    width: 192px;
+    background-color: #53BE31;
+    border: 0px solid;
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    margin: 0px auto;
+    padding: 6px;
+    transition: background-color 0.2s;
+  }
+  .confirm_code_bottom button:hover {
+    width: 192px;
+    background-color: #68d049;
+    border: 0px solid;
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    margin: 0px auto;
+    padding: 6px;
+    cursor: pointer;
   }
   .code_info_top{
     display: block;

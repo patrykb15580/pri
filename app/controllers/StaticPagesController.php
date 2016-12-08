@@ -66,6 +66,7 @@ class StaticPagesController extends Controller
 
 				$code->update(['used'=>date(Config::get('mysqltime')), 'client_id'=>$client->id]);
 				History::addHistoryRecord($client->id, $points_balance->balance, 0, $description, 'contest');
+				(new ClientMailer)->contest($client, $code, $promotor);
 				
 				$path = $router->generate('contest_confirm', ['code'=>$code->code]);
 				
@@ -151,7 +152,17 @@ class StaticPagesController extends Controller
 
 	public function addPoints()
 	{
+		setcookie('use_code_form_email', $this->params['client']['email'], time() + (86400 * 30), '/');
+		setcookie('use_code_form_name', $this->params['client']['name'], time() + (86400 * 30), '/');
+		setcookie('use_code_form_phone_number', $this->params['client']['phone_number'], time() + (86400 * 30), '/');
+
 		$client = $this->getOrCreateClient($this->params);
+
+		if (empty($client)) {
+			$path = $router->generate('use_code', ['code'=>$this->params['code']]);
+			header('Location: '.$path);
+		}
+
 		$code = Code::findBy('code', $this->params['code']);
 		$package = $code->package();
 		$action = $package->action();
@@ -196,7 +207,7 @@ class StaticPagesController extends Controller
 			$promotor = $action->promotor();
 
 			$view = (new View($this->params, ['code'=>$code, 'package'=>$package, 'promotion_action'=>$action, 'promotor'=>$promotor], 'start'))->render();
-		return $view;
+			return $view;
 		} else {
 			$view = (new View($this->params, [], '404'))->render();
 			return $view;
@@ -212,7 +223,7 @@ class StaticPagesController extends Controller
 			$promotor = $action->promotor();
 
 			$view = (new View($this->params, ['code'=>$code, 'package'=>$package, 'promotion_action'=>$action, 'promotor'=>$promotor], 'start'))->render();
-		return $view;
+			return $view;
 		} else {
 			$view = (new View($this->params, [], '404'))->render();
 			return $view;
@@ -232,9 +243,9 @@ class StaticPagesController extends Controller
 		if (!$client) {
 			$this->params['client']['hash'] = HashGenerator::generate();
 			$client = new Client($this->params['client']);
-			$client->save();
-
-			(new ClientMailer)->createClient($client);
+			if (!$client->save()) {
+				$this->alert('error', 'Nie udało się utworzyć profilu klienta.');
+			} else (new ClientMailer)->createClient($client);
 
 			return $client;
 		} else {

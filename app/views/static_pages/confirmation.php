@@ -1,3 +1,7 @@
+<?php	
+	$router = Config::get('router');
+	$path = $router->generate('start_page', []);
+?>
 <div class="confirm-code-top">
 	<?php
 		$avatar = PromotorAvatar::findBy('promotor_id', $promotor->id);
@@ -27,17 +31,10 @@
 <div class="confirm_code_message" class="green_font">
 	<i class="fa fa-smile-o fa-5x" aria-hidden="true"></i>
 	<p>Gratulacje,</p>
-	<?= $package->codes_value ?> punktów zostało dopisanych do Twojego konta.
+	punkty zostały dodane do Twojego konta.
 </div>
 <div class="confirm_code_bottom">
-	<b class="dark_font">Sprawdź aktualny stan punktów.</b>
-	<br><br>
-	Wystarczy kliknąć<br />
-	w dowolny link w dowolnej wiadomości email potwierdzającej dodanie punktów.
+	<a href="<?= $path ?>"><button>Wpisz następny kod</button></a>
 </div>
-<?php	
-	$router = Config::get('router');
-	$path = $router->generate('start_page', []);
-?>
 <a class="text_center white_font" href="<?= $path ?>">Powrót</a>
 <script type="text/javascript" src="/assets/javascript/hashEmailFormGuardianInitialize.js"></script>

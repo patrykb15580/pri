@@ -830,3 +830,73 @@ div#main-layout-user{
 .hide{
   display: none;
 }
+
+
+
+
+.left-label{
+  display: inline-block;
+  margin: 0px;
+  padding: 10px;
+  border: 1px solid;
+  border-radius: 5px 0px 0px 5px;
+}
+
+.right-label{
+  display: inline-block;
+  margin: 0px;
+  padding: 10px;
+  border: 1px solid;
+  border-radius: 0px 5px 5px 0px;
+}
+
+.form-tab-active{
+  display: inline-block;
+  width: 123px;
+  margin: 0px;
+  padding: 4px 10px;
+  border-top: 1px;
+  border-right: 1px;
+  border-bottom: 0px;
+  border-left: 1px;
+  border-style: solid;
+  text-align: center;
+}
+.form-tab-active:hover{
+  display: inline-block;
+  width: 123px;
+  margin: 0px;
+  padding: 4px 10px;
+  border-top: 1px;
+  border-right: 1px;
+  border-bottom: 0px;
+  border-left: 1px;
+  border-style: solid;
+  text-align: center;
+  cursor: pointer;
+}
+.form-tab-inactive{
+  display: inline-block;
+  width: 123px;
+  margin: 0px;
+  padding: 4px 10px;
+  border-top: 0px;
+  border-right: 0px;
+  border-bottom: 1px;
+  border-left: 0px;
+  border-style: solid;
+  text-align: center;
+}
+.form-tab-inactive:hover{
+  display: inline-block;
+  width: 123px;
+  margin: 0px;
+  padding: 4px 10px;
+  border-top: 0px;
+  border-right: 0px;
+  border-bottom: 1px;
+  border-left: 0px;
+  border-style: solid;
+  text-align: center;
+  cursor: pointer;
+}

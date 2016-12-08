@@ -125,6 +125,9 @@
 		$package = new CodesPackage(['action_id'=>2, 'quantity'=>20, 'codes_value'=>1000, 'status'=>'active', 'description'=>'Codes package for action 2']);
 		$package->save();
 
+		$package = new CodesPackage(['action_id'=>11, 'quantity'=>20, 'codes_value'=>0, 'status'=>'active', 'description'=>'Codes package for action 11']);
+		$package->save();
+
 		print_r(CLIUntils::colorize("Promotion codes packages: OK\n", 'SUCCESS'));
 
 

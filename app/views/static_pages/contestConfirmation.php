@@ -1,3 +1,7 @@
+<?php	
+	$router = Config::get('router');
+	$path = $router->generate('start_page', []);
+?>
 <div class="confirm-code-top">
 	<?php
 		$avatar = PromotorAvatar::findBy('promotor_id', $promotor->id);
@@ -28,14 +32,7 @@
 	Dziękujemy za wzięcie udziału w konkursie.
 </div>
 <div class="confirm_code_bottom">
-	<b class="dark_font">Sprawdź swoją listę konkursów.</b>
-	<br><br>
-	Wystarczy kliknąć<br />
-	w dowolny link w dowolnej wiadomości email potierdzającej uczestnictwo w konkursie.
+	<a href="<?= $path ?>"><button>Wpisz następny kod</button></a>
 </div>
-<?php	
-	$router = Config::get('router');
-	$path = $router->generate('start_page', []);
-?>
 <a class="text_center white_font" href="<?= $path ?>">Powrót</a>
 <script type="text/javascript" src="/assets/javascript/hashEmailFormGuardianInitialize.js"></script>

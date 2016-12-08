@@ -1,5 +1,19 @@
 <?php	
 	$path = $router->generate('add_points', ['code'=>$params['code']]);
+
+	$email = '';
+	$name = '';
+	$phone_number = '';
+
+	if (isset($_COOKIE['use_code_form_email']) && !empty($_COOKIE['use_code_form_email'])) {
+		$email = 'value="'.$_COOKIE['use_code_form_email'].'"';
+	}
+	if (isset($_COOKIE['use_code_form_name']) && !empty($_COOKIE['use_code_form_name'])) {
+		$name = 'value="'.$_COOKIE['use_code_form_name'].'"';
+	}
+	if (isset($_COOKIE['use_code_form_phone_number']) && !empty($_COOKIE['use_code_form_phone_number'])) {
+		$phone_number = 'value="'.$_COOKIE['use_code_form_phone_number'].'"';
+	}
 ?>
 <div id="use_code_container">
 	<div class="use_code_top">
@@ -27,15 +41,15 @@
 	<form id="use_code" method="POST" action="<?= $path ?>">
 		<label>E-mail<p class="zero_margin red_font inline">*</p></label>
 		<br />
-		<input type="email" name="client[email]" required="required">
+		<input type="email" name="client[email]" <?= $email ?> required="required">
 		<br /><br />
 		<label>Imię<p class="zero_margin red_font inline">*</p></label>
 		<br />
-		<input type="text" name="client[name]" required="required">
+		<input type="text" name="client[name]" <?= $name ?> required="required">
 		<br /><br />
 		<label>Telefon<p class="zero_margin red_font inline">*</p></label>
 		<br />
-		<input type="text" name="client[phone_number]" required="required">
+		<input type="text" name="client[phone_number]" <?= $phone_number ?> required="required">
 		<br />
 		<input id="static_pages_submit" type="submit" value="Dodaj punkty">
 	</form>	

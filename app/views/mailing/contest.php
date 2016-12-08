@@ -1,14 +1,10 @@
-<?php 
-	$router = Config::get('router');
+<?php
 	$action = $code->action();
 	$avatar = $promotor->avatar();
 	$code_value = $code->codeValue();
 ?>
-<img style="width: 80px; height: 80px; margin: 0 auto;" src="<?= Config::get('host') ?>/static/smile.png">
-<div style="color: #61C63F; margin: 0px 0px 15px 0px;">
-	<p style="margin: 0px; text-align: center; font-weight: 700; font-size: 36px;">Gratulacje</p>
-	<p style="margin: 0px; text-align: center; font-weight: 700; font-size: 16px;"><?= $code_value ?> pkt <?php if ($code_value > 1) { echo "zostało dodanych"; } else echo "został dodany"; ?> do Twojego konta w ramach akcji:</p>
-</div>
+<h1>Dziękujemy za udział w konkursie</h1>
+
 <?php
 	if (!empty($avatar)) { ?>
 		<img style="display: block; width: 50px; height: 50px; margin: 2px auto;" src="<?= Config::get('host') ?>/system/promotor_avatars/<?= $promotor->id ?>/small/<?= $avatar->file_name ?>" alt="<?= $promotor->name ?>">
@@ -18,9 +14,8 @@
 ?>
 <p style="margin: 0px; text-align: center; color: #373D42; font-size: 18px; font-weight: 700;"><?= $action->name ?></p>
 <p style="text-align: center; margin: 0px; color: #7D8084;"><?= $promotor->name ?></p>
-<br />
-<br />
-<p style="text-align: center; margin: 0px; color: #7D8084;">Sprawdź aktualny stan punktów</p>
+<br /><br />
+<p style="text-align: center; margin: 0px; color: #7D8084;">Aby zobaczyć listę konkursów w których bierzesz udział zalogouj się na swoje konto.</p>
 <br />
 <a href="<?= Config::get('host') ?>/login?hash=<?= $client->hash ?>">
 	<button style="display: block;

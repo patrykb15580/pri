@@ -7,7 +7,7 @@
     margin: 0 auto;
     border: 0px solid;
     border-radius: 5px;
-    padding: 20px 6px;
+    padding: 18px 4px;
   }
   #insert-code .insert-code-input{
     height: 38px;
@@ -29,7 +29,7 @@
     border-radius: 3px;
     color: white;
     font-size: 20px;
-    vertical-align: -1px;
+    vertical-align: -2px;
     text-align: center;
     transition: background-color 0.2s;
   }
@@ -43,7 +43,7 @@
     border-radius: 3px;
     color: white;
     font-size: 20px;
-    vertical-align: -1px;
+    vertical-align: -2px;
     text-align: center;
     cursor: pointer;
   }
@@ -79,7 +79,7 @@
     border-radius: 3px;
     color: white;
     font-size: 14px;
-    vertical-align: -1px;
+    vertical-align: -2px;
     text-align: center;
     transition: background-color 0.2s;
   }
@@ -93,7 +93,7 @@
     border-radius: 3px;
     color: white;
     font-size: 14px;
-    vertical-align: -1px;
+    vertical-align: -2px;
     text-align: center;
     cursor: pointer;
   }

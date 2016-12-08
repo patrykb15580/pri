@@ -23,9 +23,11 @@
 <b>Akcje promocyjne</b>
 <?php
 	foreach ($actions_codes as $code) { 
-		$action = $code->action(); ?>
-		<p><?= $code->code.' -> '.$action->name ?></p>
-	<?php }
+		if ($code->isActive()) {
+			$action = $code->action(); ?>
+			<p><?= $code->code.' -> '.$action->name ?></p>
+		<?php }
+	}
 ?>
 </div>
 
@@ -33,9 +35,11 @@
 <b>Konkursy</b>
 <?php
 	foreach ($contests_codes as $code) { 
-		$action = $code->action(); ?>
-		<p><?= $code->code.' -> '.$action->name ?></p>
-	<?php }
+		if ($code->isActive()) {
+			$action = $code->action(); ?>
+			<p><?= $code->code.' -> '.$action->name ?></p>
+		<?php }
+	}
 ?>
 </div>
 
