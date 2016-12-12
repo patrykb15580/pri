@@ -141,4 +141,26 @@ class StringUntils
         $string = nl2br($string);
         return $string;
     }
+
+    public static function truncateAfterLines($string, $lines)
+    {
+        $string_arr = explode("\n", $string);
+
+        if (count($string_arr) >= $lines) {
+
+            $string = "";
+            for ($i=0; $i < $lines; $i++) { 
+
+                if ($i == $lines - 1) {
+                    $string = $string.rtrim($string_arr[$i]);
+                    $string = $string."...";
+                } else {
+                    $string = $string.$string_arr[$i];
+                }
+            }
+        }
+        $string = nl2br($string);
+
+        return $string;
+    }
 }

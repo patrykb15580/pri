@@ -11,6 +11,11 @@ class PromotionCodesPackagesController extends Controller
 		$package = $this->package();
 		$this->auth(__FUNCTION__, $package);
 
+		if (!isset($_COOKIE['pri_promotor_show_package_view_notice'])) {
+			setcookie('pri_promotor_show_package_view_notice', 'no', time() + (86400 * 30));
+			$this->params['notice'] = 'yes';
+		}
+
 		$view = (new View($this->params, ['package'=>$package]))->render();
 		return $view;
 		

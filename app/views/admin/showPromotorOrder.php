@@ -1,23 +1,24 @@
 <?php
 	$router = Config::get('router');
 ?>	
-<h2 id="show_top_title">
-	<a href="<?= $router->generate('show_promotor', ['promotor_id' => $params['promotor_id']]) ?>" id="link_underline">
-		<?= $promotor->name ?>
-	</a> > 
-	<a href="<?= $router->generate('show_promotor', ['promotor_id' => $params['promotor_id']]).'?show=orders' ?>" id="link_underline">
-		Zamówienia
-	</a> > Zamówienie nr <?= $order->id ?>
-</h2>
+<div id="title-box">
+	<i class="fa fa-shopping-basket title-box-icon dark-green-icon" aria-hidden="true"></i><p class="title-box-text">Zamówienie #<?= $order->id ?></p>
+
+	<br /><br />
+	<p class="title-box-details">
+		Status: <b><?= Order::STATUSES[$order->status] ?></b><br />
+		Klient: <b><?= $order->client()->name ?></b><br />
+	</p>
+</div>
+
 <br /><br />
-Status: <b><?= Order::STATUSES[$order->status] ?></b><br />
-Klient: <b><?= $order->client()->name ?></b><br />
+
 <table width="100%">
 	<tr class="result">
-		<td width="20%">
-			Nagroda:
+		<td class="first-row" width="20%">
+			
 		</td>
-		<td width="80%">
+		<td class="first-row" width="80%">
 			
 		</td>
 	</tr>

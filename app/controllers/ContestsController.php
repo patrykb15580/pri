@@ -9,6 +9,11 @@ class ContestsController extends Controller
 		$promotor = Promotor::find($this->params['promotors_id']);
 		$this->auth(__FUNCTION__, $promotor);
 
+		if (!isset($_COOKIE['pri_promotor_index_contest_view_notice'])) {
+			setcookie('pri_promotor_index_contest_view_notice', 'no', time() + (86400 * 30));
+			$this->params['notice'] = 'yes';
+		}
+
 		$view = (new View($this->params, ['promotor'=>$promotor]))->render();
 		return $view;
 		
@@ -17,6 +22,11 @@ class ContestsController extends Controller
 	{	
 		$action = $this->action();
 		$this->auth(__FUNCTION__, $action);
+
+		if (!isset($_COOKIE['pri_promotor_show_contest_view_notice'])) {
+			setcookie('pri_promotor_show_contest_view_notice', 'no', time() + (86400 * 30));
+			$this->params['notice'] = 'yes';
+		}
 
 		$view = (new View($this->params, ['action'=>$action]))->render();
 		return $view;
@@ -137,29 +147,6 @@ class ContestsController extends Controller
 		ob_end_clean();
 
 		return $view;
-	}
-
-	/* Funkcja uruchamiana z adresu URL */
-	public function generate()
-	{	
-		$packages = ContestStickersPackage::where('`generated` < `quantity`', []);
-
-		foreach ($packages as $package) {
-			$i = 0;
-			$number_codes_to_generate = $package->quantity - $package->generated;
-
-			while ($i < $number_codes_to_generate) { 
-				$code_generator = new PromotionCodesGenerator;
-				$code = $code_generator->promotionCodeGenerator(6);
-				$promotion_code = new PromotionCode(['code'=>$code, 'package_id'=>$package->id, 'type'=>'contest']);
-
-				if ($promotion_code->save()) {
-					$i++;
-					$package->generated++;
-					$package->save();
-				}
-			}
-		}		
 	}
 
 	public function action()

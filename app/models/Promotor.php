@@ -99,7 +99,7 @@ class Promotor extends Model
 
 	public function codesUsedInMonth($date)
 	{
-		$actions = $this->promotionActions();
+		$actions = $this->actions();
 		$codes = [];
 		foreach ($actions as $action) {
 			$used_codes = $action->usedCodesInMonth($date);
@@ -112,7 +112,7 @@ class Promotor extends Model
 
 	public function codesUsedFromTo($from, $to)
 	{
-		$actions = $this->promotionActions();
+		$actions = $this->actions();
 		$codes = [];
 		foreach ($actions as $action) {
 			$used_codes = $action->usedCodesInMonth($from, $to);
@@ -125,7 +125,7 @@ class Promotor extends Model
 
 	public function codesUsedInDay($date)
 	{
-		$actions = $this->promotionActions();
+		$actions = $this->actions();
 		$codes = [];
 		foreach ($actions as $action) {
 			$used_codes = $action->usedCodesInDay($date);
@@ -139,6 +139,19 @@ class Promotor extends Model
 	public function clients()
 	{
 		$balances = PointsBalance::where('promotor_id=?', ['promotor_id'=>$this->id], ['order'=>'created_at DESC']);
+		
+		$clients = [];
+		foreach ($balances as $balance) {
+			$client = Client::find($balance->client_id);
+			$clients[$client->id] = $client;
+		}
+
+		return $clients;
+	}
+
+	public function newClientsPerWeek()
+	{
+		$balances = PointsBalance::where('promotor_id=? AND `created_at` >= "'.date(Config::get('mysqltime'), strtotime('-1 week')).'"', ['promotor_id'=>$this->id], ['order'=>'created_at DESC']);
 		
 		$clients = [];
 		foreach ($balances as $balance) {

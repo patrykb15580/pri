@@ -60,6 +60,8 @@ class PromotorsControllerTest extends Tests
 
 	public function testShowAction()
 	{
+		error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
+
 		$this->seed();
 
 		$params['promotors_id'] = 1;
@@ -92,6 +94,7 @@ class PromotorsControllerTest extends Tests
 		Assert::expect(count($elements)) -> toEqual(4);
 
 		unset($_SESSION['user']);
+		error_reporting(E_ALL);
 	}
 
 	public function testEditAction()
@@ -161,6 +164,8 @@ class PromotorsControllerTest extends Tests
 
 	public function testIndexClientsAction()
 	{
+		error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
+
 		$this->seed();
 
 		$params['promotors_id'] = 1;
@@ -181,10 +186,13 @@ class PromotorsControllerTest extends Tests
 		Assert::expect(count($elements)) -> toEqual(1);
 
 		unset($_SESSION['user']);
+		error_reporting(E_ALL);
 	}
 
 	public function testIndexOrdersAction()
 	{
+		error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
+
 		$this->seed();
 
 		$params['promotors_id'] = 1;
@@ -205,13 +213,14 @@ class PromotorsControllerTest extends Tests
 		Assert::expect(count($elements)) -> toEqual(2);
 
 		unset($_SESSION['user']);
+		error_reporting(E_ALL);
 	}
 
 	public function testShowOrdersAction()
 	{
-		$this->seed();
+		error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
 
-		error_reporting(E_ALL & ~E_NOTICE);
+		$this->seed();
 
 		$params['promotors_id'] = 1;
     	$params['order_id'] = 1;
@@ -237,9 +246,9 @@ class PromotorsControllerTest extends Tests
 
 	public function testStatsAction()
 	{
+		error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
+		
 		$this->seed();
-
-		error_reporting(E_ALL & ~E_NOTICE);
 
 		$params['promotors_id'] = 1;
     	$params['controller'] = 'PromotorsController';

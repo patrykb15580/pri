@@ -9,7 +9,7 @@
 <div class="client-view-item-box">
 <?php
 	if ($points_balance->balance<$reward->prize) { ?>
-		<div class="error_message">Niewystarczająca ilość punktów</div>
+		<div class="client-order-error">Niewystarczająca ilość punktów</div>
 		<?php include '_order_form_table.php';	
 	} else { 
 		include '_order_form_table.php';?>

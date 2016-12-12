@@ -82,7 +82,7 @@ class StaticPagesControllerTest extends Tests
 		$package->save();
 
 		$description = 'Wykorzystanie kodu zaqwsx w akcji action1';
-		History::addHistoryRecord(1, 100, 243, $description, 'add');
+		History::addHistoryRecord(1, 1, 100, 243, $description, 'add');
 
 		$params['controller'] = 'PromotionCodesPackagesController';
 		$params['action'] = 'generate';

@@ -8,15 +8,16 @@
 	$promotion_action = $action->promotionAction();
 
 	$items_number = count($action->promotionCodesPackages());
+
+	if (isset($params['notice'])) { ?>
+		<div id="notice">
+			<p id="notice-text"><i class="fa fa-info-circle" aria-hidden="true"></i> W tym panelu możesz ...</p>
+			<button type="button" class="close-notice" data-dismiss="alert" aria-hidden="true">
+				<i class="fa fa-times" aria-hidden="true"></i>
+			</button>
+		</div>
+	<?php }
 ?>	
-<!--
-<div id="notice">
-	<p id="notice-text"><i class="fa fa-info-circle" aria-hidden="true"></i> W tym panelu możesz ...</p>
-	<button type="button" class="close-notice" data-dismiss="alert" aria-hidden="true">
-		<i class="fa fa-times" aria-hidden="true"></i>
-	</button>
-</div>
--->
 
 <div id="title-box">
 	<a href="<?= $prev_page ?>"><button class="prev-page-button"><i class="fa fa-chevron-left" aria-hidden="true"></i> Wstecz</button></a>
@@ -26,9 +27,12 @@
 	
 	<br /><br />
 	<p class="title-box-details">
-		Status: <b><?= Action::STATUSES[$action->status] ?></b><br />
-		Czas trwania: <b><?php if ($promotion_action->indefinitely == 0) {echo "od ".$promotion_action->from_at." do ".$promotion_action->to_at;} else echo "bezterminowo"; ?></b><br /><br />
-		<?= $action->description ?>
+		<?php
+			if (!empty($action->description)) { ?>
+				<?= nl2br($action->description) ?><br /><br />
+			<?php }
+		?>
+		Status: <b><?= Action::STATUSES[$action->status] ?></b>, Czas trwania: <b><?php if ($promotion_action->indefinitely == 0) {echo "od ".$promotion_action->from_at." do ".$promotion_action->to_at;} else echo "bezterminowo"; ?></b>
 	</p>
 </div>
 <div id="title-box-options-bar">

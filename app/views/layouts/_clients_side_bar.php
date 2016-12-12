@@ -12,6 +12,6 @@
 		<i class="fa fa-history" aria-hidden="true"></i> Historia
 	</a>
 	<a id="menu" class="<?= H::clientCurrentMenu($params, 'code') ?> client_menu_code" href="/clients/<?= $params['client_id'] ?>/code">
-		<i class="fa fa-ticket" aria-hidden="true"></i> Wpisz kod
+		<i class="fa fa-ticket" aria-hidden="true"></i> Wprowadź kod
 	</a>
 </div>

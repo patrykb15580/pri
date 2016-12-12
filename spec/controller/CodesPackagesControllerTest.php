@@ -73,12 +73,14 @@ class CodesPackagesControllerTest extends Tests
 		$order->save();
 
 		$description = 'Wykorzystanie kodu zaqwsx w akcji action1';
-		History::addHistoryRecord(1, 100, 243, $description, 'add');
+		History::addHistoryRecord(1, 1, 100, 243, $description, 'add');
 	}
 
 	public function testShowAction()
 	{
 		$this->seed();
+
+		error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
 
 		$params['promotors_id'] = 1;
 		$params['action_id'] = 1;
@@ -114,6 +116,7 @@ class CodesPackagesControllerTest extends Tests
 		Assert::expect(count($elements)) -> toEqual(8);
 
 		unset($_SESSION['user']);
+		error_reporting(E_ALL);
 	}
 
 	public function testNewAction()

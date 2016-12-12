@@ -17,35 +17,40 @@
 	$to_year = date('Y', strtotime($contest->to_at));
 	
 	$to_at = $to_day." ".$to_month." ".$to_year;
+
+	if (isset($params['notice'])) { ?>
+		<div id="notice">
+			<p id="notice-text"><i class="fa fa-info-circle" aria-hidden="true"></i> W tym panelu możesz ...</p>
+			<button type="button" class="close-notice" data-dismiss="alert" aria-hidden="true">
+				<i class="fa fa-times" aria-hidden="true"></i>
+			</button>
+		</div>
+	<?php }
 ?>	
-<!--
-<div id="notice">
-	<p id="notice-text"><i class="fa fa-info-circle" aria-hidden="true"></i> W tym panelu możesz ...</p>
-	<button type="button" class="close-notice" data-dismiss="alert" aria-hidden="true">
-		<i class="fa fa-times" aria-hidden="true"></i>
-	</button>
-</div>
--->
 
 <div id="title-box">
 	<a href="<?= $prev_page ?>"><button class="prev-page-button"><i class="fa fa-chevron-left" aria-hidden="true"></i> Wstecz</button></a>
 	
 	<i class="fa fa-trophy title-box-icon green-icon" aria-hidden="true"></i>
 	<p class="title-box-text"><?= $action->name ?></p>
-	<br /><br />
+	<br />
 	<p class="title-box-details">
-		Status: <b><?= Contest::STATUSES[$action->status] ?></b><br />
-		Czas trwania: <b><?= 'od '.$from_at." do ".$to_at ?></b><br />
-		Ilość zamówionych naklejek: <b><?= $action->codesNumber() ?> szt</b><br />
-		Pytanie: <b><?= $contest->question ?></b><br /><br />
-		<?= $action->description ?><br /><br />
+		<?php
+			if (!empty($action->description)) { ?>
+				<?= nl2br($action->description) ?><br /><br />
+			<?php }
+		?>
+		Status: <b><?= Contest::STATUSES[$action->status] ?></b>,
+		Czas trwania: <b><?= 'od '.$from_at." do ".$to_at ?></b>,
+		Ilość zamówionych naklejek: <b><?= $action->codesNumber() ?> szt</b><br /><br />
+		Pytanie: <b><?= $contest->question ?></b>
 	</p>
 </div>
 <div id="title-box-options-bar">
 	<a href="<?= $new_package ?>"><button class="options-bar-button">Zamów pakiet naklejek</button></a>
 	<a href="<?= $path_update ?>"><button class="options-bar-button">Edytuj</button></a>
 	<?php if (count($action->answers()) >= 10) { ?>
-		<button class="options-bar-button get-random-answer" data-actionid="<?= $action->id ?>">Pomóż mi wybrać odpowiedź</button>
+		<!-- <button class="options-bar-button get-random-answer" data-actionid="<?= $action->id ?>">Pomóż mi wybrać odpowiedź</button> -->
 	<?php } ?>
 </div>
 

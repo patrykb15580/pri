@@ -49,7 +49,7 @@
 		<br /><br />
 		<label>Telefon<p class="zero_margin red_font inline">*</p></label>
 		<br />
-		<input type="text" name="client[phone_number]" <?= $phone_number ?> required="required">
+		<input type="text" name="client[phone_number]" <?= $phone_number ?> pattern="[0-9]{9}" maxlength="9" required="required">
 		<br />
 		<input id="static_pages_submit" type="submit" value="Dodaj punkty">
 	</form>	

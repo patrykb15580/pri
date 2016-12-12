@@ -6,6 +6,8 @@ $( document ).ready(function(){
   $( "#codes_date_to" ).datepicker({ dateFormat: 'yy-mm-dd' }).change(drawCodesInRangeChartData);
 
   $( ".l2-tab-3" ).click(drawCodesInRangeChartData);
+  $( "#select-tab" ).change(drawCodesInRangeChartData);
+  $( "#codes_in_range_chart" ).resize(drawCodesInRangeChartData);
   $( window ).resize(drawCodesInRangeChartData);
 
   function drawCodesInRangeChartData() {

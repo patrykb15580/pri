@@ -24,21 +24,21 @@
 	</option>
 </select>
 
-<div id="tab-1-content">
+<div id="tab-1-content" class="tab-content">
 <?php
 	$packages = $action->activePackages();
 	include 'app/views/admin/_promotion_codes_packages.php';
 ?>
 </div>
 
-<div id="tab-2-content">
+<div id="tab-2-content" class="tab-content">
 <?php
 	$packages = $action->inactivePackages();
 	include 'app/views/admin/_promotion_codes_packages.php';
 ?>
 </div>
 
-<div id="tab-3-content">
+<div id="tab-3-content" class="tab-content">
 <?php
 	$packages = $action->codesPackages();
 	include 'app/views/admin/_promotion_codes_packages.php';

@@ -55,8 +55,6 @@
 </head>
 <body>
 
-<div class="window-size"></div>
-
 <?php Alerts::showAlert(); ?>
 
 <div id="top" class="dark_font">
@@ -93,17 +91,5 @@ include './app/views/layouts/'.$side_bar;?>
 </div>
 <script type="text/javascript" src="/assets/javascript/datepicker.js"></script>
 <script type="text/javascript" src="/assets/javascript/guardianInitialize.js"></script>
-<script type="text/javascript">
-	var w = $(window).width();
-	var h = $(window).height();
-	var size = w + 'x' + h;
-	$('.window-size').html(size);
-	$(window).resize(function(){
-		w = $(window).width();
-		h = $(window).height();
-		size = w + 'x' + h;
-		$('.window-size').html(size);
-	});
-</script>
 </body>
 </html>

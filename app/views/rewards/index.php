@@ -5,15 +5,16 @@
 	$items_number = count($promotor->rewards());
 	#echo "<pre>";
 	#die(print_r($active_actions));
+
+	if (isset($params['notice'])) { ?>
+		<div id="notice">
+			<p id="notice-text"><i class="fa fa-info-circle" aria-hidden="true"></i> W tym panelu możesz ...</p>
+			<button type="button" class="close-notice" data-dismiss="alert" aria-hidden="true">
+				<i class="fa fa-times" aria-hidden="true"></i>
+			</button>
+		</div>
+	<?php }
 ?>	
-<!--
-<div id="notice">
-	<p id="notice-text"><i class="fa fa-info-circle" aria-hidden="true"></i> W tym panelu możesz ...</p>
-	<button type="button" class="close-notice" data-dismiss="alert" aria-hidden="true">
-		<i class="fa fa-times" aria-hidden="true"></i>
-	</button>
-</div>
--->
 
 <div id="title-box">
 	<i class="fa fa-gift title-box-icon red-icon" aria-hidden="true"></i><p class="title-box-text"> Katalog nagród</p>

@@ -4,7 +4,7 @@
 */
 class StaticPagesController extends Controller
 {
-	public $non_authorized = ['startPage', 'contest', 'contestAnswer', 'login', 'promotorLogin', 'insertCode', 'useCode', 'addPoints', 'confirmation', 'contestConfirmation', 'getOrCreateClient', 'loginHashSend'];
+	public $non_authorized = ['startPage', 'contest', 'contestAnswer', 'login', 'promotorLogin', 'insertCode', 'getCode', 'useCode', 'addPoints', 'confirmation', 'contestConfirmation', 'getOrCreateClient', 'loginHashSend'];
 
 	public function startPage()
 	{
@@ -62,10 +62,10 @@ class StaticPagesController extends Controller
 			$answer = new ContestAnswer(['action_id'=>$action->id, 'client_id'=>$client->id, 'answer'=>$this->params['answer']['answer']]);
 
 			if ($answer->save()) {
-				$description = 'Przystąpienie do konkursu '.$action->name.' u promotora '.$promotor->name;
+				$description = 'Przystąpienie do konkursu '.$action->name;
 
 				$code->update(['used'=>date(Config::get('mysqltime')), 'client_id'=>$client->id]);
-				History::addHistoryRecord($client->id, $points_balance->balance, 0, $description, 'contest');
+				History::addHistoryRecord($client->id, $promotor->id, $points_balance->balance, 0, $description, 'contest');
 				(new ClientMailer)->contest($client, $code, $promotor);
 				
 				$path = $router->generate('contest_confirm', ['code'=>$code->code]);
@@ -102,6 +102,16 @@ class StaticPagesController extends Controller
 	}
 
 	public function insertCode()
+	{	
+		$router = Config::get('router');
+
+		$code = $this->params['code'];
+		$path = $router->generate('get_code', ['code'=>$code]);
+
+		header('Location: '.$path);
+	}
+
+	public function getCode()
 	{	
 		$router = Config::get('router');
 
@@ -177,8 +187,8 @@ class StaticPagesController extends Controller
 			$points_balance = $points_balance[0];
 			$balance = $points_balance->balance + $package->codes_value;
 			if ($points_balance->update(['balance'=>$balance])) {
-				$description = 'Wykorzystanie kodu '.$this->params['code'].' w akcji '.$promotion_action->name;
-				History::addHistoryRecord($client->id, $balance, $package->codes_value, $description, 'add');
+				$description = 'Wykorzystanie kodu '.$this->params['code'].' w akcji '.$action->name;
+				History::addHistoryRecord($client->id, $promotor->id, $balance, $package->codes_value, $description, 'add');
 				(new ClientMailer)->addPoints($client, $code, $promotor);
 
 				$path = $router->generate('confirmation', ['code'=>$this->params['code']]);
@@ -188,8 +198,8 @@ class StaticPagesController extends Controller
 		} else {
 			$points_balance = new PointsBalance(['client_id'=>$client->id, 'promotor_id'=>$promotor->id, 'balance'=>$package->codes_value]);
 			if ($points_balance->save()) {
-				$description = 'Wykorzystanie kodu '.$this->params['code'].' w akcji '.$promotion_action->name;
-				History::addHistoryRecord($client->id, $package->codes_value, $package->codes_value, $description, 'add');
+				$description = 'Wykorzystanie kodu '.$this->params['code'].' w akcji '.$action->name;
+				History::addHistoryRecord($client->id, $promotor->id, $package->codes_value, $package->codes_value, $description, 'add');
 				(new ClientMailer)->addPoints($client, $code, $promotor);
 				
 				$path = $router->generate('confirmation', ['code'=>$this->params['code']]);

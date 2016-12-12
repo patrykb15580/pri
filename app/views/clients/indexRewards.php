@@ -32,10 +32,12 @@
 </div>
 
 <div class="modal-bg">
-	<div class="modal-box">
-		<div class="modal-content">
+	
+</div>
+
+<div class="modal-box">
+	<div class="modal-content">
 				
-		</div>
 	</div>
 </div>
 

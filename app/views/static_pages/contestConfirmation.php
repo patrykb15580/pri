@@ -32,7 +32,7 @@
 	Dziękujemy za wzięcie udziału w konkursie.
 </div>
 <div class="confirm_code_bottom">
-	<a href="<?= $path ?>"><button>Wpisz następny kod</button></a>
+	<a href="<?= $path ?>"><button>Wprowadź następny kod</button></a>
 </div>
 <a class="text_center white_font" href="<?= $path ?>">Powrót</a>
 <script type="text/javascript" src="/assets/javascript/hashEmailFormGuardianInitialize.js"></script>

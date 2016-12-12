@@ -2,6 +2,7 @@
 	$router = Config::get('router');
 	$path_get = $router->generate('new_order', ['client_id' => $this->params['client_id'], 'reward_id' => $this->params['reward_id']]);
 	$images = RewardImage::where('reward_id=?', ['reward_id'=>$reward->id]);
+	$points_balance = $client->balance($promotor);
 ?>	
 <?php 
 	if (!empty($images)) { 
@@ -23,6 +24,17 @@
 ?>
 <p class="reward-details-name"><?= $reward->name ?></p>
 <p class="reward-details-price"><?= $reward->prize ?> pkt</p>
-<p class="reward-details-description"><?= nl2br($reward->description) ?></p>
-<br /><br />
-<a href="<?= $path_get ?>"><button class="reward-details-button">Przejdź do zamówienia</button></a>
+<?php
+	if (!empty($reward->description)) { ?>
+		<p class="reward-details-description"><?= nl2br($reward->description) ?></p>
+	<?php }
+?>
+<br />
+<?php 
+	if ($points_balance->balance < $reward->prize) { ?>
+		<button class="reward-details-button" disabled>Przejdź do zamówienia</button>
+		<p class="reward-details-button-error">Niewystarczająca ilość punktów</p>
+	<?php } else { ?>
+		<a href="<?= $path_get ?>"><button class="reward-details-button">Przejdź do zamówienia</button></a>
+	<?php }
+?>

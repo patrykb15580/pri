@@ -35,6 +35,9 @@ $router->map( 'GET', '/promotors/[i:promotors_id]/clients', 'PromotorsController
 $router->map( 'GET', '/promotors/[i:promotors_id]/orders', 'PromotorsController#indexOrders', 'index_promotors_orders' );
 $router->map( 'GET', '/promotors/[i:promotors_id]/orders/[i:order_id]', 'PromotorsController#showOrders', 'show_promotors_orders' );
 
+/* Promotor report */
+$router->map( 'GET', '/promotor/[i:promotors_id]/get-report', 'PromotorsController#getReport', 'get_report' );
+
 
 /* Promotor clients charts */
 $router->map( 'POST', '/promotor/new-clients-in-month', 'PromotorsController#newClientsInMonth', 'newClientsInMonth' );
@@ -112,7 +115,8 @@ $router->map( 'POST', '/contest/[i:id]/[a:code]/answer', 'StaticPagesController#
 $router->map( 'GET', '/login', 'StaticPagesController#login', 'login' );
 $router->map( 'GET', '/promotor-login', 'StaticPagesController#promotorLogin', 'promotor_login' );
 $router->map( 'POST', '/insert-code', 'StaticPagesController#insertCode', 'enter_code' );
-$router->map( 'GET', '/[a:code]', 'StaticPagesController#useCode', 'use_code' );
+$router->map( 'GET', '/[a:code]', 'StaticPagesController#getCode', 'get_code' );
+$router->map( 'GET', '/action/[a:code]', 'StaticPagesController#useCode', 'use_code' );
 $router->map( 'GET', '/[a:code]/is-used', 'StaticPagesController#codeIsUsed', 'code_is_used' );
 $router->map( 'POST', '/[a:code]/add-points', 'StaticPagesController#addPoints', 'add_points' );
 $router->map( 'GET', '/[a:code]/confirm', 'StaticPagesController#confirmation', 'confirmation' );

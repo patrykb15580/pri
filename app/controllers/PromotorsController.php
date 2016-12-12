@@ -9,6 +9,11 @@ class PromotorsController extends Controller
 		$promotor = $this->promotor();
 		$this->auth(__FUNCTION__, $promotor);
 
+		if (!isset($_COOKIE['pri_promotor_show_promotor_view_notice'])) {
+			setcookie('pri_promotor_show_promotor_view_notice', 'no', time() + (86400 * 30));
+			$this->params['notice'] = 'yes';
+		}
+
 		$view = (new View($this->params, ['promotor'=>$promotor]))->render();
 		return $view;
 	}
@@ -17,6 +22,11 @@ class PromotorsController extends Controller
 	{
 		$promotor = $this->promotor();
 		$this->auth(__FUNCTION__, $promotor);
+
+		if (!isset($_COOKIE['pri_promotor_stats_promotor_view_notice'])) {
+			setcookie('pri_promotor_stats_promotor_view_notice', 'no', time() + (86400 * 30));
+			$this->params['notice'] = 'yes';
+		}
 
 		$view = (new View($this->params, ['promotor'=>$promotor]))->render();
 		return $view;
@@ -71,6 +81,11 @@ class PromotorsController extends Controller
 	{
 		$promotor = $this->promotor();
 		$this->auth(__FUNCTION__, $promotor);
+
+		if (!isset($_COOKIE['pri_promotor_index_clients_promotor_view_notice'])) {
+			setcookie('pri_promotor_show_promotor_view_notice', 'no', time() + (86400 * 30));
+			$this->params['notice'] = 'yes';
+		}
 	
 		$view = (new View($this->params, ['promotor'=>$promotor]))->render();
 		return $view;
@@ -80,6 +95,11 @@ class PromotorsController extends Controller
 	{
 		$promotor = $this->promotor();
 		$this->auth(__FUNCTION__, $promotor);
+
+		if (!isset($_COOKIE['pri_promotor_index_orders_promotor_view_notice'])) {
+			setcookie('pri_promotor_index_orders_promotor_view_notice', 'no', time() + (86400 * 30));
+			$this->params['notice'] = 'yes';
+		}
 		
 		$view = (new View($this->params, ['promotor'=>$promotor]))->render();
 		return $view;
@@ -91,6 +111,11 @@ class PromotorsController extends Controller
 		$order = Order::find($this->params['order_id']);
 		$reward = $order->reward();
 		$image = $reward->singleImage();
+
+		if (!isset($_COOKIE['pri_promotor_show_orders_promotor_view_notice'])) {
+			setcookie('pri_promotor_show_orders_promotor_view_notice', 'no', time() + (86400 * 30));
+			$this->params['notice'] = 'yes';
+		}
 
 		$view = (new View($this->params, ['order'=>$order, 'image'=>$image, 'reward'=>$reward]))->render();
 		return $view;
@@ -251,6 +276,14 @@ class PromotorsController extends Controller
 
 		return json_encode($arr);
 
+	}
+
+	public function getReport()
+	{
+		$promotor = $this->promotor();
+
+		$view = (new View($this->params, ['promotor'=>$promotor], 'pdf'))->render();
+		return $view;
 	}
 
 	public function promotor()

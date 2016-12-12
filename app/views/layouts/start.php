@@ -26,7 +26,6 @@
 </head>
 <body class="start_pages_body">
 <?php Alerts::showAlert(); ?>
-<div class="window-size"></div>
 <div id="start-top">
 	<a class="start-layout-top-link" href="<?= $router->generate('login', []); ?>">Logowanie</a>
 	<a class="start-layout-top-link" href="" class="white_font">Pomoc</a>
@@ -34,17 +33,5 @@
 <?php 
 	include($path); 
 ?>
-<script type="text/javascript">
-	var w = $(window).width();
-	var h = $(window).height();
-	var size = w + 'x' + h;
-	$('.window-size').html(size);
-	$(window).resize(function(){
-		w = $(window).width();
-		h = $(window).height();
-		size = w + 'x' + h;
-		$('.window-size').html(size);
-	});
-</script>
 </body>
 </html>

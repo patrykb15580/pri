@@ -12,7 +12,7 @@
 			<div class="client-view-reward-img"></div>
 		<?php } ?>
 			<p class="client-view-reward-name"><?= $reward->name ?></p><p class="client-view-reward-prize"><?= $reward->prize ?> pkt</p><br />
-			<p class="client-view-reward-description"><?= StringUntils::truncate($reward->description, 60) ?></p>
-			<button id="center" class="client-view-reward-button show-details" data-rewardid="<?= $reward->id ?>">Przejdź do nagrody</button>
+			<p class="client-view-reward-description"><?= StringUntils::truncateAfterLines($reward->description, 4) ?></p>
+			<button id="center" class="client-view-reward-button show-details" data-rewardid="<?= $reward->id ?>">Zobacz nagrodę</button>
 	</div>
 <?php } ?>

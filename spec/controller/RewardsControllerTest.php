@@ -73,12 +73,14 @@ class RewardsControllerTest extends Tests
 		$order->save();
 
 		$description = 'Wykorzystanie kodu zaqwsx w akcji action1';
-		History::addHistoryRecord(1, 100, 243, $description, 'add');
+		History::addHistoryRecord(1, 1, 100, 243, $description, 'add');
 	}
 
 	public function testIndexAction()
 	{
 		$this->seed();
+
+		error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
 
 		$params['promotors_id'] = 1;
 		$params['controller'] = 'RewardsController';
@@ -110,11 +112,14 @@ class RewardsControllerTest extends Tests
 		Assert::expect(count($elements)) -> toEqual(2);
 
 		unset($_SESSION['user']);
+		error_reporting(E_ALL);
 	}
 
 	public function testShowAction()
 	{
 		$this->seed();
+
+		error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
 
 		$params['promotors_id'] = 1;
 		$params['id'] = 1;
@@ -141,6 +146,7 @@ class RewardsControllerTest extends Tests
 		Assert::expect(count($elements)) -> toEqual(1);
 
 		unset($_SESSION['user']);
+		error_reporting(E_ALL);
 	}
 
 	public function testNewAction()

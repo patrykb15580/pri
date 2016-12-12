@@ -5,6 +5,8 @@ $( document ).ready(function(){
 
   $( ".l2-tab-2" ).click(drawClientsInYearChartData);
   $( ".clients_year" ).change(drawClientsInYearChartData);
+  $( "#select-tab" ).change(drawClientsInYearChartData);
+  $( "#clients_in_year_chart" ).resize(drawClientsInYearChartData);
   $( window ).resize(drawClientsInYearChartData);
 
   function drawClientsInYearChartData() {

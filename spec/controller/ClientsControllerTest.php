@@ -83,7 +83,7 @@ class ClientsControllerTest extends Tests
 		$order->save();
 
 		$description = 'Wykorzystanie kodu zaqwsx w akcji action1';
-		History::addHistoryRecord(1, 100, 243, $description, 'add');
+		History::addHistoryRecord(1, 1, 1000, 243, $description, 'add');
 	}
 
 	public function testShowAction()

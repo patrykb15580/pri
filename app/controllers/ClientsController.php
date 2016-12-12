@@ -35,6 +35,8 @@ class ClientsController extends Controller
 	{	
 		#$this->auth(__FUNCTION__, $this->client());
 		$reward = Reward::find($this->params['reward_id']);
+		$promotor = $reward->promotor();
+		$client = Client::find($this->params['client_id']);
 		
 		$images = RewardImage::where('reward_id=?', ['reward_id'=>$this->params['reward_id']]);
 		
@@ -76,6 +78,7 @@ class ClientsController extends Controller
 	{
 		$this->auth(__FUNCTION__, $this->client());
 		$reward = Reward::find($this->params['reward_id']);
+		$promotor = $reward->promotor();
 
 		$this->params['order']['promotor_id'] = $reward->promotors_id;
 		$this->params['order']['client_id'] = $this->params['client_id'];
@@ -95,7 +98,7 @@ class ClientsController extends Controller
 
 			if ($points_balance->update(['balance'=>$balance])) {
 				$description = 'Zakup nagrody '.$reward->name;
-				History::addHistoryRecord($order->client_id, $balance, $reward->prize, $description, 'buy');
+				History::addHistoryRecord($order->client_id, $promotor->id, $balance, $reward->prize, $description, 'buy');
 
 				(new ClientMailer)->getReward($this->client(), $order);
 
@@ -176,8 +179,8 @@ class ClientsController extends Controller
 			$points_balance = $points_balance[0];
 			$balance = $points_balance->balance + $package->codes_value;
 			if ($points_balance->update(['balance'=>$balance])) {
-				$description = 'Wykorzystanie kodu '.$params['code'].' w akcji '.$promotion_action->name;
-				History::addHistoryRecord($client->id, $balance, $package->codes_value, $description, 'add');
+				$description = 'Wykorzystanie kodu '.$params['code'].' w akcji '.$action->name;
+				History::addHistoryRecord($client->id, $promotor->id, $balance, $package->codes_value, $description, 'add');
 				(new ClientMailer)->addPoints($client, $code, $promotor);
 
 				$this->alert('info', 'Dodano punkty w akcji '.$action->name.' promotora '.$promotor->name);
@@ -189,8 +192,8 @@ class ClientsController extends Controller
 		} else {
 			$points_balance = new PointsBalance(['client_id'=>$client->id, 'promotor_id'=>$promotor->id, 'balance'=>$package->codes_value]);
 			if ($points_balance->save()) {
-				$description = 'Wykorzystanie kodu '.$params['code'].' w akcji '.$promotion_action->name;
-				History::addHistoryRecord($client->id, $package->codes_value, $package->codes_value, $description, 'add');
+				$description = 'Wykorzystanie kodu '.$params['code'].' w akcji '.$action->name;
+				History::addHistoryRecord($client->id, $promotor->id, $package->codes_value, $package->codes_value, $description, 'add');
 				(new ClientMailer)->addPoints($client, $code, $promotor);
 				
 				$this->alert('info', 'Dodano punkty w akcji '.$action->name.' promotora '.$promotor->name);
@@ -234,10 +237,10 @@ class ClientsController extends Controller
 			$answer = new ContestAnswer(['action_id'=>$action->id, 'client_id'=>$client->id, 'answer'=>$this->params['answer']['answer']]);
 
 			if ($answer->save()) {
-				$description = 'Przystąpienie do konkursu '.$action->name.' u promotora '.$promotor->name;
+				$description = 'Przystąpienie do konkursu '.$action->name;
 
 				$code->update(['used'=>date(Config::get('mysqltime')), 'client_id'=>$client->id]);
-				History::addHistoryRecord($client->id, $points_balance->balance, 0, $description, 'contest');
+				History::addHistoryRecord($client->id, $promotor->id, $points_balance->balance, 0, $description, 'contest');
 				(new ClientMailer)->contest($client, $code, $promotor);
 				
 				$path = $router->generate('client_code', ['client_id'=>$client->id]);

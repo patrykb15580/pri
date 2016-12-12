@@ -4,6 +4,8 @@ $( document ).ready(function(){
   var promotor_id = $("#codes_in_year_chart").data("promotorid");
 
   $( '.l2-tab-2' ).click(drawCodesInYearChartData);
+  $( "#select-tab" ).change(drawCodesInYearChartData);
+  $( "#codes_in_year_chart" ).resize(drawCodesInYearChartData);
   $( window ).resize(drawCodesInYearChartData);
 
   function drawCodesInYearChartData() {

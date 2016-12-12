@@ -20,7 +20,7 @@
 					<h1 style="color: black; margin: 0px 0px 4px 20px;">punktacja</h1>
 				</td>
 				<td width="50%" style="text-align: right; color: #87889B;">
-					Znajdziesz nas na <img src="<?= Config::get('host') ?>/static/fb.png" alt="fb"><img style="margin: 0px 20px 0px 0px;" src="<?= Config::get('host') ?>/static/pinterest.png" alt="pinterest">
+					Znajdziesz nas na <img style="vertical-align: middle;" src="<?= Config::get('host') ?>/static/fb.png" alt="fb"> <img style="margin: 0px 20px 0px 0px; vertical-align: middle;" src="<?= Config::get('host') ?>/static/pinterest.png" alt="pinterest">
 				</td>
 			</tr>
 		</table>
@@ -47,13 +47,14 @@
 			<table width="100%">
 				<tr>
 					<td style="text-align: center;" width="50%">
-						<img style="width: 16px; height: 16px;" src="<?= Config::get('host') ?>/static/www.png" alt="www"> www.punktacja.pl	
+						<img style="width: 16px; height: 16px; vertical-align: middle;" src="<?= Config::get('host') ?>/static/www.png" alt="www"> www.punktacja.pl	
 					</td>
 					<td style="text-align: center;" width="50%">
-						<img style="width: 16px; height: 16px;" src="<?= Config::get('host') ?>/static/email.png" alt="email"> info@punktacja.pl
+						<img style="width: 16px; height: 16px; vertical-align: middle;" src="<?= Config::get('host') ?>/static/email.png" alt="email"> info@punktacja.pl
 					</td>
 				</tr>
 			</table>
+			<br />
 			Wiadomość wygenerowana automatycznie, prosimy na nią nie odpowiadać.
 		</div>
 	</div>

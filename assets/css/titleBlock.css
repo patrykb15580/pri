@@ -70,7 +70,7 @@
     width: 79%;
     font-size: 16px;
     font-weight: normal;
-    margin: 0px;
+    margin: 10px 0px 0px 0px;
     padding: 0px;
   }
   #title-box-tabs{
@@ -123,11 +123,11 @@
     cursor: pointer;
   }
   #title-box-options-bar{
-    background-color: #DCE6F0;
+    background-color: #c9d9e8;
     width: calc(96% + 2px);
     height: 33px;
     margin: 0px 0px 10px 0px;
-    padding: 10px 2% 0px 2%;
+    padding: 0px 2% 0px 2%;
     line-height: 26px;
   }
   .options-bar-button{
@@ -249,7 +249,7 @@
     font-size: 16px;
     font-weight: normal;
     margin: 0px;
-    padding: 0px;
+    padding: 10px 0px 0px 0px;
   }
    #title-box-tabs{
     background-color: #DCE6F0;
@@ -301,11 +301,11 @@
     cursor: pointer;
   }
   #title-box-options-bar{
-    background-color: #DCE6F0;
+    background-color: #c9d9e8;
     width: calc(96% + 2px);
     height: 33px;
     margin: 0px 0px 10px 0px;
-    padding: 10px 2% 0px 2%;
+    padding: 0px 2% 0px 2%;
     line-height: 26px;
   }
   .options-bar-button{
@@ -426,7 +426,7 @@
     width: 79%;
     font-size: 16px;
     font-weight: normal;
-    margin: 0px;
+    margin: 8px 0px 0px 0px;
     padding: 0px;
   }
   #title-box-tabs{
@@ -479,11 +479,11 @@
     cursor: pointer;
   }
   #title-box-options-bar{
-    background-color: #DCE6F0;
+    background-color: #c9d9e8;
     width: calc(96% + 2px);
     height: 33px;
     margin: 0px 0px 10px 0px;
-    padding: 10px 2% 0px 2%;
+    padding: 0px 2% 0px 2%;
     line-height: 26px;
   }
   .options-bar-button{
@@ -604,7 +604,7 @@
     width: 79%;
     font-size: 14px;
     font-weight: normal;
-    margin: 0px;
+    margin: 6px 0px 0px 0px;
     padding: 0px;
   }
   #title-box-tabs{
@@ -657,11 +657,11 @@
     cursor: pointer;
   }
   #title-box-options-bar{
-    background-color: #DCE6F0;
+    background-color: #c9d9e8;
     width: 96%;
     height: 33px;
     margin: 0px 0px 10px 0px;
-    padding: 10px 2% 0px 2%;
+    padding: 0px 2% 0px 2%;
     line-height: 26px;
   }
   .options-bar-button{
@@ -780,7 +780,7 @@
     width: 79%;
     font-size: 10px;
     font-weight: normal;
-    margin: 0px;
+    margin: 6px 0px 0px 0px;
     padding: 0px;
   }
   #title-box-tabs{
@@ -833,11 +833,11 @@
     cursor: pointer;
   }
   #title-box-options-bar{
-    background-color: #DCE6F0;
+    background-color: #c9d9e8;
     width: 96%;
     height: 33px;
     margin: 0px 0px 10px 0px;
-    padding: 10px 2% 0px 2%;
+    padding: 0px 2% 0px 2%;
     line-height: 26px;
   }
   .options-bar-button{

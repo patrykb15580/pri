@@ -1,3 +1,7 @@
+.client-order-error{
+	color: #ff3333;
+	font-size: 18px;
+}
 @media only screen and (min-width: 800px){
 	.client-view-title-box{
 		margin: 0px;

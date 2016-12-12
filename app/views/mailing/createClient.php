@@ -6,7 +6,16 @@
 </p>
 <br />
 <a href="<?= Config::get('host') ?>/login?hash=<?= $client->hash ?>">
-	<button>
+	<button style="display: block;
+			margin: 0 auto; 
+			background-color: #60C43E;
+			text-align: center;
+			border: 0px solid;
+			border-radius: 3px;
+			color: white;
+			font-weight: 600;
+			font-size: 16px;
+			padding: 8px 16px;">
 		Przejdź do konta
 	</button>
 </a> 

@@ -17,7 +17,7 @@ $(document).ready( function() {
 	$(".l2-tab").click(function(){
     	var tab = $(this).data('tab');
     	$(".l2-tab-active").toggleClass("l2-tab-active l2-tab-inactive");
-    	$(this).toggleClass("l2-tab-inactive l2-tab-active");
+    	$("." + tab).toggleClass("l2-tab-inactive l2-tab-active");
 	  	$.when($(".l2-tab-content").hide()).then(function(){
 	  		$("." + tab + "-content").show();
 	  	});

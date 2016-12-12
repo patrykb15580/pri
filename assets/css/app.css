@@ -33,7 +33,6 @@
     }
     div#content{
         display: inline-block;
-        position: relative;
         min-height: calc(92vh - 40px);
         float: left;
         width: 81.8%;
@@ -81,7 +80,6 @@
     }
     div#content{
         display: inline-block;
-        position: relative;
         min-height: calc(92vh - 40px);
         float: left;
         width: 81.6%;
@@ -128,7 +126,6 @@
     }
     div#content{
         display: inline-block;
-        position: relative;
         min-height: calc(92vh - 40px);
         float: left;
         width: 100%;

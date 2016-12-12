@@ -4,7 +4,7 @@
 */
 class History extends Model
 {
-	public $id, $client_id, $points, $created_at, $updated_at, $balance_before, $balance_after, $description;	
+	public $id, $client_id, $promotor_id, $points, $created_at, $updated_at, $balance_before, $balance_after, $description;	
 
 	function __construct($attributes = [])
 	{
@@ -16,6 +16,9 @@ class History extends Model
 			'id'					=>['type' => 'integer',
 									   'default' => null],
 			'client_id'				=>['type' => 'integer',
+									   'default' => null,
+									   'validations' => ['required', 'max_length:11']],
+			'promotor_id'			=>['type' => 'integer',
 									   'default' => null,
 									   'validations' => ['required', 'max_length:11']],
 			'points'				=>['type' => 'string',
@@ -45,7 +48,11 @@ class History extends Model
 	{
 		return Client::find($this->client_id);
 	}
-	public static function addHistoryRecord($client_id, $balance_after, $action_value, $description, $action)
+	public function promotor()
+	{
+		return Promotor::find($this->promotor_id);
+	}
+	public static function addHistoryRecord($client_id, $promotor_id, $balance_after, $action_value, $description, $action)
 	{
 		if ($action == 'buy') {
 			$balance_before = $balance_after+$action_value;
@@ -58,10 +65,10 @@ class History extends Model
 			$balance_before = $balance_after;
 			$points = $action_value;
 		}
-		$history = new History(['client_id'=>$client_id, 'points'=>$points, 'balance_before'=>$balance_before, 'balance_after'=>$balance_after, 'description'=>$description]);
+		$history = new History(['client_id'=>$client_id, 'promotor_id'=>$promotor_id, 'points'=>$points, 'balance_before'=>$balance_before, 'balance_after'=>$balance_after, 'description'=>$description]);
 		
 		if (!$history->save()) {
-			die(print_r('Error'));
+			return false;
 		}
 	}
 }

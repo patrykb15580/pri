@@ -17,7 +17,7 @@
 	$contests = $client->contests();
 
 	if (count($contests) == 0) {
-		include 'app/views/layouts/_no_results.php';
+		include 'app/views/clients/_no_contests.php';
 	} else include '_contests.php';
 ?>
 

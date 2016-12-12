@@ -9,6 +9,11 @@ class RewardsController extends Controller
 		$promotor = Promotor::find($this->params['promotors_id']);
 		$this->auth(__FUNCTION__, $promotor);
 
+		if (!isset($_COOKIE['pri_promotor_index_reward_view_notice'])) {
+			setcookie('pri_promotor_index_reward_view_notice', 'no', time() + (86400 * 30));
+			$this->params['notice'] = 'yes';
+		}
+
 		$view = (new View($this->params, ['promotor'=>$promotor]))->render();
 		return $view;
 		
@@ -18,6 +23,11 @@ class RewardsController extends Controller
 	{
 		$reward = $this->reward();
 		$this->auth(__FUNCTION__, $reward);
+
+		if (!isset($_COOKIE['pri_promotor_show_reward_view_notice'])) {
+			setcookie('pri_promotor_show_reward_view_notice', 'no', time() + (86400 * 30));
+			$this->params['notice'] = 'yes';
+		}
 
 		$images = RewardImage::where('reward_id=?', ['reward_id'=>$this->params['id']]);
 		

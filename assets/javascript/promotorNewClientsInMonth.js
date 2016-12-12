@@ -6,6 +6,8 @@ $( document ).ready(function(){
   $( ".l2-tab-1" ).click(drawClientsInMonthChartData);
   $( ".clients-stats-tab" ).click(drawClientsInMonthChartData);
   $( ".clients_month" ).change(drawClientsInMonthChartData);
+  $( "#select-tab" ).change(drawClientsInMonthChartData);
+  $( "#clients_in_month_chart" ).resize(drawClientsInMonthChartData);
   $( window ).resize(drawClientsInMonthChartData);
 
   function drawClientsInMonthChartData() {

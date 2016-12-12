@@ -5,7 +5,7 @@ use Sunra\PhpSimple\HtmlDomParser;
 */
 class AdminControllerTest extends Tests
 {
-	/*function seed(){
+	function seed(){
 		MyDB::clearDatabaseExceptSchema();
 
 		$promotor = new Promotor(['email'=>'test1@test.com', 'password_degest'=>Password::encryptPassword('password1'), 'name'=>'promotor1']);
@@ -82,8 +82,13 @@ class AdminControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
-		$elements = $html->find('tr.result');	
+		$elements = $html->find('div#title-box');	
+		Assert::expect(count($elements)) -> toEqual(1);
 
+		$elements = $html->find('div#title-box-options-bar');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('tr.result');	
 		Assert::expect(count($elements)) -> toEqual(2);
 
 		unset($_SESSION['user']);
@@ -104,13 +109,17 @@ class AdminControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
-		$elements = $html->find('div#admin_menu_active');	
-
+		$elements = $html->find('div#title-box');	
 		Assert::expect(count($elements)) -> toEqual(1);
 
-		$elements = $html->find('div#admin_menu_inactive');	
+		$elements = $html->find('div#title-box-options-bar');	
+		Assert::expect(count($elements)) -> toEqual(1);
 
-		Assert::expect(count($elements)) -> toEqual(4);
+		$elements = $html->find('#select-tab');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.tab-content');	
+		Assert::expect(count($elements)) -> toEqual(6);
 
 		unset($_SESSION['user']);
 	}
@@ -131,9 +140,26 @@ class AdminControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
-		$elements = $html->find('tr.result');	
+		$elements = $html->find('div#title-box');	
+		Assert::expect(count($elements)) -> toEqual(1);
 
-		Assert::expect(count($elements)) -> toEqual(2);
+		$elements = $html->find('div#title-box-options-bar');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('#select-tab');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('#tab-1-content');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('#tab-2-content');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('#tab-3-content');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('tr.result');	
+		Assert::expect(count($elements)) -> toEqual(6);
 
 		unset($_SESSION['user']);
 	}
@@ -157,9 +183,23 @@ class AdminControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
-		$elements = $html->find('tr.result');	
+		$elements = $html->find('div#title-box');	
+		Assert::expect(count($elements)) -> toEqual(1);
 
-		Assert::expect(count($elements)) -> toEqual(4);
+		$elements = $html->find('#select-tab');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('#tab-1-content');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('#tab-2-content');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('#tab-3-content');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('tr.result');	
+		Assert::expect(count($elements)) -> toEqual(8);
 
 		unset($_SESSION['user']);
 	}
@@ -180,7 +220,10 @@ class AdminControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
-		$elements = $html->find('div#reward_description');	
+		$elements = $html->find('div#title-box');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.modal-bg');	
 		Assert::expect(count($elements)) -> toEqual(1);
 
 		$elements = $html->find('div#reward_images_container');	
@@ -205,8 +248,10 @@ class AdminControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
-		$elements = $html->find('tr.result');	
+		$elements = $html->find('div#title-box');	
+		Assert::expect(count($elements)) -> toEqual(1);
 
+		$elements = $html->find('tr.result');	
 		Assert::expect(count($elements)) -> toEqual(2);
 
 		unset($_SESSION['user']);
@@ -226,8 +271,16 @@ class AdminControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
-		$elements = $html->find('input');	
+		$elements = $html->find('.form-page-container');	
+		Assert::expect(count($elements)) -> toEqual(1);
 
+		$elements = $html->find('.form-page-icon');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.form-page-title');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('input');	
 		Assert::expect(count($elements)) -> toEqual(5);
 
 		unset($_SESSION['user']);
@@ -277,8 +330,16 @@ class AdminControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
-		$elements = $html->find('input');	
+		$elements = $html->find('.form-page-container');	
+		Assert::expect(count($elements)) -> toEqual(1);
 
+		$elements = $html->find('.form-page-icon');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.form-page-title');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('input');	
 		Assert::expect(count($elements)) -> toEqual(5);
 
 		unset($_SESSION['user']);
@@ -328,9 +389,17 @@ class AdminControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
-		$elements = $html->find('tr.result');	
+		$elements = $html->find('div#title-box');	
+		Assert::expect(count($elements)) -> toEqual(1);
 
-		Assert::expect(count($elements)) -> toEqual(2);
+		$elements = $html->find('#select-tab');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('.tab-content');	
+		Assert::expect(count($elements)) -> toEqual(6);
+
+		$elements = $html->find('tr.result');	
+		Assert::expect(count($elements)) -> toEqual(4);
 
 		unset($_SESSION['user']);
 	}
@@ -350,10 +419,15 @@ class AdminControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
-		$elements = $html->find('tr.result');	
+		$elements = $html->find('div#title-box');	
+		Assert::expect(count($elements)) -> toEqual(1);
 
-		Assert::expect(count($elements)) -> toEqual(7);
+		$elements = $html->find('.single-table');	
+		Assert::expect(count($elements)) -> toEqual(1);
+
+		$elements = $html->find('tr.result');	
+		Assert::expect(count($elements)) -> toEqual(5);
 
 		unset($_SESSION['user']);
-	}*/
+	}
 }

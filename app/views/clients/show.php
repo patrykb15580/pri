@@ -18,7 +18,7 @@
 		$promotion_actions = $client->promotionActions();
 
 		if (count($promotion_actions) == 0) {
-			include 'app/views/layouts/_no_results.php';
+			include 'app/views/clients/_no_actions.php';
 		} else include '_promotion_actions.php';
 	?>
 </div>

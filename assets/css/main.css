@@ -768,14 +768,7 @@ div#main-layout-user{
     line-height: 16px;
   }
 
-  .no-results{
-    display: block;
-    width: 100%;
-    margin: 10% 0px 0px 0px;
-    font-size: 28px;
-    text-align: center;
-    padding: 0px;
-  }
+  
 
 .message-404{
   display: block;
@@ -899,4 +892,54 @@ div#main-layout-user{
   border-style: solid;
   text-align: center;
   cursor: pointer;
+}
+
+
+
+
+.report-title{
+  display: block;
+  width: 208mm;
+  margin: 3mm;
+  padding: 3mm;
+  font-size: 38px;
+  font-weight: 700;
+  background-color: #DCE6F0;
+}
+.report-chart-image{
+  display: inline-block;
+  width: 160mm;
+  margin: 3mm;
+}
+
+
+@media only screen and (min-width: 800px){
+  .no-results{
+    display: block;
+    width: 100%;
+    margin: 10% 0px 0px 0px;
+    font-size: 28px;
+    text-align: center;
+    padding: 0px;
+  }
+}
+@media only screen and (max-width: 799px) and (min-width: 400px){
+  .no-results{
+    display: block;
+    width: 100%;
+    margin: 10% 0px 0px 0px;
+    font-size: 22px;
+    text-align: center;
+    padding: 0px;
+  }
+}
+@media only screen and (max-width: 399px){
+  .no-results{
+    display: block;
+    width: 100%;
+    margin: 10% 0px 0px 0px;
+    font-size: 16px;
+    text-align: center;
+    padding: 0px;
+  }
 }

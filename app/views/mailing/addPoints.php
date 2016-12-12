@@ -4,10 +4,11 @@
 	$avatar = $promotor->avatar();
 	$code_value = $code->codeValue();
 ?>
-<img style="width: 80px; height: 80px; margin: 0 auto;" src="<?= Config::get('host') ?>/static/smile.png">
+<img style="display: block; width: 80px; height: 80px; margin: 0 auto;" src="<?= Config::get('host') ?>/static/smile.png" alt="smile">
 <div style="color: #61C63F; margin: 0px 0px 15px 0px;">
-	<p style="margin: 0px; text-align: center; font-weight: 700; font-size: 36px;">Gratulacje</p>
-	<p style="margin: 0px; text-align: center; font-weight: 700; font-size: 16px;"><?= $code_value ?> pkt <?php if ($code_value > 1) { echo "zostało dodanych"; } else echo "został dodany"; ?> do Twojego konta w ramach akcji:</p>
+	<p style="margin: 0px 0px 6px 0px; text-align: center; font-weight: 700; font-size: 36px;">Gratulacje</p>
+	<p style="margin: 0px; text-align: center; font-weight: 700; font-size: 24px;">+ <?= $code_value ?> pkt</p>
+	<p style="margin: 0px; text-align: center; font-weight: 700; font-size: 16px;"><?php if ($code_value > 1) { echo "zostało dodanych"; } else echo "został dodany"; ?> do Twojego konta w ramach akcji:</p>
 </div>
 <?php
 	if (!empty($avatar)) { ?>
