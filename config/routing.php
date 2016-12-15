@@ -36,7 +36,7 @@ $router->map( 'GET', '/promotors/[i:promotors_id]/orders', 'PromotorsController#
 $router->map( 'GET', '/promotors/[i:promotors_id]/orders/[i:order_id]', 'PromotorsController#showOrders', 'show_promotors_orders' );
 
 /* Promotor report */
-$router->map( 'GET', '/promotor/[i:promotors_id]/get-report', 'PromotorsController#getReport', 'get_report' );
+$router->map( 'POST', '/promotor/[i:promotors_id]/get-report', 'PromotorsController#getReport', 'get_report' );
 
 
 /* Promotor clients charts */

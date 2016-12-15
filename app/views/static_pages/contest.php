@@ -27,7 +27,8 @@
 		Nazwa<br />
 		<input type="text" name="client[name]" required="required"><br />
 		Numer telefonu<br />
-		<input type="text" name="client[phone_number]" required="required"><br />
+		<div id="answer-form-phone-number">+48</div><input id="answer-form-phone-number" type="text" name="client[phone_number]" pattern="[0-9]{9}" maxlength="9" required="required"><br />
 		<input type="submit" value="Wyślij">
 	</form>
 </div>
+

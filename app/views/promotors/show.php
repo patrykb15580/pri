@@ -5,7 +5,7 @@
 	$items_number = count($promotor->promotionActions());	
 
 	if (isset($params['notice'])) { ?>
-		<div id="notice">
+		<div id="notice" data-cookie="show_promotor_view">
 			<p id="notice-text"><i class="fa fa-info-circle" aria-hidden="true"></i> W tym panelu możesz ...</p>
 			<button type="button" class="close-notice" data-dismiss="alert" aria-hidden="true">
 				<i class="fa fa-times" aria-hidden="true"></i>
@@ -32,7 +32,7 @@
 		Wszystkie
 	</option>
 </select>
-
+<br />
 <div id="tab-1-content" class="tab-content">
    	<?php 
 		$actions = $promotor->activeActions();

@@ -3,7 +3,7 @@
 	$prev_page = $router->generate('index_promotors_orders', ['promotors_id' => $params['promotors_id']]);
 
 	if (isset($params['notice'])) { ?>
-		<div id="notice">
+		<div id="notice" data-cookie="show_orders_promotor_view">
 			<p id="notice-text"><i class="fa fa-info-circle" aria-hidden="true"></i> W tym panelu możesz ...</p>
 			<button type="button" class="close-notice" data-dismiss="alert" aria-hidden="true">
 				<i class="fa fa-times" aria-hidden="true"></i>

@@ -75,7 +75,7 @@ class CodesPackage extends Model
 
 		return count($codes);
 	}
-
+	
 	public function usedCodes()
 	{	
 		$date = date(Config::get('mysqltime'), strtotime("-1 week"));

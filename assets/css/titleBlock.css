@@ -125,7 +125,6 @@
   #title-box-options-bar{
     background-color: #c9d9e8;
     width: calc(96% + 2px);
-    height: 33px;
     margin: 0px 0px 10px 0px;
     padding: 0px 2% 0px 2%;
     line-height: 26px;
@@ -133,25 +132,31 @@
   .options-bar-button{
     background-color: transparent;
     display: inline-block;
-    height: 100%;
-    margin: 0px 20px 0px 0px;
+    width: 200px;
+    height: 40px;
+    margin: 10px 20px 10px 0px;
     font-size: 14px;
     font-weight: 600;
     color: #6D7E89;
-    padding: 10px 0px 7px 0px;
-    border: 0px solid;
+    padding: 9px 4px 9px 4px;
+    border-width: 1px;
+    border-radius: 0px;
+    border-style: solid;
     transition: color 0.2s;
   }
   .options-bar-button:hover{
     background-color: transparent;
     display: inline-block;
-    height: 100%;
-    margin: 0px 20px 0px 0px;
+    width: 200px;
+    height: 40px;
+    margin: 10px 20px 10px 0px;
     font-size: 14px;
     font-weight: 600;
     color: #017EE9;
-    padding: 10px 0px 7px 0px;
-    border: 0px solid;
+    padding: 9px 4px 9px 4px;
+    border-width: 1px;
+    border-radius: 0px;
+    border-style: solid;
     cursor: pointer;
   }
   .prev-page-button{
@@ -303,7 +308,6 @@
   #title-box-options-bar{
     background-color: #c9d9e8;
     width: calc(96% + 2px);
-    height: 33px;
     margin: 0px 0px 10px 0px;
     padding: 0px 2% 0px 2%;
     line-height: 26px;
@@ -311,25 +315,31 @@
   .options-bar-button{
     background-color: transparent;
     display: inline-block;
-    height: 100%;
-    margin: 0px 20px 0px 0px;
+    width: 200px;
+    height: 40px;
+    margin: 10px 20px 10px 0px;
     font-size: 14px;
     font-weight: 600;
     color: #6D7E89;
-    padding: 10px 0px 7px 0px;
-    border: 0px solid;
+    padding: 9px 4px 9px 4px;
+    border-width: 1px;
+    border-radius: 0px;
+    border-style: solid;
     transition: color 0.2s;
   }
   .options-bar-button:hover{
     background-color: transparent;
     display: inline-block;
-    height: 100%;
-    margin: 0px 20px 0px 0px;
+    width: 200px;
+    height: 40px;
+    margin: 10px 20px 10px 0px;
     font-size: 14px;
     font-weight: 600;
     color: #017EE9;
-    padding: 10px 0px 7px 0px;
-    border: 0px solid;
+    padding: 9px 4px 9px 4px;
+    border-width: 1px;
+    border-radius: 0px;
+    border-style: solid;
     cursor: pointer;
   }
   .prev-page-button{
@@ -481,7 +491,6 @@
   #title-box-options-bar{
     background-color: #c9d9e8;
     width: calc(96% + 2px);
-    height: 33px;
     margin: 0px 0px 10px 0px;
     padding: 0px 2% 0px 2%;
     line-height: 26px;
@@ -489,25 +498,31 @@
   .options-bar-button{
     background-color: transparent;
     display: inline-block;
-    height: 100%;
-    margin: 0px 20px 0px 0px;
+    width: 200px;
+    height: 40px;
+    margin: 10px 20px 10px 0px;
     font-size: 14px;
     font-weight: 600;
     color: #6D7E89;
-    padding: 10px 0px 7px 0px;
-    border: 0px solid;
+    padding: 9px 4px 9px 4px;
+    border-width: 1px;
+    border-radius: 0px;
+    border-style: solid;
     transition: color 0.2s;
   }
   .options-bar-button:hover{
     background-color: transparent;
     display: inline-block;
-    height: 100%;
-    margin: 0px 20px 0px 0px;
+    width: 200px;
+    height: 40px;
+    margin: 10px 20px 10px 0px;
     font-size: 14px;
     font-weight: 600;
     color: #017EE9;
-    padding: 10px 0px 7px 0px;
-    border: 0px solid;
+    padding: 9px 4px 9px 4px;
+    border-width: 1px;
+    border-radius: 0px;
+    border-style: solid;
     cursor: pointer;
   }
   .prev-page-button{
@@ -659,7 +674,6 @@
   #title-box-options-bar{
     background-color: #c9d9e8;
     width: 96%;
-    height: 33px;
     margin: 0px 0px 10px 0px;
     padding: 0px 2% 0px 2%;
     line-height: 26px;
@@ -667,25 +681,31 @@
   .options-bar-button{
     background-color: transparent;
     display: inline-block;
-    height: 100%;
-    margin: 0px 20px 0px 0px;
+    width: 160px;
+    height: 36px;
+    margin: 10px 16px 10px 0px;
     font-size: 14px;
     font-weight: 600;
     color: #6D7E89;
-    padding: 10px 0px 7px 0px;
-    border: 0px solid;
+    padding: 0px;
+    border-width: 1px;
+    border-radius: 0px;
+    border-style: solid;
     transition: color 0.2s;
   }
   .options-bar-button:hover{
     background-color: transparent;
     display: inline-block;
-    height: 100%;
-    margin: 0px 20px 0px 0px;
+    width: 160px;
+    height: 36px;
+    margin: 10px 16px 10px 0px;
     font-size: 14px;
     font-weight: 600;
     color: #017EE9;
-    padding: 10px 0px 7px 0px;
-    border: 0px solid;
+    padding: 0px;
+    border-width: 1px;
+    border-radius: 0px;
+    border-style: solid;
     cursor: pointer;
   }
   .prev-page-button{
@@ -835,7 +855,6 @@
   #title-box-options-bar{
     background-color: #c9d9e8;
     width: 96%;
-    height: 33px;
     margin: 0px 0px 10px 0px;
     padding: 0px 2% 0px 2%;
     line-height: 26px;
@@ -843,25 +862,31 @@
   .options-bar-button{
     background-color: transparent;
     display: inline-block;
-    height: 100%;
-    margin: 0px 20px 0px 0px;
+    width: 130px;
+    height: 30px;
+    margin: 6px 10px 6px 0px;
     font-size: 10px;
     font-weight: 600;
     color: #6D7E89;
-    padding: 10px 0px 7px 0px;
-    border: 0px solid;
+    padding: 0px;
+    border-width: 1px;
+    border-radius: 0px;
+    border-style: solid;
     transition: color 0.2s;
   }
   .options-bar-button:hover{
     background-color: transparent;
     display: inline-block;
-    height: 100%;
-    margin: 0px 20px 0px 0px;
+    width: 130px;
+    height: 30px;
+    margin: 6px 10px 6px 0px;
     font-size: 10px;
     font-weight: 600;
     color: #017EE9;
-    padding: 10px 0px 7px 0px;
-    border: 0px solid;
+    padding: 0px;
+    border-width: 1px;
+    border-radius: 0px;
+    border-style: solid;
     cursor: pointer;
   }
   .prev-page-button{

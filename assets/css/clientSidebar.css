@@ -138,7 +138,7 @@
   .client_menu_active{
     float: left;
     display: inline-block;
-    width: 18%;
+    width: 23%;
     height: 50px;
     margin: 0px;
     padding: 1%;
@@ -159,7 +159,7 @@
   .client_menu_active:hover{
     float: left;
     display: inline-block;
-    width: 18%;
+    width: 23%;
     height: 50px;
     margin: 0px;
     padding: 1%;
@@ -173,7 +173,7 @@
   .client_menu_inactive{
     float: left;
     display: inline-block;
-    width: 18%;
+    width: 23%;
     height: 50px;
     margin: 0px;
     padding: 1%;
@@ -194,7 +194,7 @@
     float: left;
     display: inline-block;
     background-color: #eff8ff;
-    width: 18%;
+    width: 23%;
     height: 50px;
     margin: 0px;
     padding: 1%;
@@ -209,7 +209,7 @@
   .client_menu_active{
     float: left;
     display: inline-block;
-    width: 18%;
+    width: 23%;
     height: 50px;
     margin: 0px;
     padding: 1%;
@@ -230,7 +230,7 @@
   .client_menu_active:hover{
     float: left;
     display: inline-block;
-    width: 18%;
+    width: 23%;
     height: 50px;
     margin: 0px;
     padding: 1%;
@@ -244,7 +244,7 @@
   .client_menu_inactive{
     float: left;
     display: inline-block;
-    width: 18%;
+    width: 23%;
     height: 50px;
     margin: 0px;
     padding: 1%;
@@ -265,7 +265,7 @@
     float: left;
     display: inline-block;
     background-color: #eff8ff;
-    width: 18%;
+    width: 23%;
     height: 50px;
     margin: 0px;
     padding: 1%;

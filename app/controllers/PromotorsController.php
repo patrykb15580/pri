@@ -1,4 +1,5 @@
 <?php
+use Dompdf\Dompdf;
 /**
 * 
 */
@@ -9,11 +10,6 @@ class PromotorsController extends Controller
 		$promotor = $this->promotor();
 		$this->auth(__FUNCTION__, $promotor);
 
-		if (!isset($_COOKIE['pri_promotor_show_promotor_view_notice'])) {
-			setcookie('pri_promotor_show_promotor_view_notice', 'no', time() + (86400 * 30));
-			$this->params['notice'] = 'yes';
-		}
-
 		$view = (new View($this->params, ['promotor'=>$promotor]))->render();
 		return $view;
 	}
@@ -22,11 +18,6 @@ class PromotorsController extends Controller
 	{
 		$promotor = $this->promotor();
 		$this->auth(__FUNCTION__, $promotor);
-
-		if (!isset($_COOKIE['pri_promotor_stats_promotor_view_notice'])) {
-			setcookie('pri_promotor_stats_promotor_view_notice', 'no', time() + (86400 * 30));
-			$this->params['notice'] = 'yes';
-		}
 
 		$view = (new View($this->params, ['promotor'=>$promotor]))->render();
 		return $view;
@@ -66,7 +57,7 @@ class PromotorsController extends Controller
 
 				header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id']);
 			} else {
-				$this->alert('error', 'Nie udało się zaktualizować profilu<br />Spróbuj jeszcze raz');
+				$this->alert('error', 'Nie udało się zaktualizować profilu, spróbuj jeszcze raz');
 
 				header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id']."/account");
 			}
@@ -81,11 +72,6 @@ class PromotorsController extends Controller
 	{
 		$promotor = $this->promotor();
 		$this->auth(__FUNCTION__, $promotor);
-
-		if (!isset($_COOKIE['pri_promotor_index_clients_promotor_view_notice'])) {
-			setcookie('pri_promotor_show_promotor_view_notice', 'no', time() + (86400 * 30));
-			$this->params['notice'] = 'yes';
-		}
 	
 		$view = (new View($this->params, ['promotor'=>$promotor]))->render();
 		return $view;
@@ -95,11 +81,6 @@ class PromotorsController extends Controller
 	{
 		$promotor = $this->promotor();
 		$this->auth(__FUNCTION__, $promotor);
-
-		if (!isset($_COOKIE['pri_promotor_index_orders_promotor_view_notice'])) {
-			setcookie('pri_promotor_index_orders_promotor_view_notice', 'no', time() + (86400 * 30));
-			$this->params['notice'] = 'yes';
-		}
 		
 		$view = (new View($this->params, ['promotor'=>$promotor]))->render();
 		return $view;
@@ -111,11 +92,6 @@ class PromotorsController extends Controller
 		$order = Order::find($this->params['order_id']);
 		$reward = $order->reward();
 		$image = $reward->singleImage();
-
-		if (!isset($_COOKIE['pri_promotor_show_orders_promotor_view_notice'])) {
-			setcookie('pri_promotor_show_orders_promotor_view_notice', 'no', time() + (86400 * 30));
-			$this->params['notice'] = 'yes';
-		}
 
 		$view = (new View($this->params, ['order'=>$order, 'image'=>$image, 'reward'=>$reward]))->render();
 		return $view;
@@ -279,11 +255,25 @@ class PromotorsController extends Controller
 	}
 
 	public function getReport()
-	{
+	{	
+		header('Content-Type: application/pdf; charset=utf-8');
+		header('Content-Disposition: attachment; filename=raport.pdf');
+		
 		$promotor = $this->promotor();
-
+		
 		$view = (new View($this->params, ['promotor'=>$promotor], 'pdf'))->render();
-		return $view;
+
+		$dompdf = new Dompdf();
+		$dompdf->loadHtml($view);
+
+		// (Optional) Setup the paper size and orientation
+		$dompdf->setPaper('A4', 'landscape');
+
+		// Render the HTML as PDF
+		$dompdf->render();
+
+		// Output the generated PDF to Browser
+		$dompdf->stream();
 	}
 
 	public function promotor()

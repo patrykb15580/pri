@@ -9,11 +9,6 @@ class ContestsController extends Controller
 		$promotor = Promotor::find($this->params['promotors_id']);
 		$this->auth(__FUNCTION__, $promotor);
 
-		if (!isset($_COOKIE['pri_promotor_index_contest_view_notice'])) {
-			setcookie('pri_promotor_index_contest_view_notice', 'no', time() + (86400 * 30));
-			$this->params['notice'] = 'yes';
-		}
-
 		$view = (new View($this->params, ['promotor'=>$promotor]))->render();
 		return $view;
 		
@@ -22,11 +17,6 @@ class ContestsController extends Controller
 	{	
 		$action = $this->action();
 		$this->auth(__FUNCTION__, $action);
-
-		if (!isset($_COOKIE['pri_promotor_show_contest_view_notice'])) {
-			setcookie('pri_promotor_show_contest_view_notice', 'no', time() + (86400 * 30));
-			$this->params['notice'] = 'yes';
-		}
 
 		$view = (new View($this->params, ['action'=>$action]))->render();
 		return $view;

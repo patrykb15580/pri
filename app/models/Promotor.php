@@ -75,7 +75,7 @@ class Promotor extends Model
 
 	public function usedCodes()
 	{
-		$actions = $this->promotionActions();
+		$actions = $this->actions();
 		$codes = [];
 		foreach ($actions as $action) {
 			$used_codes = $action->usedCodes();

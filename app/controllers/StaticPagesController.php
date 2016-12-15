@@ -252,6 +252,7 @@ class StaticPagesController extends Controller
 
 		if (!$client) {
 			$this->params['client']['hash'] = HashGenerator::generate();
+			$this->params['client']['phone_number'] = '+48 '.$this->params['client']['phone_number'];
 			$client = new Client($this->params['client']);
 			if (!$client->save()) {
 				$this->alert('error', 'Nie udało się utworzyć profilu klienta.');
@@ -286,7 +287,7 @@ class StaticPagesController extends Controller
 
 
 		if (empty($client)) {
-			$this->alert('error', 'Brak klienta o podanym adresie email');
+			$this->alert('info', 'Twój link do logowania został wysłany na podany adres email');
 			header('Location: '.$prev_page);
 		} else {
 			(new ClientMailer)->clientHash($client);

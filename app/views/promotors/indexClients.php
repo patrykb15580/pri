@@ -6,7 +6,7 @@
 	#die(print_r($active_actions));
 
 	if (isset($params['notice'])) { ?>
-		<div id="notice">
+		<div id="notice" data-cookie="index_clients_promotor_view">
 			<p id="notice-text"><i class="fa fa-info-circle" aria-hidden="true"></i> W tym panelu możesz ...</p>
 			<button type="button" class="close-notice" data-dismiss="alert" aria-hidden="true">
 				<i class="fa fa-times" aria-hidden="true"></i>

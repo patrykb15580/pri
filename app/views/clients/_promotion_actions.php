@@ -12,17 +12,17 @@ foreach ($client->promotorsActions() as $promotor) {
 		
 		<table width="100%">
 			<tr>
-				<td class="first-row" width="80%">Nazwa akcji</td>
-				<td class="text_align_right first-row" width="20%">Twoje punkty</td>
+				<td class="first-row" width="70%">Nazwa akcji</td>
+				<td class="text_align_right first-row" width="30%">Twoje punkty</td>
 			</tr>
 		<?php foreach ($promotion_actions as $promotion_action) { 
 			if ($promotion_action->promotor_id == $promotor->id) { ?>
 				<tr class="result">
-					<td width="80%"><b><?= $promotion_action->name ?></b></td>
-					<td class="text_align_right" width="20%"><?= $client->promotionActionsValues()[$promotion_action->id] ?> pkt</td>
+					<td width="70%"><b><?= $promotion_action->name ?></b></td>
+					<td class="text_align_right" width="30%"><?= $client->promotionActionsValues()[$promotion_action->id] ?> pkt</td>
 				</tr>
 			<?php } } ?>
-			<tr id="last_row"><td width="80%"></td><td class="text_align_right" width="20%">razem <p class="client-balance"><?= $balance->balance ?> pkt</p></td></tr>	
+			<tr id="last_row"><td width="70%">Regulamin</td><td class="text_align_right" width="30%">razem <p class="client-balance"><?= $balance->balance ?> pkt</p></td></tr>	
 		</table>
 	</div>
 <?php } ?>

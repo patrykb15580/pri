@@ -101,6 +101,35 @@
     border: 1px solid;
     border-radius: 5px;
   }
+  #use_code div.use-code-phone-number {
+    display: inline-block;
+    width: 14%;
+    text-align: center;
+    font-weight: 700;
+    color: #737C85;
+    font-size: 20px;
+    margin: 0px auto;
+    padding: 4px 0px 5px 0px;
+    border-top: 1px;
+    border-right: 0px;
+    border-bottom: 1px;
+    border-left: 1px;
+    border-radius: 5px 0px 0px 5px;
+    border-style: solid;
+  }
+  #use_code input.use-code-phone-number {
+    display: inline-block;
+    width: 82%;
+    color: #737C85;
+    font-size: 20px;
+    margin: 0px auto;
+    border-top: 1px;
+    border-right: 1px;
+    border-bottom: 1px;
+    border-left: 0px;
+    border-radius: 0px 5px 5px 0px;
+    border-style: solid;
+  }
   #use_code_container .promotor-name{
     margin: 0px;
     padding: 0px;
@@ -219,6 +248,39 @@
     margin: 0 auto;
     border: 1px solid;
     border-radius: 5px;
+  }
+  #use_code div.use-code-phone-number {
+    display: inline-block;
+    float: left;
+    width: 14%;
+    text-align: center;
+    font-weight: 700;
+    color: #737C85;
+    font-size: 16px;
+    margin: 0 auto;
+    padding: 3px 0px 4px 0px;
+    vertical-align: 4px;
+    border-top: 1px;
+    border-right: 0px;
+    border-bottom: 1px;
+    border-left: 1px;
+    border-radius: 5px 0px 0px 5px;
+    border-style: solid;
+  }
+  #use_code input.use-code-phone-number {
+    display: inline-block;
+    float: left;
+    width: calc(82% - 1px);
+    height: 18px;
+    color: #737C85;
+    font-size: 16px;
+    margin: 0 auto;
+    border-top: 1px;
+    border-right: 1px;
+    border-bottom: 1px;
+    border-left: 0px;
+    border-radius: 0px 5px 5px 0px;
+    border-style: solid;
   }
   #use_code_container .promotor-name{
     margin: 0px;

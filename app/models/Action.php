@@ -176,7 +176,7 @@ class Action extends Model
 
 		$used_codes = [];
 		foreach ($packages as $package) {
-			foreach ($package->usedCodes() as $code) {
+			foreach ($package->usedPromotionCodes() as $code) {
 				array_push($used_codes, $code);
 			}
 		}

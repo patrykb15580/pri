@@ -19,7 +19,7 @@ $( document ).ready(function(){
       data: { "codes_from": val_from, "codes_to": val_to, "promotors_id": promotor_id },
       success: function(data){
         console.log(data);
-        Codes_in_range_rows = JSON.parse(data);
+        codes_in_range_rows = JSON.parse(data);
         drawCodesInRangeChart();
       },
       error: function(data) {

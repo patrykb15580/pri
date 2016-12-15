@@ -6,7 +6,7 @@
 	#die(print_r($params));
 
 	if (isset($params['notice'])) { ?>
-		<div id="notice">
+		<div id="notice" data-cookie="show_package_view">
 			<p id="notice-text"><i class="fa fa-info-circle" aria-hidden="true"></i> W tym panelu możesz ...</p>
 			<button type="button" class="close-notice" data-dismiss="alert" aria-hidden="true">
 				<i class="fa fa-times" aria-hidden="true"></i>
@@ -47,7 +47,7 @@
 		Wszystkie (<?= count($package->promotionCodes()) ?>)
 	</option>
 </select>
-
+<br />
 <div id="tab-1-content" class="tab-content">
 	<?php 
 		if (count($package->usedPromotionCodes()) !== 0) { ?>
