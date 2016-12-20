@@ -1,5 +1,6 @@
 <?php
 use Dompdf\Dompdf;
+use Dompdf\Options;
 /**
 * 
 */
@@ -263,11 +264,17 @@ class PromotorsController extends Controller
 		
 		$view = (new View($this->params, ['promotor'=>$promotor], 'pdf'))->render();
 
-		$dompdf = new Dompdf();
-		$dompdf->loadHtml($view);
+		$options = new Options();
+		$options->set('defaultFont', 'DejaVu Serif');
+		$options->set('isRemoteEnabled', TRUE);
+		$options->set('debugKeepTemp', TRUE);
+		$options->set('isHtml5ParserEnabled', true);
+
+		$dompdf = new Dompdf($options);
+		$dompdf->loadHtml($view, 'UTF-8');
 
 		// (Optional) Setup the paper size and orientation
-		$dompdf->setPaper('A4', 'landscape');
+		$dompdf->setPaper('A4', 'portrait');
 
 		// Render the HTML as PDF
 		$dompdf->render();

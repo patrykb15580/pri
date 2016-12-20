@@ -17,6 +17,8 @@
 	<link rel="stylesheet" type="text/css" href="/assets/css/answerForm.css">
 	<link rel="stylesheet" type="text/css" href="/assets/css/tables.css">
 	<link rel="stylesheet" type="text/css" href="/assets/css/alerts.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/forgotPassword.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/newPassword.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet"> 
 	<script src="js/jquery.guardian-1.0.min.js"></script>

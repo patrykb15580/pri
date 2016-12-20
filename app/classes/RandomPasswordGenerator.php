@@ -5,7 +5,7 @@
 class RandomPasswordGenerator
 {
 	public static function generate($length = 6) {
-	    $characters = 'abcdefghjkmnpqrstuvwxyzABCDEFGHIJKMNPQRSTUVWXYZ1234567890';
+	    $characters = 'abcdefghjkmnpqrstuvwxyzABCDEFGHIJKMNPQRSTUVWXYZ1234567890!@#$%^&*';
 	    $charactersLength = strlen($characters);
 	    $password = '';
 

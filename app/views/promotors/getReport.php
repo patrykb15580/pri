@@ -38,14 +38,14 @@
 ?>
 
 <div style="display: block;
-			width: 100%; 
+			width: 176mm; 
 			height: 10mm; 
 			background-color: #DCE6F0;
-			margin: 0px 0px 20mm 0px;
-			line-height: 10mm;
+			margin: 0px auto 20mm auto;
+			line-height: 8mm;
 			padding: 5mm;
 			font-size: 10mm;
-			font-weight: 700;
+			font-weight: bold;
 ">
 	<?= $promotor->name ?>
 </div>
@@ -55,86 +55,87 @@
 ">
 	<div style="position: relative;
 				display: inline-block;
-				width: 60mm; 
-				height: 60mm; 
+				width: 40mm; 
+				height: 40mm; 
 				background-color: white; 
 				border: 1px solid; 
-				border-radius: 30mm; 
+				border-radius: 20mm; 
 				margin: 0px 2mm 0px 2mm;	
 	">
-		<p style="text-align: center; font-size: 20mm; font-weight: 700; margin: 17mm 0px 0px 0px; padding: 0px;">
+		<p style="text-align: center; font-size: 10mm; font-weight: bold; margin: 12mm 0px 0px 0px; padding: 0px;">
 			<?= $new_clients ?>
 		</p>
-		<p style="text-align: center; font-size: 4mm; margin: 0px 0px 0px 0px; padding: 0px;">
+		<p style="text-align: center; font-size: 3mm; margin: 0px 0px 0px 0px; padding: 0px;">
 			Nowych klientów
 		</p>
 		<div style="position: absolute; 
 					top: 0px; 
 					left: 0px; 
-					width: 16mm; 
-					height: 16mm; 
+					width: 12mm; 
+					height: 12mm; 
 					background-color: white; 
 					border: 1px solid; 
-					border-radius: 8mm; 
-					font-size: 4.2mm; 
-					font-weight: 700;
+					border-radius: 6mm; 
+					font-size: 2.6mm; 
+					font-weight: bold;
 					text-align: center; 
-					line-height: 16mm;
+					line-height: 7mm;
+					padding: 0px;
 		">
 			<?= $new_clients_ratio ?>
 		</div>
 	</div>
 	<div style="position: relative;
 				display: inline-block;
-				width: 60mm; 
-				height: 60mm; 
+				width: 40mm; 
+				height: 40mm; 
 				background-color: white; 
 				border: 1px solid; 
-				border-radius: 30mm; 
+				border-radius: 20mm; 
 				margin: 0px 2mm 0px 2mm;	
 	">
-		<p style="text-align: center; font-size: 20mm; font-weight: 700; margin: 17mm 0px 0px 0px; padding: 0px;">
+		<p style="text-align: center; font-size: 10mm; font-weight: bold; margin: 12mm 0px 0px 0px; padding: 0px;">
 			<?= $new_codes ?>
 		</p>
-		<p style="text-align: center; font-size: 4mm; margin: 0px 0px 0px 0px; padding: 0px;">
+		<p style="text-align: center; font-size: 3mm; margin: 0px 0px 0px 0px; padding: 0px;">
 			Użytych kodów
 		</p>
 		<div style="position: absolute; 
 					top: 0px; 
 					left: 0px; 
-					width: 16mm; 
-					height: 16mm; 
+					width: 12mm; 
+					height: 12mm; 
 					background-color: white; 
 					border: 1px solid; 
-					border-radius: 8mm; 
-					font-size: 4.2mm; 
-					font-weight: 700;
+					border-radius: 6mm; 
+					font-size: 2.6mm; 
+					font-weight: bold;
 					text-align: center; 
-					line-height: 60px;
+					line-height: 7mm;
+					padding: 0px;
 		">
 			<?= $new_codes_ratio ?>
 		</div>
 	</div>
 	<div style="position: relative;
 				display: inline-block;
-				width: 60mm; 
-				height: 60mm; 
+				width: 40mm; 
+				height: 40mm; 
 				background-color: white; 
 				border: 1px solid; 
-				border-radius: 30mm; 
+				border-radius: 20mm; 
 				margin: 0px 2mm 0px 2mm;	
 	">
-		<p style="text-align: center; font-size: 20mm; font-weight: 700; margin: 17mm 0px 0px 0px; padding: 0px;">
+		<p style="text-align: center; font-size: 10mm; font-weight: bold; margin: 12mm 0px 0px 0px; padding: 0px;;">
 			<?= $scored_points ?>
 		</p>
-		<p style="text-align: center; font-size: 4mm; margin: 0px 0px 0px 0px; padding: 0px;">
+		<p style="text-align: center; font-size: 3mm; margin: 0px 0px 0px 0px; padding: 0px;">
 			Zdobytych punktów
 		</p>
 	</div>
 </div>
 <br /><br />
 <h3>Liczba użytych kodów w poszczególnych dniach miesiąca</h3>
-<div id="report-chart" data-promotorid="<?= $promotor->id ?>" data-month="<?= date('m') ?>"></div>
-<img src="assets/mailing/mailing/smile.png">
+<div style=" width: 176mm;" id="report-chart" data-promotorid="<?= $promotor->id ?>" data-month="<?= date('m') ?>"></div>
 
-<script type="text/javascript" src="/assets/javascript/reportChart.js"></script>
+<script type="text/javascript" src="/assets/javascript/reportCharts.js"></script>

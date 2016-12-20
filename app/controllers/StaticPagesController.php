@@ -4,7 +4,7 @@
 */
 class StaticPagesController extends Controller
 {
-	public $non_authorized = ['startPage', 'contest', 'contestAnswer', 'login', 'promotorLogin', 'insertCode', 'getCode', 'useCode', 'addPoints', 'confirmation', 'contestConfirmation', 'getOrCreateClient', 'loginHashSend'];
+	public $non_authorized = ['startPage', 'contest', 'contestAnswer', 'login', 'promotorLogin', 'insertCode', 'getCode', 'useCode', 'addPoints', 'confirmation', 'contestConfirmation', 'getOrCreateClient', 'loginHashSend', 'newPassword', 'forgotPassword', 'forgotPasswordSendMail', 'changePassword'];
 
 	public function startPage()
 	{
@@ -253,10 +253,15 @@ class StaticPagesController extends Controller
 		if (!$client) {
 			$this->params['client']['hash'] = HashGenerator::generate();
 			$this->params['client']['phone_number'] = '+48 '.$this->params['client']['phone_number'];
+			$this->params['client']['password_digest'] = Password::encryptPassword(RandomPasswordGenerator::generate());
 			$client = new Client($this->params['client']);
 			if (!$client->save()) {
 				$this->alert('error', 'Nie udało się utworzyć profilu klienta.');
-			} else (new ClientMailer)->createClient($client);
+			} else {
+				#$token = new Token(['token'=>HashGenerator::generate(), 'client_id'=>$client->id]);
+				#$token->save();
+				(new ClientMailer)->createClient($client, $token);
+			}
 
 			return $client;
 		} else {
@@ -294,6 +299,71 @@ class StaticPagesController extends Controller
 
 			$this->alert('info', 'Twój link do logowania został wysłany na podany adres email');
 			header('Location: '.$prev_page);
+		}
+	}
+
+	public function forgotPassword()
+	{
+		$view = (new View($this->params, [], 'start'))->render();
+		return $view;
+	}
+
+	public function forgotPasswordSendMail()
+	{
+		$router = Config::get('router');
+
+		$client = Client::findBy('email', $this->params['email']);
+
+		$token = new Token(['token'=>HashGenerator::generate(), 'client_id'=>$client->id]);
+
+		if ($token->save()) {
+
+			(new ClientMailer)->forgotPassword($client, $token);
+			$this->alert('info', 'Link do zmiany hasła został wysłany na podany adres email');
+
+		} else $this->alert('error', 'Nie udało się zresetować hasła, spróbuj jeszcze raz');
+
+		header('Location: '.$router->generate('login', []));
+	}
+
+	public function newPassword()
+	{
+		Token::checkIfTokensExpired();
+
+		$router = Config::get('router');
+		$token = Token::findBy('token', $this->params['token']);
+
+		if (empty($token)) {
+			$this->alert('error', 'Twój token zmiany hasła wygasł');
+			header('Location: '.$router->generate('login', []));
+		} else {
+			$client = Client::find($token->client_id);
+
+			$view = (new View($this->params, ['token'=>$token, 'client'=>$client], 'start'))->render();
+			return $view;
+		}
+	}
+
+	public function changePassword()
+	{
+		$router = Config::get('router');
+
+		$token = Token::findBy('token', $this->params['token']);
+		$client = Client::find($token->client_id);
+
+		$password = Password::encryptPassword($this->params['new_password']['password']);
+		$confirm = Password::encryptPassword($this->params['new_password']['confirm']);
+
+		if ($password !== $confirm) {
+			$this->alert('error', 'Podane hasła różnią się.');
+			header('Location: '.$router->generate('new_password', ['token'=>$token->token]));
+		} 
+
+		if ($client->update(['password_digest'=>$password])) {
+			$this->alert('info', 'Twoje hasło zostało zmienione.');
+			$token->destroy();
+
+			header('Location: '.$router->generate('login', []));
 		}
 	}
 

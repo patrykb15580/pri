@@ -1,7 +1,7 @@
 @media only screen and (min-width: 900px){
   div#login_box{
     display: block;
-    width: 768px;
+    width: 620px;
     height: 400px;
     margin: 80px auto;
     padding: 0px;
@@ -13,23 +13,68 @@
     float: left;
     position: relative;
     display: inline-block;
-    width: 32%;
+    width: 246px;
     height: 98%;
-    padding: 1% 4%;
+    padding: 8px 30px;
     margin: 0px;
-    color: #464646;
+    color: #76858F;
   }
   .login_left_block h1{
     color: #53BE31;
     font-size: 36px;
   }
+  .login_left_block input[type=email]{
+    width: 236px;
+    height: 32px;
+    padding: 4px;
+    margin: 0px 0px 10px 0px;
+    border: 1px solid #76858F;
+    border-radius: 3px;
+    text-align: left;
+    font-size: 18px;
+  }
+  .login_left_block input[type=password]{
+    width: 236px;
+    height: 32px;
+    padding: 4px;
+    border: 1px solid #76858F;
+    border-radius: 3px;
+    text-align: left;
+    font-size: 18px;
+  }
+  .login_left_block input[type=submit]{
+    width: 246px;
+    height: 50px;
+    background-color: #53BE31;
+    padding: 6px 0px;
+    border: 0px solid;
+    border-radius: 3px;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    transition: background-color 0.2s;
+  }
+  .login_left_block input[type=submit]:hover{
+    width: 246px;
+    height: 50px;
+    background-color: #68D049;
+    padding: 6px 0px;
+    border: 0px solid;
+    border-radius: 3px;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    cursor: pointer;
+  }
   .login_right_block{
     float: left;
     position: relative;
     display: inline-block;
-    width: 51%;
+    width: 246px;
     height: 96%;
-    padding: 1% 4%;
+    padding: 8px 30px;
     margin: 0px;
     color: #76858F;
     border-left: 2px solid;
@@ -40,8 +85,8 @@
     color: #47525D;
     font-weight: 800;
   }
-  .login_right_block input[type=text]{
-    width: 70%;
+  .login_right_block input[type=email]{
+    width: 236px;
     height: 32px;
     font-size: 18px;
     text-align: left;
@@ -50,8 +95,8 @@
     border-radius: 3px;
     transition: border 0.2s;
   }
-  .login_right_block input[type=text]:focus{
-    width: 70%;
+  .login_right_block input[type=email]:focus{
+    width: 236px;
     height: 32px;
     font-size: 18px;
     text-align: left;
@@ -107,11 +152,56 @@
     float: left;
     position: relative;
     display: inline-block;
-    width: 32%;
+    width: 243px;
     height: 98%;
-    padding: 1% 4%;
+    padding: 6px 23px;
     margin: 0px;
-    color: #464646;
+    color: #76858F;
+  }
+  .login_left_block input[type=email]{
+    width: 234px;
+    height: 32px;
+    padding: 4px;
+    margin: 0px 0px 10px 0px;
+    border: 1px solid #76858F;
+    border-radius: 3px;
+    text-align: left;
+    font-size: 18px;
+  }
+  .login_left_block input[type=password]{
+    width: 234px;
+    height: 32px;
+    padding: 4px;
+    border: 1px solid #76858F;
+    border-radius: 3px;
+    text-align: left;
+    font-size: 18px;
+  }
+  .login_left_block input[type=submit]{
+    width: 244px;
+    height: 40px;
+    background-color: #53BE31;
+    padding: 6px 0px;
+    border: 0px solid;
+    border-radius: 3px;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    transition: background-color 0.2s;
+  }
+  .login_left_block input[type=submit]:hover{
+    width: 244px;
+    height: 40px;
+    background-color: #68D049;
+    padding: 6px 0px;
+    border: 0px solid;
+    border-radius: 3px;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    cursor: pointer;
   }
   .login_left_block h1{
     color: #53BE31;
@@ -121,9 +211,9 @@
     float: left;
     position: relative;
     display: inline-block;
-    width: 51%;
+    width: 243px;
     height: 96%;
-    padding: 1% 4%;
+    padding: 6px 23px;
     margin: 0px;
     color: #76858F;
     border-left: 2px solid;
@@ -134,8 +224,8 @@
     color: #47525D;
     font-weight: 800;
   }
-  .login_right_block input[type=text]{
-    width: 70%;
+  .login_right_block input[type=email]{
+    width: 234px;
     height: 32px;
     font-size: 18px;
     text-align: left;
@@ -144,8 +234,8 @@
     border-radius: 3px;
     transition: border 0.2s;
   }
-  .login_right_block input[type=text]:focus{
-    width: 70%;
+  .login_right_block input[type=email]:focus{
+    width: 234px;
     height: 32px;
     font-size: 18px;
     text-align: left;
@@ -154,8 +244,8 @@
     border-radius: 3px;
   }
   input[type=submit].login_submit{
-    width: auto;
-    height: 50px;
+    width: 244px;
+    height: 40px;
     background-color: #53BE31;
     border: 0px solid;
     border-radius: 3px;
@@ -164,12 +254,12 @@
     font-weight: 400;
     text-align: center;
     margin: 20px 0px 40px 0px;
-    padding: 4px 30px;
+    padding: 4px 0px;
     transition: background-color 0.2s;
   }
   input[type=submit].login_submit:hover{
-    width: auto;
-    height: 50px;
+    width: 244px;
+    height: 40px;
     background-color: #68D049;
     border: 0px solid;
     border-radius: 3px;
@@ -178,7 +268,7 @@
     font-weight: 400;
     text-align: center;
     margin: 20px 0px 40px 0px;
-    padding: 4px 30px;
+    padding: 4px 0px;
     cursor: pointer;
   }
   .promotor-login-link{
@@ -203,11 +293,60 @@
     padding: 20px 20px 5px 20px;
     margin: 0px;
     font-size: 12px;
-    color: #464646;
+    color: #76858F;
+    border-width: 0px;
+    border-bottom: 1px;
+    border-color: #76858F;
+    border-style: solid;
   }
   .login_left_block h1{
     color: #53BE31;
     font-size: 28px;
+  }
+  .login_left_block input[type=email]{
+    width: 330px;
+    height: 22px;
+    padding: 4px;
+    margin: 0px 0px 10px 0px;
+    border: 1px solid #76858F;
+    border-radius: 3px;
+    text-align: left;
+    font-size: 18px;
+  }
+  .login_left_block input[type=password]{
+    width: 330px;
+    height: 22px;
+    padding: 4px;
+    border: 1px solid #76858F;
+    border-radius: 3px;
+    text-align: left;
+    font-size: 18px;
+  }
+  .login_left_block input[type=submit]{
+    width: 340px;
+    height: 40px;
+    background-color: #53BE31;
+    padding: 6px 0px;
+    border: 0px solid;
+    border-radius: 3px;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    transition: background-color 0.2s;
+  }
+  .login_left_block input[type=submit]:hover{
+    width: 340px;
+    height: 40px;
+    background-color: #68D049;
+    padding: 6px 0px;
+    border: 0px solid;
+    border-radius: 3px;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    cursor: pointer;
   }
   .login_right_block{
     display: block;
@@ -224,7 +363,7 @@
     color: #47525D;
     font-weight: 800;
   }
-  .login_right_block input[type=text]{
+  .login_right_block input[type=email]{
     width: 330px;
     height: 22px;
     font-size: 14px;
@@ -234,7 +373,7 @@
     border-radius: 3px;
     transition: border 0.2s;
   }
-  .login_right_block input[type=text]:focus{
+  .login_right_block input[type=email]:focus{
     width: 330px;
     height: 22px;
     font-size: 14px;
@@ -297,10 +436,59 @@
     margin: 0px;
     font-size: 12px;
     color: #464646;
+    border-width: 0px;
+    border-bottom: 1px;
+    border-color: #76858F;
+    border-style: solid;
   }
   .login_left_block h1{
     color: #53BE31;
     font-size: 28px;
+  }
+  .login_left_block input[type=email]{
+    width: 212px;
+    height: 22px;
+    padding: 4px;
+    margin: 0px 0px 10px 0px;
+    border: 1px solid #76858F;
+    border-radius: 3px;
+    text-align: left;
+    font-size: 18px;
+  }
+  .login_left_block input[type=password]{
+    width: 212px;
+    height: 22px;
+    padding: 4px;
+    border: 1px solid #76858F;
+    border-radius: 3px;
+    text-align: left;
+    font-size: 18px;
+  }
+  .login_left_block input[type=submit]{
+    width: 222px;
+    height: 40px;
+    background-color: #53BE31;
+    padding: 6px 0px;
+    border: 0px solid;
+    border-radius: 3px;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    transition: background-color 0.2s;
+  }
+  .login_left_block input[type=submit]:hover{
+    width: 222px;
+    height: 40px;
+    background-color: #68D049;
+    padding: 6px 0px;
+    border: 0px solid;
+    border-radius: 3px;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    cursor: pointer;
   }
   .login_right_block{
     display: block;
@@ -317,7 +505,7 @@
     color: #47525D;
     font-weight: 800;
   }
-  .login_right_block input[type=text]{
+  .login_right_block input[type=email]{
     width: 212px;
     height: 22px;
     font-size: 14px;
@@ -327,7 +515,7 @@
     border-radius: 3px;
     transition: border 0.2s;
   }
-  .login_right_block input[type=text]:focus{
+  .login_right_block input[type=email]:focus{
     width: 212px;
     height: 22px;
     font-size: 14px;

@@ -1,4 +1,5 @@
- var val = $("#report-chart").data("month");
+$(document).ready(function(){
+  var val = $("#report-chart").data("month");
   var report_rows;
   var promotor_id = $("#report-chart").data("promotorid");
 
@@ -43,7 +44,7 @@
                         min: 0
                       }
                     },
-                    chartArea: {  width: "200mm", height: "80mm" } };
+                    chartArea: {  width: "100%", height: "80mm" } };
 
     var chart_div = document.getElementById('report-chart');
     var chart = new google.visualization.LineChart(chart_div);
@@ -58,3 +59,4 @@
   }
 
   reportChartData();
+});

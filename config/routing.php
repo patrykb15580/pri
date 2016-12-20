@@ -121,12 +121,19 @@ $router->map( 'GET', '/[a:code]/is-used', 'StaticPagesController#codeIsUsed', 'c
 $router->map( 'POST', '/[a:code]/add-points', 'StaticPagesController#addPoints', 'add_points' );
 $router->map( 'GET', '/[a:code]/confirm', 'StaticPagesController#confirmation', 'confirmation' );
 $router->map( 'GET', '/[a:code]/contest-confirm', 'StaticPagesController#contestConfirmation', 'contest_confirm' );
+$router->map( 'POST', '/reset-password', 'StaticPagesController#resetPassword', 'reset_password' );
+$router->map( 'GET', '/forgot-password', 'StaticPagesController#forgotPassword', 'forgot_password' );
+$router->map( 'POST', '/forgot-password-send-mail', 'StaticPagesController#forgotPasswordSendMail', 'forgot_password_send_mail' );
+$router->map( 'GET', '/new-password/[a:token]', 'StaticPagesController#newPassword', 'new_password' );
+$router->map( 'POST', '/change-password/[a:token]', 'StaticPagesController#changePassword', 'change_password' );
 $router->map( 'GET', '/access-denied', 'StaticPagesController#authorizeError', 'access_denied' );
 
 
 /* Client */
 $router->map( 'GET', '/clients/[i:client_id]', 'ClientsController#show', 'show_client' );
 $router->map( 'GET', '/clients/[i:client_id]/contests', 'ClientsController#indexContests', 'client_index_contests' );
+$router->map( 'GET', '/clients/[i:client_id]/account', 'ClientsController#edit', 'edit_client' );
+$router->map( 'POST', '/clients/[i:client_id]/account/update', 'ClientsController#update', 'update_client' );
 $router->map( 'GET', '/clients/[i:client_id]/promotor-rewards/[i:promotors_id]', 'ClientsController#indexRewards', 'client_index_rewards' );
 #$router->map( 'GET', '/clients/[i:client_id]/promotor-rewards/[i:promotors_id]/reward/[i:reward_id]', 'ClientsController#showRewards', 'client_show_rewards' );
 $router->map( 'GET', '/clients/[i:client_id]/history', 'ClientsController#indexHistory', 'index_history' );

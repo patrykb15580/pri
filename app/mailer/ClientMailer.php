@@ -8,7 +8,7 @@ class ClientMailer extends AppMailer
 
 	public $attributes = [];
 
-	public function createClient($client)
+	public function createClient($client, $token = '')
 	{
 		$this->attributes['recipients'] = ['client'=>$client->email];
 		$this->attributes['subject'] = 'Witaj w programie punktacja.pl';
@@ -72,10 +72,23 @@ class ClientMailer extends AppMailer
 	public function getReward($client, $order)
 	{
 		$this->attributes['recipients'] = ['client'=>$client->email];
-		$this->attributes['subject'] = 'Zakup nagrody';
+		$this->attributes['subject'] = 'Zakup nagrody.';
 
 		$method_name = __FUNCTION__;
 		$body = (new View([], ['client'=>$client, 'order'=>$order, 'method_name'=>$method_name], 'mail'))->render('app/views/mailing/'.$method_name.'.php');
+
+		$this->attributes['body'] = $body;
+
+		$send = (new AppMailer($this->attributes))->send();
+	}
+
+	public function forgotPassword($client, $token)
+	{
+		$this->attributes['recipients'] = ['client'=>$client->email];
+		$this->attributes['subject'] = 'Prośba o nowe hasło.';
+
+		$method_name = __FUNCTION__;
+		$body = (new View([], ['client'=>$client, 'token'=>$token, 'method_name'=>$method_name], 'mail'))->render('app/views/mailing/'.$method_name.'.php');
 
 		$this->attributes['body'] = $body;
 

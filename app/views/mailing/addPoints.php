@@ -4,7 +4,8 @@
 	$avatar = $promotor->avatar();
 	$code_value = $code->codeValue();
 ?>
-<img style="display: block; width: 80px; height: 80px; margin: 0 auto;" src="<?= Config::get('host') ?>/assets/mailing/smile.png" alt="smile">
+<img style="display: block; width: 80px; height: 80px; margin: 0 auto;" src="<?= Config::get('host') ?>/assets/mailing/smile.png" alt="Dziękujemy">
+<br />
 <div style="color: #61C63F; margin: 0px 0px 15px 0px;">
 	<p style="margin: 0px 0px 6px 0px; text-align: center; font-weight: 700; font-size: 36px;">Gratulacje</p>
 	<p style="margin: 0px 0px 2px 0px; text-align: center; font-weight: 700; font-size: 24px;">+ <?= $code_value ?> pkt</p>

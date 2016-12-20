@@ -44,3 +44,6 @@
 ?>
 </div>
 
+<?php 
+	echo date(Config::get('mysqltime'), strtotime('2016-11-13 14:12:11 -1 hour'));
+?>

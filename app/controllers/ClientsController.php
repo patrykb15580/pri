@@ -13,6 +13,58 @@ class ClientsController extends Controller
 		return $view;
 	}
 
+	public function edit()
+	{
+		$client = $this->client();
+		$this->auth(__FUNCTION__, $client);
+		
+		$view = (new View($this->params, ['client'=>$client]))->render();
+		return $view;
+	}
+
+	public function update()
+	{
+		$client = $this->client();
+		$this->auth(__FUNCTION__, $client);
+
+		if (empty($this->params['client']['password']) && empty($this->params['old_password'])) {
+			$old_password = $client->password_digest;
+		} else {
+			$old_password = Password::encryptPassword($this->params['old_password']);
+		}
+		
+		$new_password = Password::encryptPassword($this->params['client']['password']);
+		$this->params['client']['password_digest'] = $new_password;
+
+		if (Password::equalPasswords($old_password, $client->password_digest)) {
+			
+			$new_password = $params['client']['password'];
+
+			if (empty($new_password)) {
+				unset($this->params['client']['password_degest']);
+			} else {
+				$this->params['client']['password'] = Password::encryptPassword($new_password);
+			}
+
+			unset($this->params['client']['password']);
+
+
+			if ($client->update($this->params['client'])) {
+				$this->alert('info', 'Profil został zaktualizowany');
+
+				header("Location: http://".$_SERVER['HTTP_HOST']."/clients/".$this->params['client_id']);
+			} else {
+				$this->alert('error', 'Nie udało się zaktualizować profilu, spróbuj jeszcze raz');
+
+				header("Location: http://".$_SERVER['HTTP_HOST']."/clients/".$this->params['client_id']."/account");
+			}
+		} else {
+			$this->alert('error', 'Podane hasła różnią się');
+
+			header("Location: http://".$_SERVER['HTTP_HOST']."/clients/".$this->params['client_id'].'/account');
+		}
+	}
+
 	public function indexContests()
 	{
 		$client = $this->client();

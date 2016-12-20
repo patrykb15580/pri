@@ -140,9 +140,10 @@
     color: #6D7E89;
     padding: 9px 4px 9px 4px;
     border-width: 1px;
+    border-color: #6D7E89;
     border-radius: 0px;
     border-style: solid;
-    transition: color 0.2s;
+    transition: color 0.2s, border-color 0.2s;
   }
   .options-bar-button:hover{
     background-color: transparent;
@@ -155,6 +156,7 @@
     color: #017EE9;
     padding: 9px 4px 9px 4px;
     border-width: 1px;
+    border-color: #017EE9;
     border-radius: 0px;
     border-style: solid;
     cursor: pointer;
@@ -323,9 +325,10 @@
     color: #6D7E89;
     padding: 9px 4px 9px 4px;
     border-width: 1px;
+    border-color: #6D7E89;
     border-radius: 0px;
     border-style: solid;
-    transition: color 0.2s;
+    transition: color 0.2s, border-color 0.2s;
   }
   .options-bar-button:hover{
     background-color: transparent;
@@ -338,6 +341,7 @@
     color: #017EE9;
     padding: 9px 4px 9px 4px;
     border-width: 1px;
+    border-color: #017EE9;
     border-radius: 0px;
     border-style: solid;
     cursor: pointer;
@@ -506,9 +510,10 @@
     color: #6D7E89;
     padding: 9px 4px 9px 4px;
     border-width: 1px;
+    border-color: #6D7E89;
     border-radius: 0px;
     border-style: solid;
-    transition: color 0.2s;
+    transition: color 0.2s, border-color 0.2s;
   }
   .options-bar-button:hover{
     background-color: transparent;
@@ -521,6 +526,7 @@
     color: #017EE9;
     padding: 9px 4px 9px 4px;
     border-width: 1px;
+    border-color: #017EE9;
     border-radius: 0px;
     border-style: solid;
     cursor: pointer;
@@ -689,9 +695,10 @@
     color: #6D7E89;
     padding: 0px;
     border-width: 1px;
+    border-color: #6D7E89;
     border-radius: 0px;
     border-style: solid;
-    transition: color 0.2s;
+    transition: color 0.2s, border-color 0.2s;
   }
   .options-bar-button:hover{
     background-color: transparent;
@@ -704,6 +711,7 @@
     color: #017EE9;
     padding: 0px;
     border-width: 1px;
+    border-color: #017EE9;
     border-radius: 0px;
     border-style: solid;
     cursor: pointer;
@@ -870,9 +878,10 @@
     color: #6D7E89;
     padding: 0px;
     border-width: 1px;
+    border-color: #6D7E89;
     border-radius: 0px;
     border-style: solid;
-    transition: color 0.2s;
+    transition: color 0.2s, border-color 0.2s;
   }
   .options-bar-button:hover{
     background-color: transparent;
@@ -885,6 +894,7 @@
     color: #017EE9;
     padding: 0px;
     border-width: 1px;
+    border-color: #017EE9;
     border-radius: 0px;
     border-style: solid;
     cursor: pointer;

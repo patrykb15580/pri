@@ -8,7 +8,7 @@ class SessionController extends Controller
 
 	public function create()
 	{
-		if ($this->params['login'] == 'admin') {
+		if (isset($this->params['login']) && $this->params['login'] == 'admin') {
 			Auth::authorizeAdmin($this->params);
 		} else if (isset($this->params['client'])) {
 			Auth::authorizeClient($this->params);

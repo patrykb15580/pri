@@ -58,7 +58,13 @@
 			$login_error = 'Błędny identyfikator klienta';
 		} else {
 			$client = Client::where('email=? AND password_digest=?', ['email'=>$params['client']['email'], 'password_digest'=>Password::encryptPassword($params['client']['password'])]);
+			$client = $client[0];
 			$login_error = 'Błędny login lub hasło';
+
+			if (!empty($client) && $client->password_degest == Password::encryptPassword('')) {
+				new Alerts('error', $login_error);
+				header('Location: '.$router->generate('login', []));
+			}
 		}
 		
 		if (!empty($client)) {

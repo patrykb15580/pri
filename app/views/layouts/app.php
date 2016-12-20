@@ -74,7 +74,13 @@
 		<div class="user-options">
 			<?php
 				if ($user_type == 'promotor') { ?>
-					<a href="/promotors/<?= $params['promotors_id'] ?>/account">
+					<a href="<?= $router->generate('edit_promotor', ['promotors_id'=>$params['promotors_id']]) ?>">
+						<i class="fa fa-cog fa-lg dark-purple-icon" aria-hidden="true"></i> Ustawienia konta
+					</a>
+					<br />
+				<?php }
+				if ($user_type == 'client') { ?>
+					<a href="<?= $router->generate('edit_client', ['client_id'=>$params['client_id']]) ?>">
 						<i class="fa fa-cog fa-lg dark-purple-icon" aria-hidden="true"></i> Ustawienia konta
 					</a>
 					<br />
