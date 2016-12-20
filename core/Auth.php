@@ -69,7 +69,11 @@
 		
 		if (!empty($client)) {
 			Auth::login($client);
-			header('Location: '.$router->generate('show_client', ['client_id'=>$_SESSION['user']->id]));
+			if ($client->password_digest == Password::encryptPassword('')) {
+				header('Location: '.$router->generate('edit_client', ['client_id'=>$_SESSION['user']->id]));
+			} else {
+				header('Location: '.$router->generate('show_client', ['client_id'=>$_SESSION['user']->id]));
+			}
 		} else {
 			new Alerts('error', $login_error);
 			header('Location: '.$router->generate('login', []));

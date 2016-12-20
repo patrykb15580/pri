@@ -14,7 +14,7 @@
 		<p>
 			Zapomnij o loginach i hasłach
 		</p>
-		Wpisz swój adres mailowy a otrzymasz link do zalogowania.
+		Wpisz swój adres mailowy a otrzymasz link do logowania.
 		<br /><br />
 		<form method="POST" action="<?= $router->generate('send_client_hash', []) ?>">
 			<label>

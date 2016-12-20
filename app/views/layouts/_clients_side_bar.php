@@ -1,4 +1,11 @@
 <div id="side_bar">
+	<?php
+		if ($client->password_digest == Password::encryptPassword('')) { ?>
+			<div class="set-password-info">
+				Aby móc logować się za pomocą loginu i hasła ustaw swoje hasło.
+			</div>
+		<?php }
+	?>
 	<a id="menu" class="<?= H::clientCurrentMenu($params, 'actions') ?> client_menu_actions" href="/clients/<?= $params['client_id'] ?>">
 		<i class="fa fa-product-hunt" aria-hidden="true"></i> Akcje promocyjne
 	</a>

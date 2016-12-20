@@ -253,7 +253,7 @@ class StaticPagesController extends Controller
 		if (!$client) {
 			$this->params['client']['hash'] = HashGenerator::generate();
 			$this->params['client']['phone_number'] = '+48 '.$this->params['client']['phone_number'];
-			$this->params['client']['password_digest'] = Password::encryptPassword(RandomPasswordGenerator::generate());
+			$this->params['client']['password_digest'] = Password::encryptPassword('');
 			$client = new Client($this->params['client']);
 			if (!$client->save()) {
 				$this->alert('error', 'Nie udało się utworzyć profilu klienta.');
