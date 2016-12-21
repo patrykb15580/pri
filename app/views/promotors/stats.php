@@ -17,10 +17,11 @@
 <div id="title-box">
 	<i class="fa fa-line-chart title-box-icon blue-icon" aria-hidden="true"></i><p class="title-box-text"> Statystyki</p>
 </div>
+<!--
 <form id="title-box-options-bar" method="POST" action="<?= $path_report ?>">
 	<input class="options-bar-button" type="submit" value="Pobierz raport">
 </form>
-
+-->
 <select id="select-tab">
 	<option value="tab-1">
 		Klienci

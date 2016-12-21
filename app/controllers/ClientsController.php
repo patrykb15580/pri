@@ -27,41 +27,53 @@ class ClientsController extends Controller
 		$client = $this->client();
 		$this->auth(__FUNCTION__, $client);
 
-		if (empty($this->params['client']['password']) && empty($this->params['old_password'])) {
-			$old_password = $client->password_digest;
-		} else {
+		$router = Config::get('router');
+
+		$password = Password::encryptPassword($this->params['client']['password_digest']);
+		$confirm = Password::encryptPassword($this->params['confirm_password']);
+
+		if (isset($this->params['old_password'])) {
 			$old_password = Password::encryptPassword($this->params['old_password']);
 		}
 		
-		$new_password = Password::encryptPassword($this->params['client']['password']);
-		$this->params['client']['password_digest'] = $new_password;
+		if (!empty($this->params['client']['password_digest']) && Password::equalPasswords($password, $confirm)) {
+			if (isset($this->params['old_password']) && Password::equalPasswords($old_password, $client->password_digest)) {
+				$new_password = $password;
+			} else if (isset($this->params['old_password']) && !Password::equalPasswords($old_password, $client->password_digest)) {
+				$this->alert('error', 'Podaj poprawne aktualne hasło');
 
-		if (Password::equalPasswords($old_password, $client->password_digest)) {
-			
-			$new_password = $params['client']['password'];
-
-			if (empty($new_password)) {
-				unset($this->params['client']['password_degest']);
+				header("Location: ".$router->generate('edit_client', ['client_id'=>$client->id]));
 			} else {
-				$this->params['client']['password'] = Password::encryptPassword($new_password);
+				$new_password = $password;
 			}
+		}
+		if (empty($this->params['client']['password_digest']) && empty($this->params['confirm_password'])) {
+			if (isset($this->params['old_password']) && !empty($this->params['old_password'])) {
+				$this->alert('error', 'Hasło nie może być puste');
 
-			unset($this->params['client']['password']);
+				header("Location: ".$router->generate('edit_client', ['client_id'=>$client->id]));
+			} else {
+				$new_password = $client->password_digest;
+			}
+		}
+		if (!empty($this->params['client']['password_digest']) && !Password::equalPasswords($password, $confirm)) {
+			$this->alert('error', 'Podane hasła różnią się');
 
+			header("Location: ".$router->generate('edit_client', ['client_id'=>$client->id]));
+		}
+
+		if (isset($new_password)) {
+			$this->params['client']['password_digest'] = $new_password;
 
 			if ($client->update($this->params['client'])) {
 				$this->alert('info', 'Profil został zaktualizowany');
 
-				header("Location: http://".$_SERVER['HTTP_HOST']."/clients/".$this->params['client_id']);
+				header('Location: '.$router->generate('show_client', ['client_id'=>$client->id]));
 			} else {
 				$this->alert('error', 'Nie udało się zaktualizować profilu, spróbuj jeszcze raz');
 
-				header("Location: http://".$_SERVER['HTTP_HOST']."/clients/".$this->params['client_id']."/account");
+				header("Location: ".$router->generate('edit_client', ['client_id'=>$client->id]));
 			}
-		} else {
-			$this->alert('error', 'Podane hasła różnią się');
-
-			header("Location: http://".$_SERVER['HTTP_HOST']."/clients/".$this->params['client_id'].'/account');
 		}
 	}
 

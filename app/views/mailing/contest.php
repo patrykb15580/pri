@@ -15,7 +15,7 @@
 <p style="margin: 0px; text-align: center; color: #373D42; font-size: 18px; font-weight: 700;"><?= $action->name ?></p>
 <p style="text-align: center; margin: 0px; color: #7D8084;"><?= $promotor->name ?></p>
 <br /><br />
-<p style="text-align: center; margin: 0px; color: #7D8084;">Aby zobaczyć listę konkursów w których bierzesz udział zalogouj się na swoje konto.</p>
+<p style="text-align: center; margin: 0px; color: #7D8084;">Aby zobaczyć listę konkursów w których bierzesz udział zaloguj się na swoje konto.</p>
 <br />
 <a href="<?= Config::get('host') ?>/login?hash=<?= $client->hash ?>">
 	<button style="display: block;

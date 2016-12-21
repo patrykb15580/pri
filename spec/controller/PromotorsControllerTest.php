@@ -39,7 +39,7 @@ class PromotorsControllerTest extends Tests
 		$package = new CodesPackage(['action_id'=>'1', 'quantity'=>4, 'codes_value'=>143, 'status'=>'active']);
 		$package->save();
 
-		$client = new Client(['email'=>'test1@test.com', 'name'=>'client1', 'phone_number'=>'123456789', 'hash'=>HashGenerator::generate()]);
+		$client = new Client(['email'=>'test1@test.com', 'name'=>'client1', 'phone_number'=>'123456789', 'password_digest'=>Password::encryptPassword(''), 'hash'=>HashGenerator::generate()]);
 		$client->save();
 
 		$points_balance = new PointsBalance(['client_id'=>1, 'promotor_id'=>1, 'balance'=>100]);
@@ -268,15 +268,9 @@ class PromotorsControllerTest extends Tests
 
 		$html = HtmlDomParser::str_get_html($view);
 
-		$elements = $html->find('.tab1');	
+		$elements = $html->find('#select-tab');	
 		Assert::expect(count($elements)) -> toEqual(1);
-
-		$elements = $html->find('.tab2');	
-		Assert::expect(count($elements)) -> toEqual(1);
-
-		#$elements = $html->find('#stats_box');	
-		#Assert::expect(count($elements)) -> toEqual(2);
-
+		
 
 		#$elements = $html->find('tr.result');	
 		#Assert::expect(count($elements)) -> toEqual(2);

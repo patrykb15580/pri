@@ -130,7 +130,7 @@ class StaticPagesControllerTest extends Tests
 		Assert::expect(count($elements)) -> toEqual(1);
 
 		$elements = $html->find('input');	
-		Assert::expect(count($elements)) -> toEqual(2);
+		Assert::expect(count($elements)) -> toEqual(5);
 
 		unset($_SESSION['user']);
 	}

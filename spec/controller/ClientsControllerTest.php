@@ -41,7 +41,7 @@ class ClientsControllerTest extends Tests
 		$package = new CodesPackage(['action_id'=>'1', 'quantity'=>4, 'codes_value'=>1324, 'status'=>'active']);
 		$package->save();
 
-		$client = new Client(['email'=>'test1@test.com', 'name'=>'client1', 'phone_number'=>'123456789', 'hash'=>HashGenerator::generate()]);
+		$client = new Client(['email'=>'test1@test.com', 'name'=>'client1', 'phone_number'=>'123456789', 'password_digest'=>Password::encryptPassword(''), 'hash'=>HashGenerator::generate()]);
 		$client->save();
 
 		$_SESSION['user'] = $client;

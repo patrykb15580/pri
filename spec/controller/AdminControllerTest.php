@@ -49,7 +49,7 @@ class AdminControllerTest extends Tests
 		$admin_order = new AdminOrder(['promotor_id'=>1, 'package_id'=>2, 'quantity'=>4, 'package_type'=>'action', 'order_date'=>$package->created_at]);
 		$admin_order->save();
 
-		$client = new Client(['email'=>'test1@test.com', 'name'=>'client1', 'phone_number'=>'123456789', 'hash'=>HashGenerator::generate()]);
+		$client = new Client(['email'=>'test1@test.com', 'name'=>'client1', 'phone_number'=>'123456789', 'password_digest'=>Password::encryptPassword(''), 'hash'=>HashGenerator::generate()]);
 		$client->save();
 
 		$points_balance = new PointsBalance(['client_id'=>1, 'promotor_id'=>1, 'balance'=>100]);
