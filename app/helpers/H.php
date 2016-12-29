@@ -94,6 +94,9 @@ class H
 		if ($params['controller'] == 'ContestsController') {
 			$menu = 'contests';
 		}
+		if ($params['controller'] == 'OpinionsController') {
+			$menu = 'opinions';
+		}
 
 		if ($menu == $action) {
 			return 'promotor_menu_active';

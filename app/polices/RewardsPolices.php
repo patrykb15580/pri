@@ -22,8 +22,7 @@ class RewardsPolices extends Polices
 
 	public function show()
 	{
-		$promotor = $this->obj->promotor();
-		if ($this->user->isPromotor() && $this->user->id == $promotor->id) {
+		if ($this->user->isPromotor() && $this->user->id == $this->obj->id) {
 			return true;
 		}
 
@@ -68,8 +67,7 @@ class RewardsPolices extends Polices
 
 	public function edit()
 	{
-		$promotor = $this->obj->promotor();
-		if ($this->user->isPromotor() && $this->user->id == $promotor->id) {
+		if ($this->user->isPromotor() && $this->user->id == $this->obj->id) {
 			return true;
 		}
 
@@ -84,8 +82,7 @@ class RewardsPolices extends Polices
 
 	public function update()
 	{
-		$promotor = $this->obj->promotor();
-		if ($this->user->isPromotor() && $this->user->id == $promotor->id) {
+		if ($this->user->isPromotor() && $this->user->id == $this->obj->id) {
 			return true;
 		}
 
@@ -100,8 +97,7 @@ class RewardsPolices extends Polices
 
 	public function delete()
 	{
-		$promotor = $this->obj->promotor();
-		if ($this->user->isPromotor() && $this->user->id == $promotor->id) {
+		if ($this->user->isPromotor() && $this->user->id == $this->obj->id) {
 			return true;
 		}
 

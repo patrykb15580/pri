@@ -55,6 +55,22 @@ class Promotor extends Model
 		return Action::where('promotor_id=? AND type=?', ['promotor_id'=>$this->id, 'type'=>'Contests'], $params);
 	}
 
+	public function opinions($params = [])
+	{
+		$actions = Action::where('promotor_id=?', ['promotor_id'=>$this->id], $params);
+
+		$opinions = [];
+
+		foreach ($actions as $action) {
+			$opinion = $action->opinion();
+			if (!empty($opinion)) {
+				array_push($opinions, $opinion);
+			}
+		}
+
+		return $opinions;
+	}
+
 	public function rewards()
 	{
 		return Reward::where('promotors_id=?', ['promotors_id'=>$this->id]);

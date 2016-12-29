@@ -6,11 +6,11 @@
 
 <form class="form-page-form" method="POST" action="<?= $path ?>">
 	Nazwa:<br />
-	<input type="text" name="client[name]" value="<?= $client->name ?>"><br /><br />
+	<input type="text" name="client[name]" value="<?= $client->name ?>" <?php if (!empty($client->name)) { ?> required <?php } ?>><br /><br />
 	E-mail:<br />
-	<input type="text" name="client[email]" value="<?= $client->email ?>"><br /><br />
+	<input type="text" name="client[email]" value="<?= $client->email ?>" required><br /><br />
 	Numer telefonu<br />
-	<input type="text" name="client[phone_number]" value="<?= $client->phone_number ?>" required="required"><br /><br /><br />
+	<input type="text" name="client[phone_number]" value="<?= $client->phone_number ?>" <?php if (!empty($client->phone_number)) { ?> required <?php } ?>><br /><br /><br />
 
 	<b>Zmień hasło</b><br />
 	Nowe hasło:<br />

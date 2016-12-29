@@ -21,7 +21,7 @@ class ContestsPolices extends Polices
 
 	public function show()
 	{
-		if ($this->user->isPromotor() && $this->user->id == $this->obj->promotor_id) {
+		if ($this->user->isPromotor() && $this->user->id == $this->obj->id) {
 			return true;
 		}
 
@@ -66,7 +66,7 @@ class ContestsPolices extends Polices
 
 	public function edit()
 	{
-		if ($this->user->isPromotor() && $this->user->id == $this->obj->promotor_id) {
+		if ($this->user->isPromotor() && $this->user->id == $this->obj->id) {
 			return true;
 		}
 
@@ -81,7 +81,7 @@ class ContestsPolices extends Polices
 
 	public function update()
 	{
-		if ($this->user->isPromotor() && $this->user->id == $this->obj->promotor_id) {
+		if ($this->user->isPromotor() && $this->user->id == $this->obj->id) {
 			return true;
 		}
 
@@ -96,7 +96,7 @@ class ContestsPolices extends Polices
 
 	public function newContestStickersPackage()
 	{
-		if ($this->user->isPromotor() && $this->user->id == $this->obj->promotor_id) {
+		if ($this->user->isPromotor() && $this->user->id == $this->obj->id) {
 			return true;
 		}
 
@@ -111,7 +111,7 @@ class ContestsPolices extends Polices
 
 	public function createContestStickersPackage()
 	{
-		if ($this->user->isPromotor() && $this->user->id == $this->obj->promotor_id) {
+		if ($this->user->isPromotor() && $this->user->id == $this->obj->id) {
 			return true;
 		}
 

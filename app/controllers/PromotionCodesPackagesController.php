@@ -9,7 +9,7 @@ class PromotionCodesPackagesController extends Controller
 	public function show()
 	{
 		$package = $this->package();
-		$this->auth(__FUNCTION__, $package);
+		$this->auth(__FUNCTION__, $this->promotor());
 
 		$view = (new View($this->params, ['package'=>$package]))->render();
 		return $view;
@@ -19,7 +19,7 @@ class PromotionCodesPackagesController extends Controller
 	public function new()
 	{
 		$package = new CodesPackage;
-		$this->auth(__FUNCTION__, Promotor::find($this->params['promotors_id']));	
+		$this->auth(__FUNCTION__, $this->promotor());	
 		
 		$view = (new View($this->params, ['package'=>$package]))->render();
 		return $view;
@@ -27,7 +27,7 @@ class PromotionCodesPackagesController extends Controller
 
 	public function create()
 	{
-		$this->auth(__FUNCTION__, Promotor::find($this->params['promotors_id']));	
+		$this->auth(__FUNCTION__, $this->promotor());	
 		$this->params['promotion_codes_package']['action_id'] = $this->params['action_id'];
 		$package = new CodesPackage($this->params['promotion_codes_package']);
 
@@ -59,7 +59,7 @@ class PromotionCodesPackagesController extends Controller
 	public function edit()
 	{
 		$package = $this->package();
-		$this->auth(__FUNCTION__, $package);
+		$this->auth(__FUNCTION__, $this->promotor());
 		
 		$view = (new View($this->params, ['package'=>$package]))->render();
 		return $view;
@@ -68,7 +68,7 @@ class PromotionCodesPackagesController extends Controller
 	public function update()
 	{
 		$package = $this->package();
-		$this->auth(__FUNCTION__, $package);
+		$this->auth(__FUNCTION__, $this->promotor());
 
 		$router = Config::get('router');
 
@@ -114,5 +114,10 @@ class PromotionCodesPackagesController extends Controller
 	public function action()
 	{
 		return Action::find($this->params['action_id']);
+	}
+
+	public function promotor()
+	{
+		return Promotor::find($this->params['promotors_id']);
 	}
 }

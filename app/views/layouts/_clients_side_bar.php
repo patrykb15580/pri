@@ -6,6 +6,7 @@
 			</div>
 		<?php }
 	?>
+	<div class="hide-menu">Menu <i class="fa fa-bars" aria-hidden="true"></i></div>
 	<a id="menu" class="<?= H::clientCurrentMenu($params, 'actions') ?> client_menu_actions" href="/clients/<?= $params['client_id'] ?>">
 		<i class="fa fa-product-hunt" aria-hidden="true"></i> Akcje promocyjne
 	</a>

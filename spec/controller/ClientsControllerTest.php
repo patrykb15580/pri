@@ -138,6 +138,27 @@ class ClientsControllerTest extends Tests
 		unset($_SESSION['user']);
 	}
 
+	public function testEditAction()
+	{
+		$this->seed();
+
+		$params['client_id'] = 1;
+		$params['controller'] = 'ClientsController';
+		$params['action'] = 'edit';
+
+		$action = $params['action'];
+
+		$controller = new $params['controller']($params);
+		$view = $controller->$action();
+
+		$html = HtmlDomParser::str_get_html($view);
+
+		$elements = $html->find('input');	
+		Assert::expect(count($elements)) -> toEqual(6);
+
+		unset($_SESSION['user']);
+	}
+
 	public function testIndexContestsAction()
 	{
 		$this->seed();

@@ -41,7 +41,7 @@ $( document ).ready(function(){
     // A column for custom tooltip content
     dataTable.addColumn({type: 'string', role: 'tooltip'});
 
-    dataTable.addRows(Codes_in_range_rows);
+    dataTable.addRows(codes_in_range_rows);
 
     var options = { legend: 'none',
                     hAxis: { 

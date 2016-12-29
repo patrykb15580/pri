@@ -32,11 +32,6 @@ class ClientsModelTest extends Tests
 		$clients->save();
 		Assert::expect($clients -> isValid()) -> toEqual(false);
 	}
-	public function testPhoneNumberShouldBeRequire()
-	{
-		$clients = new Client(['email'=>'test@test.com', 'name'=>'new client', 'hash'=>HashGenerator::generate()]);
-		Assert::expect($clients -> isValid()) -> toEqual(false);
-	}
 	public function testPhoneNumberShouldHaveLessThan191Chars()
 	{
 		$random_string = StringUntils::getRandomString(190);
@@ -45,11 +40,6 @@ class ClientsModelTest extends Tests
 
 		$random_string = StringUntils::getRandomString(191);
 		$clients = new Client(['email'=>'test@test.com', 'name'=>'new client', 'phone_number'=>$random_string, 'password_digest'=>Password::encryptPassword(''), 'hash'=>HashGenerator::generate()]);
-		Assert::expect($clients -> isValid()) -> toEqual(false);
-	}
-	public function testNameShouldBeRequire()
-	{
-		$clients = new Client(['email'=>'test@test.com', 'phone_number'=>'123456789', 'password_digest'=>Password::encryptPassword(''), 'hash'=>HashGenerator::generate()]);
 		Assert::expect($clients -> isValid()) -> toEqual(false);
 	}
 	public function testNameShouldHaveLessThan191Chars()

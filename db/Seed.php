@@ -1,7 +1,7 @@
 <?php
 		MyDB::clearDatabaseExceptSchema();
 
-		$promotor = new Promotor(['email'=>'test1@test.com', 'password_degest'=>Password::encryptPassword('password1'), 'name'=>'promotor1']);
+		$promotor = new Promotor(['email'=>'test1@test.com', 'password_degest'=>Password::encryptPassword('password1'), 'name'=>'Booklet']);
 		$promotor->save();
 
 		$promotor = new Promotor(['email'=>'test2@test.com', 'password_degest'=>Password::encryptPassword('password2'), 'name'=>'promotor2']);
@@ -87,13 +87,19 @@
 		print_r(CLIUntils::colorize("Promotion actions: OK\n", 'SUCCESS'));
 
 
-		$action = new Action(['name'=>'Contest 1', 'description'=>'Description for contest 1', 'promotor_id'=>1, 'status'=>'active', 'type'=>'Contests']);
+		$action = new Action(['name'=>'Konkurs Booklet', 'description'=>'Description for contest 1', 'promotor_id'=>1, 'status'=>'active', 'type'=>'Contests']);
 		$action->save();
 
-		$contest = new Contest(['question'=>'Question?', 'from_at'=>date("Y-m-d", strtotime("-3 days")), 'to_at'=>date("Y-m-d", strtotime("+4 days")), 'action_id'=>'11']);
+		$contest = new Contest(['question'=>'Co sądzisz o naszej drukarni?', 'from_at'=>date("Y-m-d", strtotime("-3 days")), 'to_at'=>date("Y-m-d", strtotime("+4 days")), 'action_id'=>'11']);
 		$contest->save();
 
 		print_r(CLIUntils::colorize("Contests: OK\n", 'SUCCESS'));
+
+
+		$opinion = new Opinion(['question'=>'Jak oceniasz nasze naklejki?', 'action_id'=>'11']);
+		$opinion->save();
+
+		print_r(CLIUntils::colorize("Opinions: OK\n", 'SUCCESS'));
 
 
 		/*

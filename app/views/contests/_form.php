@@ -6,13 +6,16 @@
 	if ($params['action'] == 'edit') {
 		$path = $router->generate('update_contests', ['promotors_id' => $params['promotors_id'], 'contest_id' => $params['contest_id']]);
 		$disabled = 'disabled';
-		$prev_page = '';
 		#$prev_page = $router->generate('show_promotion_actions', ['promotors_id' => $params['promotors_id'], 'id' => $params['id']]);
 		$contest = Contest::findBy('action_id', $action->id);
+		$opinion = Opinion::findBy('action_id', $action->id);
+
+		$prev_page = $router->generate('show_contests', ['promotors_id' => $params['promotors_id'], 'contest_id'=>$action->id]);
 	} else { 
 		$path = $router->generate('create_contests', ['promotors_id' => $params['promotors_id']]); 
 		$prev_page = $router->generate('index_contests', ['promotors_id' => $params['promotors_id']]);
 		$contest = new Contest;
+		$opinion = new Opinion;
 	}
 	
 	#echo "<pre>";
@@ -21,7 +24,7 @@
 <form class="form-page-form" method="POST" action="<?= $path ?>">
 	Nazwa konkursu<br />
 	<input type="text" name='actions[name]' value="<?= $action->name ?>" required="required"><br /><br />
-	Pytanie<br />
+	Pytanie konkursowe<br />
 	<textarea rows="6" name="contest[question]" <?= $disabled ?> required="required"><?= $contest->question ?></textarea>
 	<br />
 
@@ -42,6 +45,9 @@
 	<input type="datetime" class="datepick" name="contest[from_at]" <?php if ($contest->from_at !== '0000-00-00') {echo 'value="'.$contest->from_at.'"';} ?> required="required">
 	 do 
 	<input type="datetime" class="datepick" name='contest[to_at]' <?php if ($contest->from_at !== '0000-00-00') {echo 'value="'.$contest->to_at.'"';} ?> required="required">
+	<br /><br />Pytanie do wyrażenia opinii<br />
+	np. "Co sądzisz o programie punktacja.pl?".<br /> 
+	<textarea rows="6" name="opinion[question]" <?= $disabled ?> required="required"><?= $opinion->question ?></textarea>
 	<br /><br />Opis
 	<br /><textarea rows="6" name="actions[description]"><?= $action->description ?></textarea>
 	<br /><br /><input class="form-page-button" type="submit" value="<?php if ($params['action']=='new') { echo "Utwórz konkurs"; } else { echo "Zapisz zmiany"; } ?>">

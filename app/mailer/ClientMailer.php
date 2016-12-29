@@ -8,7 +8,7 @@ class ClientMailer extends AppMailer
 
 	public $attributes = [];
 
-	public function createClient($client, $token = '')
+	public function createClient($client)
 	{
 		$this->attributes['recipients'] = ['client'=>$client->email];
 		$this->attributes['subject'] = 'Witaj w programie punktacja.pl';

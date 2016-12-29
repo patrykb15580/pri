@@ -75,7 +75,7 @@
     font-weight: 600;
   }
 }
-@media only screen and (max-width: 1199px) and (min-width: 800px){
+@media only screen and (max-width: 1199px) and (min-width: 1000px){
   .client_menu_active{
     display: block;
     width: 85%;
@@ -134,145 +134,113 @@
     font-weight: 600;
   }
 }
-@media only screen and (max-width: 799px) and (min-width: 600px){
+@media only screen and (max-width: 999px) and (min-width: 600px){
   .client_menu_active{
-    float: left;
-    display: inline-block;
-    width: 23%;
-    height: 50px;
+    display: block;
+    width: 80%;
     margin: 0px;
-    padding: 1%;
+    padding: 4% 10%;
     color: white;
-    text-align: center;
     background-color: #007EE5;
     border: 0px solid;
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 600;
   }
   .client_menu_active i{
-    display: block;
-    font-size: 24px;
-    margin: 0 auto;
-    vertical-align: -4px;
-    text-align: center;
+    display: inline-block;
+    font-size: 26px;
+    vertical-align: -2px;
   }
   .client_menu_active:hover{
-    float: left;
-    display: inline-block;
-    width: 23%;
-    height: 50px;
+    display: block;
+    width: 80%;
     margin: 0px;
-    padding: 1%;
+    padding: 4% 10%;
     color: white;
-    text-align: center;
     background-color: #008cff;
     border: 0px solid;
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 600;
   }
   .client_menu_inactive{
-    float: left;
-    display: inline-block;
-    width: 23%;
-    height: 50px;
+    display: block;
+    width: 80%;
     margin: 0px;
-    padding: 1%;
+    padding: 4% 10%;
     color: #505A64;
-    text-align: center;
     border: 0px solid;
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 600;
   }
   .client_menu_inactive i{
-    display: block;
-    font-size: 24px;
-    margin: 0 auto;
-    vertical-align: -4px;
-    text-align: center;
+    display: inline-block;
+    font-size: 26px;
+    vertical-align: -2px;
   }
   .client_menu_inactive:hover{
-    float: left;
-    display: inline-block;
+    display: block;
     background-color: #eff8ff;
-    width: 23%;
-    height: 50px;
+    width: 80%;
     margin: 0px;
-    padding: 1%;
+    padding: 4% 10%;
     color: #505A64;
-    text-align: center;
     border: 0px solid;
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 600;
   }
 }
 @media only screen and (max-width: 599px){
   .client_menu_active{
-    float: left;
-    display: inline-block;
-    width: 23%;
-    height: 50px;
+    display: block;
+    width: 80%;
     margin: 0px;
-    padding: 1%;
+    padding: 5% 10%;
     color: white;
-    text-align: center;
     background-color: #007EE5;
     border: 0px solid;
-    font-size: 10px;
+    font-size: 20px;
     font-weight: 600;
   }
   .client_menu_active i{
-    display: block;
-    font-size: 20px;
-    margin: 0 auto;
-    vertical-align: -4px;
-    text-align: center;
+    display: inline-block;
+    font-size: 26px;
+    vertical-align: -2px;
   }
   .client_menu_active:hover{
-    float: left;
-    display: inline-block;
-    width: 23%;
-    height: 50px;
+    display: block;
+    width: 80%;
     margin: 0px;
-    padding: 1%;
+    padding: 5% 10%;
     color: white;
-    text-align: center;
     background-color: #008cff;
     border: 0px solid;
-    font-size: 10px;
+    font-size: 20px;
     font-weight: 600;
   }
   .client_menu_inactive{
-    float: left;
-    display: inline-block;
-    width: 23%;
-    height: 50px;
+    display: block;
+    width: 80%;
     margin: 0px;
-    padding: 1%;
+    padding: 5% 10%;
     color: #505A64;
-    text-align: center;
     border: 0px solid;
-    font-size: 10px;
+    font-size: 20px;
     font-weight: 600;
   }
   .client_menu_inactive i{
-    display: block;
-    font-size: 20px;
-    margin: 0 auto;
-    vertical-align: -4px;
-    text-align: center;
+    display: inline-block;
+    font-size: 26px;
+    vertical-align: -2px;
   }
   .client_menu_inactive:hover{
-    float: left;
-    display: inline-block;
+    display: block;
     background-color: #eff8ff;
-    width: 23%;
-    height: 50px;
+    width: 80%;
     margin: 0px;
-    padding: 1%;
+    padding: 5% 10%;
     color: #505A64;
-    text-align: center;
     border: 0px solid;
-    font-size: 10px;
+    font-size: 20px;
     font-weight: 600;
   }
 }

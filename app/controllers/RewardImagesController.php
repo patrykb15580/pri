@@ -7,7 +7,7 @@ class RewardImagesController extends Controller
 
 	public function delete()
 	{
-		$this->auth(__FUNCTION__, $this->reward());
+		$this->auth(__FUNCTION__, $this->promotor());
 		$path = 'system/reward_images/'.$this->params['id'];
 		$files = FilesUntils::listFiles($path);
 
@@ -30,5 +30,10 @@ class RewardImagesController extends Controller
 	public function reward()
 	{
 		return Reward::find($this->params['reward_id']);
+	}
+
+	public function promotor()
+	{
+		return Promotor::find($this->params['promotors_id']);
 	}
 }

@@ -5,7 +5,13 @@
 		$user_type = 'client';
 		$side_bar = '_clients_side_bar.php';
 		$client = Client::find($params['client_id']);
-		$user = $client->name;
+		if (empty($client->name)) {
+			$user = $client->email;
+			$user = explode('@', $user);
+			$user = $user[0];
+		} else {
+			$user = $client->name;
+		}
 	} elseif ($user == 'admin') {
 		$user_type = 'admin';
 		$side_bar = '_admin_side_bar.php';
@@ -59,6 +65,7 @@
 <?php Alerts::showAlert(); ?>
 
 <div id="top" class="dark_font">
+	<div class="show-menu">Menu <i class="fa fa-bars" aria-hidden="true"></i></div>
 	<div id="main-layout-user" class="dark_font">
 		<p class="user"><?= $user ?><i class="fa fa-caret-down dropdown" aria-hidden="true"></i></p>
 		<?php
@@ -90,13 +97,14 @@
 		</div>
 	</div>
 </div>
-
 <?php 
-include './app/views/layouts/'.$side_bar;?>
+include './app/views/layouts/'.$side_bar; ?>
 <div id="content">
 	<?php include($path); ?>
 </div>
+
 <script type="text/javascript" src="/assets/javascript/datepicker.js"></script>
 <script type="text/javascript" src="/assets/javascript/guardianInitialize.js"></script>
+<script type="text/javascript" src="/assets/javascript/menu.js"></script>
 </body>
 </html>

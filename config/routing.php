@@ -75,6 +75,11 @@ $router->map( 'GET', '/promotors/[i:promotors_id]/contest/[i:contest_id]/new-sti
 $router->map( 'POST', '/promotors/[i:promotors_id]/contest/[i:contest_id]/create-stickers-package', 'ContestsController#createContestStickersPackage', 'create_contest_stickers_package' );
 
 
+/* Promotor -> opinions */
+$router->map( 'GET', '/promotors/[i:promotors_id]/opinions', 'OpinionsController#index', 'index_opinions' );
+$router->map( 'GET', '/promotors/[i:promotors_id]/opinions/[i:opinion_id]', 'OpinionsController#show', 'show_opinions' );
+
+
 /* Promotor -> rewards */
 $router->map( 'GET', '/promotors/[i:promotors_id]/rewards', 'RewardsController#index', 'index_rewards' );
 $router->map( 'GET', '/promotors/[i:promotors_id]/rewards/[i:id]', 'RewardsController#show', 'show_rewards' );
@@ -110,8 +115,10 @@ $router->map( 'GET', '/sign-out', 'SessionController#delete', 'sign_out' );
 
 /* Static pages */
 $router->map( 'GET', '/', 'StaticPagesController#startPage', 'start_page' );
-$router->map( 'GET', '/contest/[a:code]', 'StaticPagesController#contest', 'contest_answer' );
-$router->map( 'POST', '/contest/[i:id]/[a:code]/answer', 'StaticPagesController#contestAnswer', 'give_answer' );
+$router->map( 'GET', '/opinion/[a:code]', 'StaticPagesController#contestOpinion', 'contest_opinion' );
+$router->map( 'POST', '/give-opinion/[a:code]', 'StaticPagesController#giveContestOpinion', 'give_contest_opinion' );
+$router->map( 'GET', '/contest/[i:client_id]/[a:code]', 'StaticPagesController#contest', 'contest_answer' );
+$router->map( 'POST', '/contest/[i:id]/[i:client_id]/[a:code]/answer', 'StaticPagesController#contestAnswer', 'give_answer' );
 $router->map( 'GET', '/login', 'StaticPagesController#login', 'login' );
 $router->map( 'GET', '/promotor-login', 'StaticPagesController#promotorLogin', 'promotor_login' );
 $router->map( 'POST', '/insert-code', 'StaticPagesController#insertCode', 'enter_code' );

@@ -27,7 +27,6 @@
 		</div>
 	<?php }
 ?>	
-
 <div id="title-box">
 	<a href="<?= $prev_page ?>"><button class="prev-page-button"><i class="fa fa-chevron-left" aria-hidden="true"></i> Wstecz</button></a>
 	

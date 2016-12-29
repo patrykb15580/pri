@@ -1,6 +1,6 @@
 <?php
 	$contest = $action->contest();
-	$contest_answer_path = $router->generate('give_answer', ['id'=>$action->id, 'code'=>$params['code']]);
+	$contest_answer_path = $router->generate('give_answer', ['id'=>$action->id, 'code'=>$params['code'], 'client_id'=>$params['client_id']]);
 	$promotor = $action->promotor();
 	$avatar = $promotor->avatar();
 ?>
@@ -22,13 +22,7 @@
 	<form class="answer-form guardian-initialize" method="POST" action="<?= $contest_answer_path ?>">
 		Odpowiedź<br />
 		<textarea rows="4" name="answer[answer]" required="required"></textarea><br />
-		Email<br />
-		<input type="email" name="client[email]" required="required"><br />
-		Nazwa<br />
-		<input type="text" name="client[name]" required="required"><br />
-		Numer telefonu<br />
-		<div id="answer-form-phone-number">+48</div><input id="answer-form-phone-number" type="text" name="client[phone_number]" pattern="[0-9]{9}" maxlength="9" required="required"><br />
-		<input type="submit" value="Wyślij">
+
+		<input type="submit" value="Biorę udział w konkursie">
 	</form>
 </div>
-

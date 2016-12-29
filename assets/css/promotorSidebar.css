@@ -1,6 +1,9 @@
 #side_bar .promotor_menu_actions i{
   color: #53BE31;
 } 
+#side_bar .promotor_menu_opinions i{
+  color: #e9cd10;
+} 
 #side_bar .promotor_menu_stats i{
   color: #71AAFF;
 } 
@@ -22,7 +25,7 @@
 #side_bar .promotor_menu_active i{
   color: white;
 }
-@media only screen and (min-width: 1201px){
+@media only screen and (min-width: 1200px){
   .promotor_menu_active{
     display: block;
     width: 85%;
@@ -80,8 +83,7 @@
     font-size: 16px;
     font-weight: 600;
   }
-}
-@media only screen and (max-width: 1200px) and (min-width: 801px){
+}@media only screen and (max-width: 1199px) and (min-width: 1000px){
   .promotor_menu_active{
     display: block;
     width: 85%;
@@ -140,214 +142,233 @@
     font-weight: 600;
   }
 }
-@media only screen and (max-width: 800px) and (min-width: 601px){
+@media only screen and (max-width: 999px) and (min-width: 800px){
   .promotor_menu_active{
-    float: left;
-    display: inline-block;
-    width: 12%;
-    height: 50px;
+    display: block;
+    width: 80%;
     margin: 0px;
-    padding: 1%;
+    padding: 3% 10%;
     color: white;
-    text-align: center;
     background-color: #007EE5;
     border: 0px solid;
-    font-size: 12px;
+    font-size: 20px;
     font-weight: 600;
   }
   .promotor_menu_active i{
-    display: block;
-    font-size: 20px;
+    display: inline-block;
+    font-size: 26px;
     margin: 0 auto;
-    vertical-align: -4px;
-    text-align: center;
+    vertical-align: -2px;
   }
   .promotor_menu_active:hover{
-    float: left;
-    display: inline-block;
-    width: 12%;
-    height: 50px;
+    display: block;
+    width: 80%;
     margin: 0px;
-    padding: 1%;
+    padding: 3% 10%;
     color: white;
-    text-align: center;
     background-color: #008cff;
     border: 0px solid;
-    font-size: 12px;
+    font-size: 20px;
     font-weight: 600;
   }
   .promotor_menu_inactive{
-    float: left;
-    display: inline-block;
-    width: 12%;
-    height: 50px;
+    display: block;
+    width: 80%;
     margin: 0px;
-    padding: 1%;
+    padding: 3% 10%;
     color: #505A64;
-    text-align: center;
     border: 0px solid;
-    font-size: 12px;
+    font-size: 20px;
     font-weight: 600;
   }
   .promotor_menu_inactive i{
-    display: block;
-    font-size: 20px;
-    margin: 0 auto;
-    vertical-align: -4px;
-    text-align: center;
+    display: inline-block;
+    font-size: 26px;
+    margin: 0px auto;
+    vertical-align: -2px;
   }
   .promotor_menu_inactive:hover{
-    float: left;
-    display: inline-block;
+    display: block;
     background-color: #eff8ff;
-    width: 12%;
-    height: 50px;
+    width: 80%;
     margin: 0px;
-    padding: 1%;
+    padding: 3% 10%;
     color: #505A64;
-    text-align: center;
     border: 0px solid;
-    font-size: 12px;
+    font-size: 20px;
     font-weight: 600;
   }
 }
-@media only screen and (max-width: 600px) and (min-width: 500px){
+@media only screen and (max-width: 799px) and (min-width: 600px){
   .promotor_menu_active{
-    float: left;
-    display: inline-block;
-    width: 12%;
-    height: 50px;
+    display: block;
+    width: 80%;
     margin: 0px;
-    padding: 1%;
+    padding: 3% 10%;
     color: white;
-    text-align: center;
     background-color: #007EE5;
     border: 0px solid;
-    font-size: 10px;
+    font-size: 20px;
     font-weight: 600;
   }
   .promotor_menu_active i{
-    display: block;
-    font-size: 18px;
+    display: inline-block;
+    font-size: 26px;
     margin: 0 auto;
-    vertical-align: -4px;
-    text-align: center;
+    vertical-align: -2px;
   }
   .promotor_menu_active:hover{
-    float: left;
-    display: inline-block;
-    width: 12%;
-    height: 50px;
+    display: block;
+    width: 80%;
     margin: 0px;
-    padding: 1%;
+    padding: 3% 10%;
     color: white;
-    text-align: center;
     background-color: #008cff;
     border: 0px solid;
-    font-size: 10px;
+    font-size: 20px;
     font-weight: 600;
   }
   .promotor_menu_inactive{
-    float: left;
-    display: inline-block;
-    width: 12%;
-    height: 50px;
+    display: block;
+    width: 80%;
     margin: 0px;
-    padding: 1%;
+    padding: 3% 10%;
     color: #505A64;
-    text-align: center;
     border: 0px solid;
-    font-size: 10px;
+    font-size: 20px;
     font-weight: 600;
   }
   .promotor_menu_inactive i{
-    display: block;
-    font-size: 18px;
+    display: inline-block;
+    font-size: 26px;
     margin: 0 auto;
-    vertical-align: -4px;
-    text-align: center;
+    vertical-align: -2px;
   }
   .promotor_menu_inactive:hover{
-    float: left;
-    display: inline-block;
+    display: block;
     background-color: #eff8ff;
-    width: 12%;
-    height: 50px;
+    width: 80%;
     margin: 0px;
-    padding: 1%;
+    padding: 3% 10%;
     color: #505A64;
-    text-align: center;
     border: 0px solid;
-    font-size: 10px;
+    font-size: 20px;
+    font-weight: 600;
+  }
+}
+@media only screen and (max-width: 599px) and (min-width: 500px){
+  .promotor_menu_active{
+    display: block;
+    width: 80%;
+    margin: 0px;
+    padding: 5% 10%;
+    color: white;
+    background-color: #007EE5;
+    border: 0px solid;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .promotor_menu_active i{
+    display: inline-block;
+    font-size: 24px;
+    margin: 0 auto;
+    vertical-align: -2px;
+  }
+  .promotor_menu_active:hover{
+    display: block;
+    width: 80%;
+    margin: 0px;
+    padding: 5% 10%;
+    color: white;
+    background-color: #008cff;
+    border: 0px solid;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .promotor_menu_inactive{
+    display: block;
+    width: 80%;
+    margin: 0px;
+    padding: 5% 10%;
+    color: #505A64;
+    border: 0px solid;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .promotor_menu_inactive i{
+    display: inline-block;
+    font-size: 24px;
+    margin: 0 auto;
+    vertical-align: -2px;
+  }
+  .promotor_menu_inactive:hover{
+    display: block;
+    background-color: #eff8ff;
+    width: 80%;
+    margin: 0px;
+    padding: 5% 10%;
+    color: #505A64;
+    border: 0px solid;
+    font-size: 18px;
     font-weight: 600;
   }
 }
 @media only screen and (max-width: 499px){
   .promotor_menu_active{
-    float: left;
-    display: inline-block;
-    width: 12%;
-    height: 50px;
+    display: block;
+    width: 80%;
     margin: 0px;
-    padding: 1%;
+    padding: 5% 10% 5% 10%;
     color: white;
-    text-align: center;
     background-color: #007EE5;
     border: 0px solid;
-    font-size: 8px;
+    font-size: 18px;
     font-weight: 600;
   }
   .promotor_menu_active i{
-    display: block;
-    font-size: 18px;
+    display: inline-block;
+    font-size: 24px;
     margin: 0 auto;
     text-align: center;
+    vertical-align: -2px;
   }
   .promotor_menu_active:hover{
-    float: left;
-    display: inline-block;
-    width: 12%;
-    height: 50px;
+    display: block;
+    width: 80%;
     margin: 0px;
-    padding: 1%;
+    padding: 5% 10% 5% 10%;
     color: white;
-    text-align: center;
     background-color: #008cff;
     border: 0px solid;
-    font-size: 8px;
+    font-size: 18px;
     font-weight: 600;
   }
   .promotor_menu_inactive{
-    float: left;
-    display: inline-block;
-    width: 12%;
-    height: 50px;
+    display: block;
+    width: 80%;
     margin: 0px;
-    padding: 1%;
+    padding: 5% 10% 5% 10%;
     color: #505A64;
-    text-align: center;
     border: 0px solid;
-    font-size: 8px;
+    font-size: 18px;
     font-weight: 600;
   }
   .promotor_menu_inactive i{
-    display: block;
-    font-size: 18px;
+    display: inline-block;
+    font-size: 24px;
     margin: 0 auto;
     text-align: center;
+    vertical-align: -2px;
   }
   .promotor_menu_inactive:hover{
-    float: left;
-    display: inline-block;
+    display: block;
     background-color: #eff8ff;
-    width: 12%;
-    height: 50px;
+    width: 80%;
     margin: 0px;
-    padding: 1%;
+    padding: 5% 10% 5% 10%;
     color: #505A64;
-    text-align: center;
     border: 0px solid;
-    font-size: 8px;
+    font-size: 18px;
     font-weight: 600;
   }
 }

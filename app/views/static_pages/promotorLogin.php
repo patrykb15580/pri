@@ -22,7 +22,7 @@
 	Clients:<br /><br />
 	<?php
 		foreach (Client::all() as $client) {
-			echo $client->name.' -> hash='.$client->hash.'<br />';
+			echo $client->email.' -> hash='.$client->hash.'<br />';
 		}
 	?>
 </div>

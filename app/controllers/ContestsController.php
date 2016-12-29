@@ -6,7 +6,7 @@ class ContestsController extends Controller
 {
 	public function index()
 	{	
-		$promotor = Promotor::find($this->params['promotors_id']);
+		$promotor = $this->promotor();
 		$this->auth(__FUNCTION__, $promotor);
 
 		$view = (new View($this->params, ['promotor'=>$promotor]))->render();
@@ -16,7 +16,7 @@ class ContestsController extends Controller
 	public function show()
 	{	
 		$action = $this->action();
-		$this->auth(__FUNCTION__, $action);
+		$this->auth(__FUNCTION__, $this->promotor());
 
 		$view = (new View($this->params, ['action'=>$action]))->render();
 		return $view;
@@ -24,7 +24,7 @@ class ContestsController extends Controller
 	}
 	public function new()
 	{
-		$this->auth(__FUNCTION__, Promotor::find($this->params['promotors_id']));
+		$this->auth(__FUNCTION__, $this->promotor());
 		$action = new Action;
 		
 		$view = (new View($this->params, ['action'=>$action]))->render();
@@ -32,19 +32,34 @@ class ContestsController extends Controller
 	}
 	public function create()
 	{
-		$this->auth(__FUNCTION__, Promotor::find($this->params['promotors_id']));
+		$this->auth(__FUNCTION__, $this->promotor());
 		$this->params['actions']['promotor_id'] = $this->params['promotors_id'];
 		$this->params['actions']['type'] = 'Contests';
 
+		$router = Config::get('router');
+
+		if (substr($this->params['contest']['question'], -1) !== '?') {
+			$this->params['contest']['question'] = $this->params['contest']['question'].'?';
+		}
+
+		if (substr($this->params['contest']['opinion'], -1) !== '?') {
+			$this->params['opinion']['question'] = $this->params['opinion']['question'].'?';
+		}
+
 		$action = new Action($this->params['actions']);
 		$contest = new Contest($this->params['contest']);
+		$opinion = new Opinion($this->params['opinion']);
 
 		if ($action->save()) {
 			$contest->action_id = $action->id;
 			$contest->save();
 
+			$opinion->action_id = $action->id;
+			$opinion->save();
+
+			$path = $router->generate('show_contests', ['promotors_id'=>$this->params['promotors_id'], 'id'=>$action->id]);
 			$this->alert('info', 'Utworzono konkurs '.$action->name);
-			header("Location: http://".$_SERVER['HTTP_HOST']."/promotors/".$this->params['promotors_id']."/contests/".$action->id);
+			header("Location: ".$path);
 		} else {
 			$this->alert('error', 'Nie udało się utworzyć konkursu, spróbuj ponownie');
 
@@ -56,7 +71,7 @@ class ContestsController extends Controller
 	public function edit()
 	{
 		$action = $this->action();
-		$this->auth(__FUNCTION__, $action);
+		$this->auth(__FUNCTION__, $this->promotor());
 		
 		$view = (new View($this->params, ['action'=>$action]))->render();
 		return $view;
@@ -64,7 +79,7 @@ class ContestsController extends Controller
 	public function update()
 	{
 		$action = $this->action();
-		$this->auth(__FUNCTION__, $action);
+		$this->auth(__FUNCTION__, $this->promotor());
 
 		$contest = Contest::findBy('action_id', $action->id);
 
@@ -85,7 +100,7 @@ class ContestsController extends Controller
 	public function newContestStickersPackage()
 	{
 		$action = $this->action();
-		$this->auth(__FUNCTION__, $action);
+		$this->auth(__FUNCTION__, $this->promotor());
 		
 		$view = (new View($this->params, ['action'=>$action]))->render();
 		return $view;
@@ -94,7 +109,7 @@ class ContestsController extends Controller
 	public function createContestStickersPackage()
 	{
 		$action = $this->action();
-		$this->auth(__FUNCTION__, $action);
+		$this->auth(__FUNCTION__, $this->promotor());
 
 		$this->params['package']['action_id'] = $this->params['contest_id'];
 		$this->params['package']['codes_value'] = 0;
@@ -142,6 +157,11 @@ class ContestsController extends Controller
 	public function action()
 	{
 		return Action::find($this->params['contest_id']);
+	}
+
+	public function promotor()
+	{
+		return Promotor::find($this->params['promotors_id']);
 	}
 
 	#public function checkIfContestActive()

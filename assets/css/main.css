@@ -624,12 +624,10 @@ img#main-layout-logo{
   margin: auto 0px;
 }
 div#main-layout-user{
-  width: 88%;
   margin: 0px;
-  padding: 10px 1%;
+  padding: 10px 0px;
   display: inline-block;
-  text-align: right;
-  vertical-align: top;
+  float: right;
 }
 
 .color_green{
@@ -679,8 +677,9 @@ div#main-layout-user{
 .orange-icon{
   color: #ffb84d;
 }
-
-
+.gold-icon{
+  color: #dcdc00;
+}
 
 
 
@@ -945,10 +944,15 @@ div#main-layout-user{
 }
 
 
+.rate-star{
+  color: #e9cd10;
+}
 
 
 
 
 
 
-
+.second-step{
+  display: none;
+}

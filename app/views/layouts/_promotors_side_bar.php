@@ -1,9 +1,13 @@
 <div id="side_bar">
+	<div class="hide-menu">Menu <i class="fa fa-bars" aria-hidden="true"></i></div>
 	<a id="menu" class="<?= H::promotorCurrentMenu($params, 'actions') ?> promotor_menu_actions" href="/promotors/<?= $params['promotors_id'] ?>">
 		<i class="fa fa-product-hunt" aria-hidden="true"></i> <span>Akcje promocyjne</span>
 	</a>
 	<a id="menu" class="<?= H::promotorCurrentMenu($params, 'contests') ?> promotor_menu_actions" href="/promotors/<?= $params['promotors_id'] ?>/contests">
 		<i class="fa fa-trophy" aria-hidden="true"></i> <span>Konkursy</span>
+	</a>
+	<a id="menu" class="<?= H::promotorCurrentMenu($params, 'opinions') ?> promotor_menu_opinions" href="/promotors/<?= $params['promotors_id'] ?>/opinions">
+		<i class="fa fa-star" aria-hidden="true"></i> <span>Opinie</span>
 	</a>
 	<a id="menu" class="<?= H::promotorCurrentMenu($params, 'stats') ?> promotor_menu_stats" href="/promotors/<?= $params['promotors_id'] ?>/stats">
 		<i class="fa fa-line-chart" aria-hidden="true"></i> <span>Statystyki</span>

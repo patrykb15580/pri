@@ -7,7 +7,7 @@ class PromotionActionsController extends Controller
 	public function show()
 	{	
 		$action = $this->action();
-		$this->auth(__FUNCTION__, $action);
+		$this->auth(__FUNCTION__, $this->promotor());
 
 		$view = (new View($this->params, ['action'=>$action]))->render();
 		return $view;
@@ -15,7 +15,7 @@ class PromotionActionsController extends Controller
 	}
 	public function new()
 	{
-		$this->auth(__FUNCTION__, Promotor::find($this->params['promotors_id']));
+		$this->auth(__FUNCTION__, $this->promotor());
 		$action = new Action;
 		
 		$view = (new View($this->params, ['action'=>$action]))->render();
@@ -23,7 +23,7 @@ class PromotionActionsController extends Controller
 	}
 	public function create()
 	{
-		$this->auth(__FUNCTION__, Promotor::find($this->params['promotors_id']));
+		$this->auth(__FUNCTION__, $this->promotor());
 		$this->params['actions']['promotor_id'] = $this->params['promotors_id'];
 		$this->params['actions']['type'] = 'PromotionActions';
 
@@ -63,7 +63,7 @@ class PromotionActionsController extends Controller
 	public function edit()
 	{
 		$action = $this->action();
-		$this->auth(__FUNCTION__, $action);
+		$this->auth(__FUNCTION__, $this->promotor());
 		
 		$view = (new View($this->params, ['action'=>$action]))->render();
 		return $view;
@@ -71,7 +71,7 @@ class PromotionActionsController extends Controller
 	public function update()
 	{
 		$action = $this->action();
-		$this->auth(__FUNCTION__, $action);
+		$this->auth(__FUNCTION__, $this->promotor());
 		
 		$router = Config::get('router');
 
@@ -112,5 +112,10 @@ class PromotionActionsController extends Controller
 	public function action()
 	{
 		return Action::find($this->params['id']);
+	}
+
+	public function promotor()
+	{
+		return Promotor::find($this->params['promotors_id']);
 	}
 }

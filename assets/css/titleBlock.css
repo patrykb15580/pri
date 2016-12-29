@@ -10,6 +10,15 @@
     font-size: 24px;
     vertical-align: middle;
   }
+  .title-box-rate {
+    margin: 0px;
+    float: right;
+    font-size: 28px;
+  }
+  .title-box-rate-star {
+    letter-spacing: 4px;
+    color: #e9cd10;
+  }
   .title-box-button{
     display: inline-block;
     float: right;
@@ -195,6 +204,15 @@
     font-size: 24px;
     vertical-align: middle;
   }
+  .title-box-rate {
+    margin: 0px;
+    float: right;
+    font-size: 28px;
+  }
+  .title-box-rate-star {
+    letter-spacing: 4px;
+    color: #e9cd10;
+  }
   .title-box-button{
     display: inline-block;
     float: right;
@@ -368,7 +386,7 @@
     opacity: 1;
   }
 }
-@media only screen and (max-width: 999px) and (min-width: 801px){
+@media only screen and (max-width: 999px) and (min-width: 800px){
   #title-box{
     position: relative;
     width: calc(96% + 2px);
@@ -379,6 +397,15 @@
     font-weight: 700;
     font-size: 24px;
     vertical-align: middle;
+  }
+  .title-box-rate {
+    margin: 0px;
+    float: right;
+    font-size: 28px;
+  }
+  .title-box-rate-star {
+    letter-spacing: 4px;
+    color: #e9cd10;
   }
   .title-box-button{
     display: inline-block;
@@ -553,7 +580,7 @@
     opacity: 1;
   }
 }
-@media only screen and (max-width: 800px) and (min-width: 480px){
+@media only screen and (max-width: 799px) and (min-width: 480px){
   #title-box{
     position: relative;
     width: 96%;
@@ -564,6 +591,15 @@
     font-weight: 700;
     font-size: 24px;
     vertical-align: middle;
+  }
+  .title-box-rate {
+    margin: 0px;
+    float: right;
+    font-size: 22px;
+  }
+  .title-box-rate-star {
+    letter-spacing: 4px;
+    color: #e9cd10;
   }
   .title-box-button{
     display: inline-block;
@@ -690,6 +726,7 @@
     width: 160px;
     height: 36px;
     margin: 10px 16px 10px 0px;
+    vertical-align: top;
     font-size: 14px;
     font-weight: 600;
     color: #6D7E89;
@@ -706,6 +743,7 @@
     width: 160px;
     height: 36px;
     margin: 10px 16px 10px 0px;
+    vertical-align: top;
     font-size: 14px;
     font-weight: 600;
     color: #017EE9;
@@ -749,6 +787,16 @@
     font-weight: 700;
     font-size: 24px;
     vertical-align: middle;
+  }
+  .title-box-rate {
+    display: block;
+    text-align: right;
+    margin: 0px;
+    font-size: 16px;
+  }
+  .title-box-rate-star {
+    letter-spacing: 4px;
+    color: #e9cd10;
   }
   .title-box-button{
     display: block;
@@ -873,6 +921,7 @@
     width: 130px;
     height: 30px;
     margin: 6px 10px 6px 0px;
+    vertical-align: top;
     font-size: 10px;
     font-weight: 600;
     color: #6D7E89;
@@ -889,6 +938,7 @@
     width: 130px;
     height: 30px;
     margin: 6px 10px 6px 0px;
+    vertical-align: top;
     font-size: 10px;
     font-weight: 600;
     color: #017EE9;

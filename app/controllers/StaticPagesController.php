@@ -4,7 +4,7 @@
 */
 class StaticPagesController extends Controller
 {
-	public $non_authorized = ['startPage', 'contest', 'contestAnswer', 'login', 'promotorLogin', 'insertCode', 'getCode', 'useCode', 'addPoints', 'confirmation', 'contestConfirmation', 'getOrCreateClient', 'loginHashSend', 'newPassword', 'forgotPassword', 'forgotPasswordSendMail', 'changePassword'];
+	public $non_authorized = ['startPage', 'contestOpinion', 'giveContestOpinion', 'contest', 'contestAnswer', 'login', 'promotorLogin', 'insertCode', 'getCode', 'useCode', 'addPoints', 'confirmation', 'contestConfirmation', 'getOrCreateClient', 'loginHashSend', 'newPassword', 'forgotPassword', 'forgotPasswordSendMail', 'changePassword'];
 
 	public function startPage()
 	{
@@ -12,27 +12,102 @@ class StaticPagesController extends Controller
 		return $view;
 	}
 
-	public function contest()
+	public function contestOpinion()
+	{	
+		$router = Config::get('router');
+		$code = Code::findBy('code', $this->params['code']);
+		
+		if (!empty($code)) {
+			$action = $code->action();
+
+			if (!empty($action)) {
+
+				if ($action->isActive()) {
+					$view = (new View($this->params, ['action'=>$action], 'start'))->render();
+					return $view;
+				} else {
+					$path = $router->generate('start_page', []);
+					
+					$this->alert('error', 'Ten konkurs został zakończony lub jest nie aktywny');
+					header('Location: '.$path);
+				}
+			} else {
+				$path = $router->generate('start_page', []);
+				
+				$this->alert('error', 'Podany konkurs nie istnieje');
+				header('Location: '.$path);
+			}
+		} else {
+			$path = $router->generate('start_page', []);
+				
+			$this->alert('error', 'Podany konkurs nie istnieje');
+			header('Location: '.$path);
+		}
+	}
+
+	public function giveContestOpinion()
 	{	
 		$code = Code::findBy('code', $this->params['code']);
 		$action = $code->action();
 
-		if (!empty($action)) {
+		$router = Config::get('router');
 
-			if ($action->isActive()) {
-				$view = (new View($this->params, ['action'=>$action], 'start'))->render();
-				return $view;
-			} else {
-				$router = Config::get('router');
-				$path = $router->generate('start_page', []);
+		$client = $this->getOrCreateClient($this->params);
+
+		if ($this->params['rating'] !== '0') {
+			$rate = new Rate(['client_id'=>$client->id, 'action_id'=>$action->id, 'rate'=>$this->params['rating']]);
+		}
+
+		if (isset($rate)) {
+			if ($rate->save()) {
+				$code->update(['used'=>date(Config::get('mysqltime')), 'client_id'=>$client->id]);
+
+				$path = $router->generate('contest_answer', ['code'=>$code->code, 'client_id'=>$client->id]);
 				
-				$this->alert('error', 'Ten konkurs został zakończony lub jest nie aktywny');
+				header('Location: '.$path);
+			} else {
+				$path = $router->generate('contest_opinion', ['code'=>$code->code]);
+				
+				$this->alert('error', 'Nie udało się dodać twojej opinii, spróbuj jeszcze raz');
 				header('Location: '.$path);
 			}
 		} else {
-			$router = Config::get('router');
+			$path = $router->generate('contest_answer', ['code'=>$code->code]);
+
+			header('Location: '.$path);
+		}
+	}
+
+	public function contest()
+	{	
+		$router = Config::get('router');
+		$code = Code::findBy('code', $this->params['code']);
+
+		if (!empty($code)) {
+
+			$action = $code->action();
+			$client = Client::find($this->params['client_id']);
+
+			if (!empty($action)) {
+
+				if ($action->isActive()) {
+					$view = (new View($this->params, ['action'=>$action], 'start'))->render();
+					return $view;
+				} else {
+					$path = $router->generate('start_page', []);
+					
+					$this->alert('error', 'Ten konkurs został zakończony lub jest nie aktywny');
+					header('Location: '.$path);
+				}
+			} else {
+				$path = $router->generate('start_page', []);
+				
+				$this->alert('error', 'Podany konkurs nie istnieje');
+				header('Location: '.$path);
+			}
+		} else {
 			$path = $router->generate('start_page', []);
-			
+				
 			$this->alert('error', 'Podany konkurs nie istnieje');
 			header('Location: '.$path);
 		}
@@ -45,7 +120,7 @@ class StaticPagesController extends Controller
 		$promotor = $action->promotor();
 		$code = Code::findBy('code', $this->params['code']);
 
-		$client = $this->getOrCreateClient($this->params);
+		$client = Client::find($this->params['client_id']);
 
 		$answer = ContestAnswer::where('action_id=? AND client_id=?', ['action_id'=>$action->id, 'client_id'=>$client->id]);
 
@@ -132,7 +207,7 @@ class StaticPagesController extends Controller
 				$path = $router->generate('use_code', ['code'=>$this->params['code']]);
 				header('Location: '.$path);
 			} else {
-				$path = $router->generate('contest_answer', ['code'=>$this->params['code']]);
+				$path = $router->generate('contest_opinion', ['code'=>$this->params['code']]);
 				header('Location: '.$path);
 			}
 		}
@@ -252,7 +327,6 @@ class StaticPagesController extends Controller
 
 		if (!$client) {
 			$this->params['client']['hash'] = HashGenerator::generate();
-			$this->params['client']['phone_number'] = '+48 '.$this->params['client']['phone_number'];
 			$this->params['client']['password_digest'] = Password::encryptPassword('');
 			$client = new Client($this->params['client']);
 			if (!$client->save()) {
@@ -260,7 +334,7 @@ class StaticPagesController extends Controller
 			} else {
 				#$token = new Token(['token'=>HashGenerator::generate(), 'client_id'=>$client->id]);
 				#$token->save();
-				(new ClientMailer)->createClient($client, $token);
+				(new ClientMailer)->createClient($client);
 			}
 
 			return $client;

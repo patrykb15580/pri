@@ -42,14 +42,6 @@
 		<label>E-mail<p class="zero_margin red_font inline">*</p></label>
 		<br />
 		<input type="email" name="client[email]" <?= $email ?> required="required">
-		<br /><br />
-		<label>Imię<p class="zero_margin red_font inline">*</p></label>
-		<br />
-		<input type="text" name="client[name]" <?= $name ?> required="required">
-		<br /><br />
-		<label>Telefon<p class="zero_margin red_font inline">*</p></label>
-		<br />
-		<div class="use-code-phone-number">+48</div><input class="use-code-phone-number" type="text" name="client[phone_number]" <?= $phone_number ?> pattern="[0-9]{9}" maxlength="9" required="required">
 		<br />
 		<input id="static_pages_submit" type="submit" value="Dodaj punkty">
 	</form>	

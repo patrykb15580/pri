@@ -7,9 +7,7 @@ class RewardImagesPolices extends Polices
 
 	public function delete()
 	{	
-		$promotor = $this->obj->promotor();
-
-		if ($this->user->isPromotor() && $this->user->id == $promotor->id) {
+		if ($this->user->isPromotor() && $this->user->id == $this->obj->id) {
 			return true;
 		}
 

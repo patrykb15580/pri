@@ -73,6 +73,36 @@ class Action extends Model
 		return PromotionAction::findBy('action_id', $this->id);
 	}
 
+	public function opinion()
+	{
+		return Opinion::findBy('action_id', $this->id);
+	}
+
+	public function rates()
+	{
+		return Rate::where('action_id=?', ['action_id'=>$this->id]);
+	}
+
+	public function rate()
+	{
+		$rates = $this->rates();
+
+		$rate_arr = [];
+
+		foreach ($rates as $rate) {
+			$score = $rate->rate;
+
+			array_push($rate_arr, $score);
+		}
+
+		$rates_sum = array_sum($rate_arr);
+		$rates_number = count($rate_arr);
+
+		$rate = $rates_sum / $rates_number;
+
+		return number_format($rate, 1, '.', '');
+	}
+
 	public function codesPackages()
 	{
 		return CodesPackage::where('action_id=?', ['action_id'=>$this->id]);
