@@ -28,10 +28,7 @@
         margin: 2% 0px auto 0px;
         padding: 0px;
     }
-    div.show-menu{
-        display: none;
-    }
-    div.hide-menu{
+    .toggle-menu{
         display: none;
     }
     div#content{
@@ -62,10 +59,10 @@
 @media only screen and (max-width: 999px){
     div#top{
         display: block;
-        width: 99%;
-        height: 80px;
+        width: 100%;
+        height: 56px;
         margin: 0px;
-        padding: 0px 1% 0px 0px; 
+        padding: 0px; 
         font-weight: bold;
         color: white;
         border-width: 0px 0px 2px 0px;
@@ -82,46 +79,47 @@
     div#side_bar{
         display: none;
         background-color: white;
-        position: absolute;
         top: 0;
         left: 0;
-        z-index: 20;
         width: 100%;
         min-height: 100vh;
         margin: 0px;
         padding: 0px;
     }
-    div.show-menu{
+    .toggle-menu{
         display: inline-block;
+        background-color: transparent;
+        width: 40px;
+        height: 40px;
         color: #626B74;
         font-size: 20px;
-        font-weight: 400;
-        margin: 30px 0px 30px 20px;
-        float: left;
+        text-align: center;
+        margin: 8px 8px 8px 0px;
+        padding: 0px;
+        border-width: 1px;
+        border-radius: 3px;
+        border-style: solid;
+        transition: color 0.2s;
+        float: right;
     }
-    div.show-menu:hover{
+    .toggle-menu:hover{
         display: inline-block;
-        color: #626B74;
+        background-color: transparent;
+        width: 40px;
+        height: 40px;
+        color: #6a737c;
         font-size: 20px;
-        font-weight: 400;
-        margin: 30px 0px 30px 20px;
-        float: left;
+        text-align: center;
+        margin: 8px 8px 8px 0px;
+        padding: 0px;
+        border-width: 1px;
+        border-radius: 3px;
+        border-style: solid;
+        float: right;
         cursor: pointer;
     }
-    div.hide-menu{
-        display: block;
-        color: #626B74;
-        font-size: 20px;
-        font-weight: 400;
-        margin: 30px 20px;
-    }
-    div.hide-menu:hover{
-        display: block;
-        color: #626B74;
-        font-size: 20px;
-        font-weight: 400;
-        margin: 30px 20px;
-        cursor: pointer;
+    .toggle-menu i {
+        font-size: 26px;
     }
     div#content{
         display: block;

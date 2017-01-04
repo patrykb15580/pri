@@ -1,6 +1,7 @@
 <?php
 	$router = Config::get('router');
 ?>
+<!--
 <table class="single-table">
 	<tr>
 		<td class="first-row" width="50%"></td>
@@ -17,3 +18,19 @@
 	</tr>
 <?php } ?>
 </table>
+-->
+
+<?php foreach ($orders as $order) { 
+	$reward = $order->reward();
+	$order_path = $router->generate('show_promotors_orders', ['promotors_id' => $params['promotors_id'], 'order_id' => $order->id]); ?>
+	<div id="data-box">
+		<div class="data-box-title">
+			<a href="<?= $order_path ?>">Zamówienie #<?= $order->id ?></a>
+		</div>
+		<div class="data-box-data">
+			Nagroda: <b><?= $reward->name ?></b><br />
+			Data złożenia zamówienia: <b><?= $order->created_at ?></b><br />
+			Wartość: <b><?= $reward->prize ?>pkt</b><br />
+		</div>
+	</div>
+<?php } ?>

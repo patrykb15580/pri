@@ -32,7 +32,9 @@
 		Wszystkie
 	</option>
 </select>
+
 <br />
+
 <div id="tab-1-content" class="tab-content">
    	<?php 
 		$actions = $promotor->activeActions();

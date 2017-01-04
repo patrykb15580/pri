@@ -4,6 +4,41 @@
 	$promotor = $action->promotor();
 	$avatar = $promotor->avatar();
 ?>
+<div id="contest-answer">
+	<div class="contest-opinion-top">
+		<p class="contest-opinion-block-title">
+			Promotor
+		</p>
+		<div class="contest-opinion-promotor-info">
+			<?php
+				if (!empty($avatar)) { ?>
+					<img class="contest-opinion-avatar" src="/system/promotor_avatars/<?= $promotor->id ?>/small/<?= $avatar->file_name ?>">
+				<?php } 
+			?>
+			<span>
+				<?= $promotor->name ?>
+			</span>
+		</div>
+		<p class="contest-opinion-block-title">
+			Konkurs
+		</p>
+		<div class="contest-opinion-action-name">
+			<?= $action->name ?><!-- Bardzo długa nazwa konkursu jakiegoś promotora wpisana w celu sprawdzenia jak długi ciąg znaków zmieści się tym polu -->
+		</div>
+	</div>
+	<form method="POST" action="<?= $contest_answer_path ?>">
+		<p class="contest-opinion-block-title">
+			Aby wziąć udział w konkursie odpowiedź na poniższe pytanie.<br />
+		</p>
+		<p class="question"><?= $contest->question ?></p>
+
+		<textarea rows="6" placeholder="Odpowiedź" name="answer[answer]" required="required"></textarea><br />
+
+		<input type="submit" value="Biorę udział w konkursie">
+	</form>
+</div>
+
+<!--
 <div class="answer-box">
 	<div class="answer-form-top">
 		<?php if (empty($avatar)) { ?>
@@ -26,3 +61,4 @@
 		<input type="submit" value="Biorę udział w konkursie">
 	</form>
 </div>
+-->

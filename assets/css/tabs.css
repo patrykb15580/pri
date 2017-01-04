@@ -58,11 +58,6 @@
 	.l2-tab-content input[type=text]{
 		width: 100px;
 	}
-	#select-tab{
-		float: right;
-	  	font-size: 14px;
-	  	margin: 10px 2% 10px auto;
-	}
 	#admin-select-tabs{
 		float: right;
 	  	font-size: 14px;
@@ -115,11 +110,6 @@
 	}
 	.l2-tab-content input[type=text]{
 		width: 100px;
-	}
-	#select-tab{
-		float: right;
-	  	font-size: 12px;
-	 	margin: 10px 2% 10px auto;
 	}
 	#admin-select-tabs{
 		float: right;
@@ -174,11 +164,6 @@
 	.l2-tab-content input[type=text]{
 		width: 90px;
 		font-size: 14px;
-	}
-	#select-tab{
-		float: right;
-	 	font-size: 10px;
-	 	margin: 10px 2% 10px auto;
 	}
 	#admin-select-tabs{
 		float: right;
@@ -238,14 +223,34 @@
 		width: 80px;
 		font-size: 12px;
 	}
-	#select-tab{
-		float: right;
-	 	font-size: 10px;
-	 	margin: 10px 2% 10px auto;
-	}
 	#admin-select-tabs{
 		float: right;
 	 	font-size: 10px;
 	 	margin: 10px 2% 10px auto;
+	}
+}
+
+@media only screen and (min-width: 800px) {
+	#select-tab{
+		float: right;
+	 	font-size: 10px;
+	 	margin: 10px 20px 10px auto;
+	 	padding: 4px 6px;
+	}
+}
+@media only screen and (min-width: 400px) and (max-width: 799px) {
+	#select-tab{
+		float: right;
+	 	font-size: 10px;
+	 	margin: 10px 20px 10px auto;
+	 	padding: 4px 6px;
+	}
+}
+@media only screen and (max-width: 399px) {
+	#select-tab{
+		float: right;
+	 	font-size: 10px;
+	 	margin: 10px 20px 10px auto;
+	 	padding: 4px 6px;
 	}
 }

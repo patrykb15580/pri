@@ -132,6 +132,9 @@ class H
 		if ($params['action'] == 'answer') {
 			$menu = 'code';
 		}
+		if ($params['action'] == 'edit') {
+			$menu = 'account';
+		}
 		
 
 		if ($menu == $action) {

@@ -30,11 +30,35 @@
 <body class="start_pages_body">
 <?php Alerts::showAlert(); ?>
 <div id="start-top">
-	<a class="start-layout-top-link" href="<?= $router->generate('login', []); ?>">Logowanie</a>
-	<a class="start-layout-top-link" href="" class="white_font">Pomoc</a>
+	<button class="toggle-start-menu"><i class="fa fa-bars" aria-hidden="true"></i></button>
 </div>
+<div class="start-menu">
+	<a href="<?= $router->generate('start_page', []); ?>">Wprowadź kod</a>
+	<a href="<?= $router->generate('login', []); ?>">Zaloguj jako klient</a>
+	<a href="<?= $router->generate('promotor_login', []) ?>">Zaloguj jako promotor</a>
+	<a href="<?= $router->generate('forgot_password', []) ?>">Problemy z logowaniem?</a>
+	<a href="" class="white_font">Pomoc</a>
+</div>
+<div id="start-content">
 <?php 
 	include($path); 
 ?>
+</div>
+<script type="text/javascript">
+	$('.start-menu').hide();
+	$('.toggle-start-menu').click(function(){
+
+		if ($('.start-menu').not(':visible')) {
+			$('#start-content').fadeOut(function(){
+				$('.start-menu').fadeIn();
+			});
+		} 
+		if ($('.start-menu').is(':visible')) {
+			$('.start-menu').fadeOut(function(){
+				$('#start-content').fadeIn();
+			});
+		}
+	});
+</script>
 </body>
 </html>

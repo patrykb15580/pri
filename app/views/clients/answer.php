@@ -6,7 +6,7 @@
 ?>
 
 <div class="client-view-title-box">
-	<i class="fa fa-trophy client-view-title-icon green-icon" aria-hidden="true"></i><p class="client-view-title-text">Odpowiedź na pytanie</p>
+	<i class="fa fa-trophy client-view-title-icon green-icon" aria-hidden="true"></i><p class="client-view-title-text">Odpowiedz na pytanie</p>
 </div>
 
 <form class="guardian-initialize client-view-item-box" method="POST" action="<?= $path ?>">

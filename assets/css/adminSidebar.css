@@ -7,6 +7,9 @@
 #side_bar .admin_menu_stats i{
   color: #71AAFF;
 }
+#side_bar .admin_menu_logout i{
+  color: #E05E52;
+}
 #side_bar .admin_menu_active i{
   color: white;
 }

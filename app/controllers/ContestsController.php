@@ -57,7 +57,7 @@ class ContestsController extends Controller
 			$opinion->action_id = $action->id;
 			$opinion->save();
 
-			$path = $router->generate('show_contests', ['promotors_id'=>$this->params['promotors_id'], 'id'=>$action->id]);
+			$path = $router->generate('show_contests', ['promotors_id'=>$this->params['promotors_id'], 'contest_id'=>$action->id]);
 			$this->alert('info', 'Utworzono konkurs '.$action->name);
 			header("Location: ".$path);
 		} else {

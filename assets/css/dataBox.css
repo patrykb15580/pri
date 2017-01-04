@@ -1,0 +1,174 @@
+@media only screen and (min-width: 800px) {
+  #data-box {
+    width: 96%;
+    margin: 0 auto;
+    border-width: 0px 0px 2px 0px;
+    border-color: #E8EEF5;
+    border-style: solid;
+  }
+  #data-box span{
+    display: inline-block;
+    width: calc(100% - 28px);
+    margin: 0px;
+    padding: 10px 0px;
+    font-size: 16px;
+    vertical-align: middle;
+  }
+  #data-box i{
+    display: inline-block;
+    width: 28px;
+    font-size: 28px;
+    text-align: right;
+    margin: 0px;
+    padding: 0px;
+    vertical-align: middle;
+  }
+  #data-box i:hover{
+    display: inline-block;
+    width: 28px;
+    font-size: 28px;
+    text-align: right;
+    margin: 0px;
+    padding: 0px;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+  #data-box .details{
+    width: 100%;
+    font-size: 12px
+    margin: 0px;
+  }
+  #data-box .details p{
+    font-size: 12px;
+    margin: 0px;
+    padding: 0px;
+  }
+  #data-box .details tr{
+    padding: 0px;
+    border: none;
+  }
+  #data-box .details td{
+    width: 50%;
+    font-size: 12px;
+    padding: 0px;
+  }
+  #data-box .details td:nth-child(2n+2) {
+    text-align: right;
+  }
+}
+@media only screen and (min-width: 400px) and (max-width: 799px) {
+  #data-box {
+    width: 96%;
+    margin: 0 auto;
+    border-width: 0px 0px 2px 0px;
+    border-color: #E8EEF5;
+    border-style: solid;
+  }
+  #data-box span{
+    display: inline-block;
+    width: calc(100% - 28px);
+    margin: 0px;
+    padding: 10px 0px;
+    font-size: 16px;
+    vertical-align: middle;
+  }
+  #data-box i{
+    display: inline-block;
+    width: 28px;
+    font-size: 28px;
+    text-align: right;
+    margin: 0px;
+    padding: 0px;
+    vertical-align: middle;
+  }
+  #data-box i:hover{
+    display: inline-block;
+    width: 28px;
+    font-size: 28px;
+    text-align: right;
+    margin: 0px;
+    padding: 0px;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+  #data-box .details{
+    width: 100%;
+    font-size: 12px
+    margin: 0px;
+  }
+  #data-box .details p{
+    font-size: 12px;
+    margin: 0px;
+    padding: 0px;
+  }
+  #data-box .details tr{
+    padding: 0px;
+    border: none;
+  }
+  #data-box .details td{
+    width: 50%;
+    font-size: 12px;
+    padding: 0px;
+  }
+  #data-box .details td:nth-child(2n+2) {
+    text-align: right;
+  }
+}
+@media only screen and (max-width: 399px) {
+  #data-box {
+    width: 96%;
+    margin: 0 auto;
+    border-width: 0px 0px 2px 0px;
+    border-color: #E8EEF5;
+    border-style: solid;
+  }
+  #data-box span{
+    display: inline-block;
+    width: calc(100% - 28px);
+    margin: 0px;
+    padding: 10px 0px;
+    font-size: 16px;
+    vertical-align: middle;
+  }
+  #data-box i{
+    display: inline-block;
+    width: 28px;
+    font-size: 28px;
+    text-align: right;
+    margin: 0px;
+    padding: 0px;
+    vertical-align: middle;
+  }
+  #data-box i:hover{
+    display: inline-block;
+    width: 28px;
+    font-size: 28px;
+    text-align: right;
+    margin: 0px;
+    padding: 0px;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+  #data-box .details{
+    width: 100%;
+    font-size: 12px
+    margin: 0px;
+  }
+  #data-box .details p{
+    font-size: 12px;
+    margin: 0px;
+    padding: 0px;
+  }
+  #data-box .details tr{
+    padding: 0px;
+    border: none;
+  }
+  #data-box .details td{
+    width: 50%;
+    font-size: 12px;
+    padding: 0px;
+  }
+  #data-box .details td:nth-child(2n+2) {
+    text-align: right;
+  }
+}

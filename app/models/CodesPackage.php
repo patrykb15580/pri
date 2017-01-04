@@ -70,6 +70,17 @@ class CodesPackage extends Model
 		return $this->quantity * $this->codes_value;
 	}
 
+	public function clients(){
+		$codes = Code::where('package_id=? AND used IS NOT NULL', ['package_id'=>$this->id]);
+
+		$clients = [];
+		foreach ($codes as $code) {
+			$client = $code->client();
+			$clients[$client->id] = $client;
+		}
+		return $clients;
+	}
+
 	public function usedCodesNumber(){
 		$codes = Code::where('package_id=? AND used IS NOT NULL', ['package_id'=>$this->id]);
 

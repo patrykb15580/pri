@@ -45,6 +45,7 @@
 	<link rel="stylesheet" type="text/css" href="/assets/css/clientRewardDetails.css">
 	<link rel="stylesheet" type="text/css" href="/assets/css/alerts.css">
 	<link rel="stylesheet" type="text/css" href="/assets/css/tabs.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/dataBox.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -65,7 +66,8 @@
 <?php Alerts::showAlert(); ?>
 
 <div id="top" class="dark_font">
-	<div class="show-menu">Menu <i class="fa fa-bars" aria-hidden="true"></i></div>
+	<button class="toggle-menu"><i class="fa fa-bars" aria-hidden="true"></i></button>
+	<!--
 	<div id="main-layout-user" class="dark_font">
 		<p class="user"><?= $user ?><i class="fa fa-caret-down dropdown" aria-hidden="true"></i></p>
 		<?php
@@ -96,6 +98,7 @@
 			<a href="<?= $router->generate('sign_out', []) ?>"><i class="fa fa-sign-out fa-lg red-icon" aria-hidden="true"></i> Wyloguj</a>
 		</div>
 	</div>
+	-->
 </div>
 <?php 
 include './app/views/layouts/'.$side_bar; ?>
@@ -106,5 +109,6 @@ include './app/views/layouts/'.$side_bar; ?>
 <script type="text/javascript" src="/assets/javascript/datepicker.js"></script>
 <script type="text/javascript" src="/assets/javascript/guardianInitialize.js"></script>
 <script type="text/javascript" src="/assets/javascript/menu.js"></script>
+<script src="/assets/javascript/dataBox.js"></script>
 </body>
 </html>

@@ -21,14 +21,13 @@
 	<i class="fa fa-product-hunt title-box-icon green-icon" aria-hidden="true"></i>
 	<p class="title-box-text">Pakiet #<?= $package->id ?></p>
 	<br />
-	<br />
 	<p class="title-box-details">
 		<?php
 			if (!empty($package->description)) { ?>
 				<?= nl2br($package->description) ?><br /><br />
 			<?php }
 		?>
-		Status: <b><?= CodesPackage::STATUSES[$package->status] ?></b>,	Liczba kodów: <b><?= $package->generated ?></b>	Wartość kodów: <b><?= $package->codes_value ?> pkt</b>
+		Status: <b><?= CodesPackage::STATUSES[$package->status] ?></b>, Liczba kodów: <b><?= $package->generated ?></b>, Wartość kodów: <b><?= $package->codes_value ?> pkt</b>
 	</p>
 	<br />
 </div>
@@ -51,7 +50,7 @@
 <div id="tab-1-content" class="tab-content">
 	<?php 
 		if (count($package->usedPromotionCodes()) !== 0) { ?>
-			<table width="100%">
+			<table class="single-table">
 				<tr>
 					<td class="first-row" width="60%">Kod</td>
 					<td class="first-row" width="40%">Wykorzystany</td>
@@ -72,7 +71,7 @@
 <div id="tab-2-content" class="tab-content">
 	<?php
 		if (count($package->nonusedPromotionCodes()) !== 0) { ?>
-			<table width="100%">
+			<table class="single-table">
 				<tr>
 					<td class="first-row" width="100%">Kod</td>
 				</tr>
@@ -91,7 +90,7 @@
 <div id="tab-3-content" class="tab-content">
 	<?php
 		if (count($package->promotionCodes()) !== 0) { ?>
-			<table width="100%">
+			<table class="single-table">
 				<tr>
 					<td class="first-row" width="100%">Kod</td>
 				</tr>

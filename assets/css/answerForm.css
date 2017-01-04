@@ -1,26 +1,412 @@
-.rating_selection {
-  text-align: center;
-}
-.rating_selection label:first-of-type {
+#contest-answer form .rating-selection label:first-of-type {
   display: none;
 }
-.rating_selection input[type='radio'],
-.rating_selection span {
+#contest-answer form .rating-selection input[type='radio'],
+#contest-answer form .rating-selection span {
   display: none;
 }
-.rating_selection label {
+#contest-answer form .rating-selection label {
   cursor: pointer;
 }
-.rating_selection input:checked + label ~ label:before {
+#contest-answer form .rating-selection input:checked + label ~ label:before {
   color: #aaa;
 }
-.rating_selection:hover label[for]:before {
+#contest-answer form .rating-selection:hover label[for]:before {
   color: #e9cd10;
 }
-.rating_selection:hover label:hover ~ label:before {
+#contest-answer form .rating-selection:hover label:hover ~ label:before {
   color: #aaa;
 }
-@media only screen and (min-width: 600px){
+
+@media only screen and (min-width: 400px) {
+    #contest-answer {
+        width: 360px;
+        margin: 0 auto;
+        padding: 0px;
+    }
+    #contest-answer .contest-opinion-top {
+        display: block;
+        width: 360px;
+        padding: 19px 0px;
+        margin: 0 auto;
+    }
+    #contest-answer .contest-opinion-block-title{
+        display: block;
+        width: 360px;
+        margin: 20px 0px 4px 0px;
+        padding: 0px;
+        font-size: 12px;
+        text-align: center;
+        opacity: 0.5;
+    }
+    #contest-answer .contest-opinion-promotor-info {
+        display: block;
+        width: 360px;
+        padding: 0px;
+        margin: 0px;
+        text-align: center;
+    }
+    #contest-answer .contest-opinion-promotor-info span{
+        display: inline-block;
+        width: 294px;
+        padding: 0px;
+        margin: 0px 4px;
+        font-size: 26px;
+        font-weight: 700;
+        vertical-align: middle;
+    }
+    #contest-answer .contest-opinion-avatar{
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        margin: 0px;
+        vertical-align: middle;
+    }
+
+    #contest-answer .contest-opinion-action-name{
+        display: block;
+        width: 360px;
+        margin: 0px 0px 10px 0px;
+        font-size: 34px;
+        font-weight: 700;
+        text-align: center;
+    }
+
+    #contest-answer form {
+        width: 360px;
+        margin: 10px auto;
+        padding: 0px;
+    }
+    #contest-answer .question {
+        font-size: 20px;
+        font-weight: 700;
+        text-align: center;
+        margin: 10px 0px;
+        padding: 0px;
+    }
+    #contest-answer form input[type=email]{
+        display: block;
+        width: 332px;
+        font-size: 16px;
+        text-align: left;
+        color: #47525D;
+        margin: 0 auto;
+        padding: 12px 12px;
+        border-width: 2px;
+        border-radius: 3px;
+        border-color: #FFFFFF;
+        border-style: solid;
+        transition: border-color 0.2s;
+    }
+    #contest-answer form input[type=email]:focus{
+        display: block;
+        width: 332px;
+        font-size: 16px;
+        text-align: left;
+        color: #47525D;
+        margin: 0 auto;
+        padding: 12px 12px;
+        border-width: 2px;
+        border-radius: 3px;
+        border-color: #2895F1;
+        border-style: solid;
+    }
+    #contest-answer form textarea{
+        display: block;
+        width: 332px;
+        font-size: 16px;
+        text-align: left;
+        color: #47525D;
+        margin: 4px auto;
+        padding: 12px 12px;
+        border-width: 2px;
+        border-radius: 3px;
+        border-color: #FFFFFF;
+        border-style: solid;
+        transition: border-color 0.2s;
+    }
+    #contest-answer form textarea:focus{
+        display: block;
+        width: 332px;
+        font-size: 16px;
+        text-align: left;
+        color: #47525D;
+        margin: 4px auto;
+        padding: 12px 12px;
+        border-width: 2px;
+        border-radius: 3px;
+        border-color: #2895F1;
+        border-style: solid;
+    }
+    #contest-answer form input[type=submit]{
+        display: block;
+        width: 360px;
+        height: 54px;
+        background-color: #53BE31;
+        border: 0px solid;
+        border-radius: 3px;
+        color: white;
+        font-size: 18px;
+        font-weight: 700;
+        text-align: center;
+        margin: 0 auto;
+        transition: background-color 0.2s;
+    }
+    #contest-answer form input[type=submit]:hover{
+        display: block;
+        width: 360px;
+        height: 54px;
+        background-color: #68d049;
+        border: 0px solid;
+        border-radius: 3px;
+        color: white;
+        font-size: 18px;
+        font-weight: 700;
+        text-align: center;
+        margin: 0 auto;
+        cursor: pointer;
+    }
+    #contest-answer form input[type=submit]:disabled{
+        display: block;
+        width: 360px;
+        height: 54px;
+        background-color: #BFBFBF;
+        border: 0px solid;
+        border-radius: 3px;
+        color: white;
+        font-size: 18px;
+        font-weight: 700;
+        text-align: center;
+        margin: 0 auto;
+        transition: background-color 0.2s;
+    }
+    #contest-answer form input[name=agreement]{
+        display: inline-block;
+        width: 4%;
+        margin: 0px;
+        padding: 0px;
+        vertical-align: middle;
+    }
+    #contest-answer .note {
+        display: inline-block;
+        width: 94%;
+        font-size: 10px;
+        margin: 0px;
+        padding: 0px;
+        vertical-align: middle;
+    }
+    #contest-answer form .rating-selection {
+        display: block;
+        margin: 0px auto 20px auto;
+        padding: 0px;
+        text-align: center;
+    }
+    #contest-answer form .rating-selection label:before {
+        display: inline-block;
+        content: "★";
+        font-size: 76px;
+        letter-spacing: 0px;
+        color: #e9cd10;
+        text-align: center;
+    }
+}
+@media only screen and (max-width: 399px) {
+    #contest-answer {
+        width: 90%;
+        margin: 0 auto;
+        padding: 0px;
+    }
+    #contest-answer .contest-opinion-top {
+        display: block;
+        width: 90%;
+        padding: 5% 0px;
+        margin: 0 auto;
+    }
+    #contest-answer .contest-opinion-block-title{
+        display: block;
+        width: 100%;
+        margin: 20px 0px 4px 0px;
+        padding: 0px;
+        font-size: 12px;
+        text-align: center;
+        opacity: 0.5;
+    }
+    #contest-answer .contest-opinion-promotor-info {
+        display: block;
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+        text-align: center;
+    }
+    #contest-answer .contest-opinion-promotor-info span{
+        display: inline-block;
+        width: calc(100% - 64px);
+        padding: 0px;
+        margin: 0px 4px;
+        font-size: 26px;
+        font-weight: 700;
+        vertical-align: middle;
+    }
+    #contest-answer .contest-opinion-avatar{
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        margin: 0px;
+        vertical-align: middle;
+    }
+
+    #contest-answer .contest-opinion-action-name{
+        display: block;
+        width: 100%;
+        margin: 0px 0px 10px 0px;
+        font-size: 34px;
+        font-weight: 700;
+        text-align: center;
+    }
+
+    #contest-answer form {
+        width: 100%;
+        margin: 10px auto;
+        padding: 0px;
+    }
+    #contest-answer .question {
+        font-size: 20px;
+        font-weight: 700;
+        text-align: center;
+        margin: 10px 0px;
+        padding: 0px;
+    }
+    #contest-answer form input[type=email]{
+        display: block;
+        width: calc(100% - 28px);
+        font-size: 16px;
+        text-align: left;
+        color: #47525D;
+        margin: 0 auto;
+        padding: 12px 12px;
+        border-width: 2px;
+        border-radius: 3px;
+        border-color: #FFFFFF;
+        border-style: solid;
+        transition: border-color 0.2s;
+    }
+    #contest-answer form input[type=email]:focus{
+        display: block;
+        width: calc(100% - 28px);
+        font-size: 16px;
+        text-align: left;
+        color: #47525D;
+        margin: 0 auto;
+        padding: 12px 12px;
+        border-width: 2px;
+        border-radius: 3px;
+        border-color: #2895F1;
+        border-style: solid;
+    }
+    #contest-answer form textarea{
+        display: block;
+        width: calc(100% - 28px);
+        font-size: 16px;
+        text-align: left;
+        color: #47525D;
+        margin: 4px auto;
+        padding: 12px 12px;
+        border-width: 2px;
+        border-radius: 3px;
+        border-color: #FFFFFF;
+        border-style: solid;
+        transition: border-color 0.2s;
+    }
+    #contest-answer form textarea:focus{
+        display: block;
+        width: calc(100% - 28px);
+        font-size: 16px;
+        text-align: left;
+        color: #47525D;
+        margin: 4px auto;
+        padding: 12px 12px;
+        border-width: 2px;
+        border-radius: 3px;
+        border-color: #2895F1;
+        border-style: solid;
+    }
+    #contest-answer form input[type=submit]{
+        display: block;
+        width: 100%;
+        height: 54px;
+        background-color: #53BE31;
+        border: 0px solid;
+        border-radius: 3px;
+        color: white;
+        font-size: 18px;
+        font-weight: 700;
+        text-align: center;
+        margin: 0 auto;
+        transition: background-color 0.2s;
+    }
+    #contest-answer form input[type=submit]:hover{
+        display: block;
+        width: 100%;
+        height: 54px;
+        background-color: #68d049;
+        border: 0px solid;
+        border-radius: 3px;
+        color: white;
+        font-size: 18px;
+        font-weight: 700;
+        text-align: center;
+        margin: 0 auto;
+        cursor: pointer;
+    }
+    #contest-answer form input[type=submit]:disabled{
+        display: block;
+        width: 100%;
+        height: 54px;
+        background-color: #BFBFBF;
+        border: 0px solid;
+        border-radius: 3px;
+        color: white;
+        font-size: 18px;
+        font-weight: 700;
+        text-align: center;
+        margin: 0 auto;
+        transition: background-color 0.2s;
+    }
+    #contest-answer form input[name=agreement]{
+        display: inline-block;
+        width: 4%;
+        margin: 0px;
+        padding: 0px;
+        vertical-align: middle;
+    }
+    #contest-answer .note {
+        display: inline-block;
+        width: 94%;
+        font-size: 10px;
+        margin: 0px;
+        padding: 0px;
+        vertical-align: middle;
+    }
+    #contest-answer form .rating-selection {
+        display: block;
+        margin: 0px auto 20px auto;
+        padding: 0px;
+        text-align: center;
+    }
+    #contest-answer form .rating-selection label:before {
+        display: inline-block;
+        content: "★";
+        font-size: 56px;
+        letter-spacing: 0px;
+        color: #e9cd10;
+        text-align: center;
+    }
+}
+
+
+
+
+/*@media only screen and (min-width: 600px){
   .answer-box{
     position: absolute;
     width: 440px;
@@ -660,4 +1046,4 @@
     letter-spacing: 6px;
     color: #e9cd10;
   }
-}
+}*/

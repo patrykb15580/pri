@@ -22,9 +22,16 @@
 #side_bar .promotor_menu_info i{
   color: #949494;
 }
+#side_bar .promotor_menu_account i{
+  color: #8E6581;
+}
+#side_bar .promotor_menu_logout i{
+  color: #E05E52;
+}
 #side_bar .promotor_menu_active i{
   color: white;
 }
+
 @media only screen and (min-width: 1200px){
   .promotor_menu_active{
     display: block;

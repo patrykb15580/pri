@@ -15,6 +15,7 @@
 		$phone_number = 'value="'.$_COOKIE['use_code_form_phone_number'].'"';
 	}
 ?>
+<!--
 <div id="use_code_container">
 	<div class="use_code_top">
 		<?php
@@ -46,4 +47,9 @@
 		<input id="static_pages_submit" type="submit" value="Dodaj punkty">
 	</form>	
 </div>
-<script type="text/javascript" src="/assets/javascript/useCodeFormGuardianInitialize.js"></script>
+-->
+<form id="use_code" method="POST" action="<?= $path ?>">
+	<input type="email" placeholder="Adres e-mail" name="client[email]" <?= $email ?> required="required">
+	<br />
+	<input type="submit" value="Dodaj punkty">
+</form>	

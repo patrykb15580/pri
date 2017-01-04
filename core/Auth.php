@@ -24,6 +24,7 @@
 		$router = Config::get('router');
 
 		if (!empty($promotor)) {
+			setcookie('remember_promotor_email', $promotor->email);
 			Auth::login($promotor[0]);
 			header('Location: '.$router->generate('stats_promotors', ['promotors_id'=>$_SESSION['user']->id]));
 		} else {
@@ -61,13 +62,15 @@
 			$client = $client[0];
 			$login_error = 'Błędny login lub hasło';
 
-			if (!empty($client) && $client->password_degest == Password::encryptPassword('')) {
+			if (!empty($client) && $client->password_digest == Password::encryptPassword('')) {
 				new Alerts('error', $login_error);
 				header('Location: '.$router->generate('login', []));
 			}
 		}
 		
 		if (!empty($client)) {
+			setcookie('remember_client_email', $client->email);
+
 			Auth::login($client);
 			if ($client->password_digest == Password::encryptPassword('')) {
 				header('Location: '.$router->generate('edit_client', ['client_id'=>$_SESSION['user']->id]));

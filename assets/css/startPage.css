@@ -1,5 +1,67 @@
-@media only screen and (min-width: 500px){
+@media only screen and (min-width: 800px){
   #insert-code{
+    width: 670px;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    padding: 0px;
+  }
+  #insert-code .insert-code-input{
+    display: inline-block;
+    color: #47525D;
+    font-size: 16px;
+    text-align: center;
+    width: 288px;
+    border: 2px solid;
+    border-color: #FFFFFF;
+    border-radius: 3px;
+    margin: 0px 10px 0px 0px;
+    padding: 14px 14px;
+    transition: border-color 0.2s;
+  }
+  #insert-code .insert-code-input:focus{
+    display: inline-block;
+    color: #47525D;
+    font-size: 16px;
+    text-align: center;
+    width: 288px;
+    border: 2px solid;
+    border-color: #2895F1;
+    border-radius: 3px;
+    margin: 0px 10px 0px 0px;
+    padding: 14px 14px;
+  }
+  #insert-code .insert-code-button{
+    display: inline-block;
+    width: 320px;
+    margin: 0px 0px 0px 10px;
+    padding: 18px 0px 18px 0px;
+    vertical-align: -1px;
+    background-color: #53BE31;
+    border: 0px solid;
+    border-radius: 3px;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    transition: background-color 0.2s;
+  }
+  #insert-code .insert-code-button:hover{
+    display: inline-block;
+    width: 320px;
+    margin: 0px 0px 0px 10px;
+    padding: 18px 0px 18px 0px;
+    vertical-align: -1px;
+    background-color: #68d049;
+    border: 0px solid;
+    border-radius: 3px;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+  }
+  /*#insert-code{
     background-color: white;
     width: 460px;
     display: block;
@@ -12,6 +74,7 @@
   #insert-code .insert-code-input{
     height: 38px;
     display: inline-block;
+    color: #47525D;
     font-size: 16px;
     width: 230px;
     border: 1px solid #CBD0D4;
@@ -46,54 +109,128 @@
     vertical-align: -2px;
     text-align: center;
     cursor: pointer;
-  }
+  }*/
 }
-@media only screen and (max-width: 499px){
+@media only screen and (min-width: 400px) and (max-width: 799px){
   #insert-code{
-    background-color: white;
-    width: 260px;
+    width: 320px;
     display: block;
     text-align: center;
     margin: 0 auto;
-    border: 0px solid;
-    border-radius: 5px;
-    padding: 10px 6px;
+    padding: 0px;
   }
   #insert-code .insert-code-input{
-    height: 28px;
-    display: inline-block;
-    font-size: 12px;
-    width: 130px;
-    border: 1px solid #CBD0D4;
+    display: block;
+    color: #47525D;
+    font-size: 16px;
+    text-align: center;
+    width: 288px;
+    border: 2px solid;
+    border-color: #FFFFFF;
     border-radius: 3px;
-    margin: 0px;
-    padding: 2px 3%;
+    margin: 0px 0px 10px 0px;
+    padding: 14px 14px;
+    transition: border-color 0.2s;
+  }
+  #insert-code .insert-code-input:focus{
+    display: block;
+    color: #47525D;
+    font-size: 16px;
+    text-align: center;
+    width: 288px;
+    border: 2px solid;
+    border-color: #2895F1;
+    border-radius: 3px;
+    margin: 0px 0px 10px 0px;
+    padding: 14px 14px;
   }
   #insert-code .insert-code-button{
-    display: inline-block;
-    width: 90px;
-    margin: 0px 0px 0px 10px;
-    padding: 9px 0px 8px 0px;
+    display: block;
+    width: 320px;
+    margin: 0px;
+    padding: 18px 0px 17px 0px;
     background-color: #53BE31;
     border: 0px solid;
     border-radius: 3px;
     color: white;
-    font-size: 14px;
-    vertical-align: -2px;
+    font-size: 18px;
+    font-weight: 700;
     text-align: center;
     transition: background-color 0.2s;
   }
   #insert-code .insert-code-button:hover{
-    display: inline-block;
-    width: 90px;
-    margin: 0px 0px 0px 10px;
-    padding: 9px 0px 8px 0px;
+    display: block;
+    width: 320px;
+    margin: 0px;
+    padding: 18px 0px 17px 0px;
     background-color: #68d049;
     border: 0px solid;
     border-radius: 3px;
     color: white;
-    font-size: 14px;
-    vertical-align: -2px;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+  }
+}
+@media only screen and (max-width: 399px){
+  #insert-code{
+    width: 80%;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    padding: 0px;
+  }
+  #insert-code .insert-code-input{
+    display: block;
+    color: #47525D;
+    font-size: 16px;
+    text-align: center;
+    width: calc(100% - 32px);
+    border: 2px solid;
+    border-color: #FFFFFF;
+    border-radius: 3px;
+    margin: 0px 0px 10px 0px;
+    padding: 14px 14px;
+    transition: border-color 0.2s;
+  }
+  #insert-code .insert-code-input:focus{
+    display: block;
+    color: #47525D;
+    font-size: 16px;
+    text-align: center;
+    width: calc(100% - 32px);
+    border: 2px solid;
+    border-color: #2895F1;
+    border-radius: 3px;
+    margin: 0px 0px 10px 0px;
+    padding: 14px 14px;
+  }
+  #insert-code .insert-code-button{
+    display: block;
+    width: 100%;
+    margin: 0px;
+    padding: 18px 0px 17px 0px;
+    background-color: #53BE31;
+    border: 0px solid;
+    border-radius: 3px;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    transition: background-color 0.2s;
+  }
+  #insert-code .insert-code-button:hover{
+    display: block;
+    width: 100%;
+    margin: 0px;
+    padding: 18px 0px 17px 0px;
+    background-color: #68d049;
+    border: 0px solid;
+    border-radius: 3px;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
     text-align: center;
     cursor: pointer;
   }

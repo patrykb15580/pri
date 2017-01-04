@@ -1,6 +1,13 @@
 <?php
 	$router = Config::get('router');
 	$prev_page = $router->generate('index_promotors_orders', ['promotors_id' => $params['promotors_id']]);
+	$client = $order->client();
+	if (empty($client->name)) {
+		$client_name = explode('@', $client->email);
+		$client_name = $client_name[0];
+	} else {
+		$client_name = $client->name;
+	}
 
 	if (isset($params['notice'])) { ?>
 		<div id="notice" data-cookie="show_orders_promotor_view">
@@ -18,7 +25,7 @@
 	<br />
 	<p class="title-box-details">
 		Status: <b><?= Order::STATUSES[$order->status] ?></b><br />
-		Klient: <b><?= $order->client()->name ?></b><br />
+		Klient: <b><?= $client_name ?></b><br />
 	</p>
 </div>
 

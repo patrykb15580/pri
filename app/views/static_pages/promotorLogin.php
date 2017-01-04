@@ -1,16 +1,19 @@
-<h1 id="main_page_site_title">punktacja.pl</h1>
+<?php
+	$promotor_email = '';
+	if (isset($_COOKIE['remember_promotor_email']) && !empty($_COOKIE['remember_promotor_email'])) {
+		$promotor_email = 'value="'.$_COOKIE['remember_promotor_email'].'"';
+	}
+?>
 <div id="login">
-	<h1 class="text_align_center">Logowanie</h1>
+	<h1 class="text_align_center">Promotor</h1>
 	<form class="promotor-login-form login-form guardian-initialize" method="POST" action="<?= $router->generate('sign_in', []) ?>">
-		E-mail:
-		<br /><input type="text" name="login" required="required">
-		<br />Hasło:
-		<br /><input type="password" name="password" required="required">
+		<input type="email" placeholder="Adres e-mail" name="login" <?= $promotor_email ?> required="required">
+		<br /><input type="password" placeholder="Hasło" name="password" required="required">
 		<br /><br /><input type="submit" value="Zaloguj">
 	</form>
 </div>
 <div class="static-pages-data">
-	admin -> zaq1@WSX
+	admin@punktacja.pl -> zaq1@WSX
 	<br /><br /><br />
 
 	Promotors:<br />

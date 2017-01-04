@@ -50,9 +50,9 @@ class Action extends Model
 
 	public function createAction($params)
 	{
-		$action = new Action([$params]);
-		echo "<pre>";
-		die(print_r($action));
+		#$action = new Action([$params]);
+		#echo "<pre>";
+		#die(print_r($action));
 	}
 
 	public function isActive()
@@ -66,6 +66,22 @@ class Action extends Model
 				return true;
 			} else return false;
 		}
+	}
+
+	public function clients()
+	{
+		$packages = $this->codesPackages();
+
+		$clients = [];
+
+		foreach ($packages as $package) {
+			$package_clients = $package->clients();
+			foreach ($package_clients as $client) {
+				$clients[$client->id] = $client;
+			}
+		}
+
+		return $clients;
 	}
 
 	public function promotionAction()
@@ -87,20 +103,24 @@ class Action extends Model
 	{
 		$rates = $this->rates();
 
-		$rate_arr = [];
+		if (count($rates) > 0) {
+			$rate_arr = [];
 
 		foreach ($rates as $rate) {
 			$score = $rate->rate;
 
-			array_push($rate_arr, $score);
+				array_push($rate_arr, $score);
+			}
+
+			$rates_sum = array_sum($rate_arr);
+			$rates_number = count($rate_arr);
+
+			$rate = $rates_sum / $rates_number;
+
+			return number_format($rate, 1, '.', '');
+		} else {
+			return 0;
 		}
-
-		$rates_sum = array_sum($rate_arr);
-		$rates_number = count($rate_arr);
-
-		$rate = $rates_sum / $rates_number;
-
-		return number_format($rate, 1, '.', '');
 	}
 
 	public function codesPackages()

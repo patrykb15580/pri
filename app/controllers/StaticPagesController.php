@@ -59,6 +59,12 @@ class StaticPagesController extends Controller
 		}
 
 		if (isset($rate)) {
+			if (empty($points_balance)) {
+				$points_balance = new PointsBalance(['client_id'=>$client->id, 'promotor_id'=>$action->promotor_id, 'balance'=>0]);
+				$points_balance->save();
+			} else {
+				$points_balance = $points_balance[0];
+			}
 			if ($rate->save()) {
 				$code->update(['used'=>date(Config::get('mysqltime')), 'client_id'=>$client->id]);
 

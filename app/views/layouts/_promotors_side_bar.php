@@ -1,5 +1,4 @@
 <div id="side_bar">
-	<div class="hide-menu">Menu <i class="fa fa-bars" aria-hidden="true"></i></div>
 	<a id="menu" class="<?= H::promotorCurrentMenu($params, 'actions') ?> promotor_menu_actions" href="/promotors/<?= $params['promotors_id'] ?>">
 		<i class="fa fa-product-hunt" aria-hidden="true"></i> <span>Akcje promocyjne</span>
 	</a>
@@ -23,5 +22,11 @@
 	</a>
 	<a id="menu" class="<?= H::promotorCurrentMenu($params, 'info') ?> promotor_menu_info" href="">
 		<i class="fa fa-bullhorn" aria-hidden="true"></i> <span>Regulamin</span>
+	</a>
+	<a id="menu" class="<?= H::promotorCurrentMenu($params, 'account') ?> promotor_menu_account" href="<?= $router->generate('edit_promotor', ['promotors_id'=>$params['promotors_id']]) ?>">
+		<i class="fa fa-cog fa-lg" aria-hidden="true"></i> Ustawienia konta
+	</a>
+	<a id="menu" class="<?= H::promotorCurrentMenu($params, 'sign-out') ?> promotor_menu_logout" href="<?= $router->generate('sign_out', []) ?>">
+		<i class="fa fa-sign-out" aria-hidden="true"></i> <span>Wyloguj</span>
 	</a>
 </div>
