@@ -19,6 +19,7 @@
 </form>
 
 <br /><br />
+
 <div class="static-pages-data">
 <b>Akcje promocyjne</b>
 <?php

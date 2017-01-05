@@ -3,6 +3,7 @@
         "gregwar/image": "2.*",
   		"sunra/php-simple-html-dom-parser": "1.5.1",
   		"phpmailer/phpmailer": "~5.2",
-  		"dompdf/dompdf" : "0.7.*"
+  		"dompdf/dompdf" : "0.7.*",
+  		"sendgrid/sendgrid": "~5.1"
     }
 }

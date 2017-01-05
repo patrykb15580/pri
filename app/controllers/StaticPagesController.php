@@ -244,8 +244,8 @@ class StaticPagesController extends Controller
 	public function addPoints()
 	{
 		setcookie('use_code_form_email', $this->params['client']['email'], time() + (86400 * 30), '/');
-		setcookie('use_code_form_name', $this->params['client']['name'], time() + (86400 * 30), '/');
-		setcookie('use_code_form_phone_number', $this->params['client']['phone_number'], time() + (86400 * 30), '/');
+		#setcookie('use_code_form_name', $this->params['client']['name'], time() + (86400 * 30), '/');
+		#setcookie('use_code_form_phone_number', $this->params['client']['phone_number'], time() + (86400 * 30), '/');
 
 		$client = $this->getOrCreateClient($this->params);
 
