@@ -62,7 +62,7 @@ class AppMailer
 		curl_close($session);
 
 		// print everything out
-		print_r($response);
+		//print_r($response);
 
 
 
