@@ -3,7 +3,7 @@
 	$avatar = $promotor->avatar();
 	$code_value = $code->codeValue();
 ?>
-<h1>Dziękujemy za udział w konkursie</h1>
+<h1 style="text-align: center;">Dziękujemy za udział w konkursie</h1>
 
 <?php
 	if (!empty($avatar)) { ?>

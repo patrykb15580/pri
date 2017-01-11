@@ -17,14 +17,14 @@
 					</td>
 					<td>
 						<?php 
-							$day = date('d', strtotime($date));
+							$day = date('d', strtotime($history->created_at));
 
 							if ($day < 10) {
 								$day = number_format($day, 0);
 							}
 
-							$month = PolishMonthName::NAMES_VARIETLY[date('m', strtotime($date))];
-							$year = date('Y', strtotime($date));
+							$month = PolishMonthName::NAMES_VARIETLY[date('m', strtotime($history->created_at))];
+							$year = date('Y', strtotime($history->created_at));
 
 							echo $day.' '.$month.' '.$year; 
 						?>

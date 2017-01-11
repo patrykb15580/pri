@@ -600,7 +600,8 @@
   #confirmation {
     display: block;
     width: 100%;
-    padding: 0px;
+    color: #666666;
+    padding: 30px 0px 0px 0px;
     margin: 0px;
   }
   #confirmation .confirmation-top {
@@ -696,7 +697,7 @@
   #confirmation button {
     display: block;
     width: 360px;
-    background-color: #53BE31;
+    background-color: #0070BA;
     border: 0px solid;
     border-radius: 3px;
     color: white;
@@ -710,7 +711,7 @@
   #confirmation button:hover {
     display: block;
     width: 360px;
-    background-color: #68d049;
+    background-color: #006CAA;
     border: 0px solid;
     border-radius: 3px;
     color: white;
@@ -726,7 +727,8 @@
   #confirmation {
     display: block;
     width: 100%;
-    padding: 0px;
+    color: #666666;
+    padding: 30px 0px 0px 0px;
     margin: 0px;
   }
   #confirmation .confirmation-top {
@@ -822,7 +824,7 @@
   #confirmation button {
     display: block;
     width: 90%;
-    background-color: #53BE31;
+    background-color: #0070BA;
     border: 0px solid;
     border-radius: 3px;
     color: white;
@@ -836,7 +838,7 @@
   #confirmation button:hover {
     display: block;
     width: 90%;
-    background-color: #68d049;
+    background-color: #006CAA;
     border: 0px solid;
     border-radius: 3px;
     color: white;
@@ -850,18 +852,16 @@
 }
 #confirmation .link {
   display: block;
-  color: white;
+  color: #666666;
   font-size: 14px;
   text-align: center;
-  opacity: 1;
   margin: 20px auto;
-  transition: opacity 0.2s;
+  transition: color 0.2s;
 }
 #confirmation .link:hover {
   display: block;
-  color: white;
+  color: #595959;
   font-size: 14px;
   text-align: center;
-  opacity: 0.5;
   margin: 20px auto;
 }

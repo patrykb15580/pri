@@ -7,7 +7,7 @@
 		<?php }
 	?>
 	<a id="menu" class="<?= H::clientCurrentMenu($params, 'actions') ?> client_menu_actions" href="/clients/<?= $params['client_id'] ?>">
-		<i class="fa fa-product-hunt" aria-hidden="true"></i> Akcje promocyjne
+		<i class="fa fa-bullhorn" aria-hidden="true"></i> Akcje promocyjne
 	</a>
 	<a id="menu" class="<?= H::clientCurrentMenu($params, 'contests') ?> client_menu_actions" href="/clients/<?= $params['client_id'] ?>/contests">
 		<i class="fa fa-trophy" aria-hidden="true"></i> Konkursy
@@ -21,12 +21,12 @@
 		<i class="fa fa-history" aria-hidden="true"></i> Historia
 	</a>
 	<a id="menu" class="<?= H::clientCurrentMenu($params, 'code') ?> client_menu_code" href="/clients/<?= $params['client_id'] ?>/code">
-		<i class="fa fa-ticket" aria-hidden="true"></i> Wprowadź kod
+		<i class="fa fa-qrcode" aria-hidden="true"></i> Wprowadź kod
 	</a>
-	<a id="menu" class="<?= H::promotorCurrentMenu($params, 'account') ?> promotor_menu_account" href="<?= $router->generate('edit_client', ['client_id'=>$params['client_id']]) ?>">
+	<a id="menu" class="<?= H::clientCurrentMenu($params, 'account') ?> client_menu_account" href="<?= $router->generate('edit_client', ['client_id'=>$params['client_id']]) ?>">
 		<i class="fa fa-cog fa-lg" aria-hidden="true"></i> Ustawienia konta
 	</a>
-	<a id="menu" class="<?= H::promotorCurrentMenu($params, 'sign-out') ?> promotor_menu_logout" href="<?= $router->generate('sign_out', []) ?>">
+	<a id="menu" class="<?= H::clientCurrentMenu($params, 'sign-out') ?> client_menu_logout" href="<?= $router->generate('sign_out', []) ?>">
 		<i class="fa fa-sign-out" aria-hidden="true"></i> <span>Wyloguj</span>
 	</a>
 </div>

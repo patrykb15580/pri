@@ -66,6 +66,8 @@
 <?php Alerts::showAlert(); ?>
 
 <div id="top" class="dark_font">
+	<img class="logo" src="/assets/image/punktacja-logo.png">
+	<span class="logo">Punktacja.pl</span>
 	<button class="toggle-menu"><i class="fa fa-bars" aria-hidden="true"></i></button>
 	<!--
 	<div id="main-layout-user" class="dark_font">

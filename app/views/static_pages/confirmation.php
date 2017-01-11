@@ -1,6 +1,6 @@
 <?php	
 	$router = Config::get('router');
-	$path = $router->generate('start_page', []);
+	$path = $router->generate('app', []);
 ?>
 <div id="confirmation">
 	<div class="confirmation-top">

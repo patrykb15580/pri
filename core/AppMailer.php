@@ -39,6 +39,7 @@ class AppMailer
 		    'html'      => $this->body,
 		    'text'      => '',
 		    'from'      => 'Punktacja.pl',
+		    'replyto'	=> $this->reply_to,
 		  );
 
 

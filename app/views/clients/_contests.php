@@ -9,7 +9,7 @@ foreach ($client->promotors() as $promotor) {
 	if ($i !== 0) { 
 		$avatar = $promotor->avatar();?>
 		<div class="client-view-item-top">
-			<p class="client-view-item-title"><?= $promotor->name ?></p>
+			<?= $promotor->name ?>
 		</div>
 		<div class="client-view-item-box">
 			<?php foreach ($contests as $contest) { 

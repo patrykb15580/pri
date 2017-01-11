@@ -12,6 +12,7 @@
 		<br /><br /><input type="submit" value="Zaloguj">
 	</form>
 </div>
+
 <div class="static-pages-data">
 	admin@punktacja.pl -> zaq1@WSX
 	<br /><br /><br />

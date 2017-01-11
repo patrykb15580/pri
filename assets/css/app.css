@@ -2,16 +2,27 @@
 @media only screen and (min-width: 1000px){
     div#top{
         display: block;
-        width: 98%;
-        height: 80px;
+        width: calc(100% - 40px);
+        height: 60px;
         margin: 0px;
-        padding: 0px 1%;
-        text-align: right; 
+        padding: 20px 20px; 
         font-weight: bold;
         color: white;
         border-width: 0px 0px 2px 0px;
         border-color: #DCE6F0;
         border-style: solid;
+    }
+    #top img.logo {
+        display: inline-block;
+        height: 60px;
+        vertical-align: middle;
+    }
+     #top span.logo {
+        display: inline-block;
+        font-size: 30px;
+        font-weight: 700;
+        color: #181818;
+        vertical-align: middle;
     }
     div#container{
         display: block;
@@ -23,9 +34,9 @@
     div#side_bar{
         display: inline-block;
         float: left;
-        width: 18%;
+        width: 280px;
         height: 80%;
-        margin: 2% 0px auto 0px;
+        margin: 36px 0px auto 0px;
         padding: 0px;
     }
     .toggle-menu{
@@ -35,7 +46,7 @@
         display: inline-block;
         min-height: calc(92vh - 40px);
         float: left;
-        width: 81.8%;
+        width: calc(100% - 282px);
         margin: 0px;
         padding: 0px 0px 40px 0px;
         border-width: 0px 0px 0px 2px;
@@ -59,15 +70,27 @@
 @media only screen and (max-width: 999px){
     div#top{
         display: block;
-        width: 100%;
+        width: calc(100% - 20px);
         height: 56px;
         margin: 0px;
-        padding: 0px; 
+        padding: 10px 10px; 
         font-weight: bold;
         color: white;
         border-width: 0px 0px 2px 0px;
         border-color: #DCE6F0;
         border-style: solid;
+    }
+    #top img.logo {
+        display: inline-block;
+        height: 56px;
+        vertical-align: middle;
+    }
+    #top span.logo {
+        display: inline-block;
+        font-size: 26px;
+        font-weight: 700;
+        color: #181818;
+        vertical-align: middle;
     }
     div#container{
         display: block;

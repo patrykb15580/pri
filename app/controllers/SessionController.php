@@ -22,7 +22,13 @@ class SessionController extends Controller
 		$this->auth(__FUNCTION__);
 		$router = Config::get('router');
 		$this->alert('info', 'Zostałeś pomyślnie wylogowany');
-		header('Location: '.$router->generate('login', []));
+
+		if (get_class($_SESSION['user']) == 'Client') {
+			$path = $router->generate('login', []);
+		} else {
+			$path = $router->generate('promotor_login', []);
+		}
+		header('Location: '.$path);
 		unset($_SESSION['user']);
 	}
 

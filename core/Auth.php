@@ -62,7 +62,7 @@
 			$client = $client[0];
 			$login_error = 'Błędny login lub hasło';
 
-			if (!empty($client) && $client->password_digest == Password::encryptPassword('')) {
+			if (empty($client) || $client->password_digest == Password::encryptPassword('')) {
 				new Alerts('error', $login_error);
 				header('Location: '.$router->generate('login', []));
 			}

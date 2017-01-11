@@ -22,7 +22,8 @@ class Alerts
 		if ($type == 'error') {
 			$icon = '<i class="fa fa-exclamation-circle" aria-hidden="true"></i>';
 		}
-		$alert = '<div class="'.$type.'_message alert"><p id="alert_text">'.$icon.' '.$message.'</p><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>';
+		/* <div class="'.$type.'_message alert"><p id="alert_text">'.$icon.' '.$message.'</p><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div> */
+		$alert = '<div class="'.$type.'_message alert"><p id="alert_text">'.$icon.' '.$message.'</p></div>';
 		
 		return $alert;
 	}

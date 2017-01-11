@@ -1,6 +1,6 @@
 <?php	
 	$router = Config::get('router');
-	$path = $router->generate('start_page', []);
+	$path = $router->generate('app', []);
 	$contest = $promotion_action->contest();
 	
 	$day = date('d', strtotime($contest->to_at));

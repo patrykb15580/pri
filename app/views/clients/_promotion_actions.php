@@ -5,10 +5,13 @@ foreach ($client->promotorsActions() as $promotor) {
 	$balance = $balance[0];
 	$avatar = $promotor->avatar();?>
 	<div class="client-view-item-top">
-		<p class="client-view-item-title"><?= $promotor->name ?></p>
-		<a href="<?= $path_rewards ?>"><button class="client-view-item-button">Katalog nagród</button></a>
+		<?= $promotor->name ?>
 	</div>
 	<div class="client-view-item-box">
+		<a href="<?= $path_rewards ?>"><button class="client-view-item-button">Katalog nagród</button></a>
+		<!--
+			<a href="<?= $path_rewards ?>"><button class="client-view-item-button">Katalog nagród</button></a>
+		-->
 		<?php foreach ($promotion_actions as $promotion_action) { 
 			if ($promotion_action->promotor_id == $promotor->id) { ?>
 				<div id="data-box">
@@ -26,9 +29,16 @@ foreach ($client->promotorsActions() as $promotor) {
 				</div>
 			<?php } 
 		} ?>
-		<div class="client-view-item-box-bottom">
-			<span>Regulamin</span><span>saldo <p class="client-balance"><?= $balance->balance ?> pkt</p></span>
-		</div>
+		<table class="client-view-bottom-table">
+			<tr>
+				<td>
+					Regulamin
+				</td>
+				<td>
+					saldo <span class="client-balance"><?= $balance->balance ?> pkt</span>
+				</td>
+			</tr>
+		</table>
 	</div>
 <?php } ?>
 

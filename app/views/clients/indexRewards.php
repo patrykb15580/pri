@@ -7,6 +7,7 @@
 </div>
 -->
 
+<!--
 <div class="client-view-title-box">
 	<?php 
 		$avatar = $promotor->avatar();
@@ -16,20 +17,25 @@
 			<img class="client-view-title-avatar" src="/system/promotor_avatars/<?= $promotor->id ?>/small/<?= $avatar->file_name ?>">
 		<?php }
 	?>
+
 	<div class="client-view-avatar-box">
 		<p><?= $promotor->name ?></p>
 		<br />Katalog nagród
 	</div>
 </div>
-<div class="client-view-reward-container">
-	<?php 
-		$rewards = $promotor->activeRewards();
+-->
 
-		if (count($rewards) == 0) {
-			include 'app/views/layouts/_no_results.php';
-		} else include 'app/views/clients/_rewards.php';
-	?>
+<div class="client-view-reward-top">
+	<p class="promotor-name"><?= $promotor->name ?></p>
+	<p>Katalog nagród</p>
 </div>
+<?php 
+	$rewards = $promotor->activeRewards();
+
+	if (count($rewards) == 0) {
+		include 'app/views/layouts/_no_results.php';
+	} else include 'app/views/clients/_rewards.php';
+?>
 
 <div class="modal-bg">
 	

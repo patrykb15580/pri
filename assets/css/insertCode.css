@@ -1,0 +1,308 @@
+@media only screen and (min-width: 800px){
+  #insert-code{
+    width: 100%;
+    background-color: #FFFFFF;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    padding: 0px 0px 20px 0px;
+  }
+  #insert-code .insert-code-logo {
+    width: 100px;
+    margin: 40px auto 20px auto;
+  }
+  #insert-code .insert-code-input{
+    display: block;
+    color: #47525D;
+    font-size: 18px;
+    text-align: center;
+    width: 296px;
+    border: 2px solid;
+    border-color: #CECECE;
+    border-radius: 3px;
+    margin: 0px auto 10px auto;
+    padding: 10px 10px;
+    transition: border-color 0.2s;
+  }
+  #insert-code .insert-code-input:focus{
+    display: block;
+    color: #47525D;
+    font-size: 18px;
+    text-align: center;
+    width: 296px;
+    border: 2px solid;
+    border-color: #2895F1;
+    border-radius: 3px;
+    margin: 0px auto 10px auto;
+    padding: 10px 10px;
+  }
+  #insert-code .insert-code-button{
+    display: block;
+    width: 320px;
+    margin: 0px auto;
+    padding: 14px 0px 14px 0px;
+    background-color: #0070BA;
+    border: 0px solid;
+    border-radius: 3px;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    transition: background-color 0.2s;
+  }
+  #insert-code .insert-code-button:hover{
+    display: block;
+    width: 320px;
+    margin: 0px auto;
+    padding: 14px 0px 14px 0px;
+    background-color: #006caa;
+    border: 0px solid;
+    border-radius: 3px;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+  }
+  .insert-code-bottom {
+    display: block;
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    z-index: -1;
+    background-color: #F8F9FB;
+    color: #0070BA;
+    font-size: 18px;
+    text-align: center;
+    margin: 0px;
+    padding: 26px 0px;
+  }
+  .insert-code-bottom a{
+    color: #0070BA;
+  }
+  .insert-code-bottom span:nth-child(6n + 1){
+    font-weight: 700;
+  }
+
+  /*#insert-code{
+    background-color: white;
+    width: 460px;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    border: 0px solid;
+    border-radius: 5px;
+    padding: 18px 4px;
+  }
+  #insert-code .insert-code-input{
+    height: 38px;
+    display: inline-block;
+    color: #47525D;
+    font-size: 16px;
+    width: 230px;
+    border: 1px solid #CBD0D4;
+    border-radius: 3px;
+    margin: 0px;
+    padding: 2px 3%;
+  }
+  #insert-code .insert-code-button{
+    display: inline-block;
+    width: 160px;
+    margin: 0px 0px 0px 10px;
+    padding: 10px;
+    background-color: #53BE31;
+    border: 0px solid;
+    border-radius: 3px;
+    color: white;
+    font-size: 20px;
+    vertical-align: -2px;
+    text-align: center;
+    transition: background-color 0.2s;
+  }
+  #insert-code .insert-code-button:hover{
+    display: inline-block;
+    width: 160px;
+    margin: 0px 0px 0px 10px;
+    padding: 10px;
+    background-color: #68d049;
+    border: 0px solid;
+    border-radius: 3px;
+    color: white;
+    font-size: 20px;
+    vertical-align: -2px;
+    text-align: center;
+    cursor: pointer;
+  }*/
+}
+@media only screen and (min-width: 400px) and (max-width: 799px){
+  #insert-code{
+    width: 100%;
+    background-color: #FFFFFF;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    padding: 0px 0px 20px 0px;
+  }
+  #insert-code .insert-code-logo {
+    width: 100px;
+    margin: 40px auto 20px auto;
+  }
+  #insert-code .insert-code-input{
+    display: block;
+    color: #47525D;
+    font-size: 18px;
+    text-align: center;
+    width: 296px;
+    border: 2px solid;
+    border-color: #CECECE;
+    border-radius: 3px;
+    margin: 0px auto 10px auto;
+    padding: 10px 10px;
+    transition: border-color 0.2s;
+  }
+  #insert-code .insert-code-input:focus{
+    display: block;
+    color: #47525D;
+    font-size: 18px;
+    text-align: center;
+    width: 296px;
+    border: 2px solid;
+    border-color: #2895F1;
+    border-radius: 3px;
+    margin: 0px auto 10px auto;
+    padding: 10px 10px;
+  }
+  #insert-code .insert-code-button{
+    display: block;
+    width: 320px;
+    margin: 0px auto;
+    padding: 14px 0px 14px 0px;
+    background-color: #0070BA;
+    border: 0px solid;
+    border-radius: 3px;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    transition: background-color 0.2s;
+  }
+  #insert-code .insert-code-button:hover{
+    display: block;
+    width: 320px;
+    margin: 0px auto;
+    padding: 14px 0px 14px 0px;
+    background-color: #006caa;
+    border: 0px solid;
+    border-radius: 3px;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+  }
+  .insert-code-bottom {
+    display: block;
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    z-index: -1;
+    background-color: #F8F9FB;
+    color: #0070BA;
+    font-size: 18px;
+    text-align: center;
+    margin: 0px;
+    padding: 26px 0px;
+  }
+  .insert-code-bottom a{
+    color: #0070BA;
+  }
+  .insert-code-bottom span:nth-child(6n + 1){
+    font-weight: 700;
+  }
+}
+@media only screen and (max-width: 399px){
+  #insert-code{
+    width: 100%;
+    background-color: #FFFFFF;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    padding: 0px 0px 20px 0px;
+  }
+  #insert-code .insert-code-logo {
+    width: 100px;
+    margin: 40px auto 20px auto;
+  }
+  #insert-code .insert-code-input{
+    display: block;
+    color: #47525D;
+    font-size: 18px;
+    text-align: center;
+    width: calc(80% - 24px);
+    border: 2px solid;
+    border-color: #CECECE;
+    border-radius: 3px;
+    margin: 0px auto 10px auto;
+    padding: 10px 10px;
+    transition: border-color 0.2s;
+  }
+  #insert-code .insert-code-input:focus{
+    display: block;
+    color: #47525D;
+    font-size: 18px;
+    text-align: center;
+    width: calc(80% - 24px);
+    border: 2px solid;
+    border-color: #2895F1;
+    border-radius: 3px;
+    margin: 0px auto 10px auto;
+    padding: 10px 10px;
+  }
+  #insert-code .insert-code-button{
+    display: block;
+    width: 80%;
+    margin: 0px auto;
+    padding: 14px 0px 14px 0px;
+    background-color: #0070BA;
+    border: 0px solid;
+    border-radius: 3px;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    transition: background-color 0.2s;
+  }
+  #insert-code .insert-code-button:hover{
+    display: block;
+    width: 80%;
+    margin: 0px auto;
+    padding: 14px 0px 14px 0px;
+    background-color: #006caa;
+    border: 0px solid;
+    border-radius: 3px;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+  }
+  .insert-code-bottom {
+    display: block;
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    z-index: -1;
+    background-color: #F8F9FB;
+    color: #0070BA;
+    font-size: 18px;
+    text-align: center;
+    margin: 0px;
+    padding: 26px 0px;
+  }
+  .insert-code-bottom a{
+    color: #0070BA;
+  }
+  .insert-code-bottom span:nth-child(6n + 1){
+    font-weight: 700;
+  }
+}

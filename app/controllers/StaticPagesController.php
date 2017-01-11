@@ -4,11 +4,31 @@
 */
 class StaticPagesController extends Controller
 {
-	public $non_authorized = ['startPage', 'contestOpinion', 'giveContestOpinion', 'contest', 'contestAnswer', 'login', 'promotorLogin', 'insertCode', 'getCode', 'useCode', 'addPoints', 'confirmation', 'contestConfirmation', 'getOrCreateClient', 'loginHashSend', 'newPassword', 'forgotPassword', 'forgotPasswordSendMail', 'changePassword'];
+	public $non_authorized = ['startPage', 'application', 'home', 'contestOpinion', 'giveContestOpinion', 'contest', 'contestAnswer', 'login', 'promotorLogin', 'insertCode', 'getCode', 'useCode', 'addPoints', 'confirmation', 'contestConfirmation', 'getOrCreateClient', 'loginHashSend', 'newPassword', 'forgotPassword', 'forgotPasswordSendMail', 'changePassword'];
 
 	public function startPage()
 	{
+		$router = Config::get('router');
+
+		if(DetectMobile::isMobile() == true) {
+			
+			header('Location: '.$router->generate('app', []));
+
+		} else {
+			header('Location: '.$router->generate('home', []));
+		}
+	}
+
+	public function application()
+	{
 		$view = (new View($this->params, [], 'start'))->render();
+
+		return $view;
+	}
+
+	public function home()
+	{
+		$view = (new View($this->params, [], 'start_page'))->render();
 		return $view;
 	}
 
@@ -26,19 +46,19 @@ class StaticPagesController extends Controller
 					$view = (new View($this->params, ['action'=>$action], 'start'))->render();
 					return $view;
 				} else {
-					$path = $router->generate('start_page', []);
+					$path = $router->generate('app', []);
 					
 					$this->alert('error', 'Ten konkurs został zakończony lub jest nie aktywny');
 					header('Location: '.$path);
 				}
 			} else {
-				$path = $router->generate('start_page', []);
+				$path = $router->generate('app', []);
 				
 				$this->alert('error', 'Podany konkurs nie istnieje');
 				header('Location: '.$path);
 			}
 		} else {
-			$path = $router->generate('start_page', []);
+			$path = $router->generate('app', []);
 				
 			$this->alert('error', 'Podany konkurs nie istnieje');
 			header('Location: '.$path);
@@ -100,19 +120,19 @@ class StaticPagesController extends Controller
 					$view = (new View($this->params, ['action'=>$action], 'start'))->render();
 					return $view;
 				} else {
-					$path = $router->generate('start_page', []);
+					$path = $router->generate('app', []);
 					
 					$this->alert('error', 'Ten konkurs został zakończony lub jest nie aktywny');
 					header('Location: '.$path);
 				}
 			} else {
-				$path = $router->generate('start_page', []);
+				$path = $router->generate('app', []);
 				
 				$this->alert('error', 'Podany konkurs nie istnieje');
 				header('Location: '.$path);
 			}
 		} else {
-			$path = $router->generate('start_page', []);
+			$path = $router->generate('app', []);
 				
 			$this->alert('error', 'Podany konkurs nie istnieje');
 			header('Location: '.$path);
@@ -164,7 +184,7 @@ class StaticPagesController extends Controller
 		} else {
 			$this->alert('error', 'Bierzesz już udział w tym konkursie');
 
-			$path = $router->generate('start_page', []);
+			$path = $router->generate('app', []);
 
 			header('Location: '.$path);
 		}
@@ -198,7 +218,7 @@ class StaticPagesController extends Controller
 
 		if (empty($this->params['code'])) {
 			$this->alert('error', 'Podaj swój kod');
-			$path = $router->generate('start_page', []);
+			$path = $router->generate('app', []);
 			header('Location: '.$path);
 		}
 
@@ -219,7 +239,7 @@ class StaticPagesController extends Controller
 		}
 		else {
 			$router = Config::get('router');
-			$path = $router->generate('start_page', []);
+			$path = $router->generate('app', []);
 			$this->alert('error', 'Błędny lub nieaktywny kod');
 			header('Location: '.$path);
 		}

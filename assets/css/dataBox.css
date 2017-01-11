@@ -1,7 +1,7 @@
 @media only screen and (min-width: 800px) {
   #data-box {
-    width: 96%;
-    margin: 0 auto;
+    width: calc(100% - 20px);
+    margin: 0px 10px;
     border-width: 0px 0px 2px 0px;
     border-color: #E8EEF5;
     border-style: solid;
@@ -10,7 +10,7 @@
     display: inline-block;
     width: calc(100% - 28px);
     margin: 0px;
-    padding: 10px 0px;
+    padding: 14px 0px;
     font-size: 16px;
     vertical-align: middle;
   }
@@ -37,9 +37,10 @@
     width: 100%;
     font-size: 12px
     margin: 0px;
+    padding: 0px 0px 10px 0px;
   }
   #data-box .details p{
-    font-size: 12px;
+    font-size: 14px;
     margin: 0px;
     padding: 0px;
   }
@@ -51,6 +52,7 @@
     width: 50%;
     font-size: 12px;
     padding: 0px;
+    line-height: 26px;
   }
   #data-box .details td:nth-child(2n+2) {
     text-align: right;
@@ -58,8 +60,8 @@
 }
 @media only screen and (min-width: 400px) and (max-width: 799px) {
   #data-box {
-    width: 96%;
-    margin: 0 auto;
+    width: calc(100% - 20px);
+    margin: 0px 10px;
     border-width: 0px 0px 2px 0px;
     border-color: #E8EEF5;
     border-style: solid;
@@ -68,7 +70,7 @@
     display: inline-block;
     width: calc(100% - 28px);
     margin: 0px;
-    padding: 10px 0px;
+    padding: 14px 0px;
     font-size: 16px;
     vertical-align: middle;
   }
@@ -95,9 +97,10 @@
     width: 100%;
     font-size: 12px
     margin: 0px;
+    padding: 0px 0px 10px 0px;
   }
   #data-box .details p{
-    font-size: 12px;
+    font-size: 14px;
     margin: 0px;
     padding: 0px;
   }
@@ -109,6 +112,7 @@
     width: 50%;
     font-size: 12px;
     padding: 0px;
+    line-height: 26px;
   }
   #data-box .details td:nth-child(2n+2) {
     text-align: right;
@@ -116,8 +120,8 @@
 }
 @media only screen and (max-width: 399px) {
   #data-box {
-    width: 96%;
-    margin: 0 auto;
+    width: calc(100% - 20px);
+    margin: 0px 10px;
     border-width: 0px 0px 2px 0px;
     border-color: #E8EEF5;
     border-style: solid;
@@ -153,9 +157,10 @@
     width: 100%;
     font-size: 12px
     margin: 0px;
+    padding: 0px 0px 4px 0px;
   }
   #data-box .details p{
-    font-size: 12px;
+    font-size: 14px;
     margin: 0px;
     padding: 0px;
   }
@@ -167,6 +172,7 @@
     width: 50%;
     font-size: 12px;
     padding: 0px;
+    line-height: 26px;
   }
   #data-box .details td:nth-child(2n+2) {
     text-align: right;

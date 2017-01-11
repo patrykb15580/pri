@@ -115,6 +115,8 @@ $router->map( 'GET', '/sign-out', 'SessionController#delete', 'sign_out' );
 
 /* Static pages */
 $router->map( 'GET', '/', 'StaticPagesController#startPage', 'start_page' );
+$router->map( 'GET', '/application', 'StaticPagesController#application', 'app' );
+$router->map( 'GET', '/home', 'StaticPagesController#home', 'home' );
 $router->map( 'GET', '/opinion/[a:code]', 'StaticPagesController#contestOpinion', 'contest_opinion' );
 $router->map( 'POST', '/give-opinion/[a:code]', 'StaticPagesController#giveContestOpinion', 'give_contest_opinion' );
 $router->map( 'GET', '/contest/[i:client_id]/[a:code]', 'StaticPagesController#contest', 'contest_answer' );

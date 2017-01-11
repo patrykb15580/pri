@@ -12,7 +12,7 @@
 -->
 
 	<div class="client-view-title-box">
-		<i class="fa fa-product-hunt client-view-title-icon green-icon" aria-hidden="true"></i><p class="client-view-title-text">Akcje promocyjne</p>
+		<i class="fa fa-bullhorn client-view-title-icon green-icon" aria-hidden="true"></i><p class="client-view-title-text">Akcje promocyjne</p>
 	</div>
 	<?php 
 		$promotion_actions = $client->promotionActions();
