@@ -34,7 +34,6 @@
 	<br /><br />
 	<label class="form-page-file-upload" for="form-page-file-button"><i class="zmdi zmdi-plus"></i>Dodaj zdjęcia <p class="files-number"></p></label>
 	</div>
-	
 	<input id="form-page-file-button" type="file" name="image[]" accept="image/jpeg, image/png, image/gif" multiple="multiple">
 	<br /><br /><input class="form-page-button" type="submit" value="Zapisz zmiany">
 	<a href="<?= $prev_page ?>">Anuluj</a>

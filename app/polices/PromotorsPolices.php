@@ -139,4 +139,32 @@ class PromotorsPolices extends Polices
 			return true;
 		}
 	}
+	public function mailing()
+	{
+		if ($this->user->isPromotor() && $this->user->id == $this->obj->id) {
+			return true;
+		}
+
+		if ($this->user->isClient()) {
+			return false;
+		}
+
+		if ($this->user->isAdmin()) {
+			return true;
+		}
+	}
+	public function sendMailing()
+	{
+		if ($this->user->isPromotor() && $this->user->id == $this->obj->id) {
+			return true;
+		}
+
+		if ($this->user->isClient()) {
+			return false;
+		}
+
+		if ($this->user->isAdmin()) {
+			return true;
+		}
+	}
 }

@@ -255,6 +255,99 @@ class PromotorsController extends Controller
 
 	}
 
+	public function mailing()
+	{
+		$promotor = $this->promotor();
+		$this->auth(__FUNCTION__, $promotor);
+
+		$view = (new View($this->params, ['promotor'=>$promotor]))->render();
+		return $view;
+	}
+
+	public function sendMailing()
+	{
+		$promotor = $this->promotor();
+		$this->auth(__FUNCTION__, $promotor);
+
+		$router = Config::get('router');
+
+		if (!$promotor->canSendEmail()) {
+			$this->alert('error', 'Nie można wysłać więcej wiadomości w tym tygodniu');
+
+			header('Location: '.$router->generate('promotors_mailing', ['promotors_id'=>$promotor->id]));
+
+			return false;
+		}
+
+		if ($this->params['group'] == 0) {
+			$action_id = 0;
+		} else {
+			$action_id = $this->params['action'];
+		}
+
+		$recipients = $this->getEmailAddresses($action_id, $promotor);
+
+		$mail = new Mail(['promotor_id' => $promotor->id, 'subject' => $this->params['title'], 'recipients' => implode(', ', $recipients['id']), 'content' => $this->params['content'], 'mailed' => date(Config::get('mysqltime'))]);
+
+		if ($mail->save()) {
+
+			$send = (new PromotorMailer)->promotorMailing($promotor, ['title'=>$mail->subject, 'content'=>$mail->content, 'recipients'=>$recipients['emails']]);
+
+			$send = json_decode($send);
+
+			if ($send->message == 'success') {
+				
+				$this->alert('info', 'Twója wiadomość została wysłany do wybranych klientów');
+			} else {
+				$mail->destroy();
+
+				$this->alert('error', 'Nieudało się wysłać wiadomości, spróbuj jeszcze raz');
+			}
+		} else {
+			$this->alert('error', 'Nieudało się wysłać wiadomości, spróbuj jeszcze raz');		
+		}
+		
+		header('Location: '.$router->generate('promotors_mailing', ['promotors_id'=>$promotor->id]));
+
+	}
+
+	public function getEmailAddresses($action_id, $promotor)
+	{	
+		$recipients = [];
+
+		if ($action_id == 0) {
+			$clients = $promotor->clients();
+
+			$recipients = $this->listEmails($clients);
+		}
+		if ($action_id > 0) {
+			$action = Action::find($action_id);
+
+			$clients = $action->clients();
+
+			$recipients = $this->listEmails($clients);
+		}
+
+		return $recipients;
+	}
+
+	public function listEmails($clients)
+	{
+		$id = [];
+		$emails = [];
+
+		foreach ($clients as $client) {
+
+			array_push($id, $client->id);
+			array_push($emails, $client->email);
+		}
+
+		$recipients['id'] = $id;
+		$recipients['emails'] = $emails;
+
+		return $recipients;
+	}
+
 	public function getReport()
 	{	
 		header('Content-Type: application/pdf; charset=utf-8');

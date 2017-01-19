@@ -34,7 +34,7 @@
 	</div>
 	<div class="content">
 		<span class="text-with-image">
-			<span class="highlighted-text">Punktacja.pl</span> pozwala na zbudowanie relacji pomiędzy klientem a partnerem i poznanie się bliżej. 
+			<span class="highlighted-text">Punktacja.pl pozwala na zbudowanie relacji pomiędzy klientem a partnerem i poznanie się bliżej.</span>
 			<br /><br />
 			Zbieraj punkty w programie lojalnościowym lub oceniaj partnerów w konkursach w zamian odbieraj nagrody. 
 			<br /><br />
@@ -56,16 +56,17 @@
 	</div>
 	<div class="content">
 		<span class="text-with-image">
-			W trakcie codziennych zakupów, których i tak nie unikniesz, zbierasz punkty a potem możesz skorzystać z rabatów i prezentów oferowanych przez Promotorów.<br /> 
-			Nie musisz nosić w portfelu kilka kart lojalnościowych wystarczy Twój telefon, który zawsze masz przy sobie.
-
-			<h2>Jak to działa?</h2>
+			W trakcie codziennych zakupów, których i tak nie unikniesz, zbierasz punkty a potem możesz skorzystać z rabatów i prezentów oferowanych przez Promotorów.<br /><br />
+			<span class="highlighted-text">Nie musisz nosić w portfelu kilka kart lojalnościowych wystarczy Twój telefon, który zawsze masz przy sobie.</span>
+			<br /><br /><br />
+			<span class="highlighted-text">Jak to działa?</span>
+			<br /><br />
 			Promotor oznacza swoje produkty kodem QR, który ma określoną wartość punktową.<br /><br />
 			Ty robisz zakupy, skanujesz kod i zbierasz punkty na swoim koncie.<br />
 			Odbierasz nagrody i korzystasz z promocji w dowolnym czasie i na dowolnym urządzeniu.
 		</span>
 		<span class="image">
-			<img src="/assets/image/fotolia-test.jpg" alt="image">
+			<img src="/assets/image/fotolia-test.jpg">
 		</span>
 	</div>	
 </div>
@@ -79,13 +80,14 @@
 		Korzyści dla Twojego biznesu
 	</div>
 	<div class="content">
-		Otrzymujesz profesjonalne rozwiązanie, które wyróżni Cię wśród konkurencji i jest gotowe do wdrożenia w twoim biznesie już teraz.<br /><br />
+		<span class="highlighted-text">Otrzymujesz profesjonalne rozwiązanie, które wyróżni Cię wśród konkurencji i jest gotowe do wdrożenia w twoim biznesie już teraz.</span>
+		<br /><br />
 		Łatwy i przejrzysty interfejs do samodzielnej obsługi.<br />
 		Sam ustalasz jakie promocje oferujesz swoim klientom.<br />
 		Sam wybierasz nagrody jakie mogą wybrać Twoi klienci.<br />
 		Nie wiążesz się żadną stałą opłatą czy abonamentem.<br /><br />
 
-		Co zyskujesz?
+		<span class="highlighted-text">Co zyskujesz?</span>
 		<ul>
 			<li>
 				<span>Możliwość zdobycie danych kontaktowych swoich klientów</span>
@@ -189,3 +191,86 @@
 		//'top': $(window).scrollTop() + 'px'
 	});*/
 </script>
+
+
+
+<!--
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        punktacja.pl
+    </title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/startPage.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/useCode.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/useCodeConfirmation.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/login.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/promotorLogin.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/answerForm.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/tables.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/alerts.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/forgotPassword.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/newPassword.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/rating.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet"> 
+    <script src="js/jquery.guardian-1.0.min.js"></script>
+    <script src="https://use.fontawesome.com/e806e76f5f.js"></script>
+    <script type="text/javascript" src="/assets/javascript/alerts.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<?php Alerts::showAlert(); ?>
+
+<div id="home-page-top">
+    <img class="logo" src="/assets/image/punktacja-logo.png"><span class="logo">Punktacja.pl</span>
+!-
+    <div class="options">
+        <a href="<?= $router->generate('login', []) ?>">Logowanie</a><a href="<?= $router->generate('app', []) ?>">Wprowadź kod</a>
+    </div>
+!-
+</div>
+<div id="home-page-menu">
+!-
+    <div class="fb-like" data-href="https://www.facebook.com/Punktacjapl-1803082866630893/" data-width="100" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+!- 
+    <a href="<?= $router->generate('app', []) ?>">Wprowadź kod</a>
+
+    
+    <span class="scroll" data-bar="about-punktacja">O Punktacja</span>
+    <span class="scroll" data-bar="for-clients">Dla Klienta</span>
+    <span class="scroll" data-bar="for-promotors">Dla Biznesu</span>
+    <span class="scroll" data-bar="contact">Kontakt</span>
+    <a class="fb" href="https://www.facebook.com/Punktacjapl-1803082866630893/" target="_blank">Odwiedź nas <i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+</div>
+<div id="home-page-content">
+<?php 
+    include($path); 
+?>
+</div>
+<div id="home-page-footer">
+    <div class="fb-page-plugin">
+        <div class="fb-page" data-href="https://www.facebook.com/Punktacjapl-1803082866630893/" data-width="500" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+            <blockquote cite="https://www.facebook.com/Punktacjapl-1803082866630893/" class="fb-xfbml-parse-ignore">
+                <a href="https://www.facebook.com/Punktacjapl-1803082866630893/">
+                    Punktacja.pl
+                </a>
+            </blockquote>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/assets/javascript/homePageFbPlugin.js"></script>
+<script type="text/javascript" src="/assets/javascript/homePageScrollMenu.js"></script>
+<script type="text/javascript" src="/assets/javascript/homePageScrollTo.js"></script>
+<script type="text/javascript" src="/assets/javascript/homePageBackToTop.js"></script>
+!-
+<div id="start-top">
+    <button class="toggle-start-menu"><i class="fa fa-bars" aria-hidden="true"></i></button>
+</div>
+!-
+</body>
+</html>
+-->

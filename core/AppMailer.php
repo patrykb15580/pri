@@ -4,7 +4,7 @@
 */
 class AppMailer
 {
-	public $recipients, $reply_to = '', $cc = '', $bcc = '', $attachments = [], $subject, $body, $alt_body = '', $error = ''; 
+	public $recipients, $from = 'Punktacja.pl', $reply_to = '', $cc = '', $bcc = '', $attachments = [], $subject, $body, $alt_body = '', $error = ''; 
 
 	function __construct($attributes = []){
 
@@ -19,16 +19,18 @@ class AppMailer
 		$user = Config::get('sendgrid_login');
 		$pass = Config::get('sendgrid_password');
 
-		$recipients = implode(', ', $this->recipients);
-
 		$json_string = array(
 
-		  'to' => array(
-		    $recipients
-		  ),
+		  'to' => 
+		    $this->recipients
+		  ,
 		  'category' => 'punktacja.pl'
 		);
+		
+		//$test = json_encode($this->recipients);
 
+		//echo "<pre>";
+		//die(print_r($test));
 
 		$mail = array(
 		    'api_user'  => $user,
@@ -38,10 +40,9 @@ class AppMailer
 		    'subject'   => $this->subject,
 		    'html'      => $this->body,
 		    'text'      => '',
-		    'from'      => 'Punktacja.pl',
+		    'from'      => $this->from,
 		    'replyto'	=> $this->reply_to,
-		  );
-
+		);
 
 		$request =  $url.'api/mail.send.json';
 
@@ -62,8 +63,9 @@ class AppMailer
 		curl_close($session);
 
 		// print everything out
-		//print_r($response);
+		// print_r($response);
 
+		return $response;
 
 
 		/*$mail = new PHPMailer;

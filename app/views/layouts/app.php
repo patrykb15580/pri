@@ -46,6 +46,7 @@
 	<link rel="stylesheet" type="text/css" href="/assets/css/alerts.css">
 	<link rel="stylesheet" type="text/css" href="/assets/css/tabs.css">
 	<link rel="stylesheet" type="text/css" href="/assets/css/dataBox.css">
+	<link rel="stylesheet" href="/assets/javascript/trumbowyg/dist/ui/trumbowyg.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -59,6 +60,7 @@
 	<script type="text/javascript" src="/assets/javascript/tabs.js"></script>
 	<script type="text/javascript" src="/assets/javascript/userOptions.js"></script>
 	<script src="/assets/javascript/jquery-cookie/jquery.cookie.js"></script>
+	<script src="/assets/javascript/trumbowyg/dist/trumbowyg.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>

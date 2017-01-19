@@ -23,27 +23,38 @@
 		
 		$router = Config::get('router');
 
+		if (isset($params['page']) && $params['page'] == 'home') {
+			$page = $router->generate('home', []).'?login-error';
+		} else {
+			$page = $router->generate('promotor_login', []);
+		}
+
 		if (!empty($promotor)) {
 			setcookie('remember_promotor_email', $promotor->email);
 			Auth::login($promotor[0]);
 			header('Location: '.$router->generate('stats_promotors', ['promotors_id'=>$_SESSION['user']->id]));
 		} else {
 			new Alerts('error', 'Błędny login lub hasło');
-			header('Location: '.$router->generate('promotor_login', []));
+			header('Location: '.$page);
 		}
 	} 
 
 	public static function authorizeAdmin($params)
 	{
-		
 		$router = Config::get('router');
+
+		if (isset($params['page']) && $params['page'] == 'home') {
+			$page = $router->generate('home', []).'?login-error';
+		} else {
+			$page = $router->generate('promotor_login', []);
+		}
 
 		if ($params['password'] == Config::get('admin_password')) {
 			Auth::login(new Admin);
 			header('Location: '.$router->generate('show_admin', []));
 		} else {
 			new Alerts('error', 'Błędny login lub hasło');
-			header('Location: '.$router->generate('login', []));
+			header('Location: '.$page);
 		}
 	}
 
@@ -54,6 +65,12 @@
 		$client = [];
 		$login_error = '';
 		
+		if (isset($params['page']) && $params['page'] == 'home') {
+			$page = $router->generate('home', []).'?login-error';
+		} else {
+			$page = $router->generate('login', []);
+		}
+
 		if (isset($params['hash'])) {
 			$client = Client::findBy('hash', $params['hash']);
 			$login_error = 'Błędny identyfikator klienta';
@@ -64,7 +81,7 @@
 
 			if (empty($client) || $client->password_digest == Password::encryptPassword('')) {
 				new Alerts('error', $login_error);
-				header('Location: '.$router->generate('login', []));
+				header('Location: '.$page);
 			}
 		}
 		
@@ -79,7 +96,7 @@
 			}
 		} else {
 			new Alerts('error', $login_error);
-			header('Location: '.$router->generate('login', []));
+			header('Location: '.$page);
 		}
 	} 
 

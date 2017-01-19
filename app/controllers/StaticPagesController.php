@@ -4,7 +4,7 @@
 */
 class StaticPagesController extends Controller
 {
-	public $non_authorized = ['startPage', 'application', 'home', 'contestOpinion', 'giveContestOpinion', 'contest', 'contestAnswer', 'login', 'promotorLogin', 'insertCode', 'getCode', 'useCode', 'addPoints', 'confirmation', 'contestConfirmation', 'getOrCreateClient', 'loginHashSend', 'newPassword', 'forgotPassword', 'forgotPasswordSendMail', 'changePassword'];
+	public $non_authorized = ['startPage', 'application', 'home', 'contestOpinion', 'giveContestOpinion', 'contest', 'contestAnswer', 'login', 'promotorLogin', 'insertCode', 'getCode', 'useCode', 'addPoints', 'confirmation', 'contestConfirmation', 'getOrCreateClient', 'loginHashSend', 'newPassword', 'contactMessage', 'promotorApplication', 'forgotPassword', 'forgotPasswordSendMail', 'changePassword'];
 
 	public function startPage()
 	{
@@ -442,6 +442,28 @@ class StaticPagesController extends Controller
 			$view = (new View($this->params, ['token'=>$token, 'client'=>$client], 'start'))->render();
 			return $view;
 		}
+	}
+
+	public function contactMessage()
+	{
+		$router = Config::get('router');
+
+		if ((new AdminMailer)->contactEmail($this->params['contact'], $this->params['name'], $this->params['text'])) {
+			$mail = '?mail=ok';
+		} else {
+			$mail = '?mail=error';
+		}
+
+		header('Location: '.$router->generate('home', []).$mail.'#contact');
+	}
+
+	public function promotorApplication()
+	{
+		$router = Config::get('router');
+
+		(new AdminMailer)->promotorApplication($this->params['company'], $this->params['email'], $this->params['name'], $this->params['phone_number']);
+
+		header('Location: '.$router->generate('home', []));
 	}
 
 	public function changePassword()

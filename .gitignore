@@ -18,6 +18,10 @@
 /composer.lock
 /.htaccess
 /system
+/composer.phar
+/php.ini
+/tmp/
+/blog/
 
 /vendor/
 

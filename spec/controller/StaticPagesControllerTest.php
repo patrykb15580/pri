@@ -89,7 +89,7 @@ class StaticPagesControllerTest extends Tests
 		$curl = new TesterTestRequest((new PromotionCodesPackagesController($params))->generate(), 'http://'.Config::get('host').'/package/generate', null, []);
 	}
 
-	public function testStartPageAction()
+	/*public function testStartPageAction()
 	{
 		$params['controller'] = 'StaticPagesController';
 		$params['action'] = 'startPage';
@@ -106,7 +106,7 @@ class StaticPagesControllerTest extends Tests
 		Assert::expect(count($elements)) -> toEqual(2);
 
 		unset($_SESSION['user']);
-	}
+	}*/
 
 	public function testLoginAction()
 	{

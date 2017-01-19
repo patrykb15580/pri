@@ -33,11 +33,14 @@ $router->map( 'GET', '/promotors/[i:promotors_id]/account', 'PromotorsController
 $router->map( 'POST', '/promotors/[i:promotors_id]/account/update', 'PromotorsController#update', 'update_promotor' );
 $router->map( 'GET', '/promotors/[i:promotors_id]/clients', 'PromotorsController#indexClients', 'index_clients' );
 $router->map( 'GET', '/promotors/[i:promotors_id]/orders', 'PromotorsController#indexOrders', 'index_promotors_orders' );
+$router->map( 'GET', '/promotors/[i:promotors_id]/mailing', 'PromotorsController#mailing', 'promotors_mailing' );
 $router->map( 'GET', '/promotors/[i:promotors_id]/orders/[i:order_id]', 'PromotorsController#showOrders', 'show_promotors_orders' );
 
 /* Promotor report */
 $router->map( 'POST', '/promotor/[i:promotors_id]/get-report', 'PromotorsController#getReport', 'get_report' );
 
+/* Promotor mailing */
+$router->map( 'POST', '/promotor/[i:promotors_id]/send-mailing', 'PromotorsController#sendMailing', 'send_promotor_mailing' );
 
 /* Promotor clients charts */
 $router->map( 'POST', '/promotor/new-clients-in-month', 'PromotorsController#newClientsInMonth', 'newClientsInMonth' );
@@ -88,6 +91,7 @@ $router->map( 'POST', '/promotors/[i:promotors_id]/rewards/create', 'RewardsCont
 $router->map( 'GET', '/promotors/[i:promotors_id]/rewards/[i:id]/edit', 'RewardsController#edit', 'edit_rewards' );
 $router->map( 'POST', '/promotors/[i:promotors_id]/rewards/[i:id]/update', 'RewardsController#update', 'update_rewards' );
 $router->map( 'GET', '/promotors/[i:promotors_id]/rewards/[i:id]/delete', 'RewardsController#delete', 'delete_rewards' );
+$router->map( 'GET', '/promotors/[i:promotors_id]/example-reward/[i:example_reward]', 'RewardsController#showExampleReward', 'show_example_reward' );
 
 
 /* Promotor -> packages */
@@ -157,6 +161,8 @@ $router->map( 'POST', '/clients/[i:client_id]/[a:code]/answer', 'ClientsControll
 
 /* Mailing */
 $router->map( 'POST', '/send-hash-email', 'StaticPagesController#loginHashSend', 'send_client_hash' );
+$router->map( 'POST', '/mail/contact', 'StaticPagesController#contactMessage', 'send_contact_email' );
+$router->map( 'POST', '/promotor-application', 'StaticPagesController#promotorApplication', 'promotor_application' );
 
 
 // match current request url

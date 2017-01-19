@@ -38,16 +38,19 @@
         height: 80%;
         margin: 36px 0px auto 0px;
         padding: 0px;
+        border-width: 0px 2px 0px 0px;
+        border-color: #DCE6F0;
+        border-style: solid;
     }
     .toggle-menu{
         display: none;
     }
     div#content{
         display: inline-block;
-        min-height: calc(92vh - 40px);
+        min-height: calc(92vh - 38px);
         float: left;
         width: calc(100% - 282px);
-        margin: 0px;
+        margin: 0px 0px 0px -2px;
         padding: 0px 0px 40px 0px;
         border-width: 0px 0px 0px 2px;
         border-color: #DCE6F0;

@@ -40,7 +40,7 @@ class RewardsController extends Controller
 		$this->auth(__FUNCTION__, $this->promotor());
 		$this->params['reward']['promotors_id'] = $this->params['promotors_id'];
 		$reward = new Reward($this->params['reward']);
-
+		
 		if ($reward->save()) {
 			
 			if (!empty($_FILES['image']['name'][0])) {

@@ -45,6 +45,32 @@ class Promotor extends Model
 		return Action::where('promotor_id=?', ['promotor_id'=>$this->id]);
 	}
 
+	public function canSendEmail()
+	{
+		$last_mail = Mail::where('promotor_id=?', ['promotor_id' => $this->id], ['order' => 'created_at DESC']);
+
+		$today = date(Config::get('mysqltime'));
+
+		if (date('N', strtotime($today)) > 6) {
+			$next_email = date(Config::get('mysqltime'), strtotime($today.' next monday midnight'));
+		} else if (!empty($last_mail)){
+			$mailed = date(Config::get('mysqltime'), strtotime($last_mail[0]->mailed));
+
+			$next_email = date(Config::get('mysqltime'), strtotime($mailed.' next sunday midnight'));
+			$next_email = date(Config::get('mysqltime'), strtotime($next_email));
+		}
+			
+		if (empty($last_mail[0])) {
+			return true;
+		}
+		if ($today >= $next_email) {
+			return true;
+		}
+		if ($today < $next_email) {
+			return false;
+		}
+	}
+
 	public function promotionActions($params = [])
 	{
 		return Action::where('promotor_id=? AND type=?', ['promotor_id'=>$this->id, 'type'=>'PromotionActions'], $params);

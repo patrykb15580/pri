@@ -66,3 +66,66 @@
 		} else include 'app/views/rewards/_rewards.php';
 	?>
 </div>
+
+<div id="reward-catalog-example">
+	<h1 class="title">
+		Przykładoy katalog nagród
+	</h1>
+	<table>
+		<tr>
+			<td>
+
+			</td>
+			<td>
+				Nazwa nagrody
+			</td>
+			<td>
+				Cena
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<img src="/assets/image/image-placeholder.png">
+			</td>
+			<td>
+				<b>Voucher - bon 25zł</b>
+			</td>
+			<td>
+				100 pkt
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<img src="/assets/image/image-placeholder.png">
+			</td>
+			<td>
+				<b>Voucher - zniżka 20%</b>
+			</td>
+			<td>
+				160 pkt
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<img src="/assets/image/image-placeholder.png">
+			</td>
+			<td>
+				<b>Wysyłka gratis</b>
+			</td>
+			<td>
+				50 pkt
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<img src="/assets/image/image-placeholder.png">
+			</td>
+			<td>
+				<b>Drugi produkt gratis</b>
+			</td>
+			<td>
+				400 pkt
+			</td>
+		</tr>
+	</table>
+</div>

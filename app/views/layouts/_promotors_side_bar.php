@@ -20,6 +20,9 @@
 	<a id="menu" class="<?= H::promotorCurrentMenu($params, 'orders') ?> promotor_menu_orders" href="/promotors/<?= $params['promotors_id'] ?>/orders">
 		<i class="fa fa-shopping-basket" aria-hidden="true"></i> <span>Zamówienia</span>
 	</a>
+	<a id="menu" class="<?= H::promotorCurrentMenu($params, 'mailing') ?> promotor_menu_mailing" href="/promotors/<?= $params['promotors_id'] ?>/mailing">
+		<i class="fa fa-envelope-open-o" aria-hidden="true"></i> <span>Mailing</span>
+	</a>
 	<a id="menu" class="<?= H::promotorCurrentMenu($params, 'info') ?> promotor_menu_info" href="">
 		<i class="fa fa-file-text-o" aria-hidden="true"></i> <span>Regulamin</span>
 	</a>

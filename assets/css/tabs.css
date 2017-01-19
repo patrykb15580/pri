@@ -1,7 +1,7 @@
 .tab-content{
 	display: none;
- 	width: 96%;
- 	margin: 0px 2%;
+ 	width: calc(100% - 40px);
+ 	margin: 0px 20px;
 }
 
 .l2-tab-content{
@@ -233,24 +233,24 @@
 @media only screen and (min-width: 800px) {
 	#select-tab{
 		float: right;
-	 	font-size: 10px;
-	 	margin: 10px 20px 10px auto;
+	 	font-size: 16px;
+	 	margin: 10px 20px 10px 0px;
 	 	padding: 4px 6px;
 	}
 }
 @media only screen and (min-width: 400px) and (max-width: 799px) {
 	#select-tab{
 		float: right;
-	 	font-size: 10px;
-	 	margin: 10px 20px 10px auto;
+	 	font-size: 14px;
+	 	margin: 10px 20px 10px 0px;
 	 	padding: 4px 6px;
 	}
 }
 @media only screen and (max-width: 399px) {
 	#select-tab{
 		float: right;
-	 	font-size: 10px;
-	 	margin: 10px 20px 10px auto;
+	 	font-size: 12px;
+	 	margin: 10px 20px 10px 0px;
 	 	padding: 4px 6px;
 	}
 }

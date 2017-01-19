@@ -20,7 +20,7 @@
 					<h1 style="color: black; margin: 0px 0px 4px 20px;">punktacja</h1>
 				</td>
 				<td width="50%" style="text-align: right; color: #87889B;">
-					Znajdziesz nas na <img style="vertical-align: middle;" src="<?= Config::get('host') ?>/assets/mailing/fb.png" alt="fb"> <img style="margin: 0px 20px 0px 0px; vertical-align: middle;" src="<?= Config::get('host') ?>/assets/mailing/pinterest.png" alt="pinterest">
+					Znajdziesz nas na <img style="vertical-align: middle;" src="<?= Config::get('host') ?>/assets/mailing/fb.png" alt="fb">
 				</td>
 			</tr>
 		</table>

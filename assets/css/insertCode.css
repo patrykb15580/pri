@@ -67,7 +67,7 @@
   .insert-code-bottom {
     display: block;
     width: 100%;
-    position: fixed;
+    position: absolute;
     bottom: 0px;
     z-index: -1;
     background-color: #F8F9FB;
@@ -203,7 +203,7 @@
   .insert-code-bottom {
     display: block;
     width: 100%;
-    position: fixed;
+    position: absolute;
     bottom: 0px;
     z-index: -1;
     background-color: #F8F9FB;
@@ -289,7 +289,7 @@
   .insert-code-bottom {
     display: block;
     width: 100%;
-    position: fixed;
+    position: absolute;
     bottom: 0px;
     z-index: -1;
     background-color: #F8F9FB;
