@@ -1,0 +1,97 @@
+/* header */
+
+#home-page .header {
+	display: block;
+	background-color: #D40032;
+	width: 100%;
+	margin: 0px;
+	padding: 40px 0px;
+	text-align: center;
+	color: white;
+}
+#home-page .header h1{
+	display: block;
+	width: 1160px;
+	margin: 0px auto 20px auto;
+	padding: 0px;
+	font-size: 58px;
+	font-weight: 700;
+}
+#home-page .header p{
+	display: block;
+	width: 1160px;
+	margin: 0px auto;
+	padding: 0px;
+	font-size: 30px;
+}
+
+@media only screen and (max-width: 1199px) and (min-width: 800px) {
+	#home-page .header {
+		padding: 40px 0px;
+	}
+	#home-page .header h1{
+		width: 90%;
+		margin: 0px auto 20px auto;
+		padding: 0px;
+		font-size: 48px;
+	}
+	#home-page .header p{
+		width: 90%;
+		margin: 0px auto;
+		padding: 0px;
+		font-size: 28px;
+	}
+}
+@media only screen and (max-width: 799px) and (min-width: 600px) {
+	#home-page .header {
+		padding: 40px 0px;
+	}
+	#home-page .header h1{
+		width: 90%;
+		margin: 0px auto 20px auto;
+		padding: 0px;
+		font-size: 42px;
+	}
+	#home-page .header p{
+		width: 90%;
+		margin: 0px auto;
+		padding: 0px;
+		font-size: 24px;
+	}
+}
+@media only screen and (max-width: 599px) and (min-width: 400px) {
+	#home-page .header {
+		padding: 40px 0px;
+	}
+	#home-page .header h1{
+		width: 90%;
+		margin: 0px auto 20px auto;
+		padding: 0px;
+		font-size: 38px;
+	}
+	#home-page .header p{
+		width: 90%;
+		margin: 0px auto;
+		padding: 0px;
+		font-size: 20px;
+	}
+}
+@media only screen and (max-width: 399px) {
+	#home-page .header {
+		padding: 40px 0px;
+	}
+	#home-page .header h1{
+		width: 90%;
+		margin: 0px auto 20px auto;
+		padding: 0px;
+		font-size: 32px;
+	}
+	#home-page .header p{
+		width: 90%;
+		margin: 0px auto;
+		padding: 0px;
+		font-size: 18px;
+	}
+}
+
+/* header end */

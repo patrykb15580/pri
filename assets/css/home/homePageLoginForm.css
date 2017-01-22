@@ -1,0 +1,153 @@
+/* Login form */
+
+
+#home-page .top .login-form {
+	display: none;
+	background-color: white;
+	position: fixed;
+	top: 80px;
+	right: 0px;
+	padding: 0px 40px 40px 40px;
+	box-shadow: -4px 4px 5px 1px rgba(0, 0, 0, 0.5);
+}
+#home-page .top .login-form input[type=password] {
+	display: block;
+	width: 320px;
+	font-size: 16px;
+	padding: 10px;
+	margin: -1px 0px 10px 0px;
+	border-width: 1px;
+	border-radius: 0px 0px 3px 3px;
+	border-style: solid;
+}
+#home-page .top .login-form input[type=email] {
+	display: block;
+	width: 320px;
+	font-size: 16px;
+	padding: 10px;
+	margin: 10px 0px 0px 0px;
+	border-width: 1px;
+	border-radius: 3px 3px 0px 0px;
+	border-style: solid;
+}
+#home-page .top .login-form input[type=submit]{
+	display: block;
+	background-color: #D40032;
+	width: 320px;
+	font-size: 16px;
+	text-align: center;
+	color: white;
+	padding: 10px;
+	margin: 10px 0px 0px 0px;
+	border-width: 0px;
+	border-radius: 3px;
+	border-style: solid;
+	transition: background-color 0.2s;
+}
+#home-page .top .login-form input[type=submit]:hover{
+	display: block;
+	background-color: #BB0020;
+	width: 320px;
+	font-size: 16px;
+	text-align: center;
+	color: white;
+	padding: 10px;
+	margin: 10px 0px 0px 0px;
+	border-width: 0px;
+	border-radius: 3px;
+	border-style: solid;
+	cursor: pointer;
+}
+#home-page .top .login-form .tab {
+	display: inline-block;
+	width: 140px;
+	font-size: 20px;
+	text-align: center;
+	margin: 0px;
+	padding: 10px;
+	cursor: pointer;
+}
+#home-page .top .login-form .tab.active {
+	color: #D40032;
+}
+#home-page .top .login-form .tab.inactive {
+	color: #373737;
+}
+#home-page .top .login-form .login-error {
+	font-size: 14px;
+	color: #D40032;
+}
+
+@media only screen and (max-width: 999px) and (min-width: 400px) {
+	#home-page .top .login-form {
+		top: 60px;
+	}
+}
+@media only screen and (max-width: 399px) {
+	#home-page .top .login-form {
+		display: none;
+		width: 100%;
+		min-width: 300px;
+		background-color: white;
+		position: fixed;
+		top: 60px;
+		left: 0px;
+		padding: 0px 10% 40px 10%;
+		box-shadow: -4px 4px 5px 1px rgba(0, 0, 0, 0.5);
+	}
+	#home-page .top .login-form input[type=password] {
+		display: block;
+		width: 100%;
+		font-size: 16px;
+		padding: 10px;
+		margin: -1px 0px 10px 0px;
+		border-width: 1px;
+		border-radius: 0px 0px 3px 3px;
+		border-style: solid;
+	}
+	#home-page .top .login-form input[type=email] {
+		display: block;
+		width: 100%;
+		font-size: 16px;
+		padding: 10px;
+		margin: 10px 0px 0px 0px;
+		border-width: 1px;
+		border-radius: 3px 3px 0px 0px;
+		border-style: solid;
+	}
+	#home-page .top .login-form input[type=submit]{
+		display: block;
+		background-color: #D40032;
+		width: 100%;
+		font-size: 16px;
+		text-align: center;
+		color: white;
+		padding: 10px;
+		margin: 10px 0px 0px 0px;
+		border-width: 0px;
+		border-radius: 3px;
+		border-style: solid;
+		cursor: pointer;
+	}
+	#home-page .top .login-form .tab {
+		display: inline-block;
+		width: 44%;
+		font-size: 20px;
+		text-align: center;
+		margin: 0px;
+		padding: 10px 3%;
+		cursor: pointer;
+	}
+	#home-page .top .login-form .tab.active {
+		color: #D40032;
+	}
+	#home-page .top .login-form .tab.inactive {
+		color: #373737;
+	}
+	#home-page .top .login-form .login-error {
+		font-size: 14px;
+		color: #D40032;
+	}
+}
+
+/* Login form end */

@@ -1,0 +1,127 @@
+/* How it's work */
+
+#home-page .content-section .how-its-work {
+	width: 1178px;
+	margin: 0px auto;
+	padding: 30px;
+	border-width: 1px;
+	border-color: #C2C2C2;
+	border-style: solid;
+}
+#home-page .content-section .how-its-work  h1 {
+	width: 100%;
+	font-size: 56px;
+	margin: 0px 0px 60px 0px;
+}
+#home-page .content-section .how-its-work .text{
+	display: inline-block;
+	font-family: "ClearSans Thin";
+	text-align: left;
+	font-size: 24px;
+	width: 680px;
+	margin: 0px 12px 0px 0px;
+	padding: 0px;
+	vertical-align: middle;
+}
+#home-page .content-section .how-its-work .video{
+	display: inline-block;
+	width: 400px;
+	height: 225px;
+	margin: 0px;
+	vertical-align: middle;
+}
+
+@media only screen and (max-width: 1199px) and (min-width: 800px) {
+	#home-page .content-section .how-its-work {
+		width: 90%;
+		margin: 0px auto;
+		padding: 30px;
+	}
+	#home-page .content-section .how-its-work  h1 {
+		font-size: 52px;
+		margin: 0px 0px 50px 0px;
+	}
+	#home-page .content-section .how-its-work .text{
+		font-size: 22px;
+		width: 100%;
+		margin: 0px 12px 20px 0px;
+		padding: 0px;
+	}
+	#home-page .content-section .how-its-work .video{
+		display: block;
+		width: 478px;
+		height: 268px;
+		margin: 0px auto;
+	}
+}
+@media only screen and (max-width: 799px) and (min-width: 600px) {
+	#home-page .content-section .how-its-work {
+		width: 90%;
+		margin: 0px auto;
+		padding: 30px;
+	}
+	#home-page .content-section .how-its-work  h1 {
+		font-size: 46px;
+		margin: 0px 0px 40px 0px;
+	}
+	#home-page .content-section .how-its-work .text{
+		font-size: 20px;
+		width: 100%;
+		margin: 0px 12px 20px 0px;
+		padding: 0px;
+	}
+	#home-page .content-section .how-its-work .video{
+		display: block;
+		width: 478px;
+		height: 268px;
+		margin: 0px auto;
+	}
+}
+@media only screen and (max-width: 599px) and (min-width: 400px) {
+	#home-page .content-section .how-its-work {
+		width: 90%;
+		margin: 0px auto;
+		padding: 20px;
+	}
+	#home-page .content-section .how-its-work  h1 {
+		font-size: 38px;
+		margin: 0px 0px 30px 0px;
+	}
+	#home-page .content-section .how-its-work .text{
+		font-size: 18px;
+		width: 100%;
+		margin: 0px 12px 15px 0px;
+		padding: 0px;
+	}
+	#home-page .content-section .how-its-work .video{
+		display: block;
+		width: 318px;
+		height: 189px;
+		margin: 0px auto;
+	}
+}
+@media only screen and (max-width: 399px) {
+	#home-page .content-section .how-its-work {
+		width: 90%;
+		margin: 0px auto;
+		padding: 15px;
+	}
+	#home-page .content-section .how-its-work  h1 {
+		font-size: 32px;
+		margin: 0px 0px 20px 0px;
+	}
+	#home-page .content-section .how-its-work .text{
+		font-size: 16px;
+		width: 100%;
+		margin: 0px 12px 10px 0px;
+		padding: 0px;
+	}
+	#home-page .content-section .how-its-work .video{
+		display: block;
+		width: 238px;
+		height: 134px;
+		margin: 0px auto;
+	}
+}
+
+/* How it's work end */

@@ -1,9 +1,9 @@
 $(".scroll").click(function (){
 	var bar = $(this).data('bar');
 
-  if ($(window).scrollTop() > 0) {
+  if ($(window).width() < 1000) {
   	$('html, body').animate({
-	    scrollTop: $('a[name=' + bar + '].anchor').offset().top - 60
+	    scrollTop: $('a[name=' + bar + '].anchor').offset().top - 40
 	  }, 2000);
   } else {
    	$('html, body').animate({

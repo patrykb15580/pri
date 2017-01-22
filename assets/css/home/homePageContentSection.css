@@ -1,0 +1,293 @@
+/* content section */
+
+#home-page .content-section {
+	display: block;
+	width: 100%;
+	font-size: 18px;
+	text-align: center;
+	margin: 0px;
+	padding: 50px 0px;
+}
+#home-page .content-section h1{
+	display: block;
+	width: 1160px;
+	text-align: center;
+	font-size: 56px;
+	font-weight: 700;
+	color: #1A1A1A;
+	margin: 0px auto 60px auto;
+	padding: 0px;
+}
+#home-page .content-section p{
+	display: block;
+	width: 1160px;
+	font-family: "ClearSans Thin";
+	font-size: 28px;
+	text-align: center;
+	margin: 0px auto;
+	padding: 0px 0px;
+}
+#home-page .content-section .col{
+	display: inline-block;
+	width: 380px;
+	font-size: 18px;
+	text-align: left;
+	color: #333333;
+	margin: 0px auto;
+	padding: 0px 20px;
+	vertical-align: top;
+}
+#home-page .content-section .col h1{
+	display: block;
+	width: 100%;
+	font-size: 28px;
+	text-align: left;
+	margin: 0px 0px 40px 0px;
+	padding: 0px;
+}
+#home-page .content-section .col p{
+	display: block;
+	width: 100%;
+	height: 200px;
+	font-family: 'ClearSans Light';
+	font-size: 18px;
+	text-align: left;
+	margin: 0px 0px 30px 0px;
+	padding: 0px 0px;
+	vertical-align: top;
+}
+#home-page .content-section .col h2{
+	display: block;
+	width: 100%;
+	font-size: 18px;
+	text-align: left;
+	margin: 0px 0px 0px 0px;
+	padding: 0px;
+}
+#home-page .content-section .col ul{
+	display: block;
+	font-family: "ClearSans Light";
+	width: 100%;
+	height: 200px;
+	margin: 0px;
+	padding: 0px 0px 0px 0px;
+}
+#home-page .content-section .col li{
+	list-style-type: disc;
+	list-style-position: outside;
+	font-size: 10px;
+	margin: 0px 0px 0px 1em;
+}
+#home-page .content-section .col li span{
+	font-size: 18px;
+}
+#home-page .content-section .col hr {
+	display: block;
+	width: 50px;
+	margin: 24px auto 18px 4px;
+	border-width: 1px;
+	border-color: #D40032;
+	border-style: solid;
+}
+#home-page .content-section .col .more {
+	display: block;
+	font-size: 14px;
+	font-weight: 700;
+	color: #D40032;
+	margin: 0px 0px 0px 4px;
+	padding: 0px;
+	cursor: pointer;
+}
+
+@media only screen and (max-width: 1199px) and (min-width: 1000px) {
+	#home-page .content-section {
+		font-size: 18px;
+		margin: 0px;
+		padding: 50px 0px;
+	}
+	#home-page .content-section h1{
+		width: 90%;
+		font-size: 56px;
+		margin: 0px auto 60px auto;
+	}
+	#home-page .content-section p{
+		width: 90%;
+		font-size: 28px;
+		margin: 0px auto;
+		padding: 0px 0px;
+	}
+	#home-page .content-section .col{
+		display: inline-block;
+		width: 380px;
+		font-size: 18px;
+		margin: 0px auto 20px auto;
+		padding: 0px 20px;
+	}
+	#home-page .content-section .col h1{
+		font-size: 28px;
+		margin: 0px 0px 40px 0px;
+		padding: 0px;
+	}
+	#home-page .content-section .col p{
+		height: 200px;
+		font-size: 18px;
+		margin: 0px 0px 30px 0px;
+		padding: 0px 0px;
+	}
+	#home-page .content-section .col h2{
+		font-size: 18px;
+		margin: 0px 0px 0px 0px;
+		padding: 0px;
+	}
+	#home-page .content-section .col ul{
+		height: 200px;
+		margin: 0px;
+		padding: 0px 0px 0px 0px;
+	}
+	#home-page .content-section .col li{
+		font-size: 10px;
+		margin: 0px 0px 0px 1em;
+	}
+	#home-page .content-section .col li span{
+		font-size: 18px;
+	}
+	#home-page .content-section .col hr {
+		width: 50px;
+		margin: 24px auto 18px 4px;
+	}
+	#home-page .content-section .col .more {
+		display: block;
+		font-size: 14px;
+		margin: 0px 0px 0px 4px;
+		padding: 0px;
+	}
+}
+@media only screen and (max-width: 999px) and (min-width: 400px) {
+	#home-page .content-section {
+		font-size: 18px;
+		margin: 0px;
+		padding: 50px 0px;
+	}
+	#home-page .content-section h1{
+		width: 90%;
+		font-size: 36px;
+		margin: 0px auto 60px auto;
+	}
+	#home-page .content-section p{
+		width: 90%;
+		font-size: 18px;
+		margin: 0px auto;
+		padding: 0px 0px;
+	}
+	#home-page .content-section .col{
+		display: block;
+		width: 80%;
+		max-width: 600px;
+		font-size: 18px;
+		margin: 0px auto 40px auto;
+		padding: 0px 20px;
+	}
+	#home-page .content-section .col h1{
+		font-size: 28px;
+		margin: 0px 0px 40px 0px;
+		padding: 0px;
+	}
+	#home-page .content-section .col p{
+		height: auto;
+		font-size: 18px;
+		margin: 0px 0px 40px 0px;
+		padding: 0px 0px;
+	}
+	#home-page .content-section .col h2{
+		font-size: 18px;
+		margin: 0px 0px 0px 0px;
+		padding: 0px;
+	}
+	#home-page .content-section .col ul{
+		height: auto;
+		margin: 0px;
+		padding: 0px 0px 30px 0px;
+	}
+	#home-page .content-section .col li{
+		font-size: 10px;
+		margin: 0px 0px 0px 1em;
+	}
+	#home-page .content-section .col li span{
+		font-size: 18px;
+	}
+	#home-page .content-section .col hr {
+		width: 50px;
+		margin: 24px auto 18px 4px;
+	}
+	#home-page .content-section .col .more {
+		display: block;
+		font-size: 14px;
+		margin: 0px 0px 0px 4px;
+		padding: 0px;
+	}
+}
+@media only screen and (max-width: 399px) {
+	#home-page .content-section {
+		font-size: 18px;
+		margin: 0px;
+		padding: 50px 0px;
+	}
+	#home-page .content-section h1{
+		width: 90%;
+		font-size: 36px;
+		margin: 0px auto 60px auto;
+	}
+	#home-page .content-section p{
+		width: 90%;
+		font-size: 18px;
+		margin: 0px auto;
+		padding: 0px 0px;
+	}
+	#home-page .content-section .col{
+		display: block;
+		width: 90%;
+		font-size: 18px;
+		margin: 0px auto 20px auto;
+		padding: 0px 20px;
+	}
+	#home-page .content-section .col h1{
+		font-size: 28px;
+		margin: 0px 0px 40px 0px;
+		padding: 0px;
+	}
+	#home-page .content-section .col p{
+		height: auto;
+		font-size: 18px;
+		margin: 0px 0px 30px 0px;
+		padding: 0px 0px;
+	}
+	#home-page .content-section .col h2{
+		font-size: 18px;
+		margin: 0px 0px 0px 0px;
+		padding: 0px;
+	}
+	#home-page .content-section .col ul{
+		height: auto;
+		margin: 0px;
+		padding: 0px 0px 30px 0px;
+	}
+	#home-page .content-section .col li{
+		font-size: 10px;
+		margin: 0px 0px 0px 1em;
+	}
+	#home-page .content-section .col li span{
+		font-size: 18px;
+	}
+	#home-page .content-section .col hr {
+		width: 50px;
+		margin: 24px auto 18px 4px;
+	}
+	#home-page .content-section .col .more {
+		display: block;
+		font-size: 14px;
+		margin: 0px 0px 0px 4px;
+		padding: 0px;
+	}
+}
+
+/* content section end */

@@ -1,0 +1,179 @@
+/* intro banner */
+
+#home-page .intro-banner {
+	display: block;
+	background-image: url('/assets/image/home/intro-banner.jpg');
+	background-size: auto 620px;
+	background-position: center center;
+	background-repeat: no-repeat;
+	width: 100%;
+	height: 620px;
+	text-align: center;
+	margin: 80px 0px 0px 0px;
+	padding: 100px 0px 60px 0px;
+	color: white;
+}
+@media only screen and (max-width: 999px) {
+	#home-page .intro-banner {
+		margin: 60px 0px 0px 0px;
+	}
+}
+
+#home-page .intro-banner a{
+	color: white;
+	border-width: 0px 0px 1px 0px;
+	border-style: solid;
+	cursor: pointer;
+}
+#home-page .intro-banner img {
+	display: block;
+	width: 120px;
+	margin: 0px auto 40px auto;
+	padding: 0px;
+}
+#home-page .intro-banner h1 {
+	display: block;
+	margin: 0 auto;
+	font-family: "ClearSans";
+	text-align: center;
+	font-size: 72px;
+	font-weight: 700;
+	text-shadow: 1px 2px rgba(0, 0, 0, 0.5);
+	color: #FFFFFF;
+	margin: 0px;
+	padding: 0px;
+}
+#home-page .intro-banner .button {
+	display: block;
+	background-color: #D40032;
+	font-size: 14px;
+	width: 200px;
+	margin: 120px auto 10px auto;
+	padding: 10px;
+	border-width: 0px;
+	border-radius: 3px;
+	border-style: solid;
+	transition: background-color 0.2s;
+}
+#home-page .intro-banner .button:hover {
+	display: block;
+	background-color: #BB0020;
+	font-size: 14px;
+	width: 200px;
+	margin: 120px auto 10px auto;
+	padding: 10px;
+	border-width: 0px;
+	border-radius: 3px;
+	border-style: solid;
+	cursor: pointer;
+}
+
+@media only screen and (max-width: 999px) and (min-width: 800px) {
+	#home-page .intro-banner {
+		height: 510px;
+		padding: 60px 0px 20px 0px;
+	}
+	#home-page .intro-banner img {
+		width: 100px;
+	}
+	#home-page .intro-banner h1 {
+		font-size: 64px;
+	}
+}
+@media only screen and (max-width: 799px) and (min-width: 640px) {
+	#home-page .intro-banner {
+		height: 440px;
+		padding: 40px 0px 20px 0px;
+	}
+	#home-page .intro-banner img {
+		width: 80px;
+	}
+	#home-page .intro-banner h1 {
+		font-size: 52px;
+	}
+	#home-page .intro-banner .button {
+		font-size: 14px;
+		width: 200px;
+		margin: 120px auto 10px auto;
+		padding: 6px;
+	}
+	#home-page .intro-banner .button:hover {
+		font-size: 14px;
+		width: 200px;
+		margin: 120px auto 10px auto;
+		padding: 6px;
+	}
+}
+@media only screen and (max-width: 639px) and (min-width: 581px) {
+	#home-page .intro-banner {
+		height: 410px;
+		padding: 20px 0px 10px 0px;
+	}
+	#home-page .intro-banner img {
+		width: 80px;
+	}
+	#home-page .intro-banner h1 {
+		font-size: 48px;
+	}
+	#home-page .intro-banner .button {
+		font-size: 14px;
+		width: 200px;
+		margin: 100px auto 10px auto;
+		padding: 6px;
+	}
+	#home-page .intro-banner .button:hover {
+		font-size: 14px;
+		width: 200px;
+		margin: 100px auto 10px auto;
+		padding: 6px;
+	}
+}
+@media only screen and (max-width: 580px) and (min-width: 400px) {
+	#home-page .intro-banner {
+		height: 410px;
+		padding: 20px 0px 10px 0px;
+	}
+	#home-page .intro-banner img {
+		width: 80px;
+	}
+	#home-page .intro-banner h1 {
+		font-size: 48px;
+	}
+	#home-page .intro-banner .button {
+		font-size: 14px;
+		width: 200px;
+		margin: 60px auto 10px auto;
+		padding: 6px;
+	}
+	#home-page .intro-banner .button:hover {
+		font-size: 14px;
+		width: 200px;
+		margin: 60px auto 10px auto;
+		padding: 6px;
+	}
+}
+@media only screen and (max-width: 399px) {
+	#home-page .intro-banner {
+		height: 450px;
+		padding: 20px 0px 10px 0px;
+	}
+	#home-page .intro-banner img {
+		width: 80px;
+	}
+	#home-page .intro-banner h1 {
+		font-size: 48px;
+	}
+	#home-page .intro-banner .button {
+		font-size: 14px;
+		width: 200px;
+		margin: 60px auto 10px auto;
+		padding: 6px;
+	}
+	#home-page .intro-banner .button:hover {
+		font-size: 14px;
+		width: 200px;
+		margin: 60px auto 10px auto;
+		padding: 6px;
+	}
+}
+/* intro banner end */

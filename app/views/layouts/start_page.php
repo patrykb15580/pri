@@ -8,8 +8,22 @@
         punktacja.pl
     </title>
     <link rel="stylesheet" type="text/css" href="/assets/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/startPage.css">
+    
+    <link rel="stylesheet" type="text/css" href="/assets/css/home/homePageTop.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/home/homePageLoginForm.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/home/homePageIntroBanner.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/home/homePageContentSection.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/home/homePageHeader.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/home/homePageBanner.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/home/homePageHowItsWork.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/home/homePageCodeForm.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/home/homePageContact.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/home/homePageFooter.css">
+
     <link rel="stylesheet" type="text/css" href="/assets/css/alerts.css">
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet"> 
     <script src="https://use.fontawesome.com/e806e76f5f.js"></script>
@@ -18,37 +32,42 @@
 </head>
 <body id="home-page">
 
-<a class="anchor" name="page-top"></a>
-<div class="top">
-    <img class="logo scroll" src="/assets/image/home/logo2.png" alt="" data-bar="page-top">
-    <span class="menu">
-        <span class="scroll" data-bar="more">DOWIEDZ SIĘ WIĘCEJ</span>
-        <span class="scroll" data-bar="code">AKTYWUJ KOD</span>
-        <span>POMOC</span>
-        <span class="scroll" data-bar="contact">KONTAKT</span>
-        <span class="button join">DOŁĄCZ DO PROGRAMU</span>
-        <span class="login">LOGOWANIE</span>
-    </span>
-    <form class="login-form" method="POST" action="<?= $router->generate('sign_in', []) ?>">
-        <span class="tab active" data-form="client">Klient</span><span class="tab inactive" data-form="promotor">Promotor</span>
-
-        <input type="email" name="client[email]" placeholder="email" required>
-        <input type="password" name="client[password]" placeholder="hasło" required>
-        <input type="submit" value="Zaloguj">
-        <input type="hidden" name="page" value="home">
-        <?php
-            if (isset($params['login-error'])) { ?>
-                <span class="login-error">Błędny login lub hasło</span>
-            <?php }
-        ?>
-    </form>
-</div>
-
 <div class="page">
+    <a class="anchor" name="page-top"></a>
+
+    <nav class="navbar navbar-default navbar-fixed-top top">
+        <div class="container-fluid">
+            <div class="logo scroll" data-bar="page-top"></div>
+            <div class="menu">
+                <div class="scroll" data-bar="more">DOWIEDZ SIĘ WIĘCEJ</div>
+                <div class="scroll" data-bar="code">AKTYWUJ KOD</div>
+                <div>POMOC</div>
+                <div class="scroll" data-bar="contact">KONTAKT</div>
+                <div class="join">DOŁĄCZ DO PROGRAMU</div>
+                <div class="login">LOGOWANIE</div>
+            </div>
+            <div class="toggle-menu">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </div>
+            <form class="login-form" method="POST" action="<?= $router->generate('sign_in', []) ?>">
+                <span class="tab active" data-form="client">Klient</span><span class="tab inactive" data-form="promotor">Promotor</span>
+                <input type="email" name="client[email]" placeholder="email" required>
+                <input type="password" name="client[password]" placeholder="hasło" required>
+                <input type="submit" value="Zaloguj">
+                <input type="hidden" name="page" value="home">
+                <?php
+                    if (isset($params['login-error'])) { ?>
+                        <span class="login-error">Błędny login lub hasło</span>
+                    <?php }
+                ?>
+            </form>
+        </div>
+    </nav>
+
     <div class="intro-banner">
         <img src="/assets/image/home/logo-red.png">
         <h1>Lojalność Konkursy Opinie</h1>
-        <a class="btn join">DOŁĄCZ DO PROGRAMU</a>
+        <a class="button join">DOŁĄCZ DO PROGRAMU</a>
         lub <a class="scroll" data-bar="more">dowiedz się więcej</a>
     </div>
     <div class="content-section">
@@ -112,7 +131,7 @@
     <div class="banner">
         <h1>Wystarczy smartfon, tablet lub komputer</h1>
         <img src="/assets/image/home/multiplatforma.png">
-        <a class="btn join">DOŁĄCZ DO PROGRAMU</a>
+        <a class="button join">DOŁĄCZ DO PROGRAMU</a>
     </div>
     <div class="content-section">
         <div class="how-its-work">
@@ -199,30 +218,69 @@
     //    } 
     //});
 
+    $('.toggle-menu').click(function(){
+        $('.top .menu').fadeToggle();
+    });
+
+    $(window).resize(function(){
+        if ($(window).width() < 800) {
+            $('.top .menu').css({ 'display': 'none' });
+            $('.top .toggle-menu').css({ 'display': 'inline-block' });
+        } else {
+             $('.top .menu').css({ 'display': 'inline-block' });
+             $('.top .toggle-menu').css({ 'display': 'none' });
+        }
+    });
+
     $('.join').click(function(){
+        
+        if ($(window).width() < 800) {
+            $('.toggle-menu').fadeOut();
+        } else {
+            $('.menu').fadeOut();
+        }
+
         $('.page').fadeOut().promise().done(function(){
             $('#home-page').css({ 'background-color': '#1B1B1B' });
             $('.join-form').fadeIn();
-            $('.top .logo').css({ 'cursor': 'default' });
+            $('.top .logo').removeClass('scroll');
+            $('.top .logo').addClass('join-cancel');
             $('.top').css({ 'position': 'absolute' });
         });
-        $('.menu').fadeOut();
+    });
+
+    $('.top .menu div').click(function(){
+        if ($(window).width() < 800 && $('.top .menu').is(':visible')) {
+            $('.top .menu').fadeOut();
+        }
     });
 
     $('.top .logo').click(function(){
         if ($('.join-form').is(':visible')) {
-            $('.join-form').fadeOut();
+            $('.join-form').fadeOut().promise().done(function(){
+                $('#home-page').css({ 'background-color': '#FFFFFF' });
+                $('.page').fadeIn();
+                $('.top .logo').addClass('scroll');
+                $('.top').css({ 'position': 'fixed' });
+            });
         }
     });
 
     $('.join-cancel').click(function(){
+        
+        if ($(window).width() < 800) {
+            $('.toggle-menu').fadeIn();
+        } else {
+            $('.menu').fadeIn();
+        }
+
         $('.join-form').fadeOut().promise().done(function(){
             $('#home-page').css({ 'background-color': '#FFFFFF' });
             $('.page').fadeIn();
-            $('.top .logo').css({ 'cursor': 'pointer' });
+            $('.top .logo').addClass('scroll');
+            $('.top .logo').removeClass('join-cancel');
             $('.top').css({ 'position': 'fixed' });
         });
-        $('.menu').fadeIn();
     });
 
     $('.menu .login').click(function(){
@@ -253,6 +311,6 @@
     });
 </script>
 <script type="text/javascript" src="/assets/javascript/homePageScrollTo.js"></script>
-
+<script type="text/javascript" src="/assets/javascript/bootstrap.min.js"></script>
 </body>
 </html>
