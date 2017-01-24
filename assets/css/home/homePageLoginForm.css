@@ -58,9 +58,15 @@
 	border-style: solid;
 	cursor: pointer;
 }
+#home-page .top .login-form .tabs {
+	display: block;
+	width: 320px;
+	margin: 0px;
+	padding: 0px;
+}
 #home-page .top .login-form .tab {
 	display: inline-block;
-	width: 140px;
+	width: 160px;
 	font-size: 20px;
 	text-align: center;
 	margin: 0px;
@@ -78,12 +84,12 @@
 	color: #D40032;
 }
 
-@media only screen and (max-width: 999px) and (min-width: 400px) {
+@media only screen and (max-width: 999px) and (min-width: 800px) {
 	#home-page .top .login-form {
 		top: 60px;
 	}
 }
-@media only screen and (max-width: 399px) {
+@media only screen and (max-width: 799px) {
 	#home-page .top .login-form {
 		display: none;
 		width: 100%;
@@ -92,15 +98,17 @@
 		position: fixed;
 		top: 60px;
 		left: 0px;
-		padding: 0px 10% 40px 10%;
+		padding: 0px 20px 40px 20px;
 		box-shadow: -4px 4px 5px 1px rgba(0, 0, 0, 0.5);
 	}
 	#home-page .top .login-form input[type=password] {
 		display: block;
 		width: 100%;
+		max-width: 320px;
+		min-width: 260px;
 		font-size: 16px;
 		padding: 10px;
-		margin: -1px 0px 10px 0px;
+		margin: -1px auto 10px auto;
 		border-width: 1px;
 		border-radius: 0px 0px 3px 3px;
 		border-style: solid;
@@ -108,34 +116,44 @@
 	#home-page .top .login-form input[type=email] {
 		display: block;
 		width: 100%;
+		max-width: 320px;
+		min-width: 260px;
 		font-size: 16px;
 		padding: 10px;
-		margin: 10px 0px 0px 0px;
+		margin: 10px auto 0px auto;
 		border-width: 1px;
 		border-radius: 3px 3px 0px 0px;
 		border-style: solid;
 	}
 	#home-page .top .login-form input[type=submit]{
-		display: block;
-		background-color: #D40032;
 		width: 100%;
+		max-width: 320px;
+		min-width: 260px;
 		font-size: 16px;
-		text-align: center;
-		color: white;
 		padding: 10px;
-		margin: 10px 0px 0px 0px;
-		border-width: 0px;
-		border-radius: 3px;
-		border-style: solid;
-		cursor: pointer;
+		margin: 10px auto 0px auto;
+	}
+	#home-page .top .login-form input[type=submit]:hover{
+		width: 100%;
+		max-width: 320px;
+		min-width: 260px;
+		font-size: 16px;
+		padding: 10px;
+		margin: 10px auto 0px auto;
+	}
+	#home-page .top .login-form .tabs {
+		width: 100%;
+		max-width: 320px;
+		min-width: 260px;
+		margin: 0 auto;
 	}
 	#home-page .top .login-form .tab {
 		display: inline-block;
-		width: 44%;
+		width: 50%;
 		font-size: 20px;
 		text-align: center;
-		margin: 0px;
-		padding: 10px 3%;
+		margin: 0px auto;
+		padding: 10px;
 		cursor: pointer;
 	}
 	#home-page .top .login-form .tab.active {

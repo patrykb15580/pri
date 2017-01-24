@@ -10,7 +10,7 @@
 #home-page .contact h1{
 	display: block;
 	background-color: #1B1B1B;
-	width: 1160px;
+	width: 1000px;
 	font-size: 56px;
 	font-weight: 700;
 	text-align: center;
@@ -84,7 +84,7 @@
 }
 #home-page .contact input[type=submit]:hover{
 	display: block;
-	background-color: #e60036;
+	background-color: #BB0020;
 	float: right;
 	font-size: 16px;
 	font-weight: 700;

@@ -3,7 +3,6 @@
 #home-page .intro-banner {
 	display: block;
 	background-image: url('/assets/image/home/intro-banner.jpg');
-	background-size: auto 620px;
 	background-position: center center;
 	background-repeat: no-repeat;
 	width: 100%;
@@ -13,8 +12,19 @@
 	padding: 100px 0px 60px 0px;
 	color: white;
 }
+@media only screen and (min-width: 1460px){
+	#home-page .intro-banner {
+		background-size: 100% auto;
+	}
+}
+@media only screen and (max-width: 1459px){
+	#home-page .intro-banner {
+		background-size: auto 100%;
+	}
+}
 @media only screen and (max-width: 999px) {
 	#home-page .intro-banner {
+		background-size: auto 100%;
 		margin: 60px 0px 0px 0px;
 	}
 }
@@ -41,7 +51,7 @@
 	text-shadow: 1px 2px rgba(0, 0, 0, 0.5);
 	color: #FFFFFF;
 	margin: 0px;
-	padding: 0px;
+	padding: 0px 20px;
 }
 #home-page .intro-banner .button {
 	display: block;
@@ -68,7 +78,7 @@
 	cursor: pointer;
 }
 
-@media only screen and (max-width: 999px) and (min-width: 800px) {
+@media only screen and (max-width: 999px) and (min-width: 868px) {
 	#home-page .intro-banner {
 		height: 510px;
 		padding: 60px 0px 20px 0px;
@@ -80,7 +90,31 @@
 		font-size: 64px;
 	}
 }
-@media only screen and (max-width: 799px) and (min-width: 640px) {
+@media only screen and (max-width: 867px) and (min-width: 800px) {
+	#home-page .intro-banner {
+		height: 510px;
+		padding: 60px 0px 20px 0px;
+	}
+	#home-page .intro-banner img {
+		width: 100px;
+	}
+	#home-page .intro-banner h1 {
+		font-size: 64px;
+	}
+	#home-page .intro-banner .button {
+		font-size: 14px;
+		width: 200px;
+		margin: 60px auto 10px auto;
+		padding: 10px;
+	}
+	#home-page .intro-banner .button:hover {
+		font-size: 14px;
+		width: 200px;
+		margin: 60px auto 10px auto;
+		padding: 10px;
+	}
+}
+@media only screen and (max-width: 799px) and (min-width: 704px) {
 	#home-page .intro-banner {
 		height: 440px;
 		padding: 40px 0px 20px 0px;
@@ -104,7 +138,7 @@
 		padding: 6px;
 	}
 }
-@media only screen and (max-width: 639px) and (min-width: 581px) {
+@media only screen and (max-width: 703px) and (min-width: 654px) {
 	#home-page .intro-banner {
 		height: 410px;
 		padding: 20px 0px 10px 0px;
@@ -128,7 +162,7 @@
 		padding: 6px;
 	}
 }
-@media only screen and (max-width: 580px) and (min-width: 400px) {
+@media only screen and (max-width: 653px) and (min-width: 420px) {
 	#home-page .intro-banner {
 		height: 410px;
 		padding: 20px 0px 10px 0px;
@@ -149,6 +183,30 @@
 		font-size: 14px;
 		width: 200px;
 		margin: 60px auto 10px auto;
+		padding: 6px;
+	}
+}
+@media only screen and (max-width: 419px) and (min-width: 400px) {
+	#home-page .intro-banner {
+		height: 410px;
+		padding: 20px 0px 10px 0px;
+	}
+	#home-page .intro-banner img {
+		width: 80px;
+	}
+	#home-page .intro-banner h1 {
+		font-size: 48px;
+	}
+	#home-page .intro-banner .button {
+		font-size: 14px;
+		width: 200px;
+		margin: 20px auto 10px auto;
+		padding: 6px;
+	}
+	#home-page .intro-banner .button:hover {
+		font-size: 14px;
+		width: 200px;
+		margin: 20px auto 10px auto;
 		padding: 6px;
 	}
 }

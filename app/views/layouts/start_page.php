@@ -36,7 +36,7 @@
     <a class="anchor" name="page-top"></a>
 
     <nav class="navbar navbar-default navbar-fixed-top top">
-        <div class="container-fluid">
+        <div class="container-fluid bar">
             <div class="logo scroll" data-bar="page-top"></div>
             <div class="menu">
                 <div class="scroll" data-bar="more">DOWIEDZ SIĘ WIĘCEJ</div>
@@ -50,7 +50,9 @@
                 <i class="fa fa-bars" aria-hidden="true"></i>
             </div>
             <form class="login-form" method="POST" action="<?= $router->generate('sign_in', []) ?>">
-                <span class="tab active" data-form="client">Klient</span><span class="tab inactive" data-form="promotor">Promotor</span>
+                <div class="tabs">
+                    <span class="tab active" data-form="client">Klient</span><span class="tab inactive" data-form="promotor">Promotor</span>
+                </div>
                 <input type="email" name="client[email]" placeholder="email" required>
                 <input type="password" name="client[password]" placeholder="hasło" required>
                 <input type="submit" value="Zaloguj">
@@ -62,6 +64,7 @@
                 ?>
             </form>
         </div>
+        <?php Alerts::showAlert(); ?>
     </nav>
 
     <div class="intro-banner">
@@ -142,15 +145,10 @@
             <iframe class="video" src="https://www.youtube.com/embed/OvWWVub9cc4" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
-    <a class="anchor" name="code"></a>
-    <form class="code" method="POST" action="">
-        <img src="/assets/image/home/intro-banner-logo.png">
-        <h1>Aktywuj swój kod promocyjny</h1>
-        <div>
-            <input type="text" name="code" placeholder="Wprowadź kod" required maxlength="6">
-            <input type="submit" value="Zatwierdź">
-        </div>
-    </form>
+    <a id="code" class="anchor" name="code"></a>
+    <div class="code">   
+        <?php include $path; ?>
+    </div>    
     <a class="anchor" name="contact"></a>
     <div class="contact">
         <h1>Zapraszamy do kontaktu</h1>
@@ -190,6 +188,7 @@
 
 <div class="join-form">
     <div class="header">
+        <a class="close-form join-cancel">&times;</a>
         <img src="/assets/image/home/intro-banner-logo.png">
         Formularz zgłoszeniowy
     </div>
@@ -218,99 +217,25 @@
     //    } 
     //});
 
-    $('.toggle-menu').click(function(){
-        $('.top .menu').fadeToggle();
-    });
+    
 
-    $(window).resize(function(){
-        if ($(window).width() < 800) {
-            $('.top .menu').css({ 'display': 'none' });
-            $('.top .toggle-menu').css({ 'display': 'inline-block' });
-        } else {
-             $('.top .menu').css({ 'display': 'inline-block' });
-             $('.top .toggle-menu').css({ 'display': 'none' });
-        }
-    });
+    //$('.top .logo').click(function(){
+    //    if ($('.join-form').is(':visible')) {
+    //        $('.join-form').fadeOut().promise().done(function(){
+    //            $('#home-page').css({ 'background-color': '#FFFFFF' });
+    //            $('.page').fadeIn();
+    //            $('.top .logo').addClass('scroll');
+    //            $('.top').css({ 'position': 'fixed' });
+    //        });
+    //    }
+    //});
 
-    $('.join').click(function(){
-        
-        if ($(window).width() < 800) {
-            $('.toggle-menu').fadeOut();
-        } else {
-            $('.menu').fadeOut();
-        }
-
-        $('.page').fadeOut().promise().done(function(){
-            $('#home-page').css({ 'background-color': '#1B1B1B' });
-            $('.join-form').fadeIn();
-            $('.top .logo').removeClass('scroll');
-            $('.top .logo').addClass('join-cancel');
-            $('.top').css({ 'position': 'absolute' });
-        });
-    });
-
-    $('.top .menu div').click(function(){
-        if ($(window).width() < 800 && $('.top .menu').is(':visible')) {
-            $('.top .menu').fadeOut();
-        }
-    });
-
-    $('.top .logo').click(function(){
-        if ($('.join-form').is(':visible')) {
-            $('.join-form').fadeOut().promise().done(function(){
-                $('#home-page').css({ 'background-color': '#FFFFFF' });
-                $('.page').fadeIn();
-                $('.top .logo').addClass('scroll');
-                $('.top').css({ 'position': 'fixed' });
-            });
-        }
-    });
-
-    $('.join-cancel').click(function(){
-        
-        if ($(window).width() < 800) {
-            $('.toggle-menu').fadeIn();
-        } else {
-            $('.menu').fadeIn();
-        }
-
-        $('.join-form').fadeOut().promise().done(function(){
-            $('#home-page').css({ 'background-color': '#FFFFFF' });
-            $('.page').fadeIn();
-            $('.top .logo').addClass('scroll');
-            $('.top .logo').removeClass('join-cancel');
-            $('.top').css({ 'position': 'fixed' });
-        });
-    });
-
-    $('.menu .login').click(function(){
-        if (!$('.login-form').is(':visible')){
-            $('.login-form').fadeIn();
-        }
-    });
-    $(document).mouseup(function (e){
-        if (!$('.login-form').is(e.target) && $('.login-form').has(e.target).length === 0) {
-            $('.login-form').fadeOut();
-        }
-    });
-
-    $('.login-form .tab').click(function(){
-
-        var form = $(this).data('form');
-
-        $('.login-form .tab.active').removeClass('active').addClass('inactive');
-        $(this).removeClass('inactive').addClass('active');
-
-        if (form == 'client') {
-            $('.login-form input[type=email]').attr('name', 'client[email]');
-            $('.login-form input[type=password]').attr('name', 'client[password]');
-        } else {
-            $('.login-form input[type=email]').attr('name', 'login');
-            $('.login-form input[type=password]').attr('name', 'password');
-        }
-    });
+    
 </script>
 <script type="text/javascript" src="/assets/javascript/homePageScrollTo.js"></script>
 <script type="text/javascript" src="/assets/javascript/bootstrap.min.js"></script>
+<script type="text/javascript" src="/assets/javascript/home/homePageLogin.js"></script>
+<script type="text/javascript" src="/assets/javascript/home/homePagePromotorApplication.js"></script>
+<script type="text/javascript" src="/assets/javascript/home/homePageMenu.js"></script>
 </body>
 </html>

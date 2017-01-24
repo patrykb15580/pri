@@ -55,5 +55,11 @@ class AdminMailer extends AppMailer
 		$this->attributes['body'] = $body;
 
 		$send = (new AppMailer($this->attributes))->send();
+
+		if ((json_decode($send))->message == 'success') {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }

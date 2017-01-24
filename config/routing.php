@@ -117,10 +117,9 @@ $router->map( 'POST', '/sign-in', 'SessionController#create', 'sign_in' );
 $router->map( 'GET', '/sign-out', 'SessionController#delete', 'sign_out' );
 
 
-/* Static pages */
+/* Static pages mobile */
 $router->map( 'GET', '/', 'StaticPagesController#startPage', 'start_page' );
 $router->map( 'GET', '/application', 'StaticPagesController#application', 'app' );
-$router->map( 'GET', '/home', 'StaticPagesController#home', 'home' );
 $router->map( 'GET', '/opinion/[a:code]', 'StaticPagesController#contestOpinion', 'contest_opinion' );
 $router->map( 'POST', '/give-opinion/[a:code]', 'StaticPagesController#giveContestOpinion', 'give_contest_opinion' );
 $router->map( 'GET', '/contest/[i:client_id]/[a:code]', 'StaticPagesController#contest', 'contest_answer' );
@@ -128,7 +127,7 @@ $router->map( 'POST', '/contest/[i:id]/[i:client_id]/[a:code]/answer', 'StaticPa
 $router->map( 'GET', '/login', 'StaticPagesController#login', 'login' );
 $router->map( 'GET', '/promotor-login', 'StaticPagesController#promotorLogin', 'promotor_login' );
 $router->map( 'POST', '/insert-code', 'StaticPagesController#insertCode', 'enter_code' );
-$router->map( 'GET', '/[a:code]', 'StaticPagesController#getCode', 'get_code' );
+$router->map( 'GET', '/code/[a:code]', 'StaticPagesController#getCode', 'get_code' );
 $router->map( 'GET', '/action/[a:code]', 'StaticPagesController#useCode', 'use_code' );
 $router->map( 'GET', '/[a:code]/is-used', 'StaticPagesController#codeIsUsed', 'code_is_used' );
 $router->map( 'POST', '/[a:code]/add-points', 'StaticPagesController#addPoints', 'add_points' );
@@ -140,6 +139,21 @@ $router->map( 'POST', '/forgot-password-send-mail', 'StaticPagesController#forgo
 $router->map( 'GET', '/new-password/[a:token]', 'StaticPagesController#newPassword', 'new_password' );
 $router->map( 'POST', '/change-password/[a:token]', 'StaticPagesController#changePassword', 'change_password' );
 $router->map( 'GET', '/access-denied', 'StaticPagesController#authorizeError', 'access_denied' );
+
+
+/* Static pages desktop */
+$router->map( 'GET', '/home', 'StaticPagesController#home', 'home' );
+$router->map( 'POST', '/home/code', 'StaticPagesController#homeEnterCode', 'home_enter_code' );
+$router->map( 'GET', '/home/promotion-action/[a:code]', 'StaticPagesController#homePromotionActionCode', 'home_promotion_action_code' );
+$router->map( 'POST', '/home/promotion-action/[a:code]/use', 'StaticPagesController#homeUsePromotionActionCode', 'home_use_promotion_action_code' );
+$router->map( 'GET', '/home/promotion-action/[a:code]/confirm', 'StaticPagesController#homeUsePromotionActionCodeConfirm', 'home_use_promotion_action_code_confirm' );
+
+$router->map( 'GET', '/home/opinion/[a:code]', 'StaticPagesController#homeOpinion', 'home_opinion' );
+$router->map( 'POST', '/home/give-opinion/[a:code]', 'StaticPagesController#homeGiveOpinion', 'home_give_opinion' );
+
+$router->map( 'GET', '/home/contest/[a:code]/[i:client_id]', 'StaticPagesController#homeContestCode', 'home_contest_code' );
+$router->map( 'POST', '/home/contest/[a:code]/[i:client_id]/use', 'StaticPagesController#homeUseContestCode', 'home_use_contest_code' );
+$router->map( 'GET', '/home/contest/[a:code]/[i:client_id]/confirm', 'StaticPagesController#homeUseContestCodeConfirm', 'home_use_contest_code_confirm' );
 
 
 /* Client */

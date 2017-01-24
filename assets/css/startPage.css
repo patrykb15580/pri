@@ -37,15 +37,299 @@ a:visited {
 }
 
 
+/*
+#home-page .alert {
+	display: block;
+	width: 100%;
+	margin: 0px;
+	border-width: 1px;
+	border-radius: 0px;
+	border-style: solid;
+}
+*/
 
 
 
 
+#home-page .code .contest .rating-selection label:first-of-type {
+  display: none;
+}
+#home-page .code .contest .rating-selection input[type='radio'],
+#home-page .code .contest .rating-selection span {
+  display: none;
+}
+#home-page .code .contest .rating-selection label {
+  cursor: pointer;
+}
+#home-page .code .contest .rating-selection input:checked + label ~ label:before {
+  color: #aaa;
+}
+#home-page .code .contest .rating-selection:hover label[for]:before {
+  color: #e9cd10;
+}
+#home-page .code .contest .rating-selection:hover label:hover ~ label:before {
+  color: #aaa;
+}
 
+#home-page .code .contest .rating-selection {
+    display: block;
+    margin: 0px auto 20px auto;
+    padding: 0px;
+    text-align: center;
+}
+#home-page .code .contest .rating-selection label:before {
+    display: inline-block;
+    content: "★";
+    font-size: 76px;
+    letter-spacing: 0px;
+    color: #e9cd10;
+    text-align: center;
+}
+#home-page .code .contest input[type=email] {
+	display: block;
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	font-size: 18px;
+	text-align: center;
+	margin: 0px 6px 0px 0px;
+	padding: 0px 14px;
+	border-width: 0px;
+	border-radius: 1px;
+	border-style: none;
+	vertical-align: middle;
+}
+#home-page .code .contest textarea {
+	display: block;
+	width: 100%;
+	height: 200px;
+	font-size: 18px;
+	margin: 0px 6px 0px 0px;
+	padding: 14px 14px;
+	border-width: 0px;
+	border-radius: 1px;
+	border-style: none;
+	vertical-align: middle;
+	resize: none;
+}
+#home-page .code .contest input[type=submit] {
+	display: block;
+	background-color: #FFFFFF;
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	font-size: 18px;
+	font-weight: 700;
+	text-align: center;
+	color: #D40032;
+	margin: 10px 0px 0px auto;
+	padding: 0px 14px;
+	border-width: 0px;
+	border-radius: 1px;
+	border-style: none;
+	vertical-align: middle;
+	cursor: pointer;
+	transition: background-color 0.2s;
+}
+#home-page .code .contest input[type=submit]:hover {
+	display: block;
+	background-color: #F4F4F4;
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	font-size: 18px;
+	font-weight: 700;
+	text-align: center;
+	color: #D40032;
+	margin: 10px 0px 0px auto;
+	padding: 0px 14px;
+	border-width: 0px;
+	border-radius: 1px;
+	border-style: none;
+	vertical-align: middle;
+	cursor: pointer;
+}
+#home-page .code .contest input[type=submit]:disabled {
+	display: block;
+	background-color: #C2C2C2;
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	font-size: 18px;
+	font-weight: 700;
+	text-align: center;
+	color: #D40032;
+	margin: 10px 0px 0px auto;
+	padding: 0px 14px;
+	border-width: 0px;
+	border-radius: 1px;
+	border-style: none;
+	vertical-align: middle;
+	cursor: default;
+}
+#home-page .code .contest .promotor {
+	display: block;
+	width: 529px;
+	font-size: 24px;
+	font-weight: 700;
+	text-align: center;
+	color: white;
+	margin: 0px 0px 10px 0px;
+}
+#home-page .code .contest .question {
+	display: block;
+	width: 529px;
+	font-size: 32px;
+	font-weight: 700;
+	text-align: center;
+	color: white;
+}
+#home-page .code .contest .note {
+	display: inline-block;
+	width: 510px;
+	color: white;
+	vertical-align: middle;
+}
+#home-page .code .contest .status {
+	background-color: white;
+	width: 529px;
+	text-align: center;
+	color: #D40032;
+	margin: 10px auto;
+	padding: 10px;
+}
 
-
-
-
+@media only screen and (max-width: 599px) and (min-width: 400px) {
+	#home-page .code .contest {
+		display: block;
+		width: 90%;
+		max-width: 360px;
+		margin: 0 auto;
+		padding: 0px;
+	}
+	#home-page .code .contest .rating-selection {
+	    margin: 0px auto 20px auto;
+	    padding: 0px;
+	}
+	#home-page .code .contest .rating-selection label:before {
+	    font-size: 68px;
+	}
+	#home-page .code .contest input[type=email] {
+		width: 100%;
+		height: 50px;
+		line-height: 50px;
+		font-size: 18px;
+		margin: 0px 6px 0px 0px;
+		padding: 0px 14px;
+	}
+	#home-page .code .contest input[type=submit] {
+		width: 100%;
+		height: 50px;
+		line-height: 50px;
+		font-size: 18px;
+		margin: 10px 0px 0px auto;
+		padding: 0px 14px;
+	}
+	#home-page .code .contest input[type=submit]:hover {
+		width: 100%;
+		height: 50px;
+		line-height: 50px;
+		font-size: 18px;
+		margin: 10px 0px 0px auto;
+		padding: 0px 14px;
+	}
+	#home-page .code .contest input[type=submit]:disabled {
+		width: 100%;
+		height: 50px;
+		line-height: 50px;
+		font-size: 18px;
+		margin: 10px 0px 0px auto;
+		padding: 0px 14px;
+	}
+	#home-page .code .contest .promotor {
+		width: 100%;
+		font-size: 18px;
+		margin: 0px 0px 10px 0px;
+	}
+	#home-page .code .contest .question {
+		width: 100%;
+		font-size: 24px;
+	}
+	#home-page .code .contest .note {
+		width: 92%;
+		font-size: 12px;
+	}
+	#home-page .code .contest .status {
+		width: 100%;
+		margin: 10px auto;
+		padding: 10px;
+	}
+}
+@media only screen and (max-width: 399px) {
+	#home-page .code .contest {
+		display: block;
+		width: 90%;
+		margin: 0 auto;
+		padding: 0px;
+	}
+	#home-page .code .contest .rating-selection {
+	    margin: 0px auto 20px auto;
+	    padding: 0px;
+	}
+	#home-page .code .contest .rating-selection label:before {
+	    font-size: 42px;
+	}
+	#home-page .code .contest input[type=email] {
+		width: 100%;
+		height: 50px;
+		line-height: 50px;
+		font-size: 18px;
+		margin: 0px 6px 0px 0px;
+		padding: 0px 14px;
+	}
+	#home-page .code .contest input[type=submit] {
+		width: 100%;
+		height: 50px;
+		line-height: 50px;
+		font-size: 18px;
+		margin: 10px 0px 0px auto;
+		padding: 0px 14px;
+	}
+	#home-page .code .contest input[type=submit]:hover {
+		width: 100%;
+		height: 50px;
+		line-height: 50px;
+		font-size: 18px;
+		margin: 10px 0px 0px auto;
+		padding: 0px 14px;
+	}
+	#home-page .code .contest input[type=submit]:disabled {
+		width: 100%;
+		height: 50px;
+		line-height: 50px;
+		font-size: 18px;
+		margin: 10px 0px 0px auto;
+		padding: 0px 14px;
+	}
+	#home-page .code .contest .promotor {
+		width: 100%;
+		font-size: 18px;
+		margin: 0px 0px 10px 0px;
+	}
+	#home-page .code .contest .question {
+		width: 100%;
+		font-size: 24px;
+	}
+	#home-page .code .contest .note {
+		width: 92%;
+		font-size: 12px;
+	}
+	#home-page .code .contest .status {
+		width: 529px;
+		margin: 10px auto;
+		padding: 10px;
+	}
+}
 
 
 
@@ -113,6 +397,38 @@ a:visited {
 	text-align: center;
 	margin: 0px 0px 40px 0px;
 	padding: 40px 0px;
+}
+#home-page .join-form .header .close-form {
+	display: block;
+	width: 42px;
+	height: 42px;
+	line-height: 42px;
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	font-size: 42px;
+	text-align: center;
+	color: #FFFFFF;
+	margin: 0px;
+	padding: 0px;
+	opacity: 0.5;
+	transition: opacity 0.2s;
+}
+#home-page .join-form .header .close-form:hover {
+	display: block;
+	width: 42px;
+	height: 42px;
+	line-height: 42px;
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	font-size: 42px;
+	text-align: center;
+	color: #FFFFFF;
+	margin: 0px;
+	padding: 0px;
+	opacity: 1;
+	cursor: pointer;
 }
 #home-page .join-form .header img{
 	display: block;

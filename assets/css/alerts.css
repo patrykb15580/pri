@@ -1,4 +1,9 @@
 /* Alerts */
+.alert {
+  border-width: 0px;
+  border-radius: 0px;
+  border-style: none;
+}
 @media only screen and (min-width: 800px){
   div.info_message{
     position: relative;

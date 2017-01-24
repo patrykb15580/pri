@@ -23,7 +23,7 @@
 			Konkurs
 		</p>
 		<div class="contest-opinion-action-name">
-			<?= $action->name ?><!-- Bardzo długa nazwa konkursu jakiegoś promotora wpisana w celu sprawdzenia jak długi ciąg znaków zmieści się tym polu -->
+			<?= $action->name ?>
 		</div>
 	</div>
 	<form method="POST" action="<?= $contest_answer_path ?>">

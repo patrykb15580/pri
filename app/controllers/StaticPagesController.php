@@ -4,7 +4,7 @@
 */
 class StaticPagesController extends Controller
 {
-	public $non_authorized = ['startPage', 'application', 'home', 'contestOpinion', 'giveContestOpinion', 'contest', 'contestAnswer', 'login', 'promotorLogin', 'insertCode', 'getCode', 'useCode', 'addPoints', 'confirmation', 'contestConfirmation', 'getOrCreateClient', 'loginHashSend', 'newPassword', 'contactMessage', 'promotorApplication', 'forgotPassword', 'forgotPasswordSendMail', 'changePassword'];
+	public $non_authorized = ['startPage', 'application', 'home', 'homeEnterCode', 'homePromotionActionCode', 'homeUsePromotionActionCode', 'homeUsePromotionActionCodeConfirm', 'homeContestCode', 'homeUseContestCode', 'homeUseContestCodeConfirm', 'homeOpinion', 'homeGiveOpinion', 'contestOpinion', 'giveContestOpinion', 'contest', 'contestAnswer', 'login', 'promotorLogin', 'insertCode', 'getCode', 'useCode', 'addPoints', 'confirmation', 'contestConfirmation', 'getOrCreateClient', 'loginHashSend', 'newPassword', 'contactMessage', 'promotorApplication', 'forgotPassword', 'forgotPasswordSendMail', 'changePassword'];
 
 	public function startPage()
 	{
@@ -29,6 +29,188 @@ class StaticPagesController extends Controller
 	public function home()
 	{
 		$view = (new View($this->params, [], 'start_page'))->render();
+		return $view;
+	}
+
+	public function homeEnterCode()
+	{
+		$router = Config::get('router');
+
+		$code = Code::where('code=?', ['code'=>$this->params['code']]);
+		
+		Action::checkIfActionsActive();
+
+		if (!empty($code[0]) && $code[0]->isActive()) {
+			$code = $code[0];
+			$action = $code->action();
+
+			if ($action->type == 'PromotionActions') {
+				$path = $router->generate('home_promotion_action_code', ['code'=>$this->params['code']]);
+			} else {
+				$path = $router->generate('home_opinion', ['code'=>$this->params['code']]);
+			}
+
+			header('Location: '.$path.'#code');
+		}
+		else {
+			$path = $router->generate('home', []).'?code=error#code';
+			header('Location: '.$path);
+		}
+	}
+
+	public function homePromotionActionCode()
+	{	
+		$code = Code::findBy('code', $this->params['code']);
+
+		$view = (new View($this->params, ['code'=>$code], 'start_page'))->render();
+		return $view;
+	}
+
+	public function homeUsePromotionActionCode()
+	{
+		setcookie('use_code_form_email', $this->params['client']['email'], time() + (86400 * 30), '/');
+
+		$client = $this->getOrCreateClient($this->params);
+
+		if (empty($client)) {
+			$path = $router->generate('use_code', ['code'=>$this->params['code']]);
+			header('Location: '.$path);
+		}
+
+		$code = Code::findBy('code', $this->params['code']);
+		$package = $code->package();
+		$action = $package->action();
+		$promotor = $action->promotor();
+		
+		$router = Config::get('router');
+
+		$code->update(['used'=>date(Config::get('mysqltime')), 'client_id'=>$client->id]);
+
+		$points_balance = PointsBalance::where('client_id=? AND promotor_id=?', ['client_id'=>$client->id, 'promotor_id'=>$promotor->id]);
+		if (!empty($points_balance)) {
+			$points_balance = $points_balance[0];
+			$balance = $points_balance->balance + $package->codes_value;
+			if ($points_balance->update(['balance'=>$balance])) {
+				$description = 'Wykorzystanie kodu '.$this->params['code'].' w akcji '.$action->name;
+				History::addHistoryRecord($client->id, $promotor->id, $balance, $package->codes_value, $description, 'add');
+				(new ClientMailer)->addPoints($client, $code, $promotor);
+
+				$path = $router->generate('home_use_promotion_action_code_confirm', ['code'=>$this->params['code']]);
+				header('Location: '.$path.'#code');
+			}
+
+		} else {
+			$points_balance = new PointsBalance(['client_id'=>$client->id, 'promotor_id'=>$promotor->id, 'balance'=>$package->codes_value]);
+			if ($points_balance->save()) {
+				$description = 'Wykorzystanie kodu '.$this->params['code'].' w akcji '.$action->name;
+				History::addHistoryRecord($client->id, $promotor->id, $package->codes_value, $package->codes_value, $description, 'add');
+				(new ClientMailer)->addPoints($client, $code, $promotor);
+				
+				$path = $router->generate('home_use_promotion_action_code_confirm', ['code'=>$this->params['code']]);
+				header('Location: '.$path.'#code');
+			}
+		} 
+	}
+
+	public function homeUsePromotionActionCodeConfirm()
+	{
+		$code = Code::findBy('code', $this->params['code']);
+
+		$view = (new View($this->params, ['code'=>$code], 'start_page'))->render();
+		return $view;
+	}
+
+	public function homeContestCode()
+	{	
+		$router = Config::get('router');
+		$code = Code::findBy('code', $this->params['code']);
+
+		if (!empty($code)) {
+
+			$action = $code->action();
+			$client = Client::find($this->params['client_id']);
+
+			if (!empty($action)) {
+
+				if ($action->isActive()) {
+					$view = (new View($this->params, ['code'=>$code], 'start_page'))->render();
+
+					return $view;
+				} else {
+					$path = $router->generate('home', []);
+					
+					$this->alert('error', 'Ten konkurs został zakończony lub jest nie aktywny');
+					header('Location: '.$path);
+				}
+			} else {
+				$path = $router->generate('home', []);
+				
+				$this->alert('error', 'Podany konkurs nie istnieje');
+				header('Location: '.$path);
+			}
+		} else {
+			$path = $router->generate('home', []);
+				
+			$this->alert('error', 'Podany konkurs nie istnieje');
+			header('Location: '.$path);
+		}
+	}
+
+	public function homeUseContestCode()
+	{
+		$router = Config::get('router');
+		$code = Code::findBy('code', $this->params['code']);
+		$action = $code->action();
+		$promotor = $action->promotor();
+
+		$client = Client::find($this->params['client_id']);
+
+		$answer = ContestAnswer::where('action_id=? AND client_id=?', ['action_id'=>$action->id, 'client_id'=>$client->id]);
+
+		$points_balance = PointsBalance::where('client_id=? AND promotor_id=?', ['client_id'=>$client->id, 'promotor_id'=>$promotor->id]);
+
+		if (empty($points_balance)) {
+			$points_balance = new PointsBalance(['client_id'=>$client->id, 'promotor_id'=>$promotor->id, 'balance'=>0]);
+			$points_balance->save();
+		} else {
+			$points_balance = $points_balance[0];
+		}
+
+		if (empty($answer)) {
+			$answer = new ContestAnswer(['action_id'=>$action->id, 'client_id'=>$client->id, 'answer'=>$this->params['answer']['answer']]);
+
+			if ($answer->save()) {
+				$description = 'Przystąpienie do konkursu '.$action->name;
+
+				$code->update(['used'=>date(Config::get('mysqltime')), 'client_id'=>$client->id]);
+				History::addHistoryRecord($client->id, $promotor->id, $points_balance->balance, 0, $description, 'contest');
+				(new ClientMailer)->contest($client, $code, $promotor);
+				
+				$path = $router->generate('home_use_contest_code_confirm', ['code'=>$code->code, 'client_id'=>$client->id]);
+				
+				header('Location: '.$path.'#code');
+			} else {
+				$this->params['action'] = 'homeUseContestCode';
+				$this->params['errors'] = 'save';
+
+				$action = $code->action();
+
+				$view = (new View($this->params, ['action'=>$action], 'start'))->render();
+				return $view;
+			}
+		} else {
+			$path = $router->generate('home', []);
+			$this->alert('error', 'Bierzesz już udział w tym konkursie');
+
+			header('Location: '.$path);
+		}
+	}
+
+	public function homeUseContestCodeConfirm()
+	{
+		$code = Code::findBy('code', $this->params['code']);
+
+		$view = (new View($this->params, ['code'=>$code], 'start_page'))->render();
 		return $view;
 	}
 
@@ -62,6 +244,52 @@ class StaticPagesController extends Controller
 				
 			$this->alert('error', 'Podany konkurs nie istnieje');
 			header('Location: '.$path);
+		}
+	}
+
+	public function homeOpinion()
+	{
+		$code = Code::findBy('code', $this->params['code']);
+
+		$view = (new View($this->params, ['code'=>$code], 'start_page'))->render();
+		return $view;
+	}
+
+	public function homeGiveOpinion()
+	{	
+		$code = Code::findBy('code', $this->params['code']);
+		$action = $code->action();
+
+		$router = Config::get('router');
+
+		$client = $this->getOrCreateClient($this->params);
+
+		if ($this->params['rating'] !== '0') {
+			$rate = new Rate(['client_id'=>$client->id, 'action_id'=>$action->id, 'rate'=>$this->params['rating']]);
+		}
+
+		if (isset($rate)) {
+			if (empty($points_balance)) {
+				$points_balance = new PointsBalance(['client_id'=>$client->id, 'promotor_id'=>$action->promotor_id, 'balance'=>0]);
+				$points_balance->save();
+			} else {
+				$points_balance = $points_balance[0];
+			}
+			if ($rate->save()) {
+				$code->update(['used'=>date(Config::get('mysqltime')), 'client_id'=>$client->id]);
+
+				$path = $router->generate('home_contest_code', ['code'=>$code->code, 'client_id'=>$client->id]);
+				
+				header('Location: '.$path.'#code');
+			} else {
+				$path = $router->generate('home', ['code'=>$code->code]);
+				
+				header('Location: '.$path.'?opinion=error');
+			}
+		} else {
+			$path = $router->generate('home_contest_code', ['code'=>$code->code]);
+
+			header('Location: '.$path.'#code');
 		}
 	}
 
@@ -103,6 +331,53 @@ class StaticPagesController extends Controller
 			header('Location: '.$path);
 		}
 	}
+
+	/*public function giveOpinion($params, $route, $route_error)
+	{
+		$code = Code::findBy('code', $params['code']);
+		$action = $code->action();
+
+		$router = Config::get('router');
+
+		$client = $this->getOrCreateClient($params);
+
+		if ($params['rating'] !== '0') {
+			$rate = new Rate(['client_id'=>$client->id, 'action_id'=>$action->id, 'rate'=>$params['rating']]);
+		}
+
+		if (isset($rate)) {
+			if (empty($points_balance)) {
+				$points_balance = new PointsBalance(['client_id'=>$client->id, 'promotor_id'=>$action->promotor_id, 'balance'=>0]);
+				$points_balance->save();
+			} else {
+				$points_balance = $points_balance[0];
+			}
+			if ($rate->save()) {
+				$code->update(['used'=>date(Config::get('mysqltime')), 'client_id'=>$client->id]);
+
+				$path = $router->generate($route, ['code'=>$code->code, 'client_id'=>$client->id]);
+				
+				header('Location: '.$path);
+			} else {
+				$path = $router->generate($route_error, ['code'=>$code->code]);
+				
+				$this->alert('error', 'Nie udało się dodać twojej opinii, spróbuj jeszcze raz');
+				header('Location: '.$path);
+			}
+		} else {
+			$path = $router->generate($route, ['code'=>$code->code]);
+
+			header('Location: '.$path);
+		}
+	}
+
+	public function homeOpinion()
+	{	
+		$code = Code::findBy('code', $this->params['code']);
+
+		$view = (new View($this->params, ['code'=>$code], 'start_page'))->render();
+		return $view;
+	}*/
 
 	public function contest()
 	{	
@@ -347,14 +622,14 @@ class StaticPagesController extends Controller
 		return $view;
 	}
 	
-	private function getOrCreateClient()
+	private function getOrCreateClient($params)
 	{
-		$client = Client::findBy('email', $this->params['client']['email']);
+		$client = Client::findBy('email', $params['client']['email']);
 
 		if (!$client) {
-			$this->params['client']['hash'] = HashGenerator::generate();
-			$this->params['client']['password_digest'] = Password::encryptPassword('');
-			$client = new Client($this->params['client']);
+			$params['client']['hash'] = HashGenerator::generate();
+			$params['client']['password_digest'] = Password::encryptPassword('');
+			$client = new Client($params['client']);
 			if (!$client->save()) {
 				$this->alert('error', 'Nie udało się utworzyć profilu klienta.');
 			} else {
@@ -461,7 +736,11 @@ class StaticPagesController extends Controller
 	{
 		$router = Config::get('router');
 
-		(new AdminMailer)->promotorApplication($this->params['company'], $this->params['email'], $this->params['name'], $this->params['phone_number']);
+		if ((new AdminMailer)->promotorApplication($this->params['company'], $this->params['email'], $this->params['name'], $this->params['phone_number'])) {
+			$this->alert('info', 'Twoje zgłoszenie zostało wysłane.');
+		} else {
+			$this->alert('error', 'Nie udało się wysłać zgłoszenia, spróbuj jeszcze raz');
+		}
 
 		header('Location: '.$router->generate('home', []));
 	}

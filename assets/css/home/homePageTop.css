@@ -2,11 +2,15 @@
 #home-page .top {
 	background-color: #FFFFFF;
 	min-width: 300px;
-	height: 80px;
 	left: 0px;
 	margin: 0px;
 	padding: 0px;
 	box-shadow: -1px 4px 5px rgba(0, 0, 0, 0.5);
+	border-width: 0px;
+}
+#home-page .top .bar{
+	display: block;
+	height: 80px;
 }
 #home-page .top .logo{
 	display: inline-block;
@@ -76,7 +80,7 @@
 		margin: 0px 0px 0px 10px;
 		padding: 1px 0px;
 		vertical-align: middle;
-		transition: background-color 0.2s;
+		transition: background-color 0.2s, color 0.2s;
 	}
 	#home-page .top .menu div:hover{
 		display: inline-block;
@@ -107,22 +111,22 @@
 	}
 
 	#home-page .top .menu .login{
-		padding: 2px 20px;
-		border-width: 2px;
+		padding: 3px 20px;
+		border-width: 1px;
 		border-radius: 3px;
 		border-style: solid;
 	}
 	#home-page .top .menu .login:hover{
-		background-color: #E6E6E6;
-		padding: 2px 20px;
-		border-width: 2px;
+		color: #D40032;
+		padding: 3px 20px;
+		border-width: 1px;
 		border-radius: 3px;
 		border-style: solid;
 		cursor: pointer;
 	}
 }
 @media only screen and (max-width: 999px) and (min-width: 800px) {
-	#home-page .top {
+	#home-page .top .bar {
 		height: 60px;
 	}
 	#home-page .top .menu{
@@ -141,7 +145,7 @@
 		margin: 0px 0px 0px 10px;
 		padding: 1px 0px;
 		vertical-align: middle;
-		transition: background-color 0.2s;
+		transition: background-color 0.2s, color 0.2s;
 	}
 	#home-page .top .menu div:hover{
 		display: inline-block;
@@ -173,22 +177,22 @@
 	}
 
 	#home-page .top .menu .login{
-		padding: 2px 20px;
-		border-width: 2px;
+		padding: 3px 20px;
+		border-width: 1px;
 		border-radius: 3px;
 		border-style: solid;
 	}
 	#home-page .top .menu .login:hover{
-		background-color: #E6E6E6;
-		padding: 2px 20px;
-		border-width: 2px;
+		color: #D40032;
+		padding: 3px 20px;
+		border-width: 1px;
 		border-radius: 3px;
 		border-style: solid;
 		cursor: pointer;
 	}
 }
 @media only screen and (max-width: 799px) {
-	#home-page .top {
+	#home-page .top .bar{
 		height: 60px;
 	}
 	#home-page .top .toggle-menu {
@@ -215,7 +219,7 @@
 		margin: 0px 0px 0px 0px;
 		padding: 10px 20px;
 		vertical-align: middle;
-		transition: background-color 0.2s;
+		transition: background-color 0.2s, color 0.2s;
 	}
 	#home-page .top .menu div:hover{
 		display: block;
@@ -255,7 +259,7 @@
 		border-style: solid;
 	}
 	#home-page .top .menu .login:hover{
-		background-color: #E6E6E6;
+		color: #D40032;
 		padding: 10px 20px;
 		border-width: 0px;
 		border-radius: 0px;

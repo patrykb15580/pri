@@ -3,7 +3,7 @@
 #home-page .banner {
 	display: block;
 	background-image: url('/assets/image/home/banner-1.jpg');
-	background-color: #B1B1B1;
+	background-color: #1B1B1B;
 	background-size: auto 100%;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -73,13 +73,13 @@
 	}
 	#home-page .banner .button{
 		width: 200px;
-		font-size: 16px;
+		font-size: 14px;
 		margin: 0 auto;
 		padding: 10px;
 	}
 	#home-page .banner .button:hover{
 		width: 200px;
-		font-size: 16px;
+		font-size: 14px;
 		margin: 0 auto;
 		padding: 10px;
 	}
@@ -103,13 +103,13 @@
 	}
 	#home-page .banner .button{
 		width: 200px;
-		font-size: 16px;
+		font-size: 14px;
 		margin: 0 auto;
 		padding: 10px;
 	}
 	#home-page .banner .button:hover{
 		width: 200px;
-		font-size: 16px;
+		font-size: 14px;
 		margin: 0 auto;
 		padding: 10px;
 	}
@@ -121,7 +121,7 @@
 	}
 	#home-page .banner img {
 		display: block;
-		width: 180px;
+		width: 200px;
 		margin: 0px auto 40px auto;
 	}
 	#home-page .banner h1{
@@ -132,13 +132,13 @@
 		padding: 0px;
 	}
 	#home-page .banner .button{
-		width: 180px;
+		width: 200px;
 		font-size: 14px;
 		margin: 0 auto;
 		padding: 10px;
 	}
 	#home-page .banner .button:hover{
-		width: 180px;
+		width: 200px;
 		font-size: 14px;
 		margin: 0 auto;
 		padding: 10px;
@@ -151,7 +151,7 @@
 	}
 	#home-page .banner img {
 		display: block;
-		width: 180px;
+		width: 200px;
 		margin: 0px auto 40px auto;
 	}
 	#home-page .banner h1{
@@ -162,13 +162,13 @@
 		padding: 0px;
 	}
 	#home-page .banner .button{
-		width: 180px;
+		width: 200px;
 		font-size: 14px;
 		margin: 0 auto;
 		padding: 10px;
 	}
 	#home-page .banner .button:hover{
-		width: 180px;
+		width: 200px;
 		font-size: 14px;
 		margin: 0 auto;
 		padding: 10px;
